@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.faire-entendre-un-poeme-a-voix-haute-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie-cm/contenu.json"
+  },
+  "source": "microskill.francais.faire-entendre-un-poeme-a-voix-haute",
+  "target": "skill.francais.poesie-cm"
+}

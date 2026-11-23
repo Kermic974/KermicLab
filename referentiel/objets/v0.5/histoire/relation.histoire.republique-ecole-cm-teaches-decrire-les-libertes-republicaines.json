@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.republique-ecole-cm-teaches-decrire-les-libertes-republicaines",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/republique-ecole-cm/contenu.json"
+  },
+  "source": "notion.histoire.republique-ecole-cm",
+  "target": "microskill.histoire.decrire-les-libertes-republicaines"
+}

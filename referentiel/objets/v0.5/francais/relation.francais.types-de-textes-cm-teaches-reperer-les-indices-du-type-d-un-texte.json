@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.types-de-textes-cm-teaches-reperer-les-indices-du-type-d-un-texte",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/types-de-textes-cm/contenu.json"
+  },
+  "source": "notion.francais.types-de-textes-cm",
+  "target": "microskill.francais.reperer-les-indices-du-type-d-un-texte"
+}

@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "En 6e, on consolide les bases : se présenter, parler de sa famille et de son école.",
+  "niveaux": [
+    {
+      "titre": "To be et have got",
+      "niveau": "6e",
+      "paragraphes": [
+        "**To be** : I am, you are, he/she/it is, we are, you are, they are. **Have got** : I have got, you have got, he/she has got… « I'm Léa, I'm eleven. I've got two brothers. » La forme négative : I'm not, he isn't, I haven't got. Question : Are you ? Have you got ?"
+      ],
+      "exemple": {
+        "titre": "Exemple : une présentation",
+        "etapes": [
+          "« Hello, I'm Léa. »",
+          "« I'm eleven and I'm French. »",
+          "« I've got a sister called Zoé. »"
+        ]
+      },
+      "aRetenir": "To be : être. Have got : avoir/posséder."
+    },
+    {
+      "titre": "École et préférences",
+      "niveau": "6e",
+      "paragraphes": [
+        "Matières : maths, English, French, history, science, P.E. (EPS). **My favourite subject is…** / **I like… because…** On dit l'heure : **It's half past eight.** Les adjectifs possessifs : my, your, his, her, our, their (« her bag », « his book »)."
+      ],
+      "exemple": {
+        "titre": "Exemple : parler de son emploi du temps",
+        "etapes": [
+          "« On Monday I have maths and English. »",
+          "« My favourite subject is science. »",
+          "« I like it because it's interesting. »"
+        ]
+      },
+      "aRetenir": "his = à lui ; her = à elle."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Complète : « She ___ eleven. »",
+        "choix": [
+          "are",
+          "am",
+          "be",
+          "is"
+        ],
+        "bonne": 3,
+        "explication": "She is."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment dit-on « J'ai deux frères » ?",
+        "choix": [
+          "I am two brothers.",
+          "I have two brother.",
+          "I got two brothers is.",
+          "I've got two brothers."
+        ],
+        "bonne": 3,
+        "explication": "Have got."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« This is Tom. ___ bag is blue. » (le sac de Tom)",
+        "choix": [
+          "Their",
+          "My",
+          "His",
+          "Her"
+        ],
+        "bonne": 2,
+        "explication": "Tom est un garçon : his."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Ma première semaine de 6e",
+    "histoire": [
+      "Tu te présentes à ton correspondant anglais."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment dis-tu « Je suis français » ?",
+        "choix": [
+          "I have French.",
+          "I French.",
+          "Me is French.",
+          "I'm French."
+        ],
+        "bonne": 3,
+        "explication": "To be + nationalité."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment dis-tu « Ma matière préférée est l'anglais » ?",
+        "choix": [
+          "I favourite English.",
+          "Favourite English is me.",
+          "English my.",
+          "My favourite subject is English."
+        ],
+        "bonne": 3,
+        "explication": "Phrase complète."
+      }
+    ],
+    "conclusion": "Well done!"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-droit-et-realite-vecue-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droits-de-l-enfant-cm/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-droit-et-realite-vecue",
+  "target": "skill.emc.droits-de-l-enfant-cm"
+}

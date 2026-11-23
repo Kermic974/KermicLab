@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.calculer-le-rendement-d-une-conversion-d-energie-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie/contenu.json"
+  },
+  "source": "microskill.physique-chimie.calculer-le-rendement-d-une-conversion-d-energie",
+  "target": "skill.physique-chimie.energie"
+}

@@ -5,13 +5,7 @@ sujet: mathematiques/volumes-contenances-cm
 version: 1.0.0
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - longueurs-masses-contenances-cm
-competences:
-  - volumes-contenances-cm-comprendre
-  - volumes-contenances-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Comment calculer le volume d'un pavé droit en CM2 ?
   - Quel est le lien entre litre et dm³ ?
   - Comment convertir des cm³ en litres ?
+prerequis: longueurs-masses-contenances-cm, solides-cm
+niveaux: cycle-3
+competences: calculer-le-volume-d-un-pave-droit, calculer-le-volume-d-un-cube, convertir-volume-et-contenance, associer-litre-et-decimetre-cube
 ---
 
 # Volumes et contenances

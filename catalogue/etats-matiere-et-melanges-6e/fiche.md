@@ -2,15 +2,10 @@
 id: etats-matiere-et-melanges-6e
 titre: États de la matière, mélanges et masse en 6e
 sujet: physique-chimie/etats-matiere-et-melanges-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-competences:
-  - etats-matiere-et-melanges-6e-comprendre
-  - etats-matiere-et-melanges-6e-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +20,9 @@ questions:
   - Que se passe-t-il quand un solide fond en 6e ?
   - Comment séparer les constituants d'un mélange en 6e ?
   - Pourquoi la masse se conserve-t-elle ?
+prerequis: etats-et-changements-cm, melanges-et-solutions-cm
+niveaux: cycle-3
+competences: calculer-la-masse-d-une-solution-a-partir-du-solute-et-du-solvant, distinguer-melange-homogene-et-heterogene, choisir-une-technique-de-separation-d-un-melange-en-6e, identifier-l-etat-physique-d-un-echantillon
 ---
 
 # États de la matière, mélanges et masse en 6e

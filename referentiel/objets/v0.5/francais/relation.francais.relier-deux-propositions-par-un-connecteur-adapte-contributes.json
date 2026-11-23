@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.relier-deux-propositions-par-un-connecteur-adapte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grammaire-phrase-complexe/contenu.json"
+  },
+  "source": "microskill.francais.relier-deux-propositions-par-un-connecteur-adapte",
+  "target": "skill.francais.grammaire-phrase-complexe"
+}

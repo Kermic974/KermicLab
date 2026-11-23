@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.calculer-le-raccourcissement-d-un-sarcomere-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/contraction-musculaire/contenu.json"
+  },
+  "source": "microskill.svt.calculer-le-raccourcissement-d-un-sarcomere",
+  "target": "skill.svt.contraction-musculaire"
+}

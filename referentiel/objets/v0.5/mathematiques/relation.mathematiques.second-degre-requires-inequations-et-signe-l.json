@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.second-degre-requires-inequations-et-signe-l",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/second-degre/contenu.json"
+  },
+  "source": "notion.mathematiques.second-degre",
+  "target": "notion.mathematiques.inequations-et-signe-l",
+  "rationale": "« Inéquations, tableaux de signes et valeur absolue » : Les inéquations et les tableaux de signes précèdent l’étude du signe d’un trinôme."
+}

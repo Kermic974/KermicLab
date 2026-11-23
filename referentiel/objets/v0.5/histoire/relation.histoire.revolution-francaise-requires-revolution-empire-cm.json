@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.revolution-francaise-requires-revolution-empire-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-francaise/contenu.json"
+  },
+  "source": "notion.histoire.revolution-francaise",
+  "target": "notion.histoire.revolution-empire-cm",
+  "rationale": "« La Révolution française et l'Empire » : La Révolution et l’Empire du cycle 3 préparent les causes et les issues de 1789."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.expliquer-l-independance-de-la-justice-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-justice-et-securite-l/contenu.json"
+  },
+  "source": "microskill.emc.expliquer-l-independance-de-la-justice",
+  "target": "skill.emc.emc-justice-et-securite-l"
+}

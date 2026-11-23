@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.syllabes-et-mots-c2-teaches-decouper-un-mot-en-syllabes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/syllabes-et-mots-c2/contenu.json"
+  },
+  "source": "notion.francais.syllabes-et-mots-c2",
+  "target": "microskill.francais.decouper-un-mot-en-syllabes"
+}

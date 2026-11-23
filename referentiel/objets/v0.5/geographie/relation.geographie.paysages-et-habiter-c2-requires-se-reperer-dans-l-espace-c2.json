@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.paysages-et-habiter-c2-requires-se-reperer-dans-l-espace-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/paysages-et-habiter-c2/contenu.json"
+  },
+  "source": "notion.geographie.paysages-et-habiter-c2",
+  "target": "notion.geographie.se-reperer-dans-l-espace-c2",
+  "rationale": "« Se repérer dans l'espace, lire un plan » : Décrire un paysage suppose de se repérer dans l’espace."
+}

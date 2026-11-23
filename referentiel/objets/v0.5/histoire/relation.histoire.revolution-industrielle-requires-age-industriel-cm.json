@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.revolution-industrielle-requires-age-industriel-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-industrielle/contenu.json"
+  },
+  "source": "notion.histoire.revolution-industrielle",
+  "target": "notion.histoire.age-industriel-cm",
+  "rationale": "« L'âge industriel en France » : L’âge industriel, le travail et l’exode rural du cycle 3 précèdent la révolution industrielle."
+}

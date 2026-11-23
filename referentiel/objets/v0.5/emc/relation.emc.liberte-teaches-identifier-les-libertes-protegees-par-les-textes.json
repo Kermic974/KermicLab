@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.liberte-teaches-identifier-les-libertes-protegees-par-les-textes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/liberte/contenu.json"
+  },
+  "source": "notion.emc.liberte",
+  "target": "microskill.emc.identifier-les-libertes-protegees-par-les-textes"
+}

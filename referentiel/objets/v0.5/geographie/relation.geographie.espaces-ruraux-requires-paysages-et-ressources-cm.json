@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.espaces-ruraux-requires-paysages-et-ressources-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/espaces-ruraux/contenu.json"
+  },
+  "source": "notion.geographie.espaces-ruraux",
+  "target": "notion.geographie.paysages-et-ressources-cm",
+  "rationale": "« Paysages de France et ressources » : Les manières d’habiter et les ressources des paysages ruraux du cycle 3 préparent l’étude des fonctions des espaces ruraux."
+}

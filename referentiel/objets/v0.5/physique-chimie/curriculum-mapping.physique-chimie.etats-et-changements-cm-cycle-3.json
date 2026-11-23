@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.physique-chimie.etats-et-changements-cm-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etats-et-changements-cm/contenu.json"
+  },
+  "object": "notion.physique-chimie.etats-et-changements-cm",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced"
+}

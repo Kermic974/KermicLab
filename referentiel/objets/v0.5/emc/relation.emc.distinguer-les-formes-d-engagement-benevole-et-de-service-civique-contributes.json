@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-les-formes-d-engagement-benevole-et-de-service-civique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-engagement-et-defense-l/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-les-formes-d-engagement-benevole-et-de-service-civique",
+  "target": "skill.emc.emc-engagement-et-defense-l"
+}

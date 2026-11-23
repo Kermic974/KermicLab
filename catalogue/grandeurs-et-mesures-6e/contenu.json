@@ -1,0 +1,113 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "En 6e, on mesure avec rigueur : unités, conversions, durées, périmètres.",
+  "niveaux": [
+    {
+      "titre": "Unités et conversions",
+      "niveau": "6e",
+      "paragraphes": [
+        "Les unités de longueur vont de 10 en 10 : km, hm, dam, m, dm, cm, mm. 3,7 m = 370 cm. Pour les masses : t, kg, g, mg ; pour les contenances : L, dL, cL, mL (1 L = 1 000 mL).",
+        "Pour convertir, on décale la virgule dans un tableau, ou on multiplie / divise par 10, 100, 1 000."
+      ],
+      "exemple": {
+        "titre": "Exemple : 2,5 kg en g",
+        "etapes": [
+          "1 kg = 1 000 g.",
+          "2,5 × 1 000 = 2 500.",
+          "2,5 kg = 2 500 g."
+        ]
+      },
+      "aRetenir": "Passer à une unité plus petite : multiplier."
+    },
+    {
+      "titre": "Durées et périmètres",
+      "niveau": "6e",
+      "paragraphes": [
+        "Les durées se calculent en heures, minutes, secondes (base 60) : 2 h 45 min + 1 h 30 min = 4 h 15 min. Le **périmètre d'un cercle** de rayon r vaut 2 × π × r (π ≈ 3,14). Un cercle de rayon 5 cm a un périmètre d'environ 31,4 cm.",
+        "On choisit toujours l'unité adaptée et on écrit l'unité du résultat."
+      ],
+      "exemple": {
+        "titre": "Exemple : le tour d'un cercle",
+        "etapes": [
+          "Rayon 5 cm.",
+          "2 × 3,14 × 5 = 31,4.",
+          "Périmètre ≈ 31,4 cm."
+        ]
+      },
+      "aRetenir": "Périmètre du cercle : 2 × π × r."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Convertis 3,7 m en cm.",
+        "reponse": 370,
+        "unite": "cm",
+        "indices": [
+          "1 m = 100 cm."
+        ],
+        "solution": "3,7 × 100 = 370.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Convertis 2 500 mL en L.",
+        "reponse": 2.5,
+        "unite": "L",
+        "indices": [
+          "1 L = 1 000 mL."
+        ],
+        "solution": "2 500 ÷ 1 000 = 2,5.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "nombre",
+        "question": "Périmètre d'un cercle de rayon 5 cm (π ≈ 3,14) ?",
+        "reponse": 31.4,
+        "unite": "cm",
+        "indices": [
+          "Formule : 2 × π × r."
+        ],
+        "solution": "2 × 3,14 × 5 = 31,4.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le parcours de santé",
+    "histoire": [
+      "Tu mesures un parcours de 1,2 km avec des pauses."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Convertis 1,2 km en mètres.",
+        "reponse": 1200,
+        "unite": "m",
+        "indices": [
+          "1 km = 1 000 m."
+        ],
+        "solution": "1,2 × 1 000 = 1 200.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Tu pars à 14 h 15 et tu finis à 15 h 40. Durée en minutes ?",
+        "reponse": 85,
+        "unite": "min",
+        "indices": [
+          "Passe par 15 h."
+        ],
+        "solution": "De 14 h 15 à 15 h 40 : 1 h 25 = 85 min.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Mesures maîtrisées !"
+  }
+}

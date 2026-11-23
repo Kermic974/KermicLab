@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-le-prix-total-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monnaie-et-euro-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-le-prix-total",
+  "target": "skill.mathematiques.monnaie-et-euro-c2"
+}

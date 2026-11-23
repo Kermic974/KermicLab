@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Athènes et Rome inventent deux modèles de citoyenneté : l'un fondé sur la participation directe, l'autre sur l'extension du droit de cité.",
+  "niveaux": [
+    {
+      "titre": "Athènes : la démocratie",
+      "niveau": "2de",
+      "paragraphes": [
+        "À Athènes (Ve siècle av. J.-C.), l'**Assemblée** (ecclésia) vote les lois, les magistrats sont souvent tirés au sort, les juges sont des citoyens. **Clisthène** (508 av. J.-C.) et **Périclès** développent ce système. Mais la citoyenneté est **restreinte** : seuls les hommes adultes nés de parents athéniens votent ; les femmes, les étrangers (métèques) et les esclaves sont exclus."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "L'ostracisme : exil de 10 ans voté par l'assemblée.",
+          "But : protéger la cité des tyrans.",
+          "Le pouvoir appartient aux citoyens réunis."
+        ]
+      },
+      "aRetenir": "Démocratie : le pouvoir du peuple (des citoyens)."
+    },
+    {
+      "titre": "Rome : de la cité à l'empire",
+      "niveau": "2de",
+      "paragraphes": [
+        "Rome passe de la royauté à la **République** (509 av. J.-C.) avec Sénat et magistrats, puis à l'**Empire** (27 av. J.-C., Auguste). Rome étend le **droit de cité** : l'édit de **Caracalla** (212) accorde la citoyenneté à presque tous les hommes libres de l'empire. La **romanisation** passe par les routes, les villes, le latin et le droit."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Une cité conquise reçoit un statut.",
+          "Ses élites deviennent citoyens romains.",
+          "La culture romaine se diffuse."
+        ]
+      },
+      "aRetenir": "Rome : extension progressive de la citoyenneté."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "L'ostracisme à Athènes est…",
+        "choix": [
+          "une grande fête religieuse annuelle",
+          "un impôt versé à la cité",
+          "une guerre contre Sparte",
+          "un exil temporaire voté par les citoyens"
+        ],
+        "bonne": 3,
+        "explication": "Protection contre la tyrannie."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle catégorie n'est pas citoyenne à Athènes ?",
+        "choix": [
+          "les juges",
+          "les esclaves et les femmes",
+          "les hommes nés de parents athéniens",
+          "les magistrats"
+        ],
+        "bonne": 1,
+        "explication": "Citoyenneté restreinte."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "L'édit de Caracalla (212)…",
+        "choix": [
+          "fonde la République après les rois",
+          "étend la citoyenneté à presque tous les hommes libres",
+          "abolit définitivement l'esclavage à Rome",
+          "supprime le Sénat de la République"
+        ],
+        "bonne": 1,
+        "explication": "Droit de cité étendu."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le forum",
+    "histoire": [
+      "Tu visites le forum romain."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le Sénat romain est…",
+        "choix": [
+          "un marché couvert du forum",
+          "une assemblée de notables",
+          "un grand temple de Jupiter",
+          "l'armée personnelle du consul"
+        ],
+        "bonne": 1,
+        "explication": "République."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La romanisation désigne…",
+        "choix": [
+          "une guerre civile entre généraux",
+          "la diffusion du mode de vie romain",
+          "la conquête de Rome par les Gaulois",
+          "l'invention du latin écrit"
+        ],
+        "bonne": 1,
+        "explication": "Intégration."
+      }
+    ],
+    "conclusion": "Bon citoyen !"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.oxydoreduction-teaches-equilibrer-une-demi-equation-avec-des-electrons",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/oxydoreduction/contenu.json"
+  },
+  "source": "notion.physique-chimie.oxydoreduction",
+  "target": "microskill.physique-chimie.equilibrer-une-demi-equation-avec-des-electrons"
+}

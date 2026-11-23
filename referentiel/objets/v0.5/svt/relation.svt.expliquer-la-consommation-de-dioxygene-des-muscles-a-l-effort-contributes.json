@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-la-consommation-de-dioxygene-des-muscles-a-l-effort-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/organisme-et-effort-6e/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-la-consommation-de-dioxygene-des-muscles-a-l-effort",
+  "target": "skill.svt.organisme-et-effort-6e"
+}

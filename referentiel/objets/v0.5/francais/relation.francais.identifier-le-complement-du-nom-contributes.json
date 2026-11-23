@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-le-complement-du-nom-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/groupe-nominal-cm/contenu.json"
+  },
+  "source": "microskill.francais.identifier-le-complement-du-nom",
+  "target": "skill.francais.groupe-nominal-cm"
+}

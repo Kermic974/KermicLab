@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-un-prefixe-et-un-suffixe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/formation-des-mots-cm/contenu.json"
+  },
+  "source": "microskill.francais.identifier-un-prefixe-et-un-suffixe",
+  "target": "skill.francais.formation-des-mots-cm"
+}

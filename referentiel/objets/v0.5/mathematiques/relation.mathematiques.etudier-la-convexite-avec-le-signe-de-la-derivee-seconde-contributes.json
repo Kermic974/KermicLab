@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.etudier-la-convexite-avec-le-signe-de-la-derivee-seconde-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/convexite-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.etudier-la-convexite-avec-le-signe-de-la-derivee-seconde",
+  "target": "skill.mathematiques.convexite-l"
+}

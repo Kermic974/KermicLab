@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.maintenir-un-tempo-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-notes-et-rythme-cm/contenu.json"
+  },
+  "source": "microskill.musique.maintenir-un-tempo",
+  "target": "skill.musique.musique-notes-et-rythme-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.identifier-un-agent-mutagene-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mutations-et-variabilite/contenu.json"
+  },
+  "source": "microskill.svt.identifier-un-agent-mutagene",
+  "target": "skill.svt.mutations-et-variabilite"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.nutrition-et-digestion-requires-nutrition-et-alimentation-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nutrition-et-digestion/contenu.json"
+  },
+  "source": "notion.svt.nutrition-et-digestion",
+  "target": "notion.svt.nutrition-et-alimentation-6e",
+  "rationale": "« Nutrition et alimentation en 6e » : L’alimentation et le trajet des aliments du cycle 3 précèdent la digestion chimique et l’absorption."
+}

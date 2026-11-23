@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.anglais-gouts-et-actions-cm-teaches-employer-le-present-simple-a-la-3e-personne",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-gouts-et-actions-cm/contenu.json"
+  },
+  "source": "notion.anglais.anglais-gouts-et-actions-cm",
+  "target": "microskill.anglais.employer-le-present-simple-a-la-3e-personne"
+}

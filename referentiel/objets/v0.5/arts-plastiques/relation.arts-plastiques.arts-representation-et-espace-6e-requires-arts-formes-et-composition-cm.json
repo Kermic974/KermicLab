@@ -1,0 +1,13 @@
+{
+  "id": "relation.arts-plastiques.arts-representation-et-espace-6e-requires-arts-formes-et-composition-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/arts-representation-et-espace-6e/contenu.json"
+  },
+  "source": "notion.arts-plastiques.arts-representation-et-espace-6e",
+  "target": "notion.arts-plastiques.arts-formes-et-composition-cm",
+  "rationale": "Lignes, formes et perspective du CM2 sont développées pour représenter l’espace."
+}

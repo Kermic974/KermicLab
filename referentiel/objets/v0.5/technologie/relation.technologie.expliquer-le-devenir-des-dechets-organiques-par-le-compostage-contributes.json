@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.expliquer-le-devenir-des-dechets-organiques-par-le-compostage-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/materiaux-et-recyclage-cm/contenu.json"
+  },
+  "source": "microskill.technologie.expliquer-le-devenir-des-dechets-organiques-par-le-compostage",
+  "target": "skill.technologie.materiaux-et-recyclage-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.utiliser-un-connecteur-de-cause-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/resumer-et-expliquer-cm/contenu.json"
+  },
+  "source": "microskill.francais.utiliser-un-connecteur-de-cause",
+  "target": "skill.francais.resumer-et-expliquer-cm"
+}

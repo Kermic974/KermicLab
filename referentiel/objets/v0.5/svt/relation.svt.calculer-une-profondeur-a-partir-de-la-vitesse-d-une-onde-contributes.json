@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.calculer-une-profondeur-a-partir-de-la-vitesse-d-une-onde-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/structure-de-la-terre/contenu.json"
+  },
+  "source": "microskill.svt.calculer-une-profondeur-a-partir-de-la-vitesse-d-une-onde",
+  "target": "skill.svt.structure-de-la-terre"
+}

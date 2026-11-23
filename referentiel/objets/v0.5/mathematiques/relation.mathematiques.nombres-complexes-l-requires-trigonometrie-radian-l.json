@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.nombres-complexes-l-requires-trigonometrie-radian-l",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nombres-complexes-l/contenu.json"
+  },
+  "source": "notion.mathematiques.nombres-complexes-l",
+  "target": "notion.mathematiques.trigonometrie-radian-l",
+  "rationale": "Prérequis déclaré dans la fiche : « Trigonométrie : radian, cosinus et sinus d'un réel » précède « Nombres complexes : forme algébrique et module » dans la progression du programme (lien à relire)."
+}

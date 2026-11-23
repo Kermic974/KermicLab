@@ -2,15 +2,10 @@
 id: sujet-verbe-complements-6e
 titre: Sujet, verbe et compléments en 6e
 sujet: francais/sujet-verbe-complements-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-competences:
-  - sujet-verbe-complements-6e-comprendre
-  - sujet-verbe-complements-6e-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +21,9 @@ questions:
   - Comment analyser une phrase simple en 6e ?
   - Comment distinguer un COD d'un complément circonstanciel ?
   - Comment reconnaître un attribut du sujet en 6e ?
+prerequis: fonctions-dans-la-phrase-cm
+niveaux: cycle-3
+competences: identifier-le-complement-d-objet-indirect, identifier-l-attribut-du-sujet-en-6e, identifier-un-complement-circonstanciel, reconnaitre-sujet-et-verbe
 ---
 
 # Sujet, verbe et compléments en 6e

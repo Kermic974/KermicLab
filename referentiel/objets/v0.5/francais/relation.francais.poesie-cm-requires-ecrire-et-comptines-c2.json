@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.poesie-cm-requires-ecrire-et-comptines-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie-cm/contenu.json"
+  },
+  "source": "notion.francais.poesie-cm",
+  "target": "notion.francais.ecrire-et-comptines-c2",
+  "rationale": "« Écrire une phrase, un texte, un poème » : Reconnaître des rimes prolonge les comptines et rimes du cycle 2."
+}

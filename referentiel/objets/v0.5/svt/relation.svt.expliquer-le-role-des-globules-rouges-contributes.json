@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-le-role-des-globules-rouges-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/respiration-et-circulation/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-le-role-des-globules-rouges",
+  "target": "skill.svt.respiration-et-circulation"
+}

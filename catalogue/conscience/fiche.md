@@ -21,7 +21,7 @@ questions:
   - what is consciousness?
 prerequis:
 niveaux: terminale
-competences: philosophie-conscience-action-1, philosophie-conscience-action-2
+competences: distinguer-conscience-spontanee-et-conscience-reflechie, distinguer-conscience-psychologique-et-conscience-morale, expliquer-le-cogito-comme-premiere-certitude-chez-descartes, discuter-la-transparence-du-moi-a-lui-meme
 ---
 
 # La conscience

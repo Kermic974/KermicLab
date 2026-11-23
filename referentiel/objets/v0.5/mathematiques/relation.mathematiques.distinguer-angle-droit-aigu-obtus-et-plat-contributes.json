@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.distinguer-angle-droit-aigu-obtus-et-plat-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/angles-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.distinguer-angle-droit-aigu-obtus-et-plat",
+  "target": "skill.mathematiques.angles-cm"
+}

@@ -61,12 +61,12 @@
         "titre": "Exercice 2",
         "question": "Quel numéro européen d'urgence existe ?",
         "choix": [
-          "112",
-          "100",
           "911",
-          "999"
+          "999",
+          "112",
+          "100"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Valable en Europe."
       },
       {
@@ -74,12 +74,12 @@
         "titre": "Exercice 3",
         "question": "À vélo, que faut-il porter ?",
         "choix": [
-          "Un casque",
           "Des écouteurs",
           "Un sac lourd",
-          "Des lunettes de piscine"
+          "Des lunettes de piscine",
+          "Un casque"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Protection."
       }
     ]
@@ -95,12 +95,12 @@
         "titre": "Exercice 1",
         "question": "Que fais-tu d'abord ?",
         "choix": [
-          "Je préviens un adulte immédiatement",
-          "Je le déplace",
-          "Je pars jouer",
-          "Je filme"
+          "Je déplace le camarade blessé",
+          "Je retourne jouer avec les autres",
+          "Je filme la scène pour la montrer",
+          "Je préviens un adulte immédiatement"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Alerter."
       },
       {
@@ -108,12 +108,12 @@
         "titre": "Exercice 2",
         "question": "Que dire au téléphone ?",
         "choix": [
+          "Rien, j'attends qu'on me demande",
           "Où je suis et ce qui s'est passé",
-          "Rien",
-          "Mon score de jeu",
-          "Un secret"
+          "Mon score à un jeu vidéo",
+          "Un secret de famille"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Lieu et situation."
       }
     ],

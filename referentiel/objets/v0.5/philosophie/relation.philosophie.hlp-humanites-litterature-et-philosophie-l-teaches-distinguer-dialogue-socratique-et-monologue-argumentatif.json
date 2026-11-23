@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.hlp-humanites-litterature-et-philosophie-l-teaches-distinguer-dialogue-socratique-et-monologue-argumentatif",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/hlp-humanites-litterature-et-philosophie-l/contenu.json"
+  },
+  "source": "notion.philosophie.hlp-humanites-litterature-et-philosophie-l",
+  "target": "microskill.philosophie.distinguer-dialogue-socratique-et-monologue-argumentatif"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.orthographe-grammaticale-6e-requires-accords-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/orthographe-grammaticale-6e/contenu.json"
+  },
+  "source": "notion.francais.orthographe-grammaticale-6e",
+  "target": "notion.francais.accords-cm",
+  "rationale": "« Les accords : sujet-verbe, groupe nominal, participe passé » : L’orthographe de 6e approfondit les accords et les homophones du CM."
+}

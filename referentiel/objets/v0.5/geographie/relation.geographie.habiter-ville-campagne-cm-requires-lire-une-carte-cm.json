@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.habiter-ville-campagne-cm-requires-lire-une-carte-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-ville-campagne-cm/contenu.json"
+  },
+  "source": "notion.geographie.habiter-ville-campagne-cm",
+  "target": "notion.geographie.lire-une-carte-cm",
+  "rationale": "« Lire une carte et se repérer » : Habiter ville ou campagne prolonge les paysages et la lecture de carte."
+}

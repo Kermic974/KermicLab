@@ -1,0 +1,12 @@
+{
+  "id": "relation.eps.respecter-les-regles-et-les-partenaires-fair-play-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-bouger-et-jouer-c2/contenu.json"
+  },
+  "source": "microskill.eps.respecter-les-regles-et-les-partenaires-fair-play",
+  "target": "skill.eps.eps-bouger-et-jouer-c2"
+}

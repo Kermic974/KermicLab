@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.interpreter-un-lapsus-ou-un-reve-sans-conclure-trop-vite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/inconscient/contenu.json"
+  },
+  "source": "microskill.philosophie.interpreter-un-lapsus-ou-un-reve-sans-conclure-trop-vite",
+  "target": "skill.philosophie.inconscient"
+}

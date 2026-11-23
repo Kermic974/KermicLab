@@ -26,9 +26,9 @@ questions:
   - quel est le rôle de la dérive génétique dans la spéciation ?
   - est-ce que l'humain descend du singe ?
   - what is natural selection?
-prerequis:
+prerequis: evolution, mutations-et-variabilite
 niveaux: terminale
-competences: svt-evolution-et-selection-naturelle-action-1, svt-evolution-et-selection-naturelle-action-2
+competences: expliquer-comment-la-selection-naturelle-modifie-les-frequences-des-alleles, distinguer-selection-naturelle-et-derive-genetique, predire-l-effet-de-la-taille-d-une-population-sur-la-derive-genetique, construire-une-parente-entre-especes-a-partir-de-caracteres-partages, calculer-un-effectif-ou-une-frequence-dans-une-population
 ---
 
 # Évolution et sélection naturelle

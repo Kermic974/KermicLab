@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.distinguer-egalite-et-equite-dans-une-situation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice-philosophie/contenu.json"
+  },
+  "source": "microskill.philosophie.distinguer-egalite-et-equite-dans-une-situation",
+  "target": "skill.philosophie.justice-philosophie"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.lire-la-legende-d-une-carte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lire-une-carte-cm/contenu.json"
+  },
+  "source": "microskill.geographie.lire-la-legende-d-une-carte",
+  "target": "skill.geographie.lire-une-carte-cm"
+}

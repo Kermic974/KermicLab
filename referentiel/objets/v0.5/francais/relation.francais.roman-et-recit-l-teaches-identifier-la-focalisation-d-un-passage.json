@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.roman-et-recit-l-teaches-identifier-la-focalisation-d-un-passage",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/roman-et-recit-l/contenu.json"
+  },
+  "source": "notion.francais.roman-et-recit-l",
+  "target": "microskill.francais.identifier-la-focalisation-d-un-passage"
+}

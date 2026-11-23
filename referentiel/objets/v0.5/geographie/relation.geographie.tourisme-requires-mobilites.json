@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.tourisme-requires-mobilites",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tourisme/contenu.json"
+  },
+  "source": "notion.geographie.tourisme",
+  "target": "notion.geographie.mobilites",
+  "rationale": "Les flux touristiques sont des mobilités : motifs, modes de transport et acteurs."
+}

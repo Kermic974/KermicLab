@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.dater-relativement-des-evenements-geologiques-avec-les-failles-et-les-discordances-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/histoire-de-la-terre-et-datation/contenu.json"
+  },
+  "source": "microskill.svt.dater-relativement-des-evenements-geologiques-avec-les-failles-et-les-discordances",
+  "target": "skill.svt.histoire-de-la-terre-et-datation"
+}

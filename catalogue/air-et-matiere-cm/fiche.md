@@ -2,15 +2,10 @@
 id: air-et-matiere-cm
 titre: L'air, un gaz qui occupe de la place
 sujet: physique-chimie/air-et-matiere-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - air-et-matiere-cm-comprendre
-  - air-et-matiere-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +21,9 @@ questions:
   - L'air est-il de la matière ?
   - L'air a-t-il une masse ?
   - Pourquoi un ballon gonflé est-il plus lourd ?
+prerequis: eau-air-et-matiere-c2, etats-et-changements-cm
+niveaux: cycle-3
+competences: montrer-que-l-air-occupe-de-la-place-et-a-une-masse, expliquer-l-effet-d-une-pompe-a-velo-compression-de-l-air, distinguer-gaz-liquide-et-solide-par-leurs-proprietes, interpreter-la-pression-de-l-air
 ---
 
 # L'air, un gaz qui occupe de la place

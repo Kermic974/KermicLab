@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.identifier-la-hierarchie-des-normes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etat-de-droit/contenu.json"
+  },
+  "source": "microskill.emc.identifier-la-hierarchie-des-normes",
+  "target": "skill.emc.etat-de-droit"
+}

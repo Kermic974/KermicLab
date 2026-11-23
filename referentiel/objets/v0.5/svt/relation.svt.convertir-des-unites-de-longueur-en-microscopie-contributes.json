@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.convertir-des-unites-de-longueur-en-microscopie-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/la-cellule/contenu.json"
+  },
+  "source": "microskill.svt.convertir-des-unites-de-longueur-en-microscopie",
+  "target": "skill.svt.la-cellule"
+}

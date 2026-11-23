@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.discuter-si-la-liberte-est-compatible-avec-le-determinisme-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/liberte-philosophie/contenu.json"
+  },
+  "source": "microskill.philosophie.discuter-si-la-liberte-est-compatible-avec-le-determinisme",
+  "target": "skill.philosophie.liberte-philosophie"
+}

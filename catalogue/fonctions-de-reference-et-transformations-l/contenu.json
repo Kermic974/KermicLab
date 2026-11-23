@@ -1,0 +1,117 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un tableau de variations résume le comportement d'une fonction : où elle monte, où elle descend, ses extrema.",
+  "niveaux": [
+    {
+      "titre": "Variations",
+      "niveau": "2de",
+      "paragraphes": [
+        "Une fonction est **croissante** sur I si, pour a < b dans I, f(a) ≤ f(b) ; **décroissante** si f(a) ≥ f(b). Un **tableau de variations** indique les flèches ↗ ↘ et les valeurs aux bornes. Un **maximum** (resp. **minimum**) est la plus grande (resp. petite) valeur de f sur I."
+      ],
+      "exemple": {
+        "titre": "Exemple : f(x) = (x − 2)² − 1",
+        "etapes": [
+          "Décroissante sur ]−∞ ; 2], croissante sur [2 ; +∞[.",
+          "Minimum en x = 2 : f(2) = −1.",
+          "Pas de maximum."
+        ]
+      },
+      "aRetenir": "Le minimum se lit à la valeur qui annule le carré."
+    },
+    {
+      "titre": "Transformer une courbe",
+      "niveau": "1re",
+      "paragraphes": [
+        "La courbe de f(x) + k est celle de f **décalée de k vers le haut** ; celle de f(x + a) est décalée de **a vers la gauche** ; celle de −f(x) est la **symétrique par rapport à l'axe des abscisses** ; celle de f(−x) est symétrique par rapport à l'axe des ordonnées. Une fonction est **paire** si f(−x) = f(x) (courbe symétrique par rapport à l'axe des ordonnées), **impaire** si f(−x) = −f(x) (symétrique par rapport à l'origine)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "x² est paire.",
+          "x³ est impaire.",
+          "x² + x n'est ni paire ni impaire."
+        ]
+      },
+      "aRetenir": "Paire : f(−x) = f(x) ; impaire : f(−x) = −f(x)."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "f(x) = (x − 2)² − 1 a pour minimum…",
+        "choix": [
+          "0 en x = 2",
+          "−2 en x = 1",
+          "−1 en x = 2",
+          "−1 en x = −2"
+        ],
+        "bonne": 2,
+        "explication": "Un carré est positif ou nul."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La fonction x ↦ x³ est…",
+        "choix": [
+          "constante",
+          "impaire",
+          "paire",
+          "ni paire ni impaire"
+        ],
+        "bonne": 1,
+        "explication": "(−x)³ = −x³."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La courbe de f(x) + 3 est celle de f…",
+        "choix": [
+          "décalée de 3 vers le haut",
+          "décalée de 3 vers la droite",
+          "décalée de 3 vers la gauche",
+          "symétrique de f"
+        ],
+        "bonne": 0,
+        "explication": "Translation verticale."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La trajectoire du ballon",
+    "histoire": [
+      "La hauteur d'un ballon est h(t) = −5(t − 1)² + 6 (t en secondes)."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quelle est la hauteur maximale (en m) ?",
+        "reponse": 6,
+        "unite": "m",
+        "indices": [
+          "Le carré est nul à t = 1."
+        ],
+        "solution": "(t − 1)² ≥ 0 : max 6.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "À quel instant (en s) est-elle atteinte ?",
+        "reponse": 1,
+        "unite": "s",
+        "indices": [
+          "Annule (t − 1)."
+        ],
+        "solution": "t = 1.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Variations lues !"
+  }
+}

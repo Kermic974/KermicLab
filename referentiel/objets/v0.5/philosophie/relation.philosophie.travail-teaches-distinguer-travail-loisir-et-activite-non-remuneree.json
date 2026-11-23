@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.travail-teaches-distinguer-travail-loisir-et-activite-non-remuneree",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/travail/contenu.json"
+  },
+  "source": "notion.philosophie.travail",
+  "target": "microskill.philosophie.distinguer-travail-loisir-et-activite-non-remuneree"
+}

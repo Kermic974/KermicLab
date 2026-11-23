@@ -1,0 +1,110 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Au CE2, on multiplie des nombres à deux chiffres par un chiffre, en posant l'opération.",
+  "niveaux": [
+    {
+      "titre": "Multiplier avec des dizaines",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "24 × 3, c'est 3 fois 24 : on multiplie les unités (4 × 3 = 12) puis les dizaines (20 × 3 = 60), et on additionne : 12 + 60 = 72.",
+        "Multiplier par 10, c'est ajouter un 0 : 35 × 10 = 350. Par 100, on ajoute deux 0 : 35 × 100 = 3 500."
+      ],
+      "exemple": {
+        "titre": "Exemple : 24 × 3",
+        "etapes": [
+          "4 × 3 = 12.",
+          "20 × 3 = 60.",
+          "12 + 60 = 72."
+        ]
+      },
+      "aRetenir": "On multiplie unités, puis dizaines, et on additionne."
+    },
+    {
+      "titre": "L'opération posée",
+      "niveau": "CE2",
+      "paragraphes": [
+        "On écrit 24 sous 3 × : on multiplie 4 × 3 = 12, je pose 2 et je retiens 1 ; puis 2 × 3 = 6, plus la retenue 1 : 7. Le résultat est 72.",
+        "On peut vérifier en estimant : 24 est proche de 20, 20 × 3 = 60 : 72 est possible."
+      ],
+      "exemple": {
+        "titre": "Exemple : 36 × 4",
+        "etapes": [
+          "6 × 4 = 24 : je pose 4, retiens 2.",
+          "3 × 4 = 12, plus 2 = 14.",
+          "36 × 4 = 144."
+        ]
+      },
+      "aRetenir": "On estime pour vérifier."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "24 × 3 = ?",
+        "reponse": 72,
+        "indices": [
+          "Sépare 24 en 20 + 4."
+        ],
+        "solution": "4 × 3 = 12 ; 20 × 3 = 60 ; 72.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "35 × 10 = ?",
+        "reponse": 350,
+        "indices": [
+          "× 10 : un zéro."
+        ],
+        "solution": "On ajoute un zéro.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "nombre",
+        "question": "36 × 4 = ?",
+        "reponse": 144,
+        "indices": [
+          "Sépare 36 en 30 + 6."
+        ],
+        "solution": "6 × 4 = 24, 30 × 4 = 120, 144.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Les billets de cirque",
+    "histoire": [
+      "Un billet de cirque coûte 12 €."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Combien coûtent 5 billets ?",
+        "reponse": 60,
+        "unite": "€",
+        "indices": [
+          "10 × 5 puis 2 × 5."
+        ],
+        "solution": "12 × 5 = 60.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien coûtent 10 billets ?",
+        "reponse": 120,
+        "unite": "€",
+        "indices": [
+          "× 10 : un 0."
+        ],
+        "solution": "12 × 10 = 120.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bien multiplié !"
+  }
+}

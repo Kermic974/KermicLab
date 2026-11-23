@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "On écoute avec méthode, on situe les styles dans l'histoire et on s'initie à la création.",
+  "niveaux": [
+    {
+      "titre": "Écouter et analyser",
+      "niveau": "2de",
+      "paragraphes": [
+        "Pour **analyser** : identifier les **paramètres** (**rythme**, **mélodie**, **harmonie**, **timbre**, **nuances**, **tempo**), la **forme** (couplet-refrain, rondo, sonate, thème et variations) et la **formation** (orchestre, quatuor, groupe). L'écoute se fait en **plusieurs passages** avec des repères précis."
+      ],
+      "exemple": {
+        "titre": "Exemple : forme couplet-refrain",
+        "etapes": [
+          "Intro, couplet, refrain, pont, refrain.",
+          "Le refrain revient identique.",
+          "On le repère par la mélodie et les paroles."
+        ]
+      },
+      "aRetenir": "Paramètres : rythme, mélodie, harmonie, timbre."
+    },
+    {
+      "titre": "Périodes et styles",
+      "niveau": "1re / Tle",
+      "paragraphes": [
+        "Périodes : **baroque** (Bach, Vivaldi), **classique** (Mozart, Haydn), **romantique** (Chopin, Schubert), **XXe siècle** (Debussy, Stravinsky), **jazz** (improvisation, swing), **musiques actuelles** (rock, rap, électro). La **composition** et l'**arrangement** utilisent des outils numériques (MAO). La musique reflète et influence la **société**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Jazz : improvisation sur une grille d'accords.",
+          "Swing : rythme ternaire.",
+          "Naît à La Nouvelle-Orléans."
+        ]
+      },
+      "aRetenir": "Styles liés à une époque et une société."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel compositeur appartient à la période baroque ?",
+        "choix": [
+          "Chopin",
+          "Debussy",
+          "Stravinsky",
+          "Bach"
+        ],
+        "bonne": 3,
+        "explication": "XVIIIe siècle."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le timbre est…",
+        "choix": [
+          "la vitesse d'exécution du morceau",
+          "la hauteur précise de chaque note",
+          "le volume sonore de l'ensemble",
+          "la couleur sonore d'un instrument"
+        ],
+        "bonne": 3,
+        "explication": "Paramètre."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Le jazz se caractérise notamment par…",
+        "choix": [
+          "le silence",
+          "l'improvisation",
+          "l'absence de rythme",
+          "la seule musique écrite"
+        ],
+        "bonne": 1,
+        "explication": "Swing."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le concert",
+    "histoire": [
+      "Tu écoutes un concert de jazz."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que remarques-tu ?",
+        "choix": [
+          "une danse obligatoire",
+          "aucun instrument",
+          "des solos improvisés",
+          "une partition fixe uniquement"
+        ],
+        "bonne": 2,
+        "explication": "Improvisation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La MAO désigne…",
+        "choix": [
+          "la musique assistée par ordinateur",
+          "un style de danse très ancien",
+          "une époque de l'histoire de la musique",
+          "un instrument à vent en cuivre"
+        ],
+        "bonne": 0,
+        "explication": "Outil."
+      }
+    ],
+    "conclusion": "Bonne oreille !"
+  }
+}

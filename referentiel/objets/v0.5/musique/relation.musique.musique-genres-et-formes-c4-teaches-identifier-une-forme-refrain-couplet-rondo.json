@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.musique-genres-et-formes-c4-teaches-identifier-une-forme-refrain-couplet-rondo",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-genres-et-formes-c4/contenu.json"
+  },
+  "source": "notion.musique.musique-genres-et-formes-c4",
+  "target": "microskill.musique.identifier-une-forme-refrain-couplet-rondo"
+}

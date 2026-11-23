@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.saluer-et-prendre-conge-en-anglais-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-bonjour-c2/contenu.json"
+  },
+  "source": "microskill.anglais.saluer-et-prendre-conge-en-anglais",
+  "target": "skill.anglais.anglais-bonjour-c2"
+}

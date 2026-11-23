@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.nsi-algorithmes-et-donnees-l-teaches-manipuler-un-arbre-binaire-de-recherche",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nsi-algorithmes-et-donnees-l/contenu.json"
+  },
+  "source": "notion.technologie.nsi-algorithmes-et-donnees-l",
+  "target": "microskill.technologie.manipuler-un-arbre-binaire-de-recherche"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.grandeurs-et-mesures-6e-teaches-calculer-une-duree",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grandeurs-et-mesures-6e/contenu.json"
+  },
+  "source": "notion.mathematiques.grandeurs-et-mesures-6e",
+  "target": "microskill.mathematiques.calculer-une-duree"
+}

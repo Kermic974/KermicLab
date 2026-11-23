@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "L'anglais au lycée est aussi une porte vers les cultures anglophones : identités, art, pouvoir, science et société.",
+  "niveaux": [
+    {
+      "titre": "Thématiques",
+      "niveau": "2de / 1re",
+      "paragraphes": [
+        "Axes du programme : **art et pouvoir**, **citoyenneté et mondes virtuels**, **fiction et réalité**, **innovations scientifiques et responsabilité**, **diversité et inclusion**, **espace privé et public**, **représentations**, **l'Amérique, de la Révolution au XXIe siècle**, **le Royaume-Uni et l'Irlande**. Le vocabulaire utile : identity, rights, equality, inequality, immigration, citizenship, ethics, responsibility."
+      ],
+      "exemple": {
+        "titre": "Exemple : le rêve américain",
+        "etapes": [
+          "The American Dream : égalité des chances.",
+          "Mais des inégalités persistent (racisme, pauvreté).",
+          "Documents : discours, romans, chansons, affiches."
+        ]
+      },
+      "aRetenir": "Thème + document + problématique."
+    },
+    {
+      "titre": "Analyser un document",
+      "niveau": "Tle",
+      "paragraphes": [
+        "Pour analyser un document (texte, image, extrait de film, discours) : **identifier** (nature, date, auteur, source), **décrire**, **dégager le message** et les **procédés** (ton, métaphores, images), puis **mettre en perspective** (contexte, autres documents). Pour s'exprimer : introduire (« This document deals with… »), argumenter (« On the one hand… on the other hand… »), nuancer (« however », « nevertheless »)."
+      ],
+      "exemple": {
+        "titre": "Exemple : un discours",
+        "etapes": [
+          "« I have a dream » (M. L. King, 1963).",
+          "Anaphore « I have a dream ».",
+          "Message : égalité raciale, espoir."
+        ]
+      },
+      "aRetenir": "Document : nature, message, procédés, contexte."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« On the one hand… on the other hand… » sert à…",
+        "choix": [
+          "raconter une longue histoire",
+          "poser une question directe",
+          "clore une lettre officielle",
+          "présenter deux points de vue"
+        ],
+        "bonne": 3,
+        "explication": "Argumenter."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "L'analyse d'un document commence par…",
+        "choix": [
+          "juger l'auteur sans preuve",
+          "résumer seulement la dernière ligne",
+          "identifier nature, auteur, date et source",
+          "traduire chaque mot du texte"
+        ],
+        "bonne": 2,
+        "explication": "Identification."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« Nevertheless » exprime…",
+        "choix": [
+          "une date ou une durée",
+          "une opposition ou une concession",
+          "une addition d'idée nouvelle",
+          "une cause ou une raison"
+        ],
+        "bonne": 1,
+        "explication": "Nuance."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le discours",
+    "histoire": [
+      "Tu analyses un discours de King."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel procédé caractérise « I have a dream » ?",
+        "choix": [
+          "l'anaphore",
+          "la rime",
+          "l'ellipse",
+          "le dialogue"
+        ],
+        "bonne": 0,
+        "explication": "Répétition."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour contextualiser, tu mentionnes…",
+        "choix": [
+          "le prix du livre scolaire",
+          "le titre d'un film récent",
+          "le mouvement des droits civiques",
+          "la météo du jour du discours"
+        ],
+        "bonne": 2,
+        "explication": "Contexte."
+      }
+    ],
+    "conclusion": "Great analysis!"
+  }
+}

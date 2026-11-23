@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.habiter-le-littoral-6e-requires-paysages-et-ressources-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-le-littoral-6e/contenu.json"
+  },
+  "source": "notion.geographie.habiter-le-littoral-6e",
+  "target": "notion.geographie.paysages-et-ressources-cm",
+  "rationale": "« Paysages de France et ressources » : Le littoral s’appuie sur les paysages et ressources de France."
+}

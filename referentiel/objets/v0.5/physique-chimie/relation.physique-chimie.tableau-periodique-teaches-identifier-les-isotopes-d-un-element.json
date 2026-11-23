@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.tableau-periodique-teaches-identifier-les-isotopes-d-un-element",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tableau-periodique/contenu.json"
+  },
+  "source": "notion.physique-chimie.tableau-periodique",
+  "target": "microskill.physique-chimie.identifier-les-isotopes-d-un-element"
+}

@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Écrire, c'est planifier, rédiger, relire et réécrire jusqu'à un texte clair.",
+  "niveaux": [
+    {
+      "titre": "Décrire et raconter",
+      "niveau": "6e",
+      "paragraphes": [
+        "Pour **décrire** un lieu ou un personnage, on observe, on choisit un ordre (de haut en bas, de près en loin), on emploie des adjectifs précis, des compléments de lieu et des comparaisons. Pour **raconter**, on suit un schéma (début, péripéties, fin) avec l'imparfait pour le décor et le passé simple pour l'action."
+      ],
+      "exemple": {
+        "titre": "Exemple : un portrait",
+        "etapes": [
+          "Aspect : un vieil homme maigre.",
+          "Détails : des yeux perçants.",
+          "Comparaison : voix rauque comme une scie."
+        ]
+      },
+      "aRetenir": "Décrire : un ordre, des détails précis."
+    },
+    {
+      "titre": "Brouillon et réécriture",
+      "niveau": "6e",
+      "paragraphes": [
+        "On écrit d'abord un **brouillon** à partir d'un plan, puis on **relit** avec une liste de contrôle : sens, phrases complètes, ponctuation, accords, orthographe. On **réécrit** pour remplacer les mots répétés, ajouter une précision, supprimer un passage inutile.",
+        "On peut se faire relire par un camarade et s'appuyer sur le dictionnaire."
+      ],
+      "exemple": {
+        "titre": "Exemple : réécrire",
+        "etapes": [
+          "Avant : « Il y avait un chien. Il était grand. »",
+          "Après : « Un grand chien noir gardait la porte. »",
+          "Une seule phrase, plus riche."
+        ]
+      },
+      "aRetenir": "Écrire = brouillon, relecture, réécriture."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle phrase décrit le mieux un personnage ?",
+        "choix": [
+          "Un vieil homme maigre aux yeux perçants s'avançait lentement.",
+          "Il y avait un homme qui marchait dans la rue.",
+          "Un homme était là et il faisait quelque chose.",
+          "L'homme était un homme comme tous les autres."
+        ],
+        "bonne": 0,
+        "explication": "Elle apporte des détails précis."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour décrire le décor d'un récit au passé, on emploie…",
+        "choix": [
+          "l'imparfait",
+          "le futur",
+          "l'impératif",
+          "le conditionnel"
+        ],
+        "bonne": 0,
+        "explication": "Imparfait pour le décor."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Après un brouillon, que faut-il faire ?",
+        "choix": [
+          "Le rendre tel quel",
+          "Le jeter",
+          "Le recopier sans lire",
+          "Relire et réécrire"
+        ],
+        "bonne": 3,
+        "explication": "Améliorer le texte."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le journal de bord",
+    "histoire": [
+      "Tu écris le journal de bord d'un explorateur."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel ordre de description choisis-tu pour un paysage ?",
+        "choix": [
+          "Sans ordre",
+          "De près à loin",
+          "Au hasard",
+          "Seulement le ciel"
+        ],
+        "bonne": 1,
+        "explication": "Un ordre clair guide le lecteur."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que faire pour éviter les répétitions ?",
+        "choix": [
+          "Répéter volontairement le même mot partout",
+          "Supprimer tous les verbes de la phrase",
+          "Écrire des phrases beaucoup plus courtes",
+          "Remplacer par des pronoms et des synonymes"
+        ],
+        "bonne": 3,
+        "explication": "Reprises variées."
+      }
+    ],
+    "conclusion": "Journal prêt !"
+  }
+}

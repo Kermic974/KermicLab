@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.organisme-et-effort-6e-requires-alimentation-digestion-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/organisme-et-effort-6e/contenu.json"
+  },
+  "source": "notion.svt.organisme-et-effort-6e",
+  "target": "notion.svt.alimentation-digestion-cm",
+  "rationale": "« L'alimentation et la digestion » : L’effort mobilise la respiration, la circulation et la digestion étudiées au cycle 3."
+}

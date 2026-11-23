@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.discuter-l-usage-historique-de-la-notion-de-totalitarisme-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/totalitarismes/contenu.json"
+  },
+  "source": "microskill.histoire.discuter-l-usage-historique-de-la-notion-de-totalitarisme",
+  "target": "skill.histoire.totalitarismes"
+}

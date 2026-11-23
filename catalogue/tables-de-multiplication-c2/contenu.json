@@ -1,0 +1,108 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Multiplier, c'est additionner plusieurs fois le même nombre.",
+  "niveaux": [
+    {
+      "titre": "Additionner plusieurs fois",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "3 sachets de 5 bonbons : 5 + 5 + 5 = 15. On écrit **3 × 5 = 15** (« 3 fois 5 »). Le signe **×** veut dire « fois ». Les **tables de multiplication** donnent ces résultats à connaître.",
+        "Table de 2 : 2, 4, 6, 8, 10… Table de 5 : 5, 10, 15, 20… Table de 10 : 10, 20, 30…"
+      ],
+      "exemple": {
+        "titre": "Exemple : 4 × 3",
+        "etapes": [
+          "3 + 3 + 3 + 3.",
+          "= 12.",
+          "4 × 3 = 12."
+        ]
+      },
+      "aRetenir": "a × b = b × a."
+    },
+    {
+      "titre": "Les tables à connaître",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "En CE1 on apprend les tables de 2, 3, 4, 5 et 10 ; en CE2 toutes les tables jusqu'à 9. On peut changer l'ordre : 3 × 7 = 7 × 3 = 21.",
+        "Astuces : × 10, on ajoute un 0 ; × 5, on prend la moitié de × 10 : 5 × 6 = 30 (la moitié de 60)."
+      ],
+      "exemple": {
+        "titre": "Exemple : 6 × 5",
+        "etapes": [
+          "6 × 10 = 60.",
+          "La moitié de 60 est 30.",
+          "6 × 5 = 30."
+        ]
+      },
+      "aRetenir": "× 10 : on ajoute un zéro."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "4 × 3 = ?",
+        "reponse": 12,
+        "indices": [
+          "Additionne 4 fois 3."
+        ],
+        "solution": "3 + 3 + 3 + 3 = 12.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "5 × 6 = ?",
+        "reponse": 30,
+        "indices": [
+          "Table de 5 : 5, 10, 15, 20, 25, 30."
+        ],
+        "solution": "6 × 5 = 30.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "nombre",
+        "question": "7 × 10 = ?",
+        "reponse": 70,
+        "indices": [
+          "7 dizaines."
+        ],
+        "solution": "On ajoute un zéro : 70.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Les boîtes d'œufs",
+    "histoire": [
+      "Une boîte contient 6 œufs. Tu achètes 4 boîtes."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Combien d'œufs en tout ?",
+        "reponse": 24,
+        "indices": [
+          "6 + 6 + 6 + 6."
+        ],
+        "solution": "4 × 6 = 24.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Avec 10 boîtes, combien d'œufs ?",
+        "reponse": 60,
+        "indices": [
+          "× 10 : ajoute un 0."
+        ],
+        "solution": "10 × 6 = 60.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bravo, tu sais multiplier !"
+  }
+}

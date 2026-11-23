@@ -2,16 +2,10 @@
 id: louis-ix-cm
 titre: Louis IX (Saint Louis) et le Moyen Âge chrétien
 sujet: histoire/louis-ix-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1
-prerequis:
-  - clovis-charlemagne-cm
-competences:
-  - louis-ix-cm-comprendre
-  - louis-ix-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +22,9 @@ questions:
   - Qui était Saint Louis ?
   - Pourquoi Louis IX est-il resté célèbre ?
   - Comment vivait-on au Moyen Âge ?
+prerequis: clovis-charlemagne-cm
+niveaux: cycle-3
+competences: identifier-le-monument-construit-par-louis-ix, decrire-la-societe-du-xiiie-siecle, expliquer-le-role-du-roi-justicier, reconnaitre-une-cathedrale-gothique
 ---
 
 # Louis IX (Saint Louis) et le Moyen Âge chrétien

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.rediger-une-reponse-argumentee-appuyee-sur-des-citations-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/analyse-texte/contenu.json"
+  },
+  "source": "microskill.francais.rediger-une-reponse-argumentee-appuyee-sur-des-citations",
+  "target": "skill.francais.analyse-texte"
+}

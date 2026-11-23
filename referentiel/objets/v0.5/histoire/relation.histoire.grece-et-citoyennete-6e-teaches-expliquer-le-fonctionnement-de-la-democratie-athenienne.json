@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.grece-et-citoyennete-6e-teaches-expliquer-le-fonctionnement-de-la-democratie-athenienne",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grece-et-citoyennete-6e/contenu.json"
+  },
+  "source": "notion.histoire.grece-et-citoyennete-6e",
+  "target": "microskill.histoire.expliquer-le-fonctionnement-de-la-democratie-athenienne"
+}

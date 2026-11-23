@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Le nom désigne une personne, un animal ou une chose. Le déterminant le précède.",
+  "niveaux": [
+    {
+      "titre": "Nom et déterminant",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un **nom** désigne une personne (garçon), un animal (chat), une chose (table), un lieu (école). Devant le nom, on met un **déterminant** : le, la, les, un, une, des, mon, ma…",
+        "Un **nom propre** désigne quelqu'un ou quelque chose de précis, il commence par une majuscule : Paris, Léa. Un **nom commun** désigne une sorte : une ville, une fille."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« le chat » : déterminant le + nom chat.",
+          "« Léa » : nom propre.",
+          "« une table » : déterminant une + nom table."
+        ]
+      },
+      "aRetenir": "Nom propre : majuscule."
+    },
+    {
+      "titre": "Genre et nombre",
+      "niveau": "CE1",
+      "paragraphes": [
+        "Un nom est **masculin** (un chat) ou **féminin** (une chatte), **singulier** (un chat) ou **pluriel** (des chats). Le déterminant s'accorde avec le nom : « le » pour le masculin, « la » pour le féminin, « les » pour le pluriel.",
+        "« Un » et « une » parlent d'un objet quelconque ; « le » et « la » d'un objet précis."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "la maison : féminin singulier.",
+          "les maisons : féminin pluriel.",
+          "des maisons : pluriel."
+        ]
+      },
+      "aRetenir": "Le déterminant suit le genre et le nombre du nom."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans « le chat », « le » est…",
+        "choix": [
+          "un adjectif",
+          "un déterminant",
+          "un nom",
+          "un verbe"
+        ],
+        "bonne": 1,
+        "explication": "Il précède le nom."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel mot est un nom propre ?",
+        "choix": [
+          "chat",
+          "table",
+          "Paris",
+          "ville"
+        ],
+        "bonne": 2,
+        "explication": "Il commence par une majuscule."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel déterminant va avec « maisons » ?",
+        "choix": [
+          "la",
+          "un",
+          "les",
+          "le"
+        ],
+        "bonne": 2,
+        "explication": "Pluriel : les."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La classe des noms",
+    "histoire": [
+      "Tu cherches les noms et leurs déterminants dans un texte."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans « la fleur », quel mot est le nom ?",
+        "choix": [
+          "les deux",
+          "fleur",
+          "la",
+          "ni l'un ni l'autre"
+        ],
+        "bonne": 1,
+        "explication": "Fleur est le nom."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel nom est féminin ?",
+        "choix": [
+          "le garçon",
+          "le chien",
+          "le livre",
+          "la fleur"
+        ],
+        "bonne": 3,
+        "explication": "On dit « la » fleur."
+      }
+    ],
+    "conclusion": "Bien repéré !"
+  }
+}

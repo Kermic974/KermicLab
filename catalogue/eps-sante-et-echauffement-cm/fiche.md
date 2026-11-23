@@ -2,15 +2,10 @@
 id: eps-sante-et-echauffement-cm
 titre: EPS : échauffement, santé et effort
 sujet: eps/eps-sante-et-echauffement-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - eps-sante-et-echauffement-cm-comprendre
-  - eps-sante-et-echauffement-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +21,9 @@ questions:
   - Pourquoi s'échauffer avant le sport ?
   - Pourquoi faire du sport est bon pour la santé ?
   - Comment bien récupérer après un effort ?
+prerequis: eps-bouger-et-jouer-c2
+niveaux: cycle-3
+competences: expliquer-le-role-de-l-echauffement, realiser-un-echauffement-progressif, evaluer-la-duree-d-activite-physique-quotidienne-recommandee, recuperer-apres-l-effort-retour-au-calme-hydratation
 ---
 
 # EPS : échauffement, santé et effort

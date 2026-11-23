@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.poesie-requires-poesie-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie/contenu.json"
+  },
+  "source": "notion.francais.poesie",
+  "target": "notion.francais.poesie-6e",
+  "rationale": "« Le monde poétique en 6e » : Les vers, rimes et images de 6e sont approfondis au collège."
+}

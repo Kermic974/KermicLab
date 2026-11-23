@@ -1,0 +1,13 @@
+{
+  "id": "relation.eps.eps-endurance-et-sports-collectifs-6e-requires-eps-jeux-collectifs-et-athletisme-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-endurance-et-sports-collectifs-6e/contenu.json"
+  },
+  "source": "notion.eps.eps-endurance-et-sports-collectifs-6e",
+  "target": "notion.eps.eps-jeux-collectifs-et-athletisme-cm",
+  "rationale": "Les règles et la coopération des jeux collectifs sont développées en sports collectifs."
+}

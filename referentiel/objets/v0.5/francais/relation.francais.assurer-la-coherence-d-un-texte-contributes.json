@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.assurer-la-coherence-d-un-texte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/pronoms-et-reprises-cm/contenu.json"
+  },
+  "source": "microskill.francais.assurer-la-coherence-d-un-texte",
+  "target": "skill.francais.pronoms-et-reprises-cm"
+}

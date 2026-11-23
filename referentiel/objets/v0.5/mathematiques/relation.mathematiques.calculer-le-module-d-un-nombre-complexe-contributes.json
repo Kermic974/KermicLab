@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-le-module-d-un-nombre-complexe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nombres-complexes-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-le-module-d-un-nombre-complexe",
+  "target": "skill.mathematiques.nombres-complexes-l"
+}

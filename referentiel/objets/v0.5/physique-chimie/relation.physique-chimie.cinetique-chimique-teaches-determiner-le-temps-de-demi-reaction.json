@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.cinetique-chimique-teaches-determiner-le-temps-de-demi-reaction",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/cinetique-chimique/contenu.json"
+  },
+  "source": "notion.physique-chimie.cinetique-chimique",
+  "target": "microskill.physique-chimie.determiner-le-temps-de-demi-reaction"
+}

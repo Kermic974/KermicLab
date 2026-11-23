@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-un-temps-verbal-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conjugaison-cm/contenu.json"
+  },
+  "source": "microskill.francais.identifier-un-temps-verbal",
+  "target": "skill.francais.conjugaison-cm"
+}

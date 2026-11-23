@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.justifier-une-mise-en-scene-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/theatre-et-representation-l/contenu.json"
+  },
+  "source": "microskill.francais.justifier-une-mise-en-scene",
+  "target": "skill.francais.theatre-et-representation-l"
+}

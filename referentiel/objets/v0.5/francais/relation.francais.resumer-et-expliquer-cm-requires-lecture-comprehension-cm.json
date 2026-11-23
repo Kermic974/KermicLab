@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.resumer-et-expliquer-cm-requires-lecture-comprehension-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/resumer-et-expliquer-cm/contenu.json"
+  },
+  "source": "notion.francais.resumer-et-expliquer-cm",
+  "target": "notion.francais.lecture-comprehension-cm",
+  "rationale": "« Comprendre un texte » : Résumer et expliquer reposent sur la compréhension de texte et la connaissance des types de textes."
+}

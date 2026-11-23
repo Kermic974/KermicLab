@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.calculer-le-transfert-associe-a-une-variation-de-temperature-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/thermodynamique/contenu.json"
+  },
+  "source": "microskill.physique-chimie.calculer-le-transfert-associe-a-une-variation-de-temperature",
+  "target": "skill.physique-chimie.thermodynamique"
+}

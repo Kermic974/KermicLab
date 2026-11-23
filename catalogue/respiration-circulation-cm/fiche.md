@@ -2,15 +2,10 @@
 id: respiration-circulation-cm
 titre: Respiration, cœur et circulation du sang
 sujet: svt/respiration-circulation-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-competences:
-  - respiration-circulation-cm-comprendre
-  - respiration-circulation-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +21,9 @@ questions:
   - Comment fonctionne la respiration au CM2 ?
   - À quoi sert le cœur ?
   - Pourquoi le cœur bat-il plus vite quand on court ?
+prerequis: alimentation-digestion-cm
+niveaux: cycle-3
+competences: decrire-le-role-du-c-ur, expliquer-les-echanges-de-gaz-dans-les-poumons, decrire-le-circuit-du-sang, expliquer-l-acceleration-du-c-ur-a-l-effort
 ---
 
 # Respiration, cœur et circulation du sang

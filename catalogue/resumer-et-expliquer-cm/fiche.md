@@ -2,15 +2,10 @@
 id: resumer-et-expliquer-cm
 titre: Résumer, expliquer et écrire un texte documentaire
 sujet: francais/resumer-et-expliquer-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - resumer-et-expliquer-cm-comprendre
-  - resumer-et-expliquer-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +20,9 @@ questions:
   - Comment résumer un texte ?
   - Comment écrire un texte explicatif ?
   - Comment prendre des notes ?
+prerequis: lecture-comprehension-cm, types-de-textes-cm
+niveaux: cycle-3
+competences: resumer-un-texte-en-gardant-l-essentiel, employer-le-temps-adapte-dans-un-texte-explicatif, utiliser-un-connecteur-de-cause, ecrire-un-texte-documentaire-structure
 ---
 
 # Résumer, expliquer et écrire un texte documentaire

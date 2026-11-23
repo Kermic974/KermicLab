@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.distinguer-concurrence-et-monopole-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ses-marches-et-prix-l/contenu.json"
+  },
+  "source": "microskill.ses.distinguer-concurrence-et-monopole",
+  "target": "skill.ses.ses-marches-et-prix-l"
+}

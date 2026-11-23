@@ -2,15 +2,10 @@
 id: symetrie-axiale-6e
 titre: Symétrie axiale en 6e
 sujet: mathematiques/symetrie-axiale-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-competences:
-  - symetrie-axiale-6e-comprendre
-  - symetrie-axiale-6e-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -24,6 +19,9 @@ questions:
   - Comment construire le symétrique d'une figure en 6e ?
   - Que conserve la symétrie axiale ?
   - Comment trouver un axe de symétrie en 6e ?
+prerequis: symetrie-axiale-cm
+niveaux: cycle-3
+competences: reconnaitre-les-proprietes-conservees-par-la-symetrie-axiale, construire-le-symetrique-d-une-figure, determiner-l-axe-de-symetrie-d-une-figure, utiliser-la-symetrie-pour-comparer-des-angles
 ---
 
 # Symétrie axiale en 6e

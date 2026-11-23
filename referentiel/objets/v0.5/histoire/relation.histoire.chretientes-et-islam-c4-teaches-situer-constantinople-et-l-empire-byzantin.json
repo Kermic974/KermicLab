@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.chretientes-et-islam-c4-teaches-situer-constantinople-et-l-empire-byzantin",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/chretientes-et-islam-c4/contenu.json"
+  },
+  "source": "notion.histoire.chretientes-et-islam-c4",
+  "target": "microskill.histoire.situer-constantinople-et-l-empire-byzantin"
+}

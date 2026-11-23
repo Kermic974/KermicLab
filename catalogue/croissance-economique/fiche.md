@@ -22,7 +22,7 @@ questions:
   - quels facteurs favorisent la croissance économique ?
 prerequis:
 niveaux: seconde, premiere
-competences: ses-croissance-economique-action-1, ses-croissance-economique-action-2
+competences: definir-la-croissance-economique-a-partir-du-pib, interpreter-l-evolution-du-pib-reel-par-rapport-au-pib-nominal, identifier-les-sources-de-la-croissance-travail-capital-productivite, discuter-les-limites-du-pib-comme-indicateur-de-bien-etre
 ---
 
 # La croissance économique

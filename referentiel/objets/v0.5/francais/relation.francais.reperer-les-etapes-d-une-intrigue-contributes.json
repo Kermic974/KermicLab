@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.reperer-les-etapes-d-une-intrigue-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/roman/contenu.json"
+  },
+  "source": "microskill.francais.reperer-les-etapes-d-une-intrigue",
+  "target": "skill.francais.roman"
+}

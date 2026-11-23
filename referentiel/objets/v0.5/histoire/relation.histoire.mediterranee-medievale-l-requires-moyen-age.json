@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.mediterranee-medievale-l-requires-moyen-age",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mediterranee-medievale-l/contenu.json"
+  },
+  "source": "notion.histoire.mediterranee-medievale-l",
+  "target": "notion.histoire.moyen-age",
+  "rationale": "« Le Moyen Âge » : Le lycée approfondit le Moyen Âge vu au collège."
+}

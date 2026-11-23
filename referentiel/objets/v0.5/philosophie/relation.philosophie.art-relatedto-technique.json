@@ -1,0 +1,13 @@
+{
+  "id": "relation.philosophie.art-relatedto-technique",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/art/contenu.json"
+  },
+  "source": "notion.philosophie.art",
+  "target": "notion.philosophie.technique",
+  "rationale": "Lien conceptuel (relation de voisinage, sans ordre d’apprentissage) : La technique (technè) est au cœur de l’imitation et de la création artistique."
+}

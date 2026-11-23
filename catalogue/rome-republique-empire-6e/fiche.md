@@ -2,16 +2,10 @@
 id: rome-republique-empire-6e
 titre: Rome : de la République à l'Empire
 sujet: histoire/rome-republique-empire-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - grece-et-citoyennete-6e
-competences:
-  - rome-republique-empire-6e-comprendre
-  - rome-republique-empire-6e-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Comment est née Rome ?
   - Qu'est-ce que l'Empire romain ?
   - Qui était Auguste ?
+prerequis: grece-et-citoyennete-6e, gaulois-gallo-romains-cm
+niveaux: cycle-3
+competences: situer-la-republique-romaine, identifier-le-premier-empereur-romain, expliquer-la-romanisation, decrire-le-role-des-aqueducs
 ---
 
 # Rome : de la République à l'Empire

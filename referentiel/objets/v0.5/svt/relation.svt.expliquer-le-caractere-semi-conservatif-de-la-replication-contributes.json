@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-le-caractere-semi-conservatif-de-la-replication-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/adn-et-division-cellulaire/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-le-caractere-semi-conservatif-de-la-replication",
+  "target": "skill.svt.adn-et-division-cellulaire"
+}

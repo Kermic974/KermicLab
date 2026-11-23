@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-l-objectif-de-la-construction-europeenne-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-europe-depuis-1945-cm/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-l-objectif-de-la-construction-europeenne",
+  "target": "skill.histoire.france-europe-depuis-1945-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.langue-et-style-l-teaches-analyser-l-effet-d-une-phrase-longue-ou-d-une-parataxe",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/langue-et-style-l/contenu.json"
+  },
+  "source": "notion.francais.langue-et-style-l",
+  "target": "microskill.francais.analyser-l-effet-d-une-phrase-longue-ou-d-une-parataxe"
+}

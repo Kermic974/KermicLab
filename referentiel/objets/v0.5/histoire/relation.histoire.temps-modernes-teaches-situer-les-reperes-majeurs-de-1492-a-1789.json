@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.temps-modernes-teaches-situer-les-reperes-majeurs-de-1492-a-1789",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps-modernes/contenu.json"
+  },
+  "source": "notion.histoire.temps-modernes",
+  "target": "microskill.histoire.situer-les-reperes-majeurs-de-1492-a-1789"
+}

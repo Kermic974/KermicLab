@@ -76,7 +76,7 @@ test("Éducation : « Ma classe » propose les classes du collège, ouvre le niv
   await page.goto(serveur.url);
   await page.click('.barre-laterale [data-nav="education"]');
   const ouvert = (niveau) => page.locator(`[aria-controls="edu-${niveau}"]`).getAttribute("aria-expanded");
-  // Espace coloré (ADR 0038) : le bandeau d'en-tête prend la couleur d'Éducation, puis de l'Accueil.
+  // Espace coloré (ADR 0039) : le bandeau d'en-tête prend la couleur d'Éducation, puis de l'Accueil.
   assert.equal(await page.evaluate(() => document.documentElement.dataset.espace), "education");
   assert.deepEqual(await page.locator("#ma-classe [data-classe]").allTextContents(), ["6e", "5e", "4e", "Seconde", "Première"]);
   assert.deepEqual([await ouvert("4e"), await ouvert("seconde")], ["false", "false"], "rien d'ouvert sans choix");

@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.anglais-expression-orale-et-ecrite-l-teaches-nuancer-un-avis-avec-concession",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-expression-orale-et-ecrite-l/contenu.json"
+  },
+  "source": "notion.anglais.anglais-expression-orale-et-ecrite-l",
+  "target": "microskill.anglais.nuancer-un-avis-avec-concession"
+}

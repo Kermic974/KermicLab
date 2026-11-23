@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.evaluer-les-menaces-sur-un-littoral-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-le-littoral-6e/contenu.json"
+  },
+  "source": "microskill.geographie.evaluer-les-menaces-sur-un-littoral",
+  "target": "skill.geographie.habiter-le-littoral-6e"
+}

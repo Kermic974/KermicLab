@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.signaux-et-information-c4-teaches-decrire-la-transmission-d-une-information",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/signaux-et-information-c4/contenu.json"
+  },
+  "source": "notion.physique-chimie.signaux-et-information-c4",
+  "target": "microskill.physique-chimie.decrire-la-transmission-d-une-information"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.oral-et-eaf-l-requires-roman-et-recit-l",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/oral-et-eaf-l/contenu.json"
+  },
+  "source": "notion.francais.oral-et-eaf-l",
+  "target": "notion.francais.roman-et-recit-l",
+  "rationale": "« Le roman et le récit du XVIIIe au XXIe siècle » : L’oral s’appuie sur l’analyse de texte et sur les œuvres de roman et récit."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.expliquer-le-rapport-au-passe-au-present-et-au-futur-chez-augustin-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps/contenu.json"
+  },
+  "source": "microskill.philosophie.expliquer-le-rapport-au-passe-au-present-et-au-futur-chez-augustin",
+  "target": "skill.philosophie.temps"
+}

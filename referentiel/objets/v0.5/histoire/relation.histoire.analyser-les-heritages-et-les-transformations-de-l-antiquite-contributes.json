@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.analyser-les-heritages-et-les-transformations-de-l-antiquite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/antiquite/contenu.json"
+  },
+  "source": "microskill.histoire.analyser-les-heritages-et-les-transformations-de-l-antiquite",
+  "target": "skill.histoire.antiquite"
+}

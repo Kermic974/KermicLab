@@ -2,15 +2,10 @@
 id: calcul-mental-cm
 titre: Le calcul mental
 sujet: mathematiques/calcul-mental-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - calcul-mental-cm-comprendre
-  - calcul-mental-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +21,9 @@ questions:
   - Comment calculer plus vite de tête ?
   - Quelles sont les astuces de calcul mental en CM1 ?
   - Comment multiplier par 5 ou par 25 de tête ?
+prerequis: perimetre-et-calcul-mental-c2, addition-soustraction-posees-cm
+niveaux: cycle-3
+competences: choisir-une-strategie-de-calcul-mental, calculer-de-tete-un-produit-simple, calculer-un-complement-a-1-000, calculer-de-tete-une-somme-par-decomposition
 ---
 
 # Le calcul mental

@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La géopolitique étudie les rapports de puissance sur des espaces : mers, frontières, espace, cyberespace.",
+  "niveaux": [
+    {
+      "titre": "Puissances et espaces",
+      "niveau": "Tle",
+      "paragraphes": [
+        "Une **puissance** a des capacités économiques, militaires, culturelles (**soft power**) et diplomatiques. Les **États-Unis** et la **Chine** sont les deux grandes puissances, entourées de puissances régionales (Inde, Brésil, Russie, UE). Les **mers et océans** sont des espaces stratégiques : routes maritimes, ressources, détroits (Ormuz, Malacca), **zones économiques exclusives** (ZEE, 200 milles) qui donnent à la France le 2e domaine maritime mondial."
+      ],
+      "exemple": {
+        "titre": "Exemple : la mer de Chine méridionale",
+        "etapes": [
+          "Route commerciale majeure.",
+          "Revendications territoriales.",
+          "Enjeux de ressources et de puissance."
+        ]
+      },
+      "aRetenir": "ZEE : 200 milles marins."
+    },
+    {
+      "titre": "Nouveaux espaces de conflit",
+      "niveau": "Tle",
+      "paragraphes": [
+        "Les conflits se jouent aussi dans l'**espace extra-atmosphérique** (satellites, lanceurs) et le **cyberespace** (cyberattaques, désinformation). Les **frontières** sont parfois contestées (Ukraine, Cachemire) ; les organisations (ONU, OTAN, UE) cherchent à réguler. Les **flux** (marchandises, données, migrations) structurent l'espace mondial."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Une cyberattaque vise une infrastructure.",
+          "Les États renforcent leur cybersécurité.",
+          "Les frontières numériques restent floues."
+        ]
+      },
+      "aRetenir": "Territoire, frontière, flux."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La ZEE d'un État s'étend sur…",
+        "choix": [
+          "10 km",
+          "toute la mer",
+          "200 milles marins",
+          "12 milles seulement"
+        ],
+        "bonne": 2,
+        "explication": "Droit de la mer."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le soft power désigne…",
+        "choix": [
+          "l'influence par la culture",
+          "la force militaire seule",
+          "la levée de l'impôt",
+          "le contrôle des douanes"
+        ],
+        "bonne": 0,
+        "explication": "Influence non coercitive."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel détroit est stratégique pour le pétrole ?",
+        "choix": [
+          "le Bosphore seulement",
+          "Calais",
+          "Ormuz",
+          "Gibraltar uniquement"
+        ],
+        "bonne": 2,
+        "explication": "Golfe persique."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La carte des routes maritimes",
+    "histoire": [
+      "Tu analyses les routes du commerce mondial."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Un détroit est stratégique car…",
+        "choix": [
+          "il est très large et peu fréquenté",
+          "il gèle toute l'année sans exception",
+          "il est réservé aux bateaux de pêche",
+          "il concentre le trafic sur un passage étroit"
+        ],
+        "bonne": 3,
+        "explication": "Point de passage obligé."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le cyberespace est…",
+        "choix": [
+          "une mer entre deux océans",
+          "une frontière terrestre naturelle",
+          "un nouvel espace de rivalité entre États",
+          "un continent récemment découvert"
+        ],
+        "bonne": 2,
+        "explication": "Cyber."
+      }
+    ],
+    "conclusion": "Bon géopoliticien !"
+  }
+}

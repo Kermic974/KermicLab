@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.nommer-des-aliments-et-des-activites-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-gouts-et-actions-cm/contenu.json"
+  },
+  "source": "microskill.anglais.nommer-des-aliments-et-des-activites",
+  "target": "skill.anglais.anglais-gouts-et-actions-cm"
+}

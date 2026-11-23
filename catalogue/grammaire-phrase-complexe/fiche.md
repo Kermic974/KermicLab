@@ -19,10 +19,10 @@ questions:
   - Comment reconnaître les propositions indépendantes dans une phrase ?
   - Quelle est la différence entre juxtaposition et coordination ?
   - À quoi sert une proposition subordonnée ?
-prerequis:
-niveaux: cycle-4
 classes: 4e, 3e
-competences: francais-grammaire-phrase-complexe-action-1, francais-grammaire-phrase-complexe-action-2
+prerequis: grammaire-de-la-phrase-5e-c4
+niveaux: cycle-4
+competences: compter-les-propositions-d-une-phrase, distinguer-juxtaposition-coordination-et-subordination, identifier-une-proposition-subordonnee, relier-deux-propositions-par-un-connecteur-adapte, transformer-une-phrase-simple-en-phrase-complexe
 ---
 
 # La phrase complexe

@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La population mondiale a fortement augmenté : cela pose des défis pour nourrir, loger et soigner tous les habitants.",
+  "niveaux": [
+    {
+      "titre": "Une population qui croît",
+      "niveau": "5e",
+      "paragraphes": [
+        "La Terre compte plus de **8 milliards** d'habitants (1 milliard vers 1800, 2,5 milliards en 1950). Cette croissance s'explique par la baisse de la **mortalité** (progrès de la médecine, de l'hygiène, de l'alimentation) tandis que la **natalité** reste élevée dans certaines régions. Les pays les plus peuplés sont l'Inde, la Chine, les États-Unis, l'Indonésie.",
+        "La **transition démographique** décrit le passage d'une forte natalité et forte mortalité à une faible natalité et faible mortalité."
+      ],
+      "exemple": {
+        "titre": "Exemple : évolution",
+        "etapes": [
+          "1800 : 1 milliard.",
+          "1950 : 2,5 milliards.",
+          "2024 : plus de 8 milliards."
+        ]
+      },
+      "aRetenir": "Mortalité en baisse = population en hausse."
+    },
+    {
+      "titre": "Inégal accès aux ressources",
+      "niveau": "5e",
+      "paragraphes": [
+        "Les ressources (eau, alimentation, énergie) sont inégalement réparties et inégalement accessibles. Des millions de personnes manquent d'eau potable ou souffrent de la faim ; d'autres gaspillent. Des solutions : agriculture plus productive et durable, gestion de l'eau, énergies renouvelables, réduction du gaspillage.",
+        "Les migrations, l'urbanisation et le changement climatique accentuent ces enjeux."
+      ],
+      "exemple": {
+        "titre": "Exemple : l'eau potable",
+        "etapes": [
+          "Plus de 2 milliards de personnes n'ont pas d'eau potable gérée en sécurité.",
+          "Des puits et réseaux améliorent la situation.",
+          "L'accès à l'eau est un droit."
+        ]
+      },
+      "aRetenir": "Droits à l'eau et à l'alimentation."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La population mondiale dépasse aujourd'hui…",
+        "choix": [
+          "8 milliards",
+          "2 milliards",
+          "5 millions",
+          "100 milliards"
+        ],
+        "bonne": 0,
+        "explication": "Plus de 8 milliards."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La baisse de la mortalité s'explique surtout par…",
+        "choix": [
+          "la hausse des migrations internationales",
+          "la baisse de la natalité mondiale",
+          "les progrès de la médecine et de l'hygiène",
+          "la multiplication des guerres récentes"
+        ],
+        "bonne": 2,
+        "explication": "Santé et hygiène."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Qu'est-ce que la transition démographique ?",
+        "choix": [
+          "le passage d'une forte natalité et mortalité à une faible natalité et mortalité",
+          "le déplacement massif d'une population d'un pays vers un autre",
+          "une longue guerre entre deux pays voisins en Europe",
+          "un recensement général de la population d'une ville"
+        ],
+        "bonne": 0,
+        "explication": "Évolution sur plusieurs décennies."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Nourrir la planète",
+    "histoire": [
+      "Tu étudies comment nourrir 8 milliards d'habitants."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle solution réduit la faim ?",
+        "choix": [
+          "Réduire les écoles",
+          "Supprimer l'eau",
+          "Réduire le gaspillage alimentaire",
+          "Jeter plus de nourriture"
+        ],
+        "bonne": 2,
+        "explication": "Gaspillage."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel pays est le plus peuplé aujourd'hui ?",
+        "choix": [
+          "La France",
+          "L'Islande",
+          "Le Canada",
+          "L'Inde"
+        ],
+        "bonne": 3,
+        "explication": "Inde (plus de 1,4 milliard)."
+      }
+    ],
+    "conclusion": "Bon géographe !"
+  }
+}

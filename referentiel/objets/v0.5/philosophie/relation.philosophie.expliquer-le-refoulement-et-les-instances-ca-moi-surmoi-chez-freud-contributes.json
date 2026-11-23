@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.expliquer-le-refoulement-et-les-instances-ca-moi-surmoi-chez-freud-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/inconscient/contenu.json"
+  },
+  "source": "microskill.philosophie.expliquer-le-refoulement-et-les-instances-ca-moi-surmoi-chez-freud",
+  "target": "skill.philosophie.inconscient"
+}

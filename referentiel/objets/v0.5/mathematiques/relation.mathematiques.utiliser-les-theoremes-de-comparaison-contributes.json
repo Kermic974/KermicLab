@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.utiliser-les-theoremes-de-comparaison-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/limites-de-suites-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.utiliser-les-theoremes-de-comparaison",
+  "target": "skill.mathematiques.limites-de-suites-l"
+}

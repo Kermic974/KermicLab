@@ -71,12 +71,12 @@
         "titre": "Exercice 3",
         "question": "Un diagramme circulaire représente…",
         "choix": [
-          "des proportions d'un total",
           "une évolution dans le temps",
           "des positions",
-          "des angles seulement"
+          "des angles seulement",
+          "des proportions d'un total"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Chaque secteur est proportionnel."
       }
     ]

@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La France a des symboles, une devise et des valeurs que tous partagent.",
+  "niveaux": [
+    {
+      "titre": "Les symboles",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La France a plusieurs **symboles** : le **drapeau** bleu, blanc, rouge ; l'hymne, **La Marseillaise** ; **Marianne**, visage de la République ; le **14 juillet**, fête nationale. La **devise** est : **Liberté, Égalité, Fraternité**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Le drapeau flotte sur la mairie.",
+          "On chante La Marseillaise.",
+          "La devise est écrite sur l'école."
+        ]
+      },
+      "aRetenir": "Devise : Liberté, Égalité, Fraternité."
+    },
+    {
+      "titre": "Droits et valeurs",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "**Liberté** : on peut penser et s'exprimer, sans faire de mal aux autres. **Égalité** : tous ont les mêmes droits (filles et garçons). **Fraternité** : on s'entraide. Les enfants ont aussi des **droits** : aller à l'école, être soignés, être protégés, jouer.",
+        "La **laïcité** permet à chacun de croire ou de ne pas croire, et à tous de vivre ensemble."
+      ],
+      "exemple": {
+        "titre": "Exemple : l'égalité",
+        "etapes": [
+          "Filles et garçons vont à l'école.",
+          "Tous peuvent jouer.",
+          "Tous sont respectés."
+        ]
+      },
+      "aRetenir": "Droit : aller à l'école."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle est la devise de la République au CE1 ?",
+        "choix": [
+          "Force, Honneur, Gloire",
+          "Paix, Amour, Joie",
+          "Liberté, Égalité, Fraternité",
+          "Travail, Famille, Patrie"
+        ],
+        "bonne": 2,
+        "explication": "La devise officielle."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "De quelles couleurs est le drapeau français ?",
+        "choix": [
+          "jaune, bleu, rouge",
+          "noir, blanc, rouge",
+          "bleu, blanc, rouge",
+          "vert, blanc, rouge"
+        ],
+        "bonne": 2,
+        "explication": "Tricolore."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un droit de l'enfant est…",
+        "choix": [
+          "aller à l'école",
+          "ne pas manger",
+          "travailler à 6 ans",
+          "ne pas être soigné"
+        ],
+        "bonne": 0,
+        "explication": "Éducation."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le 14 juillet",
+    "histoire": [
+      "On fête la fête nationale dans ta ville."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel chant entend-on ?",
+        "choix": [
+          "une berceuse",
+          "un air de Noël",
+          "une chanson d'anniversaire",
+          "La Marseillaise"
+        ],
+        "bonne": 3,
+        "explication": "L'hymne national."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que signifie « fraternité » ?",
+        "choix": [
+          "se disputer",
+          "s'éloigner",
+          "gagner seul",
+          "s'entraider"
+        ],
+        "bonne": 3,
+        "explication": "Entraide."
+      }
+    ],
+    "conclusion": "Vive la République !"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.variables-aleatoires-l-teaches-determiner-la-loi-d-une-variable-aleatoire",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/variables-aleatoires-l/contenu.json"
+  },
+  "source": "notion.mathematiques.variables-aleatoires-l",
+  "target": "microskill.mathematiques.determiner-la-loi-d-une-variable-aleatoire"
+}

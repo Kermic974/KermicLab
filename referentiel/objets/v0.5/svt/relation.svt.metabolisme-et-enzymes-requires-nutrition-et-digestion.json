@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.metabolisme-et-enzymes-requires-nutrition-et-digestion",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/metabolisme-et-enzymes/contenu.json"
+  },
+  "source": "notion.svt.metabolisme-et-enzymes",
+  "target": "notion.svt.nutrition-et-digestion",
+  "rationale": "Les enzymes ont été rencontrées dans la digestion chimique avant d’être étudiées comme catalyseurs du métabolisme."
+}

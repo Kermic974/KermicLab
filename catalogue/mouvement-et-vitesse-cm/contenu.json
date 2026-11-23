@@ -71,12 +71,12 @@
         "titre": "Exercice 3",
         "question": "La trajectoire d'un ballon lancé est…",
         "choix": [
-          "une courbe",
           "toujours une droite",
           "toujours un cercle",
-          "un point"
+          "un point",
+          "une courbe"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Il décrit une courbe."
       }
     ]

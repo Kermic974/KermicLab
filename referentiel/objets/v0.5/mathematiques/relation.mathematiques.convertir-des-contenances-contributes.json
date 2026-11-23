@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.convertir-des-contenances-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/longueurs-masses-contenances-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.convertir-des-contenances",
+  "target": "skill.mathematiques.longueurs-masses-contenances-cm"
+}

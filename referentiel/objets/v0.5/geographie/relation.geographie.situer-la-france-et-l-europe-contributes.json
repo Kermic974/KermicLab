@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.situer-la-france-et-l-europe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/planete-terre-et-cartes-c2/contenu.json"
+  },
+  "source": "microskill.geographie.situer-la-france-et-l-europe",
+  "target": "skill.geographie.planete-terre-et-cartes-c2"
+}

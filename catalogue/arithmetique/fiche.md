@@ -5,14 +5,7 @@ sujet: mathematiques/arithmetique
 version: 1.1.0
 date: 2026-11-01
 niveau: college
-niveaux: cycle-4, seconde
 classes: 5e, 3e
-prerequis:
-competences:
-  - utiliser-les-criteres-de-divisibilite
-  - reconnaitre-un-nombre-premier
-  - decomposer-en-facteurs-premiers
-  - rendre-une-fraction-irreductible
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -38,6 +31,9 @@ questions:
   - je ne comprends pas les critères de divisibilité
   - comment calculer le PGCD
   - what is a prime number?
+prerequis: divisions-6e
+niveaux: cycle-4, seconde
+competences: utiliser-les-criteres-de-divisibilite, reconnaitre-un-nombre-premier, decomposer-en-facteurs-premiers, rendre-une-fraction-irreductible
 ---
 
 # Diviseurs, multiples et nombres premiers

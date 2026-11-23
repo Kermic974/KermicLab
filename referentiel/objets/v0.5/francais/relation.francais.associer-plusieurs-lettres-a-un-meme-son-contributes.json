@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.associer-plusieurs-lettres-a-un-meme-son-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lettres-et-sons-c2/contenu.json"
+  },
+  "source": "microskill.francais.associer-plusieurs-lettres-a-un-meme-son",
+  "target": "skill.francais.lettres-et-sons-c2"
+}

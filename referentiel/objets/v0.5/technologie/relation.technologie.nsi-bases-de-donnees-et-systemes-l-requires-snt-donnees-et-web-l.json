@@ -1,0 +1,13 @@
+{
+  "id": "relation.technologie.nsi-bases-de-donnees-et-systemes-l-requires-snt-donnees-et-web-l",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nsi-bases-de-donnees-et-systemes-l/contenu.json"
+  },
+  "source": "notion.technologie.nsi-bases-de-donnees-et-systemes-l",
+  "target": "notion.technologie.snt-donnees-et-web-l",
+  "rationale": "Les tables de données (CSV, tri, filtre) sont reprises avec SQL."
+}

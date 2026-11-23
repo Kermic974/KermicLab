@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.emc-justice-et-securite-l-requires-justice",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-justice-et-securite-l/contenu.json"
+  },
+  "source": "notion.emc.emc-justice-et-securite-l",
+  "target": "notion.emc.justice",
+  "rationale": "« La justice » : Le lycée reprend la justice et l’État de droit du collège."
+}

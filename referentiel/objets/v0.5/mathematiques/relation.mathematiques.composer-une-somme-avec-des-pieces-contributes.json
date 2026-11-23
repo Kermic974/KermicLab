@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.composer-une-somme-avec-des-pieces-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monnaie-et-euro-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.composer-une-somme-avec-des-pieces",
+  "target": "skill.mathematiques.monnaie-et-euro-c2"
+}

@@ -1,0 +1,114 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Comparer, c'est dire quel nombre est le plus grand, le plus petit, ou s'ils sont égaux.",
+  "niveaux": [
+    {
+      "titre": "Plus grand, plus petit",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un nombre qui a plus de chiffres est plus grand : 120 est plus grand que 99. Si les nombres ont autant de chiffres, on compare le premier chiffre, puis le suivant.",
+        "On écrit **<** (plus petit que), **>** (plus grand que), **=** (égal à) : 15 < 21 ; 40 > 38 ; 12 = 12."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "23 et 32 : 2 dizaines contre 3 dizaines.",
+          "23 < 32.",
+          "La bouche du signe s'ouvre vers le plus grand."
+        ]
+      },
+      "aRetenir": "< plus petit, > plus grand."
+    },
+    {
+      "titre": "Ranger et encadrer",
+      "niveau": "CP / CE1 / CE2",
+      "paragraphes": [
+        "Pour **ranger** du plus petit au plus grand (ordre croissant) : 12, 27, 35, 90. Du plus grand au plus petit : ordre décroissant.",
+        "**Encadrer** 47 entre deux dizaines : 40 < 47 < 50."
+      ],
+      "exemple": {
+        "titre": "Exemple : ranger 35, 8, 41, 19",
+        "etapes": [
+          "Les plus petits d'abord : 8.",
+          "Puis 19, 35.",
+          "Enfin 41 : 8, 19, 35, 41."
+        ]
+      },
+      "aRetenir": "Croissant : du plus petit au plus grand."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel signe complète 25 ___ 52 ?",
+        "choix": [
+          "<",
+          ">",
+          "=",
+          "+"
+        ],
+        "bonne": 0,
+        "explication": "25 est plus petit que 52."
+      },
+      {
+        "type": "nombre",
+        "question": "Quel est le plus grand nombre : 63, 36 ou 60 ?",
+        "reponse": 63,
+        "indices": [
+          "Compare les dizaines d'abord."
+        ],
+        "solution": "63 (6 dizaines et 3 unités) > 60 (6 dizaines) > 36 (3 dizaines).",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Dans quel ordre sont ces nombres : 5, 12, 31, 90 ?",
+        "choix": [
+          "décroissant (du plus grand au plus petit)",
+          "en désordre",
+          "au hasard",
+          "croissant (du plus petit au plus grand)"
+        ],
+        "bonne": 3,
+        "explication": "Ils vont du plus petit au plus grand."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La course de petits chevaux",
+    "histoire": [
+      "Quatre pions ont avancé de 18, 7, 25 et 12 cases."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quel pion est le plus avancé (nombre de cases) ?",
+        "reponse": 25,
+        "indices": [
+          "Cherche le plus grand."
+        ],
+        "solution": "25 est le plus grand nombre.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de cases a fait le pion le moins avancé ?",
+        "reponse": 7,
+        "indices": [
+          "Cherche le plus petit."
+        ],
+        "solution": "7 est le plus petit nombre.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bravo, bien rangé !"
+  }
+}

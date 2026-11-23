@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decrire-la-declaration-des-droits-de-l-homme-de-1789-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-empire-cm/contenu.json"
+  },
+  "source": "microskill.histoire.decrire-la-declaration-des-droits-de-l-homme-de-1789",
+  "target": "skill.histoire.revolution-empire-cm"
+}

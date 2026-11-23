@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.expliquer-le-role-de-la-justice-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/regles-et-justice-cm/contenu.json"
+  },
+  "source": "microskill.emc.expliquer-le-role-de-la-justice",
+  "target": "skill.emc.regles-et-justice-cm"
+}

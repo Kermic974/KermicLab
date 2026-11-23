@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.anglais-gouts-et-actions-cm-teaches-nommer-des-aliments-et-des-activites",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-gouts-et-actions-cm/contenu.json"
+  },
+  "source": "notion.anglais.anglais-gouts-et-actions-cm",
+  "target": "microskill.anglais.nommer-des-aliments-et-des-activites"
+}

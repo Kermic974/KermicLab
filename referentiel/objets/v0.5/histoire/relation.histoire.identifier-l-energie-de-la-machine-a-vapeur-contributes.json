@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.identifier-l-energie-de-la-machine-a-vapeur-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/age-industriel-cm/contenu.json"
+  },
+  "source": "microskill.histoire.identifier-l-energie-de-la-machine-a-vapeur",
+  "target": "skill.histoire.age-industriel-cm"
+}

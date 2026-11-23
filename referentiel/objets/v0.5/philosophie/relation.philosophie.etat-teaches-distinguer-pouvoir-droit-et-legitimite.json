@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.etat-teaches-distinguer-pouvoir-droit-et-legitimite",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etat/contenu.json"
+  },
+  "source": "notion.philosophie.etat",
+  "target": "microskill.philosophie.distinguer-pouvoir-droit-et-legitimite"
+}

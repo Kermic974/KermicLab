@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.litterature-didees-teaches-reperer-les-procedes-d-un-texte-engage-ironie-satire",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/litterature-didees/contenu.json"
+  },
+  "source": "notion.francais.litterature-didees",
+  "target": "microskill.francais.reperer-les-procedes-d-un-texte-engage-ironie-satire"
+}

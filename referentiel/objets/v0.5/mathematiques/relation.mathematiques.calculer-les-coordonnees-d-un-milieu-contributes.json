@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-les-coordonnees-d-un-milieu-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/geometrie-repere-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-les-coordonnees-d-un-milieu",
+  "target": "skill.mathematiques.geometrie-repere-l"
+}

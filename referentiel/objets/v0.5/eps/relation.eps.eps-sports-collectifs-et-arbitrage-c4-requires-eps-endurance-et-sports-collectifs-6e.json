@@ -1,0 +1,13 @@
+{
+  "id": "relation.eps.eps-sports-collectifs-et-arbitrage-c4-requires-eps-endurance-et-sports-collectifs-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-sports-collectifs-et-arbitrage-c4/contenu.json"
+  },
+  "source": "notion.eps.eps-sports-collectifs-et-arbitrage-c4",
+  "target": "notion.eps.eps-endurance-et-sports-collectifs-6e",
+  "rationale": "Le jeu en équipe de la 6e est développé en tactique et en arbitrage."
+}

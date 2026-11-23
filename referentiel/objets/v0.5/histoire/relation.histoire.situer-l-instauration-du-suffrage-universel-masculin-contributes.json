@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-l-instauration-du-suffrage-universel-masculin-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/societe-et-culture-au-xixe-c4/contenu.json"
+  },
+  "source": "microskill.histoire.situer-l-instauration-du-suffrage-universel-masculin",
+  "target": "skill.histoire.societe-et-culture-au-xixe-c4"
+}

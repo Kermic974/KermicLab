@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.liberte-teaches-distinguer-liberte-d-expression-et-harcelement",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/liberte/contenu.json"
+  },
+  "source": "notion.emc.liberte",
+  "target": "microskill.emc.distinguer-liberte-d-expression-et-harcelement"
+}

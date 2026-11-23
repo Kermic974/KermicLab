@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.anglais.anglais-culture-et-civilisation-l-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-culture-et-civilisation-l/contenu.json"
+  },
+  "object": "notion.anglais.anglais-culture-et-civilisation-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "reinforced"
+}

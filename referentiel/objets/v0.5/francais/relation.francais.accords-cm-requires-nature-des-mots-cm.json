@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.accords-cm-requires-nature-des-mots-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/accords-cm/contenu.json"
+  },
+  "source": "notion.francais.accords-cm",
+  "target": "notion.francais.nature-des-mots-cm",
+  "rationale": "« La nature des mots » : Les accords supposent de reconnaître la nature des mots et les accords du pluriel et du féminin du cycle 2."
+}

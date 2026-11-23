@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.identifier-les-organites-d-une-cellule-animale-ou-vegetale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/la-cellule/contenu.json"
+  },
+  "source": "microskill.svt.identifier-les-organites-d-une-cellule-animale-ou-vegetale",
+  "target": "skill.svt.la-cellule"
+}

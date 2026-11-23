@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.langage-teaches-analyser-le-role-du-contexte-dans-le-sens-d-un-enonce",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/langage/contenu.json"
+  },
+  "source": "notion.philosophie.langage",
+  "target": "microskill.philosophie.analyser-le-role-du-contexte-dans-le-sens-d-un-enonce"
+}

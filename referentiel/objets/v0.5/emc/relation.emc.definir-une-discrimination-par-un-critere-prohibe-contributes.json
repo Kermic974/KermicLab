@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.definir-une-discrimination-par-un-critere-prohibe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-egalite-et-lutte-discriminations-l/contenu.json"
+  },
+  "source": "microskill.emc.definir-une-discrimination-par-un-critere-prohibe",
+  "target": "skill.emc.emc-egalite-et-lutte-discriminations-l"
+}

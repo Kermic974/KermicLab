@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.formation-des-mots-cm-teaches-identifier-un-prefixe-et-un-suffixe",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/formation-des-mots-cm/contenu.json"
+  },
+  "source": "notion.francais.formation-des-mots-cm",
+  "target": "microskill.francais.identifier-un-prefixe-et-un-suffixe"
+}

@@ -2,15 +2,10 @@
 id: prehistoire-cm
 titre: De la Préhistoire à l'Antiquité : les premières traces
 sujet: histoire/prehistoire-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1
-prerequis:
-competences:
-  - prehistoire-cm-comprendre
-  - prehistoire-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +21,9 @@ questions:
   - C'est quoi la Préhistoire ?
   - Quelles traces la Préhistoire a-t-elle laissées en France ?
   - Quelle différence entre Paléolithique et Néolithique ?
+prerequis: grandes-periodes-c2
+niveaux: cycle-3
+competences: decrire-la-vie-des-chasseurs-cueilleurs-du-paleolithique, identifier-la-decouverte-de-l-agriculture-au-neolithique, situer-lascaux, distinguer-prehistoire-et-antiquite
 ---
 
 # De la Préhistoire à l'Antiquité : les premières traces

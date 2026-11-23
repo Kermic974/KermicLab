@@ -17,10 +17,10 @@ questions:
   - Comment le monde depuis 1990 se transforme-t-il ?
   - Quels sont les acteurs du monde contemporain ?
   - Que signifie un monde multipolaire ?
-prerequis:
-niveaux: cycle-4, terminale
 classes: 3e
-competences: his-monde-depuis-1990-action-1, his-monde-depuis-1990-action-2
+prerequis: guerre-froide
+niveaux: cycle-4, terminale
+competences: expliquer-les-consequences-de-la-fin-de-l-urss, caracteriser-un-monde-multipolaire, analyser-un-conflit-contemporain-et-ses-acteurs, expliquer-la-propagation-d-une-crise-financiere-mondiale, evaluer-un-accord-international-sur-un-defi-commun-climat
 ---
 
 # Le monde depuis 1990

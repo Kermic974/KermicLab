@@ -2,16 +2,10 @@
 id: multiples-et-diviseurs-cm
 titre: Multiples, diviseurs et critères de divisibilité
 sujet: mathematiques/multiples-et-diviseurs-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - division-euclidienne-cm
-competences:
-  - multiples-et-diviseurs-cm-comprendre
-  - multiples-et-diviseurs-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - C'est quoi un multiple et un diviseur ?
   - Comment savoir si un nombre est divisible par 3 ?
   - Comment reconnaître un multiple de 9 ?
+prerequis: division-euclidienne-cm
+niveaux: cycle-3
+competences: reconnaitre-un-multiple, appliquer-un-critere-de-divisibilite, determiner-les-diviseurs-d-un-nombre, resoudre-un-probleme-de-multiples
 ---
 
 # Multiples, diviseurs et critères de divisibilité

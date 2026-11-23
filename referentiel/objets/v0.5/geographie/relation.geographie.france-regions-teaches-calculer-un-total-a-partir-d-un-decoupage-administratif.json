@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.france-regions-teaches-calculer-un-total-a-partir-d-un-decoupage-administratif",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-regions/contenu.json"
+  },
+  "source": "notion.geographie.france-regions",
+  "target": "microskill.geographie.calculer-un-total-a-partir-d-un-decoupage-administratif"
+}

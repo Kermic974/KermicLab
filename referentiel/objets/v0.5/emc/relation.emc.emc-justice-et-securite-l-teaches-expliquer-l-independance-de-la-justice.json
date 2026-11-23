@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.emc-justice-et-securite-l-teaches-expliquer-l-independance-de-la-justice",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-justice-et-securite-l/contenu.json"
+  },
+  "source": "notion.emc.emc-justice-et-securite-l",
+  "target": "microskill.emc.expliquer-l-independance-de-la-justice"
+}

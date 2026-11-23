@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.inconscient-teaches-expliquer-les-petites-perceptions-chez-leibniz",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/inconscient/contenu.json"
+  },
+  "source": "notion.philosophie.inconscient",
+  "target": "microskill.philosophie.expliquer-les-petites-perceptions-chez-leibniz"
+}

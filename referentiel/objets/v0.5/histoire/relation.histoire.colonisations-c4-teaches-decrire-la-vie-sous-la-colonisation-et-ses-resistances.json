@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.colonisations-c4-teaches-decrire-la-vie-sous-la-colonisation-et-ses-resistances",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/colonisations-c4/contenu.json"
+  },
+  "source": "notion.histoire.colonisations-c4",
+  "target": "microskill.histoire.decrire-la-vie-sous-la-colonisation-et-ses-resistances"
+}

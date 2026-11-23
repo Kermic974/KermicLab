@@ -49,12 +49,12 @@
         "titre": "Exercice 1",
         "question": "Dans « refaire », « re- » est…",
         "choix": [
+          "un mot composé",
           "un préfixe",
           "un suffixe",
-          "un radical",
-          "un mot composé"
+          "un radical"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Il est placé avant le radical."
       },
       {
@@ -62,12 +62,12 @@
         "titre": "Exercice 2",
         "question": "Lequel est de la famille de « chant » ?",
         "choix": [
+          "chaud",
           "chanteur",
           "champ",
-          "chat",
-          "chaud"
+          "chat"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "chant → chanteur."
       },
       {
@@ -75,12 +75,12 @@
         "titre": "Exercice 3",
         "question": "« Un tire-bouchon » est…",
         "choix": [
-          "un mot composé",
           "un préfixe",
           "un suffixe",
-          "un verbe seul"
+          "un verbe seul",
+          "un mot composé"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Deux mots assemblés."
       }
     ]
@@ -109,12 +109,12 @@
         "titre": "Exercice 2",
         "question": "Que signifie « relire » ?",
         "choix": [
-          "lire de nouveau",
-          "ne pas lire",
           "lire avant",
-          "lire beaucoup"
+          "lire beaucoup",
+          "lire de nouveau",
+          "ne pas lire"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "re- signifie de nouveau."
       }
     ],

@@ -1,0 +1,13 @@
+{
+  "id": "relation.arts-plastiques.arts-formes-et-composition-cm-requires-arts-couleurs-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/arts-formes-et-composition-cm/contenu.json"
+  },
+  "source": "notion.arts-plastiques.arts-formes-et-composition-cm",
+  "target": "notion.arts-plastiques.arts-couleurs-cm",
+  "rationale": "Les couleurs et les contrastes sont réinvestis dans la composition."
+}

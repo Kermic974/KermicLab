@@ -2,16 +2,10 @@
 id: fonctions-dans-la-phrase-cm
 titre: Les fonctions dans la phrase
 sujet: francais/fonctions-dans-la-phrase-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - nature-des-mots-cm
-competences:
-  - fonctions-dans-la-phrase-cm-comprendre
-  - fonctions-dans-la-phrase-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +22,9 @@ questions:
   - C'est quoi un COD ?
   - C'est quoi un complément circonstanciel ?
   - C'est quoi un attribut du sujet ?
+prerequis: nature-des-mots-cm
+niveaux: cycle-3
+competences: identifier-le-cod, identifier-le-complement-circonstanciel, identifier-l-attribut-du-sujet-au-cycle-3-cm, reperer-le-sujet-et-le-verbe
 ---
 
 # Les fonctions dans la phrase

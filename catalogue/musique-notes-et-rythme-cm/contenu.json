@@ -26,7 +26,7 @@
       "titre": "Rythme, tempo et instruments",
       "niveau": "CM1 / CM2",
       "paragraphes": [
-        "Le **rythme** est l'organisation des sons courts et longs. La **ronde** dure 4 temps, la **blanche** 2, la **noire** 1, la **croche** un demi-temps. Le **tempo** est la vitesse (lent, modéré, rapide).",
+        "Le **rythme** est l'organisation des sons courts et longs. Dans une mesure à 4 temps, la **ronde** dure 4 temps, la **blanche** 2, la **noire** 1, la **croche** un demi-temps. Le **tempo** est la vitesse de la musique (lent, modéré, rapide).",
         "Quatre familles d'instruments : les **cordes** (violon, guitare), les **vents** (flûte, trompette), les **percussions** (tambour, xylophone), les **claviers** (piano, orgue). Le **timbre** distingue un instrument d'un autre."
       ],
       "exemple": {
@@ -72,13 +72,39 @@
         "titre": "Exercice 3",
         "question": "Une note aiguë est…",
         "choix": [
-          "un son haut",
-          "un son bas",
           "un silence",
-          "un bruit"
+          "un bruit",
+          "un son haut",
+          "un son bas"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Aigu = haut."
+      },
+      {
+        "type": "qcm",
+        "question": "Quelle note vient juste après « mi » ?",
+        "choix": [
+          "ré",
+          "fa",
+          "sol",
+          "do"
+        ],
+        "bonne": 1,
+        "explication": "Do, ré, mi, fa : après mi vient fa.",
+        "titre": "Exercice 4"
+      },
+      {
+        "type": "qcm",
+        "question": "Le tempo, c'est…",
+        "choix": [
+          "la hauteur d'une note",
+          "la vitesse de la musique",
+          "le nom d'un instrument",
+          "le volume du son"
+        ],
+        "bonne": 1,
+        "explication": "Le tempo indique si la musique est lente ou rapide.",
+        "titre": "Exercice 5"
       }
     ]
   },
@@ -104,12 +130,12 @@
         "titre": "Exercice 2",
         "question": "Quel instrument fait partie des percussions ?",
         "choix": [
+          "La clarinette",
           "Le tambour",
           "La flûte",
-          "Le violon",
-          "Le piano"
+          "Le violon"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "On le frappe."
       }
     ],

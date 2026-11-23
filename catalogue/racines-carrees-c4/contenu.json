@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La racine carrée de a est le nombre positif dont le carré vaut a.",
+  "niveaux": [
+    {
+      "titre": "Définition",
+      "niveau": "3e",
+      "paragraphes": [
+        "La **racine carrée** de 9 est 3, car 3² = 9 ; on écrit √9 = 3. Pour tout nombre positif a, √a est le nombre positif dont le carré vaut a. Quelques carrés parfaits : 1, 4, 9, 16, 25, 36, 49, 64, 81, 100.",
+        "Si le nombre n'est pas un carré parfait, la racine est une valeur approchée : √2 ≈ 1,414. On ne peut pas calculer la racine d'un nombre négatif."
+      ],
+      "exemple": {
+        "titre": "Exemple : théorème de Pythagore",
+        "etapes": [
+          "Côtés de l'angle droit : 3 et 4.",
+          "Hypoténuse² = 9 + 16 = 25.",
+          "Hypoténuse = √25 = 5."
+        ]
+      },
+      "aRetenir": "√a est positif et (√a)² = a."
+    },
+    {
+      "titre": "Règles de calcul",
+      "niveau": "3e",
+      "paragraphes": [
+        "**√(a × b) = √a × √b** (pour a et b positifs) : √50 = √(25 × 2) = 5√2. **√(a ÷ b) = √a ÷ √b**. Attention : √(a + b) n'est pas égal à √a + √b (√9 + √16 = 7, mais √25 = 5).",
+        "On simplifie en cherchant le plus grand carré parfait qui divise le nombre."
+      ],
+      "exemple": {
+        "titre": "Exemple : simplifier √72",
+        "etapes": [
+          "72 = 36 × 2.",
+          "√72 = √36 × √2.",
+          "√72 = 6√2."
+        ]
+      },
+      "aRetenir": "√(a + b) ≠ √a + √b."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien vaut √49 ?",
+        "reponse": 7,
+        "indices": [
+          "Cherche un nombre dont le carré est 49."
+        ],
+        "solution": "7² = 49.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "√50 s'écrit aussi…",
+        "choix": [
+          "5√2",
+          "25√2",
+          "2√5",
+          "10√5"
+        ],
+        "bonne": 0,
+        "explication": "√50 = √25 × √2."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "√9 + √16 est égal à…",
+        "choix": [
+          "5",
+          "25",
+          "√25",
+          "7"
+        ],
+        "bonne": 3,
+        "explication": "3 + 4 = 7 (et pas √25 = 5)."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La diagonale du carré",
+    "histoire": [
+      "Un carré a un côté de 1 m."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle est la longueur de sa diagonale (Pythagore) ?",
+        "choix": [
+          "2 m",
+          "1 m",
+          "√3 m",
+          "√2 m"
+        ],
+        "bonne": 3,
+        "explication": "d² = 1 + 1 = 2."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Cette valeur est environ…",
+        "choix": [
+          "2 m",
+          "1 m",
+          "1,41 m",
+          "1,5 m"
+        ],
+        "bonne": 2,
+        "explication": "√2 ≈ 1,414."
+      }
+    ],
+    "conclusion": "Bien calculé !"
+  }
+}

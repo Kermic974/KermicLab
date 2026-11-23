@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.calculer-la-part-d-un-financement-europeen-dans-un-projet-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/union-europeenne/contenu.json"
+  },
+  "source": "microskill.geographie.calculer-la-part-d-un-financement-europeen-dans-un-projet",
+  "target": "skill.geographie.union-europeenne"
+}

@@ -2,16 +2,10 @@
 id: groupe-nominal-cm
 titre: Le groupe nominal et ses expansions
 sujet: francais/groupe-nominal-cm
-version: 1.0.0
+version: 1.0.2
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - nature-des-mots-cm
-competences:
-  - groupe-nominal-cm-comprendre
-  - groupe-nominal-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - C'est quoi un groupe nominal ?
   - Comment enrichir un groupe nominal ?
   - C'est quoi un complément du nom ?
+prerequis: nature-des-mots-cm
+niveaux: cycle-3
+competences: identifier-le-complement-du-nom, reconnaitre-l-adjectif-epithete, reconnaitre-une-proposition-relative-au-cycle-3-cm, enrichir-un-groupe-nominal
 ---
 
 # Le groupe nominal et ses expansions

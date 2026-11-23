@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.francais.types-et-formes-de-phrases-cm-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/types-et-formes-de-phrases-cm/contenu.json"
+  },
+  "object": "notion.francais.types-et-formes-de-phrases-cm",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced"
+}

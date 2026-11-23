@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.reconnaitre-un-multiple-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/multiples-et-diviseurs-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.reconnaitre-un-multiple",
+  "target": "skill.mathematiques.multiples-et-diviseurs-cm"
+}

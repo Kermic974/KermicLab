@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.nombres-complexes-l-teaches-determiner-un-argument",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nombres-complexes-l/contenu.json"
+  },
+  "source": "notion.mathematiques.nombres-complexes-l",
+  "target": "microskill.mathematiques.determiner-un-argument"
+}

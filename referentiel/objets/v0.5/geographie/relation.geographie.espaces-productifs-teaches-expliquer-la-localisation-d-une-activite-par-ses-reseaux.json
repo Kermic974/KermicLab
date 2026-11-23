@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.espaces-productifs-teaches-expliquer-la-localisation-d-une-activite-par-ses-reseaux",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/espaces-productifs/contenu.json"
+  },
+  "source": "notion.geographie.espaces-productifs",
+  "target": "microskill.geographie.expliquer-la-localisation-d-une-activite-par-ses-reseaux"
+}

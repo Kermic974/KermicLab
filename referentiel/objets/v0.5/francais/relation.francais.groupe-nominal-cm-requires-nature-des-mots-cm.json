@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.groupe-nominal-cm-requires-nature-des-mots-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/groupe-nominal-cm/contenu.json"
+  },
+  "source": "notion.francais.groupe-nominal-cm",
+  "target": "notion.francais.nature-des-mots-cm",
+  "rationale": "« La nature des mots » : Les expansions du nom supposent de reconnaître la nature des mots."
+}

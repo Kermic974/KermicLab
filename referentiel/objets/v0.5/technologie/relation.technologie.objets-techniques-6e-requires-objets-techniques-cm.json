@@ -1,0 +1,13 @@
+{
+  "id": "relation.technologie.objets-techniques-6e-requires-objets-techniques-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/objets-techniques-6e/contenu.json"
+  },
+  "source": "notion.technologie.objets-techniques-6e",
+  "target": "notion.technologie.objets-techniques-cm",
+  "rationale": "L’analyse besoin-fonction-matériaux de l’école élémentaire est reprise avec cahier des charges et chaîne d’information."
+}

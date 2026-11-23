@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.associer-un-droit-a-une-situation-concrete-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droits-de-lhomme/contenu.json"
+  },
+  "source": "microskill.emc.associer-un-droit-a-une-situation-concrete",
+  "target": "skill.emc.droits-de-lhomme"
+}

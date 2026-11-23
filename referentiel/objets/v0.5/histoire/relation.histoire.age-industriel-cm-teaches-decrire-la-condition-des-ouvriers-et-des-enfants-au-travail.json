@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.age-industriel-cm-teaches-decrire-la-condition-des-ouvriers-et-des-enfants-au-travail",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/age-industriel-cm/contenu.json"
+  },
+  "source": "notion.histoire.age-industriel-cm",
+  "target": "microskill.histoire.decrire-la-condition-des-ouvriers-et-des-enfants-au-travail"
+}

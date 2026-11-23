@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calcul-avec-decimaux-cm-teaches-multiplier-un-decimal-par-un-entier",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/calcul-avec-decimaux-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.calcul-avec-decimaux-cm",
+  "target": "microskill.mathematiques.multiplier-un-decimal-par-un-entier"
+}

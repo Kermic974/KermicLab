@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.dynamiques-territoriales-teaches-interpreter-l-evolution-d-un-territoire-entre-deux-dates",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/dynamiques-territoriales/contenu.json"
+  },
+  "source": "notion.geographie.dynamiques-territoriales",
+  "target": "microskill.geographie.interpreter-l-evolution-d-un-territoire-entre-deux-dates"
+}

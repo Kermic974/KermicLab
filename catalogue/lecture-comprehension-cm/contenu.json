@@ -49,12 +49,12 @@
         "titre": "Exercice 1",
         "question": "« Elle claque la porte en pleurant. » Que peut-on déduire ?",
         "choix": [
-          "Elle est fâchée ou triste.",
           "Elle est joyeuse.",
           "Elle est en vacances.",
-          "Elle a faim."
+          "Elle a faim.",
+          "Elle est fâchée ou triste."
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Claquer et pleurer indiquent une émotion négative."
       },
       {
@@ -75,12 +75,12 @@
         "titre": "Exercice 3",
         "question": "Un résumé doit…",
         "choix": [
+          "changer l'histoire",
           "garder l'essentiel",
           "recopier tout le texte",
-          "ajouter des détails",
-          "changer l'histoire"
+          "ajouter des détails"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Résumer, c'est condenser."
       }
     ]
@@ -97,9 +97,9 @@
         "question": "Que peut-on penser ?",
         "choix": [
           "Quelqu'un est entré ou sorti pendant la nuit",
-          "Il a neigé",
-          "Hugo est malade",
-          "C'est l'été"
+          "Il a neigé abondamment pendant la nuit",
+          "Hugo est tombé malade en pleine nuit",
+          "C'est déjà le début de l'été chaud"
         ],
         "bonne": 0,
         "explication": "Boue, barrière ouverte : quelqu'un est passé."
@@ -109,12 +109,12 @@
         "titre": "Exercice 2",
         "question": "Quel indice appuie cette réponse ?",
         "choix": [
-          "la barrière est ouverte",
-          "Hugo est un garçon",
           "c'est le matin",
-          "ses chaussures sont rouges"
+          "ses chaussures sont rouges",
+          "la barrière est ouverte",
+          "Hugo est un garçon"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Une barrière ouverte indique un passage."
       }
     ],

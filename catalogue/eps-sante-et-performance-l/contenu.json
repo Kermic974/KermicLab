@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "En EPS, on apprend à concevoir son entraînement et à gérer sa santé sur la durée.",
+  "niveaux": [
+    {
+      "titre": "Entraînement et santé",
+      "niveau": "2de",
+      "paragraphes": [
+        "L'**entraînement** repose sur la **charge** (intensité, volume, fréquence), la **récupération** et la **progressivité**. L'**échauffement** prépare le corps (cardio, mobilité, gestes spécifiques) et réduit les blessures. L'activité physique régulière (au moins 60 min/jour pour les jeunes, 150 min/semaine pour les adultes) améliore santé cardiovasculaire, sommeil, humeur."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Séance : échauffement, travail principal, retour au calme.",
+          "Alternance effort / récupération.",
+          "Progression sur plusieurs semaines."
+        ]
+      },
+      "aRetenir": "Charge + récupération = progression."
+    },
+    {
+      "titre": "Projet de pratique",
+      "niveau": "1re / Tle",
+      "paragraphes": [
+        "Un **projet de pratique** relie objectif (santé, performance, bien-être), **moyens** (activité, fréquence), **évaluation** (tests, ressenti) et **adaptation**. Il tient compte de la **sécurité** et de l'**hygiène de vie** (sommeil, alimentation, hydratation). La **sédentarité** prolongée est un facteur de risque."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Objectif : courir 5 km en 12 semaines.",
+          "3 séances par semaine, progressives.",
+          "Test régulier et ajustements."
+        ]
+      },
+      "aRetenir": "Objectif, moyens, évaluation, ajustement."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "L'échauffement sert à…",
+        "choix": [
+          "dormir avant l'effort",
+          "préparer le corps à l'effort",
+          "fatiguer avant l'épreuve",
+          "remplacer toute la séance"
+        ],
+        "bonne": 1,
+        "explication": "Prévention."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La progressivité signifie…",
+        "choix": [
+          "augmenter la charge peu à peu",
+          "tout faire dès le premier jour",
+          "ne jamais se reposer",
+          "arrêter dès la fatigue"
+        ],
+        "bonne": 0,
+        "explication": "Principe."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un projet de pratique comprend…",
+        "choix": [
+          "un chronomètre et rien d'autre",
+          "aucun test ni bilan",
+          "un objectif, des moyens et une évaluation",
+          "uniquement une tenue adaptée"
+        ],
+        "bonne": 2,
+        "explication": "Structure."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le plan de séance",
+    "histoire": [
+      "Tu prépares ton cycle de course."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Après l'effort, il faut…",
+        "choix": [
+          "courir encore plus fort",
+          "sauter le repas suivant",
+          "dormir très peu cette nuit",
+          "récupérer et s'hydrater"
+        ],
+        "bonne": 3,
+        "explication": "Récupération."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour éviter la blessure, on…",
+        "choix": [
+          "s'entraîne malade",
+          "augmente progressivement la charge",
+          "double la charge chaque jour",
+          "ne s'échauffe pas"
+        ],
+        "bonne": 1,
+        "explication": "Progressivité."
+      }
+    ],
+    "conclusion": "Bon entraîneur !"
+  }
+}

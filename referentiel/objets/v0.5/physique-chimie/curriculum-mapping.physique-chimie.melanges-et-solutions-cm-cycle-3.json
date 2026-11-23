@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.physique-chimie.melanges-et-solutions-cm-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/melanges-et-solutions-cm/contenu.json"
+  },
+  "object": "notion.physique-chimie.melanges-et-solutions-cm",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced"
+}

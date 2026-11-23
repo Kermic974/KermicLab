@@ -2,15 +2,10 @@
 id: regles-vivre-ensemble-6e
 titre: Vivre ensemble : règles, égalité et lutte contre les discriminations
 sujet: emc/regles-vivre-ensemble-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-competences:
-  - regles-vivre-ensemble-6e-comprendre
-  - regles-vivre-ensemble-6e-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +20,9 @@ questions:
   - Pourquoi existe-t-il un règlement intérieur au collège ?
   - Qu'est-ce que la discrimination ?
   - Comment lutter contre le racisme et le harcèlement en 6e ?
+prerequis: respect-et-egalite-cm
+niveaux: cycle-3
+competences: definir-une-discrimination, identifier-a-qui-s-adresser-en-cas-de-harcelement, expliquer-le-role-du-reglement-interieur, reagir-face-a-une-discrimination
 ---
 
 # Vivre ensemble : règles, égalité et lutte contre les discriminations

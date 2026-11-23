@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Résoudre une inéquation, c'est trouver tous les réels pour lesquels une inégalité est vraie : la réponse est un intervalle ou une réunion d'intervalles.",
+  "niveaux": [
+    {
+      "titre": "Inéquations du premier degré",
+      "niveau": "2de",
+      "paragraphes": [
+        "On résout comme une équation, avec une règle en plus : **multiplier ou diviser par un nombre négatif change le sens de l'inégalité**. Exemple : −3x + 6 ≥ 0 ⇔ −3x ≥ −6 ⇔ x ≤ 2 (on a divisé par −3). L'ensemble des solutions est ]−∞ ; 2].",
+        "On vérifie en testant un nombre dans l'intervalle trouvé."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "2x − 5 < 3.",
+          "2x < 8.",
+          "x < 4 : solutions ]−∞ ; 4[."
+        ]
+      },
+      "aRetenir": "Multiplier par un négatif : inverser l'inégalité."
+    },
+    {
+      "titre": "Signe d'un produit, valeur absolue",
+      "niveau": "2de",
+      "paragraphes": [
+        "Pour étudier le signe de (x − 2)(x + 3), on construit un **tableau de signes** : on place les valeurs qui annulent chaque facteur (−3 et 2), on donne le signe de chaque facteur, puis on applique la règle des signes. Le produit est négatif pour x ∈ ]−3 ; 2[.",
+        "La **valeur absolue** |x| est la distance de x à 0. |x − 3| < 2 signifie que x est à une distance inférieure à 2 de 3 : x ∈ ]1 ; 5[."
+      ],
+      "exemple": {
+        "titre": "Exemple : |x − 3| ≤ 2",
+        "etapes": [
+          "x est à distance ≤ 2 de 3.",
+          "Entre 3 − 2 = 1 et 3 + 2 = 5.",
+          "Solutions : [1 ; 5]."
+        ]
+      },
+      "aRetenir": "|x − a| < r : x dans ]a − r ; a + r[."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Résoudre −3x + 6 ≥ 0 donne…",
+        "choix": [
+          "x ≥ 2",
+          "x ≤ −2",
+          "x ≥ −2",
+          "x ≤ 2"
+        ],
+        "bonne": 3,
+        "explication": "−3x ≥ −6, on divise par −3 : x ≤ 2."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "(x − 2)(x + 3) < 0 pour…",
+        "choix": [
+          "x ∈ ]−∞ ; −3[",
+          "x ∈ ]2 ; +∞[",
+          "x ∈ ]−∞ ; −3[ ∪ ]2 ; +∞[",
+          "x ∈ ]−3 ; 2["
+        ],
+        "bonne": 3,
+        "explication": "Facteurs de signes opposés."
+      },
+      {
+        "type": "nombre",
+        "question": "Combien d'entiers vérifient |x − 3| ≤ 2 ?",
+        "reponse": 5,
+        "indices": [
+          "Liste les entiers de 1 à 5."
+        ],
+        "solution": "x ∈ [1 ; 5] : 1, 2, 3, 4, 5.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le thermostat",
+    "histoire": [
+      "Un chauffage s'allume quand la température T vérifie |T − 19| > 1,5 (en °C)."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Il s'allume pour T ∈…",
+        "choix": [
+          "]−∞ ; 17,5[ ∪ ]20,5 ; +∞[",
+          "]17,5 ; 20,5[",
+          "[17,5 ; 20,5]",
+          "]−∞ ; 20,5["
+        ],
+        "bonne": 0,
+        "explication": "Distance à 19 supérieure à 1,5."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "À 18 °C, le chauffage…",
+        "choix": [
+          "chauffe fort",
+          "est en panne",
+          "reste éteint",
+          "s'allume"
+        ],
+        "bonne": 2,
+        "explication": "|18 − 19| = 1 < 1,5."
+      }
+    ],
+    "conclusion": "Inéquation maîtrisée !"
+  }
+}

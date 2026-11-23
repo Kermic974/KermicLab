@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La musique, ce sont des sons : graves ou aigus, forts ou doux, lents ou rapides.",
+  "niveaux": [
+    {
+      "titre": "Écouter les sons",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un son peut être **grave** (comme un tambour) ou **aigu** (comme un sifflet), **fort** ou **doux**, **long** ou **court**. Je compare : « Ce son est plus aigu que l'autre. »",
+        "On écoute les bruits autour de nous : le vent, la pluie, les voix."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Le tambour : un son grave.",
+          "La flûte : un son aigu.",
+          "Un murmure : un son doux."
+        ]
+      },
+      "aRetenir": "Grave, aigu ; fort, doux."
+    },
+    {
+      "titre": "Rythme, chant et instruments",
+      "niveau": "CP / CE1 / CE2",
+      "paragraphes": [
+        "La **pulsation** est le battement régulier de la musique, comme le cœur. Le **rythme** est la façon dont les sons durent. On peut le taper dans les mains. Quand on chante, on respecte les paroles, le rythme et on écoute les autres.",
+        "Les instruments : à **cordes** (guitare, violon), à **vent** (flûte, trompette), **percussions** (tambour, triangle), à **clavier** (piano)."
+      ],
+      "exemple": {
+        "titre": "Exemple : un instrument",
+        "etapes": [
+          "La guitare a des cordes.",
+          "La flûte se souffle.",
+          "Le tambour se frappe."
+        ]
+      },
+      "aRetenir": "4 familles : cordes, vents, percussions, claviers."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Un tambour fait un son…",
+        "choix": [
+          "aigu",
+          "silencieux",
+          "toujours doux",
+          "grave"
+        ],
+        "bonne": 3,
+        "explication": "Grave."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La flûte est un instrument…",
+        "choix": [
+          "à vent",
+          "à cordes",
+          "de percussion",
+          "à clavier"
+        ],
+        "bonne": 0,
+        "explication": "On souffle dedans."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La pulsation, c'est…",
+        "choix": [
+          "un long silence",
+          "le battement régulier de la musique",
+          "le nom d'un chanteur célèbre",
+          "un instrument à cordes"
+        ],
+        "bonne": 1,
+        "explication": "Comme le cœur."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La chorale de l'école",
+    "histoire": [
+      "Ta classe chante en groupe."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pour bien chanter ensemble, on…",
+        "choix": [
+          "chante n'importe quoi",
+          "se bouche les oreilles",
+          "écoute les autres",
+          "crie plus fort que tous"
+        ],
+        "bonne": 2,
+        "explication": "Écoute."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le piano est un instrument…",
+        "choix": [
+          "à bec",
+          "à clavier",
+          "à vent",
+          "de percussion"
+        ],
+        "bonne": 1,
+        "explication": "Clavier."
+      }
+    ],
+    "conclusion": "Belle chorale !"
+  }
+}

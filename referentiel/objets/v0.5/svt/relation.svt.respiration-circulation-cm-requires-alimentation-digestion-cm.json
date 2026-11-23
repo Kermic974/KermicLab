@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.respiration-circulation-cm-requires-alimentation-digestion-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/respiration-circulation-cm/contenu.json"
+  },
+  "source": "notion.svt.respiration-circulation-cm",
+  "target": "notion.svt.alimentation-digestion-cm",
+  "rationale": "« L'alimentation et la digestion » : La respiration et la circulation s’appuient sur le trajet des aliments."
+}

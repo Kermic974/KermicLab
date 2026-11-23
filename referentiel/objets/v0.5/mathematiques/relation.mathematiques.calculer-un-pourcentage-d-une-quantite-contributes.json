@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-un-pourcentage-d-une-quantite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/moyenne-et-proportions-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-un-pourcentage-d-une-quantite",
+  "target": "skill.mathematiques.moyenne-et-proportions-cm"
+}

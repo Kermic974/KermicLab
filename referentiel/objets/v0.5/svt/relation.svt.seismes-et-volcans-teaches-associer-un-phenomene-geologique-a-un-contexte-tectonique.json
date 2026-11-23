@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.seismes-et-volcans-teaches-associer-un-phenomene-geologique-a-un-contexte-tectonique",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/seismes-et-volcans/contenu.json"
+  },
+  "source": "notion.svt.seismes-et-volcans",
+  "target": "microskill.svt.associer-un-phenomene-geologique-a-un-contexte-tectonique"
+}

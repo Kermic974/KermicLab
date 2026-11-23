@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-un-deictique-et-la-situation-d-enonciation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/langue-et-style-l/contenu.json"
+  },
+  "source": "microskill.francais.identifier-un-deictique-et-la-situation-d-enonciation",
+  "target": "skill.francais.langue-et-style-l"
+}

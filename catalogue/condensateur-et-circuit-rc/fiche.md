@@ -26,7 +26,7 @@ questions:
   - what is a capacitor?
 prerequis: electricite
 niveaux: terminale
-competences: pc-condensateur-et-circuit-rc-action-1, pc-condensateur-et-circuit-rc-action-2
+competences: relier-la-charge-du-condensateur-a-sa-tension, calculer-la-constante-de-temps-d-un-circuit-rc, interpreter-l-evolution-temporelle-d-un-circuit-rc, calculer-l-energie-stockee-dans-un-condensateur
 ---
 
 # Le condensateur et le circuit RC

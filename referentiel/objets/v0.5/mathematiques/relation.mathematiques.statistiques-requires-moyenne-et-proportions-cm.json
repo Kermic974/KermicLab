@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.statistiques-requires-moyenne-et-proportions-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/statistiques/contenu.json"
+  },
+  "source": "notion.mathematiques.statistiques",
+  "target": "notion.mathematiques.moyenne-et-proportions-cm",
+  "rationale": "« Moyenne, pourcentages et comparaison de données » : Les diagrammes de 6e et la moyenne du cycle 3 sont étendus aux indicateurs statistiques."
+}

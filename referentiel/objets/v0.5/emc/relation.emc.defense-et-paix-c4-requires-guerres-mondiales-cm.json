@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.defense-et-paix-c4-requires-guerres-mondiales-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/defense-et-paix-c4/contenu.json"
+  },
+  "source": "notion.emc.defense-et-paix-c4",
+  "target": "notion.histoire.guerres-mondiales-cm",
+  "rationale": "« Les deux guerres mondiales » : La défense et la paix s’appuient sur les deux guerres mondiales."
+}

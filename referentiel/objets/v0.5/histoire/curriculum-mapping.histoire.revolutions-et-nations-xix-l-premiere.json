@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.histoire.revolutions-et-nations-xix-l-premiere",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolutions-et-nations-xix-l/contenu.json"
+  },
+  "object": "notion.histoire.revolutions-et-nations-xix-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.premiere",
+  "role": "introduced"
+}

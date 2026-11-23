@@ -11,7 +11,7 @@
   "id": "ecrire-un-recit-cm",
   "titre": "Écrire un récit",
   "sujet": "francais/ecrire-un-recit-cm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "date": "2026-11-21",
   "langue": "fr",
   "onglets": [
@@ -75,12 +75,12 @@
         "titre": "Exercice 1",
         "question": "Quel élément perturbe l'équilibre du début d'un récit ?",
         "choix": [
-          "L'élément perturbateur",
           "La situation finale",
           "La conclusion",
-          "Le titre"
+          "Le titre",
+          "L'élément perturbateur"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Il lance l'histoire."
       },
       {
@@ -88,12 +88,12 @@
         "titre": "Exercice 2",
         "question": "Quel verbe de parole convient pour « ! » ?",
         "choix": [
-          "s'écria",
-          "pensa",
           "mangea",
-          "dormit"
+          "dormit",
+          "s'écria",
+          "pensa"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "S'écrier indique un cri."
       },
       {
@@ -101,12 +101,12 @@
         "titre": "Exercice 3",
         "question": "Dans un récit au passé, l'imparfait sert à…",
         "choix": [
+          "donner un ordre",
           "décrire le décor",
           "raconter l'action précise",
-          "poser une question",
-          "donner un ordre"
+          "poser une question"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "L'imparfait pose le décor."
       }
     ]
@@ -122,12 +122,12 @@
         "titre": "Exercice 1",
         "question": "Quelle phrase pose une situation initiale ?",
         "choix": [
-          "Il était une fois un jeune pirate qui vivait sur une île.",
-          "Soudain, un coup de canon éclata.",
-          "Tout se termina bien.",
-          "« Au secours ! » cria-t-il."
+          "Soudain, un coup de canon éclata sur l'île.",
+          "Tout se termina bien pour le jeune pirate.",
+          "« Au secours ! » cria le jeune pirate.",
+          "Il était une fois un jeune pirate qui vivait sur une île."
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Elle présente le personnage et le lieu."
       },
       {
@@ -135,12 +135,12 @@
         "titre": "Exercice 2",
         "question": "Quelle phrase est l'élément perturbateur ?",
         "choix": [
-          "Soudain, un coup de canon éclata.",
           "Il vivait sur une île.",
           "Tout est bien qui finit bien.",
-          "Il aimait la mer."
+          "Il aimait la mer.",
+          "Soudain, un coup de canon éclata."
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Un événement vient troubler la paix."
       }
     ],
@@ -401,7 +401,7 @@ const Evenements = (() => {
 <header>
   <div>
     <h1>Écrire un récit</h1>
-    <div class="meta">ecrire-un-recit-cm · v1.0.0</div>
+    <div class="meta">ecrire-un-recit-cm · v1.0.1</div>
   </div>
   <div class="entete-actions">
     <span id="etoiles" class="etoiles" role="status"></span>

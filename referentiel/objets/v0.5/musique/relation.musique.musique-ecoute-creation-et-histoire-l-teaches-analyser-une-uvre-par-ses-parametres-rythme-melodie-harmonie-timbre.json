@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.musique-ecoute-creation-et-histoire-l-teaches-analyser-une-uvre-par-ses-parametres-rythme-melodie-harmonie-timbre",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-ecoute-creation-et-histoire-l/contenu.json"
+  },
+  "source": "notion.musique.musique-ecoute-creation-et-histoire-l",
+  "target": "microskill.musique.analyser-une-uvre-par-ses-parametres-rythme-melodie-harmonie-timbre"
+}

@@ -50,12 +50,12 @@
         "titre": "Exercice 1",
         "question": "Quel nombre est le plus grand ?",
         "choix": [
+          "3,4",
           "3,5",
           "3,45",
-          "3,09",
-          "3,4"
+          "3,09"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "3,5 = 3,50 > 3,45 > 3,40 > 3,09."
       },
       {
@@ -91,12 +91,12 @@
         "titre": "Exercice 1",
         "question": "Qui a gagné ?",
         "choix": [
-          "Celui qui a sauté 3,5 m",
-          "Celui qui a sauté 3,45 m",
           "Celui qui a sauté 3,09 m",
-          "Égalité"
+          "Égalité",
+          "Celui qui a sauté 3,5 m",
+          "Celui qui a sauté 3,45 m"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "3,5 = 3,50 m est la plus grande longueur."
       },
       {

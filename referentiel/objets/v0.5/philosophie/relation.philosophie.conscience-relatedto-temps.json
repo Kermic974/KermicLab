@@ -1,0 +1,13 @@
+{
+  "id": "relation.philosophie.conscience-relatedto-temps",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conscience/contenu.json"
+  },
+  "source": "notion.philosophie.conscience",
+  "target": "notion.philosophie.temps",
+  "rationale": "Lien conceptuel (relation de voisinage, sans ordre d’apprentissage) : La durée vécue relève de la conscience."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.volcans-et-seismes-cm-requires-terre-et-systeme-solaire-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/volcans-et-seismes-cm/contenu.json"
+  },
+  "source": "notion.svt.volcans-et-seismes-cm",
+  "target": "notion.svt.terre-et-systeme-solaire-cm",
+  "rationale": "« La Terre, la Lune et le système solaire » : Les volcans et séismes s’appuient sur la structure de la Terre dans le système solaire."
+}

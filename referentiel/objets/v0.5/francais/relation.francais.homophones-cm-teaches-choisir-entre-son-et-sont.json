@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.homophones-cm-teaches-choisir-entre-son-et-sont",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/homophones-cm/contenu.json"
+  },
+  "source": "notion.francais.homophones-cm",
+  "target": "microskill.francais.choisir-entre-son-et-sont"
+}

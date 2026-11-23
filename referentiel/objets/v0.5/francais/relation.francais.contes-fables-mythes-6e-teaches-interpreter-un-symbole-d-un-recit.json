@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.contes-fables-mythes-6e-teaches-interpreter-un-symbole-d-un-recit",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/contes-fables-mythes-6e/contenu.json"
+  },
+  "source": "notion.francais.contes-fables-mythes-6e",
+  "target": "microskill.francais.interpreter-un-symbole-d-un-recit"
+}

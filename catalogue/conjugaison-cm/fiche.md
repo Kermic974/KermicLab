@@ -2,15 +2,10 @@
 id: conjugaison-cm
 titre: La conjugaison : temps simples et composés
 sujet: francais/conjugaison-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - conjugaison-cm-comprendre
-  - conjugaison-cm-appliquer
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +23,9 @@ questions:
   - Quand utiliser l'imparfait et le passé composé ?
   - Comment former le passé composé ?
   - Comment conjuguer au futur ?
+prerequis: temps-des-verbes-c2, nature-des-mots-cm
+niveaux: cycle-3
+competences: conjuguer-un-verbe-au-futur-et-a-l-imparfait, identifier-un-temps-verbal, distinguer-temps-simples-et-temps-composes, former-le-passe-compose
 ---
 
 # La conjugaison : temps simples et composés

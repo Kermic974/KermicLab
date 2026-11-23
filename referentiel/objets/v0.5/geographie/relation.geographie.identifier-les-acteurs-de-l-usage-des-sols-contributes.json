@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.identifier-les-acteurs-de-l-usage-des-sols-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/urbanisation/contenu.json"
+  },
+  "source": "microskill.geographie.identifier-les-acteurs-de-l-usage-des-sols",
+  "target": "skill.geographie.urbanisation"
+}

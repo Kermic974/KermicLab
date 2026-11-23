@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-les-circonstances-de-la-naissance-de-la-ve-republique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ve-republique/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-les-circonstances-de-la-naissance-de-la-ve-republique",
+  "target": "skill.histoire.ve-republique"
+}

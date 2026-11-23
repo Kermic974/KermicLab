@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.identifier-ce-que-finance-la-securite-sociale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-engagement-et-defense-l/contenu.json"
+  },
+  "source": "microskill.emc.identifier-ce-que-finance-la-securite-sociale",
+  "target": "skill.emc.emc-engagement-et-defense-l"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.situer-un-style-dans-sa-periode-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-ecoute-creation-et-histoire-l/contenu.json"
+  },
+  "source": "microskill.musique.situer-un-style-dans-sa-periode",
+  "target": "skill.musique.musique-ecoute-creation-et-histoire-l"
+}

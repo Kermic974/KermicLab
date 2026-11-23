@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.comparer-les-regimes-fasciste-nazi-et-stalinien-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/totalitarismes/contenu.json"
+  },
+  "source": "microskill.histoire.comparer-les-regimes-fasciste-nazi-et-stalinien",
+  "target": "skill.histoire.totalitarismes"
+}

@@ -29,7 +29,7 @@ questions:
   - what is adaptive immunity?
 prerequis: systeme-immunitaire
 niveaux: terminale
-competences: svt-immunite-adaptative-action-1, svt-immunite-adaptative-action-2
+competences: expliquer-la-selection-clonale-des-lymphocytes, distinguer-le-role-des-lymphocytes-b-et-t, comparer-reponse-immunitaire-primaire-et-secondaire, expliquer-l-effet-du-vih-sur-les-lymphocytes-t4, interpreter-un-resultat-de-serologie
 ---
 
 # L'immunité adaptative

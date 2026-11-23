@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.geographie.monde-en-villes-cm-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monde-en-villes-cm/contenu.json"
+  },
+  "object": "notion.geographie.monde-en-villes-cm",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced"
+}

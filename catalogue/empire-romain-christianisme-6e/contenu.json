@@ -1,0 +1,117 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Né en Palestine romaine, le christianisme devient la religion de l'Empire.",
+  "niveaux": [
+    {
+      "titre": "Naissance et diffusion",
+      "niveau": "6e",
+      "paragraphes": [
+        "Le christianisme naît au Ier siècle en Palestine, province romaine, autour de **Jésus de Nazareth**. Ses disciples, dont **Paul**, diffusent son message dans tout l'Empire grâce aux routes et au latin/grec. Les chrétiens se réunissent dans des églises (assemblées) et refusent le culte de l'empereur ; ils sont parfois persécutés.",
+        "Les textes chrétiens sont rassemblés dans le **Nouveau Testament**."
+      ],
+      "exemple": {
+        "titre": "Exemple : la diffusion",
+        "etapes": [
+          "Paul voyage de ville en ville.",
+          "Il fonde des communautés.",
+          "Les routes romaines facilitent les déplacements."
+        ]
+      },
+      "aRetenir": "Le christianisme se diffuse grâce à l'Empire."
+    },
+    {
+      "titre": "Un empire chrétien",
+      "niveau": "6e",
+      "paragraphes": [
+        "En 313, l'empereur **Constantin** accorde la liberté de culte aux chrétiens (édit de Milan). En 380, **Théodose** fait du christianisme la religion officielle de l'Empire. La Gaule devient chrétienne : des évêques et des églises apparaissent dans les villes.",
+        "À la fin du IVe siècle, l'Empire est de plus en plus menacé par des peuples venus du nord et de l'est ; il se divise (Occident et Orient) et l'Empire d'Occident disparaît en 476."
+      ],
+      "exemple": {
+        "titre": "Exemple : une ville gallo-romaine chrétienne",
+        "etapes": [
+          "Un évêque dirige la communauté.",
+          "Une basilique devient église.",
+          "La ville garde ses rues romaines."
+        ]
+      },
+      "aRetenir": "313 : liberté de culte ; 380 : religion officielle."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "En quelle année Constantin accorde-t-il la liberté de culte aux chrétiens ?",
+        "reponse": 313,
+        "indices": [
+          "Début du IVe siècle."
+        ],
+        "solution": "Édit de Milan, 313.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qui fait du christianisme la religion officielle de l'Empire ?",
+        "choix": [
+          "Néron",
+          "Théodose",
+          "Auguste",
+          "Clovis"
+        ],
+        "bonne": 1,
+        "explication": "En 380."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Qu'est-ce qui aide à diffuser le christianisme ?",
+        "choix": [
+          "La radio et la télévision de l'époque",
+          "Les chemins de fer de l'Empire romain",
+          "Les routes et l'unité de l'Empire",
+          "L'imprimerie à caractères mobiles"
+        ],
+        "bonne": 2,
+        "explication": "Circulation facile."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Un évêque à Lyon",
+    "histoire": [
+      "Tu visites une communauté chrétienne de la Gaule au IVe siècle."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Qui dirige la communauté ?",
+        "choix": [
+          "Un évêque",
+          "Un pharaon",
+          "Un druide",
+          "Un président"
+        ],
+        "bonne": 0,
+        "explication": "L'évêque."
+      },
+      {
+        "type": "nombre",
+        "question": "En quelle année l'Empire romain d'Occident disparaît-il ?",
+        "reponse": 476,
+        "indices": [
+          "Fin du Ve siècle."
+        ],
+        "solution": "476 apr. J.-C.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Tu connais cette période !"
+  }
+}

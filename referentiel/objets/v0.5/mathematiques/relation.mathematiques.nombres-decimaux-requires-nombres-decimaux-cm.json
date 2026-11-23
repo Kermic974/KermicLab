@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.nombres-decimaux-requires-nombres-decimaux-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nombres-decimaux/contenu.json"
+  },
+  "source": "notion.mathematiques.nombres-decimaux",
+  "target": "notion.mathematiques.nombres-decimaux-cm",
+  "rationale": "« Les nombres décimaux au CM » : Les décimaux et leurs opérations du cycle 3 sont consolidés en 6e."
+}

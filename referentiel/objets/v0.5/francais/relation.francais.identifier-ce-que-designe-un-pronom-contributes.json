@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-ce-que-designe-un-pronom-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lecture-comprehension-cm/contenu.json"
+  },
+  "source": "microskill.francais.identifier-ce-que-designe-un-pronom",
+  "target": "skill.francais.lecture-comprehension-cm"
+}

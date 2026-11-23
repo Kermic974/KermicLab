@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.expliquer-la-repartition-de-la-population-mondiale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-la-terre-6e/contenu.json"
+  },
+  "source": "microskill.geographie.expliquer-la-repartition-de-la-population-mondiale",
+  "target": "skill.geographie.habiter-la-terre-6e"
+}

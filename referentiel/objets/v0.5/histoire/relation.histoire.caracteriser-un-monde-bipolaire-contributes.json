@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.caracteriser-un-monde-bipolaire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerre-froide-et-decolonisation-l/contenu.json"
+  },
+  "source": "microskill.histoire.caracteriser-un-monde-bipolaire",
+  "target": "skill.histoire.guerre-froide-et-decolonisation-l"
+}

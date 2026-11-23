@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decrire-l-ecriture-cuneiforme-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/premieres-civilisations-6e/contenu.json"
+  },
+  "source": "microskill.histoire.decrire-l-ecriture-cuneiforme",
+  "target": "skill.histoire.premieres-civilisations-6e"
+}

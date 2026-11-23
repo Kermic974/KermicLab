@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-les-conquetes-et-leurs-consequences-pour-les-populations-autochtones-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps-modernes/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-les-conquetes-et-leurs-consequences-pour-les-populations-autochtones",
+  "target": "skill.histoire.temps-modernes"
+}

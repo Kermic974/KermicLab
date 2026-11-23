@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.masses-et-contenances-c2-teaches-convertir-kilogrammes-et-grammes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/masses-et-contenances-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.masses-et-contenances-c2",
+  "target": "microskill.mathematiques.convertir-kilogrammes-et-grammes"
+}

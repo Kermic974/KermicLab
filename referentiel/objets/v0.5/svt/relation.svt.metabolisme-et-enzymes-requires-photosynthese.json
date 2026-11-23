@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.metabolisme-et-enzymes-requires-photosynthese",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/metabolisme-et-enzymes/contenu.json"
+  },
+  "source": "notion.svt.metabolisme-et-enzymes",
+  "target": "notion.svt.photosynthese",
+  "rationale": "La distinction entre autotrophes et hétérotrophes s’appuie sur la photosynthèse."
+}

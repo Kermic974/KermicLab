@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-la-distance-entre-deux-points-dans-un-repere-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/geometrie-repere-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-la-distance-entre-deux-points-dans-un-repere",
+  "target": "skill.mathematiques.geometrie-repere-l"
+}

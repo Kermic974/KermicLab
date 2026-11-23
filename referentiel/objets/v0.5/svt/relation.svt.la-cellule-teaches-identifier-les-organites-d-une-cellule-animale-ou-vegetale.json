@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.la-cellule-teaches-identifier-les-organites-d-une-cellule-animale-ou-vegetale",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/la-cellule/contenu.json"
+  },
+  "source": "notion.svt.la-cellule",
+  "target": "microskill.svt.identifier-les-organites-d-une-cellule-animale-ou-vegetale"
+}

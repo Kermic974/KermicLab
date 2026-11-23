@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.denoncer-les-travers-de-la-societe-c4-requires-ecrire-et-reecrire-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/denoncer-les-travers-de-la-societe-c4/contenu.json"
+  },
+  "source": "notion.francais.denoncer-les-travers-de-la-societe-c4",
+  "target": "notion.francais.ecrire-et-reecrire-c4",
+  "rationale": "« Écrire, argumenter et réécrire au collège » : Comprendre la satire et l’ironie s’appuie sur la production de textes argumentés du collège."
+}

@@ -49,12 +49,12 @@
         "titre": "Exercice 1",
         "question": "Où apparaît Homo sapiens ?",
         "choix": [
-          "En Afrique",
           "En Europe",
           "En Amérique",
-          "En Australie"
+          "En Australie",
+          "En Afrique"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Afrique, il y a environ 300 000 ans."
       },
       {
@@ -62,12 +62,12 @@
         "titre": "Exercice 2",
         "question": "Que change la révolution néolithique ?",
         "choix": [
-          "Les hommes deviennent agriculteurs et éleveurs",
-          "Les hommes inventent l'imprimerie",
           "Les hommes quittent la Terre",
-          "Les hommes cessent de se nourrir"
+          "Les hommes cessent de se nourrir",
+          "Les hommes deviennent agriculteurs et éleveurs",
+          "Les hommes inventent l'imprimerie"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Sédentarisation."
       },
       {
@@ -75,12 +75,12 @@
         "titre": "Exercice 3",
         "question": "Les chasseurs-cueilleurs vivent…",
         "choix": [
-          "en se déplaçant",
-          "dans de grandes villes",
           "dans des châteaux",
-          "sur des bateaux uniquement"
+          "sur des bateaux uniquement",
+          "en se déplaçant",
+          "dans de grandes villes"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Nomadisme."
       }
     ]
@@ -109,12 +109,12 @@
         "titre": "Exercice 2",
         "question": "À quoi sert la poterie ?",
         "choix": [
-          "Stocker et cuire",
-          "Voler",
-          "Écrire",
-          "Voyager"
+          "Écrire et dessiner",
+          "Chasser et pêcher",
+          "Voyager et se déplacer",
+          "Stocker et cuire"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Conserver les récoltes."
       }
     ],

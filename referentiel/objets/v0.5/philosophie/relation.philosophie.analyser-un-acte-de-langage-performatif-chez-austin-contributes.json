@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.analyser-un-acte-de-langage-performatif-chez-austin-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/langage/contenu.json"
+  },
+  "source": "microskill.philosophie.analyser-un-acte-de-langage-performatif-chez-austin",
+  "target": "skill.philosophie.langage"
+}

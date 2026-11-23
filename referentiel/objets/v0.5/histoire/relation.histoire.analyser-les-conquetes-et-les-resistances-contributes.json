@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.analyser-les-conquetes-et-les-resistances-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/napoleon/contenu.json"
+  },
+  "source": "microskill.histoire.analyser-les-conquetes-et-les-resistances",
+  "target": "skill.histoire.napoleon"
+}

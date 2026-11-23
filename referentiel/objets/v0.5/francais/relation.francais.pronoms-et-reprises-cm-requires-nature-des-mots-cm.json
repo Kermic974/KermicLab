@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.pronoms-et-reprises-cm-requires-nature-des-mots-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/pronoms-et-reprises-cm/contenu.json"
+  },
+  "source": "notion.francais.pronoms-et-reprises-cm",
+  "target": "notion.francais.nature-des-mots-cm",
+  "rationale": "« La nature des mots » : Remplacer un nom par un pronom suppose de reconnaître la nature des mots."
+}

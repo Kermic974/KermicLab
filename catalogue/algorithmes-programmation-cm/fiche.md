@@ -2,15 +2,10 @@
 id: algorithmes-programmation-cm
 titre: Algorithmes et programmation
 sujet: mathematiques/algorithmes-programmation-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - algorithmes-programmation-cm-comprendre
-  - algorithmes-programmation-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +23,9 @@ questions:
   - Comment fonctionne une boucle « répéter » ?
   - Comment programmer un déplacement dans Scratch ?
   - C'est quoi « si… alors » en programmation ?
+prerequis: tableaux-et-algorithmes-c2
+niveaux: cycle-3
+competences: decrire-les-etapes-d-un-algorithme, ecrire-un-programme-avec-une-boucle-pour-tracer-une-figure, ecrire-une-instruction-conditionnelle, prevoir-le-resultat-d-un-programme-simple
 ---
 
 # Algorithmes et programmation

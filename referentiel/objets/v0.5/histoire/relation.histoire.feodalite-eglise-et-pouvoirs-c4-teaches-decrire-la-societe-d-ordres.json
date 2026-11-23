@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.feodalite-eglise-et-pouvoirs-c4-teaches-decrire-la-societe-d-ordres",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/feodalite-eglise-et-pouvoirs-c4/contenu.json"
+  },
+  "source": "notion.histoire.feodalite-eglise-et-pouvoirs-c4",
+  "target": "microskill.histoire.decrire-la-societe-d-ordres"
+}

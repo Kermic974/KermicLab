@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-un-produit-avec-des-dizaines-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/multiplication-posee-ce2-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-un-produit-avec-des-dizaines",
+  "target": "skill.mathematiques.multiplication-posee-ce2-c2"
+}

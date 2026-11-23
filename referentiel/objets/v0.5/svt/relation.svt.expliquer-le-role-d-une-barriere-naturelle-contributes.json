@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-le-role-d-une-barriere-naturelle-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/microbes-et-sante-c4/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-le-role-d-une-barriere-naturelle",
+  "target": "skill.svt.microbes-et-sante-c4"
+}

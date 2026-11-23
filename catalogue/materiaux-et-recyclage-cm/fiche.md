@@ -2,15 +2,10 @@
 id: materiaux-et-recyclage-cm
 titre: Matériaux, déchets et recyclage
 sujet: technologie/materiaux-et-recyclage-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - materiaux-et-recyclage-cm-comprendre
-  - materiaux-et-recyclage-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +21,9 @@ questions:
   - Comment recycle-t-on les déchets ?
   - Que devient le plastique recyclé ?
   - Comment faire du compost ?
+prerequis: objets-techniques-cm
+niveaux: cycle-3
+competences: trier-des-dechets-selon-les-consignes-de-recyclage, appliquer-la-regle-des-3-r-reduire-reutiliser-recycler, decrire-le-cycle-de-vie-d-un-objet, expliquer-le-devenir-des-dechets-organiques-par-le-compostage
 ---
 
 # Matériaux, déchets et recyclage

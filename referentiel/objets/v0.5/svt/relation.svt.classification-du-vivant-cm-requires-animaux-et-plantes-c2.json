@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.classification-du-vivant-cm-requires-animaux-et-plantes-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/classification-du-vivant-cm/contenu.json"
+  },
+  "source": "notion.svt.classification-du-vivant-cm",
+  "target": "notion.svt.animaux-et-plantes-c2",
+  "rationale": "« Les animaux et les plantes » : Classer des êtres vivants suppose de les décrire."
+}

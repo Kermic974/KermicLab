@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.sante-et-prevention-c4-teaches-expliquer-les-effets-du-tabac-et-des-addictions",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/sante-et-prevention-c4/contenu.json"
+  },
+  "source": "notion.svt.sante-et-prevention-c4",
+  "target": "microskill.svt.expliquer-les-effets-du-tabac-et-des-addictions"
+}

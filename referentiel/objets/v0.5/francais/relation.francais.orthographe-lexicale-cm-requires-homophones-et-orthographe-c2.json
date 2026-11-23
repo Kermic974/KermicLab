@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.orthographe-lexicale-cm-requires-homophones-et-orthographe-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/orthographe-lexicale-cm/contenu.json"
+  },
+  "source": "notion.francais.orthographe-lexicale-cm",
+  "target": "notion.francais.homophones-et-orthographe-c2",
+  "rationale": "« Homophones et mots à connaître » : L’orthographe des mots prolonge les homophones et mots à connaître du cycle 2."
+}

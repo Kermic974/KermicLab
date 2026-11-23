@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.groupe-nominal-cm-teaches-reconnaitre-une-proposition-relative-au-cycle-3-cm",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/groupe-nominal-cm/contenu.json"
+  },
+  "source": "notion.francais.groupe-nominal-cm",
+  "target": "microskill.francais.reconnaitre-une-proposition-relative-au-cycle-3-cm"
+}

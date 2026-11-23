@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.ponctuation-et-dialogue-cm-requires-types-et-formes-de-phrases-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ponctuation-et-dialogue-cm/contenu.json"
+  },
+  "source": "notion.francais.ponctuation-et-dialogue-cm",
+  "target": "notion.francais.types-et-formes-de-phrases-cm",
+  "rationale": "« Types et formes de phrases » : La ponctuation dépend du type et de la forme de la phrase."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.chretientes-et-islam-c4-teaches-expliquer-la-transmission-des-savoirs-par-le-monde-musulman",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/chretientes-et-islam-c4/contenu.json"
+  },
+  "source": "notion.histoire.chretientes-et-islam-c4",
+  "target": "microskill.histoire.expliquer-la-transmission-des-savoirs-par-le-monde-musulman"
+}

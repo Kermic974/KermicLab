@@ -11,7 +11,7 @@
   "id": "angles-cm",
   "titre": "Les angles",
   "sujet": "mathematiques/angles-cm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "date": "2026-11-21",
   "langue": "fr",
   "onglets": [
@@ -76,12 +76,12 @@
         "titre": "Exercice 1",
         "question": "Un angle de 120° est…",
         "choix": [
+          "plat",
           "obtus",
           "aigu",
-          "droit",
-          "plat"
+          "droit"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Plus grand que 90° et plus petit que 180° : obtus."
       },
       {
@@ -89,12 +89,12 @@
         "titre": "Exercice 2",
         "question": "Quel instrument vérifie un angle droit ?",
         "choix": [
-          "L'équerre",
-          "Le compas",
           "La règle seule",
-          "Le chronomètre"
+          "Le chronomètre",
+          "L'équerre",
+          "Le compas"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "L'équerre a un coin droit."
       },
       {
@@ -121,12 +121,12 @@
         "titre": "Exercice 1",
         "question": "Le faisceau fait un quart de tour. L'angle est…",
         "choix": [
-          "droit",
-          "aigu",
           "obtus",
-          "plat"
+          "plat",
+          "droit",
+          "aigu"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Un quart de tour = 90° = angle droit."
       },
       {
@@ -398,7 +398,7 @@ const Evenements = (() => {
 <header>
   <div>
     <h1>Les angles</h1>
-    <div class="meta">angles-cm · v1.0.0</div>
+    <div class="meta">angles-cm · v1.0.1</div>
   </div>
   <div class="entete-actions">
     <span id="etoiles" class="etoiles" role="status"></span>

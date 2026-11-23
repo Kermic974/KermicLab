@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.hggsp-savoirs-et-memoires-l-requires-premiere-guerre-mondiale",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/hggsp-savoirs-et-memoires-l/contenu.json"
+  },
+  "source": "notion.histoire.hggsp-savoirs-et-memoires-l",
+  "target": "notion.histoire.premiere-guerre-mondiale",
+  "rationale": "« La Première Guerre mondiale » : Les mémoires de guerre sont un cas d’étude majeur."
+}

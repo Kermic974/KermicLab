@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.distinguer-sacre-et-profane-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/religion/contenu.json"
+  },
+  "source": "microskill.philosophie.distinguer-sacre-et-profane",
+  "target": "skill.philosophie.religion"
+}

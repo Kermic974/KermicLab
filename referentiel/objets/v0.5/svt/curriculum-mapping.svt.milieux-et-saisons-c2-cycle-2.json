@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.svt.milieux-et-saisons-c2-cycle-2",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/milieux-et-saisons-c2/contenu.json"
+  },
+  "object": "notion.svt.milieux-et-saisons-c2",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-2",
+  "role": "introduced"
+}

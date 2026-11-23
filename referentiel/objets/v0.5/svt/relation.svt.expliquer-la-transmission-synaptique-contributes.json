@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-la-transmission-synaptique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/systeme-nerveux/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-la-transmission-synaptique",
+  "target": "skill.svt.systeme-nerveux"
+}

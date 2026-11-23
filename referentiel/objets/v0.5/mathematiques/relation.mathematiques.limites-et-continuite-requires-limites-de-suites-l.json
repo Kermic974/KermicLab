@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.limites-et-continuite-requires-limites-de-suites-l",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/limites-et-continuite/contenu.json"
+  },
+  "source": "notion.mathematiques.limites-et-continuite",
+  "target": "notion.mathematiques.limites-de-suites-l",
+  "rationale": "« Limites de suites et théorèmes de comparaison » : Les limites de suites précèdent les limites de fonctions."
+}

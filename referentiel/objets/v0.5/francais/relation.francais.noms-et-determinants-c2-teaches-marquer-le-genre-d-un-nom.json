@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.noms-et-determinants-c2-teaches-marquer-le-genre-d-un-nom",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/noms-et-determinants-c2/contenu.json"
+  },
+  "source": "notion.francais.noms-et-determinants-c2",
+  "target": "microskill.francais.marquer-le-genre-d-un-nom"
+}

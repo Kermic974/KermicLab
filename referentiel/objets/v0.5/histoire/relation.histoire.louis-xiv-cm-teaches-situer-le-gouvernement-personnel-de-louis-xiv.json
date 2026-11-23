@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.louis-xiv-cm-teaches-situer-le-gouvernement-personnel-de-louis-xiv",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/louis-xiv-cm/contenu.json"
+  },
+  "source": "notion.histoire.louis-xiv-cm",
+  "target": "microskill.histoire.situer-le-gouvernement-personnel-de-louis-xiv"
+}

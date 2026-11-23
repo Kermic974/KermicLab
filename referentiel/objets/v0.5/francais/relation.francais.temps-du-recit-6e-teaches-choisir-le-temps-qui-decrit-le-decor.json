@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.temps-du-recit-6e-teaches-choisir-le-temps-qui-decrit-le-decor",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps-du-recit-6e/contenu.json"
+  },
+  "source": "notion.francais.temps-du-recit-6e",
+  "target": "microskill.francais.choisir-le-temps-qui-decrit-le-decor"
+}

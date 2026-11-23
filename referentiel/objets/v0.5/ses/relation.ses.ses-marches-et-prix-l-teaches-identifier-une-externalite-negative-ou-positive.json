@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.ses-marches-et-prix-l-teaches-identifier-une-externalite-negative-ou-positive",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ses-marches-et-prix-l/contenu.json"
+  },
+  "source": "notion.ses.ses-marches-et-prix-l",
+  "target": "microskill.ses.identifier-une-externalite-negative-ou-positive"
+}

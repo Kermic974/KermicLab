@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.utiliser-des-archives-climatiques-pour-reconstituer-un-climat-du-passe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/climat-et-effet-de-serre/contenu.json"
+  },
+  "source": "microskill.svt.utiliser-des-archives-climatiques-pour-reconstituer-un-climat-du-passe",
+  "target": "skill.svt.climat-et-effet-de-serre"
+}

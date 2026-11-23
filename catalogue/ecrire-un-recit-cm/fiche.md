@@ -2,15 +2,10 @@
 id: ecrire-un-recit-cm
 titre: Écrire un récit
 sujet: francais/ecrire-un-recit-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - ecrire-un-recit-cm-comprendre
-  - ecrire-un-recit-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +23,9 @@ questions:
   - C'est quoi le schéma narratif ?
   - Comment écrire un dialogue dans un récit ?
   - C'est quoi le narrateur ?
+prerequis: ecrire-et-comptines-c2, lecture-comprehension-cm, conjugaison-cm
+niveaux: cycle-3
+competences: identifier-l-element-perturbateur-d-un-recit, choisir-un-verbe-de-parole-adapte, employer-l-imparfait-pour-decrire-dans-un-recit, ecrire-un-dialogue-dans-un-recit
 ---
 
 # Écrire un récit

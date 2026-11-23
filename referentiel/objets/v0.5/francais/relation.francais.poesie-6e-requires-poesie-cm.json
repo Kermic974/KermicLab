@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.poesie-6e-requires-poesie-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie-6e/contenu.json"
+  },
+  "source": "notion.francais.poesie-6e",
+  "target": "notion.francais.poesie-cm",
+  "rationale": "« La poésie : vers, strophes et rimes » : La poésie de 6e prolonge les vers, strophes et rimes du CM."
+}

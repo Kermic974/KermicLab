@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.thermodynamique-requires-etats-de-la-matiere",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/thermodynamique/contenu.json"
+  },
+  "source": "notion.physique-chimie.thermodynamique",
+  "target": "notion.physique-chimie.etats-de-la-matiere",
+  "rationale": "Les changements d’état et le modèle particulaire fondent l’énergie interne et le gaz parfait."
+}

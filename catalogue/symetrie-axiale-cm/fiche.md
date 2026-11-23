@@ -2,15 +2,10 @@
 id: symetrie-axiale-cm
 titre: La symétrie axiale
 sujet: mathematiques/symetrie-axiale-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - symetrie-axiale-cm-comprendre
-  - symetrie-axiale-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +21,9 @@ questions:
   - C'est quoi un axe de symétrie ?
   - Comment tracer le symétrique d'une figure ?
   - Quelles figures ont des axes de symétrie ?
+prerequis: symetrie-et-reperage-c2, droites-cm
+niveaux: cycle-3
+competences: compter-les-axes-de-symetrie-d-une-figure, tracer-le-symetrique-d-un-point, tracer-le-symetrique-d-une-figure-sur-quadrillage, verifier-une-symetrie-par-pliage
 ---
 
 # La symétrie axiale

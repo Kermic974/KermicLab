@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.former-le-feminin-d-un-adjectif-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/singulier-pluriel-masculin-feminin-c2/contenu.json"
+  },
+  "source": "microskill.francais.former-le-feminin-d-un-adjectif",
+  "target": "skill.francais.singulier-pluriel-masculin-feminin-c2"
+}

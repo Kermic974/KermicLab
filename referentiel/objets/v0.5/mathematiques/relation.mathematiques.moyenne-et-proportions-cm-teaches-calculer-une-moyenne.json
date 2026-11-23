@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.moyenne-et-proportions-cm-teaches-calculer-une-moyenne",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/moyenne-et-proportions-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.moyenne-et-proportions-cm",
+  "target": "microskill.mathematiques.calculer-une-moyenne"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.lire-une-carte-cm-teaches-se-reperer-avec-les-points-cardinaux",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lire-une-carte-cm/contenu.json"
+  },
+  "source": "notion.geographie.lire-une-carte-cm",
+  "target": "microskill.geographie.se-reperer-avec-les-points-cardinaux"
+}

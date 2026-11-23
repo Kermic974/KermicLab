@@ -18,7 +18,7 @@ questions:
   - Que signifie l'autonomie morale ?
 prerequis:
 niveaux: terminale
-competences: philosophie-liberte-philosophie-action-1, philosophie-liberte-philosophie-action-2
+competences: distinguer-liberte-autonomie-et-libre-arbitre, comparer-autonomie-morale-kant-et-determinisme-spinoza, analyser-une-situation-de-liberte-politique-et-ses-limites, discuter-si-la-liberte-est-compatible-avec-le-determinisme
 ---
 
 # La liberté

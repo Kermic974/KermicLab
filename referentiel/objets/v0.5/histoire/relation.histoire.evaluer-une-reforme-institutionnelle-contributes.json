@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.evaluer-une-reforme-institutionnelle-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ve-republique/contenu.json"
+  },
+  "source": "microskill.histoire.evaluer-une-reforme-institutionnelle",
+  "target": "skill.histoire.ve-republique"
+}

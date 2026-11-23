@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.esprit-critique-et-medias-6e-teaches-identifier-la-source-d-une-information",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/esprit-critique-et-medias-6e/contenu.json"
+  },
+  "source": "notion.emc.esprit-critique-et-medias-6e",
+  "target": "microskill.emc.identifier-la-source-d-une-information"
+}

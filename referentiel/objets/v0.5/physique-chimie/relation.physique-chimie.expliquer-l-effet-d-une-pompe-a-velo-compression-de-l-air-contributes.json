@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.expliquer-l-effet-d-une-pompe-a-velo-compression-de-l-air-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/air-et-matiere-cm/contenu.json"
+  },
+  "source": "microskill.physique-chimie.expliquer-l-effet-d-une-pompe-a-velo-compression-de-l-air",
+  "target": "skill.physique-chimie.air-et-matiere-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.nommer-les-soldats-de-14-18-poilus-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerres-mondiales-cm/contenu.json"
+  },
+  "source": "microskill.histoire.nommer-les-soldats-de-14-18-poilus",
+  "target": "skill.histoire.guerres-mondiales-cm"
+}

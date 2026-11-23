@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.habiter-une-metropole-6e-requires-mieux-habiter-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-une-metropole-6e/contenu.json"
+  },
+  "source": "notion.geographie.habiter-une-metropole-6e",
+  "target": "notion.geographie.mieux-habiter-cm",
+  "rationale": "« Mieux habiter : ville durable et risques » : La métropole s’appuie sur la ville durable et sur ville et campagne du cycle 3."
+}

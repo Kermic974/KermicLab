@@ -2,15 +2,10 @@
 id: vocabulaire-cm
 titre: Le vocabulaire : sens des mots, synonymes, contraires
 sujet: francais/vocabulaire-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - vocabulaire-cm-comprendre
-  - vocabulaire-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +23,9 @@ questions:
   - C'est quoi le sens propre et le sens figuré ?
   - Comment chercher un mot dans le dictionnaire ?
   - C'est quoi un champ lexical ?
+prerequis: vocabulaire-et-dictionnaire-c2
+niveaux: cycle-3
+competences: trouver-un-synonyme, trouver-un-antonyme, identifier-une-expression-imagee, utiliser-un-dictionnaire
 ---
 
 # Le vocabulaire : sens des mots, synonymes, contraires

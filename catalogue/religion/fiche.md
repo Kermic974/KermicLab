@@ -21,7 +21,7 @@ questions:
   - what is religion?
 prerequis:
 niveaux: terminale
-competences: philosophie-religion-action-1, philosophie-religion-action-2
+competences: distinguer-croyance-foi-et-savoir, distinguer-sacre-et-profane, analyser-le-role-social-de-la-religion-chez-durkheim, discuter-si-une-conviction-sincere-constitue-une-preuve
 ---
 
 # La religion

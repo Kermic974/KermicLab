@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.placer-un-angle-sur-le-cercle-trigonometrique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/trigonometrie-radian-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.placer-un-angle-sur-le-cercle-trigonometrique",
+  "target": "skill.mathematiques.trigonometrie-radian-l"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "skill.francais.ponctuation-et-dialogue-cm",
+  "type": "skill",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ponctuation-et-dialogue-cm/contenu.json"
+  },
+  "label": "Ponctuer un dialogue et choisir le signe adapté"
+}

@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La biodiversité est la diversité des gènes, des espèces et des écosystèmes ; elle rend des services dont dépendent les sociétés humaines.",
+  "niveaux": [
+    {
+      "titre": "Trois niveaux de diversité",
+      "niveau": "2de",
+      "paragraphes": [
+        "La **biodiversité** s'étudie à trois niveaux : **génétique** (variété des allèles au sein d'une espèce), **spécifique** (nombre et abondance des espèces), **écosystémique** (variété des milieux). Un **écosystème** réunit une communauté d'êtres vivants (biocénose) et son milieu (biotope), reliés par des **réseaux trophiques** (flux de matière et d'énergie). L'abondance et la richesse en espèces s'étudient par des **échantillonnages**."
+      ],
+      "exemple": {
+        "titre": "Exemple : une prairie",
+        "etapes": [
+          "Producteurs : herbes.",
+          "Consommateurs : insectes, souris, renard.",
+          "Décomposeurs : champignons, bactéries."
+        ]
+      },
+      "aRetenir": "Biodiversité : gènes, espèces, écosystèmes."
+    },
+    {
+      "titre": "Impacts humains et services",
+      "niveau": "2de",
+      "paragraphes": [
+        "Les écosystèmes rendent des **services** : pollinisation, fertilité des sols, épuration de l'eau, régulation du climat. Les activités humaines (destruction d'habitats, agriculture intensive, pollutions, espèces invasives, réchauffement) réduisent la biodiversité ; le rythme d'extinction actuel est très supérieur au rythme naturel. On protège par des réserves, des corridors écologiques, des pratiques agricoles durables."
+      ],
+      "exemple": {
+        "titre": "Exemple : les pollinisateurs",
+        "etapes": [
+          "Abeilles et autres insectes.",
+          "Pollinisent une grande part des cultures.",
+          "Leur déclin menace les récoltes."
+        ]
+      },
+      "aRetenir": "Les services écosystémiques dépendent de la biodiversité."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La diversité génétique concerne…",
+        "choix": [
+          "le nombre d'habitats d'une région",
+          "la variété des allèles au sein d'une espèce",
+          "le nombre total d'espèces d'un lieu",
+          "la taille moyenne des animaux"
+        ],
+        "bonne": 1,
+        "explication": "Niveau génétique."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un réseau trophique décrit…",
+        "choix": [
+          "la succession des saisons",
+          "les relations alimentaires entre espèces",
+          "la répartition des roches du sol",
+          "les routes migratoires des oiseaux"
+        ],
+        "bonne": 1,
+        "explication": "Flux de matière et d'énergie."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un service écosystémique est…",
+        "choix": [
+          "la construction d'une route",
+          "l'extraction du pétrole",
+          "la climatisation",
+          "la pollinisation par les insectes"
+        ],
+        "bonne": 3,
+        "explication": "Bénéfice rendu par la nature."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'étang du lycée",
+    "histoire": [
+      "Le lycée étudie la mare de sa cour."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pour mesurer la richesse spécifique, on…",
+        "choix": [
+          "dessine la mare",
+          "pêche tout",
+          "échantillonne et dénombre les espèces",
+          "mesure la température seulement"
+        ],
+        "bonne": 2,
+        "explication": "Échantillonnage."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Une espèce invasive peut…",
+        "choix": [
+          "éliminer des espèces locales",
+          "toujours renforcer l'écosystème",
+          "disparaître seule",
+          "pollinise tout"
+        ],
+        "bonne": 0,
+        "explication": "Déséquilibre."
+      }
+    ],
+    "conclusion": "Bon écologue !"
+  }
+}

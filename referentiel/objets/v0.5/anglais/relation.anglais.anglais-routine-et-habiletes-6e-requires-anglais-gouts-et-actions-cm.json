@@ -1,0 +1,13 @@
+{
+  "id": "relation.anglais.anglais-routine-et-habiletes-6e-requires-anglais-gouts-et-actions-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-routine-et-habiletes-6e/contenu.json"
+  },
+  "source": "notion.anglais.anglais-routine-et-habiletes-6e",
+  "target": "notion.anglais.anglais-gouts-et-actions-cm",
+  "rationale": "Le présent simple et les goûts du CM2 sont consolidés."
+}

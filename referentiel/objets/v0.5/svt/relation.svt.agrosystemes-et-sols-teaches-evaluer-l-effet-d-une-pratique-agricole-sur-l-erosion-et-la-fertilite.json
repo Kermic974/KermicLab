@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.agrosystemes-et-sols-teaches-evaluer-l-effet-d-une-pratique-agricole-sur-l-erosion-et-la-fertilite",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/agrosystemes-et-sols/contenu.json"
+  },
+  "source": "notion.svt.agrosystemes-et-sols",
+  "target": "microskill.svt.evaluer-l-effet-d-une-pratique-agricole-sur-l-erosion-et-la-fertilite"
+}

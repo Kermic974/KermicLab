@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.arrondir-un-nombre-a-une-precision-donnee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/entiers-et-operations-6e/contenu.json"
+  },
+  "source": "microskill.mathematiques.arrondir-un-nombre-a-une-precision-donnee",
+  "target": "skill.mathematiques.entiers-et-operations-6e"
+}

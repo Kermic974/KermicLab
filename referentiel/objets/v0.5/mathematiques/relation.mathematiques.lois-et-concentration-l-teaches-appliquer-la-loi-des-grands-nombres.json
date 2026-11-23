@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.lois-et-concentration-l-teaches-appliquer-la-loi-des-grands-nombres",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lois-et-concentration-l/contenu.json"
+  },
+  "source": "notion.mathematiques.lois-et-concentration-l",
+  "target": "microskill.mathematiques.appliquer-la-loi-des-grands-nombres"
+}

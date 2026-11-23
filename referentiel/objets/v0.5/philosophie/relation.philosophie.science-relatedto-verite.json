@@ -1,0 +1,13 @@
+{
+  "id": "relation.philosophie.science-relatedto-verite",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/science/contenu.json"
+  },
+  "source": "notion.philosophie.science",
+  "target": "notion.philosophie.verite",
+  "rationale": "Lien conceptuel (relation de voisinage, sans ordre d’apprentissage) : La science est confrontée aux critères de vérité."
+}

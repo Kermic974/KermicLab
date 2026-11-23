@@ -26,9 +26,9 @@ questions:
   - je ne comprends pas la drépanocytose
   - comment une mutation crée-t-elle un nouvel allèle ?
   - what is a genetic mutation?
-prerequis:
+prerequis: expression-genetique
 niveaux: premiere
-competences: svt-mutations-et-variabilite-action-1, svt-mutations-et-variabilite-action-2
+competences: identifier-un-agent-mutagene, classer-une-mutation-selon-ses-consequences, prevoir-l-effet-d-une-substitution-ou-d-un-decalage-du-cadre-de-lecture, distinguer-mutation-somatique-et-mutation-germinale, relier-mutations-et-diversite-des-alleles
 ---
 
 # Mutations et variabilité génétique

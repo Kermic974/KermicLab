@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.discuter-un-amenagement-urbain-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/urbanisation/contenu.json"
+  },
+  "source": "microskill.geographie.discuter-un-amenagement-urbain",
+  "target": "skill.geographie.urbanisation"
+}

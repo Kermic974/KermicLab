@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "On apprend les mots de la famille, des animaux et de la classe.",
+  "niveaux": [
+    {
+      "titre": "Mots utiles",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "**Mother** (mère), **father** (père), **sister** (sœur), **brother** (frère), **grandmother**, **grandfather**. Animaux : **dog** (chien), **cat** (chat), **bird** (oiseau), **fish** (poisson), **horse** (cheval). Classe : **book**, **pen**, **bag**, **table**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "My mother.",
+          "A red bag.",
+          "A black cat."
+        ]
+      },
+      "aRetenir": "My = mon, ma, mes."
+    },
+    {
+      "titre": "Faire des phrases",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "**I have** + nom : « I have a dog. » (j'ai un chien). **It is** + adjectif : « It is big. » **I like** + nom : « I like cats. » (j'aime les chats). Pour demander : « Do you have a cat? »"
+      ],
+      "exemple": {
+        "titre": "Exemple : parler de sa famille",
+        "etapes": [
+          "I have a sister.",
+          "My sister is nine.",
+          "I like my family."
+        ]
+      },
+      "aRetenir": "I have = j'ai."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« Dog » veut dire…",
+        "choix": [
+          "poisson",
+          "chien",
+          "chat",
+          "oiseau"
+        ],
+        "bonne": 1,
+        "explication": "Chien."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment dit-on « Ma mère » ?",
+        "choix": [
+          "My mother",
+          "My father",
+          "My sister",
+          "My brother"
+        ],
+        "bonne": 0,
+        "explication": "Mother."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« I have a cat » veut dire…",
+        "choix": [
+          "je suis un chat",
+          "je vois un chat",
+          "j'aime les chats",
+          "j'ai un chat"
+        ],
+        "bonne": 3,
+        "explication": "Have = avoir."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Ma famille",
+    "histoire": [
+      "Tu présentes ta famille en anglais."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment présentes-tu ton frère ?",
+        "choix": [
+          "This is a cat.",
+          "This is a book.",
+          "This is my brother.",
+          "This is my sister."
+        ],
+        "bonne": 2,
+        "explication": "Brother."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment dis-tu « j'aime les chiens » ?",
+        "choix": [
+          "I like dogs.",
+          "I am dogs.",
+          "I have likes.",
+          "Dogs me."
+        ],
+        "bonne": 0,
+        "explication": "I like."
+      }
+    ],
+    "conclusion": "Great!"
+  }
+}

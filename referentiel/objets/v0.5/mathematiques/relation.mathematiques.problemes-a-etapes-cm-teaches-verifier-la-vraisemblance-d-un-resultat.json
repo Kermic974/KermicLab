@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.problemes-a-etapes-cm-teaches-verifier-la-vraisemblance-d-un-resultat",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/problemes-a-etapes-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.problemes-a-etapes-cm",
+  "target": "microskill.mathematiques.verifier-la-vraisemblance-d-un-resultat"
+}

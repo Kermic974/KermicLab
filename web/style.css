@@ -266,7 +266,7 @@ details.config-serveur > summary { cursor: pointer; font-weight: 700; min-height
 .salut h1 { font-size: 28px; font-weight: 760; letter-spacing: -.025em; overflow-wrap: anywhere; }
 .salut p { color: var(--doux); margin-top: 2px; }
 
-/* ---------- Espaces colorés (ADR 0038 § 4) ----------
+/* ---------- Espaces colorés (ADR 0039 § 4) ----------
    L'espace de l'écran courant est porté par <html data-espace>. Le titre de page devient un bandeau en dégradé ; le
    texte blanc garde un contraste d'au moins 4,5:1 sur les deux teintes, en thème clair comme en sombre. L'Accueil
    suit la couleur d'accent de la charte (ADR 0026), dont le contraste avec --accent-texte est déjà garanti. */

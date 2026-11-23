@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-une-fraction-d-une-quantite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fractions-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-une-fraction-d-une-quantite",
+  "target": "skill.mathematiques.fractions-cm"
+}

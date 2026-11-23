@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.classer-des-mots-par-nature-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nature-des-mots-cm/contenu.json"
+  },
+  "source": "microskill.francais.classer-des-mots-par-nature",
+  "target": "skill.francais.nature-des-mots-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.identifier-l-auteur-traditionnel-de-l-odyssee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/voyages-d-ulysse-6e/contenu.json"
+  },
+  "source": "microskill.histoire.identifier-l-auteur-traditionnel-de-l-odyssee",
+  "target": "skill.histoire.voyages-d-ulysse-6e"
+}

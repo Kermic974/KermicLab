@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.recits-d-aventures-et-voyages-c4-teaches-distinguer-narration-et-description",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/recits-d-aventures-et-voyages-c4/contenu.json"
+  },
+  "source": "notion.francais.recits-d-aventures-et-voyages-c4",
+  "target": "microskill.francais.distinguer-narration-et-description"
+}

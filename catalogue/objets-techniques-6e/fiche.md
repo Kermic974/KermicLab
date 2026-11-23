@@ -2,15 +2,10 @@
 id: objets-techniques-6e
 titre: Objets techniques, matériaux et programmation en 6e
 sujet: technologie/objets-techniques-6e
-version: 1.0.0
+version: 1.0.2
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-competences:
-  - objets-techniques-6e-comprendre
-  - objets-techniques-6e-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +21,9 @@ questions:
   - Comment fonctionne un objet technique en 6e ?
   - Comment choisir un matériau pour un objet ?
   - Qu'est-ce qu'un cahier des charges ?
+prerequis: objets-techniques-cm
+niveaux: cycle-3
+competences: distinguer-capteur-traitement-et-actionneur-dans-une-chaine-d-information, rediger-les-elements-d-un-cahier-des-charges-simple, choisir-un-materiau-selon-ses-proprietes, relier-un-besoin-une-fonction-et-une-solution-technique
 ---
 
 # Objets techniques, matériaux et programmation en 6e

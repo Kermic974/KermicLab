@@ -1,0 +1,108 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Soustraire, c'est enlever une quantité, ou chercher ce qui manque, ou comparer.",
+  "niveaux": [
+    {
+      "titre": "Enlever",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "J'ai 9 bonbons et j'en mange 4 : il m'en reste 9 − 4 = 5. Le signe **−** veut dire « moins ». Le résultat s'appelle la **différence**.",
+        "On peut aussi chercher **ce qui manque** : pour aller de 6 à 10, il manque 4, donc 10 − 6 = 4."
+      ],
+      "exemple": {
+        "titre": "Exemple : 15 − 8",
+        "etapes": [
+          "15 − 5 = 10.",
+          "Il reste 3 à enlever : 10 − 3 = 7.",
+          "15 − 8 = 7."
+        ]
+      },
+      "aRetenir": "Soustraire : enlever ou chercher ce qui manque."
+    },
+    {
+      "titre": "La soustraction posée",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "On écrit le plus grand nombre en haut. On soustrait de droite à gauche. Si le chiffre du haut est plus petit, on utilise une dizaine.",
+        "On vérifie avec une addition : si 52 − 27 = 25, alors 25 + 27 = 52."
+      ],
+      "exemple": {
+        "titre": "Exemple : 52 − 27",
+        "etapes": [
+          "Unités : 2 − 7 impossible, on prend 12 − 7 = 5.",
+          "Dizaines : 5 − 1 − 2 = 2.",
+          "Résultat 25. Preuve : 25 + 27 = 52."
+        ]
+      },
+      "aRetenir": "On vérifie avec une addition."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "9 − 4 = ?",
+        "reponse": 5,
+        "indices": [
+          "Enlève 4 à 9."
+        ],
+        "solution": "9 − 4 = 5.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "15 − 8 = ?",
+        "reponse": 7,
+        "indices": [
+          "Passe par 10."
+        ],
+        "solution": "15 − 5 = 10 puis 10 − 3 = 7.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "nombre",
+        "question": "52 − 27 = ?",
+        "reponse": 25,
+        "indices": [
+          "Vérifie : 25 + 27."
+        ],
+        "solution": "12 − 7 = 5 ; 5 − 1 − 2 = 2 : 25.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le goûter",
+    "histoire": [
+      "Tu as 24 biscuits. Tu en donnes 9 à tes amis."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Combien de biscuits te reste-t-il ?",
+        "reponse": 15,
+        "indices": [
+          "24 − 4 = 20, puis 20 − 5 = 15."
+        ],
+        "solution": "24 − 9 = 15.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Il t'en manque combien pour avoir 20 biscuits ?",
+        "reponse": 5,
+        "indices": [
+          "Cherche ce qui manque."
+        ],
+        "solution": "20 − 15 = 5.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bien soustrait !"
+  }
+}

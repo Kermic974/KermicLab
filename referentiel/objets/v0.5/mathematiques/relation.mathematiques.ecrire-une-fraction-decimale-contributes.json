@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.ecrire-une-fraction-decimale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fractions-operations-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.ecrire-une-fraction-decimale",
+  "target": "skill.mathematiques.fractions-operations-cm"
+}

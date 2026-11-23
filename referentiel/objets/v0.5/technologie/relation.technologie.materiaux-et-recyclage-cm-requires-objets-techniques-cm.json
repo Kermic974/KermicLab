@@ -1,0 +1,13 @@
+{
+  "id": "relation.technologie.materiaux-et-recyclage-cm-requires-objets-techniques-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/materiaux-et-recyclage-cm/contenu.json"
+  },
+  "source": "notion.technologie.materiaux-et-recyclage-cm",
+  "target": "notion.technologie.objets-techniques-cm",
+  "rationale": "Le cycle de vie et le choix des matériaux prolongent l’analyse d’un objet technique."
+}

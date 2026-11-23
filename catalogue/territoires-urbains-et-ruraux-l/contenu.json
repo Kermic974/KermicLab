@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Villes et campagnes sont liées par les mobilités, les emplois et les réseaux ; leurs dynamiques créent des inégalités territoriales.",
+  "niveaux": [
+    {
+      "titre": "Villes et métropolisation",
+      "niveau": "2de",
+      "paragraphes": [
+        "La **métropolisation** concentre population, emplois qualifiés et fonctions de commandement dans de grandes villes bien connectées. La ville s'étend par **étalement urbain** (périurbanisation), ce qui augmente les déplacements et consomme des terres agricoles. La **ville durable** cherche à densifier, à développer les transports collectifs et à végétaliser."
+      ],
+      "exemple": {
+        "titre": "Exemple : Lyon",
+        "etapes": [
+          "Centre dense, banlieues, couronne périurbaine.",
+          "Pôle d'emplois et de services.",
+          "Mobilités domicile-travail."
+        ]
+      },
+      "aRetenir": "Métropolisation : concentration."
+    },
+    {
+      "titre": "Espaces ruraux et réseaux",
+      "niveau": "2de",
+      "paragraphes": [
+        "Les **espaces ruraux** sont diversifiés : ruraux **périurbains** (proches des villes), **ruraux attractifs** (tourisme, cadre de vie), **ruraux isolés** (déclin, désertification médicale). Ils évoluent par l'agriculture, les services, le numérique. Les **réseaux** (routes, TGV, fibre) connectent les territoires mais laissent des **fractures** (zones blanches)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un village à 30 min d'une métropole attire de nouveaux habitants.",
+          "Télétravail et fibre.",
+          "Défis : services et transports."
+        ]
+      },
+      "aRetenir": "Réseaux : connexion et inégalités."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "L'étalement urbain désigne…",
+        "choix": [
+          "l'arrivée du TGV dans la gare centrale",
+          "l'extension de la ville en périphérie",
+          "la hausse générale des loyers",
+          "le recul du trait de côte"
+        ],
+        "bonne": 1,
+        "explication": "Périurbanisation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La métropolisation correspond à…",
+        "choix": [
+          "l'abandon progressif des transports",
+          "la fin du commerce international",
+          "la concentration des pouvoirs dans les grandes villes",
+          "la fermeture générale des villes"
+        ],
+        "bonne": 2,
+        "explication": "Concentration."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Une zone blanche est…",
+        "choix": [
+          "un territoire sans couverture réseau",
+          "une zone enneigée toute l'année",
+          "un parc national protégé",
+          "un quartier historique classé"
+        ],
+        "bonne": 0,
+        "explication": "Fracture numérique."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le village connecté",
+    "histoire": [
+      "Un village veut attirer des télétravailleurs."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel équipement est décisif ?",
+        "choix": [
+          "un cinéma de quartier",
+          "une grande usine",
+          "un aéroport régional",
+          "la fibre optique"
+        ],
+        "bonne": 3,
+        "explication": "Numérique."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le périurbain dépend souvent…",
+        "choix": [
+          "de la montagne et de ses sommets",
+          "de la voiture et des trajets vers la ville",
+          "de l'absence totale de routes",
+          "de la mer et de ses ports"
+        ],
+        "bonne": 1,
+        "explication": "Mobilités."
+      }
+    ],
+    "conclusion": "Territoire attractif !"
+  }
+}

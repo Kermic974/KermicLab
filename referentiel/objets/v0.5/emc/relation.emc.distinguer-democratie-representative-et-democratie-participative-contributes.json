@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-democratie-representative-et-democratie-participative-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/democratie/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-democratie-representative-et-democratie-participative",
+  "target": "skill.emc.democratie"
+}

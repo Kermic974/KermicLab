@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.identifier-les-recours-contre-le-harcelement-et-la-discrimination-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-egalite-et-lutte-discriminations-l/contenu.json"
+  },
+  "source": "microskill.emc.identifier-les-recours-contre-le-harcelement-et-la-discrimination",
+  "target": "skill.emc.emc-egalite-et-lutte-discriminations-l"
+}

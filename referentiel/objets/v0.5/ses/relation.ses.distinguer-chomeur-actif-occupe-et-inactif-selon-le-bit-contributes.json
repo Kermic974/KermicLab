@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.distinguer-chomeur-actif-occupe-et-inactif-selon-le-bit-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/chomage/contenu.json"
+  },
+  "source": "microskill.ses.distinguer-chomeur-actif-occupe-et-inactif-selon-le-bit",
+  "target": "skill.ses.chomage"
+}

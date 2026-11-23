@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.quantite-de-matiere-requires-masse-volumique-et-melanges",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/quantite-de-matiere/contenu.json"
+  },
+  "source": "notion.physique-chimie.quantite-de-matiere",
+  "target": "notion.physique-chimie.masse-volumique-et-melanges",
+  "rationale": "La concentration en quantité de matière prolonge la notion de solution et de soluté vue avec la concentration en masse (sections « Les solutions », « La concentration »)."
+}

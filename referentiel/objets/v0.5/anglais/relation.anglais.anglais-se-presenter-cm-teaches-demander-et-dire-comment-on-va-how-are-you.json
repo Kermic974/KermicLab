@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.anglais-se-presenter-cm-teaches-demander-et-dire-comment-on-va-how-are-you",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-se-presenter-cm/contenu.json"
+  },
+  "source": "notion.anglais.anglais-se-presenter-cm",
+  "target": "microskill.anglais.demander-et-dire-comment-on-va-how-are-you"
+}

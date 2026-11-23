@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.distinguer-centre-banlieue-et-couronne-periurbaine-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/urbanisation/contenu.json"
+  },
+  "source": "microskill.geographie.distinguer-centre-banlieue-et-couronne-periurbaine",
+  "target": "skill.geographie.urbanisation"
+}

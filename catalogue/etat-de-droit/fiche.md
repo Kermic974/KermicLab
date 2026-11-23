@@ -14,10 +14,10 @@ questions:
   - c'est quoi l'État de droit ?
   - Comment l'État de droit limite-t-il le pouvoir ?
   - what is the rule of law?
-prerequis:
-niveaux: cycle-4
 classes: 4e
-competences: emc-etat-de-droit-action-1, emc-etat-de-droit-action-2
+prerequis: droits-de-lhomme, droit-et-regle-6e
+niveaux: cycle-4
+competences: expliquer-la-soumission-des-gouvernants-au-droit, identifier-la-hierarchie-des-normes, identifier-un-controle-contre-une-decision-publique-illegale, distinguer-abondance-de-lois-et-etat-de-droit
 ---
 
 # L'État de droit

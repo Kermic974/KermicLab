@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.mobilites-teaches-evaluer-une-transition-des-deplacements",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mobilites/contenu.json"
+  },
+  "source": "notion.geographie.mobilites",
+  "target": "microskill.geographie.evaluer-une-transition-des-deplacements"
+}

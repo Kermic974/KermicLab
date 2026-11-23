@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.droits-de-lhomme-teaches-expliquer-les-garanties-juridiques-des-droits",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droits-de-lhomme/contenu.json"
+  },
+  "source": "notion.emc.droits-de-lhomme",
+  "target": "microskill.emc.expliquer-les-garanties-juridiques-des-droits"
+}

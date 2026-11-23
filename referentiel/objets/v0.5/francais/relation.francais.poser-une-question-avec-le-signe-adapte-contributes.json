@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.poser-une-question-avec-le-signe-adapte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/la-phrase-c2/contenu.json"
+  },
+  "source": "microskill.francais.poser-une-question-avec-le-signe-adapte",
+  "target": "skill.francais.la-phrase-c2"
+}

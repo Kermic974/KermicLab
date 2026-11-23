@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.marquer-le-genre-d-un-nom-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/noms-et-determinants-c2/contenu.json"
+  },
+  "source": "microskill.francais.marquer-le-genre-d-un-nom",
+  "target": "skill.francais.noms-et-determinants-c2"
+}

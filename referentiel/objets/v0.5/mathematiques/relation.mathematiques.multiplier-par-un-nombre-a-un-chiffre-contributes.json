@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.multiplier-par-un-nombre-a-un-chiffre-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/multiplication-posee-ce2-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.multiplier-par-un-nombre-a-un-chiffre",
+  "target": "skill.mathematiques.multiplication-posee-ce2-c2"
+}

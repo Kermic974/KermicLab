@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.distinguer-les-formes-de-monnaie-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monnaie/contenu.json"
+  },
+  "source": "microskill.ses.distinguer-les-formes-de-monnaie",
+  "target": "skill.ses.monnaie"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.choisir-un-mot-de-passe-solide-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/numerique-responsable-cm/contenu.json"
+  },
+  "source": "microskill.emc.choisir-un-mot-de-passe-solide",
+  "target": "skill.emc.numerique-responsable-cm"
+}

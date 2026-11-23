@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.perimetre-aire-cm-teaches-calculer-l-aire-d-un-carre-ou-d-un-rectangle",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/perimetre-aire-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.perimetre-aire-cm",
+  "target": "microskill.mathematiques.calculer-l-aire-d-un-carre-ou-d-un-rectangle"
+}

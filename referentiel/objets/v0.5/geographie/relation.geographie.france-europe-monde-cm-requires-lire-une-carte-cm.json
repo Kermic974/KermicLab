@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.france-europe-monde-cm-requires-lire-une-carte-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-europe-monde-cm/contenu.json"
+  },
+  "source": "notion.geographie.france-europe-monde-cm",
+  "target": "notion.geographie.lire-une-carte-cm",
+  "rationale": "« Lire une carte et se repérer » : La France dans le monde suppose de se repérer sur la planète et sur des cartes."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.ecrire-et-reecrire-c4-requires-ecrire-pour-raconter-et-decrire-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecrire-et-reecrire-c4/contenu.json"
+  },
+  "source": "notion.francais.ecrire-et-reecrire-c4",
+  "target": "notion.francais.ecrire-pour-raconter-et-decrire-6e",
+  "rationale": "« Écrire pour raconter, décrire et exprimer en 6e » : L’argumentation écrite prolonge les écrits de 6e (raconter, décrire, exprimer)."
+}

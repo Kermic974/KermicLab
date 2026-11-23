@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.question-demographique-c4-requires-habiter-la-terre-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/question-demographique-c4/contenu.json"
+  },
+  "source": "notion.geographie.question-demographique-c4",
+  "target": "notion.geographie.habiter-la-terre-6e",
+  "rationale": "« Habiter la Terre : répartition et inégalités » : La question démographique s’appuie sur la répartition de la population."
+}

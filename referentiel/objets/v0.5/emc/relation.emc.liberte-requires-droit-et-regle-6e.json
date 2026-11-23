@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.liberte-requires-droit-et-regle-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/liberte/contenu.json"
+  },
+  "source": "notion.emc.liberte",
+  "target": "notion.emc.droit-et-regle-6e",
+  "rationale": "« Le droit et la règle : lois, règlement, justice » : La loi encadre les libertés : règle et loi de 6e précèdent l’encadrement des restrictions."
+}

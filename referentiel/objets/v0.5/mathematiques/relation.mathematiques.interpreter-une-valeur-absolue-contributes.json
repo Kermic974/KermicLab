@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.interpreter-une-valeur-absolue-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/inequations-et-signe-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.interpreter-une-valeur-absolue",
+  "target": "skill.mathematiques.inequations-et-signe-l"
+}

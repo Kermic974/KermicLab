@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.vocabulaire-cm-teaches-trouver-un-antonyme",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vocabulaire-cm/contenu.json"
+  },
+  "source": "notion.francais.vocabulaire-cm",
+  "target": "microskill.francais.trouver-un-antonyme"
+}

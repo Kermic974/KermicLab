@@ -19,10 +19,10 @@ questions:
   - Comment faire l'accord de l'adjectif dans « des fleurs rouges » ?
   - Comment appliquer l'accord du participe passé avec être ?
   - Comment retrouver le sujet pour l'accord sujet-verbe ?
-prerequis:
-niveaux: cycle-4
 classes: 5e, 4e
-competences: francais-accords-action-1, francais-accords-action-2
+prerequis: conjugaison-temps, orthographe-grammaticale-6e
+niveaux: cycle-4
+competences: accorder-un-nom-un-determinant-et-un-adjectif, accorder-le-verbe-avec-son-sujet, accorder-le-participe-passe-employe-avec-etre, accorder-le-participe-passe-employe-avec-avoir, reperer-une-erreur-d-accord-dans-un-texte
 ---
 
 # Les accords dans la phrase

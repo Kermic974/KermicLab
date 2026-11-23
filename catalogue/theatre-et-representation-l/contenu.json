@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Le théâtre est un texte destiné à être joué : le lycée étudie le genre, ses codes et leurs transformations.",
+  "niveaux": [
+    {
+      "titre": "Genres et codes",
+      "niveau": "2de",
+      "paragraphes": [
+        "La **tragédie** (Racine, Corneille) : personnages nobles, conflit tragique, mort, règle des **trois unités** (temps, lieu, action), **bienséance** et **vraisemblance**. La **comédie** (Molière) : corriger les mœurs en riant (« castigat ridendo mores »), types, quiproquos. Le **drame romantique** (Hugo) mêle le sublime et le grotesque. Le **théâtre de l'absurde** (Ionesco, Beckett) interroge le langage et la condition humaine."
+      ],
+      "exemple": {
+        "titre": "Exemple : Tartuffe",
+        "etapes": [
+          "Un faux dévot manipule une famille.",
+          "Molière critique l'hypocrisie.",
+          "La comédie corrige les vices en riant."
+        ]
+      },
+      "aRetenir": "Trois unités : temps, lieu, action."
+    },
+    {
+      "titre": "Lire et mettre en scène",
+      "niveau": "1re",
+      "paragraphes": [
+        "Le texte théâtral comprend **répliques** et **didascalies**. La **double énonciation** : les personnages se parlent, mais l'auteur s'adresse aussi au public. Les **monologues** et **apartés** donnent à connaître les pensées. La **mise en scène** (décor, jeu, lumière, costumes) offre une interprétation du texte : une même pièce change de sens selon les choix du metteur en scène."
+      ],
+      "exemple": {
+        "titre": "Exemple : un aparté",
+        "etapes": [
+          "Un personnage parle au public.",
+          "Les autres ne l'entendent pas.",
+          "Le spectateur sait plus que les personnages."
+        ]
+      },
+      "aRetenir": "Double énonciation : personnages + public."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La règle des trois unités concerne…",
+        "choix": [
+          "le temps, le lieu et l'action",
+          "le nombre d'actes de la pièce",
+          "les personnages principaux",
+          "la longueur des vers"
+        ],
+        "bonne": 0,
+        "explication": "Théâtre classique."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Les didascalies sont…",
+        "choix": [
+          "les rimes de la tirade",
+          "les indications de jeu et de décor",
+          "les répliques des personnages",
+          "les titres des actes"
+        ],
+        "bonne": 1,
+        "explication": "Texte non dit."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Le théâtre de l'absurde met en cause…",
+        "choix": [
+          "le langage et le sens de l'existence",
+          "les trois unités du théâtre classique",
+          "le public seulement et sa place",
+          "la comédie classique de Molière"
+        ],
+        "bonne": 0,
+        "explication": "Ionesco, Beckett."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La mise en scène",
+    "histoire": [
+      "Tu compares deux mises en scène d'Antigone."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fait une mise en scène ?",
+        "choix": [
+          "elle fixe les rimes",
+          "elle propose une interprétation du texte",
+          "elle change le texte obligatoire",
+          "elle supprime les acteurs"
+        ],
+        "bonne": 1,
+        "explication": "Interprétation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pourquoi une pièce du XVIIe siècle reste-t-elle jouée ?",
+        "choix": [
+          "elle parle de passions et de conflits universels",
+          "elle est très courte à jouer",
+          "elle est facile à mettre en scène",
+          "elle n'a aucun personnage"
+        ],
+        "bonne": 0,
+        "explication": "Universalité."
+      }
+    ],
+    "conclusion": "Bon spectateur !"
+  }
+}

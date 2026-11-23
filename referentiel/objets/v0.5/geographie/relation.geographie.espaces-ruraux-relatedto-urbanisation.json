@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.espaces-ruraux-relatedto-urbanisation",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/espaces-ruraux/contenu.json"
+  },
+  "source": "notion.geographie.espaces-ruraux",
+  "target": "notion.geographie.urbanisation",
+  "rationale": "Les interactions ville-campagne se lisent ensemble ; aucune n’est préalable à l’autre."
+}

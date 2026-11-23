@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.construire-une-chaine-ou-un-reseau-alimentaire-a-partir-d-observations-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecosystemes-et-biodiversite/contenu.json"
+  },
+  "source": "microskill.svt.construire-une-chaine-ou-un-reseau-alimentaire-a-partir-d-observations",
+  "target": "skill.svt.ecosystemes-et-biodiversite"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.relier-alimentation-et-diversite-du-microbiote-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/microbiote-et-sante-l/contenu.json"
+  },
+  "source": "microskill.svt.relier-alimentation-et-diversite-du-microbiote",
+  "target": "skill.svt.microbiote-et-sante-l"
+}

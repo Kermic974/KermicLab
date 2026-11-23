@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.expliquer-le-role-du-dns-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/snt-internet-et-reseaux-l/contenu.json"
+  },
+  "source": "microskill.technologie.expliquer-le-role-du-dns",
+  "target": "skill.technologie.snt-internet-et-reseaux-l"
+}

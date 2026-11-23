@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.emc-democratie-et-institutions-l-teaches-expliquer-le-fonctionnement-d-un-referendum",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-democratie-et-institutions-l/contenu.json"
+  },
+  "source": "notion.emc.emc-democratie-et-institutions-l",
+  "target": "microskill.emc.expliquer-le-fonctionnement-d-un-referendum"
+}

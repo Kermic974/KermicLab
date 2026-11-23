@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-un-son-dans-un-mot-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lettres-et-sons-c2/contenu.json"
+  },
+  "source": "microskill.francais.identifier-un-son-dans-un-mot",
+  "target": "skill.francais.lettres-et-sons-c2"
+}

@@ -25,10 +25,10 @@ questions:
   - je ne comprends pas la différence entre acide et basique
   - c'est quoi un pKa ?
   - what is an acid?
-prerequis:
-niveaux: cycle-4, seconde, premiere, terminale
 classes: 3e
-competences: pc-acides-et-bases-action-1, pc-acides-et-bases-action-2
+prerequis: atomes-et-molecules, transformations-chimiques-c4
+niveaux: cycle-4, seconde, premiere, terminale
+competences: classer-une-solution-sur-l-echelle-de-ph, identifier-les-especes-d-une-solution-acide-ou-basique, calculer-le-ph-depuis-la-concentration-en-ions-h3o, interpreter-l-effet-d-une-dilution-sur-le-ph, exploiter-un-couple-acide-base-et-son-pka
 ---
 
 # Acides, bases et pH

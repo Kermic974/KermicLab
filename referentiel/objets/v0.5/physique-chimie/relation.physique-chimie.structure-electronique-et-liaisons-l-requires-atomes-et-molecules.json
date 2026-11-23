@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.structure-electronique-et-liaisons-l-requires-atomes-et-molecules",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/structure-electronique-et-liaisons-l/contenu.json"
+  },
+  "source": "notion.physique-chimie.structure-electronique-et-liaisons-l",
+  "target": "notion.physique-chimie.atomes-et-molecules",
+  "rationale": "« Atomes, molécules et transformations chimiques » : La structure électronique s’appuie sur les atomes et le tableau périodique."
+}

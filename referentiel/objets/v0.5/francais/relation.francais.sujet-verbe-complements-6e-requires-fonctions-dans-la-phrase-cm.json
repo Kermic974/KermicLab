@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.sujet-verbe-complements-6e-requires-fonctions-dans-la-phrase-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/sujet-verbe-complements-6e/contenu.json"
+  },
+  "source": "notion.francais.sujet-verbe-complements-6e",
+  "target": "notion.francais.fonctions-dans-la-phrase-cm",
+  "rationale": "« Les fonctions dans la phrase » : Sujet et compléments de 6e reprennent les fonctions du CM."
+}

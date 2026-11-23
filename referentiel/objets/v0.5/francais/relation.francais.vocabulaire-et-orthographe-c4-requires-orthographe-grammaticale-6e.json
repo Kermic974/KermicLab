@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.vocabulaire-et-orthographe-c4-requires-orthographe-grammaticale-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vocabulaire-et-orthographe-c4/contenu.json"
+  },
+  "source": "notion.francais.vocabulaire-et-orthographe-c4",
+  "target": "notion.francais.orthographe-grammaticale-6e",
+  "rationale": "« Accords et orthographe grammaticale en 6e » : Le vocabulaire et l’orthographe du collège reprennent l’étymologie et l’orthographe grammaticale de 6e."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.identifier-les-atouts-et-les-contraintes-d-un-littoral-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-6e/contenu.json"
+  },
+  "source": "microskill.geographie.identifier-les-atouts-et-les-contraintes-d-un-littoral",
+  "target": "skill.geographie.habiter-6e"
+}

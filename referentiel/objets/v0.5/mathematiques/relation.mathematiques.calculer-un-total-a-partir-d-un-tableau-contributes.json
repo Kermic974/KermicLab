@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-un-total-a-partir-d-un-tableau-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tableaux-et-algorithmes-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-un-total-a-partir-d-un-tableau",
+  "target": "skill.mathematiques.tableaux-et-algorithmes-c2"
+}

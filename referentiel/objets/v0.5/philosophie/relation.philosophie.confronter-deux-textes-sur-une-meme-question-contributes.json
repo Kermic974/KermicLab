@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.confronter-deux-textes-sur-une-meme-question-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/hlp-humanites-litterature-et-philosophie-l/contenu.json"
+  },
+  "source": "microskill.philosophie.confronter-deux-textes-sur-une-meme-question",
+  "target": "skill.philosophie.hlp-humanites-litterature-et-philosophie-l"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.acides-et-bases-requires-transformations-chimiques-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/acides-et-bases/contenu.json"
+  },
+  "source": "notion.physique-chimie.acides-et-bases",
+  "target": "notion.physique-chimie.transformations-chimiques-c4",
+  "rationale": "« Transformations chimiques et réactions » : Les ions, les réactifs et les produits précèdent l’étude des acides et des bases."
+}

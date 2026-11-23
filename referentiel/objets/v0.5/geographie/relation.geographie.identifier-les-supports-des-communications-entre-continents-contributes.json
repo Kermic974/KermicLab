@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.identifier-les-supports-des-communications-entre-continents-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/communiquer-numerique-cm/contenu.json"
+  },
+  "source": "microskill.geographie.identifier-les-supports-des-communications-entre-continents",
+  "target": "skill.geographie.communiquer-numerique-cm"
+}

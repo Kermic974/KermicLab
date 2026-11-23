@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.distinguer-reactifs-et-produits-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/transformations-chimiques-c4/contenu.json"
+  },
+  "source": "microskill.physique-chimie.distinguer-reactifs-et-produits",
+  "target": "skill.physique-chimie.transformations-chimiques-c4"
+}

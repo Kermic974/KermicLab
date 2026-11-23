@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.utiliser-la-configuration-electronique-pour-situer-un-element-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tableau-periodique/contenu.json"
+  },
+  "source": "microskill.physique-chimie.utiliser-la-configuration-electronique-pour-situer-un-element",
+  "target": "skill.physique-chimie.tableau-periodique"
+}

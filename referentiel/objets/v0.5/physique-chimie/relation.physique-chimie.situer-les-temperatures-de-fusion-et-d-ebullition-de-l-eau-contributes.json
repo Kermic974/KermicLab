@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.situer-les-temperatures-de-fusion-et-d-ebullition-de-l-eau-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etats-et-changements-cm/contenu.json"
+  },
+  "source": "microskill.physique-chimie.situer-les-temperatures-de-fusion-et-d-ebullition-de-l-eau",
+  "target": "skill.physique-chimie.etats-et-changements-cm"
+}

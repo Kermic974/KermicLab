@@ -49,12 +49,12 @@
         "titre": "Exercice 1",
         "question": "Où Clovis se fait-il baptiser ?",
         "choix": [
-          "À Reims",
-          "À Paris",
           "À Rome",
-          "À Lyon"
+          "À Lyon",
+          "À Reims",
+          "À Paris"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Le baptême a lieu à Reims."
       },
       {
@@ -72,12 +72,12 @@
         "titre": "Exercice 3",
         "question": "Quel est le rôle des missi dominici ?",
         "choix": [
-          "Contrôler les comtes",
-          "Construire des écoles",
           "Commander l'armée",
-          "Chanter à la messe"
+          "Chanter à la messe",
+          "Contrôler les comtes",
+          "Construire des écoles"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Ce sont des inspecteurs envoyés par l'empereur."
       }
     ]
@@ -93,12 +93,12 @@
         "titre": "Exercice 1",
         "question": "Que viens-tu d'apprendre à l'école ?",
         "choix": [
+          "À imprimer",
           "À lire et à écrire en latin",
           "À utiliser un ordinateur",
-          "À conduire",
-          "À imprimer"
+          "À conduire"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Charlemagne encourage les écoles et l'écriture."
       },
       {
@@ -106,12 +106,12 @@
         "titre": "Exercice 2",
         "question": "Qui a couronné Charlemagne empereur ?",
         "choix": [
+          "Louis XIV",
           "Le pape Léon III",
           "Clovis",
-          "Vercingétorix",
-          "Louis XIV"
+          "Vercingétorix"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Le pape, à Rome, le 25 décembre 800."
       }
     ],

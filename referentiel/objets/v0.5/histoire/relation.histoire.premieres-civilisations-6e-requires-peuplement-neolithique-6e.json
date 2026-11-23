@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.premieres-civilisations-6e-requires-peuplement-neolithique-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/premieres-civilisations-6e/contenu.json"
+  },
+  "source": "notion.histoire.premieres-civilisations-6e",
+  "target": "notion.histoire.peuplement-neolithique-6e",
+  "rationale": "« Les débuts de l'humanité et le Néolithique » : Les premiers États succèdent à la révolution néolithique."
+}

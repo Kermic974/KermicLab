@@ -1,0 +1,111 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Au CE2, on compte avec des milliers : 1 000, 2 000, jusqu'à 9 999 et plus.",
+  "niveaux": [
+    {
+      "titre": "Les milliers",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dix centaines font un **millier** : 1 000. Un nombre à quatre chiffres a des milliers, des centaines, des dizaines et des unités.",
+        "Dans 3 482 : 3 milliers, 4 centaines, 8 dizaines, 2 unités."
+      ],
+      "exemple": {
+        "titre": "Exemple : 5 207",
+        "etapes": [
+          "5 milliers = 5 000.",
+          "2 centaines = 200.",
+          "0 dizaine, 7 unités : 5 000 + 200 + 7."
+        ]
+      },
+      "aRetenir": "1 000 = 10 centaines."
+    },
+    {
+      "titre": "Lire, décomposer, comparer",
+      "niveau": "CE2",
+      "paragraphes": [
+        "On lit 3 482 « trois mille quatre cent quatre-vingt-deux ». On peut décomposer : 3 482 = 3 000 + 400 + 80 + 2.",
+        "Pour comparer, on regarde les milliers d'abord, puis les centaines… : 6 100 > 5 999."
+      ],
+      "exemple": {
+        "titre": "Exemple : comparer 4 905 et 4 950",
+        "etapes": [
+          "Même nombre de milliers (4) et de centaines (9).",
+          "Dizaines : 0 contre 5.",
+          "Donc 4 905 < 4 950."
+        ]
+      },
+      "aRetenir": "On compare de gauche à droite."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien y a-t-il de milliers dans 3 482 ?",
+        "reponse": 3,
+        "indices": [
+          "Regarde le chiffre de gauche."
+        ],
+        "solution": "3 milliers, 4 centaines, 8 dizaines, 2 unités.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "3 000 + 400 + 80 + 2 = ?",
+        "reponse": 3482,
+        "indices": [
+          "Place chaque chiffre à son rang."
+        ],
+        "solution": "On écrit chaque rang : 3 482.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel nombre est le plus grand ?",
+        "choix": [
+          "999",
+          "6 100",
+          "5 999",
+          "5 099"
+        ],
+        "bonne": 1,
+        "explication": "6 milliers > 5 milliers."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le stade de foot",
+    "histoire": [
+      "Un stade a 4 500 places assises et 2 300 places debout."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Combien de places en tout ?",
+        "reponse": 6800,
+        "indices": [
+          "Additionne les milliers puis les centaines."
+        ],
+        "solution": "4 500 + 2 300 = 6 800.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de places assises en plus que debout ?",
+        "reponse": 2200,
+        "indices": [
+          "Soustrais."
+        ],
+        "solution": "4 500 − 2 300 = 2 200.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bien compté !"
+  }
+}

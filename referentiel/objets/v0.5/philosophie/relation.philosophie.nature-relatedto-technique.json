@@ -1,0 +1,13 @@
+{
+  "id": "relation.philosophie.nature-relatedto-technique",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nature/contenu.json"
+  },
+  "source": "notion.philosophie.nature",
+  "target": "notion.philosophie.technique",
+  "rationale": "Lien conceptuel (relation de voisinage, sans ordre d’apprentissage) : L’opposition entre nature et artifice rapproche les deux notions."
+}

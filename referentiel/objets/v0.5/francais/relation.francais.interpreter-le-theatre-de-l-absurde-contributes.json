@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.interpreter-le-theatre-de-l-absurde-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/theatre-et-representation-l/contenu.json"
+  },
+  "source": "microskill.francais.interpreter-le-theatre-de-l-absurde",
+  "target": "skill.francais.theatre-et-representation-l"
+}

@@ -2,15 +2,10 @@
 id: pronoms-et-reprises-cm
 titre: Pronoms, reprises et cohérence d'un texte
 sujet: francais/pronoms-et-reprises-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-competences:
-  - pronoms-et-reprises-cm-comprendre
-  - pronoms-et-reprises-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +20,9 @@ questions:
   - Comment éviter les répétitions dans un texte ?
   - À quoi servent les pronoms ?
   - Quels sont les connecteurs logiques ?
+prerequis: nature-des-mots-cm
+niveaux: cycle-3
+competences: identifier-le-mot-repris-par-un-pronom, relier-deux-phrases-par-un-connecteur-de-cause, eviter-les-repetitions-avec-un-pronom, assurer-la-coherence-d-un-texte
 ---
 
 # Pronoms, reprises et cohérence d'un texte

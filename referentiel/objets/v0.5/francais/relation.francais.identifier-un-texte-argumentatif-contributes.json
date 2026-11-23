@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-un-texte-argumentatif-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/types-de-textes-cm/contenu.json"
+  },
+  "source": "microskill.francais.identifier-un-texte-argumentatif",
+  "target": "skill.francais.types-de-textes-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.relier-combustion-des-fossiles-et-co-atmospherique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/photosynthese-et-productivite-l/contenu.json"
+  },
+  "source": "microskill.svt.relier-combustion-des-fossiles-et-co-atmospherique",
+  "target": "skill.svt.photosynthese-et-productivite-l"
+}

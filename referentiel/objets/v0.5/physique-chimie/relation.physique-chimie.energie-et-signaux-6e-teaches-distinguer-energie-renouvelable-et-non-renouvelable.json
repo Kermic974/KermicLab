@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.energie-et-signaux-6e-teaches-distinguer-energie-renouvelable-et-non-renouvelable",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie-et-signaux-6e/contenu.json"
+  },
+  "source": "notion.physique-chimie.energie-et-signaux-6e",
+  "target": "microskill.physique-chimie.distinguer-energie-renouvelable-et-non-renouvelable"
+}

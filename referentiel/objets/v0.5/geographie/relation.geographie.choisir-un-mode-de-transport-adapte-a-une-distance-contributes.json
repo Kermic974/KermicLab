@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.choisir-un-mode-de-transport-adapte-a-une-distance-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/se-deplacer-transports-cm/contenu.json"
+  },
+  "source": "microskill.geographie.choisir-un-mode-de-transport-adapte-a-une-distance",
+  "target": "skill.geographie.se-deplacer-transports-cm"
+}

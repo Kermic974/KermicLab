@@ -2,15 +2,10 @@
 id: divisions-6e
 titre: Divisions et multiples en 6e
 sujet: mathematiques/divisions-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-competences:
-  - divisions-6e-comprendre
-  - divisions-6e-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -25,6 +20,9 @@ questions:
   - Comment poser une division décimale en 6e ?
   - Comment reconnaître un multiple en 6e ?
   - Comment poursuivre une division après la virgule ?
+prerequis: entiers-et-operations-6e, multiples-et-diviseurs-cm
+niveaux: cycle-3
+competences: calculer-un-quotient-decimal, utiliser-les-criteres-de-divisibilite-en-6e, arrondir-un-quotient, distinguer-quotient-exact-et-approche
 ---
 
 # Divisions et multiples en 6e

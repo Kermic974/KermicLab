@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.trigonometrie-radian-l-teaches-utiliser-les-valeurs-remarquables-de-cosinus-et-sinus",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/trigonometrie-radian-l/contenu.json"
+  },
+  "source": "notion.mathematiques.trigonometrie-radian-l",
+  "target": "microskill.mathematiques.utiliser-les-valeurs-remarquables-de-cosinus-et-sinus"
+}

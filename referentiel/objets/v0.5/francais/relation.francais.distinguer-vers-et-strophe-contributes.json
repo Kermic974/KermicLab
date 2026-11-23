@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.distinguer-vers-et-strophe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie-cm/contenu.json"
+  },
+  "source": "microskill.francais.distinguer-vers-et-strophe",
+  "target": "skill.francais.poesie-cm"
+}

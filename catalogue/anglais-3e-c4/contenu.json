@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "En 3e, on exprime des hypothèses, on met en valeur l'action (passif) et on donne son opinion.",
+  "niveaux": [
+    {
+      "titre": "Hypothèses et passif",
+      "niveau": "3e",
+      "paragraphes": [
+        "**Hypothèse** : If + présent, will + base verbale (réel : « If it rains, I will stay home ») ; If + prétérit, **would** + base verbale (irréel : « If I were rich, I would travel »). **Voix passive** : **be + participe passé** : « The film was directed by X. » « English is spoken all over the world. » On l'emploie quand l'action compte plus que l'auteur."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "If I had time, I would help you.",
+          "The letter was written yesterday.",
+          "Many languages are spoken in India."
+        ]
+      },
+      "aRetenir": "Passif : be + participe passé."
+    },
+    {
+      "titre": "Opinion et discours rapporté",
+      "niveau": "3e",
+      "paragraphes": [
+        "Pour donner son **opinion** : « In my opinion… », « I think that… », « I agree / I disagree », « On the one hand… on the other hand ». Pour **rapporter** des paroles : « She said that she was tired » : on recule les temps (am → was, will → would) et on adapte les pronoms. On utilise des **connecteurs** : however, because, although, so."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« I am tired », she said.",
+          "She said that she was tired.",
+          "Le présent devient prétérit."
+        ]
+      },
+      "aRetenir": "Discours rapporté : recul des temps."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« If I ___ rich, I would travel. »",
+        "choix": [
+          "will be",
+          "would be",
+          "were",
+          "am"
+        ],
+        "bonne": 2,
+        "explication": "Irréel : prétérit."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle phrase est au passif ?",
+        "choix": [
+          "X will direct the film.",
+          "The film was directed by X.",
+          "X directed the film.",
+          "X is directing the film."
+        ],
+        "bonne": 1,
+        "explication": "be + participe passé."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« I am tired », he said → He said that he…",
+        "choix": [
+          "was tired",
+          "is tired",
+          "will be tired",
+          "has tired"
+        ],
+        "bonne": 0,
+        "explication": "Recul des temps."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "A class debate",
+    "histoire": [
+      "Tu participes à un débat en anglais."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment donnes-tu ton avis ?",
+        "choix": [
+          "My opinion is that recycle more.",
+          "We opinion that recycling is more.",
+          "In my opinion, we should recycle more.",
+          "In my opinion we should to recycle more."
+        ],
+        "bonne": 2,
+        "explication": "Phrase correcte."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment exprimes-tu une hypothèse irréelle ?",
+        "choix": [
+          "If we had more time, we will visit.",
+          "If we have more time, we would visit.",
+          "If we had more time, we would visit the museum.",
+          "If we will have more time, we would visit."
+        ],
+        "bonne": 2,
+        "explication": "If + prétérit, would + base."
+      }
+    ],
+    "conclusion": "Excellent !"
+  }
+}

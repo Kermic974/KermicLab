@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.nsi-algorithmes-et-donnees-l-teaches-comparer-la-complexite-de-deux-algorithmes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nsi-algorithmes-et-donnees-l/contenu.json"
+  },
+  "source": "notion.technologie.nsi-algorithmes-et-donnees-l",
+  "target": "microskill.technologie.comparer-la-complexite-de-deux-algorithmes"
+}

@@ -60,12 +60,12 @@
         "titre": "Exercice 2",
         "question": "Comment s'appelle le passage de l'état liquide à l'état solide ?",
         "choix": [
-          "La solidification",
           "La fusion",
           "La condensation",
-          "L'évaporation"
+          "L'évaporation",
+          "La solidification"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Liquide → solide."
       },
       {
@@ -92,12 +92,12 @@
         "titre": "Exercice 1",
         "question": "Que forme la vapeur qui touche le couvercle froid ?",
         "choix": [
+          "Du sel (cristallisation)",
+          "De l'air (évaporation)",
           "Des gouttes d'eau (condensation)",
-          "De la glace",
-          "De l'air",
-          "Du sel"
+          "De la glace (solidification)"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "La vapeur se condense."
       },
       {
@@ -105,12 +105,12 @@
         "titre": "Exercice 2",
         "question": "Quel changement d'état se produit dans la casserole ?",
         "choix": [
+          "Rien",
           "La vaporisation",
           "La solidification",
-          "La fusion",
-          "Rien"
+          "La fusion"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "L'eau liquide devient gaz."
       }
     ],

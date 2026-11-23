@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.construire-le-symetrique-d-une-figure-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/symetrie-axiale-6e/contenu.json"
+  },
+  "source": "microskill.mathematiques.construire-le-symetrique-d-une-figure",
+  "target": "skill.mathematiques.symetrie-axiale-6e"
+}

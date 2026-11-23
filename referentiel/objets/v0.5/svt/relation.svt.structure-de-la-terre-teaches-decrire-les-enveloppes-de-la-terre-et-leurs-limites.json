@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.structure-de-la-terre-teaches-decrire-les-enveloppes-de-la-terre-et-leurs-limites",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/structure-de-la-terre/contenu.json"
+  },
+  "source": "notion.svt.structure-de-la-terre",
+  "target": "microskill.svt.decrire-les-enveloppes-de-la-terre-et-leurs-limites"
+}

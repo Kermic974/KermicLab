@@ -9,8 +9,8 @@
 export const CATEGORIE_JEUX = "jeux";
 /** Classes du collège, qui découpent « Collège » dans l'écran Éducation quand la fiche les renseigne. */
 export const CLASSES_COLLEGE = ["6e", "5e", "4e", "3e"];
-/** Classes du primaire (cycle 3) : elles découpent « Primaire » dans l'écran Éducation. */
-export const CLASSES_PRIMAIRE = ["CM1", "CM2"];
+/** Classes du primaire (cycle 2 et cycle 3) : elles découpent « Primaire » dans l'écran Éducation. */
+export const CLASSES_PRIMAIRE = ["CP", "CE1", "CE2", "CM1", "CM2"];
 /**
  * Ordre d'affichage des niveaux scolaires ; un niveau inconnu est rangé à la fin, jamais perdu. « college » ne garde
  * que les notions sans classe renseignée (catalogue privé non classé, par exemple).

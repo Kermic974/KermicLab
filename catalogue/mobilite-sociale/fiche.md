@@ -19,9 +19,9 @@ questions:
   - quelle est la différence entre mobilité sociale et géographique ?
   - comment lire une table de mobilité ?
   - qu'est-ce que la reproduction sociale ?
-prerequis:
+prerequis: socialisation, inegalites
 niveaux: premiere, terminale
-competences: ses-mobilite-sociale-action-1, ses-mobilite-sociale-action-2
+competences: distinguer-mobilite-intergenerationnelle-et-intragenerationnelle, lire-une-table-de-mobilite, interpreter-une-trajectoire-sociale-a-l-aide-de-la-structure-sociale, discuter-les-limites-de-la-mesure-de-la-mobilite-sociale
 ---
 
 # La mobilité sociale

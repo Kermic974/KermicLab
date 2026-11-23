@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.identifier-les-autorites-organisatrices-des-transports-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mobilites/contenu.json"
+  },
+  "source": "microskill.geographie.identifier-les-autorites-organisatrices-des-transports",
+  "target": "skill.geographie.mobilites"
+}

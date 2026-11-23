@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.localiser-les-etats-et-les-ports-d-afrique-australe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/afrique-australe/contenu.json"
+  },
+  "source": "microskill.geographie.localiser-les-etats-et-les-ports-d-afrique-australe",
+  "target": "skill.geographie.afrique-australe"
+}

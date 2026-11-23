@@ -1,6 +1,6 @@
 # Refonte UX/UI — analyse de la maquette « revisitée »
 
-Maturité : **lot 1 livré**. Décisions D1 à D7 validées le 2026-11-21 ([ADR 0038](../decisions/0038-refonte-ux.md)).
+Maturité : **lot 1 livré**. Décisions D1 à D7 validées le 2026-11-21 ([ADR 0039](../decisions/0039-refonte-ux.md)).
 Lot 1 (jetons et bandeaux) : bandeau d'en-tête coloré par espace (`data-espace`, `espaceDe` de `web/navigation.js`),
 cartes de chiffres avec libellé au-dessus et liseré de l'espace. Prochain : lot 2, écran d'arrivée unifié.
 
@@ -92,7 +92,7 @@ dans 13 fichiers de tests e2e) : elle doit partir d'un ADR et d'une maquette cor
 
 ## 8. Plan proposé, par lots (une PR chacun, CI verte, suivi UX mis à jour)
 
-0. **ADR 0038** reprenant D1 à D7, et maquette corrigée versionnée dans `docs/ux/` (squelette « refonte »).
+0. **ADR 0039** reprenant D1 à D7, et maquette corrigée versionnée dans `docs/ux/` (squelette « refonte »).
 1. ✅ **Jetons et bandeaux** : palette par espace (clair et sombre), bandeau d'en-tête par écran, cartes de chiffres. Style
    seulement, aucune structure changée.
 2. **Écran d'arrivée unifié** (D3) : bandeau, 3 cartes de chiffres, Reprendre et Suggestion, journal depuis les

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.discuter-l-incertitude-des-issues-de-la-revolution-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-francaise/contenu.json"
+  },
+  "source": "microskill.histoire.discuter-l-incertitude-des-issues-de-la-revolution",
+  "target": "skill.histoire.revolution-francaise"
+}

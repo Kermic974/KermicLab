@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.lire-une-table-de-mobilite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mobilite-sociale/contenu.json"
+  },
+  "source": "microskill.ses.lire-une-table-de-mobilite",
+  "target": "skill.ses.mobilite-sociale"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.citoyennete-requires-droits-de-lhomme",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/citoyennete/contenu.json"
+  },
+  "source": "notion.emc.citoyennete",
+  "target": "notion.emc.droits-de-lhomme",
+  "rationale": "Les droits fondamentaux attachés à la personne et au citoyen fondent la citoyenneté."
+}

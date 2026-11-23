@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-la-reforme-de-1517-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/renaissance-reforme-et-etat-l/contenu.json"
+  },
+  "source": "microskill.histoire.situer-la-reforme-de-1517",
+  "target": "skill.histoire.renaissance-reforme-et-etat-l"
+}

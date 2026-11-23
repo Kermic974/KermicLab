@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.resoudre-une-inequation-produit-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/inequations-et-signe-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.resoudre-une-inequation-produit",
+  "target": "skill.mathematiques.inequations-et-signe-l"
+}

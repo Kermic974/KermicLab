@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-l-equilibre-de-la-terreur-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerre-froide-et-decolonisation-l/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-l-equilibre-de-la-terreur",
+  "target": "skill.histoire.guerre-froide-et-decolonisation-l"
+}

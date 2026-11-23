@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.tableaux-et-algorithmes-c2-teaches-ordonner-les-instructions-d-un-programme",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tableaux-et-algorithmes-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.tableaux-et-algorithmes-c2",
+  "target": "microskill.mathematiques.ordonner-les-instructions-d-un-programme"
+}

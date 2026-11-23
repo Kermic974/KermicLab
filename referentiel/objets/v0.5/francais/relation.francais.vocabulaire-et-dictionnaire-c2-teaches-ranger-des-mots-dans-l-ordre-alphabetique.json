@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.vocabulaire-et-dictionnaire-c2-teaches-ranger-des-mots-dans-l-ordre-alphabetique",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vocabulaire-et-dictionnaire-c2/contenu.json"
+  },
+  "source": "notion.francais.vocabulaire-et-dictionnaire-c2",
+  "target": "microskill.francais.ranger-des-mots-dans-l-ordre-alphabetique"
+}

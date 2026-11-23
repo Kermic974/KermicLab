@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.comparer-la-citoyennete-athenienne-et-romaine-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/antiquite-democratie-et-empire-l/contenu.json"
+  },
+  "source": "microskill.histoire.comparer-la-citoyennete-athenienne-et-romaine",
+  "target": "skill.histoire.antiquite-democratie-et-empire-l"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.utiliser-un-plan-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reperage-plan-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.utiliser-un-plan",
+  "target": "skill.mathematiques.reperage-plan-cm"
+}

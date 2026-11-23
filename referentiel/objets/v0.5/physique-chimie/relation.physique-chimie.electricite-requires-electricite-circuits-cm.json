@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.electricite-requires-electricite-circuits-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/electricite/contenu.json"
+  },
+  "source": "notion.physique-chimie.electricite",
+  "target": "notion.physique-chimie.electricite-circuits-cm",
+  "rationale": "« Électricité : circuits, conducteurs et sécurité » : Les circuits simples, conducteurs et isolants du cycle 3 précèdent les montages série, dérivation et la loi d’Ohm."
+}

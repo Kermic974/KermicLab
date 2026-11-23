@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.types-et-formes-de-phrases-cm-requires-la-phrase-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/types-et-formes-de-phrases-cm/contenu.json"
+  },
+  "source": "notion.francais.types-et-formes-de-phrases-cm",
+  "target": "notion.francais.la-phrase-c2",
+  "rationale": "« La phrase : majuscule, point et sens » : Les types de phrases prolongent la phrase et sa ponctuation du cycle 2."
+}

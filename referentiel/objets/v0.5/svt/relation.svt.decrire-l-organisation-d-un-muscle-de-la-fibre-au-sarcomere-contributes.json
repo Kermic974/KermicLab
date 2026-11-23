@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.decrire-l-organisation-d-un-muscle-de-la-fibre-au-sarcomere-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/contraction-musculaire/contenu.json"
+  },
+  "source": "microskill.svt.decrire-l-organisation-d-un-muscle-de-la-fibre-au-sarcomere",
+  "target": "skill.svt.contraction-musculaire"
+}

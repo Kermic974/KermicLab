@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.distinguer-signal-analogique-et-signal-numerique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/signaux-et-information-c4/contenu.json"
+  },
+  "source": "microskill.physique-chimie.distinguer-signal-analogique-et-signal-numerique",
+  "target": "skill.physique-chimie.signaux-et-information-c4"
+}

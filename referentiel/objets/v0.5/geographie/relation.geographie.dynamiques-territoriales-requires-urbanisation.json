@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.dynamiques-territoriales-requires-urbanisation",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/dynamiques-territoriales/contenu.json"
+  },
+  "source": "notion.geographie.dynamiques-territoriales",
+  "target": "notion.geographie.urbanisation",
+  "rationale": "La section « Population, villes et mobilités » suppose de lire la croissance et l’organisation des villes."
+}

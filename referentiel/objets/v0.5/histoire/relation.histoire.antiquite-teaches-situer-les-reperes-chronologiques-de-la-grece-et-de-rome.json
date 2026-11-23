@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.antiquite-teaches-situer-les-reperes-chronologiques-de-la-grece-et-de-rome",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/antiquite/contenu.json"
+  },
+  "source": "notion.histoire.antiquite",
+  "target": "microskill.histoire.situer-les-reperes-chronologiques-de-la-grece-et-de-rome"
+}

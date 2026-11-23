@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.distinguer-alea-enjeu-et-risque-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/risques-naturels/contenu.json"
+  },
+  "source": "microskill.geographie.distinguer-alea-enjeu-et-risque",
+  "target": "skill.geographie.risques-naturels"
+}

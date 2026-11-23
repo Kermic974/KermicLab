@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.temps-modernes-requires-louis-xiv-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps-modernes/contenu.json"
+  },
+  "source": "notion.histoire.temps-modernes",
+  "target": "notion.histoire.louis-xiv-cm",
+  "rationale": "« Louis XIV, le Roi-Soleil » : Louis XIV et la monarchie absolue du cycle 3 préparent l’absolutisme et ses limites."
+}

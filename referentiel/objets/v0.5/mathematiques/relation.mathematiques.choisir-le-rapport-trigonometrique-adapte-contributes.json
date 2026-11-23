@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.choisir-le-rapport-trigonometrique-adapte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/trigonometrie-triangle-rectangle-c4/contenu.json"
+  },
+  "source": "microskill.mathematiques.choisir-le-rapport-trigonometrique-adapte",
+  "target": "skill.mathematiques.trigonometrie-triangle-rectangle-c4"
+}

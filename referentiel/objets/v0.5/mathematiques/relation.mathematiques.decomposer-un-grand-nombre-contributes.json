@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.decomposer-un-grand-nombre-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grands-nombres-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.decomposer-un-grand-nombre",
+  "target": "skill.mathematiques.grands-nombres-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.distinguer-imparfait-et-passe-simple-dans-un-recit-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps-du-recit-6e/contenu.json"
+  },
+  "source": "microskill.francais.distinguer-imparfait-et-passe-simple-dans-un-recit",
+  "target": "skill.francais.temps-du-recit-6e"
+}

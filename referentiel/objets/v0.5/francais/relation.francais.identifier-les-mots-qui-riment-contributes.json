@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-les-mots-qui-riment-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie-cm/contenu.json"
+  },
+  "source": "microskill.francais.identifier-les-mots-qui-riment",
+  "target": "skill.francais.poesie-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.mobilites-teaches-identifier-les-autorites-organisatrices-des-transports",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mobilites/contenu.json"
+  },
+  "source": "notion.geographie.mobilites",
+  "target": "microskill.geographie.identifier-les-autorites-organisatrices-des-transports"
+}

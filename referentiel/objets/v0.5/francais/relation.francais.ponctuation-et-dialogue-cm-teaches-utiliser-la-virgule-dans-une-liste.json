@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.ponctuation-et-dialogue-cm-teaches-utiliser-la-virgule-dans-une-liste",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ponctuation-et-dialogue-cm/contenu.json"
+  },
+  "source": "notion.francais.ponctuation-et-dialogue-cm",
+  "target": "microskill.francais.utiliser-la-virgule-dans-une-liste"
+}

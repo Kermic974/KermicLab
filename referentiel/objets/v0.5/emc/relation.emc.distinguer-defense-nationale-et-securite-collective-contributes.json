@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-defense-nationale-et-securite-collective-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/defense-et-paix-c4/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-defense-nationale-et-securite-collective",
+  "target": "skill.emc.defense-et-paix-c4"
+}

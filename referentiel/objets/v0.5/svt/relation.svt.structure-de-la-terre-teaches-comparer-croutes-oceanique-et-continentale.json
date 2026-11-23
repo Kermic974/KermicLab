@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.structure-de-la-terre-teaches-comparer-croutes-oceanique-et-continentale",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/structure-de-la-terre/contenu.json"
+  },
+  "source": "notion.svt.structure-de-la-terre",
+  "target": "microskill.svt.comparer-croutes-oceanique-et-continentale"
+}

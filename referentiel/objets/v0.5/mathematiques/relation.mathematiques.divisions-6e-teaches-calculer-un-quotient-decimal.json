@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.divisions-6e-teaches-calculer-un-quotient-decimal",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/divisions-6e/contenu.json"
+  },
+  "source": "notion.mathematiques.divisions-6e",
+  "target": "microskill.mathematiques.calculer-un-quotient-decimal"
+}

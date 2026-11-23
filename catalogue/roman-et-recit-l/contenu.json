@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Le roman raconte et interroge le monde : le lycée en étudie les formes, les courants et les procédés d'écriture.",
+  "niveaux": [
+    {
+      "titre": "Courants et personnages",
+      "niveau": "2de",
+      "paragraphes": [
+        "Le **roman** évolue : romans d'**apprentissage** (Stendhal, Flaubert), **réalisme** (Balzac, Stendhal : peindre la société), **naturalisme** (Zola : étude scientifique des milieux et de l'hérédité), puis romans modernes et contemporains qui interrogent le récit lui-même. Le **personnage** est défini par son nom, son portrait, ses actions, ses paroles ; il peut être un type ou un individu complexe."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Julien Sorel (Stendhal) : jeune ambitieux.",
+          "Il découvre la société de la Restauration.",
+          "Roman d'apprentissage : il évolue au fil des épreuves."
+        ]
+      },
+      "aRetenir": "Réalisme : représenter la société ; naturalisme : l'étudier."
+    },
+    {
+      "titre": "Narration et point de vue",
+      "niveau": "1re",
+      "paragraphes": [
+        "Le **narrateur** peut être extérieur à l'histoire (3e personne) ou personnage (1re personne). Le **point de vue** (focalisation) : **zéro** (omniscient), **interne** (à travers un personnage), **externe** (comportements observés). Les **temps** du récit (passé simple pour les actions, imparfait pour les descriptions), le **rythme** (scène, sommaire, ellipse, pause) et le **discours rapporté** (direct, indirect, indirect libre) construisent l'effet du texte."
+      ],
+      "exemple": {
+        "titre": "Exemple : focalisation interne",
+        "etapes": [
+          "« Elle sentait la peur monter. »",
+          "On accède aux pensées d'un seul personnage.",
+          "Le lecteur partage sa perception."
+        ]
+      },
+      "aRetenir": "Focalisation : zéro, interne, externe."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le naturalisme se distingue par…",
+        "choix": [
+          "l'écriture exclusive en vers",
+          "l'absence de personnages",
+          "l'étude des milieux et de l'hérédité",
+          "le refus de décrire la société"
+        ],
+        "bonne": 2,
+        "explication": "Zola."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Dans une focalisation interne, le narrateur…",
+        "choix": [
+          "ne raconte aucun événement",
+          "rapporte ce que perçoit un personnage",
+          "sait tout sur tous les héros",
+          "ne décrit que l'extérieur"
+        ],
+        "bonne": 1,
+        "explication": "Point de vue d'un personnage."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un roman d'apprentissage raconte…",
+        "choix": [
+          "la formation d'un jeune héros",
+          "un voyage vers l'espace",
+          "la vie d'un roi absolu",
+          "un poème épique antique"
+        ],
+        "bonne": 0,
+        "explication": "Évolution du héros."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'incipit",
+    "histoire": [
+      "Tu lis l'incipit d'un roman réaliste."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que cherche un incipit réaliste ?",
+        "choix": [
+          "cacher tout le cadre",
+          "annoncer la fin du récit",
+          "supprimer le narrateur",
+          "donner l'illusion du réel"
+        ],
+        "bonne": 3,
+        "explication": "Effet de réel."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un passage au discours indirect libre…",
+        "choix": [
+          "supprime le personnage",
+          "est écrit uniquement en vers",
+          "mêle narrateur et personnage",
+          "met toujours des guillemets"
+        ],
+        "bonne": 2,
+        "explication": "Pas de verbe introducteur."
+      }
+    ],
+    "conclusion": "Bon lecteur !"
+  }
+}

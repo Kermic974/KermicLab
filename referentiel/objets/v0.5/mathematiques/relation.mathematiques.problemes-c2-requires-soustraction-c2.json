@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.problemes-c2-requires-soustraction-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/problemes-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.problemes-c2",
+  "target": "notion.mathematiques.soustraction-c2",
+  "rationale": "Prérequis déclaré dans la fiche : « La soustraction » précède « Résoudre des petits problèmes » dans la progression du programme (lien à relire)."
+}

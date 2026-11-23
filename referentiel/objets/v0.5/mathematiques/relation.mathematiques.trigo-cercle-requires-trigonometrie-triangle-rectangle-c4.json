@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.trigo-cercle-requires-trigonometrie-triangle-rectangle-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/trigo-cercle/contenu.json"
+  },
+  "source": "notion.mathematiques.trigo-cercle",
+  "target": "notion.mathematiques.trigonometrie-triangle-rectangle-c4",
+  "rationale": "« Trigonométrie dans le triangle rectangle » : Cosinus et sinus dans le triangle rectangle précèdent le cercle trigonométrique."
+}

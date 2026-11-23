@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.addition-c2-teaches-utiliser-l-addition-pour-resoudre-un-probleme",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/addition-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.addition-c2",
+  "target": "microskill.mathematiques.utiliser-l-addition-pour-resoudre-un-probleme"
+}

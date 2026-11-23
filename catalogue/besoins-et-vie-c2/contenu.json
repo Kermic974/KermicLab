@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les êtres vivants ont besoin de manger, de boire, d'air, et ils se reproduisent.",
+  "niveaux": [
+    {
+      "titre": "Manger pour vivre",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Les animaux mangent : les **herbivores** mangent des plantes (vache, lapin), les **carnivores** mangent d'autres animaux (lion, chat), les **omnivores** mangent de tout (l'être humain). Les plantes ont besoin d'eau, de lumière, d'air et de sels minéraux.",
+        "Tous les êtres vivants ont besoin d'**air** (oxygène)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Le lapin mange de l'herbe.",
+          "Le renard mange le lapin.",
+          "L'herbe a besoin du soleil."
+        ]
+      },
+      "aRetenir": "Herbivore : plantes. Carnivore : animaux."
+    },
+    {
+      "titre": "Naître et grandir",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "Un animal naît (d'un œuf ou de sa mère), grandit, devient adulte et a des petits : c'est son **cycle de vie**. Certains pondent des œufs (poule), d'autres ont des petits vivants (chat).",
+        "Une plante vient d'une **graine** : elle **germe** (elle a besoin d'eau et de chaleur), les racines puis la tige sortent, la plante grandit, fait des fleurs puis des graines."
+      ],
+      "exemple": {
+        "titre": "Exemple : la graine de haricot",
+        "etapes": [
+          "Je la mets dans du coton mouillé.",
+          "Une racine sort.",
+          "Puis une tige et des feuilles."
+        ]
+      },
+      "aRetenir": "Une graine a besoin d'eau et de chaleur."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Un animal qui mange des plantes est…",
+        "choix": [
+          "un herbivore",
+          "un carnivore",
+          "un omnivore",
+          "un insecte"
+        ],
+        "bonne": 0,
+        "explication": "Herbivore."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "De quoi une graine a-t-elle besoin pour germer ?",
+        "choix": [
+          "d'eau et de chaleur",
+          "de sel",
+          "de musique",
+          "d'obscurité totale uniquement"
+        ],
+        "bonne": 0,
+        "explication": "Eau et chaleur."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un chat est…",
+        "choix": [
+          "un carnivore",
+          "un herbivore",
+          "une plante",
+          "un insecte"
+        ],
+        "bonne": 0,
+        "explication": "Il mange de la viande."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le haricot de la classe",
+    "histoire": [
+      "Ta classe fait germer des haricots."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que faut-il donner au haricot ?",
+        "choix": [
+          "du sucre et de l'ombre",
+          "du sel et du froid",
+          "de la lumière forte sans eau",
+          "de l'eau et de la chaleur"
+        ],
+        "bonne": 3,
+        "explication": "Pour germer."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Ce qui sort en premier d'une graine, c'est…",
+        "choix": [
+          "la racine",
+          "la fleur",
+          "le fruit",
+          "la feuille d'automne"
+        ],
+        "bonne": 0,
+        "explication": "La racine sort d'abord."
+      }
+    ],
+    "conclusion": "Beau jardinage !"
+  }
+}

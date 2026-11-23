@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.tableaux-graphiques-cm-teaches-lire-un-tableau-de-donnees-au-cycle-3-cm",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tableaux-graphiques-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.tableaux-graphiques-cm",
+  "target": "microskill.mathematiques.lire-un-tableau-de-donnees-au-cycle-3-cm"
+}

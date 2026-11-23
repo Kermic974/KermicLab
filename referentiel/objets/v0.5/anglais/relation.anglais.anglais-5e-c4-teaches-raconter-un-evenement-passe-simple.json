@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.anglais-5e-c4-teaches-raconter-un-evenement-passe-simple",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-5e-c4/contenu.json"
+  },
+  "source": "notion.anglais.anglais-5e-c4",
+  "target": "microskill.anglais.raconter-un-evenement-passe-simple"
+}

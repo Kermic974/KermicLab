@@ -2,15 +2,10 @@
 id: energie-et-sources-cm
 titre: L'énergie et ses sources
 sujet: physique-chimie/energie-et-sources-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - energie-et-sources-cm-comprendre
-  - energie-et-sources-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +23,9 @@ questions:
   - Quelles sont les sources d'énergie ?
   - Quelle différence entre énergie renouvelable et non renouvelable ?
   - Comment économiser l'énergie ?
+prerequis:
+niveaux: cycle-3
+competences: nommer-les-sources-d-energie-renouvelables-et-non-renouvelables, decrire-le-role-d-une-eolienne, choisir-un-geste-d-economie-d-energie, associer-un-objet-a-l-energie-qu-il-utilise
 ---
 
 # L'énergie et ses sources

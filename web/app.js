@@ -5647,7 +5647,7 @@ const sectionDe = (ecran) => { const parent = PARENTS[ecran] ?? ecran; return PA
 
 function rafraichirEntete() {
   const accueil = etat.ecran === "accueil";
-  // Bandeau coloré de l'espace courant (ADR 0038 § 4).
+  // Bandeau coloré de l'espace courant (ADR 0039 § 4).
   document.documentElement.dataset.espace = navigation.espaceDe(etat.ecran);
   $("#salut").textContent = accueil
     ? etat.pseudo ? t("salut", { pseudo: etat.pseudo }) : t("salutAnonyme")

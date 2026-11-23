@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.prevoir-les-genotypes-possibles-d-un-enfant-a-partir-de-ceux-des-parents-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/genetique-et-heredite/contenu.json"
+  },
+  "source": "microskill.svt.prevoir-les-genotypes-possibles-d-un-enfant-a-partir-de-ceux-des-parents",
+  "target": "skill.svt.genetique-et-heredite"
+}

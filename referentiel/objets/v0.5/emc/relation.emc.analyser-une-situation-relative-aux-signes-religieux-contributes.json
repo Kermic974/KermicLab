@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.analyser-une-situation-relative-aux-signes-religieux-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/laicite/contenu.json"
+  },
+  "source": "microskill.emc.analyser-une-situation-relative-aux-signes-religieux",
+  "target": "skill.emc.laicite"
+}

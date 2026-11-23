@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.respiration-et-circulation-requires-organisme-et-effort-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/respiration-et-circulation/contenu.json"
+  },
+  "source": "notion.svt.respiration-et-circulation",
+  "target": "notion.svt.organisme-et-effort-6e",
+  "rationale": "« Fonctionnement de l'organisme à l'effort » : Le cœur, la circulation et l’effort étudiés aux cycles précédents précèdent les échanges gazeux et le débit cardiaque."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.fonctions-de-reference-et-transformations-l-requires-notion-de-fonction-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fonctions-de-reference-et-transformations-l/contenu.json"
+  },
+  "source": "notion.mathematiques.fonctions-de-reference-et-transformations-l",
+  "target": "notion.mathematiques.notion-de-fonction-c4",
+  "rationale": "Prérequis déclaré dans la fiche : « La notion de fonction » précède « Fonctions : transformations de courbes et variations » dans la progression du programme (lien à relire)."
+}

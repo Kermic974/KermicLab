@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.deduire-le-brin-complementaire-d-une-sequence-d-adn-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/adn-et-division-cellulaire/contenu.json"
+  },
+  "source": "microskill.svt.deduire-le-brin-complementaire-d-une-sequence-d-adn",
+  "target": "skill.svt.adn-et-division-cellulaire"
+}

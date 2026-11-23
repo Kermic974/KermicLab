@@ -2,16 +2,10 @@
 id: polygones-cm
 titre: Triangles et quadrilatères
 sujet: mathematiques/polygones-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - droites-cm
-competences:
-  - polygones-cm-comprendre
-  - polygones-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -29,6 +23,9 @@ questions:
   - C'est quoi un triangle isocèle ou équilatéral en CM1 ?
   - Comment reconnaître un rectangle ?
   - Quelles sont les propriétés d'un parallélogramme ?
+prerequis: figures-planes-c2, droites-cm
+niveaux: cycle-3
+competences: reconnaitre-un-carre-un-rectangle-et-un-losange, reconnaitre-un-triangle-equilateral-ou-isocele, nommer-un-polygone-selon-son-nombre-de-cotes, decrire-un-quadrilatere-par-ses-proprietes
 ---
 
 # Triangles et quadrilatères

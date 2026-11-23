@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.si-conception-et-modelisation-l-teaches-rediger-un-cahier-des-charges-fonctionnel",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/si-conception-et-modelisation-l/contenu.json"
+  },
+  "source": "notion.technologie.si-conception-et-modelisation-l",
+  "target": "microskill.technologie.rediger-un-cahier-des-charges-fonctionnel"
+}

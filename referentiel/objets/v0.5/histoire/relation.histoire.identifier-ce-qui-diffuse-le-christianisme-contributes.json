@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.identifier-ce-qui-diffuse-le-christianisme-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/empire-romain-christianisme-6e/contenu.json"
+  },
+  "source": "microskill.histoire.identifier-ce-qui-diffuse-le-christianisme",
+  "target": "skill.histoire.empire-romain-christianisme-6e"
+}

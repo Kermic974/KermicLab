@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.observer-le-developpement-d-un-vegetal-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/developpement-vegetaux-cm/contenu.json"
+  },
+  "source": "microskill.svt.observer-le-developpement-d-un-vegetal",
+  "target": "skill.svt.developpement-vegetaux-cm"
+}

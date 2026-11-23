@@ -295,3 +295,47 @@ Si l'étape « Schéma D1 » échoue avec `Authentication error [code: 10000]`, 
 | Contrôler la matrice de couverture avec le programme officiel de cycle 3 (BO 2020) et décider des écarts | `docs/chantiers/catalogue-primaire.md` | La matrice est un rapprochement interne, pas un contrôle officiel | Matrice validée ou corrigée dans la PR | à faire |
 | Décider du périmètre restant : autres langues vivantes que l'anglais, pratique motrice en EPS (hors page) | `docs/chantiers/catalogue-primaire.md` | Non couvert par les pages du gabarit | Décision notée dans la fiche chantier | à faire |
 | Revue du CODEOWNER et fusion de la PR #398 après CI verte | https://github.com/Kermic974/KermicLab/pull/398 | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |
+
+## Catalogue du lycée (seconde, première, terminale)
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Faire relire les notions `*-l` selon la grille de relecture (idéalement par un enseignant de la discipline), puis renseigner `relue`, `relue-version`, `relue-grille` dans chaque `fiche.md` | `catalogue/*-l/`, `docs/chantiers/guide-relecture-lycee.md` | Public mineur : exactitude des cours, exercices et corrigés à valider par un humain | Champs `relue*` renseignés | à faire |
+| Contrôler la couverture avec les programmes officiels du lycée (tronc commun et spécialités) et décider des écarts | `docs/chantiers/catalogue-lycee.md` | Les spécialités sont traitées par notions transversales ; rapprochement interne seulement | Décision notée dans le chantier | à faire |
+| Qualifier par le processus S4 les liens depuis les notions V0 projetées (section « Lycée » des propositions) | `docs/referentiel/propositions-liens-cycles-2-3-4.md` | Les prérequis des notions projetées sont générés depuis `referentiel/objets/` | Lot S4 relu et fusionné | à faire |
+| Ouvrir une PR dédiée au lycée après la fusion de la PR #401 (les commits du lycée sont sur la même branche) | GitHub | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |
+
+## Densification pédagogique du référentiel — PR #403
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Relire la pertinence des 584 MicroSkills et des 81 `requires` / 28 `relatedTo` (physique-chimie, SVT, histoire, géographie, français, EMC, SES, philosophie), puis passer les objets de `draft` à `review` puis `validated` | `referentiel/objets/v0.5/`, `docs/referentiel/densification-pedagogique.md` | Les liens sont des propositions pédagogiques, non attestées par des textes officiels | Statuts mis à jour, `npm run check:referentiel` vert | à faire |
+| Arbitrer les liens listés dans `relations-a-revoir.md` (créer, écarter ou traiter par le processus S4) | `docs/referentiel/relations-a-revoir.md` | Liens incertains ou bloqués par les garde-fous du build | Décision notée dans le fichier | à faire |
+| Qualifier par le processus S4 les liens des 312 notions ajoutées depuis la V0 (cycles 2 à 4, lycée) | `docs/referentiel/propositions-liens-cycles-2-3-4.md` | Ces notions n'ont pas d'objets canoniques | Lot S4 relu et fusionné | à faire |
+| Revue du CODEOWNER et fusion de la PR #403 | https://github.com/Kermic974/KermicLab/pull/403 | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |
+
+## Référentiel canonique : technologie
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Valider l'[ADR 0038](decisions/0038-etape-cycle-2-referentiel.md) (code d'étape `cycle-2`) : schéma, tests et projection des 51 notions de cycle 2 faits dans la PR dédiée | `docs/decisions/0038-etape-cycle-2-referentiel.md` | Le contrat `stage` est une décision normative | ADR accepté et PR fusionnée | à faire |
+| Relire les MicroSkills et les prérequis de la technologie, puis faire passer les objets de `draft` à `review` | `referentiel/objets/v0.5/technologie/` | Propositions pédagogiques non validées | Statuts mis à jour | à faire |
+| Relire les MicroSkills et les prérequis de l'anglais, des arts plastiques, de la musique et de l'EPS, puis faire passer les objets de `draft` à `review` | `referentiel/objets/v0.5/anglais/`, `arts-plastiques/`, `musique/`, `eps/` | Propositions pédagogiques non validées | Statuts mis à jour | à faire |
+| Revue du CODEOWNER et fusion de la PR du référentiel canonique (technologie, anglais, arts plastiques, musique, EPS) | GitHub | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |
+
+## Référentiel canonique : notions ajoutées depuis la V0
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Relire les 1 041 MicroSkills et les 365 `requires` (justifications générées à enrichir), puis passer les objets de `draft` à `review` | `referentiel/objets/v0.5/` | Propositions pédagogiques non validées ; justifications des liens génériques | Statuts mis à jour, justifications enrichies | à faire |
+| Relire les 102 `requires` créés depuis les notions de la V0 vers les cycles précédents (PR dédiée) et arbitrer les liens écartés | `docs/referentiel/propositions-liens-cycles-2-3-4.md`, `relations-a-revoir.md` | Propositions pédagogiques en `draft` ; la recommandation change pour 35 scénarios | Statuts mis à jour | à faire |
+| Revue du CODEOWNER et fusion de la PR de ce lot | GitHub | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |
+
+## Référentiel : audit de qualité
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Décider du sort des liens de continuité chronologique de l'histoire (supprimer, convertir en `relatedTo` ou conserver) | `docs/referentiel/audit-competences.md` | La règle « chronologie ≠ prérequis » de la densification ; ces liens nourrissent la recommandation | Décision notée dans le rapport | à faire |
+| Décider de partager les MicroSkills identiques entre niveaux (une seule compétence enseignée par plusieurs notions) | `docs/referentiel/audit-competences.md` | 37 libellés en double qualifiés par niveau | Décision notée dans le rapport | à faire |
+| Faire relire par un enseignant les 78 QCM réécrits | `catalogue/*/contenu.json` | Les distracteurs et bonnes réponses ont été modifiés | Champs `relue*` renseignés | à faire |
+

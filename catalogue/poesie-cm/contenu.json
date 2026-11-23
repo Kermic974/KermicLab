@@ -62,12 +62,12 @@
         "titre": "Exercice 2",
         "question": "« Elle est rapide comme l'éclair » est…",
         "choix": [
-          "une comparaison",
-          "une métaphore",
           "un calligramme",
-          "une strophe"
+          "une strophe",
+          "une comparaison",
+          "une métaphore"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Le mot « comme » compare."
       },
       {
@@ -75,12 +75,12 @@
         "titre": "Exercice 3",
         "question": "Un ensemble de vers regroupés s'appelle…",
         "choix": [
-          "une strophe",
           "une rime",
           "un chapitre",
-          "une scène"
+          "une scène",
+          "une strophe"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Les vers forment une strophe."
       }
     ]
@@ -109,12 +109,12 @@
         "titre": "Exercice 2",
         "question": "Quels mots riment avec « feuille » ?",
         "choix": [
+          "vent",
           "cueille",
           "arbre",
-          "sol",
-          "vent"
+          "sol"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Sons proches [œj]."
       }
     ],

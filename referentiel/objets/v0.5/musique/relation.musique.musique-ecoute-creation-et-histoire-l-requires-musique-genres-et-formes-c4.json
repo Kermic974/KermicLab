@@ -1,0 +1,13 @@
+{
+  "id": "relation.musique.musique-ecoute-creation-et-histoire-l-requires-musique-genres-et-formes-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-ecoute-creation-et-histoire-l/contenu.json"
+  },
+  "source": "notion.musique.musique-ecoute-creation-et-histoire-l",
+  "target": "notion.musique.musique-genres-et-formes-c4",
+  "rationale": "Genres, formes et écoute du collège sont approfondis par l’analyse et l’histoire des styles."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.emc-egalite-et-lutte-discriminations-l-requires-egalite",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-egalite-et-lutte-discriminations-l/contenu.json"
+  },
+  "source": "notion.emc.emc-egalite-et-lutte-discriminations-l",
+  "target": "notion.emc.egalite",
+  "rationale": "« L'égalité » : Le lycée reprend l’égalité et la discrimination du collège."
+}

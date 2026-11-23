@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.histoire.mediterranee-medievale-l-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mediterranee-medievale-l/contenu.json"
+  },
+  "object": "notion.histoire.mediterranee-medievale-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "introduced"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.identifier-un-processus-de-metropolisation-ou-de-periurbanisation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/dynamiques-territoriales/contenu.json"
+  },
+  "source": "microskill.geographie.identifier-un-processus-de-metropolisation-ou-de-periurbanisation",
+  "target": "skill.geographie.dynamiques-territoriales"
+}

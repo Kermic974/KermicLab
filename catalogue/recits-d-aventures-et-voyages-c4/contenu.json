@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les récits d'aventures mettent en scène des personnages qui affrontent le danger et découvrent le monde.",
+  "niveaux": [
+    {
+      "titre": "Le héros et l'épreuve",
+      "niveau": "5e",
+      "paragraphes": [
+        "Un **héros** (ou une héroïne) se distingue par ses qualités et son courage face aux obstacles. Le récit repose sur un schéma : situation initiale, élément déclencheur, épreuves, résolution. Les lieux lointains, les dangers et les rencontres font avancer l'action.",
+        "Des œuvres : *Robinson Crusoé* (Defoe), *Les Aventures de Tom Sawyer* (Twain), *Le Tour du monde en quatre-vingts jours* (Verne), récits d'*Ulysse*."
+      ],
+      "exemple": {
+        "titre": "Exemple : repérer l'épreuve",
+        "etapes": [
+          "Le héros doit traverser un fleuve.",
+          "Danger : un crocodile.",
+          "Il réussit grâce à sa ruse."
+        ]
+      },
+      "aRetenir": "Le héros se révèle dans l'épreuve."
+    },
+    {
+      "titre": "Narration et description",
+      "niveau": "5e",
+      "paragraphes": [
+        "Le narrateur peut être interne (« je ») ou externe (« il »). Les **temps** : passé simple pour les actions principales, imparfait pour le décor. La **description** (lieux exotiques, personnages) crée l'ambiance avec des adjectifs, des comparaisons et des verbes de perception.",
+        "Pour écrire un récit de voyage, on choisit un lieu, une épreuve et on varie les rythmes."
+      ],
+      "exemple": {
+        "titre": "Exemple : phrase de récit",
+        "etapes": [
+          "« Il faisait nuit quand l'explorateur aperçut un feu. »",
+          "Faisait : imparfait (décor).",
+          "Aperçut : passé simple (action)."
+        ]
+      },
+      "aRetenir": "Imparfait : décor. Passé simple : action."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "L'élément déclencheur d'un récit est…",
+        "choix": [
+          "la longue description du lieu",
+          "l'événement qui lance l'intrigue",
+          "le titre inscrit sur la couverture",
+          "la fin heureuse de l'histoire"
+        ],
+        "bonne": 1,
+        "explication": "Il rompt l'équilibre initial."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qui a écrit « Le Tour du monde en quatre-vingts jours » ?",
+        "choix": [
+          "Jules Verne",
+          "Victor Hugo",
+          "Molière",
+          "Daniel Defoe"
+        ],
+        "bonne": 0,
+        "explication": "Jules Verne."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« Il faisait nuit quand il aperçut un feu. » « Il aperçut » est au…",
+        "choix": [
+          "conditionnel",
+          "passé simple",
+          "présent",
+          "futur"
+        ],
+        "bonne": 1,
+        "explication": "Action ponctuelle."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le journal d'un explorateur",
+    "histoire": [
+      "Tu écris le journal d'un explorateur perdu dans la jungle."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pour décrire le décor, tu utilises…",
+        "choix": [
+          "l'imparfait",
+          "le futur",
+          "l'impératif",
+          "le passé composé"
+        ],
+        "bonne": 0,
+        "explication": "Décor : imparfait."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel narrateur choisis-tu pour un journal ?",
+        "choix": [
+          "aucun narrateur du tout",
+          "la 1re personne (« je »)",
+          "la 3e personne (« il »)",
+          "le public qui lit le journal"
+        ],
+        "bonne": 1,
+        "explication": "Journal = je."
+      }
+    ],
+    "conclusion": "Belle aventure !"
+  }
+}

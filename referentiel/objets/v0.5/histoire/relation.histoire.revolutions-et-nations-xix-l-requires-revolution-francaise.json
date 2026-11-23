@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.revolutions-et-nations-xix-l-requires-revolution-francaise",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolutions-et-nations-xix-l/contenu.json"
+  },
+  "source": "notion.histoire.revolutions-et-nations-xix-l",
+  "target": "notion.histoire.revolution-francaise",
+  "rationale": "« La Révolution française » : Le XIXe siècle s’appuie sur la Révolution française et l’Empire."
+}

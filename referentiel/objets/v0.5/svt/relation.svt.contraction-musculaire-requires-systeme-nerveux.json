@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.contraction-musculaire-requires-systeme-nerveux",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/contraction-musculaire/contenu.json"
+  },
+  "source": "notion.svt.contraction-musculaire",
+  "target": "notion.svt.systeme-nerveux",
+  "rationale": "La commande nerveuse du muscle mobilise le neurone moteur et la synapse neuromusculaire."
+}

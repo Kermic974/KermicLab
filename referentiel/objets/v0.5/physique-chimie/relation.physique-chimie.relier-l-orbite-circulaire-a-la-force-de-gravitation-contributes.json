@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.relier-l-orbite-circulaire-a-la-force-de-gravitation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/gravitation-et-satellites/contenu.json"
+  },
+  "source": "microskill.physique-chimie.relier-l-orbite-circulaire-a-la-force-de-gravitation",
+  "target": "skill.physique-chimie.gravitation-et-satellites"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.reagir-face-a-un-camarade-harcele-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/respect-et-egalite-cm/contenu.json"
+  },
+  "source": "microskill.emc.reagir-face-a-un-camarade-harcele",
+  "target": "skill.emc.respect-et-egalite-cm"
+}

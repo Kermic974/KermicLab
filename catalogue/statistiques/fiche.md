@@ -5,14 +5,7 @@ sujet: mathematiques/statistiques
 version: 1.0.0
 date: 2026-11-01
 niveau: college
-niveaux: cycle-4, seconde
 classes: 5e, 4e, 3e
-prerequis:
-competences:
-  - calculer-une-moyenne-et-une-etendue
-  - determiner-une-mediane
-  - calculer-des-frequences
-  - interpreter-quartiles-et-ecart-type
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -38,6 +31,9 @@ questions:
   - je ne comprends pas les quartiles
   - à quoi sert l'étendue en statistiques ?
   - how do you find the median?
+prerequis: reperage-et-donnees-6e, moyenne-et-proportions-cm
+niveaux: cycle-4, seconde
+competences: calculer-une-moyenne-et-une-etendue, determiner-une-mediane, calculer-des-frequences, interpreter-quartiles-et-ecart-type
 ---
 
 # Les statistiques

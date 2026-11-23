@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.expliquer-la-classification-des-desirs-chez-epicure-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/bonheur/contenu.json"
+  },
+  "source": "microskill.philosophie.expliquer-la-classification-des-desirs-chez-epicure",
+  "target": "skill.philosophie.bonheur"
+}

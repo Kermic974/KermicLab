@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.estimer-le-temps-de-sommeil-recommande-a-un-adolescent-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/sante-et-prevention-c4/contenu.json"
+  },
+  "source": "microskill.svt.estimer-le-temps-de-sommeil-recommande-a-un-adolescent",
+  "target": "skill.svt.sante-et-prevention-c4"
+}

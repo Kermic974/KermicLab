@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.calculer-un-taux-de-chomage-au-lycee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ses-travail-chomage-et-protection-l/contenu.json"
+  },
+  "source": "microskill.ses.calculer-un-taux-de-chomage-au-lycee",
+  "target": "skill.ses.ses-travail-chomage-et-protection-l"
+}

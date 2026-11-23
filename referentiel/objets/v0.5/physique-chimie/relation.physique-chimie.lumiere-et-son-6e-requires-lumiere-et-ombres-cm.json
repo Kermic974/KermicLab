@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.lumiere-et-son-6e-requires-lumiere-et-ombres-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lumiere-et-son-6e/contenu.json"
+  },
+  "source": "notion.physique-chimie.lumiere-et-son-6e",
+  "target": "notion.physique-chimie.lumiere-et-ombres-cm",
+  "rationale": "« Lumière, ombres et son » : La lumière et le son de 6e reprennent les ombres et le son du CM."
+}

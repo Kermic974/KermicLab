@@ -1,0 +1,13 @@
+{
+  "id": "relation.philosophie.raison-relatedto-religion",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/raison/contenu.json"
+  },
+  "source": "notion.philosophie.raison",
+  "target": "notion.philosophie.religion",
+  "rationale": "Lien conceptuel (relation de voisinage, sans ordre d’apprentissage) : La critique rationnelle de la religion est un enjeu classique."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.interpreter-une-datation-absolue-par-desintegration-d-un-element-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/histoire-de-la-terre-et-datation/contenu.json"
+  },
+  "source": "microskill.svt.interpreter-une-datation-absolue-par-desintegration-d-un-element",
+  "target": "skill.svt.histoire-de-la-terre-et-datation"
+}

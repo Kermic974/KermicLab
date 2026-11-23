@@ -1,0 +1,118 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "En anglais, on commence par saluer, compter et nommer des couleurs.",
+  "niveaux": [
+    {
+      "titre": "Hello!",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "**Hello** (bonjour), **goodbye** (au revoir), **please** (s'il te plaît), **thank you** (merci), **yes** (oui), **no** (non). « What's your name? » veut dire « Comment tu t'appelles ? » : « My name is Léa. »"
+      ],
+      "exemple": {
+        "titre": "Exemple : un dialogue",
+        "etapes": [
+          "— Hello! What's your name?",
+          "— My name is Tom.",
+          "— Nice to meet you!"
+        ]
+      },
+      "aRetenir": "Hello = bonjour."
+    },
+    {
+      "titre": "Nombres et couleurs",
+      "niveau": "CP / CE1",
+      "paragraphes": [
+        "Les nombres : **one, two, three, four, five, six, seven, eight, nine, ten**. Les couleurs : **red** (rouge), **blue** (bleu), **green** (vert), **yellow** (jaune), **black** (noir), **white** (blanc)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Three red apples.",
+          "Two blue pens.",
+          "Five yellow flowers."
+        ]
+      },
+      "aRetenir": "Red, blue, green, yellow."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« Hello » veut dire…",
+        "choix": [
+          "merci",
+          "au revoir",
+          "pardon",
+          "bonjour"
+        ],
+        "bonne": 3,
+        "explication": "Bonjour."
+      },
+      {
+        "type": "nombre",
+        "question": "« Seven » = ? (en chiffres)",
+        "reponse": 7,
+        "indices": [
+          "Après six."
+        ],
+        "solution": "Seven = 7.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« Red » veut dire…",
+        "choix": [
+          "rouge",
+          "bleu",
+          "vert",
+          "jaune"
+        ],
+        "bonne": 0,
+        "explication": "Rouge."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le nouvel ami",
+    "histoire": [
+      "Un nouvel ami anglais arrive dans la classe."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pour savoir son nom, tu demandes…",
+        "choix": [
+          "Thank you",
+          "What's your name?",
+          "How old are you?",
+          "Goodbye"
+        ],
+        "bonne": 1,
+        "explication": "What's your name?"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Il dit « thank you ». Il te dit…",
+        "choix": [
+          "bonjour",
+          "au revoir",
+          "non",
+          "merci"
+        ],
+        "bonne": 3,
+        "explication": "Merci."
+      }
+    ],
+    "conclusion": "Well done!"
+  }
+}

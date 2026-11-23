@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.cercle-compas-cm-teaches-distinguer-rayon-et-diametre",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/cercle-compas-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.cercle-compas-cm",
+  "target": "microskill.mathematiques.distinguer-rayon-et-diametre"
+}

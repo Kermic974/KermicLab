@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.accords-cm-requires-singulier-pluriel-masculin-feminin-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/accords-cm/contenu.json"
+  },
+  "source": "notion.francais.accords-cm",
+  "target": "notion.francais.singulier-pluriel-masculin-feminin-c2",
+  "rationale": "« Pluriel, féminin et accords » : Les accords supposent de reconnaître la nature des mots et les accords du pluriel et du féminin du cycle 2."
+}

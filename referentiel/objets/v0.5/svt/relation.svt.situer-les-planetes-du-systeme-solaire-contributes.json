@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.situer-les-planetes-du-systeme-solaire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/terre-dans-le-systeme-solaire-6e/contenu.json"
+  },
+  "source": "microskill.svt.situer-les-planetes-du-systeme-solaire",
+  "target": "skill.svt.terre-dans-le-systeme-solaire-6e"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-l-apparition-d-homo-sapiens-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/peuplement-neolithique-6e/contenu.json"
+  },
+  "source": "microskill.histoire.situer-l-apparition-d-homo-sapiens",
+  "target": "skill.histoire.peuplement-neolithique-6e"
+}

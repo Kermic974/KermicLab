@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.calculer-un-taux-de-croissance-a-partir-du-pib-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ses-economie-et-croissance-l/contenu.json"
+  },
+  "source": "microskill.ses.calculer-un-taux-de-croissance-a-partir-du-pib",
+  "target": "skill.ses.ses-economie-et-croissance-l"
+}

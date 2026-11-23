@@ -2,15 +2,10 @@
 id: cercle-compas-cm
 titre: Le cercle et le compas
 sujet: mathematiques/cercle-compas-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - cercle-compas-cm-comprendre
-  - cercle-compas-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +21,9 @@ questions:
   - Quelle est la différence entre rayon et diamètre ?
   - Comment tracer un cercle au compas ?
   - Quelle est la différence entre un cercle et un disque ?
+prerequis: figures-planes-c2
+niveaux: cycle-3
+competences: distinguer-rayon-et-diametre, tracer-un-cercle-au-compas, passer-du-rayon-au-diametre-et-inversement, utiliser-le-cercle-pour-reporter-une-longueur
 ---
 
 # Le cercle et le compas

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.distinguer-le-role-des-lymphocytes-b-et-t-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/immunite-adaptative/contenu.json"
+  },
+  "source": "microskill.svt.distinguer-le-role-des-lymphocytes-b-et-t",
+  "target": "skill.svt.immunite-adaptative"
+}

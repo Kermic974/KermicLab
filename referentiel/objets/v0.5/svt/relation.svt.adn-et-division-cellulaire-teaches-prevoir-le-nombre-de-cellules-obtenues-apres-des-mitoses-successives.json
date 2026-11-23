@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.adn-et-division-cellulaire-teaches-prevoir-le-nombre-de-cellules-obtenues-apres-des-mitoses-successives",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/adn-et-division-cellulaire/contenu.json"
+  },
+  "source": "notion.svt.adn-et-division-cellulaire",
+  "target": "microskill.svt.prevoir-le-nombre-de-cellules-obtenues-apres-des-mitoses-successives"
+}

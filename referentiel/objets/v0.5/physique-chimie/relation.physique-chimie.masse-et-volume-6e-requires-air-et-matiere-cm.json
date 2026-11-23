@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.masse-et-volume-6e-requires-air-et-matiere-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/masse-et-volume-6e/contenu.json"
+  },
+  "source": "notion.physique-chimie.masse-et-volume-6e",
+  "target": "notion.physique-chimie.air-et-matiere-cm",
+  "rationale": "« L'air, un gaz qui occupe de la place » : La masse et le volume prolongent l’air et les mélanges du cycle 3."
+}

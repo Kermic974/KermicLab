@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.tourisme-teaches-distinguer-touriste-et-excursionniste",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tourisme/contenu.json"
+  },
+  "source": "notion.geographie.tourisme",
+  "target": "microskill.geographie.distinguer-touriste-et-excursionniste"
+}

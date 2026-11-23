@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.art-teaches-distinguer-imitation-et-creation-dans-une-uvre",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/art/contenu.json"
+  },
+  "source": "notion.philosophie.art",
+  "target": "microskill.philosophie.distinguer-imitation-et-creation-dans-une-uvre"
+}

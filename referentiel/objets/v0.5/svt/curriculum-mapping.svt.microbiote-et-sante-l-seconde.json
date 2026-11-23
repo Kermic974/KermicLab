@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.svt.microbiote-et-sante-l-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/microbiote-et-sante-l/contenu.json"
+  },
+  "object": "notion.svt.microbiote-et-sante-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "introduced"
+}

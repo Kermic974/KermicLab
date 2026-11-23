@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.nsi-bases-de-donnees-et-systemes-l-teaches-ecrire-une-requete-sql-de-selection",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nsi-bases-de-donnees-et-systemes-l/contenu.json"
+  },
+  "source": "notion.technologie.nsi-bases-de-donnees-et-systemes-l",
+  "target": "microskill.technologie.ecrire-une-requete-sql-de-selection"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.construire-une-chaine-alimentaire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/biodiversite-et-chaines-cm/contenu.json"
+  },
+  "source": "microskill.svt.construire-une-chaine-alimentaire",
+  "target": "skill.svt.biodiversite-et-chaines-cm"
+}

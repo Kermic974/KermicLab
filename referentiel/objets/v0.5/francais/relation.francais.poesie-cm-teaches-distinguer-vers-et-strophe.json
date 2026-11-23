@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.poesie-cm-teaches-distinguer-vers-et-strophe",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie-cm/contenu.json"
+  },
+  "source": "notion.francais.poesie-cm",
+  "target": "microskill.francais.distinguer-vers-et-strophe"
+}

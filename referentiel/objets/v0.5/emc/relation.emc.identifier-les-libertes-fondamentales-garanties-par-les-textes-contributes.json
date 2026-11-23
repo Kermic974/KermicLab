@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.identifier-les-libertes-fondamentales-garanties-par-les-textes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-libertes-et-droits-l/contenu.json"
+  },
+  "source": "microskill.emc.identifier-les-libertes-fondamentales-garanties-par-les-textes",
+  "target": "skill.emc.emc-libertes-et-droits-l"
+}

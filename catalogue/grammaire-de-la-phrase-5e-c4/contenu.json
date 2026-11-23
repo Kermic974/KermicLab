@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "En 5e, on analyse la phrase : fonctions des mots, expansions du nom et premières propositions.",
+  "niveaux": [
+    {
+      "titre": "Fonctions et expansions",
+      "niveau": "5e",
+      "paragraphes": [
+        "Les fonctions déjà vues (sujet, COD, COI, attribut, compléments circonstanciels) se complètent par les **expansions du nom** : l'**épithète** (« une **vieille** maison »), le **complément du nom** (« la maison **de mon oncle** »), l'**apposition** (« Paris, **capitale de la France** »), la **proposition subordonnée relative** (« la maison **que je préfère** »).",
+        "Le **complément circonstanciel** peut être déplacé ou supprimé : « Hier, nous sommes partis »."
+      ],
+      "exemple": {
+        "titre": "Exemple : analyser",
+        "etapes": [
+          "« Le chat noir de ma voisine, que j'adore, dort. »",
+          "Épithète : noir ; complément du nom : de ma voisine.",
+          "Relative : que j'adore."
+        ]
+      },
+      "aRetenir": "Épithète, complément du nom, apposition, relative."
+    },
+    {
+      "titre": "Propositions",
+      "niveau": "5e",
+      "paragraphes": [
+        "Une **proposition** est un groupe de mots organisé autour d'un verbe conjugué. Les propositions peuvent être **juxtaposées** (séparées par une virgule : « Il pleut, je reste »), **coordonnées** (reliées par mais, ou, et, donc, or, ni, car) ou **subordonnées** (dépendantes d'une principale : « Je reste **parce qu'il pleut** »).",
+        "On compte les verbes conjugués pour compter les propositions."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« Je sais qu'il viendra. »",
+          "2 verbes conjugués : sais, viendra.",
+          "Principale : je sais ; subordonnée : qu'il viendra."
+        ]
+      },
+      "aRetenir": "Un verbe conjugué = une proposition."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans « la maison que je préfère », « que je préfère » est…",
+        "choix": [
+          "un attribut",
+          "une proposition subordonnée relative",
+          "un complément circonstanciel",
+          "un COD"
+        ],
+        "bonne": 1,
+        "explication": "Elle complète le nom « maison »."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Dans « Paris, capitale de la France », « capitale de la France » est…",
+        "choix": [
+          "un adverbe",
+          "une épithète",
+          "une apposition",
+          "un COD"
+        ],
+        "bonne": 2,
+        "explication": "Apposition."
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de verbes conjugués dans « Je sais qu'il viendra » ?",
+        "reponse": 2,
+        "indices": [
+          "Compte les verbes conjugués."
+        ],
+        "solution": "sais et viendra.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'analyse de phrase",
+    "histoire": [
+      "Phrase : « Le héros, qui avait faim, mangea une pomme dans la forêt. »"
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« qui avait faim » est…",
+        "choix": [
+          "un sujet inversé",
+          "un complément d'objet direct",
+          "une subordonnée relative",
+          "un attribut du sujet"
+        ],
+        "bonne": 2,
+        "explication": "Relative qui complète « héros »."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "« dans la forêt » est…",
+        "choix": [
+          "un complément d'objet direct",
+          "une épithète du nom héros",
+          "une apposition au sujet",
+          "un complément circonstanciel de lieu"
+        ],
+        "bonne": 3,
+        "explication": "Où ?"
+      }
+    ],
+    "conclusion": "Analyse réussie !"
+  }
+}

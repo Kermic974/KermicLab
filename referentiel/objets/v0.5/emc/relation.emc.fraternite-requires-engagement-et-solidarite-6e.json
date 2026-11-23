@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.fraternite-requires-engagement-et-solidarite-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fraternite/contenu.json"
+  },
+  "source": "notion.emc.fraternite",
+  "target": "notion.emc.engagement-et-solidarite-6e",
+  "rationale": "« S'engager : solidarité, délégués et vie du collège » : La solidarité et l’engagement de 6e préparent l’étude de la fraternité."
+}

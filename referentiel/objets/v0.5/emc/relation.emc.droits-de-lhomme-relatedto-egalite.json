@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.droits-de-lhomme-relatedto-egalite",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droits-de-lhomme/contenu.json"
+  },
+  "source": "notion.emc.droits-de-lhomme",
+  "target": "notion.emc.egalite",
+  "rationale": "L’égalité en droits s’appuie sur les textes de droits humains ; la notion d’égalité est en 5e, celle des droits de l’homme en 4e : lien d’étude, non prérequis (garde-fou de niveau)."
+}

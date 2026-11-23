@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.schematiser-un-probleme-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/problemes-a-etapes-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.schematiser-un-probleme",
+  "target": "skill.mathematiques.problemes-a-etapes-cm"
+}

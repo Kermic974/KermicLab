@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.acides-bases-et-ph-l-requires-acides-et-bases",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/acides-bases-et-ph-l/contenu.json"
+  },
+  "source": "notion.physique-chimie.acides-bases-et-ph-l",
+  "target": "notion.physique-chimie.acides-et-bases",
+  "rationale": "« Acides, bases et pH » : Les acides et bases du lycée reprennent le pH du collège et la concentration."
+}

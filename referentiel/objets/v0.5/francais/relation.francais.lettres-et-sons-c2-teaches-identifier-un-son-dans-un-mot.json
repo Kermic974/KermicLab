@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.lettres-et-sons-c2-teaches-identifier-un-son-dans-un-mot",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lettres-et-sons-c2/contenu.json"
+  },
+  "source": "notion.francais.lettres-et-sons-c2",
+  "target": "microskill.francais.identifier-un-son-dans-un-mot"
+}

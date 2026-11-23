@@ -20,15 +20,17 @@ test("référentiel : champs valides normalisés (listes YAML ou séparées par 
     niveaux: ["cycle-3", "cycle-4"], duree: 20
   });
   assert.deepEqual(valider({ prerequis: [] }), { prerequis: [] }, "prerequis vide = renseigné, aucun prérequis");
-  assert.deepEqual(NIVEAUX_SCOLAIRES, ["cycle-3", "cycle-4", "seconde", "premiere", "terminale"]);
+  assert.deepEqual(NIVEAUX_SCOLAIRES, ["cycle-2", "cycle-3", "cycle-4", "seconde", "premiere", "terminale"]);
 });
 
-test("référentiel : classes du primaire (CM1, CM2), cycle 3", () => {
+test("référentiel : classes du primaire (CP à CM2), cycles 2 et 3", () => {
+  assert.deepEqual(valider({ niveau: "primaire", niveaux: "cycle-2", classes: "CP, CE1, CE2" }), { niveaux: ["cycle-2"], classes: ["CP", "CE1", "CE2"] });
+  assert.throws(() => valider({ niveau: "primaire", niveaux: "cycle-3", classes: "CE2" }), /cycle-2/);
   assert.deepEqual(valider({ niveau: "primaire", niveaux: "cycle-3", classes: "CM1, CM2" }), { niveaux: ["cycle-3"], classes: ["CM1", "CM2"] });
   assert.deepEqual(valider({ niveau: "primaire", classes: ["CM2"] }), { classes: ["CM2"] });
   for (const [fiche, attendu] of [
     [{ niveau: "primaire", classes: "6e" }, /inconnue/],
-    [{ niveau: "primaire", classes: "CM2, CM1" }, /du CM1 au CM2/],
+    [{ niveau: "primaire", classes: "CM2, CM1" }, /du CP au CM2/],
     [{ niveau: "primaire", niveaux: "cycle-4", classes: "CM1" }, /cycle-3/],
     [{ niveau: "college", classes: "CM2" }, /inconnue/]
   ]) assert.throws(() => valider(fiche), attendu);
@@ -75,7 +77,7 @@ test("référentiel : notions pilotes renseignées et indicateur des prérequis"
     assert.ok(Array.isArray(m.prerequis) && m.competences.length && m.niveaux.length && m.duree, `${id} incomplète`);
     for (const p of m.prerequis) assert.ok(parId[p], `${id} : prérequis inconnu ${p}`);
   }
-  assert.deepEqual(parId.proportionnalite.prerequis, ["fractions", "nombres-decimaux"]);
+  assert.deepEqual(parId.proportionnalite.prerequis, ["fractions", "nombres-decimaux", "proportionnalite-cm", "moyenne-et-proportions-cm"]);
   assert.equal(parId.echecs.prerequis, undefined, "les champs restent facultatifs");
   const indicateur = indicateurReferentiel(index.maquettes);
   assert.ok(indicateur.avecPrerequis >= 4 && indicateur.avecPrerequis <= indicateur.notions);

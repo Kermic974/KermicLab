@@ -5,15 +5,6 @@ sujet: mathematiques/produit-scalaire
 version: 1.0.0
 date: 2026-11-01
 niveau: premiere
-niveaux: premiere
-prerequis:
-  - vecteurs
-  - trigo-cercle
-competences:
-  - calculer-un-produit-scalaire
-  - calculer-un-produit-scalaire-avec-les-coordonnees
-  - utiliser-la-formule-d-al-kashi
-  - determiner-un-vecteur-normal
 duree: 40
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -33,6 +24,9 @@ questions:
   - je ne comprends pas la formule d'Al-Kashi
   - comment montrer que deux vecteurs sont orthogonaux
   - what is the dot product?
+prerequis: vecteurs, trigo-cercle, trigonometrie-radian-l, geometrie-repere-l
+niveaux: premiere
+competences: calculer-un-produit-scalaire, calculer-un-produit-scalaire-avec-les-coordonnees, utiliser-la-formule-d-al-kashi, determiner-un-vecteur-normal
 ---
 
 # Le produit scalaire

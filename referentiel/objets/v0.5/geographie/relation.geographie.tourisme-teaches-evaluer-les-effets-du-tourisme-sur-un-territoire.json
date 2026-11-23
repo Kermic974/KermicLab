@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.tourisme-teaches-evaluer-les-effets-du-tourisme-sur-un-territoire",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tourisme/contenu.json"
+  },
+  "source": "notion.geographie.tourisme",
+  "target": "microskill.geographie.evaluer-les-effets-du-tourisme-sur-un-territoire"
+}

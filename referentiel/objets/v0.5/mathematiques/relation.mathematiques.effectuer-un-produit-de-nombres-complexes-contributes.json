@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.effectuer-un-produit-de-nombres-complexes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nombres-complexes-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.effectuer-un-produit-de-nombres-complexes",
+  "target": "skill.mathematiques.nombres-complexes-l"
+}

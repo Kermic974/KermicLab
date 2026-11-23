@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.definir-la-monarchie-absolue-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/louis-xiv-cm/contenu.json"
+  },
+  "source": "microskill.histoire.definir-la-monarchie-absolue",
+  "target": "skill.histoire.louis-xiv-cm"
+}

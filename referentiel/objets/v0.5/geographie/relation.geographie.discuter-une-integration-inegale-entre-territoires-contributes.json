@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.discuter-une-integration-inegale-entre-territoires-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mondialisation/contenu.json"
+  },
+  "source": "microskill.geographie.discuter-une-integration-inegale-entre-territoires",
+  "target": "skill.geographie.mondialisation"
+}

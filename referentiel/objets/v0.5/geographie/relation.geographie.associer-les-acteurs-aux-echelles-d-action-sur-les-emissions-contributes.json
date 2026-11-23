@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.associer-les-acteurs-aux-echelles-d-action-sur-les-emissions-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/changement-climatique/contenu.json"
+  },
+  "source": "microskill.geographie.associer-les-acteurs-aux-echelles-d-action-sur-les-emissions",
+  "target": "skill.geographie.changement-climatique"
+}

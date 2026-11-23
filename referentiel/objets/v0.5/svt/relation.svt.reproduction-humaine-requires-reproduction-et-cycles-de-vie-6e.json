@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.reproduction-humaine-requires-reproduction-et-cycles-de-vie-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reproduction-humaine/contenu.json"
+  },
+  "source": "notion.svt.reproduction-humaine",
+  "target": "notion.svt.reproduction-et-cycles-de-vie-6e",
+  "rationale": "« Reproduction et cycles de vie en 6e » : Les cycles de vie et la puberté des cycles précédents précèdent les gamètes et la fécondation."
+}

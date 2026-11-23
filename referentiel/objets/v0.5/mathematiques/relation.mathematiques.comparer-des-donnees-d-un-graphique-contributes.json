@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.comparer-des-donnees-d-un-graphique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tableaux-graphiques-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.comparer-des-donnees-d-un-graphique",
+  "target": "skill.mathematiques.tableaux-graphiques-cm"
+}

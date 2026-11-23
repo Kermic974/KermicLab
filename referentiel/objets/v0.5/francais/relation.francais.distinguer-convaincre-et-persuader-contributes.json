@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.distinguer-convaincre-et-persuader-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/argumentation-et-litterature-d-idees-l/contenu.json"
+  },
+  "source": "microskill.francais.distinguer-convaincre-et-persuader",
+  "target": "skill.francais.argumentation-et-litterature-d-idees-l"
+}

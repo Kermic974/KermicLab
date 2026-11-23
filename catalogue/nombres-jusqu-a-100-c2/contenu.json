@@ -1,0 +1,111 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Avec les chiffres de 0 à 9, on peut écrire tous les nombres jusqu'à 100 et plus.",
+  "niveaux": [
+    {
+      "titre": "Compter et regrouper",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour compter beaucoup d'objets, on fait des paquets de 10. Un paquet de 10, c'est **une dizaine**. Les objets seuls, ce sont des **unités**.",
+        "Dans 34, il y a 3 dizaines et 4 unités : 30 + 4 = 34."
+      ],
+      "exemple": {
+        "titre": "Exemple : 27 billes",
+        "etapes": [
+          "Je fais 2 paquets de 10 billes.",
+          "Il me reste 7 billes seules.",
+          "27, c'est 2 dizaines et 7 unités."
+        ]
+      },
+      "aRetenir": "Une dizaine = 10 unités."
+    },
+    {
+      "titre": "Lire et écrire les nombres",
+      "niveau": "CP",
+      "paragraphes": [
+        "Le chiffre de gauche dit combien de dizaines, le chiffre de droite combien d'unités. 52 se lit « cinquante-deux » : 5 dizaines et 2 unités.",
+        "Après 99 vient **100** : cent. 10 dizaines font 100."
+      ],
+      "exemple": {
+        "titre": "Exemple : 68",
+        "etapes": [
+          "6 dizaines = 60.",
+          "8 unités = 8.",
+          "60 + 8 = 68 : soixante-huit."
+        ]
+      },
+      "aRetenir": "Le premier chiffre compte les dizaines."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien y a-t-il d'unités dans 34 ?",
+        "reponse": 4,
+        "indices": [
+          "Regarde le chiffre de droite."
+        ],
+        "solution": "34 = 3 dizaines et 4 unités.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "3 dizaines et 5 unités, c'est quel nombre ?",
+        "reponse": 35,
+        "indices": [
+          "3 dizaines = 30."
+        ],
+        "solution": "30 + 5 = 35.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel nombre vient juste après 99 ?",
+        "choix": [
+          "109",
+          "100",
+          "90",
+          "101"
+        ],
+        "bonne": 1,
+        "explication": "Après 99, on écrit 100 (cent)."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Les billes de Léo",
+    "histoire": [
+      "Léo a 4 paquets de 10 billes et 6 billes seules."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Combien de billes a Léo ?",
+        "reponse": 46,
+        "indices": [
+          "4 paquets de 10 font 40."
+        ],
+        "solution": "4 dizaines = 40 ; 40 + 6 = 46.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Il en gagne 4. Combien a-t-il de billes ?",
+        "reponse": 50,
+        "indices": [
+          "46 + 4 complète une dizaine."
+        ],
+        "solution": "46 + 4 = 50.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bravo, tu comptes bien !"
+  }
+}

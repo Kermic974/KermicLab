@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.citoyen-et-engagement-cm-requires-devise-republique-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/citoyen-et-engagement-cm/contenu.json"
+  },
+  "source": "notion.emc.citoyen-et-engagement-cm",
+  "target": "notion.emc.devise-republique-cm",
+  "rationale": "« La devise et les symboles de la République » : Voter et s’engager s’appuie sur les valeurs et symboles de la République."
+}

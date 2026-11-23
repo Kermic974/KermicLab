@@ -1,0 +1,13 @@
+{
+  "id": "relation.anglais.anglais-lieux-et-pays-cm-requires-anglais-vocabulaire-quotidien-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-lieux-et-pays-cm/contenu.json"
+  },
+  "source": "notion.anglais.anglais-lieux-et-pays-cm",
+  "target": "notion.anglais.anglais-vocabulaire-quotidien-cm",
+  "rationale": "Les mots du quotidien et les nombres sont réemployés pour s’orienter et nommer des lieux."
+}

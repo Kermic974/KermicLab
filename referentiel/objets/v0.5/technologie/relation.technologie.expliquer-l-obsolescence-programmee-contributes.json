@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.expliquer-l-obsolescence-programmee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/materiaux-et-environnement-6e/contenu.json"
+  },
+  "source": "microskill.technologie.expliquer-l-obsolescence-programmee",
+  "target": "skill.technologie.materiaux-et-environnement-6e"
+}

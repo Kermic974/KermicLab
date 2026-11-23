@@ -29,9 +29,9 @@ questions:
   - je ne comprends pas les transferts thermiques
   - c'est quoi la loi des gaz parfaits ?
   - what is heat transfer?
-prerequis:
+prerequis: energie, etats-de-la-matiere
 niveaux: terminale
-competences: pc-thermodynamique-action-1, pc-thermodynamique-action-2
+competences: identifier-le-mode-de-transfert-thermique, calculer-le-transfert-associe-a-une-variation-de-temperature, appliquer-le-premier-principe, exploiter-la-loi-du-gaz-parfait
 ---
 
 # Thermodynamique et transferts thermiques

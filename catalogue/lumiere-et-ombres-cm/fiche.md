@@ -2,15 +2,10 @@
 id: lumiere-et-ombres-cm
 titre: Lumière, ombres et son
 sujet: physique-chimie/lumiere-et-ombres-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - lumiere-et-ombres-cm-comprendre
-  - lumiere-et-ombres-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +23,9 @@ questions:
   - Comment la lumière se propage-t-elle ?
   - Comment le son se propage-t-il ?
   - Pourquoi voit-on l'éclair avant d'entendre le tonnerre ?
+prerequis:
+niveaux: cycle-3
+competences: expliquer-la-propagation-rectiligne-de-la-lumiere, expliquer-la-formation-d-une-ombre, estimer-la-distance-d-un-orage-avec-la-vitesse-du-son, montrer-que-le-son-ne-se-propage-pas-dans-le-vide
 ---
 
 # Lumière, ombres et son

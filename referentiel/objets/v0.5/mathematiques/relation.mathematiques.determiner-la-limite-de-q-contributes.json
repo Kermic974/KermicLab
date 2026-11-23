@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.determiner-la-limite-de-q-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/limites-de-suites-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.determiner-la-limite-de-q",
+  "target": "skill.mathematiques.limites-de-suites-l"
+}

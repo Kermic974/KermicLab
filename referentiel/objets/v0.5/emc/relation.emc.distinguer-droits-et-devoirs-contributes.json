@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-droits-et-devoirs-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/regles-et-justice-cm/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-droits-et-devoirs",
+  "target": "skill.emc.regles-et-justice-cm"
+}

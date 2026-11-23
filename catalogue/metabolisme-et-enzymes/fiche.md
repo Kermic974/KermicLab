@@ -25,9 +25,9 @@ questions:
   - je ne comprends pas la différence entre respiration et fermentation
   - c'est quoi un être vivant autotrophe ?
   - what is an enzyme?
-prerequis:
+prerequis: nutrition-et-digestion, photosynthese
 niveaux: seconde
-competences: svt-metabolisme-et-enzymes-action-1, svt-metabolisme-et-enzymes-action-2
+competences: distinguer-autotrophes-et-heterotrophes, expliquer-la-specificite-d-une-enzyme, interpreter-l-effet-de-la-temperature-et-du-ph-sur-l-activite-enzymatique, comparer-respiration-et-fermentation, calculer-un-bilan-energetique-en-atp
 ---
 
 # Métabolisme et enzymes

@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.echelle-et-plans-cm-requires-proportionnalite-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/echelle-et-plans-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.echelle-et-plans-cm",
+  "target": "notion.mathematiques.proportionnalite-cm",
+  "rationale": "Prérequis déclaré dans la fiche : « La proportionnalité » précède « Échelles et plans » dans la progression du programme (lien à relire)."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.age-industriel-cm-requires-revolution-empire-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/age-industriel-cm/contenu.json"
+  },
+  "source": "notion.histoire.age-industriel-cm",
+  "target": "notion.histoire.revolution-empire-cm",
+  "rationale": "« La Révolution française et l'Empire » : Progression chronologique du programme (lien de continuité du parcours, pas un prérequis conceptuel strict) : l’âge industriel suit la Révolution et l’Empire dans le programme du cycle 3."
+}

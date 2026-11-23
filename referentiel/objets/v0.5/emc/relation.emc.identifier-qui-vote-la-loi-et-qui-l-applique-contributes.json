@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.identifier-qui-vote-la-loi-et-qui-l-applique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-democratie-et-institutions-l/contenu.json"
+  },
+  "source": "microskill.emc.identifier-qui-vote-la-loi-et-qui-l-applique",
+  "target": "skill.emc.emc-democratie-et-institutions-l"
+}

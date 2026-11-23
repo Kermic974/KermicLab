@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.accords-requires-orthographe-grammaticale-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/accords/contenu.json"
+  },
+  "source": "notion.francais.accords",
+  "target": "notion.francais.orthographe-grammaticale-6e",
+  "rationale": "« Accords et orthographe grammaticale en 6e » : Les accords et le participe passé de 6e sont approfondis."
+}

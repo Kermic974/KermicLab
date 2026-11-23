@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.societes-et-environnement-l-requires-ressources",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/societes-et-environnement-l/contenu.json"
+  },
+  "source": "notion.geographie.societes-et-environnement-l",
+  "target": "notion.geographie.ressources",
+  "rationale": "« Les ressources et leur gestion » : La seconde reprend les risques naturels et les ressources du collège."
+}

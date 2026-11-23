@@ -2,15 +2,10 @@
 id: regles-et-justice-cm
 titre: Règles, lois et justice
 sujet: emc/regles-et-justice-cm
-version: 1.0.0
+version: 1.0.2
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - regles-et-justice-cm-comprendre
-  - regles-et-justice-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +22,9 @@ questions:
   - Quelle différence entre un droit et un devoir ?
   - À quoi sert la justice ?
   - Quelle différence entre punition et réparation ?
+prerequis: respect-et-egalite-cm
+niveaux: cycle-3
+competences: distinguer-regle-et-loi, expliquer-le-role-de-la-justice, distinguer-droits-et-devoirs, identifier-qui-rend-la-justice
 ---
 
 # Règles, lois et justice

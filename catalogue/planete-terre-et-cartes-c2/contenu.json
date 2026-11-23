@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La Terre est une planète ronde, avec de l'eau (les océans) et des terres (les continents).",
+  "niveaux": [
+    {
+      "titre": "Une planète ronde",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **Terre** est une planète ronde qui tourne autour du **Soleil**. On la représente par un **globe**. Sur une carte à plat (un **planisphère**), on voit les **continents** (les grandes terres) et les **océans** (les grandes étendues d'eau).",
+        "Il y a 5 océans et 7 continents (Afrique, Amérique du Nord, Amérique du Sud, Antarctique, Asie, Europe, Océanie)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Le Pacifique est le plus grand océan.",
+          "L'Asie est le plus grand continent.",
+          "La France est en Europe."
+        ]
+      },
+      "aRetenir": "7 continents, 5 océans."
+    },
+    {
+      "titre": "La France et l'Europe",
+      "niveau": "CE2",
+      "paragraphes": [
+        "La **France** est un pays d'**Europe**. Sa capitale est **Paris**. Elle est entourée par la mer (Manche, Atlantique, Méditerranée) et touche l'Espagne, la Belgique, l'Allemagne, la Suisse, l'Italie. Elle a la forme d'un hexagone.",
+        "On repère un lieu avec une carte, un plan ou un globe."
+      ],
+      "exemple": {
+        "titre": "Exemple : la France",
+        "etapes": [
+          "Capitale : Paris.",
+          "Forme : un hexagone.",
+          "Voisins : Espagne, Italie, Allemagne…"
+        ]
+      },
+      "aRetenir": "La France est en Europe."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien de continents y a-t-il ?",
+        "reponse": 7,
+        "indices": [
+          "Compte-les."
+        ],
+        "solution": "Afrique, Amériques (2), Antarctique, Asie, Europe, Océanie.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La capitale de la France est…",
+        "choix": [
+          "Marseille",
+          "Bordeaux",
+          "Paris",
+          "Lyon"
+        ],
+        "bonne": 2,
+        "explication": "Paris."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Notre planète s'appelle…",
+        "choix": [
+          "Mars",
+          "le Soleil",
+          "la Terre",
+          "la Lune"
+        ],
+        "bonne": 2,
+        "explication": "La Terre."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le tour du monde",
+    "histoire": [
+      "Tu voyages sur le planisphère."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Sur quel continent se trouve la France ?",
+        "choix": [
+          "en Europe",
+          "en Asie",
+          "en Afrique",
+          "en Amérique"
+        ],
+        "bonne": 0,
+        "explication": "Europe."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le plus grand océan est…",
+        "choix": [
+          "le Pacifique",
+          "l'Atlantique",
+          "l'Arctique",
+          "l'Indien"
+        ],
+        "bonne": 0,
+        "explication": "Pacifique."
+      }
+    ],
+    "conclusion": "Bon voyage !"
+  }
+}

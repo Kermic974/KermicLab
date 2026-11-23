@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.completer-une-figure-par-symetrie-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/symetrie-et-reperage-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.completer-une-figure-par-symetrie",
+  "target": "skill.mathematiques.symetrie-et-reperage-c2"
+}

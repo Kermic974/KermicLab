@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.contraction-musculaire-teaches-expliquer-le-glissement-des-filaments-d-actine-et-de-myosine",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/contraction-musculaire/contenu.json"
+  },
+  "source": "notion.svt.contraction-musculaire",
+  "target": "microskill.svt.expliquer-le-glissement-des-filaments-d-actine-et-de-myosine"
+}

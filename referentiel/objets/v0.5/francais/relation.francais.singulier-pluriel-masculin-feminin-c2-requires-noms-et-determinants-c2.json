@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.singulier-pluriel-masculin-feminin-c2-requires-noms-et-determinants-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/singulier-pluriel-masculin-feminin-c2/contenu.json"
+  },
+  "source": "notion.francais.singulier-pluriel-masculin-feminin-c2",
+  "target": "notion.francais.noms-et-determinants-c2",
+  "rationale": "« Le nom et le déterminant » : Le pluriel et le féminin se marquent sur le nom avec son déterminant."
+}

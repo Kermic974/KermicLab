@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.distinguer-croyance-foi-et-savoir-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/religion/contenu.json"
+  },
+  "source": "microskill.philosophie.distinguer-croyance-foi-et-savoir",
+  "target": "skill.philosophie.religion"
+}

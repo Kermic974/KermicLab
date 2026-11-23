@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.decrire-le-role-d-un-delegue-au-college-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/engagement-et-solidarite-6e/contenu.json"
+  },
+  "source": "microskill.emc.decrire-le-role-d-un-delegue-au-college",
+  "target": "skill.emc.engagement-et-solidarite-6e"
+}

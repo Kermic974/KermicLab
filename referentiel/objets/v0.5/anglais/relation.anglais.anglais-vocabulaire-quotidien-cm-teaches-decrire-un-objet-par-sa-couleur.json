@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.anglais-vocabulaire-quotidien-cm-teaches-decrire-un-objet-par-sa-couleur",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-vocabulaire-quotidien-cm/contenu.json"
+  },
+  "source": "notion.anglais.anglais-vocabulaire-quotidien-cm",
+  "target": "microskill.anglais.decrire-un-objet-par-sa-couleur"
+}

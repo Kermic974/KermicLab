@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.formation-des-mots-cm-requires-vocabulaire-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/formation-des-mots-cm/contenu.json"
+  },
+  "source": "notion.francais.formation-des-mots-cm",
+  "target": "notion.francais.vocabulaire-cm",
+  "rationale": "« Le vocabulaire : sens des mots, synonymes, contraires » : L’analyse des mots prolonge le vocabulaire du cycle 3."
+}

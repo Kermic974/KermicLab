@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.temps-du-recit-6e-requires-ecrire-un-recit-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps-du-recit-6e/contenu.json"
+  },
+  "source": "notion.francais.temps-du-recit-6e",
+  "target": "notion.francais.ecrire-un-recit-cm",
+  "rationale": "« Écrire un récit » : Les temps du récit reprennent la conjugaison du CM et l’écriture de récit."
+}

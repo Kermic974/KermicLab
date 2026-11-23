@@ -29,9 +29,9 @@ questions:
   - je ne comprends pas les demi-équations
   - comment fonctionne une pile électrochimique
   - what is a redox reaction?
-prerequis:
+prerequis: tableau-periodique, quantite-de-matiere
 niveaux: premiere, terminale
-competences: pc-oxydoreduction-action-1, pc-oxydoreduction-action-2
+competences: identifier-l-oxydant-et-le-reducteur, equilibrer-une-demi-equation-avec-des-electrons, ecrire-l-equation-d-une-reaction-d-oxydoreduction, prevoir-une-reaction-entre-un-metal-et-un-ion-metallique, interpreter-le-fonctionnement-d-une-pile
 ---
 
 # L'oxydoréduction

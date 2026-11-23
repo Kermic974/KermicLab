@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expression-genetique-teaches-localiser-transcription-et-traduction-dans-la-cellule",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/expression-genetique/contenu.json"
+  },
+  "source": "notion.svt.expression-genetique",
+  "target": "microskill.svt.localiser-transcription-et-traduction-dans-la-cellule"
+}

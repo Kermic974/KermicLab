@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.tracer-un-angle-de-mesure-donnee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/angles-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.tracer-un-angle-de-mesure-donnee",
+  "target": "skill.mathematiques.angles-cm"
+}

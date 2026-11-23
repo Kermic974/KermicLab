@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.paysages-et-ressources-cm-requires-lire-une-carte-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/paysages-et-ressources-cm/contenu.json"
+  },
+  "source": "notion.geographie.paysages-et-ressources-cm",
+  "target": "notion.geographie.lire-une-carte-cm",
+  "rationale": "« Lire une carte et se repérer » : Les paysages de France se situent avec la lecture de carte."
+}

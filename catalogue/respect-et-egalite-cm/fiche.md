@@ -2,15 +2,10 @@
 id: respect-et-egalite-cm
 titre: Respect, égalité et lutte contre le harcèlement
 sujet: emc/respect-et-egalite-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - respect-et-egalite-cm-comprendre
-  - respect-et-egalite-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +22,9 @@ questions:
   - Pourquoi faut-il respecter les autres ?
   - Qu'est-ce que l'égalité entre filles et garçons ?
   - Que faire si un camarade est harcelé ?
+prerequis: vivre-ensemble-c2
+niveaux: cycle-3
+competences: reagir-face-a-un-camarade-harcele, distinguer-moquerie-et-harcelement, expliquer-l-egalite-des-filles-et-des-garcons, accepter-les-differences-de-chacun
 ---
 
 # Respect, égalité et lutte contre le harcèlement

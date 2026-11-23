@@ -2,16 +2,10 @@
 id: mouvement-et-vitesse-cm
 titre: Mouvement et vitesse
 sujet: physique-chimie/mouvement-et-vitesse-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - proportionnalite-cm
-competences:
-  - mouvement-et-vitesse-cm-comprendre
-  - mouvement-et-vitesse-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - C'est quoi la vitesse ?
   - Comment calculer une vitesse moyenne ?
   - Qu'est-ce qu'une trajectoire ?
+prerequis: durees-et-horaires-cm
+niveaux: cycle-3
+competences: calculer-une-vitesse-moyenne-simple, calculer-une-distance-parcourue-a-vitesse-constante, decrire-une-trajectoire, choisir-le-referentiel-d-une-observation
 ---
 
 # Mouvement et vitesse

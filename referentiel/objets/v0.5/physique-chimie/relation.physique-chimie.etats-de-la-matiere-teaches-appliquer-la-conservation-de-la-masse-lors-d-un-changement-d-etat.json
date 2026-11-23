@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.etats-de-la-matiere-teaches-appliquer-la-conservation-de-la-masse-lors-d-un-changement-d-etat",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etats-de-la-matiere/contenu.json"
+  },
+  "source": "notion.physique-chimie.etats-de-la-matiere",
+  "target": "microskill.physique-chimie.appliquer-la-conservation-de-la-masse-lors-d-un-changement-d-etat"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.decrire-un-itineraire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/se-reperer-dans-l-espace-c2/contenu.json"
+  },
+  "source": "microskill.geographie.decrire-un-itineraire",
+  "target": "skill.geographie.se-reperer-dans-l-espace-c2"
+}

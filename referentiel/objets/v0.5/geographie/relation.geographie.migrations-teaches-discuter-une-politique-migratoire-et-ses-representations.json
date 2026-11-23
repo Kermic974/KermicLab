@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.migrations-teaches-discuter-une-politique-migratoire-et-ses-representations",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/migrations/contenu.json"
+  },
+  "source": "notion.geographie.migrations",
+  "target": "microskill.geographie.discuter-une-politique-migratoire-et-ses-representations"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.analyser-l-effet-d-un-procede-poetique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie-et-lyrisme-l/contenu.json"
+  },
+  "source": "microskill.francais.analyser-l-effet-d-un-procede-poetique",
+  "target": "skill.francais.poesie-et-lyrisme-l"
+}

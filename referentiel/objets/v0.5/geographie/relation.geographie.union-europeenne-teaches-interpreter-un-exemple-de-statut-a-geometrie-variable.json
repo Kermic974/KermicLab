@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.union-europeenne-teaches-interpreter-un-exemple-de-statut-a-geometrie-variable",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/union-europeenne/contenu.json"
+  },
+  "source": "notion.geographie.union-europeenne",
+  "target": "microskill.geographie.interpreter-un-exemple-de-statut-a-geometrie-variable"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.francais.temps-du-recit-6e-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps-du-recit-6e/contenu.json"
+  },
+  "object": "notion.francais.temps-du-recit-6e",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced"
+}

@@ -1,0 +1,108 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Pour résoudre un problème, on lit, on comprend, on calcule et on répond avec une phrase.",
+  "niveaux": [
+    {
+      "titre": "Lire et comprendre",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Je lis l'énoncé en entier. Je repère ce que je cherche (la **question**) et les **nombres** utiles. Je peux faire un dessin ou un schéma.",
+        "Si on **réunit** ou **ajoute**, on fait une addition. Si on **enlève** ou **compare**, une soustraction."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Tom a 5 billes, Léa en a 3 de plus.",
+          "Question : combien Léa en a-t-elle ?",
+          "5 + 3 = 8 : Léa a 8 billes."
+        ]
+      },
+      "aRetenir": "On répond par une phrase."
+    },
+    {
+      "titre": "Choisir l'opération",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "Paquets égaux → **multiplication** (3 boîtes de 6 œufs : 3 × 6). Partage ou paquets à faire → **division** (12 bonbons pour 4 enfants : 12 ÷ 4). Plusieurs étapes : on calcule d'abord ce qui manque.",
+        "On vérifie : le résultat est-il possible ? la phrase répond-elle à la question ?"
+      ],
+      "exemple": {
+        "titre": "Exemple en 2 étapes",
+        "etapes": [
+          "Un cahier coûte 2 €, un stylo 1 €.",
+          "3 cahiers : 3 × 2 = 6 €.",
+          "6 + 1 = 7 € avec un stylo."
+        ]
+      },
+      "aRetenir": "Vérifier que la réponse a du sens."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Tom a 5 billes, Léa en a 3 de plus. Combien a Léa de billes ?",
+        "reponse": 8,
+        "indices": [
+          "Ajoute 3 à 5."
+        ],
+        "solution": "5 + 3 = 8.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "3 boîtes de 6 œufs : combien d'œufs ?",
+        "reponse": 18,
+        "indices": [
+          "Paquets égaux : multiplie."
+        ],
+        "solution": "3 × 6 = 18.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "nombre",
+        "question": "12 bonbons à partager entre 4 enfants : combien chacun ?",
+        "reponse": 3,
+        "indices": [
+          "Partage : divise."
+        ],
+        "solution": "12 ÷ 4 = 3.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La fête de l'école",
+    "histoire": [
+      "Pour la fête, on prépare 5 tables de 8 chaises."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Combien de chaises en tout ?",
+        "reponse": 40,
+        "indices": [
+          "Paquets égaux : multiplie."
+        ],
+        "solution": "5 × 8 = 40.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "On en enlève 6. Combien reste-t-il de chaises ?",
+        "reponse": 34,
+        "indices": [
+          "Enlève : soustrais."
+        ],
+        "solution": "40 − 6 = 34.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Problème résolu !"
+  }
+}

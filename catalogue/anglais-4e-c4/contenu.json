@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "En 4e, on relie le passé au présent (present perfect), on parle de l'avenir et on exprime l'obligation ou le conseil.",
+  "niveaux": [
+    {
+      "titre": "Present perfect",
+      "niveau": "4e",
+      "paragraphes": [
+        "Le **present perfect** = **have/has + participe passé** : « I have visited Rome. » Il relie le passé au présent : expérience (« Have you ever eaten sushi ? »), résultat présent (« She has lost her key »), durée avec **for** (depuis… une durée : for two years) et **since** (depuis un moment précis : since 2020). On ne l'emploie pas avec un repère du passé précis (yesterday)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "I have lived here for five years.",
+          "She has worked here since 2021.",
+          "Have you ever been to Rome ?"
+        ]
+      },
+      "aRetenir": "Present perfect : have/has + participe passé."
+    },
+    {
+      "titre": "Futur et modaux",
+      "niveau": "4e",
+      "paragraphes": [
+        "Le **futur** : **will** (décision, prévision : « It will rain ») ou **be going to** (projet, intention : « I'm going to visit my cousin »). Les **modaux** : **can** (pouvoir), **must** (obligation), **should** (conseil), **may** (possibilité) + base verbale sans -s : « You should sleep more », « He must leave »."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "I'm going to study tonight.",
+          "She will be late.",
+          "You must wear a helmet."
+        ]
+      },
+      "aRetenir": "Modal + base verbale, sans -s ni to."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« I have lived here ___ five years. »",
+        "choix": [
+          "during",
+          "for",
+          "since",
+          "ago"
+        ],
+        "bonne": 1,
+        "explication": "Durée : for."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Complète : « You ___ wear a helmet. » (obligation)",
+        "choix": [
+          "should to",
+          "must",
+          "may",
+          "can't"
+        ],
+        "bonne": 1,
+        "explication": "Obligation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quelle phrase exprime un projet ?",
+        "choix": [
+          "I'm going to visit my cousin.",
+          "I visited my cousin.",
+          "I have visited my cousin.",
+          "I visit my cousin."
+        ],
+        "bonne": 0,
+        "explication": "be going to."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "My plans",
+    "histoire": [
+      "Tu parles de tes projets à ton correspondant."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment dis-tu « Je vis ici depuis 2020 » ?",
+        "choix": [
+          "I am living here for 2020.",
+          "I have lived here since 2020.",
+          "I live here since 2020.",
+          "I lived here since 2020."
+        ],
+        "bonne": 1,
+        "explication": "Present perfect + since."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment conseilles-tu à un ami de dormir plus ?",
+        "choix": [
+          "You should sleep more.",
+          "You must to sleep more.",
+          "You sleeps more.",
+          "You should sleeping."
+        ],
+        "bonne": 0,
+        "explication": "Should + base verbale."
+      }
+    ],
+    "conclusion": "Great !"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.terre-dans-le-systeme-solaire-6e-teaches-definir-la-gravitation",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/terre-dans-le-systeme-solaire-6e/contenu.json"
+  },
+  "source": "notion.svt.terre-dans-le-systeme-solaire-6e",
+  "target": "microskill.svt.definir-la-gravitation"
+}

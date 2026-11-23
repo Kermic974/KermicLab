@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.figures-planes-c2-teaches-compter-les-cotes-et-les-sommets-d-une-figure",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/figures-planes-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.figures-planes-c2",
+  "target": "microskill.mathematiques.compter-les-cotes-et-les-sommets-d-une-figure"
+}

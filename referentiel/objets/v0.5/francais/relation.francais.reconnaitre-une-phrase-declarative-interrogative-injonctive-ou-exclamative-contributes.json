@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.reconnaitre-une-phrase-declarative-interrogative-injonctive-ou-exclamative-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/types-et-formes-de-phrases-cm/contenu.json"
+  },
+  "source": "microskill.francais.reconnaitre-une-phrase-declarative-interrogative-injonctive-ou-exclamative",
+  "target": "skill.francais.types-et-formes-de-phrases-cm"
+}

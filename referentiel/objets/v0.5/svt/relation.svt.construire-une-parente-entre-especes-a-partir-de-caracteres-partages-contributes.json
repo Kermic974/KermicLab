@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.construire-une-parente-entre-especes-a-partir-de-caracteres-partages-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/evolution-et-selection-naturelle/contenu.json"
+  },
+  "source": "microskill.svt.construire-une-parente-entre-especes-a-partir-de-caracteres-partages",
+  "target": "skill.svt.evolution-et-selection-naturelle"
+}

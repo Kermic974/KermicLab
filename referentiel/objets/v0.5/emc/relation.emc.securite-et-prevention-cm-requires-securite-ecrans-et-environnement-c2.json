@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.securite-et-prevention-cm-requires-securite-ecrans-et-environnement-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/securite-et-prevention-cm/contenu.json"
+  },
+  "source": "notion.emc.securite-et-prevention-cm",
+  "target": "notion.emc.securite-ecrans-et-environnement-c2",
+  "rationale": "« Sécurité, écrans et protection de la planète » : La prévention du CM prolonge la sécurité du cycle 2."
+}

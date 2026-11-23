@@ -2,16 +2,10 @@
 id: echelle-et-plans-cm
 titre: Échelles et plans
 sujet: mathematiques/echelle-et-plans-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM2
-prerequis:
-  - proportionnalite-cm
-competences:
-  - echelle-et-plans-cm-comprendre
-  - echelle-et-plans-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +20,9 @@ questions:
   - C'est quoi une échelle sur une carte ?
   - Comment calculer une distance réelle avec l'échelle ?
   - Comment agrandir une figure ?
+prerequis: proportionnalite-cm
+niveaux: cycle-3
+competences: calculer-une-longueur-reelle-avec-une-echelle, calculer-une-longueur-sur-un-plan, expliquer-l-effet-d-un-agrandissement-sur-les-angles, lire-l-echelle-d-un-plan
 ---
 
 # Échelles et plans

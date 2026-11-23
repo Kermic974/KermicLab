@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.glycemie-et-diabete-teaches-expliquer-le-role-de-l-insuline-et-du-glucagon",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/glycemie-et-diabete/contenu.json"
+  },
+  "source": "notion.svt.glycemie-et-diabete",
+  "target": "microskill.svt.expliquer-le-role-de-l-insuline-et-du-glucagon"
+}

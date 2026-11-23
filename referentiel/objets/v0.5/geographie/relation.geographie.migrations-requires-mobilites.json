@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.migrations-requires-mobilites",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/migrations/contenu.json"
+  },
+  "source": "notion.geographie.migrations",
+  "target": "notion.geographie.mobilites",
+  "rationale": "Les migrations sont une forme de mobilité à l’échelle d’une résidence habituelle."
+}

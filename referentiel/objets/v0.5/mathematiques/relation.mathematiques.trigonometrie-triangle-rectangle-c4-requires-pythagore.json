@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.trigonometrie-triangle-rectangle-c4-requires-pythagore",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/trigonometrie-triangle-rectangle-c4/contenu.json"
+  },
+  "source": "notion.mathematiques.trigonometrie-triangle-rectangle-c4",
+  "target": "notion.mathematiques.pythagore",
+  "rationale": "Prérequis déclaré dans la fiche : « Le théorème de Pythagore » précède « Trigonométrie dans le triangle rectangle » dans la progression du programme (lien à relire)."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.seismes-et-volcans-requires-volcans-et-seismes-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/seismes-et-volcans/contenu.json"
+  },
+  "source": "notion.svt.seismes-et-volcans",
+  "target": "notion.svt.volcans-et-seismes-cm",
+  "rationale": "« Volcans, séismes et risques naturels » : Les volcans, séismes et gestes de prévention du cycle 3 précèdent la tectonique des plaques."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.solutions-et-concentration-l-teaches-appliquer-la-conservation-du-solute-lors-d-une-dilution",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/solutions-et-concentration-l/contenu.json"
+  },
+  "source": "notion.physique-chimie.solutions-et-concentration-l",
+  "target": "microskill.physique-chimie.appliquer-la-conservation-du-solute-lors-d-une-dilution"
+}

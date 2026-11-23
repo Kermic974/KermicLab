@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.nombres-relatifs-requires-nombres-decimaux",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nombres-relatifs/contenu.json"
+  },
+  "source": "notion.mathematiques.nombres-relatifs",
+  "target": "notion.mathematiques.nombres-decimaux",
+  "rationale": "« Les nombres décimaux » : Les relatifs étendent les entiers et les décimaux et leurs opérations."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.creer-une-image-originale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/figures-de-style/contenu.json"
+  },
+  "source": "microskill.francais.creer-une-image-originale",
+  "target": "skill.francais.figures-de-style"
+}

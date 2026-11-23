@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.convertir-des-longueurs-et-des-contenances-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grandeurs-et-mesures-6e/contenu.json"
+  },
+  "source": "microskill.mathematiques.convertir-des-longueurs-et-des-contenances",
+  "target": "skill.mathematiques.grandeurs-et-mesures-6e"
+}

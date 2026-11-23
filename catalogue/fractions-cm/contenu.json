@@ -61,12 +61,12 @@
         "titre": "Exercice 2",
         "question": "Quelle fraction est la plus grande ?",
         "choix": [
-          "5/8",
-          "3/8",
           "1/8",
-          "2/8"
+          "2/8",
+          "5/8",
+          "3/8"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Même dénominateur : la plus grande est celle qui a le plus grand numérateur."
       },
       {

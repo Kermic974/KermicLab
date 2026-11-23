@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.biodiversite-et-chaines-cm-requires-classification-du-vivant-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/biodiversite-et-chaines-cm/contenu.json"
+  },
+  "source": "notion.svt.biodiversite-et-chaines-cm",
+  "target": "notion.svt.classification-du-vivant-cm",
+  "rationale": "« Classer les êtres vivants » : Les chaînes alimentaires reprennent les milieux de vie et le classement des êtres vivants."
+}

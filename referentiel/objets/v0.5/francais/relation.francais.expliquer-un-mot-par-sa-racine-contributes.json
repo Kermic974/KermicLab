@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.expliquer-un-mot-par-sa-racine-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vocabulaire-et-orthographe-c4/contenu.json"
+  },
+  "source": "microskill.francais.expliquer-un-mot-par-sa-racine",
+  "target": "skill.francais.vocabulaire-et-orthographe-c4"
+}

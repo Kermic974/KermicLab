@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.conversions-d-energie-l-requires-energie",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conversions-d-energie-l/contenu.json"
+  },
+  "source": "notion.physique-chimie.conversions-d-energie-l",
+  "target": "notion.physique-chimie.energie",
+  "rationale": "« L'énergie et ses conversions » : Le bilan d’énergie reprend l’énergie du collège et les lois de l’électricité."
+}

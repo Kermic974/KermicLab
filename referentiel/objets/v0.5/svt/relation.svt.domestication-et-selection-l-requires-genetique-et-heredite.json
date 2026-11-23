@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.domestication-et-selection-l-requires-genetique-et-heredite",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/domestication-et-selection-l/contenu.json"
+  },
+  "source": "notion.svt.domestication-et-selection-l",
+  "target": "notion.svt.genetique-et-heredite",
+  "rationale": "« Génétique et hérédité » : La sélection artificielle s’appuie sur la sélection naturelle et l’hérédité."
+}

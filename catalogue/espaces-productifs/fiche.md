@@ -18,10 +18,10 @@ questions:
   - C'est quoi un espace productif ?
   - Comment les espaces productifs sont-ils reliés au monde ?
   - Pourquoi une reconversion industrielle transforme-t-elle un territoire ?
-prerequis:
-niveaux: cycle-4, seconde, premiere, terminale
 classes: 3e
-competences: geographie-espaces-productifs-action-1, geographie-espaces-productifs-action-2
+prerequis: mondialisation
+niveaux: cycle-4, seconde, premiere, terminale
+competences: classer-des-activites-par-secteur, expliquer-la-localisation-d-une-activite-par-ses-reseaux, calculer-une-part-d-une-production-dans-un-dossier, analyser-la-recomposition-d-un-espace-productif, discuter-les-inegalites-et-la-transition-d-un-espace-productif
 ---
 
 # Les espaces productifs

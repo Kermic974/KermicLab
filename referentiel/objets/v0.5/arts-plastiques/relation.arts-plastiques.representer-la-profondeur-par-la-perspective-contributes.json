@@ -1,0 +1,12 @@
+{
+  "id": "relation.arts-plastiques.representer-la-profondeur-par-la-perspective-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/arts-formes-et-composition-cm/contenu.json"
+  },
+  "source": "microskill.arts-plastiques.representer-la-profondeur-par-la-perspective",
+  "target": "skill.arts-plastiques.arts-formes-et-composition-cm"
+}

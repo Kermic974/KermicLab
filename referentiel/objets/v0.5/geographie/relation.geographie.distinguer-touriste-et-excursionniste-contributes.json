@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.distinguer-touriste-et-excursionniste-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tourisme/contenu.json"
+  },
+  "source": "microskill.geographie.distinguer-touriste-et-excursionniste",
+  "target": "skill.geographie.tourisme"
+}

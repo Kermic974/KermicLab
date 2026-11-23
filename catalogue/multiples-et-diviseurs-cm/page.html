@@ -11,7 +11,7 @@
   "id": "multiples-et-diviseurs-cm",
   "titre": "Multiples, diviseurs et critères de divisibilité",
   "sujet": "mathematiques/multiples-et-diviseurs-cm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "date": "2026-11-21",
   "langue": "fr",
   "onglets": [
@@ -74,12 +74,12 @@
         "titre": "Exercice 1",
         "question": "Quel nombre est divisible par 3 ?",
         "choix": [
+          "2 459",
           "2 451",
           "2 453",
-          "2 455",
-          "2 459"
+          "2 455"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "2 + 4 + 5 + 1 = 12, et 12 est dans la table de 3. Les sommes des autres nombres sont 14, 16 et 20 : aucune n'est un multiple de 3.",
         "indices": [
           "Additionne les chiffres de chaque nombre.",
@@ -102,12 +102,12 @@
         "titre": "Exercice 3",
         "question": "Un nombre qui se termine par 5 est toujours…",
         "choix": [
-          "divisible par 5",
           "divisible par 10",
           "divisible par 2",
-          "divisible par 3"
+          "divisible par 3",
+          "divisible par 5"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Il est divisible par 5, mais pas forcément par 10 (il faut finir par 0)."
       }
     ]
@@ -134,12 +134,12 @@
         "titre": "Exercice 2",
         "question": "Peux-tu faire des paquets de 5 sans reste ?",
         "choix": [
+          "Oui, en ajoutant 2 cartes de plus",
+          "Oui, 24 est dans la table de 5",
           "Non, 24 ne se termine pas par 0 ou 5",
-          "Oui",
-          "Oui, 24 est pair",
-          "Oui, si on ajoute 2"
+          "Oui, parce que 24 est un nombre pair"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "24 n'est pas un multiple de 5."
       }
     ],
@@ -400,7 +400,7 @@ const Evenements = (() => {
 <header>
   <div>
     <h1>Multiples, diviseurs et critères de divisibilité</h1>
-    <div class="meta">multiples-et-diviseurs-cm · v1.0.0</div>
+    <div class="meta">multiples-et-diviseurs-cm · v1.0.1</div>
   </div>
   <div class="entete-actions">
     <span id="etoiles" class="etoiles" role="status"></span>

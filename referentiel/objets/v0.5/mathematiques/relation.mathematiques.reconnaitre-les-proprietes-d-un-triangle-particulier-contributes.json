@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.reconnaitre-les-proprietes-d-un-triangle-particulier-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/triangles-et-quadrilateres-6e/contenu.json"
+  },
+  "source": "microskill.mathematiques.reconnaitre-les-proprietes-d-un-triangle-particulier",
+  "target": "skill.mathematiques.triangles-et-quadrilateres-6e"
+}

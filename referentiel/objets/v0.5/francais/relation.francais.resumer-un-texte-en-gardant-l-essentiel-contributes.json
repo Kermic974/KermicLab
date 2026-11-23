@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.resumer-un-texte-en-gardant-l-essentiel-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/resumer-et-expliquer-cm/contenu.json"
+  },
+  "source": "microskill.francais.resumer-un-texte-en-gardant-l-essentiel",
+  "target": "skill.francais.resumer-et-expliquer-cm"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.musique.musique-creation-et-engagement-c4-requires-musique-genres-et-formes-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-creation-et-engagement-c4/contenu.json"
+  },
+  "source": "notion.musique.musique-creation-et-engagement-c4",
+  "target": "notion.musique.musique-genres-et-formes-c4",
+  "rationale": "Genres, formes et nuances sont réinvestis pour créer, arranger et analyser."
+}

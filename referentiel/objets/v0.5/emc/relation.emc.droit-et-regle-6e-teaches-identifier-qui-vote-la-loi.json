@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.droit-et-regle-6e-teaches-identifier-qui-vote-la-loi",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droit-et-regle-6e/contenu.json"
+  },
+  "source": "notion.emc.droit-et-regle-6e",
+  "target": "microskill.emc.identifier-qui-vote-la-loi"
+}

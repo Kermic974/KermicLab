@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.ses-structure-sociale-et-sociologie-l-teaches-lire-une-table-de-mobilite-sociale-intergenerationnelle",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ses-structure-sociale-et-sociologie-l/contenu.json"
+  },
+  "source": "notion.ses.ses-structure-sociale-et-sociologie-l",
+  "target": "microskill.ses.lire-une-table-de-mobilite-sociale-intergenerationnelle"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.identifier-les-causes-de-perte-de-biodiversite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecosystemes-et-biodiversite/contenu.json"
+  },
+  "source": "microskill.svt.identifier-les-causes-de-perte-de-biodiversite",
+  "target": "skill.svt.ecosystemes-et-biodiversite"
+}

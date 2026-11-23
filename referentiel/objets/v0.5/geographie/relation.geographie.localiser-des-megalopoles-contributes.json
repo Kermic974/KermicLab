@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.localiser-des-megalopoles-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monde-en-villes-cm/contenu.json"
+  },
+  "source": "microskill.geographie.localiser-des-megalopoles",
+  "target": "skill.geographie.monde-en-villes-cm"
+}

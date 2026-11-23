@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.identifier-qui-mange-qui-dans-une-chaine-simple-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/milieux-et-saisons-c2/contenu.json"
+  },
+  "source": "microskill.svt.identifier-qui-mange-qui-dans-une-chaine-simple",
+  "target": "skill.svt.milieux-et-saisons-c2"
+}

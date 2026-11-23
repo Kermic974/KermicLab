@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.energie-mecanique-teaches-calculer-le-travail-d-une-force",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie-mecanique/contenu.json"
+  },
+  "source": "notion.physique-chimie.energie-mecanique",
+  "target": "microskill.physique-chimie.calculer-le-travail-d-une-force"
+}

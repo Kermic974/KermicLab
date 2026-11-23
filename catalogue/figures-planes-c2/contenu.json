@@ -1,0 +1,117 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les figures planes sont des formes qu'on peut dessiner sur une feuille.",
+  "niveaux": [
+    {
+      "titre": "Les formes de base",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Le **carré** a 4 côtés égaux et 4 coins droits. Le **rectangle** a 4 côtés (les côtés en face sont égaux) et 4 coins droits. Le **triangle** a 3 côtés. Le **cercle** est tout rond.",
+        "Un **côté** est un trait droit ; un **sommet** est un coin."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Une fenêtre : un rectangle.",
+          "Un dé vu de face : un carré.",
+          "Une roue : un cercle."
+        ]
+      },
+      "aRetenir": "Triangle : 3 côtés, 3 sommets."
+    },
+    {
+      "titre": "Angle droit et règle",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "Un **angle droit** est comme le coin d'une feuille. On le vérifie avec une **équerre**. Le carré et le rectangle ont 4 angles droits. Pour tracer un trait droit, on utilise une règle.",
+        "Un polygone est une figure fermée qui a des côtés droits : triangle (3), quadrilatère (4), pentagone (5), hexagone (6)."
+      ],
+      "exemple": {
+        "titre": "Exemple : vérifier un coin",
+        "etapes": [
+          "Je pose l'équerre dans le coin.",
+          "Les deux côtés touchent l'équerre.",
+          "C'est un angle droit."
+        ]
+      },
+      "aRetenir": "Équerre : angle droit."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien de côtés a un triangle ?",
+        "reponse": 3,
+        "indices": [
+          "Pense à « tri »."
+        ],
+        "solution": "Tri = trois.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de sommets a un rectangle ?",
+        "reponse": 4,
+        "indices": [
+          "Compte les coins."
+        ],
+        "solution": "4 coins.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quelle figure a 4 côtés égaux et 4 angles droits ?",
+        "choix": [
+          "le carré",
+          "le rectangle",
+          "le triangle",
+          "le cercle"
+        ],
+        "bonne": 0,
+        "explication": "Le carré."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le jeu des formes",
+    "histoire": [
+      "Tu dois reconnaître des formes cachées dans une boîte."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Cette forme a 3 côtés. C'est…",
+        "choix": [
+          "un triangle",
+          "un carré",
+          "un rond",
+          "un rectangle"
+        ],
+        "bonne": 0,
+        "explication": "Triangle."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Cette forme n'a aucun coin et est toute ronde. C'est…",
+        "choix": [
+          "un cercle",
+          "un carré",
+          "un triangle",
+          "un rectangle"
+        ],
+        "bonne": 0,
+        "explication": "Cercle."
+      }
+    ],
+    "conclusion": "Bravo, tu reconnais les formes !"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.soutenir-un-entretien-sur-une-uvre-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/oral-et-eaf-l/contenu.json"
+  },
+  "source": "microskill.francais.soutenir-un-entretien-sur-une-uvre",
+  "target": "skill.francais.oral-et-eaf-l"
+}

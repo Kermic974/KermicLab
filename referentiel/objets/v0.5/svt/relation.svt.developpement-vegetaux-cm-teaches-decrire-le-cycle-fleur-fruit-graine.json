@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.developpement-vegetaux-cm-teaches-decrire-le-cycle-fleur-fruit-graine",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/developpement-vegetaux-cm/contenu.json"
+  },
+  "source": "notion.svt.developpement-vegetaux-cm",
+  "target": "microskill.svt.decrire-le-cycle-fleur-fruit-graine"
+}

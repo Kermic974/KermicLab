@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un poème joue avec les mots, les sons et les images pour faire ressentir une émotion.",
+  "niveaux": [
+    {
+      "titre": "Sons, vers et rimes",
+      "niveau": "6e",
+      "paragraphes": [
+        "Un poème s'écrit en **vers** groupés en **strophes**. L'**alexandrin** compte 12 syllabes. Les rimes peuvent être plates (AABB), croisées (ABAB), embrassées (ABBA).",
+        "Les **jeux de sons** : l'**assonance** répète un son voyelle (« Les sanglots longs des violons »), l'**allitération** répète un son consonne (« Pour qui sont ces serpents qui sifflent sur vos têtes ? »)."
+      ],
+      "exemple": {
+        "titre": "Exemple : repérer l'allitération",
+        "etapes": [
+          "« Pour qui sont ces serpents qui sifflent… »",
+          "Le son [s] revient.",
+          "Il imite le sifflement."
+        ]
+      },
+      "aRetenir": "Allitération : répétition d'une consonne."
+    },
+    {
+      "titre": "Images poétiques",
+      "niveau": "6e",
+      "paragraphes": [
+        "La **comparaison** (« blanc comme neige ») relie deux éléments avec un mot de comparaison ; la **métaphore** les identifie sans « comme » (« La mer est un miroir ») ; la **personnification** donne des traits humains (« le vent murmure »).",
+        "Pour lire un poème : lire à voix haute, repérer le thème et les images, ressentir l'émotion."
+      ],
+      "exemple": {
+        "titre": "Exemple : une métaphore",
+        "etapes": [
+          "« La nuit est un manteau noir. »",
+          "La nuit = un manteau.",
+          "Image de protection et d'obscurité."
+        ]
+      },
+      "aRetenir": "Métaphore : comparaison sans outil de comparaison."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien de syllabes compte un alexandrin ?",
+        "reponse": 12,
+        "indices": [
+          "Plus que huit, moins que quinze."
+        ],
+        "solution": "L'alexandrin a 12 syllabes.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "« La mer est un miroir » est…",
+        "choix": [
+          "une comparaison",
+          "une allitération",
+          "une rime",
+          "une métaphore"
+        ],
+        "bonne": 3,
+        "explication": "Sans « comme »."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« Le vent murmure » est…",
+        "choix": [
+          "une personnification",
+          "une métaphore seulement",
+          "une rime croisée",
+          "une strophe"
+        ],
+        "bonne": 0,
+        "explication": "Le vent fait comme un humain."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'atelier de poésie",
+    "histoire": [
+      "Ta classe écrit un poème sur l'automne."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle phrase contient une allitération en [s] ?",
+        "choix": [
+          "Le chat mange du poisson cru ce soir.",
+          "La lune brille doucement sur la mer.",
+          "Le soleil est chaud sur le toit.",
+          "Les sept serpents sifflent sur les sables."
+        ],
+        "bonne": 3,
+        "explication": "Le son [s] est répété."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle phrase est une comparaison ?",
+        "choix": [
+          "Il vente.",
+          "Il est rapide comme le vent.",
+          "Le vent est un cheval.",
+          "Le vent chante."
+        ],
+        "bonne": 1,
+        "explication": "Le mot « comme »."
+      }
+    ],
+    "conclusion": "Beau poème !"
+  }
+}

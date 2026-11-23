@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.choisir-un-recours-adapte-face-a-une-discrimination-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/discrimination/contenu.json"
+  },
+  "source": "microskill.emc.choisir-un-recours-adapte-face-a-une-discrimination",
+  "target": "skill.emc.discrimination"
+}

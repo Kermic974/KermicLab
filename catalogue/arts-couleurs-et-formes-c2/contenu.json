@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "En arts plastiques, on dessine, on peint, on colle, on modèle et on regarde des œuvres.",
+  "niveaux": [
+    {
+      "titre": "Mélanger les couleurs",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Les trois **couleurs primaires** sont le **jaune**, le **rouge** et le **bleu**. En les mélangeant, on obtient les autres : jaune + bleu = **vert** ; jaune + rouge = **orange** ; rouge + bleu = **violet**. Avec du blanc, la couleur devient plus claire."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un peu de jaune.",
+          "Un peu de bleu.",
+          "Je mélange : j'obtiens du vert."
+        ]
+      },
+      "aRetenir": "Jaune + bleu = vert."
+    },
+    {
+      "titre": "Dessiner, coller, regarder",
+      "niveau": "CP / CE1 / CE2",
+      "paragraphes": [
+        "On peut **dessiner** au crayon, **peindre** au pinceau, **coller** des papiers, **modeler** de la terre. On utilise des **formes** (ronds, carrés, triangles) et des **lignes** (droites, courbes).",
+        "Pour regarder un tableau : je dis ce que je vois (le sujet), les couleurs, les formes, et ce que je ressens. **Léonard de Vinci** a peint la Joconde ; **Claude Monet** a peint des nymphéas."
+      ],
+      "exemple": {
+        "titre": "Exemple : regarder une œuvre",
+        "etapes": [
+          "Je vois un paysage.",
+          "Les couleurs sont douces.",
+          "Je me sens calme."
+        ]
+      },
+      "aRetenir": "Je dis ce que je vois et ce que je ressens."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Jaune + bleu =",
+        "choix": [
+          "violet",
+          "rose",
+          "vert",
+          "orange"
+        ],
+        "bonne": 2,
+        "explication": "Vert."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle couleur est primaire ?",
+        "choix": [
+          "le rouge",
+          "le vert",
+          "l'orange",
+          "le violet"
+        ],
+        "bonne": 0,
+        "explication": "Rouge, jaune, bleu."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Qui a peint la Joconde ?",
+        "choix": [
+          "Pablo Picasso",
+          "Léonard de Vinci",
+          "Vincent van Gogh",
+          "Claude Monet"
+        ],
+        "bonne": 1,
+        "explication": "Léonard de Vinci."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'atelier de peinture",
+    "histoire": [
+      "Tu peins un coucher de soleil."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pour l'orange du soleil, tu mélanges…",
+        "choix": [
+          "rouge et jaune",
+          "bleu et jaune",
+          "bleu et rouge",
+          "blanc et noir"
+        ],
+        "bonne": 0,
+        "explication": "Orange."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour éclaircir une couleur, tu ajoutes…",
+        "choix": [
+          "du blanc",
+          "du noir",
+          "de la colle",
+          "du rouge"
+        ],
+        "bonne": 0,
+        "explication": "Blanc."
+      }
+    ],
+    "conclusion": "Beau tableau !"
+  }
+}

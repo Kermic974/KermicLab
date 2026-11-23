@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.calculer-une-concentration-massique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/solutions-et-concentration-l/contenu.json"
+  },
+  "source": "microskill.physique-chimie.calculer-une-concentration-massique",
+  "target": "skill.physique-chimie.solutions-et-concentration-l"
+}

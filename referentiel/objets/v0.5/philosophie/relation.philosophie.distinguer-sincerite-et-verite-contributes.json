@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.distinguer-sincerite-et-verite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/verite/contenu.json"
+  },
+  "source": "microskill.philosophie.distinguer-sincerite-et-verite",
+  "target": "skill.philosophie.verite"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.theatre-et-representation-l-requires-theatre",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/theatre-et-representation-l/contenu.json"
+  },
+  "source": "notion.francais.theatre-et-representation-l",
+  "target": "notion.francais.theatre",
+  "rationale": "« Le théâtre » : Le théâtre du lycée reprend l’étude du théâtre au collège et les figures de style."
+}

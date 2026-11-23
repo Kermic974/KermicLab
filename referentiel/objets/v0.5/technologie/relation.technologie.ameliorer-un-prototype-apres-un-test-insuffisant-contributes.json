@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.ameliorer-un-prototype-apres-un-test-insuffisant-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conception-et-prototypage-c4/contenu.json"
+  },
+  "source": "microskill.technologie.ameliorer-un-prototype-apres-un-test-insuffisant",
+  "target": "skill.technologie.conception-et-prototypage-c4"
+}

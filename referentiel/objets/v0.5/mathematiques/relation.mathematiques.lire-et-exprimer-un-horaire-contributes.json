@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.lire-et-exprimer-un-horaire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/durees-et-horaires-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.lire-et-exprimer-un-horaire",
+  "target": "skill.mathematiques.durees-et-horaires-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.ecrire-et-equilibrer-l-equation-bilan-de-la-photosynthese-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/photosynthese/contenu.json"
+  },
+  "source": "microskill.svt.ecrire-et-equilibrer-l-equation-bilan-de-la-photosynthese",
+  "target": "skill.svt.photosynthese"
+}

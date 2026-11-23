@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.transformations-requires-symetrie-axiale-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/transformations/contenu.json"
+  },
+  "source": "notion.mathematiques.transformations",
+  "target": "notion.mathematiques.symetrie-axiale-cm",
+  "rationale": "« La symétrie axiale » : La symétrie axiale et l’agrandissement du cycle 3 préparent les transformations du collège."
+}

@@ -69,12 +69,12 @@
         "titre": "Exercice 3",
         "question": "Combien de faces a une pyramide à base carrée ?",
         "choix": [
-          "5",
           "4",
           "6",
-          "8"
+          "8",
+          "5"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "1 base + 4 faces triangulaires = 5 faces."
       }
     ]

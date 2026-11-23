@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.interet-general-teaches-justifier-une-decision-par-l-interet-general",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/interet-general/contenu.json"
+  },
+  "source": "notion.emc.interet-general",
+  "target": "microskill.emc.justifier-une-decision-par-l-interet-general"
+}

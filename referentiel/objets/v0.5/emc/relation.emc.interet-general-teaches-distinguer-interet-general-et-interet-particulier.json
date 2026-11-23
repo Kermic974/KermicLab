@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.interet-general-teaches-distinguer-interet-general-et-interet-particulier",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/interet-general/contenu.json"
+  },
+  "source": "notion.emc.interet-general",
+  "target": "microskill.emc.distinguer-interet-general-et-interet-particulier"
+}

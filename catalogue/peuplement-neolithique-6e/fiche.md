@@ -2,15 +2,10 @@
 id: peuplement-neolithique-6e
 titre: Les débuts de l'humanité et le Néolithique
 sujet: histoire/peuplement-neolithique-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-competences:
-  - peuplement-neolithique-6e-comprendre
-  - peuplement-neolithique-6e-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +21,9 @@ questions:
   - Comment l'humanité s'est-elle répandue sur Terre ?
   - Qu'est-ce que la révolution néolithique ?
   - Qui était Homo sapiens ?
+prerequis: prehistoire-cm
+niveaux: cycle-3
+competences: situer-l-apparition-d-homo-sapiens, expliquer-la-revolution-neolithique, distinguer-chasseurs-cueilleurs-et-agriculteurs, interpreter-des-traces-prehistoriques
 ---
 
 # Les débuts de l'humanité et le Néolithique

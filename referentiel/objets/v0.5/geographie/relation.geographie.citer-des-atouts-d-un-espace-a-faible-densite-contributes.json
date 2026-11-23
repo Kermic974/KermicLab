@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.citer-des-atouts-d-un-espace-a-faible-densite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-un-espace-de-faible-densite-6e/contenu.json"
+  },
+  "source": "microskill.geographie.citer-des-atouts-d-un-espace-a-faible-densite",
+  "target": "skill.geographie.habiter-un-espace-de-faible-densite-6e"
+}

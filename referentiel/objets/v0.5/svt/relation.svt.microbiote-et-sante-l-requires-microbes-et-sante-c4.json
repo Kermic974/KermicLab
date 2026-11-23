@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.microbiote-et-sante-l-requires-microbes-et-sante-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/microbiote-et-sante-l/contenu.json"
+  },
+  "source": "notion.svt.microbiote-et-sante-l",
+  "target": "notion.svt.microbes-et-sante-c4",
+  "rationale": "« Micro-organismes, hygiène et santé » : Le microbiote s’appuie sur les micro-organismes et la digestion."
+}

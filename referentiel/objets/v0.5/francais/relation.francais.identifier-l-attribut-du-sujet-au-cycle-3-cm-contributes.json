@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-l-attribut-du-sujet-au-cycle-3-cm-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fonctions-dans-la-phrase-cm/contenu.json"
+  },
+  "source": "microskill.francais.identifier-l-attribut-du-sujet-au-cycle-3-cm",
+  "target": "skill.francais.fonctions-dans-la-phrase-cm"
+}

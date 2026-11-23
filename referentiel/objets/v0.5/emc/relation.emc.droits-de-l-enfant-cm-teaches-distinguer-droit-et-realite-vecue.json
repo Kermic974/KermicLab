@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.droits-de-l-enfant-cm-teaches-distinguer-droit-et-realite-vecue",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droits-de-l-enfant-cm/contenu.json"
+  },
+  "source": "notion.emc.droits-de-l-enfant-cm",
+  "target": "microskill.emc.distinguer-droit-et-realite-vecue"
+}

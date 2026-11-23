@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.accorder-le-participe-passe-employe-avec-avoir-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/accords/contenu.json"
+  },
+  "source": "microskill.francais.accorder-le-participe-passe-employe-avec-avoir",
+  "target": "skill.francais.accords"
+}

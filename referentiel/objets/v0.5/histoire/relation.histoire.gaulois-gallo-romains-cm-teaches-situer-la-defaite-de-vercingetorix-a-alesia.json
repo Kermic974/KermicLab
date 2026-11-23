@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.gaulois-gallo-romains-cm-teaches-situer-la-defaite-de-vercingetorix-a-alesia",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/gaulois-gallo-romains-cm/contenu.json"
+  },
+  "source": "notion.histoire.gaulois-gallo-romains-cm",
+  "target": "microskill.histoire.situer-la-defaite-de-vercingetorix-a-alesia"
+}

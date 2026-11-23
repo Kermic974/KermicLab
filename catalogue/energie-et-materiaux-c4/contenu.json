@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Concevoir un objet, c'est choisir une énergie, des matériaux et penser à son impact sur toute sa vie.",
+  "niveaux": [
+    {
+      "titre": "Chaîne d'énergie",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "Une **chaîne d'énergie** relie : **source** (soleil, vent, pile), **stockage** (batterie), **distribution** (fils), **conversion** (moteur, ampoule) et **utilisation**. Chaque conversion s'accompagne de **pertes** (chaleur). Le **rendement** est le rapport énergie utile / énergie fournie.",
+        "Les énergies renouvelables (solaire, éolien, hydraulique, biomasse) se renouvellent à l'échelle humaine ; les fossiles (pétrole, gaz, charbon) s'épuisent et émettent du CO₂."
+      ],
+      "exemple": {
+        "titre": "Exemple : le vélo à assistance",
+        "etapes": [
+          "Source : batterie.",
+          "Conversion : moteur électrique.",
+          "Utilisation : mouvement."
+        ]
+      },
+      "aRetenir": "Source → conversion → utilisation (avec pertes)."
+    },
+    {
+      "titre": "Cycle de vie et économie circulaire",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "Le **cycle de vie** d'un objet : extraction, fabrication, transport, usage, fin de vie. Pour réduire l'impact : choisir des matériaux recyclés ou recyclables, réparer, réutiliser, limiter l'emballage. L'**économie circulaire** cherche à garder la matière en circulation (réparer, recycler) plutôt qu'à produire puis jeter.",
+        "L'**éco-conception** intègre l'environnement dès la conception."
+      ],
+      "exemple": {
+        "titre": "Exemple : une bouteille consignée",
+        "etapes": [
+          "Elle est lavée et réutilisée.",
+          "Moins d'énergie qu'un recyclage.",
+          "Moins de déchets."
+        ]
+      },
+      "aRetenir": "Réduire, réutiliser, recycler."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Une énergie renouvelable est…",
+        "choix": [
+          "le vent",
+          "le charbon",
+          "le pétrole",
+          "le gaz"
+        ],
+        "bonne": 0,
+        "explication": "Éolien."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le rendement d'une conversion est…",
+        "choix": [
+          "toujours 100 %",
+          "énergie utile ÷ énergie fournie",
+          "énergie perdue ÷ énergie utile",
+          "énergie fournie × 2"
+        ],
+        "bonne": 1,
+        "explication": "Il est inférieur à 1."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "L'économie circulaire cherche à…",
+        "choix": [
+          "garder la matière en circulation",
+          "produire puis jeter les objets",
+          "supprimer tout recyclage possible",
+          "augmenter l'extraction de ressources"
+        ],
+        "bonne": 0,
+        "explication": "Réparer, réutiliser, recycler."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'éco-conception",
+    "histoire": [
+      "Ta classe conçoit un cartable éco-conçu."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel matériau privilégies-tu ?",
+        "choix": [
+          "un tissu recyclé résistant",
+          "du plastique neuf jetable",
+          "du papier non recyclé fragile",
+          "du métal précieux"
+        ],
+        "bonne": 0,
+        "explication": "Recyclé et durable."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel autre critère compte ?",
+        "choix": [
+          "le poids décoratif",
+          "la facilité de réparation",
+          "la couleur uniquement",
+          "la célébrité"
+        ],
+        "bonne": 1,
+        "explication": "Réparer prolonge la vie."
+      }
+    ],
+    "conclusion": "Choix durable !"
+  }
+}

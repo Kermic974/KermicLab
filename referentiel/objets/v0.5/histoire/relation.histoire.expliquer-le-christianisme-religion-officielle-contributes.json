@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-le-christianisme-religion-officielle-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/empire-romain-christianisme-6e/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-le-christianisme-religion-officielle",
+  "target": "skill.histoire.empire-romain-christianisme-6e"
+}

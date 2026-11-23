@@ -70,12 +70,12 @@
         "titre": "Exercice 3",
         "question": "Quel calcul donne le même résultat que 6 × 8 ?",
         "choix": [
+          "8 × 8 − 6",
           "8 × 6",
           "6 + 8",
-          "6 × 6 + 8",
-          "8 × 8 − 6"
+          "6 × 6 + 8"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "La multiplication est commutative : 6 × 8 = 8 × 6 = 48."
       }
     ]

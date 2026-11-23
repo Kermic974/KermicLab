@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.mouvement-et-vitesse-cm-teaches-calculer-une-distance-parcourue-a-vitesse-constante",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mouvement-et-vitesse-cm/contenu.json"
+  },
+  "source": "notion.physique-chimie.mouvement-et-vitesse-cm",
+  "target": "microskill.physique-chimie.calculer-une-distance-parcourue-a-vitesse-constante"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.ve-republique-requires-decolonisation",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ve-republique/contenu.json"
+  },
+  "source": "notion.histoire.ve-republique",
+  "target": "notion.histoire.decolonisation",
+  "rationale": "La Ve République naît de la crise liée à la guerre d’Algérie."
+}

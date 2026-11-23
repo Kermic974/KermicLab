@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.grandes-periodes-c2-requires-se-reperer-dans-le-temps-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grandes-periodes-c2/contenu.json"
+  },
+  "source": "notion.histoire.grandes-periodes-c2",
+  "target": "notion.histoire.se-reperer-dans-le-temps-c2",
+  "rationale": "« Se repérer dans le temps : jours, mois, générations » : Placer des périodes suppose de se repérer dans le temps."
+}

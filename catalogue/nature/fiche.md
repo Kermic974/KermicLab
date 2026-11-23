@@ -20,7 +20,7 @@ questions:
   - what is nature in philosophy?
 prerequis:
 niveaux: terminale
-competences: philosophie-nature-action-1, philosophie-nature-action-2
+competences: distinguer-plusieurs-sens-du-mot-nature, distinguer-nature-et-artifice-dans-un-exemple, expliquer-le-principe-interne-de-croissance-chez-aristote, discuter-l-argument-selon-lequel-ce-qui-est-naturel-est-inoffensif
 ---
 
 # La nature

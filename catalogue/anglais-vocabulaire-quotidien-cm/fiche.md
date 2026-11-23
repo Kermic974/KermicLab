@@ -2,15 +2,10 @@
 id: anglais-vocabulaire-quotidien-cm
 titre: Anglais : couleurs, nombres, famille et objets
 sujet: anglais/anglais-vocabulaire-quotidien-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - anglais-vocabulaire-quotidien-cm-comprendre
-  - anglais-vocabulaire-quotidien-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +22,9 @@ questions:
   - Comment compter jusqu'à vingt en anglais ?
   - Comment dire les membres de la famille en anglais ?
   - Quels sont les jours de la semaine en anglais ?
+prerequis: anglais-famille-et-animaux-c2, anglais-se-presenter-cm
+niveaux: cycle-3
+competences: nommer-les-jours-de-la-semaine-et-les-mois, compter-et-calculer-simplement-en-anglais, nommer-les-membres-de-la-famille-et-les-objets-de-la-classe, decrire-un-objet-par-sa-couleur
 ---
 
 # Anglais : couleurs, nombres, famille et objets

@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Dans un monde où l'on adorait plusieurs dieux, les Hébreux croient en un seul Dieu.",
+  "niveaux": [
+    {
+      "titre": "Un seul Dieu",
+      "niveau": "6e",
+      "paragraphes": [
+        "Au Proche-Orient, la plupart des peuples sont **polythéistes**. Les Hébreux, ancêtres des Juifs, sont **monothéistes** : ils croient en un seul Dieu. Leurs textes sacrés sont rassemblés dans la **Bible hébraïque** (Torah et autres livres).",
+        "Le récit biblique raconte l'histoire du peuple : **Abraham** (le premier patriarche), **Moïse** (qui conduit le peuple hors d'Égypte et reçoit la Loi), les rois David et Salomon (Jérusalem)."
+      ],
+      "exemple": {
+        "titre": "Exemple : la Loi",
+        "etapes": [
+          "Les Dix Commandements sont donnés à Moïse.",
+          "Ils fixent des règles de vie.",
+          "La Loi unit le peuple."
+        ]
+      },
+      "aRetenir": "Monothéisme : croyance en un seul Dieu."
+    },
+    {
+      "titre": "Traces et sources",
+      "niveau": "6e",
+      "paragraphes": [
+        "Les historiens utilisent la Bible comme **source religieuse et historique** et la croisent avec l'archéologie. Le judaïsme a donné naissance au christianisme et a influencé l'islam. Jérusalem est restée une ville sainte pour ces trois religions.",
+        "Le **respect** de toutes les croyances s'apprend en EMC : on étudie les religions comme des faits de culture."
+      ],
+      "exemple": {
+        "titre": "Exemple : le rôle des textes",
+        "etapes": [
+          "Ils fixent les rites et les valeurs.",
+          "Ils sont lus et commentés.",
+          "Ils forment l'identité du peuple."
+        ]
+      },
+      "aRetenir": "Étudier une religion, c'est étudier une culture, pas la prêcher."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Les Hébreux sont…",
+        "choix": [
+          "athées",
+          "bouddhistes",
+          "monothéistes",
+          "polythéistes"
+        ],
+        "bonne": 2,
+        "explication": "Un seul Dieu."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qui conduit le peuple hors d'Égypte selon la Bible ?",
+        "choix": [
+          "Homère",
+          "Ulysse",
+          "Moïse",
+          "Abraham"
+        ],
+        "bonne": 2,
+        "explication": "Moïse."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quelle ville est sainte pour les juifs ?",
+        "choix": [
+          "Athènes",
+          "Rome",
+          "Paris",
+          "Jérusalem"
+        ],
+        "bonne": 3,
+        "explication": "Jérusalem."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le scribe de Jérusalem",
+    "histoire": [
+      "Tu copies des textes sacrés comme un scribe."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pourquoi copier ces textes ?",
+        "choix": [
+          "Pour les transmettre",
+          "Pour gagner un concours",
+          "Pour les cacher",
+          "Pour les vendre à Rome"
+        ],
+        "bonne": 0,
+        "explication": "Transmission."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment étudier une religion en histoire ?",
+        "choix": [
+          "En la rejetant sans l'examiner",
+          "En la prêchant devant la classe",
+          "Comme un fait culturel, avec respect",
+          "En la jugeant selon ses propres croyances"
+        ],
+        "bonne": 2,
+        "explication": "Neutralité."
+      }
+    ],
+    "conclusion": "Tu comprends cette période !"
+  }
+}

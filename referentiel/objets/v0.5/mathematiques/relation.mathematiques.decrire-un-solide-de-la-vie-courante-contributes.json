@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.decrire-un-solide-de-la-vie-courante-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/solides-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.decrire-un-solide-de-la-vie-courante",
+  "target": "skill.mathematiques.solides-c2"
+}

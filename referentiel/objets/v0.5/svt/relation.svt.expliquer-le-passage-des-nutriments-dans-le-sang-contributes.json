@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-le-passage-des-nutriments-dans-le-sang-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/alimentation-digestion-cm/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-le-passage-des-nutriments-dans-le-sang",
+  "target": "skill.svt.alimentation-digestion-cm"
+}

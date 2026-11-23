@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.poesie-6e-teaches-reperer-rimes-et-sonorites",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie-6e/contenu.json"
+  },
+  "source": "notion.francais.poesie-6e",
+  "target": "microskill.francais.reperer-rimes-et-sonorites"
+}

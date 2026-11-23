@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.mesurer-avec-la-regle-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/longueurs-et-mesures-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.mesurer-avec-la-regle",
+  "target": "skill.mathematiques.longueurs-et-mesures-c2"
+}

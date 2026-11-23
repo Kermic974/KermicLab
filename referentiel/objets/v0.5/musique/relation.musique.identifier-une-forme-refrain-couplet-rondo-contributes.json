@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.identifier-une-forme-refrain-couplet-rondo-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-genres-et-formes-c4/contenu.json"
+  },
+  "source": "microskill.musique.identifier-une-forme-refrain-couplet-rondo",
+  "target": "skill.musique.musique-genres-et-formes-c4"
+}

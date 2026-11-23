@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.ensembles-et-logique-l-teaches-distinguer-condition-necessaire-et-suffisante",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ensembles-et-logique-l/contenu.json"
+  },
+  "source": "notion.mathematiques.ensembles-et-logique-l",
+  "target": "microskill.mathematiques.distinguer-condition-necessaire-et-suffisante"
+}

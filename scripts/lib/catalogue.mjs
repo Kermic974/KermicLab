@@ -8,6 +8,9 @@ import { preparerPageServie } from "./idees.mjs";
 import { lireFrontMatter, lireReferentiel, NIVEAUX_SCOLAIRES, liste } from "./fiche-catalogue.mjs";
 export { lireFrontMatter, lireReferentiel, NIVEAUX_SCOLAIRES, DUREE_MAX } from "./fiche-catalogue.mjs";
 
+/** Classes connues, de la plus jeune à la plus avancée (primaire puis collège). */
+const ORDRE_CLASSES = ["CP", "CE1", "CE2", "CM1", "CM2", "6e", "5e", "4e", "3e"];
+
 /** Niveaux scolaires connus, dans l’ordre de navigation du chat. */
 export const NIVEAUX = ["primaire", "college", "seconde", "premiere", "terminale"];
 
@@ -79,6 +82,11 @@ export function verifierGraphePrerequis(maquettes) {
       if (String(cible.sujet ?? "").startsWith("jeux/")) erreurs.push(`${m.id} : prérequis « ${p} » est un jeu, pas une notion`);
       if (debut(cible) !== null && debut(m) !== null && debut(cible) > debut(m)) {
         erreurs.push(`${m.id} : prérequis « ${p} » commence en ${cible.niveaux[0]}, après ${m.niveaux[0]}`);
+      }
+      // Classes (CM1, CM2, 6e…) : un prérequis ne commence pas dans une classe plus avancée que la notion.
+      const classeDebut = (x) => (x.classes?.length ? Math.min(...x.classes.map((c) => ORDRE_CLASSES.indexOf(c))) : null);
+      if (classeDebut(cible) !== null && classeDebut(m) !== null && classeDebut(cible) > classeDebut(m)) {
+        erreurs.push(`${m.id} : prérequis « ${p} » commence en ${cible.classes[0]}, après ${m.classes[0]}`);
       }
     }
   }

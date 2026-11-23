@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.identifier-les-acteurs-de-la-prevention-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/risques-naturels/contenu.json"
+  },
+  "source": "microskill.geographie.identifier-les-acteurs-de-la-prevention",
+  "target": "skill.geographie.risques-naturels"
+}

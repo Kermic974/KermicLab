@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Pour se repérer, on utilise hier, aujourd'hui, demain, la semaine, le mois, l'année et les générations.",
+  "niveaux": [
+    {
+      "titre": "Avant, maintenant, après",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "**Hier** est avant aujourd'hui, **demain** est après. Une **semaine** a 7 jours, un **mois** a 28 à 31 jours, une **année** a 12 mois. Les saisons reviennent chaque année.",
+        "J'utilise des mots : **d'abord**, **ensuite**, **puis**, **enfin**."
+      ],
+      "exemple": {
+        "titre": "Exemple : ma journée",
+        "etapes": [
+          "D'abord, je me lève.",
+          "Ensuite, je vais à l'école.",
+          "Enfin, je me couche."
+        ]
+      },
+      "aRetenir": "Avant / après."
+    },
+    {
+      "titre": "Les générations et la frise",
+      "niveau": "CP / CE1",
+      "paragraphes": [
+        "Dans une famille, il y a des **générations** : mes enfants (plus tard), moi, mes parents, mes grands-parents, mes arrière-grands-parents. Un **grand-parent** est plus âgé que mes parents.",
+        "Une **frise chronologique** est une ligne sur laquelle on place des événements dans l'ordre : naissance, entrée à l'école, aujourd'hui."
+      ],
+      "exemple": {
+        "titre": "Exemple : une frise",
+        "etapes": [
+          "Ma naissance.",
+          "Mon entrée au CP.",
+          "Aujourd'hui."
+        ]
+      },
+      "aRetenir": "Une frise range les événements dans l'ordre."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel jour vient après lundi ?",
+        "choix": [
+          "dimanche",
+          "jeudi",
+          "samedi",
+          "mardi"
+        ],
+        "bonne": 3,
+        "explication": "Mardi."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qui est le plus âgé ?",
+        "choix": [
+          "le grand-père",
+          "le père de famille",
+          "l'enfant de la maison",
+          "le bébé de la famille"
+        ],
+        "bonne": 0,
+        "explication": "Plus ancienne génération."
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de mois y a-t-il dans une année ?",
+        "reponse": 12,
+        "indices": [
+          "Compte-les."
+        ],
+        "solution": "Janvier à décembre.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La frise de ma vie",
+    "histoire": [
+      "Tu fais la frise de ta vie."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que mets-tu en premier sur la frise ?",
+        "choix": [
+          "mon anniversaire de demain",
+          "mon entrée au collège",
+          "mon futur métier",
+          "ma naissance"
+        ],
+        "bonne": 3,
+        "explication": "Le plus ancien d'abord."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel mot veut dire « après » ?",
+        "choix": [
+          "hier",
+          "ensuite",
+          "d'abord",
+          "avant"
+        ],
+        "bonne": 1,
+        "explication": "Ensuite."
+      }
+    ],
+    "conclusion": "Belle frise !"
+  }
+}

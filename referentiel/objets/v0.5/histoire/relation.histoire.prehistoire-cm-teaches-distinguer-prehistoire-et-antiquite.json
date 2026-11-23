@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.prehistoire-cm-teaches-distinguer-prehistoire-et-antiquite",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/prehistoire-cm/contenu.json"
+  },
+  "source": "notion.histoire.prehistoire-cm",
+  "target": "microskill.histoire.distinguer-prehistoire-et-antiquite"
+}

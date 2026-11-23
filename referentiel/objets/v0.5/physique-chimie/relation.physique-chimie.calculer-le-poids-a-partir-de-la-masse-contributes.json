@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.calculer-le-poids-a-partir-de-la-masse-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/forces-et-poids/contenu.json"
+  },
+  "source": "microskill.physique-chimie.calculer-le-poids-a-partir-de-la-masse",
+  "target": "skill.physique-chimie.forces-et-poids"
+}

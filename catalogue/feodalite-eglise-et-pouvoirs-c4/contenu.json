@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Au Moyen Âge, seigneurs, paysans, clergé et rois partagent la société et le pouvoir.",
+  "niveaux": [
+    {
+      "titre": "Une société d'ordres",
+      "niveau": "5e",
+      "paragraphes": [
+        "La société médiévale est organisée en trois ordres : ceux qui prient (le **clergé**), ceux qui combattent (les **nobles**), ceux qui travaillent (les **paysans**, la majorité). Le **seigneur** protège ses paysans et reçoit en échange des redevances et du travail ; il est lui-même **vassal** d'un seigneur plus puissant : c'est la **féodalité**.",
+        "Le **château fort** protège et affirme le pouvoir seigneurial."
+      ],
+      "exemple": {
+        "titre": "Exemple : la seigneurie",
+        "etapes": [
+          "Le seigneur possède le château.",
+          "Les paysans cultivent ses terres.",
+          "Ils lui versent des redevances."
+        ]
+      },
+      "aRetenir": "Trois ordres : clergé, noblesse, paysans."
+    },
+    {
+      "titre": "L'Église et les rois",
+      "niveau": "5e",
+      "paragraphes": [
+        "L'**Église** encadre la vie de tous : baptême, mariage, fêtes, écoles dans les monastères, soin des pauvres. Les villes se développent (marchés, artisans) et les **cathédrales** gothiques symbolisent la richesse et la foi.",
+        "Peu à peu, les rois (Philippe Auguste, Saint Louis, Philippe le Bel) étendent leur pouvoir : justice royale, impôts, administration. L'État moderne se prépare."
+      ],
+      "exemple": {
+        "titre": "Exemple : le renforcement du roi",
+        "etapes": [
+          "Le roi envoie des baillis.",
+          "Il rend la justice dans tout le royaume.",
+          "Il lève des impôts."
+        ]
+      },
+      "aRetenir": "Le pouvoir du roi grandit avec la justice et l'administration."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans la société féodale, ceux qui travaillent sont…",
+        "choix": [
+          "les paysans",
+          "les nobles",
+          "les évêques",
+          "les rois"
+        ],
+        "bonne": 0,
+        "explication": "Troisième ordre."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un vassal est…",
+        "choix": [
+          "un marchand qui voyage de foire en foire",
+          "un roi qui gouverne un royaume",
+          "un homme qui promet fidélité à un seigneur",
+          "un moine qui vit dans un monastère"
+        ],
+        "bonne": 2,
+        "explication": "Lien féodal."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Les cathédrales gothiques symbolisent…",
+        "choix": [
+          "l'agriculture et les récoltes",
+          "la foi et la richesse des villes",
+          "le commerce maritime et les ports",
+          "la guerre et la défense des villes"
+        ],
+        "bonne": 1,
+        "explication": "Expression religieuse et urbaine."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Un village au XIIIe siècle",
+    "histoire": [
+      "Tu observes la vie d'un village autour d'un château."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Qui protège les paysans ?",
+        "choix": [
+          "Le prince voisin",
+          "Le seigneur",
+          "Le pape",
+          "Le marchand"
+        ],
+        "bonne": 1,
+        "explication": "En échange de redevances."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qui garde les registres de naissance et de baptême ?",
+        "choix": [
+          "Le seigneur du château voisin",
+          "Le roi dans son palais",
+          "Le marchand de la place du village",
+          "Le curé de la paroisse"
+        ],
+        "bonne": 3,
+        "explication": "L'Église."
+      }
+    ],
+    "conclusion": "Tu comprends la féodalité !"
+  }
+}

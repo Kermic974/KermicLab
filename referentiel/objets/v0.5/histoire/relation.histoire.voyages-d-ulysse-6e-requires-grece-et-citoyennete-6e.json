@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.voyages-d-ulysse-6e-requires-grece-et-citoyennete-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/voyages-d-ulysse-6e/contenu.json"
+  },
+  "source": "notion.histoire.voyages-d-ulysse-6e",
+  "target": "notion.histoire.grece-et-citoyennete-6e",
+  "rationale": "« La Grèce antique : citoyens et démocratie » : Les récits d’Ulysse s’inscrivent dans le monde des cités grecques."
+}

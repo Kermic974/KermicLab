@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.discuter-les-memoires-de-la-decolonisation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/decolonisation/contenu.json"
+  },
+  "source": "microskill.histoire.discuter-les-memoires-de-la-decolonisation",
+  "target": "skill.histoire.decolonisation"
+}

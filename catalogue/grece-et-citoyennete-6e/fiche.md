@@ -2,16 +2,10 @@
 id: grece-et-citoyennete-6e
 titre: La Grèce antique : citoyens et démocratie
 sujet: histoire/grece-et-citoyennete-6e
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: college
-niveaux: cycle-3
 classes: 6e
-prerequis:
-  - premieres-civilisations-6e
-competences:
-  - grece-et-citoyennete-6e-comprendre
-  - grece-et-citoyennete-6e-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - Qu'est-ce que la démocratie athénienne ?
   - Qu'est-ce qu'une cité grecque ?
   - Qui pouvait voter à Athènes ?
+prerequis: premieres-civilisations-6e
+niveaux: cycle-3
+competences: definir-un-citoyen-athenien, nommer-une-cite-grecque, decrire-l-uvre-de-pericles-sur-l-acropole, expliquer-le-fonctionnement-de-la-democratie-athenienne
 ---
 
 # La Grèce antique : citoyens et démocratie

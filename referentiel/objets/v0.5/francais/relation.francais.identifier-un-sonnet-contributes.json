@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-un-sonnet-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie-et-lyrisme-l/contenu.json"
+  },
+  "source": "microskill.francais.identifier-un-sonnet",
+  "target": "skill.francais.poesie-et-lyrisme-l"
+}

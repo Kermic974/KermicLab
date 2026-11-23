@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.distinguer-volcan-actif-et-volcan-eteint-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/volcans-et-seismes-cm/contenu.json"
+  },
+  "source": "microskill.svt.distinguer-volcan-actif-et-volcan-eteint",
+  "target": "skill.svt.volcans-et-seismes-cm"
+}

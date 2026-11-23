@@ -1,0 +1,13 @@
+{
+  "id": "relation.ses.chomage-requires-croissance-economique",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/chomage/contenu.json"
+  },
+  "source": "notion.ses.chomage",
+  "target": "notion.ses.croissance-economique",
+  "rationale": "Les variations conjoncturelles du chômage s’expliquent par celles de l’activité (production, PIB)."
+}

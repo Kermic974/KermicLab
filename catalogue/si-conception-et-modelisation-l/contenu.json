@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "L'ingénieur conçoit des systèmes complexes, modélise leur comportement et vérifie qu'ils répondent au cahier des charges.",
+  "niveaux": [
+    {
+      "titre": "Du besoin au système",
+      "niveau": "1re / Tle",
+      "paragraphes": [
+        "On part d'un **besoin** et d'un **cahier des charges fonctionnel** (fonctions de service, critères et niveaux). Un système se décrit par ses **chaînes** : **d'information** (acquérir, traiter, communiquer) et **d'énergie** (alimenter, distribuer, convertir, transmettre). On utilise des diagrammes (cas d'utilisation, blocs, séquences) pour décrire et communiquer."
+      ],
+      "exemple": {
+        "titre": "Exemple : un portail automatique",
+        "etapes": [
+          "Acquérir : capteur de présence.",
+          "Traiter : carte programmable.",
+          "Convertir : moteur."
+        ]
+      },
+      "aRetenir": "Besoin → fonctions → solutions techniques."
+    },
+    {
+      "titre": "Modéliser et simuler",
+      "niveau": "1re / Tle",
+      "paragraphes": [
+        "Un **modèle** (équations, courbes, maquette numérique) permet de **simuler** le comportement avant de construire. On compare **performances attendues** (cahier des charges), **simulées** et **mesurées** ; un écart conduit à améliorer. Les critères : fiabilité, sécurité, coût, **impact environnemental** (analyse du cycle de vie), ergonomie."
+      ],
+      "exemple": {
+        "titre": "Exemple : simuler un pont",
+        "etapes": [
+          "On modélise les charges.",
+          "La simulation indique un point faible.",
+          "On modifie la structure et on relance."
+        ]
+      },
+      "aRetenir": "Écart simulé/mesuré : améliorer le modèle ou le produit."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La chaîne d'information permet de…",
+        "choix": [
+          "fabriquer de la matière",
+          "stocker de l'eau",
+          "acquérir, traiter, communiquer",
+          "convertir seulement l'énergie"
+        ],
+        "bonne": 2,
+        "explication": "Information."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le cahier des charges fonctionnel décrit…",
+        "choix": [
+          "la couleur du produit seulement",
+          "l'histoire de l'entreprise",
+          "le budget publicitaire",
+          "les fonctions et leurs critères"
+        ],
+        "bonne": 3,
+        "explication": "Fonctions de service."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La simulation numérique sert à…",
+        "choix": [
+          "prévoir avant de fabriquer",
+          "remplacer tout essai réel",
+          "supprimer le cahier des charges",
+          "fabriquer le produit fini"
+        ],
+        "bonne": 0,
+        "explication": "Anticipation."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le portail du lycée",
+    "histoire": [
+      "Tu conçois un portail automatique."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel composant mesure la présence d'un véhicule ?",
+        "choix": [
+          "un moteur",
+          "un câble",
+          "une vis",
+          "un capteur"
+        ],
+        "bonne": 3,
+        "explication": "Chaîne d'information."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour vérifier la durée de vie, on…",
+        "choix": [
+          "attend la première panne",
+          "ne teste rien du tout",
+          "supprime le capteur",
+          "simule puis teste un prototype"
+        ],
+        "bonne": 3,
+        "explication": "Validation."
+      }
+    ],
+    "conclusion": "Système validé !"
+  }
+}

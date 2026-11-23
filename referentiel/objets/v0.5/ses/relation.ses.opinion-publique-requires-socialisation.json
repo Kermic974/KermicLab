@@ -1,0 +1,13 @@
+{
+  "id": "relation.ses.opinion-publique-requires-socialisation",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/opinion-publique/contenu.json"
+  },
+  "source": "notion.ses.opinion-publique",
+  "target": "notion.ses.socialisation",
+  "rationale": "La formation des opinions renvoie aux instances et aux processus de socialisation."
+}

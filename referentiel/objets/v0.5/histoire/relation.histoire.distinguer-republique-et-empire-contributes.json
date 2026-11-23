@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.distinguer-republique-et-empire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-empire-cm/contenu.json"
+  },
+  "source": "microskill.histoire.distinguer-republique-et-empire",
+  "target": "skill.histoire.revolution-empire-cm"
+}

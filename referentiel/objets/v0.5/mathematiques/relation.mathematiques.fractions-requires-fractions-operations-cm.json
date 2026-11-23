@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.fractions-requires-fractions-operations-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fractions/contenu.json"
+  },
+  "source": "notion.mathematiques.fractions",
+  "target": "notion.mathematiques.fractions-operations-cm",
+  "rationale": "« Fractions : décimales, sommes et comparaisons » : Les fractions du cycle 3 (partage, fraction d’une quantité, sommes) sont étendues au collège."
+}

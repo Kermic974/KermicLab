@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.interpreter-le-sens-de-la-fleche-qui-mange-qui-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/biodiversite-et-chaines-cm/contenu.json"
+  },
+  "source": "microskill.svt.interpreter-le-sens-de-la-fleche-qui-mange-qui",
+  "target": "skill.svt.biodiversite-et-chaines-cm"
+}

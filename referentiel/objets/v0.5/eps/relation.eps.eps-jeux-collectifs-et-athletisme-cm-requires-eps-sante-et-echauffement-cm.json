@@ -1,0 +1,13 @@
+{
+  "id": "relation.eps.eps-jeux-collectifs-et-athletisme-cm-requires-eps-sante-et-echauffement-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-jeux-collectifs-et-athletisme-cm/contenu.json"
+  },
+  "source": "notion.eps.eps-jeux-collectifs-et-athletisme-cm",
+  "target": "notion.eps.eps-sante-et-echauffement-cm",
+  "rationale": "L’échauffement et la gestion de l’effort précèdent toute pratique athlétique ou collective."
+}

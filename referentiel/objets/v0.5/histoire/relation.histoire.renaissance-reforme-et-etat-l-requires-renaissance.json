@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.renaissance-reforme-et-etat-l-requires-renaissance",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/renaissance-reforme-et-etat-l/contenu.json"
+  },
+  "source": "notion.histoire.renaissance-reforme-et-etat-l",
+  "target": "notion.histoire.renaissance",
+  "rationale": "« La Renaissance » : Le lycée approfondit la Renaissance vue au collège."
+}

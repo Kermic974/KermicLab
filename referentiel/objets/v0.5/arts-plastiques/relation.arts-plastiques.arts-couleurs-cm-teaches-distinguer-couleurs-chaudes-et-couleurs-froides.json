@@ -1,0 +1,12 @@
+{
+  "id": "relation.arts-plastiques.arts-couleurs-cm-teaches-distinguer-couleurs-chaudes-et-couleurs-froides",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/arts-couleurs-cm/contenu.json"
+  },
+  "source": "notion.arts-plastiques.arts-couleurs-cm",
+  "target": "microskill.arts-plastiques.distinguer-couleurs-chaudes-et-couleurs-froides"
+}

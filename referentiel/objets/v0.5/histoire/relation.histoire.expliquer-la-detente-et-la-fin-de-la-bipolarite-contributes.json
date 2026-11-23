@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-la-detente-et-la-fin-de-la-bipolarite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerre-froide/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-la-detente-et-la-fin-de-la-bipolarite",
+  "target": "skill.histoire.guerre-froide"
+}

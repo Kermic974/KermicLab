@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.structurer-un-essai-introduction-developpement-conclusion-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-expression-orale-et-ecrite-l/contenu.json"
+  },
+  "source": "microskill.anglais.structurer-un-essai-introduction-developpement-conclusion",
+  "target": "skill.anglais.anglais-expression-orale-et-ecrite-l"
+}

@@ -48,12 +48,12 @@
         "titre": "Exercice 1",
         "question": "Le fair-play, c'est…",
         "choix": [
+          "refuser de perdre",
           "jouer loyalement",
           "tricher discrètement",
-          "crier sur l'arbitre",
-          "refuser de perdre"
+          "crier sur l'arbitre"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Respect."
       },
       {
@@ -61,12 +61,12 @@
         "titre": "Exercice 2",
         "question": "Le saut en longueur est une épreuve…",
         "choix": [
+          "de natation",
           "de saut",
           "de lancer",
-          "de course",
-          "de natation"
+          "de course"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Famille « sauter »."
       },
       {
@@ -75,9 +75,9 @@
         "question": "À la piscine, on…",
         "choix": [
           "respecte les consignes du maître-nageur",
-          "plonge partout",
-          "nage seul au grand bassin",
-          "court au bord"
+          "plonge dans n'importe quel endroit",
+          "nage seul dans le grand bassin",
+          "court au bord pour aller plus vite"
         ],
         "bonne": 0,
         "explication": "Sécurité."
@@ -95,12 +95,12 @@
         "titre": "Exercice 1",
         "question": "Ton équipe perd. Tu…",
         "choix": [
+          "quittes le terrain",
           "félicites les gagnants",
           "te fâches",
-          "tricheras la prochaine fois",
-          "quittes le terrain"
+          "tricheras la prochaine fois"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Fair-play."
       },
       {
@@ -108,12 +108,12 @@
         "titre": "Exercice 2",
         "question": "Quelle épreuve de lancer connais-tu ?",
         "choix": [
-          "Le lancer de poids",
           "Le saut en hauteur",
           "Le crawl",
-          "Le marathon"
+          "Le marathon",
+          "Le lancer de poids"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Poids, javelot, vortex."
       }
     ],

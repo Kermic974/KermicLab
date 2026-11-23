@@ -1,0 +1,115 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Pour mesurer une longueur, on compare avec une unité : le centimètre, le mètre, le kilomètre.",
+  "niveaux": [
+    {
+      "titre": "Mesurer avec la règle",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour mesurer un segment, je place le **0** de la règle au début, et je lis le nombre à la fin. Un crayon qui va de 0 à 15 mesure 15 centimètres (**15 cm**).",
+        "Les unités : le **centimètre** (cm), le **mètre** (m), le **kilomètre** (km). 1 m = 100 cm ; 1 km = 1 000 m."
+      ],
+      "exemple": {
+        "titre": "Exemple : une table",
+        "etapes": [
+          "Elle mesure 1 mètre et 20 centimètres.",
+          "1 m 20 cm = 120 cm.",
+          "On choisit l'unité adaptée à l'objet."
+        ]
+      },
+      "aRetenir": "1 m = 100 cm."
+    },
+    {
+      "titre": "Comparer et convertir",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "Pour comparer deux longueurs, on les met dans la même unité : 2 m = 200 cm, donc 2 m est plus long que 150 cm.",
+        "Pour une route, on utilise le kilomètre. L'école est à 2 km de la maison : 2 000 m."
+      ],
+      "exemple": {
+        "titre": "Exemple : 3 m en cm",
+        "etapes": [
+          "1 m = 100 cm.",
+          "3 × 100 = 300.",
+          "3 m = 300 cm."
+        ]
+      },
+      "aRetenir": "Même unité pour comparer."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "1 m = ... cm ?",
+        "reponse": 100,
+        "unite": "cm",
+        "indices": [
+          "Pense à la règle d'un mètre."
+        ],
+        "solution": "1 mètre = 100 centimètres.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "3 m = ... cm ?",
+        "reponse": 300,
+        "unite": "cm",
+        "indices": [
+          "× 100."
+        ],
+        "solution": "3 × 100 = 300.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quelle unité pour mesurer la distance entre deux villes ?",
+        "choix": [
+          "le centimètre",
+          "le litre",
+          "le gramme",
+          "le kilomètre"
+        ],
+        "bonne": 3,
+        "explication": "Pour les longues distances : le km."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le saut en longueur",
+    "histoire": [
+      "Léa saute 2 m 40 cm, Tom saute 235 cm."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Combien mesure le saut de Léa en centimètres ?",
+        "reponse": 240,
+        "unite": "cm",
+        "indices": [
+          "2 m = 200 cm."
+        ],
+        "solution": "2 m 40 cm = 240 cm.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Quelle est la différence entre les deux sauts (en cm) ?",
+        "reponse": 5,
+        "unite": "cm",
+        "indices": [
+          "Soustrais."
+        ],
+        "solution": "240 − 235 = 5.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bien mesuré !"
+  }
+}

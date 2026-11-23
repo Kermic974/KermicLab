@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.croissance-economique-teaches-identifier-les-sources-de-la-croissance-travail-capital-productivite",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/croissance-economique/contenu.json"
+  },
+  "source": "notion.ses.croissance-economique",
+  "target": "microskill.ses.identifier-les-sources-de-la-croissance-travail-capital-productivite"
+}

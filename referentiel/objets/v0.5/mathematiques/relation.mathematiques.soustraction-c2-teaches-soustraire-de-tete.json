@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.soustraction-c2-teaches-soustraire-de-tete",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/soustraction-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.soustraction-c2",
+  "target": "microskill.mathematiques.soustraire-de-tete"
+}

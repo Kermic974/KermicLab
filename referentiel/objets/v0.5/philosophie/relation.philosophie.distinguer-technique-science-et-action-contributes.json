@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.distinguer-technique-science-et-action-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/technique/contenu.json"
+  },
+  "source": "microskill.philosophie.distinguer-technique-science-et-action",
+  "target": "skill.philosophie.technique"
+}

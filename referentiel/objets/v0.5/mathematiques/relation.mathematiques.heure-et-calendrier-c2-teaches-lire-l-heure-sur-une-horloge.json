@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.heure-et-calendrier-c2-teaches-lire-l-heure-sur-une-horloge",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/heure-et-calendrier-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.heure-et-calendrier-c2",
+  "target": "microskill.mathematiques.lire-l-heure-sur-une-horloge"
+}

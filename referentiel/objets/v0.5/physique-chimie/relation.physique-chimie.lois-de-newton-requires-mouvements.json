@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.lois-de-newton-requires-mouvements",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lois-de-newton/contenu.json"
+  },
+  "source": "notion.physique-chimie.lois-de-newton",
+  "target": "notion.physique-chimie.mouvements",
+  "rationale": "Le vecteur accélération prolonge le vecteur vitesse et le choix d’un référentiel."
+}

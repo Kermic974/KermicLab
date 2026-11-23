@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-l-abolition-de-l-esclavage-de-1848-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolutions-et-nations-xix-l/contenu.json"
+  },
+  "source": "microskill.histoire.situer-l-abolition-de-l-esclavage-de-1848",
+  "target": "skill.histoire.revolutions-et-nations-xix-l"
+}

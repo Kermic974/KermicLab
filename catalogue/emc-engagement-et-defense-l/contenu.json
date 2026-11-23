@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "S'engager, c'est agir pour la collectivité : défense, solidarité, associations et citoyenneté active.",
+  "niveaux": [
+    {
+      "titre": "Défense et sécurité",
+      "niveau": "2de",
+      "paragraphes": [
+        "La **défense nationale** protège le territoire, la population et les intérêts de la France : forces armées, gendarmerie, protection civile, cybersécurité. Le **service national universel** et la **Journée défense et citoyenneté** (JDC) à 16–18 ans sensibilisent au devoir de défense. Les **opérations extérieures** s'inscrivent dans le cadre de l'ONU, de l'OTAN et de l'UE."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "JDC à 17 ans.",
+          "Information sur les métiers de la défense.",
+          "Recensement citoyen."
+        ]
+      },
+      "aRetenir": "Défense : devoir de tous."
+    },
+    {
+      "titre": "Solidarité et engagement",
+      "niveau": "2de",
+      "paragraphes": [
+        "La **solidarité** passe par la **protection sociale** (assurance maladie, retraites, allocations) financée par les cotisations et les impôts, et par l'**engagement** : bénévolat, associations, service civique, délégués de classe. S'engager développe des compétences et fait vivre la démocratie au quotidien."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un lycéen devient délégué.",
+          "Il porte la parole de ses camarades.",
+          "Il participe aux conseils de classe."
+        ]
+      },
+      "aRetenir": "Solidarité : sécurité sociale et engagement."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La JDC (Journée défense et citoyenneté) concerne…",
+        "choix": [
+          "les élus",
+          "les jeunes de 16 à 25 ans",
+          "les retraités",
+          "les enfants de 6 ans"
+        ],
+        "bonne": 1,
+        "explication": "Citoyenneté."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La sécurité sociale finance…",
+        "choix": [
+          "la santé, les retraites et les allocations",
+          "les vacances des fonctionnaires",
+          "les jeux vidéo des mineurs",
+          "les billets d'avion en classe affaires"
+        ],
+        "bonne": 0,
+        "explication": "Protection sociale."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un bénévole est…",
+        "choix": [
+          "une personne qui s'engage sans être payée",
+          "un salarié d'une grande entreprise",
+          "un fonctionnaire titulaire",
+          "un élu au suffrage direct"
+        ],
+        "bonne": 0,
+        "explication": "Engagement."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'association",
+    "histoire": [
+      "Tu rejoins une association de quartier."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pourquoi s'engager ?",
+        "choix": [
+          "pour changer de nom",
+          "pour servir une cause collective",
+          "pour gagner un salaire élevé",
+          "pour éviter tout lien social"
+        ],
+        "bonne": 1,
+        "explication": "Citoyenneté active."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le service civique est…",
+        "choix": [
+          "une obligation de payer un impôt",
+          "un concours très sélectif",
+          "un examen de fin d'année",
+          "un engagement volontaire d'intérêt général"
+        ],
+        "bonne": 3,
+        "explication": "Dispositif."
+      }
+    ],
+    "conclusion": "Bon engagement !"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decrire-l-ecole-de-jules-ferry-au-cycle-3-cm-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/republique-ecole-cm/contenu.json"
+  },
+  "source": "microskill.histoire.decrire-l-ecole-de-jules-ferry-au-cycle-3-cm",
+  "target": "skill.histoire.republique-ecole-cm"
+}

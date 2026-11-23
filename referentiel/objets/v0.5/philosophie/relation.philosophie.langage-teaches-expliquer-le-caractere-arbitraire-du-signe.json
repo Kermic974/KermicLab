@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.langage-teaches-expliquer-le-caractere-arbitraire-du-signe",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/langage/contenu.json"
+  },
+  "source": "notion.philosophie.langage",
+  "target": "microskill.philosophie.expliquer-le-caractere-arbitraire-du-signe"
+}

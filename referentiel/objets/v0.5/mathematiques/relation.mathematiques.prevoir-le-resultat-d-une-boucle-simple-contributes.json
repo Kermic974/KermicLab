@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.prevoir-le-resultat-d-une-boucle-simple-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tableaux-et-algorithmes-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.prevoir-le-resultat-d-une-boucle-simple",
+  "target": "skill.mathematiques.tableaux-et-algorithmes-c2"
+}

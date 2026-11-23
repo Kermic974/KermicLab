@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.fonctions-de-reference-requires-notion-de-fonction-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fonctions-de-reference/contenu.json"
+  },
+  "source": "notion.mathematiques.fonctions-de-reference",
+  "target": "notion.mathematiques.notion-de-fonction-c4",
+  "rationale": "« La notion de fonction » : Les fonctions de référence supposent image, antécédent et représentation graphique."
+}

@@ -34,10 +34,10 @@ questions:
   - je ne comprends pas le cycle menstruel
   - à quoi sert le placenta ?
   - what is fertilisation in human reproduction?
-prerequis:
-niveaux: cycle-4
 classes: 4e
-competences: svt-reproduction-humaine-action-1, svt-reproduction-humaine-action-2
+prerequis: reproduction-et-cycles-de-vie-6e, reproduction-et-puberte-cm
+niveaux: cycle-4
+competences: identifier-les-gametes-et-leur-origine, decrire-la-fecondation, expliquer-les-cycles-de-l-appareil-reproducteur, choisir-un-moyen-de-prevention-adapte
 ---
 
 # La reproduction humaine

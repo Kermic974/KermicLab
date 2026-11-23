@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.discuter-les-limites-de-la-mesure-de-la-mobilite-sociale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mobilite-sociale/contenu.json"
+  },
+  "source": "microskill.ses.discuter-les-limites-de-la-mesure-de-la-mobilite-sociale",
+  "target": "skill.ses.mobilite-sociale"
+}

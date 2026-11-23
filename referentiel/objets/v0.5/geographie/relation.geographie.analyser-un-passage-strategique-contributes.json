@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.analyser-un-passage-strategique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/espaces-et-puissances-mondiales-l/contenu.json"
+  },
+  "source": "microskill.geographie.analyser-un-passage-strategique",
+  "target": "skill.geographie.espaces-et-puissances-mondiales-l"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.distinguer-chomage-conjoncturel-et-chomage-structurel-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/chomage/contenu.json"
+  },
+  "source": "microskill.ses.distinguer-chomage-conjoncturel-et-chomage-structurel",
+  "target": "skill.ses.chomage"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.expliquer-la-notion-de-paradigme-chez-kuhn-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/science/contenu.json"
+  },
+  "source": "microskill.philosophie.expliquer-la-notion-de-paradigme-chez-kuhn",
+  "target": "skill.philosophie.science"
+}

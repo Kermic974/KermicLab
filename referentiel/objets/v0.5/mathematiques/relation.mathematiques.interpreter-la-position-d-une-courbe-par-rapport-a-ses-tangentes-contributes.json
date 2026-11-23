@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.interpreter-la-position-d-une-courbe-par-rapport-a-ses-tangentes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/convexite-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.interpreter-la-position-d-une-courbe-par-rapport-a-ses-tangentes",
+  "target": "skill.mathematiques.convexite-l"
+}

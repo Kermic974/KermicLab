@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.perimetre-aire-cm-teaches-convertir-des-unites-d-aire-au-cycle-3-cm",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/perimetre-aire-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.perimetre-aire-cm",
+  "target": "microskill.mathematiques.convertir-des-unites-d-aire-au-cycle-3-cm"
+}

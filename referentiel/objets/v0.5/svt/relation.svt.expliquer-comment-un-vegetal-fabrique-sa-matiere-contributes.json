@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-comment-un-vegetal-fabrique-sa-matiere-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nutrition-et-alimentation-6e/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-comment-un-vegetal-fabrique-sa-matiere",
+  "target": "skill.svt.nutrition-et-alimentation-6e"
+}

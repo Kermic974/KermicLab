@@ -2,15 +2,10 @@
 id: formation-des-mots-cm
 titre: La formation des mots
 sujet: francais/formation-des-mots-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - formation-des-mots-cm-comprendre
-  - formation-des-mots-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +22,9 @@ questions:
   - C'est quoi un préfixe et un suffixe ?
   - Comment trouver la famille d'un mot ?
   - C'est quoi un mot composé ?
+prerequis: vocabulaire-cm
+niveaux: cycle-3
+competences: identifier-un-prefixe-et-un-suffixe, reconnaitre-la-famille-d-un-mot, distinguer-mot-derive-et-mot-compose, former-un-mot-nouveau-par-derivation
 ---
 
 # La formation des mots

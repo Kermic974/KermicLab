@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.angles-cm-requires-figures-planes-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/angles-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.angles-cm",
+  "target": "notion.mathematiques.figures-planes-c2",
+  "rationale": "Prérequis déclaré dans la fiche : « Les figures planes » précède « Les angles » dans la progression du programme (lien à relire)."
+}

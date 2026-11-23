@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.grece-et-citoyennete-6e-teaches-decrire-l-uvre-de-pericles-sur-l-acropole",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grece-et-citoyennete-6e/contenu.json"
+  },
+  "source": "notion.histoire.grece-et-citoyennete-6e",
+  "target": "microskill.histoire.decrire-l-uvre-de-pericles-sur-l-acropole"
+}

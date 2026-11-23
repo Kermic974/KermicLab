@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.tracer-une-perpendiculaire-a-l-equerre-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droites-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.tracer-une-perpendiculaire-a-l-equerre",
+  "target": "skill.mathematiques.droites-cm"
+}

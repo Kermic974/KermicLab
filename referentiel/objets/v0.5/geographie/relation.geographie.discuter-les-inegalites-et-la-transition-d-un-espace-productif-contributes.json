@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.discuter-les-inegalites-et-la-transition-d-un-espace-productif-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/espaces-productifs/contenu.json"
+  },
+  "source": "microskill.geographie.discuter-les-inegalites-et-la-transition-d-un-espace-productif",
+  "target": "skill.geographie.espaces-productifs"
+}

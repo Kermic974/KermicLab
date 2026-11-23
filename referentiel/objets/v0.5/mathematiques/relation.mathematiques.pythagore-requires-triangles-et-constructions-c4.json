@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.pythagore-requires-triangles-et-constructions-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/pythagore/contenu.json"
+  },
+  "source": "notion.mathematiques.pythagore",
+  "target": "notion.mathematiques.triangles-et-constructions-c4",
+  "rationale": "« Triangles : angles, droites remarquables et constructions » : Pythagore mobilise les triangles et leurs constructions et le calcul de carrés."
+}

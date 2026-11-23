@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.anglais.anglais-expression-orale-et-ecrite-l-premiere",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-expression-orale-et-ecrite-l/contenu.json"
+  },
+  "object": "notion.anglais.anglais-expression-orale-et-ecrite-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.premiere",
+  "role": "introduced"
+}

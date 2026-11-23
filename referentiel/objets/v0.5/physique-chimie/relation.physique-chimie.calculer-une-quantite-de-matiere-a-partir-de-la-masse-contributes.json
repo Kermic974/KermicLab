@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.calculer-une-quantite-de-matiere-a-partir-de-la-masse-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/quantite-de-matiere/contenu.json"
+  },
+  "source": "microskill.physique-chimie.calculer-une-quantite-de-matiere-a-partir-de-la-masse",
+  "target": "skill.physique-chimie.quantite-de-matiere"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.argumentation-requires-ecrire-et-reecrire-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/argumentation/contenu.json"
+  },
+  "source": "notion.francais.argumentation",
+  "target": "notion.francais.ecrire-et-reecrire-c4",
+  "rationale": "« Écrire, argumenter et réécrire au collège » : Planifier, argumenter et réécrire au collège précèdent l’organisation et la nuance d’une argumentation."
+}

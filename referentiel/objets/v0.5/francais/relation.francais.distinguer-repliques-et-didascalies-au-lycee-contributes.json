@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.distinguer-repliques-et-didascalies-au-lycee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/theatre-et-representation-l/contenu.json"
+  },
+  "source": "microskill.francais.distinguer-repliques-et-didascalies-au-lycee",
+  "target": "skill.francais.theatre-et-representation-l"
+}

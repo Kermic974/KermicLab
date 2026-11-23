@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.ecrire-une-instruction-conditionnelle-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/algorithmes-programmation-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.ecrire-une-instruction-conditionnelle",
+  "target": "skill.mathematiques.algorithmes-programmation-cm"
+}

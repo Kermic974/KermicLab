@@ -2,16 +2,10 @@
 id: division-euclidienne-cm
 titre: La division euclidienne
 sujet: mathematiques/division-euclidienne-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-  - multiplication-posee-cm
-competences:
-  - division-euclidienne-cm-comprendre
-  - division-euclidienne-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +21,9 @@ questions:
   - C'est quoi le quotient et le reste d'une division ?
   - Comment poser une division euclidienne ?
   - Comment vérifier une division avec un reste ?
+prerequis: division-et-partage-c2, multiplication-posee-cm
+niveaux: cycle-3
+competences: poser-une-division-euclidienne, determiner-quotient-et-reste, verifier-une-division-par-a-b-q-r, expliquer-pourquoi-un-reste-est-inferieur-au-diviseur
 ---
 
 # La division euclidienne

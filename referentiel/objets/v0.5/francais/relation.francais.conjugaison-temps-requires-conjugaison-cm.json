@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.conjugaison-temps-requires-conjugaison-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conjugaison-temps/contenu.json"
+  },
+  "source": "notion.francais.conjugaison-temps",
+  "target": "notion.francais.conjugaison-cm",
+  "rationale": "« La conjugaison : temps simples et composés » : Les temps simples et composés du cycle 3 et les temps du récit de 6e sont repris et systématisés."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.evaluer-une-politique-de-l-emploi-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ses-travail-chomage-et-protection-l/contenu.json"
+  },
+  "source": "microskill.ses.evaluer-une-politique-de-l-emploi",
+  "target": "skill.ses.ses-travail-chomage-et-protection-l"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.discuter-la-souverainete-nationale-et-les-institutions-europeennes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/construction-europeenne/contenu.json"
+  },
+  "source": "microskill.histoire.discuter-la-souverainete-nationale-et-les-institutions-europeennes",
+  "target": "skill.histoire.construction-europeenne"
+}

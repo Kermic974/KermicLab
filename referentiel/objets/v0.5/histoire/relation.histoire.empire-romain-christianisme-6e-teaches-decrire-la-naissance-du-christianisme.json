@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.empire-romain-christianisme-6e-teaches-decrire-la-naissance-du-christianisme",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/empire-romain-christianisme-6e/contenu.json"
+  },
+  "source": "notion.histoire.empire-romain-christianisme-6e",
+  "target": "microskill.histoire.decrire-la-naissance-du-christianisme"
+}

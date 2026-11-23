@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les arts plastiques apprennent à voir, à représenter et à exprimer.",
+  "niveaux": [
+    {
+      "titre": "Espace et profondeur",
+      "niveau": "6e",
+      "paragraphes": [
+        "Pour donner l'impression de **profondeur**, on utilise : les **plans** (premier plan, plan intermédiaire, arrière-plan), la **taille** (plus petit au loin), le **chevauchement** (un objet cache l'autre), les **couleurs** plus claires et moins contrastées au loin (perspective atmosphérique), la **perspective linéaire** et le point de fuite."
+      ],
+      "exemple": {
+        "titre": "Exemple : un paysage",
+        "etapes": [
+          "Premier plan : un arbre grand et sombre.",
+          "Plan intermédiaire : une maison.",
+          "Arrière-plan : des collines bleutées et claires."
+        ]
+      },
+      "aRetenir": "Au loin : plus petit, plus clair, moins net."
+    },
+    {
+      "titre": "Matières, couleurs, œuvres",
+      "niveau": "6e",
+      "paragraphes": [
+        "On travaille avec différentes **matières** (peinture, encre, collage, argile) et **outils** (pinceau, éponge, doigts). On joue avec les **contrastes** (clair/foncé, chaud/froid, lisse/rugueux). Pour **parler d'une œuvre** : titre, auteur, date, technique, sujet, couleurs, composition, impression.",
+        "Le **patrimoine** est l'ensemble des œuvres d'une société qu'on protège et qu'on partage (musées, monuments)."
+      ],
+      "exemple": {
+        "titre": "Exemple : décrire une œuvre",
+        "etapes": [
+          "« La Joconde » de Léonard de Vinci.",
+          "Peinture à l'huile sur bois, vers 1503.",
+          "Sujet : portrait ; sourire mystérieux."
+        ]
+      },
+      "aRetenir": "Titre, auteur, technique, composition."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pour montrer la profondeur, un objet lointain est…",
+        "choix": [
+          "plus petit et plus clair",
+          "plus grand et plus sombre",
+          "de même taille",
+          "caché"
+        ],
+        "bonne": 0,
+        "explication": "Effet de lointain."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le premier plan est…",
+        "choix": [
+          "la partie la plus éloignée de l'observateur",
+          "le fond du paysage au loin",
+          "la ligne d'horizon seulement",
+          "la partie la plus proche de l'observateur"
+        ],
+        "bonne": 3,
+        "explication": "Au devant."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Qui a peint « La Joconde » ?",
+        "choix": [
+          "Dali",
+          "Léonard de Vinci",
+          "Monet",
+          "Picasso"
+        ],
+        "bonne": 1,
+        "explication": "Vers 1503."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le paysage de l'atelier",
+    "histoire": [
+      "Tu peins un paysage avec trois plans."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que mets-tu au premier plan ?",
+        "choix": [
+          "Un point lointain",
+          "Un grand arbre foncé",
+          "Une colline très pâle",
+          "Des nuages minuscules"
+        ],
+        "bonne": 1,
+        "explication": "Éléments grands et contrastés."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment colores-tu l'arrière-plan ?",
+        "choix": [
+          "En teintes claires et bleutées",
+          "En rouge vif et saturé en chaud",
+          "En noir intense et très foncé",
+          "En ocre sombre et très contrasté"
+        ],
+        "bonne": 0,
+        "explication": "Perspective atmosphérique."
+      }
+    ],
+    "conclusion": "Beau paysage !"
+  }
+}

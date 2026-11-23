@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.droit-et-regle-6e-requires-regles-et-justice-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droit-et-regle-6e/contenu.json"
+  },
+  "source": "notion.emc.droit-et-regle-6e",
+  "target": "notion.emc.regles-et-justice-cm",
+  "rationale": "« Règles, lois et justice » : Le droit de 6e prolonge les règles et la justice du CM."
+}

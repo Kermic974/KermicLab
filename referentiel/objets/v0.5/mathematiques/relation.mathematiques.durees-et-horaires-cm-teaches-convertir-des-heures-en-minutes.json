@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.durees-et-horaires-cm-teaches-convertir-des-heures-en-minutes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/durees-et-horaires-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.durees-et-horaires-cm",
+  "target": "microskill.mathematiques.convertir-des-heures-en-minutes"
+}

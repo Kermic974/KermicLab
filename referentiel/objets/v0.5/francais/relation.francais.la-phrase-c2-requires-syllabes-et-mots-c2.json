@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.la-phrase-c2-requires-syllabes-et-mots-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/la-phrase-c2/contenu.json"
+  },
+  "source": "notion.francais.la-phrase-c2",
+  "target": "notion.francais.syllabes-et-mots-c2",
+  "rationale": "« Les syllabes et la lecture de mots » : Une phrase est composée de mots lus et écrits en syllabes."
+}

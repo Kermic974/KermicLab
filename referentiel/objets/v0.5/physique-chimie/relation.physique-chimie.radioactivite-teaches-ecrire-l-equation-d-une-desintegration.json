@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.radioactivite-teaches-ecrire-l-equation-d-une-desintegration",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/radioactivite/contenu.json"
+  },
+  "source": "notion.physique-chimie.radioactivite",
+  "target": "microskill.physique-chimie.ecrire-l-equation-d-une-desintegration"
+}

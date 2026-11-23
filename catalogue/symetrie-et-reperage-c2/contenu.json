@@ -1,0 +1,117 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une figure symétrique est identique de chaque côté d'une ligne : l'axe de symétrie.",
+  "niveaux": [
+    {
+      "titre": "Symétrie",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Si je plie une feuille et que les deux côtés se superposent, la ligne du pli est un **axe de symétrie**. Le papillon, le cœur, la lettre A sont symétriques.",
+        "Un point et son symétrique sont à la même distance de l'axe, de chaque côté."
+      ],
+      "exemple": {
+        "titre": "Exemple : sur un quadrillage",
+        "etapes": [
+          "Le point est à 3 carreaux de l'axe.",
+          "Son symétrique est à 3 carreaux de l'autre côté.",
+          "On relie les points pour finir la figure."
+        ]
+      },
+      "aRetenir": "Même distance de l'axe."
+    },
+    {
+      "titre": "Se repérer",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "Sur un quadrillage, on repère une case avec une lettre et un nombre (B3) : la lettre pour la colonne, le nombre pour la ligne. On peut aussi donner un chemin : « 2 carreaux à droite, 3 en haut ».",
+        "C'est le principe de la bataille navale."
+      ],
+      "exemple": {
+        "titre": "Exemple : B3",
+        "etapes": [
+          "On cherche la colonne B.",
+          "On cherche la ligne 3.",
+          "La case est à leur croisement."
+        ]
+      },
+      "aRetenir": "Lettre : colonne. Nombre : ligne."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Une figure est symétrique si…",
+        "choix": [
+          "elle est très grande et colorée",
+          "elle est dessinée au stylo",
+          "elle a trois côtés exactement",
+          "les deux côtés de l'axe se superposent"
+        ],
+        "bonne": 3,
+        "explication": "Pliage."
+      },
+      {
+        "type": "nombre",
+        "question": "Un point est à 4 carreaux de l'axe. À combien de carreaux est son symétrique ?",
+        "reponse": 4,
+        "indices": [
+          "Pense au pliage."
+        ],
+        "solution": "Même distance de l'autre côté.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Dans « B3 », la lettre B donne…",
+        "choix": [
+          "la ligne",
+          "la couleur",
+          "la taille",
+          "la colonne"
+        ],
+        "bonne": 3,
+        "explication": "Lettre : colonne."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La bataille navale",
+    "histoire": [
+      "Tu joues à la bataille navale : bateau en C4."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Où chercher C4 ?",
+        "choix": [
+          "colonne C, colonne 4",
+          "colonne C, ligne 4",
+          "colonne 4, ligne C",
+          "ligne C, ligne 4"
+        ],
+        "bonne": 1,
+        "explication": "Lettre = colonne."
+      },
+      {
+        "type": "nombre",
+        "question": "Le bateau occupe 3 cases : C4, C5 et une autre. Quelle ligne pour la dernière (C6) ?",
+        "reponse": 6,
+        "indices": [
+          "Les numéros se suivent."
+        ],
+        "solution": "C4, C5, C6.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Touché, coulé !"
+  }
+}

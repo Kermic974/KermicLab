@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.analyser-un-enjeu-de-droit-maritime-ou-d-environnement-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mers-oceans/contenu.json"
+  },
+  "source": "microskill.geographie.analyser-un-enjeu-de-droit-maritime-ou-d-environnement",
+  "target": "skill.geographie.mers-oceans"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-le-changement-de-regime-de-1792-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-francaise/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-le-changement-de-regime-de-1792",
+  "target": "skill.histoire.revolution-francaise"
+}

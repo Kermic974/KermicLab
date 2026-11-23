@@ -1,0 +1,116 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "L'heure, les jours et les mois nous aident à organiser notre temps.",
+  "niveaux": [
+    {
+      "titre": "Lire l'heure",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **petite aiguille** indique l'heure, la **grande aiguille** les minutes. 1 heure = 60 minutes. Quand la grande aiguille est sur 12, c'est une heure pile. Sur 6, c'est « et demie » ; sur 3, « et quart ».",
+        "Il y a 24 heures dans un jour, 7 jours dans une semaine, 12 mois dans une année."
+      ],
+      "exemple": {
+        "titre": "Exemple : 3 h et demie",
+        "etapes": [
+          "Petite aiguille entre 3 et 4.",
+          "Grande aiguille sur 6.",
+          "Il est 3 h 30."
+        ]
+      },
+      "aRetenir": "1 h = 60 minutes."
+    },
+    {
+      "titre": "Le calendrier",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "Les jours : lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche. Les mois : janvier, février, mars, avril, mai, juin, juillet, août, septembre, octobre, novembre, décembre. L'année a 12 mois, 365 jours (366 les années bissextiles).",
+        "On calcule des durées : de 14 h à 16 h 30, il y a 2 h 30."
+      ],
+      "exemple": {
+        "titre": "Exemple : une durée",
+        "etapes": [
+          "Départ à 8 h.",
+          "Arrivée à 10 h 30.",
+          "Durée : 2 h 30 min."
+        ]
+      },
+      "aRetenir": "Une journée = 24 h."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien de minutes dans une heure ?",
+        "reponse": 60,
+        "unite": "min",
+        "indices": [
+          "Fais un tour complet de la grande aiguille."
+        ],
+        "solution": "1 h = 60 min.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de jours dans une semaine ?",
+        "reponse": 7,
+        "indices": [
+          "Compte-les."
+        ],
+        "solution": "Lundi à dimanche.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quand la grande aiguille est sur 6, il est…",
+        "choix": [
+          "pile",
+          "et quart",
+          "moins le quart",
+          "et demie"
+        ],
+        "bonne": 3,
+        "explication": "30 minutes = une demi-heure."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Ma journée d'école",
+    "histoire": [
+      "L'école commence à 8 h 30 et finit à 16 h 30."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Combien d'heures dure l'école (de 8 h 30 à 16 h 30) ?",
+        "reponse": 8,
+        "unite": "h",
+        "indices": [
+          "Même minutes : 16 − 8."
+        ],
+        "solution": "16 h 30 − 8 h 30 = 8 h.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "À quelle heure commence l'école ?",
+        "choix": [
+          "9 h",
+          "8 h",
+          "7 h 30",
+          "8 h 30"
+        ],
+        "bonne": 3,
+        "explication": "Huit heures et demie."
+      }
+    ],
+    "conclusion": "Tu lis bien l'heure !"
+  }
+}

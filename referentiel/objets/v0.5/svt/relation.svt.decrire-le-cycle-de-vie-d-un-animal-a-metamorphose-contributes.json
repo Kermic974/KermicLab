@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.decrire-le-cycle-de-vie-d-un-animal-a-metamorphose-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reproduction-et-cycles-de-vie-6e/contenu.json"
+  },
+  "source": "microskill.svt.decrire-le-cycle-de-vie-d-un-animal-a-metamorphose",
+  "target": "skill.svt.reproduction-et-cycles-de-vie-6e"
+}

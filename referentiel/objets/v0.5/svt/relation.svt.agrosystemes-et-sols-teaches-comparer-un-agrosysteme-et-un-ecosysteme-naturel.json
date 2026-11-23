@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.agrosystemes-et-sols-teaches-comparer-un-agrosysteme-et-un-ecosysteme-naturel",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/agrosystemes-et-sols/contenu.json"
+  },
+  "source": "notion.svt.agrosystemes-et-sols",
+  "target": "microskill.svt.comparer-un-agrosysteme-et-un-ecosysteme-naturel"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.science-donnees-et-decision-l-requires-statistiques-et-echantillonnage-l",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/science-donnees-et-decision-l/contenu.json"
+  },
+  "source": "notion.svt.science-donnees-et-decision-l",
+  "target": "notion.mathematiques.statistiques-et-echantillonnage-l",
+  "rationale": "« Statistiques, probabilités et échantillonnage en seconde » : L’évaluation d’une étude s’appuie sur les statistiques et la concentration des lois de probabilité."
+}

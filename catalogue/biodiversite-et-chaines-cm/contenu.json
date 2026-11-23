@@ -49,12 +49,12 @@
         "titre": "Exercice 1",
         "question": "Dans « herbe → lapin → renard », qui est le producteur ?",
         "choix": [
+          "Le loup",
           "L'herbe",
           "Le lapin",
-          "Le renard",
-          "Le loup"
+          "Le renard"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Les plantes sont les producteurs."
       },
       {
@@ -62,12 +62,12 @@
         "titre": "Exercice 2",
         "question": "Que signifie la flèche dans une chaîne alimentaire ?",
         "choix": [
-          "« est mangé par »",
-          "« est ami avec »",
           "« vit loin de »",
-          "« est plus grand que »"
+          "« est plus grand que »",
+          "« est mangé par »",
+          "« est ami avec »"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Elle indique qui est mangé par qui."
       },
       {
@@ -75,12 +75,12 @@
         "titre": "Exercice 3",
         "question": "Que font les décomposeurs ?",
         "choix": [
+          "Ils construisent des nids",
           "Ils transforment les déchets organiques",
           "Ils chassent",
-          "Ils produisent de la lumière",
-          "Ils construisent des nids"
+          "Ils produisent de la lumière"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Ils recyclent la matière."
       }
     ]
@@ -96,12 +96,12 @@
         "titre": "Exercice 1",
         "question": "Quelle chaîne est correcte ?",
         "choix": [
-          "algue → têtard → grenouille",
-          "grenouille → têtard → algue",
           "têtard → algue → grenouille",
-          "libellule → algue → têtard"
+          "libellule → algue → têtard",
+          "algue → têtard → grenouille",
+          "grenouille → têtard → algue"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "La flèche va de ce qui est mangé vers le mangeur."
       },
       {
@@ -109,12 +109,12 @@
         "titre": "Exercice 2",
         "question": "Que se passe-t-il si les algues disparaissent ?",
         "choix": [
-          "Les têtards manquent de nourriture",
-          "Rien",
-          "Les grenouilles volent",
-          "L'eau se vide"
+          "Les grenouilles se multiplient",
+          "Les libellules deviennent plus nombreuses",
+          "Rien ne change dans la mare",
+          "Les têtards manquent de nourriture"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "La chaîne est perturbée."
       }
     ],

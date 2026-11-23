@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.mouvement-et-vitesse-cm-requires-durees-et-horaires-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mouvement-et-vitesse-cm/contenu.json"
+  },
+  "source": "notion.physique-chimie.mouvement-et-vitesse-cm",
+  "target": "notion.mathematiques.durees-et-horaires-cm",
+  "rationale": "« Durées et horaires » : La vitesse s’appuie sur les durées et les horaires."
+}

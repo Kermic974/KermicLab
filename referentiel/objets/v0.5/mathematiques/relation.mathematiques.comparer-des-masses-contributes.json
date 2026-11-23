@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.comparer-des-masses-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/masses-et-contenances-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.comparer-des-masses",
+  "target": "skill.mathematiques.masses-et-contenances-c2"
+}

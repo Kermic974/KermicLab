@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.antiquite-teaches-analyser-les-heritages-et-les-transformations-de-l-antiquite",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/antiquite/contenu.json"
+  },
+  "source": "notion.histoire.antiquite",
+  "target": "microskill.histoire.analyser-les-heritages-et-les-transformations-de-l-antiquite"
+}

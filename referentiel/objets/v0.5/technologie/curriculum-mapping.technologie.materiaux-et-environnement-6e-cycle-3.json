@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.technologie.materiaux-et-environnement-6e-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/materiaux-et-environnement-6e/contenu.json"
+  },
+  "object": "notion.technologie.materiaux-et-environnement-6e",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced"
+}

@@ -2,15 +2,10 @@
 id: electricite-circuits-cm
 titre: Électricité : circuits, conducteurs et sécurité
 sujet: physique-chimie/electricite-circuits-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - electricite-circuits-cm-comprendre
-  - electricite-circuits-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -28,6 +23,9 @@ questions:
   - Quelle différence entre conducteur et isolant ?
   - Pourquoi une ampoule ne s'allume-t-elle pas ?
   - Quels sont les dangers de l'électricité ?
+prerequis: objets-electriques-et-materiaux-c2, energie-et-sources-cm
+niveaux: cycle-3
+competences: realiser-un-circuit-qui-allume-une-ampoule, distinguer-conducteurs-et-isolants, expliquer-l-effet-d-un-fil-debranche-dans-un-circuit, appliquer-les-regles-de-securite-avec-l-electricite-au-cycle-3-cm
 ---
 
 # Électricité : circuits, conducteurs et sécurité

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.analyser-le-role-des-acteurs-et-des-alliances-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/premiere-guerre-mondiale/contenu.json"
+  },
+  "source": "microskill.histoire.analyser-le-role-des-acteurs-et-des-alliances",
+  "target": "skill.histoire.premiere-guerre-mondiale"
+}

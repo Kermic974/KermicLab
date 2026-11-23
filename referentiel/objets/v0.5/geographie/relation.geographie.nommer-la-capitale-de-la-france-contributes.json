@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.nommer-la-capitale-de-la-france-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/planete-terre-et-cartes-c2/contenu.json"
+  },
+  "source": "microskill.geographie.nommer-la-capitale-de-la-france",
+  "target": "skill.geographie.planete-terre-et-cartes-c2"
+}

@@ -2,15 +2,10 @@
 id: types-de-textes-cm
 titre: Les types de textes
 sujet: francais/types-de-textes-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - types-de-textes-cm-comprendre
-  - types-de-textes-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -26,6 +21,9 @@ questions:
   - Quels sont les différents types de textes ?
   - Comment reconnaître un texte narratif ?
   - C'est quoi un texte descriptif ?
+prerequis: lecture-comprehension-cm
+niveaux: cycle-3
+competences: identifier-un-texte-injonctif, identifier-un-texte-narratif, identifier-un-texte-argumentatif, reperer-les-indices-du-type-d-un-texte
 ---
 
 # Les types de textes

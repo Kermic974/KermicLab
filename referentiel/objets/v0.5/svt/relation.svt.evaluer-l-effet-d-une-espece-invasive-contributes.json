@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.evaluer-l-effet-d-une-espece-invasive-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/biodiversite-et-ecosystemes-l/contenu.json"
+  },
+  "source": "microskill.svt.evaluer-l-effet-d-une-espece-invasive",
+  "target": "skill.svt.biodiversite-et-ecosystemes-l"
+}

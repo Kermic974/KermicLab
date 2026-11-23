@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.monotheisme-juif-6e-requires-premieres-civilisations-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monotheisme-juif-6e/contenu.json"
+  },
+  "source": "notion.histoire.monotheisme-juif-6e",
+  "target": "notion.histoire.premieres-civilisations-6e",
+  "rationale": "« Mésopotamie et Égypte : les premiers États » : Le monothéisme juif apparaît dans le monde des premiers États du Proche-Orient."
+}

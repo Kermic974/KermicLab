@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.droits-de-l-enfant-cm-requires-respect-et-egalite-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droits-de-l-enfant-cm/contenu.json"
+  },
+  "source": "notion.emc.droits-de-l-enfant-cm",
+  "target": "notion.emc.respect-et-egalite-cm",
+  "rationale": "« Respect, égalité et lutte contre le harcèlement » : Les droits de l’enfant s’appuient sur le respect et l’égalité."
+}

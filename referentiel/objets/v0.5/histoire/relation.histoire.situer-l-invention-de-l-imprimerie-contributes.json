@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-l-invention-de-l-imprimerie-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/renaissance-reforme-et-etat-l/contenu.json"
+  },
+  "source": "microskill.histoire.situer-l-invention-de-l-imprimerie",
+  "target": "skill.histoire.renaissance-reforme-et-etat-l"
+}

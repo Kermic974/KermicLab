@@ -31,10 +31,10 @@ questions:
   - je ne comprends pas la différence entre circuit en série et en dérivation
   - comment calculer une puissance électrique
   - what is ohm's law?
-prerequis:
-niveaux: cycle-4
 classes: 5e, 4e
-competences: pc-electricite-action-1, pc-electricite-action-2
+prerequis: electricite-circuits-cm
+niveaux: cycle-4
+competences: distinguer-un-montage-en-serie-d-un-montage-en-derivation, mesurer-intensite-et-tension-dans-un-circuit, calculer-une-grandeur-electrique-avec-la-loi-d-ohm, appliquer-l-additivite-des-tensions-et-des-intensites, calculer-puissance-et-energie-electriques
 ---
 
 # Circuits électriques et loi d'Ohm

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.nuancer-une-opinion-en-tenant-compte-d-une-objection-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/argumentation/contenu.json"
+  },
+  "source": "microskill.francais.nuancer-une-opinion-en-tenant-compte-d-une-objection",
+  "target": "skill.francais.argumentation"
+}

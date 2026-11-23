@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.identifier-l-oxydant-et-le-reducteur-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/oxydoreduction/contenu.json"
+  },
+  "source": "microskill.physique-chimie.identifier-l-oxydant-et-le-reducteur",
+  "target": "skill.physique-chimie.oxydoreduction"
+}

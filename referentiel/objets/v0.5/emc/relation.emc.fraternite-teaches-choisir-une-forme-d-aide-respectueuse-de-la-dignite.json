@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.fraternite-teaches-choisir-une-forme-d-aide-respectueuse-de-la-dignite",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fraternite/contenu.json"
+  },
+  "source": "notion.emc.fraternite",
+  "target": "microskill.emc.choisir-une-forme-d-aide-respectueuse-de-la-dignite"
+}

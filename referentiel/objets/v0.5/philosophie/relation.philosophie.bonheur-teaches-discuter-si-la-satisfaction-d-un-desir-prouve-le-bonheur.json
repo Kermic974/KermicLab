@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.bonheur-teaches-discuter-si-la-satisfaction-d-un-desir-prouve-le-bonheur",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/bonheur/contenu.json"
+  },
+  "source": "notion.philosophie.bonheur",
+  "target": "microskill.philosophie.discuter-si-la-satisfaction-d-un-desir-prouve-le-bonheur"
+}

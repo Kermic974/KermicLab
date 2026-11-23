@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.expliquer-le-financement-de-la-protection-sociale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ses-travail-chomage-et-protection-l/contenu.json"
+  },
+  "source": "microskill.ses.expliquer-le-financement-de-la-protection-sociale",
+  "target": "skill.ses.ses-travail-chomage-et-protection-l"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.mettre-en-evidence-la-production-d-amidon-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/photosynthese/contenu.json"
+  },
+  "source": "microskill.svt.mettre-en-evidence-la-production-d-amidon",
+  "target": "skill.svt.photosynthese"
+}

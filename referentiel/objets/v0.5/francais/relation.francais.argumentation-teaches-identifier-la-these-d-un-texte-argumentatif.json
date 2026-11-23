@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.argumentation-teaches-identifier-la-these-d-un-texte-argumentatif",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/argumentation/contenu.json"
+  },
+  "source": "notion.francais.argumentation",
+  "target": "microskill.francais.identifier-la-these-d-un-texte-argumentatif"
+}

@@ -1,0 +1,118 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La spécialité NSI étudie la façon d'organiser les données et de concevoir des algorithmes efficaces.",
+  "niveaux": [
+    {
+      "titre": "Structures et tris",
+      "niveau": "1re",
+      "paragraphes": [
+        "Les **listes** (tableaux) permettent un accès par indice. Une **pile** suit la règle « dernier entré, premier sorti » (LIFO : pile d'assiettes) ; une **file** suit « premier entré, premier sorti » (FIFO : file d'attente). Les **dictionnaires** associent des clés à des valeurs. **Tri par sélection** : on cherche le minimum et on le place au début ; **tri par insertion** : on insère chaque élément à sa place dans la partie déjà triée. Leur **coût** est de l'ordre de n² opérations."
+      ],
+      "exemple": {
+        "titre": "Exemple : tri par insertion de [4, 2, 3]",
+        "etapes": [
+          "On insère 2 avant 4 : [2, 4, 3].",
+          "On insère 3 entre 2 et 4 : [2, 3, 4].",
+          "Liste triée."
+        ]
+      },
+      "aRetenir": "Pile : LIFO ; file : FIFO."
+    },
+    {
+      "titre": "Complexité et arbres",
+      "niveau": "Tle",
+      "paragraphes": [
+        "La **complexité** mesure l'évolution du coût (temps, mémoire) en fonction de la taille n des données : **linéaire** O(n), **quadratique** O(n²), **logarithmique** O(log n) (dichotomie), **linéarithmique** O(n log n) (tri fusion). Un **arbre binaire** : chaque nœud a au plus deux fils ; un **arbre binaire de recherche** place les valeurs plus petites à gauche et plus grandes à droite : la recherche coûte environ O(log n) si l'arbre est équilibré. La **récursivité** (une fonction qui s'appelle elle-même) simplifie de nombreux parcours."
+      ],
+      "exemple": {
+        "titre": "Exemple : dichotomie",
+        "etapes": [
+          "Liste triée de 1 000 000 d'éléments.",
+          "Chaque étape divise par 2.",
+          "Environ 20 comparaisons (2²⁰ ≈ 10⁶)."
+        ]
+      },
+      "aRetenir": "Dichotomie : O(log n)."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Une pile fonctionne selon la règle…",
+        "choix": [
+          "dernier entré, premier sorti",
+          "premier entré, premier sorti",
+          "aléatoire",
+          "alphabétique"
+        ],
+        "bonne": 0,
+        "explication": "LIFO."
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de comparaisons environ pour une dichotomie sur 1 048 576 éléments ?",
+        "reponse": 20,
+        "indices": [
+          "Nombre de fois qu'on divise par 2."
+        ],
+        "solution": "2²⁰ = 1 048 576.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Le tri par insertion est de complexité…",
+        "choix": [
+          "quadratique",
+          "logarithmique",
+          "constante",
+          "linéaire seulement"
+        ],
+        "bonne": 0,
+        "explication": "O(n²) dans le pire cas."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La file d'attente de la cantine",
+    "histoire": [
+      "La cantine gère les élèves avec une file."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel élève est servi en premier ?",
+        "choix": [
+          "au hasard",
+          "le premier arrivé",
+          "le dernier arrivé",
+          "le plus grand"
+        ],
+        "bonne": 1,
+        "explication": "FIFO."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour retrouver vite un élève dans une liste triée de noms, on utilise…",
+        "choix": [
+          "la dichotomie",
+          "un parcours complet systématique",
+          "un tri à chaque recherche",
+          "un tirage aléatoire"
+        ],
+        "bonne": 0,
+        "explication": "O(log n)."
+      }
+    ],
+    "conclusion": "Bien structuré !"
+  }
+}

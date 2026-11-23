@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.identifier-le-monument-construit-par-louis-ix-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/louis-ix-cm/contenu.json"
+  },
+  "source": "microskill.histoire.identifier-le-monument-construit-par-louis-ix",
+  "target": "skill.histoire.louis-ix-cm"
+}

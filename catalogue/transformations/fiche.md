@@ -5,15 +5,7 @@ sujet: mathematiques/transformations
 version: 1.1.0
 date: 2026-11-01
 niveau: college
-niveaux: cycle-3, cycle-4, seconde
 classes: 6e, 5e, 4e, 3e
-prerequis:
-  - angles
-competences:
-  - construire-un-symetrique-par-symetrie-axiale
-  - construire-un-symetrique-par-symetrie-centrale
-  - reconnaitre-translations-et-rotations
-  - utiliser-une-homothetie
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -38,6 +30,9 @@ questions:
   - je ne comprends pas la translation
   - c'est quoi une homothétie ?
   - what is a line of symmetry?
+prerequis: angles, symetrie-axiale-cm, reproduire-et-agrandir-cm
+niveaux: cycle-3, cycle-4, seconde
+competences: construire-un-symetrique-par-symetrie-axiale, construire-un-symetrique-par-symetrie-centrale, reconnaitre-translations-et-rotations, utiliser-une-homothetie
 ---
 
 # Les transformations

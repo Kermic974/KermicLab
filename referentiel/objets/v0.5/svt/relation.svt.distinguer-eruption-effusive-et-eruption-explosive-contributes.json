@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.distinguer-eruption-effusive-et-eruption-explosive-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/seismes-et-volcans/contenu.json"
+  },
+  "source": "microskill.svt.distinguer-eruption-effusive-et-eruption-explosive",
+  "target": "skill.svt.seismes-et-volcans"
+}

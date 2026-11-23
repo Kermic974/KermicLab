@@ -1,0 +1,12 @@
+{
+  "id": "relation.eps.eps-endurance-et-sante-c4-teaches-estimer-sa-frequence-cardiaque-maximale",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-endurance-et-sante-c4/contenu.json"
+  },
+  "source": "notion.eps.eps-endurance-et-sante-c4",
+  "target": "microskill.eps.estimer-sa-frequence-cardiaque-maximale"
+}

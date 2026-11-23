@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-un-pourcentage-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/pourcentages-et-evolutions-c4/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-un-pourcentage",
+  "target": "skill.mathematiques.pourcentages-et-evolutions-c4"
+}

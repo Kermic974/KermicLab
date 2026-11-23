@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.expliquer-le-role-formateur-du-travail-chez-hegel-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/travail/contenu.json"
+  },
+  "source": "microskill.philosophie.expliquer-le-role-formateur-du-travail-chez-hegel",
+  "target": "skill.philosophie.travail"
+}

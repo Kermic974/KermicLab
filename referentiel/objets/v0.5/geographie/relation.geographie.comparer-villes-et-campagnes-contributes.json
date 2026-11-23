@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.comparer-villes-et-campagnes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/territoires-urbains-et-ruraux-l/contenu.json"
+  },
+  "source": "microskill.geographie.comparer-villes-et-campagnes",
+  "target": "skill.geographie.territoires-urbains-et-ruraux-l"
+}

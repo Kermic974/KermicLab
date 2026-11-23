@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decrire-les-formes-de-resistance-a-l-esclavage-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/traites-et-esclavage-c4/contenu.json"
+  },
+  "source": "microskill.histoire.decrire-les-formes-de-resistance-a-l-esclavage",
+  "target": "skill.histoire.traites-et-esclavage-c4"
+}

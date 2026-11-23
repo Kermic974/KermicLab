@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.distinguer-les-deux-guerres-mondiales-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerres-mondiales-cm/contenu.json"
+  },
+  "source": "microskill.histoire.distinguer-les-deux-guerres-mondiales",
+  "target": "skill.histoire.guerres-mondiales-cm"
+}

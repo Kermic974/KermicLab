@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.caracteriser-un-regime-totalitaire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/totalitarismes/contenu.json"
+  },
+  "source": "microskill.histoire.caracteriser-un-regime-totalitaire",
+  "target": "skill.histoire.totalitarismes"
+}

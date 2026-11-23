@@ -19,10 +19,10 @@ questions:
   - C'est quoi la monarchie absolue ?
   - Pourquoi l'édit de Nantes est-il important ?
   - Quelles conséquences a le voyage de Christophe Colomb ?
-prerequis:
-niveaux: cycle-4, seconde
 classes: 5e
-competences: his-temps-modernes-action-1, his-temps-modernes-action-2
+prerequis: renaissance, louis-xiv-cm
+niveaux: cycle-4, seconde
+competences: situer-les-reperes-majeurs-de-1492-a-1789, expliquer-les-conquetes-et-leurs-consequences-pour-les-populations-autochtones, caracteriser-la-monarchie-absolue-de-louis-xiv, analyser-les-consequences-de-la-revocation-de-l-edit-de-nantes
 ---
 
 # Les Temps modernes

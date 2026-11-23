@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.grandeurs-et-mesures-6e-requires-longueurs-masses-contenances-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grandeurs-et-mesures-6e/contenu.json"
+  },
+  "source": "notion.mathematiques.grandeurs-et-mesures-6e",
+  "target": "notion.mathematiques.longueurs-masses-contenances-cm",
+  "rationale": "Prérequis déclaré dans la fiche : « Longueurs, masses et contenances » précède « Grandeurs et mesures en 6e : longueurs, durées, masses » dans la progression du programme (lien à relire)."
+}

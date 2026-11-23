@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.decrire-la-structure-d-un-atome-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/atomes-et-molecules/contenu.json"
+  },
+  "source": "microskill.physique-chimie.decrire-la-structure-d-un-atome",
+  "target": "skill.physique-chimie.atomes-et-molecules"
+}

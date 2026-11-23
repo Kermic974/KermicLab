@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.renaissance-reforme-et-etat-l-teaches-expliquer-l-edit-de-nantes-de-1598",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/renaissance-reforme-et-etat-l/contenu.json"
+  },
+  "source": "notion.histoire.renaissance-reforme-et-etat-l",
+  "target": "microskill.histoire.expliquer-l-edit-de-nantes-de-1598"
+}

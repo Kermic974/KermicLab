@@ -1,0 +1,13 @@
+{
+  "id": "relation.philosophie.conscience-relatedto-inconscient",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conscience/contenu.json"
+  },
+  "source": "notion.philosophie.conscience",
+  "target": "notion.philosophie.inconscient",
+  "rationale": "Lien conceptuel (relation de voisinage, sans ordre d’apprentissage) : L’inconscient est pensé en relation avec la conscience."
+}

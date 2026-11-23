@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.developpement-vegetaux-cm-requires-besoins-et-vie-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/developpement-vegetaux-cm/contenu.json"
+  },
+  "source": "notion.svt.developpement-vegetaux-cm",
+  "target": "notion.svt.besoins-et-vie-c2",
+  "rationale": "« Se nourrir, grandir, se reproduire » : Le développement d’une graine s’appuie sur les besoins des êtres vivants et le classement des végétaux."
+}

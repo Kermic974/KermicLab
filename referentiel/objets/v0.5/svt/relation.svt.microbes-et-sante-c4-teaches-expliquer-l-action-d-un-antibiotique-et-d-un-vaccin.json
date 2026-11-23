@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.microbes-et-sante-c4-teaches-expliquer-l-action-d-un-antibiotique-et-d-un-vaccin",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/microbes-et-sante-c4/contenu.json"
+  },
+  "source": "notion.svt.microbes-et-sante-c4",
+  "target": "microskill.svt.expliquer-l-action-d-un-antibiotique-et-d-un-vaccin"
+}

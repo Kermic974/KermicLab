@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.mondialisation-teaches-analyser-une-chaine-de-valeur-mondiale-a-partir-d-un-exemple-territorial",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mondialisation/contenu.json"
+  },
+  "source": "notion.geographie.mondialisation",
+  "target": "microskill.geographie.analyser-une-chaine-de-valeur-mondiale-a-partir-d-un-exemple-territorial"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-le-debut-de-l-hegire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/chretientes-et-islam-c4/contenu.json"
+  },
+  "source": "microskill.histoire.situer-le-debut-de-l-hegire",
+  "target": "skill.histoire.chretientes-et-islam-c4"
+}

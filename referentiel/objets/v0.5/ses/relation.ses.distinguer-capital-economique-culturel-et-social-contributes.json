@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.distinguer-capital-economique-culturel-et-social-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ses-structure-sociale-et-sociologie-l/contenu.json"
+  },
+  "source": "microskill.ses.distinguer-capital-economique-culturel-et-social",
+  "target": "skill.ses.ses-structure-sociale-et-sociologie-l"
+}

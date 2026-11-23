@@ -11,7 +11,7 @@
   "id": "resumer-et-expliquer-cm",
   "titre": "Résumer, expliquer et écrire un texte documentaire",
   "sujet": "francais/resumer-et-expliquer-cm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "date": "2026-11-21",
   "langue": "fr",
   "onglets": [
@@ -74,12 +74,12 @@
         "titre": "Exercice 1",
         "question": "Un résumé doit…",
         "choix": [
+          "être plus long que le texte",
           "garder l'essentiel avec ses mots",
-          "recopier le texte",
-          "ajouter son avis",
-          "être plus long"
+          "recopier le texte en entier",
+          "ajouter son avis personnel"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "Condensé."
       },
       {
@@ -87,12 +87,12 @@
         "titre": "Exercice 2",
         "question": "Quel temps utilise-t-on dans un texte explicatif ?",
         "choix": [
-          "Le présent",
-          "Le passé simple",
           "Le futur antérieur",
-          "L'imparfait"
+          "L'imparfait",
+          "Le présent",
+          "Le passé simple"
         ],
-        "bonne": 0,
+        "bonne": 2,
         "explication": "Vérité générale."
       },
       {
@@ -100,12 +100,12 @@
         "titre": "Exercice 3",
         "question": "Quel connecteur exprime la cause ?",
         "choix": [
-          "car",
           "puis",
           "enfin",
-          "ainsi"
+          "ainsi",
+          "car"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Car introduit la cause."
       }
     ]
@@ -121,12 +121,12 @@
         "titre": "Exercice 1",
         "question": "Que fais-tu d'abord ?",
         "choix": [
-          "Je repère les idées importantes",
           "Je recopie tout",
           "Je dessine un volcan seulement",
-          "Je ferme le livre"
+          "Je ferme le livre",
+          "Je repère les idées importantes"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Mots-clés."
       },
       {
@@ -135,9 +135,9 @@
         "question": "Quel plan choisis-tu ?",
         "choix": [
           "Introduction, développement, conclusion",
-          "Conclusion seulement",
-          "Développement seulement",
-          "Aucun"
+          "Conclusion, puis introduction",
+          "Développement seulement, sans conclusion",
+          "Un plan différent à chaque phrase"
         ],
         "bonne": 0,
         "explication": "Plan classique."
@@ -400,7 +400,7 @@ const Evenements = (() => {
 <header>
   <div>
     <h1>Résumer, expliquer et écrire un texte documentaire</h1>
-    <div class="meta">resumer-et-expliquer-cm · v1.0.0</div>
+    <div class="meta">resumer-et-expliquer-cm · v1.0.1</div>
   </div>
   <div class="entete-actions">
     <span id="etoiles" class="etoiles" role="status"></span>

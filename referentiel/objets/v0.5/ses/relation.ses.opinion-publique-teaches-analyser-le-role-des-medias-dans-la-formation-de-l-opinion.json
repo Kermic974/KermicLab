@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.opinion-publique-teaches-analyser-le-role-des-medias-dans-la-formation-de-l-opinion",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/opinion-publique/contenu.json"
+  },
+  "source": "notion.ses.opinion-publique",
+  "target": "microskill.ses.analyser-le-role-des-medias-dans-la-formation-de-l-opinion"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.identifier-les-especes-d-une-solution-acide-ou-basique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/acides-et-bases/contenu.json"
+  },
+  "source": "microskill.physique-chimie.identifier-les-especes-d-une-solution-acide-ou-basique",
+  "target": "skill.physique-chimie.acides-et-bases"
+}

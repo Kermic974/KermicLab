@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.snt-donnees-et-web-l-teaches-exercer-ses-droits-rgpd-sur-ses-donnees",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/snt-donnees-et-web-l/contenu.json"
+  },
+  "source": "notion.technologie.snt-donnees-et-web-l",
+  "target": "microskill.technologie.exercer-ses-droits-rgpd-sur-ses-donnees"
+}

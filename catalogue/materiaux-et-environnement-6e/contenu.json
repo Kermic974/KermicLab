@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Concevoir un objet, c'est aussi penser à ses matériaux, à son usage et à sa fin de vie.",
+  "niveaux": [
+    {
+      "titre": "Familles de matériaux",
+      "niveau": "6e",
+      "paragraphes": [
+        "On distingue plusieurs familles de matériaux : **métaux** (conducteurs, solides), **plastiques** (légers, moulables), **bois** et dérivés, **verre**, **céramique**, **matériaux composites**. On les choisit selon leurs **propriétés** (résistance, masse, conduction, coût) et leur impact sur l'environnement."
+      ],
+      "exemple": {
+        "titre": "Exemple : choisir pour une chaise",
+        "etapes": [
+          "Bois : durable, renouvelable.",
+          "Métal : très solide mais plus lourd.",
+          "Plastique : léger mais difficile à recycler selon le type."
+        ]
+      },
+      "aRetenir": "Le bon matériau dépend de l'usage."
+    },
+    {
+      "titre": "Cycle de vie et recyclage",
+      "niveau": "6e",
+      "paragraphes": [
+        "Le **cycle de vie** d'un objet va de l'extraction des matières premières à sa **fin de vie** : fabrication, transport, usage, réparation, recyclage ou déchet. Réparer, réutiliser et recycler réduit l'impact. L'**obsolescence programmée** (objet conçu pour durer peu) est interdite en France.",
+        "On peut comparer deux objets avec une **analyse du cycle de vie** (énergie, eau, émissions de CO₂)."
+      ],
+      "exemple": {
+        "titre": "Exemple : une gourde",
+        "etapes": [
+          "Fabriquée une seule fois.",
+          "Utilisée pendant des années.",
+          "Évite des centaines de bouteilles jetables."
+        ]
+      },
+      "aRetenir": "Plus un objet dure, moins il pèse sur l'environnement."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel matériau est un bon conducteur d'électricité ?",
+        "choix": [
+          "Le caoutchouc",
+          "Le cuivre",
+          "Le bois",
+          "Le verre"
+        ],
+        "bonne": 1,
+        "explication": "Métal."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Réparer un objet permet de…",
+        "choix": [
+          "le rendre inutile",
+          "prolonger sa durée de vie",
+          "le rendre obsolète",
+          "augmenter les déchets"
+        ],
+        "bonne": 1,
+        "explication": "Moins de déchets."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "L'obsolescence programmée est…",
+        "choix": [
+          "la conception d'un objet pour qu'il dure peu",
+          "un recyclage complet de l'objet usagé",
+          "une peinture qui protège de la rouille",
+          "un contrôle de qualité avant la vente"
+        ],
+        "bonne": 0,
+        "explication": "Interdite en France."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le choix de l'écolier",
+    "histoire": [
+      "Tu choisis une gourde pour l'année."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle gourde choisir ?",
+        "choix": [
+          "Une bouteille jetable chaque jour",
+          "Un gobelet en plastique",
+          "Un sac plastique",
+          "Une gourde en inox réutilisable"
+        ],
+        "bonne": 3,
+        "explication": "Durable."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que faire de la gourde cassée ?",
+        "choix": [
+          "La brûler",
+          "L'enterrer",
+          "La réparer ou la recycler",
+          "La jeter dans la nature"
+        ],
+        "bonne": 2,
+        "explication": "Fin de vie responsable."
+      }
+    ],
+    "conclusion": "Choix durable !"
+  }
+}

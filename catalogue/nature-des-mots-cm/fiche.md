@@ -2,15 +2,10 @@
 id: nature-des-mots-cm
 titre: La nature des mots
 sujet: francais/nature-des-mots-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - nature-des-mots-cm-comprendre
-  - nature-des-mots-cm-appliquer
 duree: 20
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +22,9 @@ questions:
   - Comment reconnaître un adjectif, un adverbe, un pronom ?
   - Quelle est la différence entre une préposition et une conjonction ?
   - Comment trouver la nature d'un mot dans une phrase ?
+prerequis: noms-et-determinants-c2, verbe-sujet-adjectif-c2
+niveaux: cycle-3
+competences: identifier-le-nom-le-verbe-et-l-adjectif, distinguer-determinant-et-pronom, identifier-un-adverbe-et-une-conjonction, classer-des-mots-par-nature
 ---
 
 # La nature des mots

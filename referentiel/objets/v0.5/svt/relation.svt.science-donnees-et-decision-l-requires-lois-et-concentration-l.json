@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.science-donnees-et-decision-l-requires-lois-et-concentration-l",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/science-donnees-et-decision-l/contenu.json"
+  },
+  "source": "notion.svt.science-donnees-et-decision-l",
+  "target": "notion.mathematiques.lois-et-concentration-l",
+  "rationale": "« Lois de probabilité : binomiale, concentration et grands nombres » : L’évaluation d’une étude s’appuie sur les statistiques et la concentration des lois de probabilité."
+}

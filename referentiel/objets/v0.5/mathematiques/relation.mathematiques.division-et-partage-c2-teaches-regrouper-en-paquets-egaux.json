@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.division-et-partage-c2-teaches-regrouper-en-paquets-egaux",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/division-et-partage-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.division-et-partage-c2",
+  "target": "microskill.mathematiques.regrouper-en-paquets-egaux"
+}

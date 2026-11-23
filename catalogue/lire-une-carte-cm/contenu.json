@@ -62,12 +62,12 @@
         "titre": "Exercice 2",
         "question": "Où le soleil se lève-t-il ?",
         "choix": [
-          "À l'est",
           "À l'ouest",
           "Au nord",
-          "Au sud"
+          "Au sud",
+          "À l'est"
         ],
-        "bonne": 0,
+        "bonne": 3,
         "explication": "Il se lève à l'est."
       },
       {
@@ -75,12 +75,12 @@
         "titre": "Exercice 3",
         "question": "Quelle ligne imaginaire sépare l'hémisphère nord et l'hémisphère sud ?",
         "choix": [
+          "La frontière",
           "L'équateur",
           "Le méridien de Greenwich",
-          "Le tropique de l'Atlantique",
-          "La frontière"
+          "Le tropique de l'Atlantique"
         ],
-        "bonne": 0,
+        "bonne": 1,
         "explication": "L'équateur."
       }
     ]

@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.poesie-et-lyrisme-l-requires-figures-de-style",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie-et-lyrisme-l/contenu.json"
+  },
+  "source": "notion.francais.poesie-et-lyrisme-l",
+  "target": "notion.francais.figures-de-style",
+  "rationale": "« Les figures de style » : L’étude du poème reprend les formes poétiques du collège et les figures de style."
+}

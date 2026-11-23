@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.expliquer-le-role-des-casques-bleus-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/defense-et-paix-c4/contenu.json"
+  },
+  "source": "microskill.emc.expliquer-le-role-des-casques-bleus",
+  "target": "skill.emc.defense-et-paix-c4"
+}

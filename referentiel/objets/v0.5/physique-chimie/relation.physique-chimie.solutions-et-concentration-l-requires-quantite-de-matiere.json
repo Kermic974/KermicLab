@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.solutions-et-concentration-l-requires-quantite-de-matiere",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/solutions-et-concentration-l/contenu.json"
+  },
+  "source": "notion.physique-chimie.solutions-et-concentration-l",
+  "target": "notion.physique-chimie.quantite-de-matiere",
+  "rationale": "« La quantité de matière (la mole) » : Les concentrations reprennent la quantité de matière et les solutions de 6e."
+}

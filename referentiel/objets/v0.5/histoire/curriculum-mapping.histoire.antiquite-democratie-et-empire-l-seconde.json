@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.histoire.antiquite-democratie-et-empire-l-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/antiquite-democratie-et-empire-l/contenu.json"
+  },
+  "object": "notion.histoire.antiquite-democratie-et-empire-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "introduced"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decrire-le-passage-de-la-gaule-au-royaume-des-francs-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/clovis-charlemagne-cm/contenu.json"
+  },
+  "source": "microskill.histoire.decrire-le-passage-de-la-gaule-au-royaume-des-francs",
+  "target": "skill.histoire.clovis-charlemagne-cm"
+}

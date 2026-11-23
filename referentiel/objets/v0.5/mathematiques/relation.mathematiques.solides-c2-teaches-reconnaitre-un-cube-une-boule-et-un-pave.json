@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.solides-c2-teaches-reconnaitre-un-cube-une-boule-et-un-pave",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/solides-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.solides-c2",
+  "target": "microskill.mathematiques.reconnaitre-un-cube-une-boule-et-un-pave"
+}

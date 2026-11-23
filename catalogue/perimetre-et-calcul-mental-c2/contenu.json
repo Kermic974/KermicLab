@@ -1,0 +1,110 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Le périmètre, c'est la longueur du tour d'une figure.",
+  "niveaux": [
+    {
+      "titre": "Le tour d'une figure",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour le périmètre d'un rectangle de 5 cm sur 3 cm, on additionne les 4 côtés : 5 + 3 + 5 + 3 = 16 cm. Pour un carré de 4 cm de côté : 4 + 4 + 4 + 4 = 16 cm, ou 4 × 4."
+      ],
+      "exemple": {
+        "titre": "Exemple : le potager",
+        "etapes": [
+          "Longueur 8 m, largeur 5 m.",
+          "8 + 5 + 8 + 5 = 26 m.",
+          "Il faut 26 m de grillage."
+        ]
+      },
+      "aRetenir": "Périmètre : on additionne tous les côtés."
+    },
+    {
+      "titre": "Calcul mental",
+      "niveau": "CE2",
+      "paragraphes": [
+        "Quelques astuces : pour ajouter 9, on ajoute 10 et on enlève 1 (35 + 9 = 44). Pour les **compléments à 100** : 100 − 65 = 35. Pour multiplier par 4, on double deux fois : 4 × 7 = 14 puis 28.",
+        "On calcule de tête en choisissant un chemin simple."
+      ],
+      "exemple": {
+        "titre": "Exemple : 47 + 9",
+        "etapes": [
+          "47 + 10 = 57.",
+          "57 − 1 = 56.",
+          "47 + 9 = 56."
+        ]
+      },
+      "aRetenir": "Ajouter 9 : ajouter 10 puis enlever 1."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Périmètre d'un rectangle de 5 cm sur 3 cm ?",
+        "reponse": 16,
+        "unite": "cm",
+        "indices": [
+          "Additionne les 4 côtés."
+        ],
+        "solution": "5 + 3 + 5 + 3 = 16.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "100 − 65 = ?",
+        "reponse": 35,
+        "indices": [
+          "Cherche ce qui manque."
+        ],
+        "solution": "65 + 35 = 100.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "nombre",
+        "question": "47 + 9 = ?",
+        "reponse": 56,
+        "indices": [
+          "Ajoute 10 puis enlève 1."
+        ],
+        "solution": "47 + 10 − 1 = 56.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le jardin de l'école",
+    "histoire": [
+      "Le jardin est un rectangle de 9 m sur 6 m."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quelle longueur de clôture faut-il ?",
+        "reponse": 30,
+        "unite": "m",
+        "indices": [
+          "Additionne les 4 côtés."
+        ],
+        "solution": "9 + 6 + 9 + 6 = 30.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "On ajoute 9 m de plus de grillage à acheter. Quel total ?",
+        "reponse": 39,
+        "unite": "m",
+        "indices": [
+          "30 + 10 − 1."
+        ],
+        "solution": "30 + 9 = 39.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bien calculé !"
+  }
+}

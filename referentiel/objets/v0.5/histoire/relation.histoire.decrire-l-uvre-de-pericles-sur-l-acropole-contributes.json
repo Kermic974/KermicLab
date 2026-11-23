@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decrire-l-uvre-de-pericles-sur-l-acropole-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grece-et-citoyennete-6e/contenu.json"
+  },
+  "source": "microskill.histoire.decrire-l-uvre-de-pericles-sur-l-acropole",
+  "target": "skill.histoire.grece-et-citoyennete-6e"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.reperer-les-plans-d-un-paysage-premier-plan-arriere-plan-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/paysages-et-habiter-c2/contenu.json"
+  },
+  "source": "microskill.geographie.reperer-les-plans-d-un-paysage-premier-plan-arriere-plan",
+  "target": "skill.geographie.paysages-et-habiter-c2"
+}

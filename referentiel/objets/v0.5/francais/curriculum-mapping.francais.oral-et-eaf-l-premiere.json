@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.francais.oral-et-eaf-l-premiere",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/oral-et-eaf-l/contenu.json"
+  },
+  "object": "notion.francais.oral-et-eaf-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.premiere",
+  "role": "introduced"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "skill.francais.groupe-nominal-cm",
+  "type": "skill",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/groupe-nominal-cm/contenu.json"
+  },
+  "label": "Enrichir un groupe nominal avec des expansions"
+}

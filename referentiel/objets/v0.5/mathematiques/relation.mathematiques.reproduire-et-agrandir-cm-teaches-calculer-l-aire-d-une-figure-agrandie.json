@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.reproduire-et-agrandir-cm-teaches-calculer-l-aire-d-une-figure-agrandie",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reproduire-et-agrandir-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.reproduire-et-agrandir-cm",
+  "target": "microskill.mathematiques.calculer-l-aire-d-une-figure-agrandie"
+}

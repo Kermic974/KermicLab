@@ -2,15 +2,10 @@
 id: angles-cm
 titre: Les angles
 sujet: mathematiques/angles-cm
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
-niveaux: cycle-3
 classes: CM1, CM2
-prerequis:
-competences:
-  - angles-cm-comprendre
-  - angles-cm-appliquer
 duree: 15
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -27,6 +22,9 @@ questions:
   - Comment utiliser un rapporteur ?
   - Comment vérifier un angle droit avec l'équerre ?
   - Comment tracer un angle de 50° ?
+prerequis: figures-planes-c2
+niveaux: cycle-3
+competences: distinguer-angle-droit-aigu-obtus-et-plat, verifier-un-angle-droit-avec-l-equerre, mesurer-un-angle-au-rapporteur, tracer-un-angle-de-mesure-donnee
 ---
 
 # Les angles

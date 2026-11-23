@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.poser-une-division-euclidienne-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/division-euclidienne-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.poser-une-division-euclidienne",
+  "target": "skill.mathematiques.division-euclidienne-cm"
+}

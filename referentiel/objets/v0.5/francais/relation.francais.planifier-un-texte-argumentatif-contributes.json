@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.planifier-un-texte-argumentatif-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecrire-et-reecrire-c4/contenu.json"
+  },
+  "source": "microskill.francais.planifier-un-texte-argumentatif",
+  "target": "skill.francais.ecrire-et-reecrire-c4"
+}

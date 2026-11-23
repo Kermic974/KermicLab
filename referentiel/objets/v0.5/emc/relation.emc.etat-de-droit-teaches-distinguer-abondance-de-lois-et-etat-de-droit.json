@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.etat-de-droit-teaches-distinguer-abondance-de-lois-et-etat-de-droit",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etat-de-droit/contenu.json"
+  },
+  "source": "notion.emc.etat-de-droit",
+  "target": "microskill.emc.distinguer-abondance-de-lois-et-etat-de-droit"
+}

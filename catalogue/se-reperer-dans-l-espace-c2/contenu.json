@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Pour se repérer, on utilise : devant, derrière, à gauche, à droite, et les plans.",
+  "niveaux": [
+    {
+      "titre": "Gauche, droite, devant, derrière",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour dire où est un objet, je dis s'il est **à gauche**, **à droite**, **devant**, **derrière**, **dessus**, **dessous**, **entre**. « Le cartable est sous la table, à droite de la chaise. »",
+        "Mon côté gauche est celui de la main gauche ; ça dépend de comment je suis tourné."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Le livre est sur la table.",
+          "Le crayon est à droite du livre.",
+          "La chaise est derrière la table."
+        ]
+      },
+      "aRetenir": "Dessus, dessous, devant, derrière."
+    },
+    {
+      "titre": "Plans et points cardinaux",
+      "niveau": "CP / CE1 / CE2",
+      "paragraphes": [
+        "Un **plan** est un dessin vu de dessus : le plan de la classe montre les tables, la porte, le tableau. Une **légende** explique les signes. Pour s'orienter, on utilise les **points cardinaux** : le **nord** (en haut sur la carte), le **sud**, l'**est**, l'**ouest**. Le soleil se lève à l'est."
+      ],
+      "exemple": {
+        "titre": "Exemple : le plan de la classe",
+        "etapes": [
+          "Un carré = une table.",
+          "Un rectangle = la porte.",
+          "La légende donne la clé."
+        ]
+      },
+      "aRetenir": "Soleil : lever à l'est, coucher à l'ouest."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Où se lève le soleil ?",
+        "choix": [
+          "à l'est",
+          "à l'ouest",
+          "au nord",
+          "au sud"
+        ],
+        "bonne": 0,
+        "explication": "Est."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le livre est sur la table. Où est-il ?",
+        "choix": [
+          "dessus",
+          "dessous",
+          "à gauche",
+          "derrière"
+        ],
+        "bonne": 0,
+        "explication": "Sur = dessus."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Que contient la légende d'un plan ?",
+        "choix": [
+          "le prénom de l'élève",
+          "la date de la journée",
+          "la météo du jour",
+          "l'explication des signes"
+        ],
+        "bonne": 3,
+        "explication": "Elle explique."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le plan de l'école",
+    "histoire": [
+      "Tu dessines le plan de ton école."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Un plan est vu…",
+        "choix": [
+          "de dessous",
+          "de loin seulement",
+          "de dessus",
+          "de côté"
+        ],
+        "bonne": 2,
+        "explication": "Vu du ciel."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour trouver la sortie, tu regardes…",
+        "choix": [
+          "la couleur de ton cahier",
+          "la légende et le plan",
+          "la météo du jour",
+          "le cartable d'un camarade"
+        ],
+        "bonne": 1,
+        "explication": "Lire un plan."
+      }
+    ],
+    "conclusion": "Bien repéré !"
+  }
+}

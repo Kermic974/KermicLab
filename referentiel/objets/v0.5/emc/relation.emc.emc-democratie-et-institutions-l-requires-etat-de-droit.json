@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.emc-democratie-et-institutions-l-requires-etat-de-droit",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-democratie-et-institutions-l/contenu.json"
+  },
+  "source": "notion.emc.emc-democratie-et-institutions-l",
+  "target": "notion.emc.etat-de-droit",
+  "rationale": "« L'État de droit » : Le lycée reprend la démocratie et l’État de droit du collège."
+}

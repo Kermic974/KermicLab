@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "On apprend à se protéger, à utiliser les écrans avec prudence et à protéger la nature.",
+  "niveaux": [
+    {
+      "titre": "Se protéger",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour traverser, je regarde des deux côtés et j'utilise le passage piéton. En voiture, j'attache ma ceinture. Je ne touche pas aux médicaments ni aux produits ménagers.",
+        "En cas de danger, j'appelle un adulte. Pour les secours : le **15** (SAMU), le **18** (pompiers), le **112** (numéro européen) ; pour un enfant en danger : le **119**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Je vois de la fumée.",
+          "Je préviens un adulte.",
+          "On appelle le 18."
+        ]
+      },
+      "aRetenir": "15, 18, 112, 119."
+    },
+    {
+      "titre": "Écrans et planète",
+      "niveau": "CP / CE1 / CE2",
+      "paragraphes": [
+        "Devant un **écran**, je ne reste pas trop longtemps, je fais des pauses, je ne donne jamais mon nom, mon adresse ou mon mot de passe sur Internet, et j'en parle à un adulte si je suis mal à l'aise.",
+        "Pour protéger la **planète** : je **trie** les déchets (verre, papier, plastique), j'éteins la lumière, je ne gaspille pas l'eau, je ne jette rien par terre."
+      ],
+      "exemple": {
+        "titre": "Exemple : le tri",
+        "etapes": [
+          "Bouteille en plastique → bac jaune.",
+          "Bocal en verre → colonne à verre.",
+          "Épluchures → compost."
+        ]
+      },
+      "aRetenir": "Réduire, réutiliser, recycler."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel numéro appeler pour les pompiers ?",
+        "choix": [
+          "15",
+          "17",
+          "119",
+          "18"
+        ],
+        "bonne": 3,
+        "explication": "Pompiers : 18."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Sur Internet, je ne donne jamais…",
+        "choix": [
+          "mon dessin",
+          "ma couleur préférée",
+          "mon animal préféré",
+          "mon mot de passe"
+        ],
+        "bonne": 3,
+        "explication": "Secret."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Où jette-t-on une bouteille en verre ?",
+        "choix": [
+          "dans la nature",
+          "dans le bac jaune",
+          "dans le feu",
+          "dans la colonne à verre"
+        ],
+        "bonne": 3,
+        "explication": "Recyclage du verre."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le jour du tri",
+    "histoire": [
+      "Ta classe apprend à trier les déchets."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Où jette-t-on un papier ?",
+        "choix": [
+          "par terre",
+          "dans l'eau",
+          "dans le jardin",
+          "dans le bac de tri"
+        ],
+        "bonne": 3,
+        "explication": "Recyclage."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un adulte inconnu te demande ton adresse en ligne. Tu…",
+        "choix": [
+          "donnes ton adresse pour être poli",
+          "réponds avec ton numéro de téléphone",
+          "acceptes de le rencontrer",
+          "ne réponds pas et préviens un adulte"
+        ],
+        "bonne": 3,
+        "explication": "Prudence."
+      }
+    ],
+    "conclusion": "Bravo pour la planète !"
+  }
+}
