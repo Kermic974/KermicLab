@@ -2,7 +2,7 @@
 id: arts-couleurs-et-formes-c2
 titre: Arts plastiques : couleurs, formes et œuvres
 sujet: arts-plastiques/arts-couleurs-et-formes-c2
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 classes: CP, CE1, CE2
