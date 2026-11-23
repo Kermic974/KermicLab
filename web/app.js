@@ -10,6 +10,7 @@ import * as demoFamille from "./demo-famille.js";
 import * as professeur from "./professeur.js";
 import * as demoProf from "./demo-professeur.js";
 import * as contributions from "./contributions.js";
+import * as relectures from "./relectures.js";
 import * as demoContrib from "./demo-contributions.js";
 import { monterCercle } from "./cercle.js";
 import * as trophees from "./trophees.js";
@@ -239,6 +240,7 @@ async function verifierConnexion() {
   }
   etat.familleChargee = true;
   rafraichirFamille();
+  rafraichirRelectureOuverte();
   const actif = comptes.enfantActif(etat.enfants, lireCle(stockage(), comptes.CLE_ENFANT_ACTIF));
   if (actif) await chargerProgressionDistante(actif.id);
 }
@@ -2134,6 +2136,7 @@ function actualiserContributionsLocales() {
   rafraichirContributions();
   if (location.hash === "#contributions" && etat.ecran !== "contributions" && contributionsActives()) afficherEcran("contributions", { focus: false });
   else if (etat.ecran === "contributions" && contributionsActives() && !contrib.chargee) void chargerContributions();
+  rafraichirRelectureOuverte();
 }
 
 function rafraichirProfNav() {
@@ -3293,7 +3296,7 @@ const roleContribLocal = () => {
   const role = profEtat.moi?.contribution;
   return contributions.peutContribuer(role) && typeof profEtat.moi?.id === "string" ? role : null;
 };
-const contributionsActives = () => demoContribActive() || etat.config?.connexionActive === true || roleContribLocal() !== null;
+const contributionsActives = () => demoContribActive() || etat.config?.connexionActive === true || roleContribLocal() !== null || relecteurConnecte() !== null;
 
 function sauverDemoContrib(suivant) {
   contrib.etatDemo = suivant;
@@ -3389,8 +3392,9 @@ const nomMatiere = (m) => (etat.textes[`matiere_${m}`] ? t(`matiere_${m}`) : t("
 const libelleChamp = (chemin) => contributions.libelleChemin(chemin, (cle) => t(cle));
 
 async function ouvrirContributions() {
-  if (!contributionsActives()) return;
+  if (!contributionsActives() && !relecteurConnecte()) return;
   await chargerContributions();
+  await chargerMesRelectures();
 }
 
 async function chargerContributions() {
@@ -3421,10 +3425,13 @@ function rafraichirContributions() {
   const actif = contributionsActives();
   const compte = actif ? apiContrib.compte() : null;
   const role = compte?.role;
-  $("#entree-contributions").hidden = !actif || !(demoContribActive() || contributions.peutContribuer(role));
-  // Menu « Contributions » de la navigation : seulement pour un rôle contributeur, prof ou admin.
-  for (const id of ["#nav-contributions", "#nav-mobile-contributions"]) $(id).hidden = !actif || !contributions.peutContribuer(role);
+  const relecteur = relecteurConnecte();
+  const peut = demoContribActive() || contributions.peutContribuer(role) || !!relecteur;
+  $("#entree-contributions").hidden = !actif || !peut;
+  // Menu « Contributions » : contributeur, prof, admin, ou relecteur humain.
+  for (const id of ["#nav-contributions", "#nav-mobile-contributions"]) $(id).hidden = !actif || !(contributions.peutContribuer(role) || relecteur);
   rafraichirProfNav(); // Expérience Professeur (ADR 0030) : le rôle simulé ou réel change aussi ces menus.
+  rendreSuiviRelectures();
   if (!actif) return;
   const autorise = contributions.peutContribuer(role);
   $("#contrib-etat").textContent = !contrib.chargee ? t("familleChargement") : contrib.erreur ? t("familleErreur") : "";
@@ -3874,6 +3881,10 @@ function basculerEdition(ouverte, { memoriser = true, focus = true } = {}) {
   bouton.setAttribute("aria-expanded", String(ouverte));
   $("#bulle-edition").hidden = !ouverte;
   $("#bulle-lab").classList.toggle("en-edition", ouverte);
+  if (ouverte) {
+    $("#bulle-relecture").hidden = true;
+    $("#bulle-relecture-ouvrir").setAttribute("aria-expanded", "false");
+  }
   if (memoriser) ecrireCle(sessionPreferences(), CLE_EDITION_OUVERTE, ouverte ? "1" : "0");
   if (!focus) return;
   if (ouverte) $("#edition-fermer").focus({ preventScroll: true });
@@ -3886,6 +3897,235 @@ function fermerEdition() {
   $("#bulle-edition").hidden = true;
   $("#bulle-lab").classList.remove("en-edition");
   $("#edition-formulaire").hidden = true;
+}
+
+/* ---------- Relecture humaine (ADR 0039) ---------- */
+
+const relectureEtat = { statut: null, miennes: [], filtre: "", chargee: false, erreur: false };
+
+/** Compte dont le rôle de relecteur a été attribué à la main. La démonstration ne confirme rien. */
+function relecteurConnecte() {
+  if (demoContribActive() || demoActive()) return null;
+  if (jetonFamille()) {
+    return profEtat.moi?.relectureHumaine === true && typeof profEtat.moi.id === "string"
+      ? { id: profEtat.moi.id, role: profEtat.moi.roleRelecture, local: true }
+      : null;
+  }
+  if (etat.compte && (etat.compte.role === "prof" || etat.compte.role === "admin")) return etat.compte;
+  return null;
+}
+
+function dateRelecture(valeur) {
+  const m = String(valeur ?? "").match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!m) return "";
+  return etat.langue === "en" ? `${m[2]}/${m[3]}` : `${m[3]}/${m[2]}`;
+}
+
+function afficherBadgeRelecture(statut) {
+  const badge = $("#bulle-relecture-badge");
+  if (!badge) return;
+  badge.hidden = false;
+  if (!statut) {
+    badge.dataset.statut = "indisponible";
+    badge.textContent = t("relectureBadgeIndisponible");
+    return;
+  }
+  badge.dataset.statut = statut.statut;
+  badge.textContent = t(`relectureBadge_${statut.statut}`, { date: dateRelecture(statut.date), code: statut.code ?? "" });
+}
+
+function rendreCriteresRelecture(grille) {
+  const hote = $("#relecture-criteres");
+  const ids = relectures.GRILLES[grille] ?? relectures.GRILLES.v1;
+  if (hote.dataset.grille === (relectures.GRILLES[grille] ? grille : "v1") && hote.childElementCount === ids.length) return;
+  const retenue = grille in relectures.GRILLES ? grille : "v1";
+  hote.dataset.grille = retenue;
+  hote.replaceChildren(...relectures.GRILLES[retenue].map((id) => {
+    const label = element("label");
+    label.append(
+      element("input", { attributs: { type: "checkbox", name: "relecture-critere", value: id } }),
+      element("span", { cle: `relectureCritere_${id}` })
+    );
+    return label;
+  }));
+  $("#relecture-grille").textContent = t(`relectureGrille_${retenue}`);
+}
+
+function initRelecture(method, body) {
+  const headers = body === undefined ? {} : { "content-type": "application/json" };
+  if (relecteurConnecte()?.local) return { method, headers: { ...headers, authorization: `Bearer ${jetonFamille()}` }, body };
+  return { method, headers, body, credentials: "include" };
+}
+
+async function preparerRelecture(notion) {
+  const bouton = $("#bulle-relecture-ouvrir");
+  const compte = relecteurConnecte();
+  bouton.hidden = !compte;
+  if (!compte) basculerRelecture(false, { focus: false });
+  try {
+    const r = await fetch(`${etat.config.apiUrl}/api/relectures/statut?notion=${encodeURIComponent(notion.id)}`);
+    if (!r.ok) throw new Error("statut");
+    const statut = await r.json();
+    if ($("#bulle-lab").dataset.notion !== notion.id) return;
+    relectureEtat.statut = statut;
+    afficherBadgeRelecture(statut);
+    if (compte) rendreCriteresRelecture(statut.grille);
+  } catch {
+    if ($("#bulle-lab").dataset.notion !== notion.id) return;
+    relectureEtat.statut = null;
+    afficherBadgeRelecture(null);
+    if (compte) rendreCriteresRelecture(notion.matiere === "jeux" ? "jeux-v1" : "v1");
+  }
+}
+
+function rafraichirRelectureOuverte() {
+  const id = $("#bulle-lab")?.dataset.notion;
+  if (!id || !$("#bulle-lab").open) return;
+  const notion = etat.notions.find((n) => n.id === id) ?? { id, titre: $("#bulle-titre").textContent, matiere: "" };
+  void preparerRelecture(notion);
+}
+
+function basculerRelecture(ouverte, { focus = true } = {}) {
+  const bouton = $("#bulle-relecture-ouvrir");
+  $("#bulle-relecture").hidden = !ouverte;
+  bouton.setAttribute("aria-expanded", String(ouverte));
+  if (ouverte) basculerEdition(false, { memoriser: false, focus: false });
+  if (!focus) return;
+  if (ouverte) $("#relecture-fermer").focus({ preventScroll: true });
+  else if (!bouton.hidden) bouton.focus({ preventScroll: true });
+}
+
+function fermerRelecture() {
+  $("#bulle-relecture-ouvrir").hidden = true;
+  $("#bulle-relecture-ouvrir").setAttribute("aria-expanded", "false");
+  $("#bulle-relecture").hidden = true;
+  $("#bulle-relecture-badge").hidden = true;
+  relectureEtat.statut = null;
+}
+
+async function chargerMesRelectures() {
+  if (!relecteurConnecte()) {
+    relectureEtat.miennes = [];
+    relectureEtat.chargee = true;
+    relectureEtat.erreur = false;
+    rendreSuiviRelectures();
+    return;
+  }
+  try {
+    const r = await fetch(urlApi("/api/relectures?vue=miennes"), initRelecture("GET"));
+    if (!r.ok) throw new Error("liste");
+    const liste = await r.json();
+    relectureEtat.miennes = Array.isArray(liste) ? liste : [];
+    relectureEtat.erreur = false;
+  } catch {
+    relectureEtat.erreur = true;
+  }
+  relectureEtat.chargee = true;
+  rendreSuiviRelectures();
+}
+
+function rendreSuiviRelectures() {
+  const section = $("#relecture-suivi");
+  if (!section) return;
+  const compte = relecteurConnecte();
+  section.hidden = !compte;
+  if (!compte) return;
+  const lignes = relectures.ordreSuivi(relectureEtat.miennes);
+  const synthese = relectures.syntheseRelectures(lignes);
+  const tuiles = [
+    ["relectureSuiviTotal", String(synthese.total)],
+    ["relectureSuiviRelues", String(synthese.relues)],
+    ["relectureSuiviARevoir", String(synthese.aRevoir)],
+    ["relectureSuiviACorriger", String(synthese.aCorriger)]
+  ];
+  $("#relecture-synthese").replaceChildren(...tuiles.map(([cle, valeur]) => {
+    const bloc = element("div", { classe: "contrib-suivi-tuile" });
+    bloc.append(element("dt", { cle }), element("dd", { texte: valeur }));
+    return bloc;
+  }));
+  const notions = [...new Set(lignes.map((l) => l.notion_id))];
+  const select = $("#relecture-filtre-notion");
+  select.replaceChildren(element("option", { cle: "contribFiltreToutes" }), ...notions.map((id) => {
+    const option = element("option", { texte: titreNotion(id) });
+    option.value = id;
+    return option;
+  }));
+  if (!notions.includes(relectureEtat.filtre)) relectureEtat.filtre = "";
+  select.value = relectureEtat.filtre;
+  const visibles = lignes.filter((l) => !relectureEtat.filtre || l.notion_id === relectureEtat.filtre);
+  $("#relecture-vide").hidden = lignes.length !== 0;
+  $("#relecture-etat").textContent = relectureEtat.erreur ? t("relectureErreur") : (!relectureEtat.chargee ? t("familleChargement") : "");
+  $("#relecture-liste").replaceChildren(...visibles.map((l) => {
+    const li = element("li", { classe: "edition-suivi-item" });
+    li.append(
+      element("strong", { texte: titreNotion(l.notion_id) }),
+      element("span", { classe: "edition-pastille", texte: t(`relectureStatut_${l.statut}`) })
+    );
+    const meta = element("p", { classe: "doux petit" });
+    meta.textContent = `${t(`relectureDecisionCourte_${l.decision}`)} · ${dateRelecture(l.created_at)} · ${l.code ?? ""} · ${t(`relectureGrille_${l.grille}`)}`;
+    li.append(meta);
+    if (l.commentaire) li.append(element("p", { texte: l.commentaire }));
+    const voir = element("button", { classe: "lien-bouton", attributs: { type: "button" } });
+    voir.textContent = t("relectureVoirNotion");
+    voir.addEventListener("click", () => {
+      const n = etat.notions.find((x) => x.id === l.notion_id) ?? { id: l.notion_id, titre: titreNotion(l.notion_id) };
+      ouvrirNotion(n);
+    });
+    li.append(voir);
+    return li;
+  }));
+}
+
+async function envoyerRelecture(e) {
+  e.preventDefault();
+  const notionId = $("#bulle-lab").dataset.notion;
+  const grille = $("#relecture-criteres").dataset.grille;
+  const ids = relectures.GRILLES[grille] ?? [];
+  const criteres = Object.fromEntries(ids.map((id) => [id, !!document.querySelector(`#relecture-criteres input[value="${CSS.escape(id)}"]`)?.checked]));
+  const decision = document.querySelector("input[name=relecture-decision]:checked")?.value;
+  const commentaire = $("#relecture-commentaire").value;
+  const v = relectures.validerSaisie({ criteres, decision, commentaire }, grille);
+  const erreur = $("#relecture-erreur");
+  if (!v.ok) {
+    erreur.textContent = t("relectureErreur_relecture-invalide");
+    return;
+  }
+  erreur.textContent = "";
+  try {
+    const r = await fetch(urlApi("/api/relectures"), initRelecture("POST", JSON.stringify({ notion_id: notionId, criteres, decision, commentaire })));
+    const donnees = await r.json().catch(() => ({}));
+    if (!r.ok) {
+      const code = donnees.erreur;
+      erreur.textContent = etat.textes[`relectureErreur_${code}`] ? t(`relectureErreur_${code}`) : t("relectureErreur");
+      return;
+    }
+    if (donnees.statut) afficherBadgeRelecture(donnees.statut);
+    $("#relecture-commentaire").value = "";
+    notifier(t("relectureFaite"), "✅");
+    await chargerMesRelectures();
+  } catch {
+    erreur.textContent = t("relectureErreur");
+  }
+}
+
+function brancherRelecture() {
+  $("#bulle-relecture-ouvrir").addEventListener("click", () => basculerRelecture($("#bulle-relecture").hidden));
+  $("#relecture-fermer").addEventListener("click", () => basculerRelecture(false));
+  $("#bulle-relecture").addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    e.preventDefault();
+    e.stopPropagation();
+    basculerRelecture(false);
+  });
+  $("#relecture-formulaire").addEventListener("submit", envoyerRelecture);
+  $("#relecture-filtre-notion").addEventListener("change", (e) => {
+    relectureEtat.filtre = e.currentTarget.value;
+    rendreSuiviRelectures();
+  });
+  $("#relecture-vers-suivi").addEventListener("click", () => {
+    $("#bulle-lab").addEventListener("close", () => naviguer("contributions"), { once: true });
+    $("#bulle-lab").close();
+  });
 }
 
 /** Ouvre une notion dans la bulle, volet d'édition ouvert sur un texte (depuis le suivi des contributions). */
@@ -4112,6 +4352,7 @@ function brancherContributions() {
   });
   $("#contrib-filtre-matiere").addEventListener("change", (e) => { contrib.filtre.matiere = e.currentTarget.value; contrib.filtre.notion = ""; rafraichirContributions(); });
   brancherEdition();
+  brancherRelecture();
   if (demoContribActive()) void indexContenus().then(rafraichirContributions);
   rafraichirContributions();
 }
@@ -4999,6 +5240,7 @@ function ouvrirBulle(n, url) {
   if (!bulle.open) bulle.showModal();
   $("#fermer-bulle").focus();
   void preparerEdition(n.id);
+  void preparerRelecture(n);
 }
 
 function brancherBulle() {
@@ -5009,6 +5251,7 @@ function brancherBulle() {
     const id = bulle.dataset.notion;
     $("#bulle-cadre").removeAttribute("src");
     fermerEdition();
+    fermerRelecture();
     delete $("#bulle-cadre").dataset.module;
     delete bulle.dataset.notion;
     etat.moteur?.contexte({ section: sectionDe(etat.ecran) });
