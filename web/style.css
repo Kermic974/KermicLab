@@ -1439,15 +1439,18 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   .barre-laterale .nav .nav-bouton[aria-current="page"] { background: var(--surface); color: var(--accent-doux-texte); box-shadow: var(--ombre); }
   .barre-pied { flex-direction: row; align-items: center; gap: 4px; margin: 0 0 0 auto; flex: none; }
   .barre-pied .nav-bouton, .nav-idees > .boite-idees-integree { width: 44px; min-height: 44px; padding: 0; justify-content: center; border-radius: 999px; }
-  .barre-pied .nav-texte, .nav-idees .boite-idees-texte, .barre-pied .profil-textes {
+  .barre-pied .nav-texte, .nav-idees .boite-idees-texte {
     position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
   }
   .nav-idees .boite-idees-icone { margin-right: 0; }
   .barre-pied .nav-participer { box-shadow: none; }
-  .barre-pied .profil-carte { margin: 0 0 0 4px; padding: 2px; border: 0; background: none; border-radius: 999px; }
+  .barre-pied .profil-carte { margin: 0 0 0 4px; padding: 2px 12px 2px 2px; gap: 8px; border: 0; background: none; border-radius: 999px; }
+  .barre-pied .profil-textes { line-height: 1.2; }
   .barre-pied .profil-carte[aria-current="page"] { box-shadow: 0 0 0 3px var(--accent-doux); }
 }
 @media (min-width: 1024px) and (max-width: 1199px) {
   .barre-laterale .nav .nav-bouton .ico { display: none; }
+  .barre-pied .profil-textes { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .barre-pied .profil-carte { padding: 2px; }
   .barre-laterale .marque-textes { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 }
