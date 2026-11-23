@@ -119,7 +119,7 @@ async function appliquerLangue(langue) {
   rafraichirControleLlm();
   etat.cercle?.rafraichir();
   // Choix du compte suivi (ADR 0039, D8) : libellés calculés hors data-i18n (les chiffres de l'Accueil suivent déjà
-  // par rafraichirBienvenue).
+  // par rafraichirPastille → rafraichirTableau → rendreApercu).
   rendreChoixCompte();
   if (etat.ecran === "progression") rendreProgression();
   rafraichirDefiTextes();
