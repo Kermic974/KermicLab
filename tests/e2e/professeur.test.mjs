@@ -273,6 +273,13 @@ test("Progression : le professeur passe de sa progression à celle d'un élève,
   assert.equal(await page.locator("#progression-ouvrir-suivi").getAttribute("data-nav"), "eleves");
   await capturer(page, "progression-compte-suivi");
 
+  // Changement de langue : le choix est gardé, ses libellés calculés suivent la langue.
+  await page.selectOption("#langue", "en");
+  await page.waitForFunction(() => document.querySelector("#progression-compte-choix option")?.textContent === "Me (my progress)");
+  assert.equal(await choix.locator("optgroup").last().getAttribute("label"), "Private lessons");
+  assert.equal(await page.locator("#salut").textContent(), "Lucas's progress");
+  await page.selectOption("#langue", "fr");
+  await page.waitForFunction(() => document.querySelector("#progression-compte-choix option")?.textContent === "Moi (ma progression)");
   await page.click("#progression-revenir");
   assert.equal(await choix.inputValue(), "moi");
   assert.equal(await page.locator("#progression-suivie").isHidden(), true);

@@ -245,6 +245,13 @@ test("écran d'arrivée unifié : rien avant la première activité, puis chiffr
   await page.click('[data-groupe-niveau="college"]');
   assert.deepEqual(await page.locator("#progression-matieres .nom").allTextContents(), ["Maths"]);
   await page.click(".barre-laterale [data-nav=accueil]");
+  // Changement de langue : chiffres et journal, calculés hors data-i18n, suivent la langue.
+  await page.selectOption("#langue", "en");
+  await page.waitForFunction(() => document.querySelector("#accueil-serie-aide")?.textContent === "best: 4 d");
+  assert.equal(await page.locator("#accueil-serie").textContent(), "2 d");
+  assert.deepEqual((await page.locator("#journal-liste .journal-quand").allTextContents()).slice(0, 2), ["today", "yesterday"]);
+  await page.selectOption("#langue", "fr");
+  await page.waitForFunction(() => document.querySelector("#accueil-serie-aide")?.textContent === "record : 4 j");
   // Une ligne du journal rouvre l'expérience.
   await lignes.nth(1).click();
   await page.locator("#bulle-lab[open]").waitFor();

@@ -118,6 +118,9 @@ async function appliquerLangue(langue) {
   rafraichirTheme();
   rafraichirControleLlm();
   etat.cercle?.rafraichir();
+  // Choix du compte suivi (ADR 0039, D8) : libellés calculés hors data-i18n (les chiffres de l'Accueil suivent déjà
+  // par rafraichirBienvenue).
+  rendreChoixCompte();
   if (etat.ecran === "progression") rendreProgression();
   rafraichirDefiTextes();
   rafraichirFamille();
@@ -5736,8 +5739,10 @@ function marquerNavigation(cle) {
   for (const boutons of groupes) {
     const famille = boutons.find((b) => familles.includes(b));
     const surFamille = !!famille && !famille.hidden && etat.ecran === "espace-famille" && famille.dataset.nav === "espace-famille";
-    // L'avatar ouvre le Profil, mais représente toutes les vues personnelles (« Mon espace », ADR 0039 § 3).
-    const cleDe = (b) => (b.classList.contains("profil-carte") ? "tableau-de-bord" : b.dataset.nav ?? b.dataset.action);
+    // L'avatar ouvre le Profil, mais représente toutes les vues personnelles (« Mon espace », ADR 0039 § 3), sauf si la
+    // configuration remet l'entrée « Mon tableau de bord » dans cette barre : elle seule est alors la page courante.
+    const entreeTdb = boutons.some((b) => !b.classList.contains("profil-carte") && b.dataset.nav === "tableau-de-bord" && !b.hidden && !("navRetire" in b.dataset));
+    const cleDe = (b) => (b.classList.contains("profil-carte") ? (entreeTdb ? "profil" : "tableau-de-bord") : b.dataset.nav ?? b.dataset.action);
     const direct = etat.ecran !== cle && boutons.some((b) => !familles.includes(b) && !b.hidden && cleDe(b) === etat.ecran);
     const cible = direct ? etat.ecran : cle;
     for (const b of boutons) {

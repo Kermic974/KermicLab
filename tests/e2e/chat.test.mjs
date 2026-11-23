@@ -1,7 +1,7 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer } from "./outils.mjs";
+import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer, surchargerConfig } from "./outils.mjs";
 
 let serveur, nav, htmlMaquette, api;
 before(async () => {
@@ -703,6 +703,30 @@ test("Éducation mobile : depuis la navigation du bas, une colonne, sans débord
   assert.ok(debord <= 0, `déborde de ${debord}px`);
   await contexte.close();
 });
+test("navigation : « Mon tableau de bord » remis par la configuration, une seule page courante sur une vue personnelle (ADR 0039)", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
+  await simulerApi(page);
+  await surchargerConfig(page, serveur.url, { navigation: ["accueil", "tableau-de-bord", "education", "labs", "jeux", "progression"] });
+  await page.goto(`${serveur.url}/#compte`);
+  await page.locator("#compte").waitFor({ state: "visible" });
+  const courants = page.locator(".barre-laterale [aria-current=page]");
+  assert.equal(await courants.count(), 1, "l'entrée et l'avatar ne sont pas marqués tous les deux");
+  assert.equal(await courants.getAttribute("data-nav"), "tableau-de-bord");
+  // Sur le Profil, l'avatar (qui l'ouvre) est la seule page courante, comme avant la refonte.
+  await page.click(".barre-pied .profil-carte");
+  await page.locator("#profil").waitFor({ state: "visible" });
+  assert.equal(await courants.count(), 1);
+  assert.equal(await courants.getAttribute("data-action"), "profil");
+  // Sans l'entrée (ordre par défaut), c'est l'avatar « Mon espace » qui porte la page courante.
+  await surchargerConfig(page, serveur.url, { navigation: ["accueil", "education", "labs", "jeux", "progression"] });
+  await page.reload();
+  await page.locator("#profil").waitFor({ state: "visible" });
+  assert.equal(await courants.count(), 1);
+  assert.equal(await courants.getAttribute("data-action"), "profil");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
 test("navigation mobile : 5 destinations tactiles, libellés visibles, sans débordement (320 px)", async () => {
   const { page, contexte } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 320, height: 740 }, isMobile: true });
   await simulerApi(page, { jeux: true });
