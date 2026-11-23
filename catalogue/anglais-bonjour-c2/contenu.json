@@ -7,17 +7,17 @@
   "intro": "En anglais, on commence par saluer, compter et nommer des couleurs.",
   "niveaux": [
     {
-      "titre": "Hello !",
+      "titre": "Hello!",
       "niveau": "pour démarrer",
       "paragraphes": [
-        "**Hello** (bonjour), **goodbye** (au revoir), **please** (s'il te plaît), **thank you** (merci), **yes** (oui), **no** (non). « What's your name ? » veut dire « Comment tu t'appelles ? » : « My name is Léa. »"
+        "**Hello** (bonjour), **goodbye** (au revoir), **please** (s'il te plaît), **thank you** (merci), **yes** (oui), **no** (non). « What's your name? » veut dire « Comment tu t'appelles ? » : « My name is Léa. »"
       ],
       "exemple": {
         "titre": "Exemple : un dialogue",
         "etapes": [
-          "— Hello ! What's your name ?",
+          "— Hello! What's your name?",
           "— My name is Tom.",
-          "— Nice to meet you !"
+          "— Nice to meet you!"
         ]
       },
       "aRetenir": "Hello = bonjour."
@@ -92,12 +92,12 @@
         "question": "Pour savoir son nom, tu demandes…",
         "choix": [
           "Thank you",
-          "What's your name ?",
-          "How old are you ?",
+          "What's your name?",
+          "How old are you?",
           "Goodbye"
         ],
         "bonne": 1,
-        "explication": "What's your name ?"
+        "explication": "What's your name?"
       },
       {
         "type": "qcm",
@@ -113,6 +113,6 @@
         "explication": "Merci."
       }
     ],
-    "conclusion": "Well done !"
+    "conclusion": "Well done!"
   }
 }
