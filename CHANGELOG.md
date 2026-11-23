@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Relecture humaine vérifiable** (ADR 0039) : sur une notion ouverte, un compte prof ou admin (rôle attribué à la main) confirme la grille v1 ou jeux-v1. Le Worker tient un journal append-only (empreinte du contenu calculée côté serveur, identifiant anonymisé, jamais la clé du back-office). La notion affiche « relue », « à revoir » ou « non relue » ; le relecteur suit ses confirmations. / A signed-in reviewer can confirm the human review grid; the audit log is append-only and the topic shows whether that review still matches the content.
+
 - **Référentiel : audit de qualité** (`docs/referentiel/audit-competences.md`) : 259 libellés de Skill et 365 justifications de liens propres à chaque notion (au lieu de textes génériques) ; 113 libellés de compétences mathématiques V0 remis en majuscule et avec accents ; 4 verbes interdits remplacés ; 78 QCM réécrits (écarts nets de longueur de 100 à 24, bonne réponse la plus longue dans 39 % des cas au lieu de 43 %). Constats à arbitrer (liens chronologiques en histoire, compétences en double entre niveaux) dans le rapport.
 
 - **Référentiel : liens des notions de la V0 vers les cycles précédents** (processus S4, `docs/referentiel/propositions-liens-cycles-2-3-4.md`) : **102 `requires`** qualifiés (continuité thématique, justification propre à chaque lien) sur 86 notions ; prérequis déclarés de 550 à 652 ; 35 recommandations changent sur 477 scénarios, toutes expliquées par les nouveaux prérequis. Liens écartés ou incertains dans `relations-a-revoir.md`. Objets en `draft`.

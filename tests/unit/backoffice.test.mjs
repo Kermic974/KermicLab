@@ -335,6 +335,12 @@ test("non-conservation : aucun fragment d'une requête n'est stocké, quelle que
       await poster("/api/support", { message, langue: "fr" }, { cookie });
       await poster("/api/defi", { langue: "fr", matiere: message, niveau: message }, { cookie });
       await poster("/api/cahier", { langue: "fr", titre: message, notions: [message] }, { cookie });
+      await poster("/api/relectures", { notion_id: "pythagore", decision: "conforme", commentaire: message, criteres: { exactitude: message }, empreinte: message, version: message });
+      await worker.fetch(new Request("https://api.kermiclab.test/api/relectures", {
+        method: "POST",
+        headers: { "content-type": "application/json", origin: ORIGINE, authorization: `Bearer ${CLE}`, "cf-connecting-ip": "1.2.3.4" },
+        body: JSON.stringify({ notion_id: "pythagore", commentaire: message, decision: "conforme" })
+      }), env, ctx);
     }
   }
   const stocke = env.DB.toutLeTexte();

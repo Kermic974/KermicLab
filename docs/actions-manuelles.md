@@ -2,6 +2,14 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Relecture humaine vérifiable (ADR 0039)
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Valider la durée de conservation du journal (5 ans après la relecture, proposée) | [ADR 0039](decisions/0039-relecture-humaine.md), registre `relectures_humaines` | Le journal est append-only : la purge automatique n'est pas branchée tant que la durée n'est pas confirmée. Le lien vers le compte est déjà retiré à sa suppression | Durée acceptée, ou une autre durée écrite dans l'ADR et le registre | à faire |
+| Confirmer que les comptes locaux peuvent être relecteurs | ADR 0039 §2 | Les rôles sont aujourd'hui attribués aux comptes locaux (l'OAuth n'est pas ouvert). Le lien est l'identifiant aléatoire du compte, pas l'identifiant de connexion | Décision notée : comptes locaux acceptés, ou réservés aux futurs comptes OAuth | à faire |
+| Relire le paragraphe « Relecture humaine des notions » de la page Confidentialité | `web/confidentialite.html` | Nouveau traitement : données d'adultes relecteurs, pseudonymisées, public mineur sur le reste du site | Texte validé ou corrigé | à faire |
+
 ## Adoption S6 (ADR 0033)
 
 Suivi : [#384](https://github.com/Kermic974/KermicLab/issues/384).

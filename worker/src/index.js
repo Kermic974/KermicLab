@@ -9,6 +9,7 @@ import { creerOuCommenterIssue, commentaireDemande } from "./github.js";
 import { gererAuth } from "./auth/routes.js";
 import { estRouteCompte, gererApiCompte } from "./comptes.js";
 import { estRouteContribution, gererApiContributions, roleContributionCompteLocal } from "./contributions.js";
+import { estRouteRelecture, gererApiRelectures, reinitialiserRelectures } from "./relectures.js";
 import { compteDeSession, estRouteCompteLocal, gererApiCompteLocal, purgerCompteLocal } from "./compte-local.js";
 import { estRouteFamille, gererApiFamille, noterConsommationDeRequete, purgerFamille } from "./famille.js";
 import { estRouteProfesseur, gererApiProfesseur, purgerProfesseur } from "./professeur.js";
@@ -829,6 +830,38 @@ export default {
       return new Response(reponse.body, { status: reponse.status, headers });
     }
 
+    // Relecture humaine (ADR 0039). Le statut public ne demande pas de session.
+    // L'écriture exige un compte authentifié (cookie OAuth ou jeton de compte local) et un rôle de relecteur
+    // attribué à la main. La clé du back-office n'est pas lue ici : elle n'identifie personne.
+    if (estRouteRelecture(url.pathname)) {
+      let reponse;
+      if (requete.headers.has("origin") && !cors["access-control-allow-origin"]) {
+        reponse = json({ erreur: "origine-refusee" }, 403, {});
+      } else {
+        try {
+          const statutPublic = requete.method === "GET" && url.pathname === "/api/relectures/statut";
+          if (statutPublic) {
+            reponse = await gererApiRelectures(requete, env, null, { catalogue: catalogueDe(env) });
+          } else if (requete.headers.has("authorization")) {
+            const session = env.DB ? await compteDeSession(requete, env) : null;
+            reponse = !session
+              ? json({ erreur: "non-connecte" }, 401, {})
+              : await gererApiRelectures(requete, env, { compteId: session.compteId, origine: "local" }, { catalogue: catalogueDe(env) });
+          } else {
+            const compteId = await lireCompteDepuisCookie(requete, env);
+            reponse = !compteId
+              ? json({ erreur: "non-connecte" }, 401, {})
+              : await gererApiRelectures(requete, env, { compteId, origine: "oauth" }, { catalogue: catalogueDe(env) });
+          }
+        } catch {
+          reponse = json({ erreur: "relecture-indisponible" }, 503, {});
+        }
+      }
+      const headers = new Headers(reponse.headers);
+      for (const [k, v] of Object.entries(cors)) headers.set(k, v);
+      return new Response(reponse.body, { status: reponse.status, headers });
+    }
+
     // Authenticated account API
     // Comptes famille (ADR 0017) : réservés au parent connecté ; 401 sans session valide.
     // Contributions au contenu (ADR 0023) : rôles contributeur, prof, admin ; mêmes garde-fous de session.
@@ -996,4 +1029,4 @@ export default {
 };
 
 /** Réinitialise l'état en mémoire (tests). */
-export function _reinitialiser({ client = null } = {}) { limiteur = null; limiteurMax = null; limiteurCompteLocal = null; limiteurAdmin = null; limiteurFamille = null; limiteurProfesseur = null; clientClaude = client; invaliderReglages(); }
+export function _reinitialiser({ client = null } = {}) { limiteur = null; limiteurMax = null; limiteurCompteLocal = null; limiteurAdmin = null; limiteurFamille = null; limiteurProfesseur = null; clientClaude = client; invaliderReglages(); reinitialiserRelectures(); }

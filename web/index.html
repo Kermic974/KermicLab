@@ -1261,6 +1261,18 @@
       <p id="contrib-miennes-filtre-vide" class="doux" data-i18n="contribSuiviFiltreVide" hidden></p>
     </section>
   </div>
+  <section id="relecture-suivi" class="contrib-bloc" aria-labelledby="relecture-suivi-titre" hidden>
+    <h3 id="relecture-suivi-titre" data-i18n="relectureSuiviTitre"></h3>
+    <p class="doux petit" data-i18n="relectureSuiviAide"></p>
+    <dl id="relecture-synthese" class="contrib-suivi-synthese"></dl>
+    <div class="contrib-filtres">
+      <label><span class="etiquette-champ" data-i18n="contribFiltreNotion"></span>
+        <select id="relecture-filtre-notion"></select></label>
+    </div>
+    <ol id="relecture-liste" class="contrib-liste"></ol>
+    <p id="relecture-vide" class="doux" data-i18n="relectureSuiviVide" hidden></p>
+    <p id="relecture-etat" class="doux" role="status"></p>
+  </section>
 </section>
 
 
@@ -1270,8 +1282,10 @@
     <div class="bulle-titres">
       <p class="sur-titre" id="bulle-contexte"></p>
       <h2 id="bulle-titre"></h2>
+      <p id="bulle-relecture-badge" class="relecture-badge" hidden></p>
     </div>
     <div class="bulle-actions">
+      <button type="button" class="secondaire petit-bouton" id="bulle-relecture-ouvrir" aria-controls="bulle-relecture" aria-expanded="false" hidden><svg class="ico" aria-hidden="true"><use href="#i-coche"/></svg><span data-i18n="relectureBouton"></span></button>
       <button type="button" class="secondaire petit-bouton" id="bulle-editer" aria-controls="bulle-edition" aria-expanded="false" hidden><svg class="ico" aria-hidden="true"><use href="#i-crayon"/></svg><span data-i18n="editionBouton"></span><span class="edition-compteur" id="bulle-editer-compteur" hidden></span></button>
       <a class="bouton-lien" id="bulle-plein-ecran" target="_blank" rel="noopener" data-i18n-title="ouvrirPage"><span data-i18n="pleinEcran"></span></a>
       <button type="button" class="fermer-croix" id="fermer-bulle"><span class="visuellement-cache" data-i18n="fermer"></span></button>
@@ -1325,6 +1339,36 @@
         </div>
       </form>
       <button type="button" class="secondaire" id="edition-vers-contributions" data-i18n="editionVoirToutes"></button>
+    </aside>
+    <!-- Relecture humaine (ADR 0039) : rôle prof ou admin attribué à la main. Le panneau est hors de la page isolée. -->
+    <aside id="bulle-relecture" class="bulle-edition" aria-labelledby="relecture-titre" hidden>
+      <div class="edition-entete">
+        <div>
+          <h3 id="relecture-titre" data-i18n="relectureTitre"></h3>
+          <p class="doux petit" id="relecture-grille"></p>
+        </div>
+        <button type="button" class="fermer-croix" id="relecture-fermer" aria-controls="bulle-relecture"><span class="visuellement-cache" data-i18n="relectureAnnuler"></span></button>
+      </div>
+      <p class="doux petit" data-i18n="relectureAide"></p>
+      <form id="relecture-formulaire" class="formulaire-profil" novalidate>
+        <fieldset class="relecture-criteres">
+          <legend class="etiquette-champ" data-i18n="relectureCriteres"></legend>
+          <div id="relecture-criteres"></div>
+        </fieldset>
+        <fieldset class="tranches">
+          <legend class="etiquette-champ" data-i18n="relectureDecision"></legend>
+          <label><input type="radio" name="relecture-decision" value="conforme" checked> <span data-i18n="relectureDecision_conforme"></span></label>
+          <label><input type="radio" name="relecture-decision" value="a_corriger"> <span data-i18n="relectureDecision_a_corriger"></span></label>
+        </fieldset>
+        <label for="relecture-commentaire" class="etiquette-champ" data-i18n="relectureCommentaire"></label>
+        <textarea id="relecture-commentaire" rows="3" maxlength="1000" aria-describedby="relecture-commentaire-aide"></textarea>
+        <p id="relecture-commentaire-aide" class="doux petit" data-i18n="relectureCommentaireAide"></p>
+        <p id="relecture-erreur" class="erreur-champ" aria-live="assertive"></p>
+        <div class="actions">
+          <button type="submit" class="bouton" data-i18n="relectureEnvoyer"></button>
+        </div>
+      </form>
+      <button type="button" class="secondaire" id="relecture-vers-suivi" data-i18n="relectureVoirSuivi"></button>
     </aside>
   </div>
   <div class="bulle-pied">
