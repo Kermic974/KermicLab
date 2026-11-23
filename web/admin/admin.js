@@ -2,6 +2,8 @@
 // Tout le contenu est construit par le DOM (jamais innerHTML) ; aucune donnée n'est gardée hors de l'onglet.
 import { THEME_PERSONNALISE, deriverVariables } from "../theme.js";
 import { bilanPortefeuille, estimerSouscription, repartitionFixes } from "./financier.js";
+import { cheminLePlusCourt, decompacter, filtrer, indicateurs } from "./graphe-referentiel.js";
+import { COULEUR_TRANS, couleurs, creerVue } from "./graphe-vue.js";
 
 const CLE_SESSION = "kermiclab:admin:cle";
 const $ = (s) => document.querySelector(s);
@@ -49,7 +51,8 @@ const LIBELLES = {
     "corps-trop-long": "Le texte dépasse 20 000 caractères.", "etapes-invalides": "Les étapes doivent être des contenus du catalogue, sans doublon (30 au plus).", "publication-par-pr": "Ce contenu se publie par une PR fusionnée par le propriétaire : propose-le en revue.",
     "parcours-sans-revue": "Un parcours se publie directement.", "github-non-configure": "GitHub n'est pas configuré sur ce serveur.", "github-indisponible": "GitHub n'a pas répondu. Réessaie plus tard.", "introuvable": "Élément introuvable.", "etat-invalide": "État invalide.", reseau: "Le serveur ne répond pas.",
     "assistant-desactive": "L'assistant IA est désactivé (Harness → Assistant IA des utilisateurs, ou IA coupée sur le site).", "assistant-indisponible": "L'assistant IA ne répond pas (AI Gateway indisponible). Réessaie plus tard.",
-    "assistant-refus": "Le modèle a refusé de traiter cette consigne.", "assistant-reponse-invalide": "La réponse du modèle est inexploitable. Reformule la consigne.", "consigne-invalide": "Écris une consigne de 1 à 500 caractères."
+    "assistant-refus": "Le modèle a refusé de traiter cette consigne.", "assistant-reponse-invalide": "La réponse du modèle est inexploitable. Reformule la consigne.", "consigne-invalide": "Écris une consigne de 1 à 500 caractères.",
+    "graphe-absent": "Le graphe du référentiel est absent de ce déploiement : lance npm run build."
   }
 };
 const lib = (famille, cle) => LIBELLES[famille]?.[cle] ?? cle;
@@ -1353,6 +1356,164 @@ async function ecranJournal() {
     ], entrees, "Aucune action pour le moment."))];
 }
 
+// ---------- Graphe du référentiel (ADR 0040) ----------
+
+const NOMS_DISCIPLINES = { emc: "EMC", eps: "EPS", ses: "SES", svt: "SVT", francais: "Français", geographie: "Géographie", mathematiques: "Mathématiques", "physique-chimie": "Physique-chimie", "non-classe": "Non classé" };
+const nomDiscipline = (d) => NOMS_DISCIPLINES[d] ?? (d.charAt(0).toUpperCase() + d.slice(1).replace(/-/g, " "));
+let grapheCharge = null;
+let vueGraphe = null;
+const filtreGraphe = { discipline: "", recherche: "", microskills: true, prerequis: true, transSeules: false, masquees: new Set(), isole: null, selection: null, depart: null, arrivee: null, rotation: false };
+
+async function ecranGraphe() {
+  if (!grapheCharge) {
+    let reponse;
+    try { reponse = await fetch("referentiel-graphe.json"); } catch { throw Object.assign(new Error("reseau"), { code: "reseau" }); }
+    if (!reponse.ok) throw Object.assign(new Error("graphe-absent"), { code: "graphe-absent" });
+    try { grapheCharge = decompacter(await reponse.json()); } catch { throw Object.assign(new Error("graphe-absent"), { code: "graphe-absent" }); }
+  }
+  const g = grapheCharge;
+  const f = filtreGraphe;
+  const ind = indicateurs(g);
+  const disciplines = ind.disciplines.map((d) => d.discipline);
+  const teintes = couleurs(disciplines);
+  const nomNoeud = (i) => g.noeuds[i].libelle;
+  let vue = { noeuds: new Set(), liens: [] };
+  let chemin = [];
+
+  // Contrôles.
+  const choixDiscipline = selecteur([["", "Toutes les disciplines"], ...disciplines.map((d) => [d, nomDiscipline(d)])], f.discipline, { id: "graphe-discipline" });
+  const recherche = h("input", { type: "search", id: "graphe-recherche", value: f.recherche, placeholder: "Notion, MicroSkill ou identifiant", autocomplete: "off" });
+  const caseControle = (id, texte, cle) => {
+    const c = h("input", { type: "checkbox", id, checked: f[cle] });
+    c.addEventListener("change", () => { f[cle] = c.checked; if (cle === "transSeules" && c.checked) { f.microskills = true; $("#graphe-microskills").checked = true; } actualiser({ recadrer: true }); });
+    return h("label", {}, c, texte);
+  };
+  const rotation = h("input", { type: "checkbox", id: "graphe-rotation", checked: f.rotation });
+  rotation.addEventListener("change", () => { f.rotation = vueGraphe?.rotationAuto(rotation.checked) ?? false; rotation.checked = f.rotation; });
+  const etat = h("p", { class: "doux petit", id: "graphe-etat", role: "status", "aria-live": "polite" });
+  const resultats = h("div", { class: "admin-pastilles", id: "graphe-resultats" });
+  const legende = h("div", { class: "admin-pastilles graphe-legende", role: "group", "aria-label": "Afficher ou masquer une discipline" },
+    disciplines.map((d) => {
+      const b = h("button", { type: "button", class: "admin-pastille graphe-discipline", "aria-pressed": String(!f.masquees.has(d)), "data-discipline": d },
+        h("span", { class: "graphe-pastille", "aria-hidden": "true", style: { background: teintes.get(d) } }), nomDiscipline(d));
+      b.addEventListener("click", () => {
+        if (f.masquees.has(d)) f.masquees.delete(d); else f.masquees.add(d);
+        b.setAttribute("aria-pressed", String(!f.masquees.has(d)));
+        actualiser({ recadrer: true });
+      });
+      return b;
+    }),
+    h("span", { class: "admin-pastille graphe-trans" }, h("span", { class: "graphe-pastille", "aria-hidden": "true", style: { background: COULEUR_TRANS } }), "MicroSkill transdisciplinaire"));
+  const canvas = h("canvas", { class: "graphe-canvas", id: "graphe-canvas", tabindex: "0", role: "img",
+    "aria-label": "Graphe 3D du référentiel. Flèches : tourner ; plus et moins : zoomer. Les détails d'un nœud s'ouvrent au clic ou depuis la recherche." });
+  const details = h("aside", { class: "carte graphe-details", id: "graphe-details", "aria-live": "polite", hidden: true });
+  const cheminTexte = h("p", { class: "doux", id: "graphe-chemin" });
+
+  function choisir(i, { viser = false } = {}) {
+    f.selection = i;
+    renduDetails();
+    if (viser && i !== null) vueGraphe?.viser(i); else vueGraphe?.dessiner();
+  }
+  function voisinsDe(i) {
+    const groupes = { "Prérequis": [], "Ouvre vers": [], "MicroSkills": [], "Mobilisée par": [] };
+    for (const k of g.voisins[i]) {
+      const l = g.liens[k];
+      if (l.type === "prerequis") (l.b === i ? groupes["Prérequis"] : groupes["Ouvre vers"]).push(l.b === i ? l.a : l.b);
+      else (l.a === i ? groupes.MicroSkills : groupes["Mobilisée par"]).push(l.a === i ? l.b : l.a);
+    }
+    return Object.entries(groupes).filter(([, liste]) => liste.length);
+  }
+  function renduDetails() {
+    const i = f.selection;
+    details.hidden = i === null;
+    if (i === null) { details.replaceChildren(); return; }
+    const n = g.noeuds[i];
+    details.replaceChildren(
+      h("div", { class: "admin-ligne graphe-details-entete" }, h("h3", { text: n.libelle }),
+        h("button", { type: "button", class: "secondaire petit-bouton", "aria-label": "Fermer les détails", onclick: () => choisir(null) }, "×")),
+      h("div", { class: "admin-pastilles" },
+        pastille(n.type === "notion" ? "Notion" : "MicroSkill", "accent"),
+        ...n.disciplines.map((d) => pastille(nomDiscipline(d))),
+        n.transdisciplinaire ? pastille("Transdisciplinaire", "attention") : null,
+        pastille(`${g.voisins[i].length} relation(s)`)),
+      h("p", { class: "petit" }, h("code", { text: n.id })),
+      h("div", { class: "admin-ligne" },
+        h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => { f.isole = f.isole === i ? null : i; actualiser({ recadrer: true }); renduDetails(); } }, f.isole === i ? "Tout afficher" : "Isoler le voisinage"),
+        h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => { f.depart = i; calculerChemin(); } }, "Départ du chemin"),
+        h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => { f.arrivee = i; calculerChemin(); } }, "Arrivée du chemin"),
+        h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => vueGraphe?.viser(i) }, "Centrer ici")),
+      ...voisinsDe(i).map(([titre, liste]) => h("div", { class: "graphe-voisins" }, h("h4", { text: `${titre} (${liste.length})` }),
+        h("div", { class: "admin-pastilles" }, liste.slice(0, 40).map((j) => h("button", { type: "button", class: "admin-pastille graphe-lien", onclick: () => choisir(j, { viser: true }) }, nomNoeud(j))),
+          liste.length > 40 ? h("span", { class: "doux petit", text: `+ ${liste.length - 40}` }) : null))));
+  }
+  function calculerChemin() {
+    chemin = f.depart !== null && f.arrivee !== null ? cheminLePlusCourt(g, f.depart, f.arrivee) : [];
+    if (f.depart === null && f.arrivee === null) cheminTexte.textContent = "Choisis un départ et une arrivée dans les détails d'un nœud pour tracer le plus court chemin entre eux.";
+    else if (f.depart === null || f.arrivee === null) cheminTexte.textContent = `${f.depart === null ? "Arrivée" : "Départ"} : ${nomNoeud(f.depart ?? f.arrivee)}. Choisis maintenant ${f.depart === null ? "le départ" : "l'arrivée"}.`;
+    else cheminTexte.textContent = chemin.length ? `Chemin en ${chemin.length - 1} relation(s) : ${chemin.map(nomNoeud).join(" → ")}.` : `Aucun chemin entre « ${nomNoeud(f.depart)} » et « ${nomNoeud(f.arrivee)} » : ces notions ne sont pas reliées dans le référentiel.`;
+    vueGraphe?.dessiner();
+  }
+  function actualiser({ recadrer = false } = {}) {
+    vue = filtrer(g, f);
+    let n = 0, m = 0, t = 0;
+    for (const i of vue.noeuds) { if (g.noeuds[i].type === "notion") n++; else { m++; if (g.noeuds[i].transdisciplinaire) t++; } }
+    etat.textContent = `Affichés : ${nombre(n)} notion(s), ${nombre(m)} MicroSkill(s) dont ${nombre(t)} transdisciplinaire(s), ${nombre(vue.liens.length)} relation(s).`;
+    const q = f.recherche.trim().toLowerCase();
+    const trouves = q ? g.noeuds.filter((x) => vue.noeuds.has(x.i) && `${x.libelle} ${x.id}`.toLowerCase().includes(q)) : [];
+    resultats.replaceChildren(...trouves.slice(0, 12).map((x) => h("button", { type: "button", class: "admin-pastille graphe-lien", onclick: () => choisir(x.i, { viser: true }) }, x.libelle)),
+      ...(trouves.length > 12 ? [h("span", { class: "doux petit", text: `+ ${trouves.length - 12} autre(s)` })] : []));
+    if (recadrer) vueGraphe?.centrer(); else vueGraphe?.dessiner();
+  }
+
+  choixDiscipline.addEventListener("change", () => { f.discipline = choixDiscipline.value; actualiser({ recadrer: true }); });
+  recherche.addEventListener("input", () => { f.recherche = recherche.value; actualiser({ recadrer: true }); });
+  const reinitialiser = () => {
+    Object.assign(f, { discipline: "", recherche: "", microskills: true, prerequis: true, transSeules: false, isole: null, selection: null, depart: null, arrivee: null });
+    f.masquees.clear();
+    void afficher("graphe", { garderMessage: true });
+    annoncer("Vue du graphe réinitialisée.");
+  };
+
+  vueGraphe?.detruire();
+  vueGraphe = creerVue(canvas, g, {
+    etat: () => ({ visibles: vue.noeuds, liens: vue.liens, chemin: new Set(chemin), selection: f.selection, couleurs: teintes }),
+    onSelection: (i) => choisir(i)
+  });
+  actualiser();
+  calculerChemin();
+  renduDetails();
+  // Premier cadrage une fois le canvas dans la page (ses dimensions sont alors connues).
+  requestAnimationFrame(() => { vueGraphe?.centrer(); if (f.rotation) vueGraphe?.rotationAuto(true); });
+
+  return [
+    h("div", { class: "admin-grille" },
+      tuile(nombre(ind.notions), "notions"), tuile(nombre(ind.microskills), "MicroSkills"),
+      tuile(nombre(ind.prerequis), "relations de prérequis"), tuile(nombre(ind.transdisciplinaires), "MicroSkills transdisciplinaires")),
+    ind.transdisciplinaires ? null : h("p", { class: "admin-bandeau", text: "Aucune MicroSkill n'est partagée entre disciplines : chaque MicroSkill de la projection appartient à une seule discipline. Le filtre « transdisciplinaires seules » n'affiche donc que les notions." }),
+    bloc("Explorer le graphe",
+      h("p", { class: "doux", text: "Source : referentiel/projection-v0.json, disposition calculée au build. Glisser pour tourner, molette ou pincement pour zoomer, clic sur un nœud pour ses détails." }),
+      h("div", { class: "admin-ligne graphe-controles" },
+        h("label", { class: "admin-champ" }, h("span", { text: "Discipline" }), choixDiscipline),
+        h("label", { class: "admin-champ graphe-recherche" }, h("span", { text: "Rechercher" }), recherche)),
+      h("div", { class: "admin-ligne graphe-options" },
+        caseControle("graphe-microskills", "MicroSkills", "microskills"), caseControle("graphe-prerequis", "Prérequis", "prerequis"),
+        caseControle("graphe-trans", "Transdisciplinaires seules", "transSeules"), h("label", {}, rotation, "Rotation"),
+        h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => vueGraphe?.centrer() }, "Centrer"),
+        h("button", { type: "button", class: "secondaire petit-bouton", onclick: reinitialiser }, "Réinitialiser")),
+      resultats, legende, etat,
+      h("div", { class: "graphe-scene" }, canvas, details),
+      cheminTexte),
+    bloc("Par discipline", tableau("Notions, MicroSkills et prérequis de chaque discipline", [
+      { titre: "Discipline", cellule: (d) => h("span", { class: "admin-ligne graphe-nom" }, h("span", { class: "graphe-pastille", "aria-hidden": "true", style: { background: teintes.get(d.discipline) } }), nomDiscipline(d.discipline)) },
+      { titre: "Notions", nombre: true, cellule: (d) => nombre(d.notions) },
+      { titre: "MicroSkills", nombre: true, cellule: (d) => nombre(d.microskills) },
+      { titre: "Prérequis", nombre: true, cellule: (d) => nombre(d.prerequis) },
+      { titre: "Notions sans prérequis", nombre: true, cellule: (d) => nombre(d.sansPrerequis) },
+      { titre: "Notions sans MicroSkill", nombre: true, cellule: (d) => nombre(d.sansMicroskill) }
+    ], ind.disciplines))
+  ];
+}
+
 const ECRANS = {
   apercu: { titre: "Vue d'ensemble", intro: "L'état du site, de la sécurité et des données, d'un coup d'œil.", rendre: ecranApercu },
   utilisateurs: { titre: "Utilisateurs", intro: "Les comptes, leur rôle, leur niveau, leurs données.", rendre: ecranUtilisateurs },
@@ -1362,6 +1523,7 @@ const ECRANS = {
   telemetrie: { titre: "Télémétrie", intro: "Tokens, modèles et requêtes, en compteurs anonymes.", rendre: ecranTelemetrie },
   theme: { titre: "Charte graphique", intro: "Les couleurs du site.", rendre: ecranTheme },
   contenus: { titre: "Contenus", intro: "Blog, cours, parcours, labs et jeux.", rendre: ecranContenus },
+  graphe: { titre: "Graphe du référentiel", intro: "Les notions, leurs MicroSkills et leurs prérequis, en 3D : filtrer, isoler un voisinage, tracer un chemin.", rendre: ecranGraphe },
   souscriptions: { titre: "Souscriptions", intro: "Composer les offres à partir des rôles, des fonctionnalités et des limites, et en estimer le coût et la marge.", rendre: ecranSouscriptions },
   harness: { titre: "Harness", intro: "Modèles, budgets de tokens, quotas et instructions.", rendre: ecranHarness },
   journal: { titre: "Journal", intro: "La trace des actions du back-office.", rendre: ecranJournal }
@@ -1399,6 +1561,7 @@ async function afficher(cle, { garderMessage = false } = {}) {
   $("#intro-ecran").textContent = ecran.intro;
   document.title = `${ecran.titre} · Back-office · KermicLab`;
   if (!garderMessage) annoncer("");
+  if (ecranCourant !== "graphe") { vueGraphe?.detruire(); vueGraphe = null; }
   const zone = $("#ecran");
   zone.setAttribute("aria-busy", "true");
   try {

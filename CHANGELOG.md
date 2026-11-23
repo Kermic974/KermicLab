@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Back-office : graphe du référentiel** (ADR 0040) : nouvel écran qui montre en 3D les 477 notions, leurs MicroSkills et leurs prérequis, d'après `referentiel/projection-v0.json`. Filtre par discipline, recherche, légende cliquable, détails d'un nœud et de ses voisins, isolement d'un voisinage, plus court chemin entre deux nœuds, indicateurs par discipline (notions sans prérequis ou sans MicroSkill). Rendu canvas sans dépendance ; disposition calculée au build. / Back-office: 3D graph of the curriculum (topics, MicroSkills, prerequisites) with filters, neighbourhood and shortest path.
+
 - **Refonte UX, lot 4 — Éducation et Labs** (ADR 0039) : sur grand écran, Éducation passe en deux colonnes (notions à gauche, « Pour s'entraîner » à droite, qui reste visible au défilement) ; la recherche des notions est mise en avant avec une loupe ; les cartes « Pour s'entraîner » prennent la couleur de leur espace et la carte des Labs présente le cercle trigonométrique et le système solaire ; dans l'écran Labs, chaque carte indique ses niveaux. / Redesign batch 4: two-column Education screen, prominent search, colour-coded cards, levels on Lab cards.
 
 - **Refonte UX, lot 3 — Progression** (ADR 0039) : le niveau s'affiche dans un anneau d'XP (part du niveau en cours) ; la progression par matière se filtre par niveau (Tout, Primaire, Collège, Lycée), seulement parmi les niveaux où une notion a été explorée. / Redesign batch 3: XP ring and level filter on per-subject progress.
