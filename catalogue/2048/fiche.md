@@ -3,6 +3,7 @@ id: 2048
 titre: 2048
 resume: Fais glisser les tuiles, fusionne les mêmes nombres et atteins la tuile 2048.
 sujet: jeux/2048
+categorie: calcul
 notions-liees:
   - puissances
 version: 1.0.0

@@ -683,8 +683,11 @@ test("GET /api/catalogue : toutes les notions, rangées par niveau scolaire puis
   }
   for (const n of notions) {
     const facultatifs = Object.keys(n).filter((k) => !["id", "matiere", "niveau", "titre", "version"].includes(k));
-    assert.ok(facultatifs.every((k) => ["resume", "niveaux", "prerequis", "notionsLiees", "classes"].includes(k)), `${n.id} : ${facultatifs}`);
+    assert.ok(facultatifs.every((k) => ["resume", "niveaux", "prerequis", "notionsLiees", "classes", "categorie"].includes(k)), `${n.id} : ${facultatifs}`);
   }
+  // Catégories des jeux (ADR 0039, D7) : sur chaque jeu, jamais sur une notion.
+  assert.ok(notions.filter((n) => n.matiere === "jeux").every((n) => ["calcul", "strategie", "mots"].includes(n.categorie)), "chaque jeu a une catégorie");
+  assert.ok(notions.filter((n) => n.categorie).every((n) => n.matiere === "jeux"));
   // Classes (6e à 3e, CM1 et CM2) : seulement sur une notion de collège ou de primaire, pour découper ces niveaux dans Éducation.
   assert.deepEqual(notions.find((n) => n.id === "pythagore")?.classes, ["4e"]);
   assert.deepEqual(notions.find((n) => n.id === "grands-nombres-cm")?.classes, ["CM1", "CM2"]);

@@ -18,6 +18,11 @@ export const CLASSES_PRIMAIRE = ["CP", "CE1", "CE2", "CM1", "CM2"];
 export const ORDRE_NIVEAUX = [...CLASSES_PRIMAIRE, "primaire", ...CLASSES_COLLEGE, "college", "seconde", "premiere", "terminale", "autres"];
 
 export const typeDeCatalogue = (entree) => (entree?.matiere === CATEGORIE_JEUX ? "jeu" : "notion");
+const typeCatalogue = typeDeCatalogue;
+/** Catégories des jeux (ADR 0039, D7), dans l'ordre d'affichage des filtres de l'écran Jeux. */
+export const CATEGORIES_JEUX = Object.freeze(["calcul", "strategie", "mots"]);
+/** Catégories présentes parmi les jeux du registre, dans l'ordre de CATEGORIES_JEUX. */
+export const categoriesDesJeux = (registre) => CATEGORIES_JEUX.filter((c) => registre.deType("jeu").some((j) => j.categorie === c));
 
 export function creerRegistre(catalogue) {
   const entrees = (Array.isArray(catalogue) ? catalogue : [])
@@ -32,6 +37,8 @@ export function creerRegistre(catalogue) {
       ...(["college", "primaire"].includes(n.niveau) && Array.isArray(n.classes)
         && n.classes.some((c) => (n.niveau === "college" ? CLASSES_COLLEGE : CLASSES_PRIMAIRE).includes(c))
         ? { classes: (n.niveau === "college" ? CLASSES_COLLEGE : CLASSES_PRIMAIRE).filter((c) => n.classes.includes(c)) } : {}),
+      // Jeux : catégorie (ADR 0039, D7), parmi celles connues.
+      ...(typeCatalogue(n) === "jeu" && CATEGORIES_JEUX.includes(n.categorie) ? { categorie: n.categorie } : {}),
       // Jeux : notions qu'ils font travailler (identifiants du catalogue, bornés).
       ...(Array.isArray(n.notionsLiees) && n.notionsLiees.length
         ? { notionsLiees: n.notionsLiees.filter((id) => typeof id === "string" && id).slice(0, 6) } : {})

@@ -12,6 +12,8 @@ export { lireFrontMatter, lireReferentiel, NIVEAUX_SCOLAIRES, DUREE_MAX } from "
 const ORDRE_CLASSES = ["CP", "CE1", "CE2", "CM1", "CM2", "6e", "5e", "4e", "3e"];
 
 /** Niveaux scolaires connus, dans l’ordre de navigation du chat. */
+/** Catégories des jeux (ADR 0039, D7) : calcul et logique, stratégie et cartes, lettres et mots. */
+export const CATEGORIES_JEUX = ["calcul", "strategie", "mots"];
 export const NIVEAUX = ["primaire", "college", "seconde", "premiere", "terminale"];
 
 /**
@@ -206,6 +208,10 @@ export async function chargerCatalogue(dossiers) {
       }
       if (fiche.id !== nom) throw new Error(`${rep}: l'id « ${fiche.id} » doit être égal au nom du dossier`);
       // Résumé facultatif (une phrase, texte brut) : présenté sur la carte d'un jeu (écran Jeux).
+      // Catégorie d'un jeu (ADR 0039, D7) : filtre de l'écran Jeux. Réservée aux fiches « jeux/<id> ».
+      if (fiche.categorie !== undefined && (!String(fiche.sujet ?? "").startsWith("jeux/") || !CATEGORIES_JEUX.includes(fiche.categorie))) {
+        throw new Error(`${rep}: champ « categorie » invalide (jeux seulement, parmi ${CATEGORIES_JEUX.join(", ")})`);
+      }
       if (fiche.resume !== undefined && (typeof fiche.resume !== "string" || !fiche.resume || fiche.resume.length > 160 || /[<>]/.test(fiche.resume))) {
         throw new Error(`${rep}: champ « resume » invalide (une phrase de 160 caractères au plus, sans balise)`);
       }
@@ -241,7 +247,8 @@ export async function chargerCatalogue(dossiers) {
         onglets: liste(fiche.onglets), motsCles: liste(fiche["mots-cles"]), questions: liste(fiche.questions),
         niveau: fiche.niveau ?? "autres",
         ...referentiel,
-        ...(fiche.resume ? { resume: fiche.resume } : {})
+        ...(fiche.resume ? { resume: fiche.resume } : {}),
+        ...(fiche.categorie ? { categorie: fiche.categorie } : {})
       });
     }
   }

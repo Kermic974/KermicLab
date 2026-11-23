@@ -3,6 +3,7 @@ id: mots-fleches
 titre: Mots fléchés
 resume: Trouve les mots à partir des indices et des lettres croisées, de la grille Noob à la grille Pro.
 sujet: jeux/mots-fleches
+categorie: mots
 version: 1.0.1
 date: 2026-11-18
 langues: fr

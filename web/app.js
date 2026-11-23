@@ -36,6 +36,8 @@ const etat = {
   compteSuivi: null,
   // Filtre de la progression par matière : "tous" ou un groupe de niveaux (primaire, collège, lycée).
   niveauMatieres: "tous",
+  // Filtre de l'écran Jeux : "tous" ou une catégorie (ADR 0039, D7).
+  categorieJeux: "tous",
   defiIa: { ia: false, generationsParJour: 0, restantesServeur: null },
   cahiersIa: { ia: false, generationsParJour: 0, restantesServeur: null, modele: "" },
   // Configuration centralisée exposée par le Worker (/api/llm/status, ADR 0019) et skills actifs.
@@ -1776,12 +1778,15 @@ function barresSemaine(bilan, jour) {
   return conteneur;
 }
 
+/** Pastille décorative à l'initiale d'un enfant ou d'un élève (lot 6, ADR 0039), aux couleurs de l'espace. */
+const pastilleInitiale = (nom) => element("span", { classe: "pastille-initiale", texte: profil.initiale(String(nom ?? "")), attributs: { "aria-hidden": "true" } });
+
 function carteEnfant(e) {
   const carte = element("article", { classe: "carte ef-enfant", attributs: { "data-enfant": e.id } });
   const tete = element("div", { classe: "ef-enfant-tete" });
   const nom = element("div", { classe: "famille-enfant-nom" });
   nom.append(element("h4", { texte: e.prenom }), element("span", { classe: "doux petit", texte: `${t(`tranche_${e.trancheAge}`)} · ${t(e.origine === "invitation" ? "efOrigineInvitation" : "efOrigineCreation")}` }));
-  tete.append(nom);
+  tete.append(pastilleInitiale(e.prenom), nom);
   const b = e.bilan;
   const jour = progression.jourLocal();
   if (!b) tete.append(element("span", { classe: "pastille neutre", cle: "efJamaisVu" }));
@@ -2440,7 +2445,7 @@ function carteEleve(e) {
   const tete = element("div", { classe: "ef-enfant-tete" });
   const nom = element("div", { classe: "famille-enfant-nom" });
   nom.append(element("h4", { texte: e.pseudo }), element("span", { classe: "doux petit", texte: `${nomClasse(e.classeId)} · ${t("profDepuis", { date: dateCourte(e.rejointLe) })}` }));
-  tete.append(nom);
+  tete.append(pastilleInitiale(e.pseudo), nom);
   const b = e.bilan;
   const jour = progression.jourLocal();
   if (!b) tete.append(element("span", { classe: "pastille neutre", cle: "efJamaisVu" }));
@@ -3747,6 +3752,21 @@ function afficherTexteActuel() {
   $("#contrib-nature-ajout").disabled = !ajout;
   if (!ajout) document.querySelector("input[name=contrib-nature][value=modification]").checked = true;
   if (typeof valeur === "string" && !$("#contrib-texte").value) $("#contrib-texte").value = valeur;
+  rendreAvantApres();
+}
+
+/**
+ * Aperçu Avant / Après (lot 6, ADR 0039) : le passage actuel et le texte proposé, côte à côte. Pour un ajout, le texte
+ * proposé suit le passage visé. Masqué tant que la proposition ne change rien.
+ */
+function rendreAvantApres() {
+  const avant = $("#contrib-actuel-bloc").hidden ? "" : $("#contrib-actuel").textContent;
+  const texte = $("#contrib-texte").value.trim();
+  const ajout = document.querySelector("input[name=contrib-nature][value=ajout]")?.checked;
+  const apres = ajout ? [avant, texte].filter(Boolean).join("\n\n") : texte;
+  $("#contrib-avant-apres").hidden = !texte || apres === avant;
+  $("#contrib-apercu-avant").textContent = avant || t("contribAvantVide");
+  $("#contrib-apercu-apres").textContent = apres;
 }
 
 function erreursContrib(erreurs = {}) {
@@ -4365,6 +4385,8 @@ function brancherContributions() {
   $("#contrib-notion").addEventListener("change", () => { $("#contrib-texte").value = ""; void choisirNotion(); });
   $("#contrib-champ").addEventListener("change", () => { $("#contrib-texte").value = ""; afficherTexteActuel(); });
   $("#formulaire-contribution").addEventListener("submit", envoyerContribution);
+  $("#contrib-texte").addEventListener("input", rendreAvantApres);
+  document.querySelectorAll("input[name=contrib-nature]").forEach((r) => r.addEventListener("change", rendreAvantApres));
   $("#contrib-annuler-edition").addEventListener("click", finirEdition);
   $("#contrib-filtre-statut").addEventListener("change", (e) => { contrib.filtre.statut = e.currentTarget.value; rafraichirContributions(); });
   $("#contrib-filtre-notion").addEventListener("change", (e) => { contrib.filtre.notion = e.currentTarget.value; rafraichirContributions(); });
@@ -6891,7 +6913,16 @@ function rendreJeux() {
   if (!etat.progres || !etat.textes.titre) return;
   const jeux = etat.registre.deType("jeu");
   const filtre = sansAccents($("#recherche-jeu").value.trim());
-  const selection = jeux.filter((n) => sansAccents(n.titre).includes(filtre));
+  const categories = experiences.categoriesDesJeux(etat.registre);
+  if (!categories.includes(etat.categorieJeux)) etat.categorieJeux = "tous";
+  const puces = $("#filtre-categorie-jeux");
+  puces.hidden = categories.length < 2;
+  puces.replaceChildren(...(categories.length < 2 ? [] : ["tous", ...categories]).map((c) => {
+    const b = element("button", { classe: "puce-niveau", cle: `categorieJeu_${c}`, attributs: { type: "button", "data-categorie-jeu": c, "aria-pressed": String(etat.categorieJeux === c) } });
+    b.addEventListener("click", () => { etat.categorieJeux = c; rendreJeux(); $(`[data-categorie-jeu="${c}"]`)?.focus(); });
+    return b;
+  }));
+  const selection = jeux.filter((n) => sansAccents(n.titre).includes(filtre) && (etat.categorieJeux === "tous" || n.categorie === etat.categorieJeux));
   const grille = $("#grille-jeux");
   grille.replaceChildren();
   $("#jeux-compteur").textContent = jeux.length ? t("jeuxCompteur", { n: selection.length, m: jeux.length }) : "";
@@ -6899,6 +6930,7 @@ function rendreJeux() {
   $("#jeux-vide").textContent = t(!etat.notions.length ? "catalogueIndisponible" : jeux.length ? "aucunJeu" : "jeuxIndisponibles");
   for (const jeu of selection) {
     const carte = element("article", { classe: "carte jeu-carte" });
+    if (jeu.categorie) carte.append(element("span", { classe: "etiquette-categorie", cle: `categorieJeu_${jeu.categorie}` }));
     carte.append(element("h3", { texte: jeu.titre }));
     if (jeu.resume) carte.append(element("p", { classe: "doux", texte: jeu.resume }));
     // Lien Jeux ↔ Éducation : les notions que ce jeu fait travailler, ouvrables d'un geste.

@@ -826,3 +826,54 @@ test("assistant : progression résumée sur l'appareil et boutons vers les écra
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
+
+test("accessibilité (lot 8, ADR 0039) : contrastes des couleurs d'état, cibles du pied de page, onglets et 320 px", async () => {
+  const contraste = (page, avant, fond) => page.evaluate(([avant, fond]) => {
+    const rvb = (c) => { const e = document.createElement("i"); e.style.color = c; document.body.append(e); const v = getComputedStyle(e).color.match(/[\d.]+/g).slice(0, 3).map(Number); e.remove(); return v; };
+    const L = (c) => rvb(c).map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }).reduce((s, v, i) => s + v * [0.2126, 0.7152, 0.0722][i], 0);
+    const [a, b] = [L(avant), L(fond)].sort((x, y) => y - x);
+    return (a + 0.05) / (b + 0.05);
+  }, [avant, fond]);
+  for (const theme of ["light", "dark"]) {
+    const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 }, colorScheme: theme });
+    await simulerApi(page);
+    await page.goto(serveur.url);
+    for (const [texte, fond] of [["var(--succes)", "var(--surface)"], ["var(--chaud)", "var(--surface)"], ["var(--danger)", "var(--surface)"], ["var(--danger)", "var(--danger-doux)"], ["var(--succes)", "var(--succes-doux)"], ["var(--chaud)", "var(--chaud-doux)"]]) {
+      assert.ok(await contraste(page, texte, fond) >= 4.5, `${theme} : ${texte} sur ${fond}`);
+    }
+    assert.ok(await contraste(page, "#fff", await page.locator(".avatar-profil").first().evaluate((n) => getComputedStyle(n).backgroundColor)) >= 4.5, `${theme} : initiale de l'avatar`);
+    const hauteurs = await page.locator(".pied a, .pied button").evaluateAll((l) => l.filter((n) => n.offsetParent).map((n) => n.getBoundingClientRect().height));
+    assert.ok(hauteurs.length && hauteurs.every((h) => h >= 24), `cibles du pied de page ≥ 24 px (${hauteurs})`);
+    assert.deepEqual(erreurs, []);
+    await contexte.close();
+  }
+  // Onglets en haut : une seule ligne à 1 024 px, sans défilement de la barre.
+  const large = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1024, height: 768 } });
+  await simulerApi(large.page);
+  await large.page.goto(serveur.url);
+  assert.equal(await large.page.locator(".barre-laterale .nav").evaluate((n) => n.scrollWidth <= n.clientWidth), true);
+  assert.ok(await large.page.locator(".barre-laterale").evaluate((n) => n.getBoundingClientRect().height) < 90, "barre sur une ligne");
+  await large.contexte.close();
+  // Barre collante : la colonne « Pour s'entraîner » (collante à partir de 1 200 px) et les ancres restent sous la barre.
+  const ecran = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 600 } });
+  await simulerApi(ecran.page);
+  await ecran.page.goto(`${serveur.url}/#education`);
+  await ecran.page.locator(".outils-education").waitFor();
+  await ecran.page.evaluate(() => { document.querySelector(".education-principal").style.minHeight = "3000px"; scrollTo(0, 1500); });
+  await ecran.page.waitForTimeout(100);
+  const bas = await ecran.page.locator(".barre-laterale").evaluate((n) => n.getBoundingClientRect().bottom);
+  const haut = await ecran.page.locator(".outils-education").evaluate((n) => n.getBoundingClientRect().top);
+  assert.ok(haut >= bas, `colonne collante sous la barre (haut ${haut}, barre ${bas})`);
+  assert.ok(await ecran.page.evaluate(() => parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0) >= bas, "défilement vers une ancre sous la barre");
+  await ecran.contexte.close();
+  // 320 px : aucun défilement horizontal sur les destinations principales.
+  const etroit = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 320, height: 640 }, isMobile: true });
+  await simulerApi(etroit.page, { jeux: true });
+  for (const ecran of ["accueil", "education", "labs", "jeux", "progression", "profil"]) {
+    await etroit.page.goto(`${serveur.url}/#${ecran}`);
+    await etroit.page.waitForTimeout(150);
+    const debord = await etroit.page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+    assert.ok(debord <= 0, `${ecran} déborde de ${debord} px à 320 px`);
+  }
+  await etroit.contexte.close();
+});

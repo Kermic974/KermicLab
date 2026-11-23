@@ -83,3 +83,11 @@ test("référentiel : notions pilotes renseignées et indicateur des prérequis"
   assert.ok(indicateur.avecPrerequis >= 4 && indicateur.avecPrerequis <= indicateur.notions);
   assert.equal(indicateur.notions, index.maquettes.filter((m) => !m.sujet.startsWith("jeux/")).length, "les jeux ne sont pas des notions");
 });
+
+test("catalogue public : chaque jeu déclare une catégorie de jeux, aucune notion n'en a (ADR 0039, D7)", async () => {
+  const { index } = await chargerCatalogue([`${racine}catalogue`]);
+  const jeux = index.maquettes.filter((m) => m.sujet.startsWith("jeux/"));
+  assert.ok(jeux.length >= 9);
+  assert.ok(jeux.every((m) => ["calcul", "strategie", "mots"].includes(m.categorie)), jeux.filter((m) => !m.categorie).map((m) => m.id).join(", "));
+  assert.ok(index.maquettes.filter((m) => !m.sujet.startsWith("jeux/")).every((m) => m.categorie === undefined));
+});

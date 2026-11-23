@@ -6,6 +6,7 @@ import { compteDeSession, gererApiCompteLocal } from "../../worker/src/compte-lo
 import { gererApiFamille } from "../../worker/src/famille.js";
 import { gererApiProfesseur } from "../../worker/src/professeur.js";
 import { gererApiContributions, roleContributionCompteLocal } from "../../worker/src/contributions.js";
+import { gererApiRelectures } from "../../worker/src/relectures.js";
 import { CATALOGUE } from "../../worker/src/generated/catalogue.js";
 import { creerD1Complet } from "../helpers/d1-complet.mjs";
 
@@ -50,6 +51,13 @@ async function appareil(pseudo) {
       });
     })(route);
   });
+  // Relecture humaine (PR #413) : même aiguillage que worker/src/index.js (statut public, sinon session du compte local).
+  await page.route(`${api}/api/relectures**`, relayer(async (req) => {
+    if (req.method === "GET" && new URL(req.url).pathname === "/api/relectures/statut") return gererApiRelectures(req, env, null, { catalogue: CATALOGUE });
+    const s = await compteDeSession(req, env);
+    if (!s) return Response.json({ erreur: "non-connecte" }, { status: 401 });
+    return gererApiRelectures(req, env, { compteId: s.compteId, origine: "local" }, { catalogue: CATALOGUE });
+  }));
   await page.goto(serveur.url);
   await page.locator("#dialogue-pseudo[open]").waitFor();
   await page.fill("#pseudo", pseudo);
@@ -97,6 +105,10 @@ test("compte local au rôle Professeur : menu Contributions, proposition envoyé
   await page.locator("#contrib-champ:not([disabled])").waitFor();
   await page.selectOption("#contrib-champ", "intro");
   await page.fill("#contrib-texte", "Une seule page pour toute la notion. Commence par l'intuition !");
+  // Aperçu Avant / Après (lot 6, ADR 0039) : le passage actuel face au texte proposé.
+  await page.locator("#contrib-avant-apres").waitFor();
+  assert.equal(await page.locator("#contrib-apercu-avant").textContent(), await page.locator("#contrib-actuel").textContent());
+  assert.equal(await page.locator("#contrib-apercu-apres").textContent(), "Une seule page pour toute la notion. Commence par l'intuition !");
   await page.fill("#contrib-motif", "Guider les débutants.");
   await page.check("#contrib-charte");
   await page.click("#contrib-envoyer");
