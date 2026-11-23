@@ -854,6 +854,18 @@ test("accessibilité (lot 8, ADR 0039) : contrastes des couleurs d'état, cibles
   assert.equal(await large.page.locator(".barre-laterale .nav").evaluate((n) => n.scrollWidth <= n.clientWidth), true);
   assert.ok(await large.page.locator(".barre-laterale").evaluate((n) => n.getBoundingClientRect().height) < 90, "barre sur une ligne");
   await large.contexte.close();
+  // Barre collante : la colonne « Pour s'entraîner » (collante à partir de 1 200 px) et les ancres restent sous la barre.
+  const ecran = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 600 } });
+  await simulerApi(ecran.page);
+  await ecran.page.goto(`${serveur.url}/#education`);
+  await ecran.page.locator(".outils-education").waitFor();
+  await ecran.page.evaluate(() => { document.querySelector(".education-principal").style.minHeight = "3000px"; scrollTo(0, 1500); });
+  await ecran.page.waitForTimeout(100);
+  const bas = await ecran.page.locator(".barre-laterale").evaluate((n) => n.getBoundingClientRect().bottom);
+  const haut = await ecran.page.locator(".outils-education").evaluate((n) => n.getBoundingClientRect().top);
+  assert.ok(haut >= bas, `colonne collante sous la barre (haut ${haut}, barre ${bas})`);
+  assert.ok(await ecran.page.evaluate(() => parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0) >= bas, "défilement vers une ancre sous la barre");
+  await ecran.contexte.close();
   // 320 px : aucun défilement horizontal sur les destinations principales.
   const etroit = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 320, height: 640 }, isMobile: true });
   await simulerApi(etroit.page, { jeux: true });
