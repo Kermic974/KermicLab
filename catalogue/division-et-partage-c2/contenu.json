@@ -27,7 +27,7 @@
       "titre": "Le reste",
       "niveau": "CE2",
       "paragraphes": [
-        "Parfois le partage n'est pas juste : 14 crayons entre 4 enfants. Chacun en reçoit 3 (4 × 3 = 12) et il en reste 2. Le **reste** est toujours plus petit que le nombre de parts.",
+        "Parfois le partage ne tombe pas juste : 14 crayons entre 4 enfants. Chacun en reçoit 3 (4 × 3 = 12) et il en reste 2. Le **reste** est toujours plus petit que le nombre de parts.",
         "Vérification : 4 × 3 + 2 = 14."
       ],
       "exemple": {
@@ -69,7 +69,7 @@
         "question": "14 crayons entre 4 enfants : combien en reste-t-il ?",
         "reponse": 2,
         "indices": [
-          "Cherche le plus proche multiple de 4."
+          "Cherche le plus grand multiple de 4 qui ne dépasse pas 14."
         ],
         "solution": "4 × 3 = 12, 14 − 12 = 2.",
         "titre": "Exercice 3"
@@ -87,7 +87,7 @@
         "question": "Combien de minibus pleins ?",
         "reponse": 4,
         "indices": [
-          "6 × 4 = 24, 6 × 5 = 30."
+          "Compte de 6 en 6 sans dépasser 27."
         ],
         "solution": "6 × 4 = 24.",
         "titre": "Exercice 1"
