@@ -2,7 +2,7 @@
 id: anglais-bonjour-c2
 titre: Anglais : dire bonjour, compter, les couleurs
 sujet: anglais/anglais-bonjour-c2
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 classes: CP, CE1

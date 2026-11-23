@@ -2,7 +2,7 @@
 id: division-et-partage-c2
 titre: Partager et regrouper
 sujet: mathematiques/division-et-partage-c2
-version: 1.0.0
+version: 1.0.1
 date: 2026-11-21
 niveau: primaire
 classes: CE2
