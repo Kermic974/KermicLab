@@ -2,8 +2,8 @@
 // Tout le contenu est construit par le DOM (jamais innerHTML) ; aucune donnée n'est gardée hors de l'onglet.
 import { THEME_PERSONNALISE, deriverVariables } from "../theme.js";
 import { bilanPortefeuille, estimerSouscription, repartitionFixes } from "./financier.js";
-import { cheminLePlusCourt, decompacter, filtrer, indicateurs } from "./graphe-referentiel.js";
-import { COULEUR_TRANS, couleurs, creerVue } from "./graphe-vue.js";
+import { cheminLePlusCourt, decompacter, filtrer, indicateurs } from "../graphe-referentiel.js";
+import { COULEUR_TRANS, couleurs, creerVue } from "../graphe-vue.js";
 
 const CLE_SESSION = "kermiclab:admin:cle";
 const $ = (s) => document.querySelector(s);
@@ -1368,7 +1368,7 @@ async function ecranGraphe() {
   const generation = affichage;
   if (!grapheCharge) {
     let reponse;
-    try { reponse = await fetch("referentiel-graphe.json"); } catch { throw Object.assign(new Error("reseau"), { code: "reseau" }); }
+    try { reponse = await fetch("../referentiel-graphe.json"); } catch { throw Object.assign(new Error("reseau"), { code: "reseau" }); }
     if (!reponse.ok) throw Object.assign(new Error("graphe-absent"), { code: "graphe-absent" });
     try { grapheCharge = decompacter(await reponse.json()); } catch { throw Object.assign(new Error("graphe-absent"), { code: "graphe-absent" }); }
   }

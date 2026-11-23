@@ -10,7 +10,8 @@ import { articlesPublies, chargerArticles, construireBlog, jourDePublication } f
 import { genererSeoStatique } from "./lib/seo.mjs";
 
 import { synchroniserProjectionV0 } from "./lib/referentiel-projection.mjs";
-import { compacter, construireGraphe, disposer } from "../web/admin/graphe-referentiel.js";
+import { compacter, construireGraphe, disposer } from "../web/graphe-referentiel.js";
+import { enrichirMetiers, verifierMetiers } from "../web/metiers.js";
 
 const racine = fileURLToPath(new URL("..", import.meta.url));
 const { version } = JSON.parse(await readFile(`${racine}package.json`, "utf8"));
@@ -43,6 +44,21 @@ for (const fichier of (await readdir(`${racine}dist`)).filter((f) => f.endsWith(
 }
 await ecrireContenus(`${racine}dist/contenus`, [`${racine}catalogue`, `${racine}catalogue-prive`], catalogue.index);
 await writeFile(`${racine}dist/trophees.json`, `${JSON.stringify(collectionTrophees(catalogue))}\n`);
+// Graphe du référentiel (ADR 0040), disposition 3D calculée ici une fois pour toutes (déterministe) : lu par le
+// back-office et par l'Espace Métiers. Données de l'Espace Métiers (ADR 0041) : validées contre le référentiel.
+{
+  const projection = JSON.parse(await readFile(`${racine}referentiel/projection-v0.json`, "utf8"));
+  const graphe = construireGraphe(projection);
+  await writeFile(`${racine}dist/referentiel-graphe.json`, `${JSON.stringify(compacter(graphe, disposer(graphe)))}\n`);
+  console.log(`Graphe du référentiel : ${graphe.noeuds.length} nœuds, ${graphe.liens.length} relations${graphe.ignores ? `, ${graphe.ignores} référence(s) inconnue(s) ignorée(s)` : ""}.`);
+  const metiers = JSON.parse(await readFile(`${racine}referentiel/metiers-v0.json`, "utf8"));
+  const erreurs = verifierMetiers(metiers, new Set(Object.values(projection.notions)));
+  if (erreurs.length) throw new Error(`referentiel/metiers-v0.json :\n- ${erreurs.join("\n- ")}`);
+  const titres = new Map(catalogue.index.maquettes.map((m) => [m.id, m.titre]));
+  const publie = enrichirMetiers(metiers, projection, titres);
+  await writeFile(`${racine}dist/metiers.json`, `${JSON.stringify(publie)}\n`);
+  console.log(`Espace Métiers : ${metiers.metiers.length} métiers, ${metiers.disciplines.length} disciplines, ${Object.keys(publie.notions).length} notions reliées.`);
+}
 await versionnerRessources(`${racine}dist`);
 // Blog (issue #277) : écrit après la boîte à idées et le versionnement, qui ne parcourent que les pages de la racine
 // de dist/. Une page par dossier (blog/<slug>/index.html) : Pages la sert à /blog/<slug>/ sans réécriture.
@@ -53,25 +69,19 @@ const blog = await construireBlog(`${racine}blog`, `${racine}dist/blog`, { jour:
 await writeFile(`${racine}dist/blog/index.json`, `${JSON.stringify({
   articles: articlesPublies(await chargerArticles(`${racine}blog`), { jour: jourBlog }).map(({ slug, titre, auteur, date }) => ({ slug, titre, auteur, date }))
 })}\n`);
-// Back-office : graphe du référentiel (ADR 0040), disposition 3D calculée ici une fois pour toutes (déterministe).
-{
-  const graphe = construireGraphe(JSON.parse(await readFile(`${racine}referentiel/projection-v0.json`, "utf8")));
-  await writeFile(`${racine}dist/admin/referentiel-graphe.json`, `${JSON.stringify(compacter(graphe, disposer(graphe)))}\n`);
-  console.log(`Graphe du référentiel : ${graphe.noeuds.length} nœuds, ${graphe.liens.length} relations${graphe.ignores ? `, ${graphe.ignores} référence(s) inconnue(s) ignorée(s)` : ""}.`);
-}
 // Back-office : même empreinte de contenu que le site pour ses propres fichiers (cache du navigateur). Les modules
 // importés par admin.js passent d'abord, pour que l'empreinte d'admin.js change aussi quand seul un module change.
 {
   const empreinte = async (fichier) => createHash("sha256").update(await readFile(`${racine}dist/${fichier}`)).digest("hex").slice(0, 10);
   let adminJs = await readFile(`${racine}dist/admin/admin.js`, "utf8");
-  for (const module of ["financier.js", "graphe-referentiel.js", "graphe-vue.js"]) {
+  for (const module of ["./financier.js", "../graphe-referentiel.js", "../graphe-vue.js"]) {
     const avant = adminJs;
-    adminJs = adminJs.replaceAll(`from "./${module}"`, `from "./${module}?v=${await empreinte(`admin/${module}`)}"`);
+    adminJs = adminJs.replaceAll(`from "${module}"`, `from "${module}?v=${await empreinte(`admin/${module}`)}"`);
     if (adminJs === avant) throw new Error(`Back-office : import de ${module} introuvable dans admin.js`);
   }
   // Le graphe du référentiel (ADR 0040) suit la même règle : son URL porte l'empreinte de son contenu.
   const avantGraphe = adminJs;
-  adminJs = adminJs.replace('fetch("referentiel-graphe.json")', `fetch("referentiel-graphe.json?v=${await empreinte("admin/referentiel-graphe.json")}")`);
+  adminJs = adminJs.replace('fetch("../referentiel-graphe.json")', `fetch("../referentiel-graphe.json?v=${await empreinte("referentiel-graphe.json")}")`);
   if (adminJs === avantGraphe) throw new Error("Back-office : chargement de referentiel-graphe.json introuvable dans admin.js");
   await writeFile(`${racine}dist/admin/admin.js`, adminJs);
   const versions = { "admin.css": await empreinte("admin/admin.css"), "admin.js": await empreinte("admin/admin.js"), "../style.css": await empreinte("style.css") };
@@ -144,7 +154,7 @@ console.log(`Site statique : dist/ (chat à la racine, application sous /cercle/
 async function versionnerRessources(dossier) {
   const empreinte = (texte) => createHash("sha256").update(texte).digest("hex").slice(0, 10);
   const versions = {};
-  const modules = ["progression.js", "profil.js", "comptes.js", "compte-local.js", "demo-famille.js", "contributions.js", "demo-contributions.js", "cercle.js", "trophees.js", "evenements.js", "recommandation.js", "fichier-progression.js", "cahier-vacances.js", "progression-jeux.js", "experiences.js", "temps-actif.js", "theme.js", "parcours.js"];
+  const modules = ["metiers.js", "graphe-referentiel.js", "graphe-vue.js", "navigation.js", "progression.js", "profil.js", "comptes.js", "compte-local.js", "demo-famille.js", "contributions.js", "demo-contributions.js", "cercle.js", "trophees.js", "evenements.js", "recommandation.js", "fichier-progression.js", "cahier-vacances.js", "progression-jeux.js", "experiences.js", "temps-actif.js", "theme.js", "parcours.js"];
   for (const fichier of [...modules, "style.css", "audience.js"]) versions[fichier] = empreinte(await readFile(`${dossier}/${fichier}`));
   const appSource = await readFile(`${dossier}/app.js`, "utf8");
   let app = appSource;
@@ -152,6 +162,12 @@ async function versionnerRessources(dossier) {
     const avant = app;
     app = app.replaceAll(`from "./${module}"`, `from "./${module}?v=${versions[module]}"`);
     if (app === avant) throw new Error(`versionnerRessources : import de ${module} introuvable dans app.js`);
+  }
+  // Données chargées par app.js (Espace Métiers, ADR 0041) : leur URL porte aussi l'empreinte de leur contenu.
+  for (const donnees of ["metiers.json", "referentiel-graphe.json"]) {
+    const avant = app;
+    app = app.replaceAll(`fetch("${donnees}")`, `fetch("${donnees}?v=${empreinte(await readFile(`${dossier}/${donnees}`))}")`);
+    if (app === avant) throw new Error(`versionnerRessources : chargement de ${donnees} introuvable dans app.js`);
   }
   await writeFile(`${dossier}/app.js`, app);
   versions["app.js"] = empreinte(app);

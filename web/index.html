@@ -28,6 +28,7 @@
   <symbol id="i-horloge" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
   <symbol id="i-coche" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
   <symbol id="i-croix" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-metiers" viewBox="0 0 24 24"><rect x="3.5" y="7.5" width="17" height="12" rx="2.5"/><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5M3.5 12.5h17M12 11.5v2"/></symbol>
   <symbol id="i-loupe" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
   <symbol id="i-fleche" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-fiole" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5.4 9.4A2 2 0 0 0 6.3 21.5h11.4a2 2 0 0 0 1.7-3.1L14 9V3"/><path d="M7.2 15h9.6"/></symbol>
@@ -64,6 +65,7 @@
       <button type="button" class="nav-bouton" data-nav-groupe="barre" data-nav-id="tableau-de-bord" data-nav="tableau-de-bord"><svg class="ico" aria-hidden="true"><use href="#i-tableau"/></svg><span class="nav-texte" data-i18n="navTableauDeBord"></span></button>
       <button type="button" class="nav-bouton" data-nav-groupe="barre" data-nav-id="education" data-nav="education" id="ouvrir-catalogue"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg><span class="nav-texte" data-i18n="navEducation"></span></button>
       <button type="button" class="nav-bouton" data-nav-groupe="barre" data-nav-id="labs" data-nav="labs"><svg class="ico" aria-hidden="true"><use href="#i-fiole"/></svg><span class="nav-texte" data-i18n="navLabs"></span></button>
+      <button type="button" class="nav-bouton" data-nav-groupe="barre" data-nav-id="metiers" data-nav="metiers"><svg class="ico" aria-hidden="true"><use href="#i-metiers"/></svg><span class="nav-texte" data-i18n="navMetiers"></span></button>
       <button type="button" class="nav-bouton" data-nav-groupe="barre" data-nav-id="jeux" data-nav="jeux"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg><span class="nav-texte" data-i18n="navJeux"></span></button>
       <button type="button" class="nav-bouton" data-nav-groupe="barre" data-nav-id="progression" data-nav="progression"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg><span class="nav-texte" data-i18n="navProgression"></span></button>
       <!-- Lien rapide « Ma famille » : compte local lié ; parent → Espace famille, sinon le bloc Famille de Mon compte. -->
@@ -353,6 +355,37 @@
         </div>
       </section>
 
+      <!-- Espace Métiers (ADR 0041) : des notions KermicLab aux gestes professionnels, en quatre anneaux reliés. -->
+      <section id="ecran-metiers" class="ecran" data-ecrans="metiers" aria-labelledby="metiers-titre" hidden>
+        <div class="tete-section">
+          <h2 id="metiers-titre" data-i18n="metiersTitre"></h2>
+        </div>
+        <p class="doux" data-i18n="metiersSeparation"></p>
+        <div class="recherche-education">
+          <svg class="ico" aria-hidden="true"><use href="#i-loupe"/></svg>
+          <label class="visuellement-cache" for="metiers-recherche" data-i18n="metiersRecherche"></label>
+          <input id="metiers-recherche" type="search" autocomplete="off" data-i18n-placeholder="metiersRecherche">
+        </div>
+        <div class="puces-niveau" id="metiers-categories" role="group" data-i18n-aria="metiersCategories"></div>
+        <p class="doux petit" id="metiers-etat" role="status" aria-live="polite"></p>
+        <div class="metiers-espace">
+          <figure class="carte metiers-scene">
+            <svg id="metiers-anneaux" viewBox="0 0 1000 1000" role="img" data-i18n-aria="metiersAnneauxAria"></svg>
+            <figcaption class="metiers-legende">
+              <span><i class="metiers-puce notion" aria-hidden="true"></i><span data-i18n="metiersAnneauNotions"></span></span>
+              <span><i class="metiers-puce discipline" aria-hidden="true"></i><span data-i18n="metiersAnneauDisciplines"></span></span>
+              <span><i class="metiers-puce metier" aria-hidden="true"></i><span data-i18n="metiersAnneauMetiers"></span></span>
+              <span><i class="metiers-puce geste" aria-hidden="true"></i><span data-i18n="metiersAnneauGestes"></span></span>
+            </figcaption>
+          </figure>
+          <div class="carte metiers-liste">
+            <h3 data-i18n="metiersListe"></h3>
+            <ul id="metiers-liste"></ul>
+          </div>
+        </div>
+        <section class="carte metiers-detail" id="metiers-detail" aria-labelledby="metiers-detail-titre" hidden></section>
+      </section>
+
       <section id="ecran-jeux" class="ecran" data-ecrans="jeux" aria-labelledby="jeux-titre" hidden>
         <div class="tete-section">
           <h2 id="jeux-titre" data-i18n="jeuxDisponibles"></h2>
@@ -507,6 +540,7 @@
   <button type="button" class="nav-mobile-bouton" data-nav-groupe="mobile" data-nav-id="tableau-de-bord" data-nav="tableau-de-bord"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-tableau"/></svg></span><span data-i18n="navTableauDeBordCourt"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav-groupe="mobile" data-nav-id="education" data-nav="education"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-livre"/></svg></span><span data-i18n="navEducation"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav-groupe="mobile" data-nav-id="labs" data-nav="labs"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-fiole"/></svg></span><span data-i18n="navLabs"></span></button>
+  <button type="button" class="nav-mobile-bouton" data-nav-groupe="mobile" data-nav-id="metiers" data-nav="metiers"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-metiers"/></svg></span><span data-i18n="navMetiers"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav-groupe="mobile" data-nav-id="jeux" data-nav="jeux"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-jeu"/></svg></span><span data-i18n="navJeux"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav-groupe="mobile" data-nav-id="progression" data-nav="progression"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-graphique"/></svg></span><span data-i18n="navProgressionCourt"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav-groupe="mobile" data-nav-id="profil" data-nav="profil"><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-utilisateur"/></svg></span><span data-i18n="navProfil"></span></button>

@@ -11,7 +11,8 @@ export function couleurs(disciplines) {
 }
 
 /**
- * Crée la vue dans `canvas`. `etat()` renvoie { visibles, liens, chemin:Set, selection, couleurs } à chaque image ;
+ * Crée la vue dans `canvas`. `etat()` renvoie { visibles, liens, chemin:Set, selection, couleurs, entoures?:Set,
+ * nommerNotions?:bool } à chaque image (`entoures` : nœuds cerclés sans estomper les autres, ADR 0041) ;
  * `onSelection(i | null)` est appelé au clic. Renvoie { dessiner, centrer, tourner, zoomer, rotationAuto, detruire }.
  */
 export function creerVue(canvas, graphe, { etat, onSelection }) {
@@ -41,7 +42,7 @@ export function creerVue(canvas, graphe, { etat, onSelection }) {
 
   function dessiner() {
     if (!largeur) dimensionner();
-    const { visibles, liens, chemin, selection, couleurs: teintes } = etat();
+    const { visibles, liens, chemin, selection, couleurs: teintes, entoures = new Set(), nommerNotions = false } = etat();
     const s = style();
     const texte = s.getPropertyValue("--texte").trim() || "#141833";
     const doux = s.getPropertyValue("--doux").trim() || "#5f6585";
@@ -81,14 +82,14 @@ export function creerVue(canvas, graphe, { etat, onSelection }) {
       ctx.globalAlpha = enChemin && !chemin.has(i) ? 0.18 : n.type === "notion" ? 0.95 : 0.8;
       ctx.fillStyle = n.transdisciplinaire ? COULEUR_TRANS : teintes.get(n.disciplines[0]) ?? doux;
       ctx.beginPath(); ctx.arc(p.sx, p.sy, r, 0, Math.PI * 2); ctx.fill();
-      if (chemin.has(i) || i === selection) {
+      if (chemin.has(i) || i === selection || entoures.has(i)) {
         ctx.globalAlpha = 1; ctx.lineWidth = 2.5; ctx.strokeStyle = texte;
         ctx.beginPath(); ctx.arc(p.sx, p.sy, r + 3, 0, Math.PI * 2); ctx.stroke();
       }
     }
     // Étiquettes : la sélection, le chemin, et les notions proches de la caméra.
     ctx.globalAlpha = 1; ctx.font = "600 12px ui-sans-serif, system-ui, sans-serif"; ctx.textBaseline = "middle";
-    const etiquetees = ordre.filter((i) => i === selection || chemin.has(i) || (graphe.noeuds[i].type === "notion" && projetes[i].f > 0.95 && ordre.length < 900));
+    const etiquetees = ordre.filter((i) => i === selection || chemin.has(i) || (graphe.noeuds[i].type === "notion" && (nommerNotions || (projetes[i].f > 0.95 && ordre.length < 900))));
     for (const i of etiquetees.slice(-60)) {
       const p = projetes[i], t = graphe.noeuds[i].libelle;
       ctx.lineWidth = 3; ctx.strokeStyle = s.getPropertyValue("--surface").trim() || "#fff"; ctx.fillStyle = texte;

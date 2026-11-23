@@ -1,0 +1,982 @@
+{
+  "version": 1,
+  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider.",
+  "categories": [
+    {
+      "id": "disc",
+      "libelle": "Sciences et ingénierie",
+      "couleur": "#7c3aed"
+    },
+    {
+      "id": "app",
+      "libelle": "Numérique et technologies",
+      "couleur": "#059669"
+    },
+    {
+      "id": "craft",
+      "libelle": "Artisanat et création",
+      "couleur": "#d97706"
+    },
+    {
+      "id": "trade",
+      "libelle": "Commerce et gestion",
+      "couleur": "#0284c7"
+    },
+    {
+      "id": "mkt",
+      "libelle": "Communication et médias",
+      "couleur": "#db2777"
+    },
+    {
+      "id": "health",
+      "libelle": "Santé et soins",
+      "couleur": "#0f766e"
+    }
+  ],
+  "disciplines": [
+    {
+      "id": "acoustique",
+      "nom": "Acoustique",
+      "savoirFaire": [
+        "Absorption phonique",
+        "Propagation ondes"
+      ],
+      "notions": [
+        "notion.physique-chimie.ondes",
+        "notion.physique-chimie.son-et-lumiere"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "arts-plastiques",
+      "nom": "Arts plastiques",
+      "savoirFaire": [
+        "Composition spatiale",
+        "Théorie des couleurs"
+      ],
+      "notions": [
+        "notion.arts-plastiques.arts-formes-et-composition-cm",
+        "notion.arts-plastiques.arts-image-et-representation-c4",
+        "notion.arts-plastiques.arts-plastiques-creation-et-engagement-l"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "biologie",
+      "nom": "Biologie",
+      "savoirFaire": [
+        "Physiologie cellulaire",
+        "Biocompatibilité"
+      ],
+      "notions": [
+        "notion.svt.la-cellule",
+        "notion.svt.metabolisme-et-enzymes",
+        "notion.svt.ecosystemes-et-biodiversite"
+      ],
+      "correspondance": "v5"
+    },
+    {
+      "id": "chimie-des-materiaux",
+      "nom": "Chimie des matériaux",
+      "savoirFaire": [
+        "Réactions de cuisson",
+        "Équilibre oxydes"
+      ],
+      "notions": [
+        "notion.physique-chimie.oxydoreduction",
+        "notion.physique-chimie.cinetique-chimique",
+        "notion.physique-chimie.etats-de-la-matiere"
+      ],
+      "correspondance": "v5"
+    },
+    {
+      "id": "communication",
+      "nom": "Communication",
+      "savoirFaire": [
+        "Écoute active",
+        "Argumentation structurée"
+      ],
+      "notions": [
+        "notion.francais.argumentation",
+        "notion.francais.analyse-texte",
+        "notion.ses.opinion-publique"
+      ],
+      "correspondance": "v5"
+    },
+    {
+      "id": "comptabilite",
+      "nom": "Comptabilité",
+      "savoirFaire": [
+        "Bilan & compte résultat",
+        "Coûts analytiques"
+      ],
+      "notions": [
+        "notion.mathematiques.proportionnalite",
+        "notion.mathematiques.pourcentages-et-evolutions-c4"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "design-graphique",
+      "nom": "Design graphique",
+      "savoirFaire": [
+        "Grille typographique",
+        "Hiérarchie visuelle"
+      ],
+      "notions": [
+        "notion.arts-plastiques.arts-couleurs-cm",
+        "notion.arts-plastiques.arts-image-et-representation-c4"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "design-produit",
+      "nom": "Design produit",
+      "savoirFaire": [
+        "Ergonomie de prise",
+        "Analyse fonctionnelle"
+      ],
+      "notions": [
+        "notion.technologie.conception-et-prototypage-c4",
+        "notion.technologie.si-conception-et-modelisation-l"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "droit-des-contrats",
+      "nom": "Droit des contrats",
+      "savoirFaire": [
+        "Clauses responsabilité",
+        "Propriété intellectuelle"
+      ],
+      "notions": [
+        "notion.emc.etat-de-droit",
+        "notion.emc.justice"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "environnement",
+      "nom": "Environnement",
+      "savoirFaire": [
+        "Bilan carbone",
+        "Écotoxicologie"
+      ],
+      "notions": [
+        "notion.svt.ecosystemes-et-biodiversite",
+        "notion.svt.climat-et-effet-de-serre",
+        "notion.geographie.changement-climatique",
+        "notion.geographie.ressources"
+      ],
+      "correspondance": "v5"
+    },
+    {
+      "id": "gestion",
+      "nom": "Gestion",
+      "savoirFaire": [
+        "Diagramme de Gantt",
+        "Allocation ressources"
+      ],
+      "notions": [
+        "notion.mathematiques.proportionnalite",
+        "notion.mathematiques.tableaux-graphiques-cm"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "geographie",
+      "nom": "Géographie",
+      "savoirFaire": [
+        "Lire une carte thématique",
+        "Analyser une dynamique territoriale"
+      ],
+      "notions": [
+        "notion.geographie.dynamiques-territoriales",
+        "notion.geographie.espaces-productifs",
+        "notion.geographie.urbanisation",
+        "notion.geographie.risques-naturels"
+      ],
+      "correspondance": "v5"
+    },
+    {
+      "id": "geometrie",
+      "nom": "Géométrie",
+      "savoirFaire": [
+        "Projection orthogonale",
+        "Calcul de volumes"
+      ],
+      "notions": [
+        "notion.mathematiques.angles",
+        "notion.mathematiques.perimetres-aires",
+        "notion.mathematiques.volumes",
+        "notion.mathematiques.pythagore"
+      ],
+      "correspondance": "v5"
+    },
+    {
+      "id": "histoire",
+      "nom": "Histoire",
+      "savoirFaire": [
+        "Contextualiser un événement",
+        "Comparer des périodes"
+      ],
+      "notions": [
+        "notion.histoire.revolution-industrielle",
+        "notion.histoire.monde-depuis-1990"
+      ],
+      "correspondance": "v5"
+    },
+    {
+      "id": "informatique",
+      "nom": "Informatique",
+      "savoirFaire": [
+        "Complexité algorithmique",
+        "Modélisation données"
+      ],
+      "notions": [
+        "notion.mathematiques.algorithmique-python-l",
+        "notion.technologie.nsi-algorithmes-et-donnees-l",
+        "notion.technologie.nsi-bases-de-donnees-et-systemes-l"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "linguistique",
+      "nom": "Linguistique",
+      "savoirFaire": [
+        "Sémantique lexicale",
+        "Analyse du discours"
+      ],
+      "notions": [
+        "notion.francais.grammaire-phrase-complexe",
+        "notion.francais.analyse-texte",
+        "notion.philosophie.langage"
+      ],
+      "correspondance": "v5"
+    },
+    {
+      "id": "logique-mathematique",
+      "nom": "Logique mathématique",
+      "savoirFaire": [
+        "Algèbre booléenne",
+        "Preuve formelle"
+      ],
+      "notions": [
+        "notion.mathematiques.calcul-litteral",
+        "notion.mathematiques.equations",
+        "notion.mathematiques.priorites-operatoires"
+      ],
+      "correspondance": "v5"
+    },
+    {
+      "id": "marketing-digital",
+      "nom": "Marketing digital",
+      "savoirFaire": [
+        "Tunnel de conversion",
+        "Segmentation audience"
+      ],
+      "notions": [
+        "notion.technologie.snt-donnees-et-web-l",
+        "notion.emc.esprit-critique-et-medias-c4"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "physique",
+      "nom": "Physique",
+      "savoirFaire": [
+        "Traitement du signal",
+        "Électromagnétisme"
+      ],
+      "notions": [
+        "notion.physique-chimie.forces-et-poids",
+        "notion.physique-chimie.energie",
+        "notion.physique-chimie.electricite",
+        "notion.physique-chimie.ondes"
+      ],
+      "correspondance": "v5"
+    },
+    {
+      "id": "psychologie-cognitive",
+      "nom": "Psychologie cognitive",
+      "savoirFaire": [
+        "Analyse biais cognitifs",
+        "Charge mentale"
+      ],
+      "notions": [
+        "notion.svt.systeme-nerveux",
+        "notion.svt.cerveau-et-plasticite-l"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "psychologie-sociale",
+      "nom": "Psychologie sociale",
+      "savoirFaire": [
+        "Dynamique de groupe",
+        "Influence sociale"
+      ],
+      "notions": [
+        "notion.ses.socialisation"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "reseaux",
+      "nom": "Réseaux",
+      "savoirFaire": [
+        "Routage TCP/IP",
+        "Protocoles TLS"
+      ],
+      "notions": [
+        "notion.technologie.snt-internet-et-reseaux-l"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "science-des-materiaux",
+      "nom": "Science des matériaux",
+      "savoirFaire": [
+        "Résistance mécanique",
+        "Propriétés thermiques"
+      ],
+      "notions": [
+        "notion.physique-chimie.etats-de-la-matiere",
+        "notion.physique-chimie.masse-volumique-et-melanges",
+        "notion.physique-chimie.thermodynamique"
+      ],
+      "correspondance": "v5"
+    },
+    {
+      "id": "sociologie",
+      "nom": "Sociologie",
+      "savoirFaire": [
+        "Enquête qualitative",
+        "Analyse des usages"
+      ],
+      "notions": [
+        "notion.ses.socialisation",
+        "notion.ses.opinion-publique",
+        "notion.ses.inegalites"
+      ],
+      "correspondance": "v5"
+    },
+    {
+      "id": "statistiques",
+      "nom": "Statistiques",
+      "savoirFaire": [
+        "Tests d’hypothèses",
+        "Régression linéaire"
+      ],
+      "notions": [
+        "notion.mathematiques.statistiques",
+        "notion.mathematiques.probabilites"
+      ],
+      "correspondance": "v5"
+    },
+    {
+      "id": "economie",
+      "nom": "Économie",
+      "savoirFaire": [
+        "Élasticité prix",
+        "Analyse offre/demande"
+      ],
+      "notions": [
+        "notion.ses.marche-concurrentiel",
+        "notion.ses.croissance-economique",
+        "notion.ses.mondialisation-commerce"
+      ],
+      "correspondance": "v5"
+    }
+  ],
+  "metiers": [
+    {
+      "id": "designer-ux-ui",
+      "nom": "Designer UX/UI",
+      "categorie": "app",
+      "disciplines": [
+        "psychologie-cognitive",
+        "design-graphique"
+      ],
+      "gestes": [
+        "Prototypage Figma",
+        "Tests utilisateurs",
+        "Architecture info"
+      ],
+      "contexte": "Conception d’interfaces numériques centrées sur l’humain."
+    },
+    {
+      "id": "data-analyst",
+      "nom": "Data Analyst",
+      "categorie": "app",
+      "disciplines": [
+        "statistiques",
+        "informatique"
+      ],
+      "gestes": [
+        "Requêtage SQL",
+        "Nettoyage données",
+        "Datavisualisation"
+      ],
+      "contexte": "Transformation de données brutes en indicateurs décisionnels."
+    },
+    {
+      "id": "developpeur-web",
+      "nom": "Développeur Web",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "logique-mathematique"
+      ],
+      "gestes": [
+        "Intégration HTML/CSS",
+        "Débogage JS",
+        "Gestion API REST"
+      ],
+      "contexte": "Création et maintenance d’applications web interactives."
+    },
+    {
+      "id": "architecte-cloud",
+      "nom": "Architecte Cloud",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "reseaux"
+      ],
+      "gestes": [
+        "Déploiement CI/CD",
+        "Sécurisation IAM",
+        "Conteneurisation"
+      ],
+      "contexte": "Infrastructure distribuée haute disponibilité."
+    },
+    {
+      "id": "ebeniste",
+      "nom": "Ébéniste",
+      "categorie": "craft",
+      "disciplines": [
+        "geometrie",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Tenon-mortaise",
+        "Finition au tampon",
+        "Lecture de plan"
+      ],
+      "contexte": "Fabrication de mobilier sur mesure et restauration."
+    },
+    {
+      "id": "ceramiste",
+      "nom": "Céramiste",
+      "categorie": "craft",
+      "disciplines": [
+        "chimie-des-materiaux",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Tournage grès",
+        "Formulation émaux",
+        "Conduite cuisson"
+      ],
+      "contexte": "Création d’objets utilitaires et artistiques en terre cuite."
+    },
+    {
+      "id": "maroquinier",
+      "nom": "Maroquinier",
+      "categorie": "craft",
+      "disciplines": [
+        "geometrie",
+        "design-produit"
+      ],
+      "gestes": [
+        "Coupe couteau à pied",
+        "Point sellier",
+        "Parage du cuir"
+      ],
+      "contexte": "Confection d’articles de maroquinerie haute précision."
+    },
+    {
+      "id": "menuisier-agenceur",
+      "nom": "Menuisier Agenceur",
+      "categorie": "craft",
+      "disciplines": [
+        "geometrie",
+        "acoustique"
+      ],
+      "gestes": [
+        "Prise cotes laser",
+        "Usinage CNC",
+        "Pose sur chantier"
+      ],
+      "contexte": "Aménagement intérieur bois et agencement d’espaces."
+    },
+    {
+      "id": "acheteur-industriel",
+      "nom": "Acheteur Industriel",
+      "categorie": "trade",
+      "disciplines": [
+        "economie",
+        "droit-des-contrats"
+      ],
+      "gestes": [
+        "Analyse coûts TCO",
+        "Négociation",
+        "Sourcing mondial"
+      ],
+      "contexte": "Optimisation de la chaîne d’approvisionnement."
+    },
+    {
+      "id": "charge-daffaires",
+      "nom": "Chargé d’Affaires",
+      "categorie": "trade",
+      "disciplines": [
+        "economie",
+        "communication"
+      ],
+      "gestes": [
+        "Chiffrage devis",
+        "Prospection B2B",
+        "Suivi de marge"
+      ],
+      "contexte": "Développement commercial et pilotage de contrats."
+    },
+    {
+      "id": "resp-logistique",
+      "nom": "Resp. Logistique",
+      "categorie": "trade",
+      "disciplines": [
+        "statistiques",
+        "gestion"
+      ],
+      "gestes": [
+        "Stock de sécurité",
+        "Planification flux",
+        "Audit entrepôt"
+      ],
+      "contexte": "Coordination des flux physiques et des stocks."
+    },
+    {
+      "id": "controleur-gestion",
+      "nom": "Contrôleur Gestion",
+      "categorie": "trade",
+      "disciplines": [
+        "comptabilite",
+        "statistiques"
+      ],
+      "gestes": [
+        "Modélisation budget",
+        "Analyse des écarts",
+        "Reporting financier"
+      ],
+      "contexte": "Pilotage de la performance économique de l’entreprise."
+    },
+    {
+      "id": "content-strategist",
+      "nom": "Content Strategist",
+      "categorie": "mkt",
+      "disciplines": [
+        "linguistique",
+        "sociologie"
+      ],
+      "gestes": [
+        "Ligne éditoriale",
+        "Rédaction SEO",
+        "Storytelling"
+      ],
+      "contexte": "Production de contenus à forte valeur ajoutée."
+    },
+    {
+      "id": "traffic-manager",
+      "nom": "Traffic Manager",
+      "categorie": "mkt",
+      "disciplines": [
+        "statistiques",
+        "marketing-digital"
+      ],
+      "gestes": [
+        "A/B Testing",
+        "Optimisation ROAS",
+        "Paramétrage Analytics"
+      ],
+      "contexte": "Acquisition et conversion d’audience en ligne."
+    },
+    {
+      "id": "brand-manager",
+      "nom": "Brand Manager",
+      "categorie": "mkt",
+      "disciplines": [
+        "sociologie",
+        "design-graphique"
+      ],
+      "gestes": [
+        "Positionnement marque",
+        "Veille culturelle",
+        "Brief créatif"
+      ],
+      "contexte": "Construction et cohérence de l’identité de marque."
+    },
+    {
+      "id": "community-builder",
+      "nom": "Community Builder",
+      "categorie": "mkt",
+      "disciplines": [
+        "psychologie-sociale",
+        "communication"
+      ],
+      "gestes": [
+        "Animation groupe",
+        "Modération active",
+        "Événementiel"
+      ],
+      "contexte": "Fédérer et engager une communauté autour d’un projet."
+    },
+    {
+      "id": "ing-biomedical",
+      "nom": "Ing. Biomédical",
+      "categorie": "disc",
+      "disciplines": [
+        "biologie",
+        "physique"
+      ],
+      "gestes": [
+        "Calibration capteurs",
+        "Conformité normes",
+        "Maintenance préventive"
+      ],
+      "contexte": "Conception et suivi des dispositifs médicaux."
+    },
+    {
+      "id": "eco-concepteur",
+      "nom": "Éco-concepteur",
+      "categorie": "disc",
+      "disciplines": [
+        "environnement",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Analyse Cycle Vie",
+        "Substitution matériaux",
+        "Éco-audit"
+      ],
+      "contexte": "Réduction de l’empreinte environnementale des produits."
+    },
+    {
+      "id": "geometre-topographe",
+      "nom": "Géomètre-topographe",
+      "categorie": "disc",
+      "disciplines": [
+        "geometrie",
+        "geographie"
+      ],
+      "gestes": [
+        "Réaliser un levé",
+        "Calculer des coordonnées",
+        "Produire un plan"
+      ],
+      "contexte": "Mesure, représentation et implantation précise des espaces."
+    },
+    {
+      "id": "ingenieur-genie-civil",
+      "nom": "Ingénieur génie civil",
+      "categorie": "disc",
+      "disciplines": [
+        "geometrie",
+        "physique",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Dimensionner une structure",
+        "Modéliser des efforts",
+        "Contrôler une conformité"
+      ],
+      "contexte": "Conception et suivi d’ouvrages durables et sûrs."
+    },
+    {
+      "id": "technicien-de-laboratoire",
+      "nom": "Technicien de laboratoire",
+      "categorie": "app",
+      "disciplines": [
+        "chimie-des-materiaux",
+        "statistiques"
+      ],
+      "gestes": [
+        "Préparer un protocole",
+        "Réaliser un dosage",
+        "Interpréter des mesures"
+      ],
+      "contexte": "Réalisation d’analyses et contrôle de la fiabilité des résultats."
+    },
+    {
+      "id": "biologiste-de-lenvironnement",
+      "nom": "Biologiste de l’environnement",
+      "categorie": "disc",
+      "disciplines": [
+        "biologie",
+        "environnement",
+        "statistiques"
+      ],
+      "gestes": [
+        "Échantillonner un milieu",
+        "Identifier des indicateurs",
+        "Analyser une évolution"
+      ],
+      "contexte": "Étude de la biodiversité et de la qualité des écosystèmes."
+    },
+    {
+      "id": "agronome",
+      "nom": "Agronome",
+      "categorie": "disc",
+      "disciplines": [
+        "biologie",
+        "environnement",
+        "statistiques"
+      ],
+      "gestes": [
+        "Analyser un sol",
+        "Comparer des rendements",
+        "Concevoir un itinéraire cultural"
+      ],
+      "contexte": "Amélioration des systèmes de production agricole."
+    },
+    {
+      "id": "urbaniste",
+      "nom": "Urbaniste",
+      "categorie": "disc",
+      "disciplines": [
+        "geographie",
+        "sociologie",
+        "statistiques"
+      ],
+      "gestes": [
+        "Diagnostiquer un territoire",
+        "Cartographier des usages",
+        "Évaluer un scénario"
+      ],
+      "contexte": "Conception de projets urbains à partir des besoins et contraintes du territoire."
+    },
+    {
+      "id": "professeur-de-sciences",
+      "nom": "Professeur de sciences",
+      "categorie": "disc",
+      "disciplines": [
+        "physique",
+        "biologie",
+        "communication"
+      ],
+      "gestes": [
+        "Construire une séquence",
+        "Conduire une expérimentation",
+        "Évaluer un raisonnement"
+      ],
+      "contexte": "Transmission des démarches scientifiques et accompagnement des apprentissages."
+    },
+    {
+      "id": "journaliste-scientifique",
+      "nom": "Journaliste scientifique",
+      "categorie": "mkt",
+      "disciplines": [
+        "communication",
+        "linguistique",
+        "physique"
+      ],
+      "gestes": [
+        "Vérifier une source",
+        "Vulgariser un résultat",
+        "Structurer un article"
+      ],
+      "contexte": "Médiation fiable de connaissances scientifiques auprès du public."
+    },
+    {
+      "id": "analyste-des-risques",
+      "nom": "Analyste des risques",
+      "categorie": "trade",
+      "disciplines": [
+        "statistiques",
+        "economie",
+        "geographie"
+      ],
+      "gestes": [
+        "Construire une matrice de risques",
+        "Estimer une probabilité",
+        "Prioriser des mesures"
+      ],
+      "contexte": "Identification, quantification et suivi des risques."
+    },
+    {
+      "id": "mediateur-scientifique",
+      "nom": "Médiateur scientifique",
+      "categorie": "mkt",
+      "disciplines": [
+        "communication",
+        "biologie",
+        "histoire"
+      ],
+      "gestes": [
+        "Adapter un discours",
+        "Concevoir un atelier",
+        "Animer une démonstration"
+      ],
+      "contexte": "Création de passerelles entre science, culture et publics."
+    },
+    {
+      "id": "medecin-generaliste",
+      "nom": "Médecin généraliste",
+      "categorie": "health",
+      "disciplines": [
+        "biologie",
+        "psychologie-cognitive",
+        "communication"
+      ],
+      "gestes": [
+        "Conduire un entretien clinique",
+        "Établir une orientation diagnostique",
+        "Coordonner un parcours de soins"
+      ],
+      "contexte": "Prévention, diagnostic initial et suivi global des patients."
+    },
+    {
+      "id": "infirmier",
+      "nom": "Infirmier",
+      "categorie": "health",
+      "disciplines": [
+        "biologie",
+        "communication",
+        "statistiques"
+      ],
+      "gestes": [
+        "Surveiller des paramètres cliniques",
+        "Réaliser un soin protocolisé",
+        "Transmettre des observations"
+      ],
+      "contexte": "Soins, surveillance clinique et coordination au contact des patients."
+    },
+    {
+      "id": "aide-soignant",
+      "nom": "Aide-soignant",
+      "categorie": "health",
+      "disciplines": [
+        "biologie",
+        "communication",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Accompagner les gestes quotidiens",
+        "Observer une évolution clinique",
+        "Appliquer les règles d’hygiène"
+      ],
+      "contexte": "Accompagnement, confort et observation quotidienne des personnes soignées."
+    },
+    {
+      "id": "pharmacien",
+      "nom": "Pharmacien",
+      "categorie": "health",
+      "disciplines": [
+        "biologie",
+        "chimie-des-materiaux",
+        "statistiques"
+      ],
+      "gestes": [
+        "Analyser une prescription",
+        "Sécuriser une dispensation",
+        "Conseiller sur le bon usage"
+      ],
+      "contexte": "Délivrance sécurisée, conseil et suivi des produits de santé."
+    },
+    {
+      "id": "sage-femme",
+      "nom": "Sage-femme",
+      "categorie": "health",
+      "disciplines": [
+        "biologie",
+        "communication",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Suivre une grossesse",
+        "Accompagner un accouchement",
+        "Conduire une action de prévention"
+      ],
+      "contexte": "Suivi médical, prévention et accompagnement autour de la grossesse et de la naissance."
+    },
+    {
+      "id": "kinesitherapeute",
+      "nom": "Kinésithérapeute",
+      "categorie": "health",
+      "disciplines": [
+        "biologie",
+        "physique",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Évaluer une capacité fonctionnelle",
+        "Construire un programme de rééducation",
+        "Guider un exercice thérapeutique"
+      ],
+      "contexte": "Évaluation et rééducation des fonctions motrices et respiratoires."
+    },
+    {
+      "id": "dentiste",
+      "nom": "Dentiste",
+      "categorie": "health",
+      "disciplines": [
+        "biologie",
+        "physique",
+        "communication"
+      ],
+      "gestes": [
+        "Réaliser un examen bucco-dentaire",
+        "Planifier un soin dentaire",
+        "Prévenir les risques infectieux"
+      ],
+      "contexte": "Prévention, diagnostic et traitement des affections bucco-dentaires."
+    },
+    {
+      "id": "technicien-de-laboratoire-medical",
+      "nom": "Technicien de laboratoire médical",
+      "categorie": "health",
+      "disciplines": [
+        "biologie",
+        "statistiques",
+        "informatique"
+      ],
+      "gestes": [
+        "Préparer un échantillon biologique",
+        "Exécuter une analyse contrôlée",
+        "Valider la qualité technique"
+      ],
+      "contexte": "Réalisation et contrôle technique des analyses de biologie médicale."
+    },
+    {
+      "id": "manipulateur-en-electroradiologie-medicale",
+      "nom": "Manipulateur en électroradiologie médicale",
+      "categorie": "health",
+      "disciplines": [
+        "physique",
+        "biologie",
+        "informatique"
+      ],
+      "gestes": [
+        "Préparer un protocole d’imagerie",
+        "Positionner un patient",
+        "Appliquer la radioprotection"
+      ],
+      "contexte": "Réalisation d’examens d’imagerie et de traitements utilisant des rayonnements."
+    },
+    {
+      "id": "psychologue",
+      "nom": "Psychologue",
+      "categorie": "health",
+      "disciplines": [
+        "psychologie-cognitive",
+        "communication",
+        "sociologie"
+      ],
+      "gestes": [
+        "Conduire un entretien psychologique",
+        "Analyser une situation clinique",
+        "Construire un accompagnement"
+      ],
+      "contexte": "Évaluation et accompagnement psychologique des personnes et des groupes."
+    }
+  ]
+}
