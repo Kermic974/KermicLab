@@ -145,6 +145,18 @@ test("compte OAuth : prof et admin confirment, un parent non ; un jeu prend la g
   assert.equal(admin.status, 201);
   assert.equal(sql().prepare("SELECT role FROM relectures_humaines WHERE relecteur_id = 'admin-1'").get().role, "admin");
 
+  sql().prepare("INSERT INTO roles (id, libelle, permissions) VALUES ('prof', 'Professeur', ?)").run(JSON.stringify(["chat"]));
+  const retire = await appel("prof-1", { notion_id: NOTION, criteres: coches("v1"), decision: "conforme" });
+  assert.equal((await retire.json()).erreur, "role-requis", "permission retirée du rôle prof");
+  sql().prepare("DELETE FROM roles WHERE id = 'prof'").run();
+
+  sql().prepare("INSERT INTO roles (id, libelle, permissions) VALUES ('relecteur-svt', 'Relecteur SVT', ?)").run(JSON.stringify(["relecture.humaine"]));
+  sql().prepare("INSERT INTO comptes (id, email_hash, role) VALUES ('parent-2', 'h4', 'parent')").run();
+  sql().prepare("INSERT INTO attributions_roles (type_compte, compte_id, role_id, roles) VALUES ('compte', 'parent-2', 'relecteur-svt', ?)").run(JSON.stringify(["relecteur-svt"]));
+  const perso = await appel("parent-2", { notion_id: NOTION, criteres: coches("v1", ["donnees"]), decision: "a_corriger", commentaire: "Une question personnelle reste." });
+  assert.equal(perso.status, 201, JSON.stringify(await perso.clone().json()));
+  assert.equal(sql().prepare("SELECT role FROM relectures_humaines WHERE relecteur_id = 'parent-2'").get().role, "relecteur-svt");
+
   if (!JEU) return;
   const jeu = await appel("prof-1", { notion_id: JEU, criteres: coches("v1"), decision: "conforme" });
   assert.equal((await jeu.json()).details.criteres, "incomplets");

@@ -71,6 +71,8 @@ test("/auth/me : le compte porte `backOffice`, calculé par le serveur à partir
   assert.equal(admin.connecte, true);
   assert.deepEqual({ id: admin.compte.id, role: admin.compte.role, backOffice: admin.compte.backOffice }, { id: "a1", role: "admin", backOffice: true });
   assert.equal((await (await moi("s-p1")).json()).compte.backOffice, false);
+  assert.equal(admin.compte.relectureHumaine, true, "l'admin peut confirmer une relecture humaine");
+  assert.equal((await (await moi("s-p1")).json()).compte.relectureHumaine, false);
   const anonyme = await moi();
   assert.equal(anonyme.status, 401);
   assert.deepEqual(await anonyme.json(), { connecte: false });

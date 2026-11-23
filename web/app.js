@@ -3901,7 +3901,7 @@ function fermerEdition() {
 
 /* ---------- Relecture humaine (ADR 0039) ---------- */
 
-const relectureEtat = { statut: null, miennes: [], filtre: "", chargee: false, erreur: false };
+const relectureEtat = { statut: null, miennes: [], filtre: "", chargee: false, erreur: false, formulaireNotion: null };
 
 /** Compte dont le rôle de relecteur a été attribué à la main. La démonstration ne confirme rien. */
 function relecteurConnecte() {
@@ -3911,7 +3911,10 @@ function relecteurConnecte() {
       ? { id: profEtat.moi.id, role: profEtat.moi.roleRelecture, local: true }
       : null;
   }
-  if (etat.compte && (etat.compte.role === "prof" || etat.compte.role === "admin")) return etat.compte;
+  // Le serveur dit si le compte OAuth peut relire (`/auth/me`), rôle personnalisé compris.
+  if (etat.compte?.relectureHumaine === true && typeof etat.compte.id === "string") {
+    return { id: etat.compte.id, role: etat.compte.roleRelecture };
+  }
   return null;
 }
 
@@ -3957,11 +3960,21 @@ function initRelecture(method, body) {
   return { method, headers, body, credentials: "include" };
 }
 
+function viderFormulaireRelecture() {
+  $("#relecture-formulaire")?.reset();
+  const erreur = $("#relecture-erreur");
+  if (erreur) erreur.textContent = "";
+}
+
 async function preparerRelecture(notion) {
   const bouton = $("#bulle-relecture-ouvrir");
   const compte = relecteurConnecte();
   bouton.hidden = !compte;
   if (!compte) basculerRelecture(false, { focus: false });
+  if (relectureEtat.formulaireNotion !== notion.id) {
+    relectureEtat.formulaireNotion = notion.id;
+    viderFormulaireRelecture();
+  }
   try {
     const r = await fetch(`${etat.config.apiUrl}/api/relectures/statut?notion=${encodeURIComponent(notion.id)}`);
     if (!r.ok) throw new Error("statut");
@@ -4045,7 +4058,9 @@ function rendreSuiviRelectures() {
   }));
   const notions = [...new Set(lignes.map((l) => l.notion_id))];
   const select = $("#relecture-filtre-notion");
-  select.replaceChildren(element("option", { cle: "contribFiltreToutes" }), ...notions.map((id) => {
+  const toutes = element("option", { cle: "contribFiltreToutes" });
+  toutes.value = "";
+  select.replaceChildren(toutes, ...notions.map((id) => {
     const option = element("option", { texte: titreNotion(id) });
     option.value = id;
     return option;
@@ -4100,7 +4115,7 @@ async function envoyerRelecture(e) {
       return;
     }
     if (donnees.statut) afficherBadgeRelecture(donnees.statut);
-    $("#relecture-commentaire").value = "";
+    viderFormulaireRelecture();
     notifier(t("relectureFaite"), "✅");
     await chargerMesRelectures();
   } catch {

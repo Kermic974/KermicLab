@@ -78,8 +78,10 @@ export async function roleRelecteurDuCompte(env, compteId, origine) {
   // Une ligne d'attribution existe : seuls ses rôles manuels comptent (la souscription n'est pas un rôle à la main).
   if (ligne) return roleRelecteurManuel(rolesManuels(ligne), definitions);
   if (origine === "oauth") {
+    // Sans ligne d'attribution, la colonne historique est le rôle posé à la main. La permission est vérifiée :
+    // un prof dont on a retiré `relecture.humaine` ne confirme pas.
     const compte = await env.DB.prepare("SELECT role FROM comptes WHERE id = ?").bind(compteId).first();
-    if (compte?.role === "admin" || compte?.role === "prof") return compte.role;
+    return roleRelecteurManuel(compte?.role ? [compte.role] : [], definitions);
   }
   return null;
 }

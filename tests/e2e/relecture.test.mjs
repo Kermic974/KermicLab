@@ -28,7 +28,7 @@ async function demarrer({ role = null } = {}) {
     }));
     await page.route(`${api}/auth/me`, (r) => r.fulfill({
       status: 200, contentType: "application/json", headers: cors(),
-      body: JSON.stringify({ connecte: true, compte: { id: "00000000-0000-4000-8000-0000000000ab", role } })
+      body: JSON.stringify({ connecte: true, compte: { id: "00000000-0000-4000-8000-0000000000ab", role, relectureHumaine: true, roleRelecture: role } })
     }));
     await page.route(`${api}/api/eleves`, (r) => r.fulfill({ contentType: "application/json", headers: cors(), body: "[]" }));
     await page.route(`${api}/api/contributions**`, (r) => r.fulfill({ contentType: "application/json", headers: cors(), body: "[]" }));
