@@ -1365,12 +1365,15 @@ let vueGraphe = null;
 const filtreGraphe = { discipline: "", recherche: "", microskills: true, prerequis: true, transSeules: false, masquees: new Set(), isole: null, selection: null, depart: null, arrivee: null, rotation: false };
 
 async function ecranGraphe() {
+  const generation = affichage;
   if (!grapheCharge) {
     let reponse;
     try { reponse = await fetch("referentiel-graphe.json"); } catch { throw Object.assign(new Error("reseau"), { code: "reseau" }); }
     if (!reponse.ok) throw Object.assign(new Error("graphe-absent"), { code: "graphe-absent" });
     try { grapheCharge = decompacter(await reponse.json()); } catch { throw Object.assign(new Error("graphe-absent"), { code: "graphe-absent" }); }
   }
+  // Un affichage plus récent a commencé pendant le chargement : ne pas remplacer sa vue par une vue hors de la page.
+  if (generation !== affichage) return [];
   const g = grapheCharge;
   const f = filtreGraphe;
   const ind = indicateurs(g);

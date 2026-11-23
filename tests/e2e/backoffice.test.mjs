@@ -143,6 +143,31 @@ test("back-office : graphe du référentiel, filtres, détails d'un nœud et plu
   await contexte.close();
 });
 
+test("back-office : un chargement lent du graphe ne remplace pas la vue d'une visite plus récente", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
+  await brancherWorker(page);
+  let premier = true;
+  await page.route("**/admin/referentiel-graphe.json*", async (route) => {
+    if (premier) { premier = false; await new Promise((r) => setTimeout(r, 1500)); }
+    await route.continue();
+  });
+  await entrer(page);
+  // Première visite lente, abandonnée pour un autre écran, puis seconde visite.
+  await page.click('#navigation [data-ecran="graphe"]');
+  await page.click('#navigation [data-ecran="journal"]');
+  await page.locator("#ecran[aria-busy]").waitFor({ state: "detached" });
+  await aller(page, "graphe");
+  await page.waitForTimeout(2000);
+  const image = () => page.locator("#graphe-canvas").evaluate((c) => c.toDataURL());
+  const avant = await image();
+  // Un filtre redessine par la vue courante : elle doit être celle du canvas affiché.
+  await page.uncheck("#graphe-microskills");
+  await page.waitForTimeout(300);
+  assert.notEqual(await image(), avant, "le canvas affiché suit les filtres");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
 test("back-office : rôle d'un compte, banc d'essai, décision sur un profil, paramètre de harness, brouillon", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
   await brancherWorker(page);

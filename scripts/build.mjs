@@ -69,6 +69,10 @@ await writeFile(`${racine}dist/blog/index.json`, `${JSON.stringify({
     adminJs = adminJs.replaceAll(`from "./${module}"`, `from "./${module}?v=${await empreinte(`admin/${module}`)}"`);
     if (adminJs === avant) throw new Error(`Back-office : import de ${module} introuvable dans admin.js`);
   }
+  // Le graphe du référentiel (ADR 0040) suit la même règle : son URL porte l'empreinte de son contenu.
+  const avantGraphe = adminJs;
+  adminJs = adminJs.replace('fetch("referentiel-graphe.json")', `fetch("referentiel-graphe.json?v=${await empreinte("admin/referentiel-graphe.json")}")`);
+  if (adminJs === avantGraphe) throw new Error("Back-office : chargement de referentiel-graphe.json introuvable dans admin.js");
   await writeFile(`${racine}dist/admin/admin.js`, adminJs);
   const versions = { "admin.css": await empreinte("admin/admin.css"), "admin.js": await empreinte("admin/admin.js"), "../style.css": await empreinte("style.css") };
   const page = `${racine}dist/admin/index.html`;
