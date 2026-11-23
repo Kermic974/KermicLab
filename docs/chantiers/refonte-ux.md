@@ -1,6 +1,6 @@
 # Refonte UX/UI — analyse de la maquette « revisitée »
 
-Maturité : **lots 1 à 6 livrés**. Décisions D1 à D7 validées le 2026-11-21 ([ADR 0039](../decisions/0039-refonte-ux.md)).
+Maturité : **lots 1 à 7 livrés**. Décisions D1 à D7 validées le 2026-11-21 ([ADR 0039](../decisions/0039-refonte-ux.md)).
 Lot 1 (jetons et bandeaux) : bandeau d'en-tête coloré par espace (`data-espace`, `espaceDe` de `web/navigation.js`),
 cartes de chiffres avec libellé au-dessus et liseré de l'espace. Lot 2 (écran d'arrivée unifié) : chiffres clés,
 journal des découvertes (`journalRecent` de `web/experiences.js`), cartes de rôle, quatre accès rapides ; « Mon tableau
@@ -13,7 +13,10 @@ exposé par `/api/catalogue`, `categoriesDesJeux` de `web/experiences.js`), filt
 étiquette de catégorie sur chaque carte. Lot 6 (Professeur, Famille,
 Contributions) : cartes d'enfants et d'élèves à liseré et pastille d'initiale aux couleurs de l'espace, tableaux
 compacts (en-têtes en petites capitales, chiffres alignés, survol), aperçu Avant / Après des contributions mis à jour
-pendant la saisie. Prochain : lot 7, navigation grand écran.
+pendant la saisie. Lot 7 (D1) : à partir de 1 024 px, la barre latérale devient une barre
+d'onglets en haut (marque, destinations sur une ligne défilante, actions secondaires en icônes nommées) ; le rail couvre
+721 à 1 023 px, la barre du bas 720 px et moins. CSS seulement : éléments et sélecteurs inchangés. Prochain : lot 8,
+passe accessibilité.
 
 ## 1. Objet et sources
 
@@ -113,6 +116,6 @@ dans 13 fichiers de tests e2e) : elle doit partir d'un ADR et d'une maquette cor
    vers Labs).
 5. ✅ **Jeux** : champ `categorie` des fiches, filtres, bandeau.
 6. ✅ **Professeur, Famille, Contributions** : tableau compact, cartes enfants, aperçu Avant / Après.
-7. **Navigation grand écran** (D1), si retenue : en dernier, une fois les écrans stabilisés, pour limiter la reprise des
+7. ✅ **Navigation grand écran** (D1), si retenue : en dernier, une fois les écrans stabilisés, pour limiter la reprise des
    tests e2e.
 8. **Passe finale** : accessibilité (cibles 44 px, contrastes, lecteurs d'écran), 320 px, thème sombre, anglais.

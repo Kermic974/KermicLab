@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Refonte UX, lot 7 — onglets en haut sur grand écran** (ADR 0039, D1) : à partir de 1 024 px, la barre latérale devient une barre horizontale (marque, destinations en onglets sur une seule ligne, idées, À propos, Je participe et avatar en icônes qui gardent leur nom accessible) ; entre 1 024 et 1 199 px, les onglets n'affichent que leur libellé. Le rail d'icônes couvre 721 à 1 023 px, la barre du bas 720 px et moins. / Redesign batch 7: top tab bar on large screens.
+
 - **Refonte UX, lot 6 — Famille, Professeur, Contributions** (ADR 0039) : les cartes d'enfants et d'élèves portent un liseré et une pastille à l'initiale aux couleurs de leur espace ; les tableaux de la famille et du suivi de classe sont plus lisibles (en-têtes en petites capitales, chiffres alignés, ligne survolée) ; le formulaire de contribution montre un aperçu Avant / Après, mis à jour pendant la saisie. Le test des contributions des comptes locaux simule aussi `/api/relectures` (route ajoutée par la relecture humaine), qui partait sur le réseau. / Redesign batch 6: colour-coded child and student cards, compact tables, before/after preview for contributions.
 
 - **Refonte UX, lot 5 — Jeux** (ADR 0039, D7) : chaque jeu déclare une catégorie (calcul et logique, stratégie et cartes, lettres et mots ; champ `categorie` des fiches, validé au build) ; l'écran Jeux propose un filtre par catégorie, combiné à la recherche, et chaque carte affiche sa catégorie. / Redesign batch 5: game categories and filter.
