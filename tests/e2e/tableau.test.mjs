@@ -865,8 +865,8 @@ test("mobile : navigation inférieure, mini-lab utilisable dans Labs, aucun déf
   assert.equal(await texte(page, '#minilab [data-sortie="sin"]'), "1,000");
   assert.equal(await texte(page, '#minilab [data-sortie="cos"]'), "0,000");
   assert.equal(await texte(page, '#minilab [data-sortie="rad"]'), "π/2 rad");
-  // « Mon tableau de bord » ouvre la vue Profil (aucun rôle) ; ses filtres mènent aux autres vues.
-  await page.click(".nav-mobile [data-nav=tableau-de-bord]");
+  // L'avatar « Mon espace » ouvre la vue Profil ; ses filtres mènent aux autres vues (ADR 0039).
+  await page.click(".profil-mobile");
   await page.locator("#profil").waitFor();
   assert.equal(new URL(page.url()).hash, "#profil");
   assert.equal(await texte(page, "#configuration-titre"), "Configuration");
@@ -876,7 +876,7 @@ test("mobile : navigation inférieure, mini-lab utilisable dans Labs, aucun déf
   await page.locator("#apropos").waitFor();
   assert.equal(await texte(page, "#salut"), "À propos");
   assert.equal(await page.locator("#apropos .lien-profil", { hasText: "Feuille de route" }).isVisible(), true);
-  assert.equal(await page.locator(".nav-mobile [data-nav=tableau-de-bord]").getAttribute("aria-current"), "page", "À propos est un sous-écran de Profil, vue du tableau de bord");
+  assert.equal(await page.locator(".profil-mobile").getAttribute("aria-current"), "page", "À propos est un sous-écran de Profil : l'avatar « Mon espace » est la page courante");
   await page.click(".profil-mobile");
   await page.locator("#profil").waitFor();
   assert.equal(await page.locator("#profil-pseudo").isVisible(), true);

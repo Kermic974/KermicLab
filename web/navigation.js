@@ -16,10 +16,11 @@ export const ENTREES_NAVIGATION = Object.freeze([
 ]);
 
 /**
- * Ordre par défaut : « Mon tableau de bord » juste sous l'Accueil. Les entrées liées au rôle (Ma famille,
- * Contributions, Professeur) sont regroupées dans le tableau de bord, comme vues filtrables, et non dans la barre.
+ * Ordre par défaut (ADR 0039 § 3) : cinq destinations. « Mon tableau de bord » a fusionné avec l'Accueil ; ses vues
+ * (Profil, Mon compte, Famille, Contributions, Professeur) s'ouvrent par l'avatar (« Mon espace ») et par leur barre de
+ * filtres. L'entrée reste configurable : il suffit de l'ajouter à la clé `navigation` de `web/config.json`.
  */
-export const ORDRE_NAVIGATION_DEFAUT = Object.freeze(["accueil", "tableau-de-bord", "education", "labs", "jeux", "progression"]);
+export const ORDRE_NAVIGATION_DEFAUT = Object.freeze(["accueil", "education", "labs", "jeux", "progression"]);
 
 /** Vues du tableau de bord, dans l'ordre de la barre de filtres. */
 export const VUES_TABLEAU_DE_BORD = Object.freeze([

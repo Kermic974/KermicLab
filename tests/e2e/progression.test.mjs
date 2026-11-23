@@ -205,3 +205,38 @@ test("accessibilité : navigation au clavier, une seule page courante, accordéo
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
+
+test("écran d'arrivée unifié : rien avant la première activité, puis chiffres clés et journal des découvertes (ADR 0039)", async () => {
+  const vierge = await demarrer({ horloge: true });
+  assert.equal(await vierge.page.locator("#chiffres-accueil").isHidden(), true, "aucun zéro affiché à la première visite");
+  assert.equal(await vierge.page.locator("#journal-accueil").isHidden(), true);
+  assert.deepEqual(vierge.erreurs, []);
+  await vierge.contexte.close();
+
+  const { page, contexte, erreurs } = await demarrer({ horloge: true, progression: {
+    version: 1, questions: 3, xp: 140, notions: ["pythagore", "la-cellule"], serie: 2, serieMax: 4, dernierJour: "2026-11-06",
+    badges: [], jours: { "2026-11-06": { q: 1, n: 0, xp: 40 } }, derniereNotion: "pythagore", defiJour: null,
+    decouvertes: {
+      notion: { pythagore: { premiere: "2026-11-05", ouvertures: 2 }, "la-cellule": { premiere: "2026-11-02", ouvertures: 1 } },
+      jeu: { demineur: { premiere: "2026-11-06", ouvertures: 1 } },
+    },
+  } });
+  await page.locator("#chiffres-accueil").waitFor();
+  assert.equal(await page.locator("#accueil-xp").textContent(), "140");
+  assert.equal(await page.locator("#accueil-notions").textContent(), "2");
+  assert.equal(await page.locator("#accueil-notions-aide").textContent(), "sur 3 au catalogue");
+  assert.equal(await page.locator("#accueil-serie").textContent(), "2 j");
+  assert.equal(await page.locator("#accueil-serie-aide").textContent(), "record : 4 j");
+  const lignes = page.locator("#journal-liste .journal-entree");
+  assert.equal(await lignes.count(), 3);
+  assert.deepEqual(await page.locator("#journal-liste strong").allTextContents(), ["Démineur", "Le théorème de Pythagore", "La cellule"], "du plus récent au plus ancien");
+  assert.deepEqual((await page.locator("#journal-liste .journal-quand").allTextContents()).slice(0, 2), ["aujourd'hui", "hier"]);
+  // Accès rapides : Éducation, Jeux, Labs et Défi express.
+  assert.deepEqual(await page.locator(".entrees-accueil [data-nav]").evaluateAll((b) => b.map((x) => x.dataset.nav)), ["education", "jeux", "labs", "defi"]);
+  await capturer(page, "accueil-unifie");
+  // Une ligne du journal rouvre l'expérience.
+  await lignes.nth(1).click();
+  await page.locator("#bulle-lab[open]").waitFor();
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});

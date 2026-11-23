@@ -189,6 +189,27 @@ details.config-serveur > summary { cursor: pointer; font-weight: 700; min-height
 .entree:hover { background: var(--surface-2); border-color: var(--bord-fort); }
 .entree-ico { display: grid; place-items: center; width: 44px; height: 44px; flex: none; border-radius: 13px; background: var(--lab-doux); color: var(--lab); }
 .entree-ico.jeux { background: var(--accent-doux); color: var(--accent-doux-texte); }
+.entree-ico.labs { background: var(--lab-doux); color: var(--lab); }
+.entree-ico.defi { background: var(--chaud-doux); color: var(--chaud); }
+/* Écran d'arrivée unifié (ADR 0039 § 3) : chiffres clés, cartes de rôle, journal des découvertes. */
+.chiffres-accueil .compteurs { grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); }
+.chiffres-accueil .compteur .petit { order: 3; margin-top: 2px; }
+.carte-role { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px 22px; border-top: 4px solid var(--accent); }
+.carte-role[data-espace-carte="famille"] { border-top-color: #0f766e; }
+.carte-role[data-espace-carte="professeur"] { border-top-color: #4338ca; }
+.carte-role h3 { font-size: 17px; }
+.journal-accueil { display: flex; flex-direction: column; gap: 10px; padding: 20px 22px; }
+.journal-accueil h3 { font-size: 17px; }
+.journal-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.journal-entree {
+  display: grid; grid-template-columns: minmax(84px, auto) minmax(0, 1fr) auto; gap: 4px 12px; align-items: baseline; width: 100%;
+  min-height: 44px; padding: 10px 12px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--bord); color: var(--texte);
+  font-weight: 400; text-align: left;
+}
+.journal-entree:hover { background: var(--accent-doux); }
+.journal-quand { color: var(--doux); font-size: .85rem; font-variant-numeric: tabular-nums; }
+.journal-entree strong { overflow-wrap: anywhere; }
+@media (max-width: 520px) { .journal-entree { grid-template-columns: minmax(0, 1fr) auto; } .journal-quand { grid-column: 1 / -1; } }
 .entree-textes { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 2px; }
 .entree-textes strong { font-size: 17px; }
 .entree-textes .doux { font-size: 13px; }

@@ -214,10 +214,10 @@ test("Mon tableau de bord (ordre par défaut) : sous l'Accueil, vues du professe
   await page.click("#formulaire-pseudo button[type=submit]");
   await page.click("#contrib-demo-prof");
   await page.locator("#contrib-tableau").waitFor({ state: "visible" });
-  // Barre latérale : six entrées, « Mon tableau de bord » en deuxième ; Ma famille, Contributions et Professeur n'y sont plus.
+  // Barre latérale : cinq destinations (ADR 0039) ; les vues personnelles s'ouvrent par l'avatar « Mon espace ».
   const entrees = page.locator(".barre-laterale nav [data-nav]:not([hidden])");
-  assert.deepEqual(await entrees.evaluateAll((b) => b.map((n) => n.dataset.nav)), ["accueil", "tableau-de-bord", "education", "labs", "jeux", "progression"]);
-  const tdb = page.locator('.barre-laterale [data-nav="tableau-de-bord"]');
+  assert.deepEqual(await entrees.evaluateAll((b) => b.map((n) => n.dataset.nav)), ["accueil", "education", "labs", "jeux", "progression"]);
+  const tdb = page.locator(".barre-pied .profil-carte");
   assert.equal(await tdb.getAttribute("aria-current"), "page", "Contributions est une vue du tableau de bord");
   // Les filtres : les vues proposées suivent le rôle.
   const filtres = page.locator("#navigation-personnelle [data-nav]:visible");
@@ -228,11 +228,16 @@ test("Mon tableau de bord (ordre par défaut) : sous l'Accueil, vues du professe
   assert.equal(new URL(page.url()).hash, "#classes");
   assert.equal(await tdb.getAttribute("aria-current"), "page");
   assert.equal(await page.locator('#navigation-personnelle [data-nav="classes"]').getAttribute("aria-current"), "page");
-  // Revenir par la navigation rouvre la dernière vue consultée.
+  // L'Accueil propose la carte « Tes classes », qui rouvre le suivi ; l'avatar mène au Profil et à ses filtres.
   await page.click('.barre-laterale [data-nav="accueil"]');
+  assert.equal(await page.locator("#accueil-prof").isVisible(), true, "carte de rôle du professeur sur l'Accueil");
+  assert.equal(await tdb.getAttribute("aria-current"), null, "l'Accueil est la page courante");
+  await page.click("#accueil-prof [data-nav=suivi]");
+  await page.locator("#suivi").waitFor({ state: "visible" });
+  assert.equal(new URL(page.url()).hash, "#suivi");
+  assert.equal(await tdb.getAttribute("aria-current"), "page");
   await tdb.click();
-  await page.locator("#classes").waitFor({ state: "visible" });
-  assert.equal(new URL(page.url()).hash, "#classes");
+  await page.locator("#profil").waitFor({ state: "visible" });
   await capturer(page, "tableau-de-bord-filtres");
   assert.deepEqual(appelsProf, []);
   assert.deepEqual(erreurs, []);

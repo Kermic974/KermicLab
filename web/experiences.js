@@ -142,3 +142,15 @@ export function decomposerDuree(ms) {
   const minutes = Math.floor(entier(ms) / 60_000);
   return { heures: Math.floor(minutes / 60), minutes: minutes % 60 };
 }
+
+/**
+ * Journal de l'Accueil (ADR 0039 § 3) : notions et jeux découverts, du plus récent au plus ancien, d'après la date de
+ * première ouverture enregistrée sur l'appareil. Seules les expériences encore au catalogue et datées y figurent.
+ */
+export function journalRecent(p, registre, { max = 5 } = {}) {
+  return ["notion", "jeu"]
+    .flatMap((type) => experiencesDecouvertes(p, registre, type))
+    .filter((x) => x.disponible && typeof x.premiere === "string" && /^\d{4}-\d{2}-\d{2}$/.test(x.premiere))
+    .sort((a, b) => b.premiere.localeCompare(a.premiere) || b.ouvertures - a.ouvertures || a.titre.localeCompare(b.titre))
+    .slice(0, Math.max(0, max));
+}

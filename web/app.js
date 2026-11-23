@@ -1443,6 +1443,7 @@ function rafraichirFamilleCompte() {
   const m = familleEtat.moi;
   const lie = !!jetonFamille();
   $("#entree-espace-famille").hidden = !m?.parent;
+  $("#accueil-famille").hidden = !m?.parent;
   $("#famille-ouvrir-espace").hidden = !m?.parent;
   // Lien rapide de la navigation : l'Espace famille pour un parent, le bloc Famille de « Mon compte » sinon.
   for (const navFamille of [$("#nav-famille"), $("#nav-mobile-famille")]) {
@@ -2139,6 +2140,7 @@ function actualiserContributionsLocales() {
 function rafraichirProfNav() {
   const actif = profActif();
   for (const id of ["#nav-suivi", "#nav-classes", "#nav-eleves", "#nav-mobile-suivi"]) $(id).hidden = !actif;
+  $("#accueil-prof").hidden = !actif;
   $("#profil-prof").hidden = !actif;
   // Filtres de « Mon tableau de bord » : mêmes droits que les entrées de navigation, même si la configuration les retire.
   const contribVisible = !$("#nav-contributions").hidden;
@@ -5715,16 +5717,19 @@ function marquerNavigation(cle) {
   // « Ma famille » mène à l'Espace famille : il est la page courante quand cet écran est affiché.
   const familles = [$("#nav-famille"), $("#nav-mobile-famille")];
   const groupes = [
+    // L'avatar est l'entrée « Mon espace » (ADR 0039 § 3) : page courante quand une vue personnelle est affichée.
     [...document.querySelectorAll(".barre-laterale .nav-bouton[data-nav], .barre-pied .profil-carte[data-action=\"profil\"]")],
-    [...document.querySelectorAll(".nav-mobile .nav-mobile-bouton[data-nav], #nav-mobile-autres .nav-mobile-bouton[data-nav]")],
+    [...document.querySelectorAll(".nav-mobile .nav-mobile-bouton[data-nav], #nav-mobile-autres .nav-mobile-bouton[data-nav], .profil-mobile[data-action=\"profil\"]")],
   ];
   for (const boutons of groupes) {
     const famille = boutons.find((b) => familles.includes(b));
     const surFamille = !!famille && !famille.hidden && etat.ecran === "espace-famille" && famille.dataset.nav === "espace-famille";
-    const direct = etat.ecran !== cle && boutons.some((b) => !familles.includes(b) && !b.hidden && (b.dataset.nav ?? b.dataset.action) === etat.ecran);
+    // L'avatar ouvre le Profil, mais représente toutes les vues personnelles (« Mon espace », ADR 0039 § 3).
+    const cleDe = (b) => (b.classList.contains("profil-carte") ? "tableau-de-bord" : b.dataset.nav ?? b.dataset.action);
+    const direct = etat.ecran !== cle && boutons.some((b) => !familles.includes(b) && !b.hidden && cleDe(b) === etat.ecran);
     const cible = direct ? etat.ecran : cle;
     for (const b of boutons) {
-      const courant = familles.includes(b) ? surFamille : !surFamille && (b.dataset.nav ?? b.dataset.action) === cible;
+      const courant = familles.includes(b) ? surFamille : !surFamille && cleDe(b) === cible;
       if (courant) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
     }
   }
@@ -6758,6 +6763,50 @@ function rendreApercu() {
   ].filter(Boolean);
   $("#apercu-progression").hidden = !morceaux.length;
   $("#apercu-progression-texte").textContent = morceaux.join(" · ");
+  rendreSyntheseAccueil(c);
+}
+
+/**
+ * Écran d'arrivée unifié (ADR 0039 § 3) : trois chiffres clés et le journal des découvertes récentes. Comme l'aperçu,
+ * rien n'apparaît avant une activité réelle (aucun zéro affiché à la première visite).
+ */
+function rendreSyntheseAccueil(c = experiences.compteurs(etat.progres, etat.registre)) {
+  const p = etat.progres;
+  const actif = p.xp > 0 || c.notions > 0 || c.jeux > 0;
+  $("#chiffres-accueil").hidden = !actif;
+  if (actif) {
+    const { niveau, xpDansNiveau, xpParNiveau } = progression.niveau(p);
+    $("#accueil-xp").textContent = String(p.xp);
+    $("#accueil-xp-aide").textContent = t("accueilXpAide", { n: niveau, reste: xpParNiveau - xpDansNiveau });
+    $("#accueil-notions").textContent = String(c.notions);
+    $("#accueil-notions-aide").textContent = t("accueilNotionsAide", { total: etat.registre.deType("notion").length });
+    $("#accueil-serie").textContent = t("accueilSerieValeur", { n: progression.serieCourante(p) });
+    $("#accueil-serie-aide").textContent = t("accueilSerieAide", { n: p.serieMax });
+  }
+  const recents = experiences.journalRecent(p, etat.registre, { max: 5 });
+  $("#journal-accueil").hidden = !recents.length;
+  $("#journal-liste").replaceChildren(...recents.map((x) => {
+    const li = element("li", { attributs: { "data-type": x.type } });
+    const b = element("button", { classe: "journal-entree", attributs: { type: "button" } });
+    b.append(
+      element("span", { classe: "journal-quand", texte: jourRelatif(x.premiere) }),
+      element("strong", { texte: x.titre }),
+      element("span", { classe: "doux petit", texte: x.type === "jeu" ? t("navJeux") : t(`matiere_${x.matiere ?? "autres"}`) })
+    );
+    b.addEventListener("click", () => ouvrirNotion(etat.registre.trouver(x.id)));
+    li.append(b);
+    return li;
+  }));
+}
+
+/** « aujourd'hui », « hier », sinon le jour et la date dans la langue de l'interface. */
+function jourRelatif(jour) {
+  const maintenant = new Date();
+  const aujourdhui = progression.jourLocal(maintenant);
+  const hier = progression.jourLocal(new Date(maintenant.getFullYear(), maintenant.getMonth(), maintenant.getDate() - 1));
+  if (jour === aujourdhui) return t("journalAujourdhui");
+  if (jour === hier) return t("journalHier");
+  return new Date(`${jour}T12:00:00`).toLocaleDateString(etat.langue, { weekday: "short", day: "numeric", month: "short" });
 }
 
 /* ---------- Progression : tableau de bord personnel, qui grandit avec l'usage ---------- */

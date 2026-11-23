@@ -105,3 +105,19 @@ test("durée : heures et minutes sans secondes, jamais négative", () => {
   assert.deepEqual(E.decomposerDuree(-5), { heures: 0, minutes: 0 });
   assert.deepEqual(E.decomposerDuree(NaN), { heures: 0, minutes: 0 });
 });
+
+test("journal de l'Accueil : découvertes datées, du plus récent au plus ancien, retirées du catalogue écartées", () => {
+  const p = {
+    decouvertes: {
+      notion: { pythagore: { premiere: "2026-11-20", ouvertures: 2 }, thales: { premiere: "2026-11-22", ouvertures: 1 }, ancienne: { premiere: "2026-11-23", ouvertures: 1 }, migree: { premiere: null, ouvertures: 3 } },
+      jeu: { demineur: { premiere: "2026-11-21", ouvertures: 4 } },
+      section: { education: { premiere: "2026-11-23", ouvertures: 1 } },
+    },
+  };
+  assert.deepEqual(E.journalRecent(p, registre).map((x) => [x.type, x.id, x.premiere]), [
+    ["notion", "thales", "2026-11-22"], ["jeu", "demineur", "2026-11-21"], ["notion", "pythagore", "2026-11-20"],
+  ], "sections exclues, notion sans date (migrée) et notion retirée du catalogue écartées");
+  assert.equal(E.journalRecent(p, registre, { max: 1 }).length, 1);
+  assert.deepEqual(E.journalRecent({}, registre), []);
+  assert.deepEqual(E.journalRecent(null, registre), []);
+});

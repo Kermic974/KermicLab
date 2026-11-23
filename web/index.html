@@ -78,7 +78,7 @@
       <div class="nav-idees" data-boite-idees-hote></div>
       <button type="button" class="nav-bouton" data-nav="apropos"><svg class="ico" aria-hidden="true"><use href="#i-aide"/></svg><span class="nav-texte" data-i18n="navAPropos"></span></button>
       <a class="nav-bouton nav-participer" href="https://www.onparticipe.fr/c/yDvp6lpc" target="_blank" rel="noopener noreferrer"><svg class="ico" aria-hidden="true"><use href="#i-coeur"/></svg><span class="nav-texte" data-i18n="navParticiper"></span></a>
-      <button type="button" class="profil-carte" data-action="profil" data-i18n-aria="profilTitre">
+      <button type="button" class="profil-carte" data-action="profil" data-i18n-aria="monEspace">
         <span class="avatar-profil" data-profil="initiale" aria-hidden="true"></span>
         <span class="profil-textes"><span class="profil-nom" data-profil="pseudo"></span><span class="profil-meta" data-profil="niveau"></span></span>
       </button>
@@ -108,7 +108,7 @@
             </span>
           </button>
           <button type="button" class="bouton-icone" id="bascule-theme" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="#i-lune"/></svg></button>
-          <button type="button" class="profil-carte profil-mobile" data-action="profil" data-i18n-aria="profilTitre"><span class="avatar-profil" data-profil="initiale" aria-hidden="true"></span></button>
+          <button type="button" class="profil-carte profil-mobile" data-action="profil" data-i18n-aria="monEspace"><span class="avatar-profil" data-profil="initiale" aria-hidden="true"></span></button>
           <label class="langue"><span class="visuellement-cache" data-i18n="langue"></span>
             <select id="langue"></select>
           </label>
@@ -144,6 +144,26 @@
             <button type="button" class="secondaire petit-bouton" id="nouvelle-conversation-accueil" data-i18n="chatNouvelleCourt" data-i18n-aria="chatNouvelle"></button>
           </div>
         </section>
+        <!-- Écran d'arrivée unifié (ADR 0039 § 3) : chiffres clés dès qu'une activité réelle existe. -->
+        <section class="chiffres-accueil" id="chiffres-accueil" aria-labelledby="chiffres-accueil-titre" hidden>
+          <h3 id="chiffres-accueil-titre" class="visuellement-cache" data-i18n="accueilChiffresTitre"></h3>
+          <dl class="compteurs">
+            <div class="compteur"><dt data-i18n="accueilXp"></dt><dd id="accueil-xp"></dd><span class="doux petit" id="accueil-xp-aide"></span></div>
+            <div class="compteur"><dt data-i18n="accueilNotions"></dt><dd id="accueil-notions"></dd><span class="doux petit" id="accueil-notions-aide"></span></div>
+            <div class="compteur"><dt data-i18n="accueilSerie"></dt><dd id="accueil-serie"></dd><span class="doux petit" id="accueil-serie-aide"></span></div>
+          </dl>
+        </section>
+        <!-- Cartes de rôle : l'Espace famille pour un parent, le suivi de classe pour un professeur. -->
+        <section class="carte carte-role" id="accueil-famille" data-espace-carte="famille" aria-labelledby="accueil-famille-titre" hidden>
+          <h3 id="accueil-famille-titre" data-i18n="accueilFamilleTitre"></h3>
+          <p class="doux" data-i18n="accueilFamilleTexte"></p>
+          <button type="button" class="bouton" data-nav="espace-famille" data-i18n="accueilFamilleBouton"></button>
+        </section>
+        <section class="carte carte-role" id="accueil-prof" data-espace-carte="professeur" aria-labelledby="accueil-prof-titre" hidden>
+          <h3 id="accueil-prof-titre" data-i18n="accueilProfTitre"></h3>
+          <p class="doux" data-i18n="accueilProfTexte"></p>
+          <button type="button" class="bouton" data-nav="suivi" data-i18n="accueilProfBouton"></button>
+        </section>
         <section class="carte reprendre" id="reprendre" aria-labelledby="reprendre-titre" hidden>
           <span class="pastille lab"><svg class="ico petit-ico" aria-hidden="true"><use href="#i-lecture"/></svg><span id="reprendre-titre" data-i18n="reprendreTitre"></span></span>
           <div id="reprendre-contenu" class="reprendre-contenu"></div>
@@ -159,6 +179,11 @@
             <h3 id="suggestion-titre" data-i18n="suggestionTitre"></h3>
           </div>
           <div id="suggestion-contenu" class="suggestion-contenu"></div>
+        </section>
+        <section class="carte journal-accueil" id="journal-accueil" aria-labelledby="journal-titre" hidden>
+          <h3 id="journal-titre" data-i18n="journalTitre"></h3>
+          <ul id="journal-liste" class="journal-liste"></ul>
+          <button type="button" class="lien-fleche" data-nav="progression"><span data-i18n="journalVoirTout"></span><svg class="ico petit-ico" aria-hidden="true"><use href="#i-fleche"/></svg></button>
         </section>
         <!-- Pilotés depuis le back-office (ADR 0026) : contenus mis en avant et parcours publiés. Masqués s'il n'y en a pas. -->
         <section class="carte a-la-une" id="a-la-une" aria-labelledby="une-titre" hidden>
@@ -178,6 +203,16 @@
           <button type="button" class="carte entree" data-nav="jeux">
             <span class="entree-ico jeux" aria-hidden="true"><svg class="ico"><use href="#i-jeu"/></svg></span>
             <span class="entree-textes"><strong data-i18n="navJeux"></strong><span class="doux" id="entree-jeux"></span></span>
+            <svg class="ico entree-fleche" aria-hidden="true"><use href="#i-fleche"/></svg>
+          </button>
+          <button type="button" class="carte entree" data-nav="labs">
+            <span class="entree-ico labs" aria-hidden="true"><svg class="ico"><use href="#i-fiole"/></svg></span>
+            <span class="entree-textes"><strong data-i18n="navLabs"></strong><span class="doux" data-i18n="entreeLabsAide"></span></span>
+            <svg class="ico entree-fleche" aria-hidden="true"><use href="#i-fleche"/></svg>
+          </button>
+          <button type="button" class="carte entree" data-nav="defi">
+            <span class="entree-ico defi" aria-hidden="true"><svg class="ico"><use href="#i-eclair"/></svg></span>
+            <span class="entree-textes"><strong data-i18n="navDefi"></strong><span class="doux" data-i18n="entreeDefiAide"></span></span>
             <svg class="ico entree-fleche" aria-hidden="true"><use href="#i-fleche"/></svg>
           </button>
         </div>

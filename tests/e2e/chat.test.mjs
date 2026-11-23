@@ -537,12 +537,12 @@ test("Éducation : Niveau > Matière > Notions en accordéons fermés, recherche
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
-test("navigation : 6 entrées latérales, « Mon tableau de bord » sous l'Accueil, jeux absents d'Éducation, retour arrière", async () => {
+test("navigation : 5 entrées latérales (tableau de bord fusionné avec l'Accueil), jeux absents d'Éducation, retour arrière", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
   const requetes = await simulerApi(page, { jeux: true });
   await page.goto(serveur.url);
   const destinations = page.locator(".barre-laterale nav [data-nav]:not([hidden])") // sans rôle : l'entrée Contributions reste masquée (ADR 0023);
-  assert.deepEqual(await destinations.evaluateAll((b) => b.map((n) => n.dataset.nav)), ["accueil", "tableau-de-bord", "education", "labs", "jeux", "progression"]);
+  assert.deepEqual(await destinations.evaluateAll((b) => b.map((n) => n.dataset.nav)), ["accueil", "education", "labs", "jeux", "progression"]);
   assert.equal(await page.locator(".barre-laterale [aria-current=page]").count(), 1);
   const education = page.locator(".barre-laterale [data-nav=education]");
   const jeux = page.locator(".barre-laterale [data-nav=jeux]");
@@ -703,7 +703,7 @@ test("Éducation mobile : depuis la navigation du bas, une colonne, sans débord
   assert.ok(debord <= 0, `déborde de ${debord}px`);
   await contexte.close();
 });
-test("navigation mobile : 6 destinations tactiles, libellés visibles, sans débordement (320 px)", async () => {
+test("navigation mobile : 5 destinations tactiles, libellés visibles, sans débordement (320 px)", async () => {
   const { page, contexte } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 320, height: 740 }, isMobile: true });
   await simulerApi(page, { jeux: true });
   await page.goto(serveur.url);
@@ -721,13 +721,13 @@ test("navigation mobile : 6 destinations tactiles, libellés visibles, sans déb
   assert.equal(await page.locator("#ecran-progression").isVisible(), true);
   await page.locator(".nav-mobile [data-nav=accueil]").click();
   assert.equal(await page.locator("#accueil").isVisible(), true);
-  assert.deepEqual(await page.locator(".nav-mobile .nav-mobile-bouton:not([hidden])").allTextContents(), ["Accueil", "Tableau", "Éducation", "Labs", "Jeux", "Progrès"]);
+  assert.deepEqual(await page.locator(".nav-mobile .nav-mobile-bouton:not([hidden])").allTextContents(), ["Accueil", "Éducation", "Labs", "Jeux", "Progrès"]);
   assert.deepEqual(await page.locator(".nav-mobile [aria-current=page]").allTextContents(), ["Accueil"]);
   const boutons = await page.locator(".nav-mobile .nav-mobile-bouton:not([hidden])").evaluateAll((elements) => elements.map((n) => {
     const r = n.getBoundingClientRect();
     return { largeur: r.width, hauteur: r.height, droite: r.right, bas: r.bottom };
   }));
-  assert.ok(boutons.every((b) => b.largeur >= 44 && b.hauteur >= 44 && b.droite <= 320 && b.bas <= 740), "les six entrées restent visibles et tactiles");
+  assert.ok(boutons.every((b) => b.largeur >= 44 && b.hauteur >= 44 && b.droite <= 320 && b.bas <= 740), "les cinq entrées restent visibles et tactiles");
   const debord = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert.ok(debord <= 0, `déborde de ${debord}px`);
   await contexte.close();
