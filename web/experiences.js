@@ -103,10 +103,22 @@ export function compteurs(p, registre) {
  * Progression par matière : notions explorées / notions publiées dans le catalogue. Le dénominateur est le catalogue
  * réel, donc fiable ; seules les matières déjà commencées apparaissent (divulgation progressive).
  */
-export function progressionParMatiere(p, registre, ordreMatieres = []) {
+/** Groupes de niveaux du filtre de la progression par matière (ADR 0039, lot 3). */
+export const GROUPES_NIVEAU = Object.freeze({ primaire: ["primaire"], college: ["college"], lycee: ["seconde", "premiere", "terminale"] });
+const dansGroupe = (groupe, niveau) => !groupe || (GROUPES_NIVEAU[groupe] ?? []).includes(niveau);
+
+/** Groupes de niveaux où au moins une notion a été explorée, dans l'ordre primaire, collège, lycée. */
+export function groupesExplores(p, registre) {
+  const vues = new Set(decouvertesDe(p, "notion"));
+  const niveaux = new Set(registre.deType("notion").filter((e) => vues.has(e.id)).map((e) => e.niveau));
+  return Object.keys(GROUPES_NIVEAU).filter((g) => GROUPES_NIVEAU[g].some((n) => niveaux.has(n)));
+}
+
+/** `groupe` (facultatif) limite le calcul aux notions d'un groupe de niveaux : explorées et total du même groupe. */
+export function progressionParMatiere(p, registre, ordreMatieres = [], { groupe = null } = {}) {
   const vues = new Set(decouvertesDe(p, "notion"));
   const parMatiere = new Map();
-  for (const e of registre.deType("notion")) {
+  for (const e of registre.deType("notion").filter((n) => dansGroupe(groupe, n.niveau))) {
     const m = parMatiere.get(e.matiere) ?? { matiere: e.matiere, explorees: 0, total: 0 };
     m.total += 1;
     if (vues.has(e.id)) m.explorees += 1;

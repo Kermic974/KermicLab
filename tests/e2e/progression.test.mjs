@@ -234,6 +234,17 @@ test("écran d'arrivée unifié : rien avant la première activité, puis chiffr
   // Accès rapides : Éducation, Jeux, Labs et Défi express.
   assert.deepEqual(await page.locator(".entrees-accueil [data-nav]").evaluateAll((b) => b.map((x) => x.dataset.nav)), ["education", "jeux", "labs", "defi"]);
   await capturer(page, "accueil-unifie");
+  // Progression (lot 3) : anneau d'XP du niveau en cours et filtre par niveau des matières (collège et lycée explorés).
+  await page.click(".barre-laterale [data-nav=progression]");
+  assert.equal(await page.locator("#progres-niveau-num").evaluate((n) => n.style.getPropertyValue("--part")), "0.4", "140 XP : 40 % du niveau 2");
+  assert.deepEqual(await page.locator("#filtre-niveau-matieres button").allTextContents(), ["Tout", "Collège", "Lycée"]);
+  assert.equal(await page.locator('[data-groupe-niveau="tous"]').getAttribute("aria-pressed"), "true");
+  await page.click('[data-groupe-niveau="lycee"]');
+  assert.deepEqual(await page.locator("#progression-matieres .nom").allTextContents(), ["SVT"], "seule la cellule (seconde) est au lycée");
+  assert.equal(await page.locator('[data-groupe-niveau="lycee"]').getAttribute("aria-pressed"), "true");
+  await page.click('[data-groupe-niveau="college"]');
+  assert.deepEqual(await page.locator("#progression-matieres .nom").allTextContents(), ["Maths"]);
+  await page.click(".barre-laterale [data-nav=accueil]");
   // Une ligne du journal rouvre l'expérience.
   await lignes.nth(1).click();
   await page.locator("#bulle-lab[open]").waitFor();

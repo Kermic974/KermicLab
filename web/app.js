@@ -33,6 +33,8 @@ const etat = {
   ecran: "accueil", registre: experiences.creerRegistre([]), ouverts: new Set(), moteur: null, llmActif: false, llmDisponible: false,
   // Progression consultée : null pour la sienne, sinon la clé d'un compte suivi (« famille:<id> » ou « eleve:<id> »).
   compteSuivi: null,
+  // Filtre de la progression par matière : "tous" ou un groupe de niveaux (primaire, collège, lycée).
+  niveauMatieres: "tous",
   defiIa: { ia: false, generationsParJour: 0, restantesServeur: null },
   cahiersIa: { ia: false, generationsParJour: 0, restantesServeur: null, modele: "" },
   // Configuration centralisée exposée par le Worker (/api/llm/status, ADR 0019) et skills actifs.
@@ -4521,6 +4523,8 @@ function remplirProgres() {
   const p = etat.progres;
   const { niveau, xpDansNiveau, xpParNiveau } = progression.niveau(p);
   $("#progres-niveau-num").textContent = String(niveau);
+  // Anneau d'XP (ADR 0039, lot 3) : la part du niveau en cours colore le pourtour ; le texte et <progress> restent.
+  $("#progres-niveau-num").style.setProperty("--part", String(xpDansNiveau / xpParNiveau));
   $("#progres-niveau").textContent = t("niveauLong", { n: niveau });
   $("#progres-xp").max = xpParNiveau; $("#progres-xp").value = xpDansNiveau;
   $("#progres-xp-texte").textContent = t("xpAvantNiveau", { n: xpParNiveau - xpDansNiveau, m: niveau + 1 });
@@ -6927,8 +6931,21 @@ function rendreProgression() {
     return d;
   }));
 
-  const matieres = experiences.progressionParMatiere(p, etat.registre, MATIERES);
-  $("#bloc-matieres").hidden = !matieres.length;
+  const groupes = experiences.groupesExplores(p, etat.registre);
+  if (!groupes.includes(etat.niveauMatieres)) etat.niveauMatieres = "tous";
+  const filtre = $("#filtre-niveau-matieres");
+  filtre.hidden = groupes.length < 2;
+  filtre.replaceChildren(...(groupes.length < 2 ? [] : ["tous", ...groupes]).map((g) => {
+    const b = element("button", { classe: "puce-niveau", cle: `groupeNiveau_${g}`, attributs: { type: "button", "data-groupe-niveau": g, "aria-pressed": String(etat.niveauMatieres === g) } });
+    b.addEventListener("click", () => {
+      etat.niveauMatieres = g;
+      rendreProgression();
+      $(`[data-groupe-niveau="${g}"]`)?.focus();
+    });
+    return b;
+  }));
+  const matieres = experiences.progressionParMatiere(p, etat.registre, MATIERES, { groupe: etat.niveauMatieres === "tous" ? null : etat.niveauMatieres });
+  $("#bloc-matieres").hidden = !groupes.length;
   $("#progression-matieres").replaceChildren(...matieres.map(({ matiere, explorees, total }) => {
     const li = element("li", { classe: "progression-matiere" });
     const nom = t(`matiere_${matiere}`);
