@@ -49,8 +49,8 @@
     <nav aria-label="Fichiers de l'atelier"><a href="index.html">Site et parcours principal</a><a href="notion.html">Page de notion</a><a href="cercle.html">Application cercle</a><a href="jeux.html">Les neuf jeux</a><a href="editorial.html">Pages annexes</a><a href="inventaire.html">Inventaire des écrans</a></nav>
 <!-- ux:suivi:debut -->
 <aside data-suivi-ux style="border:1px dashed #777;padding:1rem;margin:1rem 0;background:#eee;overflow-wrap:anywhere">
-  <strong>Squelette v1.93.0 · 2026-11-23</strong>
-  <p>Référence source : <a href="https://github.com/Kermic974/KermicLab/tree/30dec44327e72dfc0b82911c01a5ca6e71556560" target="_blank" rel="noopener noreferrer" data-lien-actif>30dec44</a>.
+  <strong>Squelette v1.94.0 · 2026-11-23</strong>
+  <p>Référence source : <a href="https://github.com/Kermic974/KermicLab/tree/3dea9afec4e7d59250b7c261663d7fac18a3a8db" target="_blank" rel="noopener noreferrer" data-lien-actif>3dea9af</a>.
   <a href="https://github.com/Kermic974/KermicLab/commits/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>Historique des sources</a> · <a href="https://github.com/Kermic974/KermicLab/blob/main/docs/ux/index.html" target="_blank" rel="noopener noreferrer" data-lien-actif>Dernier squelette sur main</a></p>
   <details><summary>Comparer avec les vues actives et les sources</summary>
     <p>Les liens ouvrent le site dans un nouvel onglet, uniquement sur clic. Ils suivent les vues actives, pas une version déployée certifiée. Un dialogue sans URL directe nécessite l'action indiquée. Aucun compte masqué n'est ouvert artificiellement.</p>
@@ -80,7 +80,7 @@
 <li><a href="#comptes">Squelette</a> ↔ Type de profil : dialogue Profil, bloc masqué tant que connexionActive vaut false</li>
 <li><a href="#backoffice">Squelette</a> ↔ <a href="https://kermiclab.online/admin/" target="_blank" rel="noopener noreferrer" data-lien-actif>Back-office : page séparée /admin/, clé partagée, onze écrans (ADR 0026, 0031)</a></li></ul>
     <p>Sources liées : <a href="https://github.com/Kermic974/KermicLab/tree/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>web</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/catalogue" target="_blank" rel="noopener noreferrer" data-lien-actif>catalogue</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/gabarit/jeux/trophees.js" target="_blank" rel="noopener noreferrer" data-lien-actif>gabarit/jeux/trophees.js</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/scripts/lib/trophees.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/lib/trophees.mjs</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/scripts/roadmap.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/roadmap.mjs</a></p>
-    <p>Empreinte des sources : <code>560bdc96fe1cb028500199e2022d5e032cef8dcc430282634df4b02f710698af</code><br>Empreinte du squelette hors cartouche : <code>97d5a4a9dc2ed5cc550b9a8d56ec512c69c29e769247a718310c2d5aa967ae78</code></p>
+    <p>Empreinte des sources : <code>fa7baca819872e5d2bce52b58a3cefb7760c279b8c9e83f078529f7709030fbb</code><br>Empreinte du squelette hors cartouche : <code>7d21ae6538992e24073b792b859d173994775d338ce67bac8baca336167314e3</code></p>
     <p>Registre et journal : docs/ux/suivi.json. Mise à jour : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Contrôle sans modification : <code>node scripts/ux-suivi.mjs --check</code>.</p>
   </details>
 </aside>
@@ -91,13 +91,12 @@
       <strong>KermicLab</strong><p>Laboratoire interactif</p>
       <nav aria-label="Navigation principale">
         <a href="#accueil" data-nav="accueil">Accueil</a>
-        <a href="#profil" data-nav="tableau-de-bord">Mon tableau de bord</a>
         <a href="#catalogue" data-nav="education">Éducation</a>
         <a href="#labs" data-nav="labs">Labs</a>
         <a href="#jeux" data-nav="jeux">Jeux</a>
         <a href="#progression" data-nav="progression">Progression</a>
       </nav>
-      <p>Ordre des entrées réglé par la clé <code>navigation</code> de web/config.json (ADR 0031) ; par défaut, Mon tableau de bord sous l'Accueil. Ma famille, Contributions, Suivi de classe, Mes classes et Mes élèves ne sont plus dans la barre : ce sont des vues de Mon tableau de bord, sauf si la configuration les y remet. Mobile : Accueil · Tableau · Éducation · Labs · Jeux · Progrès.</p>
+      <p>Ordre des entrées réglé par la clé <code>navigation</code> de web/config.json (ADR 0031) ; par défaut cinq destinations (ADR 0039 § 3) : « Mon tableau de bord » a fusionné avec l'Accueil. Ses vues (Profil, Mon compte, Espace famille, Contributions, Suivi de classe, Mes classes, Mes élèves) s'ouvrent par l'avatar « Mon espace », marqué page courante sur chacune d'elles, et par leur barre de filtres ; la configuration peut remettre l'entrée <a href="#profil" data-nav="tableau-de-bord">Mon tableau de bord</a> ou les raccourcis de rôle dans la barre. Mobile : Accueil · Éducation · Labs · Jeux · Progrès, avatar dans l'en-tête.</p>
       <nav aria-label="Mon tableau de bord · filtres" data-source="web/index.html:navigation-personnelle"><a href="#profil" data-nav="profil">Profil</a> · <a href="#compte" data-nav="compte">Mon compte</a> · <a href="#espace-famille" data-nav="espace-famille">Espace famille</a> (parent) · <a href="#contributions" data-nav="contributions">Contributions</a> (contributeur, prof ou admin) · <a href="#suivi" data-nav="suivi">Suivi de classe</a> · <a href="#classes" data-nav="classes">Mes classes</a> · <a href="#eleves" data-nav="eleves">Mes élèves</a> (professeur). Rouvre la dernière vue consultée, sinon Suivi de classe (professeur) ou Profil.</nav>
       <p>Boîte à idées · <a href="editorial.html#equipe">L'équipe</a> · Je participe · <a href="#profil" data-nav="profil">E · Explorateur · Niveau 2</a></p>
       <p class="note">Les vues Profil et Mon compte partagent la m&ecirc;me navigation. Cinq entrées dans la navigation latérale et une carte de compte donnant accès au Profil. Une seule destination visible est marquée « page courante » (aria-current). Sur mobile : une barre basse de six entrées (Accueil, Éducation, Labs, Jeux, Progrès, Profil), sans action secondaire. L'équipe est un lien secondaire du pied de barre, pas une destination supplémentaire. Le défi est un sous-écran d'Éducation (<a href="#defi" data-nav="defi">Défi express</a>), l'Espace famille un sous-écran de Profil. Anciennes adresses : #notions, #catalogue et #cahiers mènent à Éducation, #badges à Progression.</p>
@@ -156,6 +155,7 @@
       </section>
       <section class="ecran" id="accueil" data-ecran="accueil" data-vue-active="accueil" data-source="web/index.html:accueil">
         <span class="repere">S02 · Accueil : point de départ court</span><h2>Bonjour Explorateur 👋</h2><p>Prêt à comprendre quelque chose de nouveau ?</p>
+        <p class="note">Écran d'arrivée unifié (ADR 0039 § 3), après une première activité réelle : trois chiffres clés (XP et reste avant le niveau suivant, notions explorées sur le total du catalogue, série et record), carte de rôle « Ta famille » (parent) ou « Tes classes » (professeur), journal « Ce que tu as découvert » (5 notions ou jeux au plus, du plus récent au plus ancien : aujourd'hui, hier, puis la date ; chaque ligne rouvre l'expérience ; lien « Tout voir dans Progression »), et quatre accès rapides : Éducation, Jeux, Labs, Défi express. À la première visite, ni chiffre ni journal.</p>
         <p class="note">Titre et accroche forment un bandeau en dégradé à la couleur de l'espace courant (ADR 0039) : Accueil et vues personnelles suivent la charte, Éducation bleu, Labs violet, Jeux ambre, Progression vert, Famille sarcelle, Professeur indigo, Contributions orange ; texte blanc au contraste AA en clair comme en sombre.</p>
         <div class="actions"><a class="bouton" href="#progression">🔥 3 j · Niv. 2 · Ma progression</a><button disabled>Activer le mode sombre</button><label>Langue<select disabled><option>Français</option><option>English</option></select></label></div>
         <p>Ne partage jamais ton nom, ton adresse, ton école ou ta photo.</p>
