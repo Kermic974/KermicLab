@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Refonte UX, lot 5 — Jeux** (ADR 0039, D7) : chaque jeu déclare une catégorie (calcul et logique, stratégie et cartes, lettres et mots ; champ `categorie` des fiches, validé au build) ; l'écran Jeux propose un filtre par catégorie, combiné à la recherche, et chaque carte affiche sa catégorie. / Redesign batch 5: game categories and filter.
+
 - **Refonte UX, lot 4 — Éducation et Labs** (ADR 0039) : sur grand écran, Éducation passe en deux colonnes (notions à gauche, « Pour s'entraîner » à droite, qui reste visible au défilement) ; la recherche des notions est mise en avant avec une loupe ; les cartes « Pour s'entraîner » prennent la couleur de leur espace et la carte des Labs présente le cercle trigonométrique et le système solaire ; dans l'écran Labs, chaque carte indique ses niveaux. / Redesign batch 4: two-column Education screen, prominent search, colour-coded cards, levels on Lab cards.
 
 - **Refonte UX, lot 3 — Progression** (ADR 0039) : le niveau s'affiche dans un anneau d'XP (part du niveau en cours) ; la progression par matière se filtre par niveau (Tout, Primaire, Collège, Lycée), seulement parmi les niveaux où une notion a été explorée. / Redesign batch 3: XP ring and level filter on per-subject progress.

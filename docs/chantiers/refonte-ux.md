@@ -1,6 +1,6 @@
 # Refonte UX/UI — analyse de la maquette « revisitée »
 
-Maturité : **lots 1 à 4 livrés**. Décisions D1 à D7 validées le 2026-11-21 ([ADR 0039](../decisions/0039-refonte-ux.md)).
+Maturité : **lots 1 à 5 livrés**. Décisions D1 à D7 validées le 2026-11-21 ([ADR 0039](../decisions/0039-refonte-ux.md)).
 Lot 1 (jetons et bandeaux) : bandeau d'en-tête coloré par espace (`data-espace`, `espaceDe` de `web/navigation.js`),
 cartes de chiffres avec libellé au-dessus et liseré de l'espace. Lot 2 (écran d'arrivée unifié) : chiffres clés,
 journal des découvertes (`journalRecent` de `web/experiences.js`), cartes de rôle, quatre accès rapides ; « Mon tableau
@@ -8,7 +8,9 @@ de bord » retiré de l'ordre par défaut, l'avatar devient « Mon espace ». Lo
 suivis (D8), anneau d'XP du niveau en cours, filtre par niveau de la progression par matière (`groupesExplores`,
 `GROUPES_NIVEAU` de `web/experiences.js`) ; les badges « à portée » existaient déjà. Lot 4 (Éducation et Labs) : deux colonnes sur grand écran (notions à
 gauche, « Pour s'entraîner » à droite et collant), recherche avec loupe, cartes à la couleur de leur espace, carte des
-Labs qui présente les deux labs, niveaux sur les cartes de l'écran Labs. Prochain : lot 5, Jeux.
+Labs qui présente les deux labs, niveaux sur les cartes de l'écran Labs. Lot 5 (Jeux) : champ `categorie` des fiches de jeux (validé au build,
+exposé par `/api/catalogue`, `categoriesDesJeux` de `web/experiences.js`), filtre par catégorie combiné à la recherche,
+étiquette de catégorie sur chaque carte. Prochain : lot 6, Professeur, Famille et Contributions.
 
 ## 1. Objet et sources
 
@@ -106,7 +108,7 @@ dans 13 fichiers de tests e2e) : elle doit partir d'un ADR et d'une maquette cor
 3. ✅ **Progression** : progression des comptes suivis (D8), anneau d'XP, filtre par niveau des matières, trophées « à portée ».
 4. ✅ **Éducation et Labs** : recherche dans le bandeau, colonne de droite (défi, cahiers, aperçu du labo qui renvoie
    vers Labs).
-5. **Jeux** : champ `categorie` des fiches, filtres, bandeau.
+5. ✅ **Jeux** : champ `categorie` des fiches, filtres, bandeau.
 6. **Professeur, Famille, Contributions** : tableau compact, cartes enfants, aperçu Avant / Après.
 7. **Navigation grand écran** (D1), si retenue : en dernier, une fois les écrans stabilisés, pour limiter la reprise des
    tests e2e.

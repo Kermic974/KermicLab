@@ -21,6 +21,8 @@ validation du CODEOWNER.
   déjà vers une autre page) et des `questions` comme un joueur les poserait (« je veux jouer au … »).
   Facultatif : `notions-liees` (6 au plus), les notions du catalogue que le jeu fait travailler ; elles s'affichent sur
   la carte du jeu et le jeu est proposé quand l'élève valide l'une d'elles (ADR 0032).
+  Recommandé : `categorie`, parmi `calcul` (calcul et logique), `strategie` (stratégie et cartes) et `mots` (lettres et
+  mots) ; elle alimente le filtre de l'écran Jeux (ADR 0039, D7). Le build la refuse sur une fiche qui n'est pas un jeu.
 - `page.html` écrit à la main, en partant de `catalogue/demineur/page.html` : en-tête, `kermiclab-meta`, CSP (les hashes
   sont recalculés par `npm run build`), socle des onglets, stockage abstrait, bouton « Se connecter » masqué.
 

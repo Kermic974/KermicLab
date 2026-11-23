@@ -360,6 +360,8 @@
         </div>
         <label for="recherche-jeu" class="visuellement-cache" data-i18n="rechercherJeu"></label>
         <input id="recherche-jeu" type="search" autocomplete="off" data-i18n-placeholder="rechercherJeu">
+        <!-- Filtre par catégorie (ADR 0039, D7), proposé dès que deux catégories sont présentes. -->
+        <div class="puces-niveau" id="filtre-categorie-jeux" role="group" data-i18n-aria="filtreCategorieJeux" hidden></div>
         <div id="grille-jeux" class="grille-jeux"></div>
         <p id="jeux-vide" class="doux" hidden></p>
       </section>

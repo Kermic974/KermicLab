@@ -36,6 +36,8 @@ const etat = {
   compteSuivi: null,
   // Filtre de la progression par matière : "tous" ou un groupe de niveaux (primaire, collège, lycée).
   niveauMatieres: "tous",
+  // Filtre de l'écran Jeux : "tous" ou une catégorie (ADR 0039, D7).
+  categorieJeux: "tous",
   defiIa: { ia: false, generationsParJour: 0, restantesServeur: null },
   cahiersIa: { ia: false, generationsParJour: 0, restantesServeur: null, modele: "" },
   // Configuration centralisée exposée par le Worker (/api/llm/status, ADR 0019) et skills actifs.
@@ -6891,7 +6893,16 @@ function rendreJeux() {
   if (!etat.progres || !etat.textes.titre) return;
   const jeux = etat.registre.deType("jeu");
   const filtre = sansAccents($("#recherche-jeu").value.trim());
-  const selection = jeux.filter((n) => sansAccents(n.titre).includes(filtre));
+  const categories = experiences.categoriesDesJeux(etat.registre);
+  if (!categories.includes(etat.categorieJeux)) etat.categorieJeux = "tous";
+  const puces = $("#filtre-categorie-jeux");
+  puces.hidden = categories.length < 2;
+  puces.replaceChildren(...(categories.length < 2 ? [] : ["tous", ...categories]).map((c) => {
+    const b = element("button", { classe: "puce-niveau", cle: `categorieJeu_${c}`, attributs: { type: "button", "data-categorie-jeu": c, "aria-pressed": String(etat.categorieJeux === c) } });
+    b.addEventListener("click", () => { etat.categorieJeux = c; rendreJeux(); $(`[data-categorie-jeu="${c}"]`)?.focus(); });
+    return b;
+  }));
+  const selection = jeux.filter((n) => sansAccents(n.titre).includes(filtre) && (etat.categorieJeux === "tous" || n.categorie === etat.categorieJeux));
   const grille = $("#grille-jeux");
   grille.replaceChildren();
   $("#jeux-compteur").textContent = jeux.length ? t("jeuxCompteur", { n: selection.length, m: jeux.length }) : "";
@@ -6899,6 +6910,7 @@ function rendreJeux() {
   $("#jeux-vide").textContent = t(!etat.notions.length ? "catalogueIndisponible" : jeux.length ? "aucunJeu" : "jeuxIndisponibles");
   for (const jeu of selection) {
     const carte = element("article", { classe: "carte jeu-carte" });
+    if (jeu.categorie) carte.append(element("span", { classe: "etiquette-categorie", cle: `categorieJeu_${jeu.categorie}` }));
     carte.append(element("h3", { texte: jeu.titre }));
     if (jeu.resume) carte.append(element("p", { classe: "doux", texte: jeu.resume }));
     // Lien Jeux ↔ Éducation : les notions que ce jeu fait travailler, ouvrables d'un geste.

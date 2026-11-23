@@ -206,6 +206,7 @@ details.config-serveur > summary { cursor: pointer; font-weight: 700; min-height
 .progression-suivie-grille h3 { font-size: 17px; }
 .progression-suivie-grille h4 { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--doux); margin: 6px 0 0; }
 .liste-a-revoir { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.etiquette-categorie { align-self: flex-start; font-size: 12px; font-weight: 750; letter-spacing: .03em; padding: 3px 10px; border-radius: 999px; background: var(--chaud-doux); color: var(--chaud); }
 .puces-niveau { display: flex; flex-wrap: wrap; gap: 8px; }
 .puce-niveau { min-height: 40px; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--bord); background: var(--surface); color: var(--texte-2); font-weight: 650; }
 .puce-niveau:hover { background: var(--surface-2); }

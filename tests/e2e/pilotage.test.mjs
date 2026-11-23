@@ -141,3 +141,30 @@ test("Profil : les réglages techniques sont repliés ; les choix de l'élève r
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
+
+test("Jeux : filtre par catégorie (ADR 0039, D7), étiquette sur chaque carte, combiné à la recherche", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
+  const jeux = [
+    { id: "sudoku", titre: "Sudoku", categorie: "calcul" }, { id: "demineur", titre: "Le démineur", categorie: "calcul" },
+    { id: "echecs", titre: "Les échecs", categorie: "strategie" }, { id: "pendu", titre: "Le pendu", categorie: "mots" },
+  ].map((j) => ({ version: "1.0.0", niveau: "autres", matiere: "jeux", ...j }));
+  await preparer(page, { catalogue: [...CATALOGUE, ...jeux] });
+  await page.goto(`${serveur.url}/#jeux`);
+  const puces = page.locator("#filtre-categorie-jeux button");
+  await puces.first().waitFor();
+  assert.deepEqual(await puces.allTextContents(), ["Tous", "Calcul et logique", "Stratégie et cartes", "Lettres et mots"]);
+  assert.equal(await page.locator("#grille-jeux .jeu-carte").count(), 4);
+  await page.click('[data-categorie-jeu="calcul"]');
+  assert.deepEqual(await page.locator("#grille-jeux h3").allTextContents(), ["Sudoku", "Le démineur"]);
+  assert.deepEqual(await page.locator("#grille-jeux .etiquette-categorie").allTextContents(), ["Calcul et logique", "Calcul et logique"]);
+  assert.equal(await page.locator('[data-categorie-jeu="calcul"]').getAttribute("aria-pressed"), "true");
+  await page.fill("#recherche-jeu", "dem");
+  await page.locator("#recherche-jeu").dispatchEvent("input");
+  assert.deepEqual(await page.locator("#grille-jeux h3").allTextContents(), ["Le démineur"], "recherche et catégorie se combinent");
+  await page.fill("#recherche-jeu", "");
+  await page.locator("#recherche-jeu").dispatchEvent("input");
+  await page.click('[data-categorie-jeu="tous"]');
+  assert.equal(await page.locator("#grille-jeux .jeu-carte").count(), 4);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
