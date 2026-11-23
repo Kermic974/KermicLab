@@ -189,6 +189,45 @@ details.config-serveur > summary { cursor: pointer; font-weight: 700; min-height
 .entree:hover { background: var(--surface-2); border-color: var(--bord-fort); }
 .entree-ico { display: grid; place-items: center; width: 44px; height: 44px; flex: none; border-radius: 13px; background: var(--lab-doux); color: var(--lab); }
 .entree-ico.jeux { background: var(--accent-doux); color: var(--accent-doux-texte); }
+.entree-ico.labs { background: var(--lab-doux); color: var(--lab); }
+.entree-ico.defi { background: var(--chaud-doux); color: var(--chaud); }
+/* Écran d'arrivée unifié (ADR 0039 § 3) : chiffres clés, cartes de rôle, journal des découvertes. */
+/* Progression d'un compte suivi (ADR 0039, lot 3) : la vue personnelle est masquée, la vue du bilan la remplace. */
+.progression-compte { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.progression-compte label { font-size: 12px; font-weight: 750; text-transform: uppercase; letter-spacing: .06em; color: var(--doux); }
+.progression-compte select { min-height: 44px; max-width: 100%; padding: 8px 12px; border-radius: 12px; border: 1px solid var(--bord-fort); background: var(--surface); font-weight: 650; }
+:root[data-progression-suivie] #ecran-progression > :not(#progression-compte):not(#progression-suivie),
+:root[data-progression-suivie] #progres { display: none !important; }
+.progression-suivie { display: flex; flex-direction: column; gap: 16px; }
+.cadre-suivi { padding: 10px 14px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--bord); color: var(--texte-2); font-size: 14px; }
+.progression-suivie .compteur .petit { order: 3; margin-top: 2px; }
+.progression-suivie-grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; align-items: start; }
+.progression-suivie-grille .carte { padding: 20px 22px; display: flex; flex-direction: column; gap: 10px; }
+.progression-suivie-grille h3 { font-size: 17px; }
+.progression-suivie-grille h4 { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--doux); margin: 6px 0 0; }
+.liste-a-revoir { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.puces-niveau { display: flex; flex-wrap: wrap; gap: 8px; }
+.puce-niveau { min-height: 40px; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--bord); background: var(--surface); color: var(--texte-2); font-weight: 650; }
+.puce-niveau:hover { background: var(--surface-2); }
+.puce-niveau[aria-pressed="true"] { background: var(--espace); border-color: transparent; color: var(--espace-texte); }
+.chiffres-accueil .compteurs { grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); }
+.chiffres-accueil .compteur .petit { order: 3; margin-top: 2px; }
+.carte-role { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px 22px; border-top: 4px solid var(--accent); }
+.carte-role[data-espace-carte="famille"] { border-top-color: #0f766e; }
+.carte-role[data-espace-carte="professeur"] { border-top-color: #4338ca; }
+.carte-role h3 { font-size: 17px; }
+.journal-accueil { display: flex; flex-direction: column; gap: 10px; padding: 20px 22px; }
+.journal-accueil h3 { font-size: 17px; }
+.journal-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.journal-entree {
+  display: grid; grid-template-columns: minmax(84px, auto) minmax(0, 1fr) auto; gap: 4px 12px; align-items: baseline; width: 100%;
+  min-height: 44px; padding: 10px 12px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--bord); color: var(--texte);
+  font-weight: 400; text-align: left;
+}
+.journal-entree:hover { background: var(--accent-doux); }
+.journal-quand { color: var(--doux); font-size: .85rem; font-variant-numeric: tabular-nums; }
+.journal-entree strong { overflow-wrap: anywhere; }
+@media (max-width: 520px) { .journal-entree { grid-template-columns: minmax(0, 1fr) auto; } .journal-quand { grid-column: 1 / -1; } }
 .entree-textes { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 2px; }
 .entree-textes strong { font-size: 17px; }
 .entree-textes .doux { font-size: 13px; }
@@ -221,6 +260,22 @@ details.config-serveur > summary { cursor: pointer; font-weight: 700; min-height
 
 /* ---------- Éducation : outils ---------- */
 .outils-education { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+/* Lot 4 (ADR 0039) : Éducation en deux colonnes sur grand écran, recherche mise en avant, cartes à la couleur de leur espace. */
+.education-colonnes { display: grid; gap: 22px; }
+.education-principal { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+@media (min-width: 1200px) {
+  .education-colonnes { grid-template-columns: minmax(0, 1fr) minmax(260px, 320px); align-items: start; }
+  .education-colonnes .outils-education { position: sticky; top: 16px; margin-top: 0; }
+  .education-colonnes .liste-outils { grid-template-columns: 1fr; }
+}
+.recherche-education { position: relative; display: flex; align-items: center; }
+.recherche-education > .ico { position: absolute; left: 14px; color: var(--doux); pointer-events: none; }
+.recherche-education input { width: 100%; min-height: 50px; padding: 10px 14px 10px 44px; font-size: 16px; border-radius: 14px; border: 2px solid var(--bord-fort); background: var(--surface); }
+.recherche-education input:focus { border-color: var(--espace); outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--espace) 25%, transparent); }
+.outil[data-espace-carte] { border-top: 4px solid var(--accent); }
+.outil[data-espace-carte="education"] { border-top-color: #1d4ed8; }
+.outil[data-espace-carte="labs"] { border-top-color: #6d28d9; }
+.etiquette-niveau { font-size: 12px; font-weight: 750; letter-spacing: .03em; padding: 3px 10px; border-radius: 999px; background: var(--lab-doux); color: var(--lab); }
 .outils-education > h2 { font-size: 19px; font-weight: 720; }
 .liste-outils { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 14px; align-items: start; }
 .outil { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 20px; min-width: 0; }
@@ -240,7 +295,8 @@ details.config-serveur > summary { cursor: pointer; font-weight: 700; min-height
 .compteurs { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr)); gap: 10px; margin: 0; }
 .compteur { display: flex; flex-direction: column; padding: 14px; border-radius: var(--rayon-moyen); background: var(--surface); border: 1px solid var(--bord); min-width: 0; }
 .compteur dd { margin: 0; font-size: 22px; font-weight: 760; letter-spacing: -.02em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
-.compteur dt { order: 2; color: var(--doux); font-size: 12.5px; }
+.compteur dt { order: -1; color: var(--doux); font-size: 11.5px; font-weight: 750; text-transform: uppercase; letter-spacing: .04em; }
+.compteur, .chiffres div { border-top: 3px solid var(--espace); }
 #bloc-matieres, #decouvertes { display: flex; flex-direction: column; gap: 12px; padding: 22px; }
 #bloc-matieres[hidden], #decouvertes[hidden], .semaine[hidden] { display: none; }
 .progression-matieres { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
@@ -264,6 +320,27 @@ details.config-serveur > summary { cursor: pointer; font-weight: 700; min-height
 .entete { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .salut h1 { font-size: 28px; font-weight: 760; letter-spacing: -.025em; overflow-wrap: anywhere; }
 .salut p { color: var(--doux); margin-top: 2px; }
+
+/* ---------- Espaces colorés (ADR 0039 § 4) ----------
+   L'espace de l'écran courant est porté par <html data-espace>. Le titre de page devient un bandeau en dégradé ; le
+   texte blanc garde un contraste d'au moins 4,5:1 sur les deux teintes, en thème clair comme en sombre. L'Accueil
+   suit la couleur d'accent de la charte (ADR 0026), dont le contraste avec --accent-texte est déjà garanti. */
+:root { --espace-fort: var(--accent-fort); --espace: var(--accent); --espace-texte: var(--accent-texte); }
+:root[data-espace="education"] { --espace-fort: #1e3a8a; --espace: #1d4ed8; --espace-texte: #ffffff; }
+:root[data-espace="labs"] { --espace-fort: #4c1d95; --espace: #6d28d9; --espace-texte: #ffffff; }
+:root[data-espace="jeux"] { --espace-fort: #7c2d12; --espace: #b45309; --espace-texte: #ffffff; }
+:root[data-espace="progression"] { --espace-fort: #064e3b; --espace: #047857; --espace-texte: #ffffff; }
+:root[data-espace="famille"] { --espace-fort: #134e4a; --espace: #0f766e; --espace-texte: #ffffff; }
+:root[data-espace="professeur"] { --espace-fort: #312e81; --espace: #4338ca; --espace-texte: #ffffff; }
+:root[data-espace="contributions"] { --espace-fort: #7c2d12; --espace: #c2410c; --espace-texte: #ffffff; }
+.entete .salut {
+  flex: 1 1 320px; min-width: 0; padding: 18px 22px; border-radius: var(--rayon);
+  background: linear-gradient(135deg, var(--espace-fort), var(--espace)); color: var(--espace-texte); box-shadow: var(--ombre);
+}
+.entete .salut p { color: inherit; }
+/* Le titre reçoit le focus par programme à chaque changement d'écran (lecteurs d'écran) : ce n'est pas une commande,
+   un contour n'aurait pas de sens. */
+#salut:focus { outline: none; }
 .actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .pastille-progres {
   position: relative; display: inline-flex; align-items: center; gap: 12px; height: 40px; padding: 0 14px;
@@ -557,7 +634,7 @@ dialog.lecture-cahier[open] { display: flex; animation-name: lecture-entre; }
 .chiffres { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 0 0 18px; }
 .chiffres div { padding: 14px; border-radius: var(--rayon-moyen); background: var(--surface-2); border: 1px solid var(--bord); min-width: 0; }
 .chiffres dd { margin: 0; font-size: 24px; font-weight: 760; letter-spacing: -.03em; font-variant-numeric: tabular-nums; line-height: 1.1; }
-.chiffres dt { font-size: 12.5px; color: var(--doux); order: 2; }
+.chiffres dt { order: -1; color: var(--doux); font-size: 11.5px; font-weight: 750; text-transform: uppercase; letter-spacing: .04em; }
 .chiffres div { display: flex; flex-direction: column; }
 .chiffres .xp-chiffre dd { color: var(--succes); }
 .graphique-tete { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
@@ -669,7 +746,11 @@ dialog .actions { justify-content: flex-end; margin-top: 8px; }
 .zone-effacement { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--bord); display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
 
 .niveau-carte { flex-wrap: wrap; display: flex; gap: 14px; align-items: center; padding: 14px; border-radius: 16px; background: var(--accent-doux); }
-.niveau-rond { flex: none; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; font-size: 1.5rem; font-weight: 800; color: var(--accent-texte); background: var(--accent); box-shadow: 0 0 0 4px var(--surface); }
+/* Anneau d'XP (ADR 0039, lot 3) : --part (0 à 1) = part du niveau en cours, posée par remplirProgres. */
+.niveau-rond {
+  --part: 0; flex: none; width: 72px; height: 72px; border-radius: 50%; display: grid; place-items: center; font-size: 1.6rem; font-weight: 800; color: var(--texte);
+  background: radial-gradient(closest-side, var(--surface) 76%, transparent 78%), conic-gradient(var(--accent) calc(var(--part) * 1turn), var(--bord) 0);
+}
 .niveau-details { flex: 1; display: flex; flex-direction: column; gap: 6px; }
 .niveau-details progress { width: 100%; height: 10px; }
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 14px 0 6px; }
@@ -776,7 +857,7 @@ dialog.bulle-lab[open] { display: flex; }
 .matiere { flex: 1 1 auto; padding: 6px 8px; border-radius: 9px; background: none; color: var(--doux); font-size: .85rem; font-weight: 600; }
 .matiere:hover { background: var(--surface); color: var(--texte); }
 .matiere[aria-selected="true"] { background: var(--surface); color: var(--accent); box-shadow: var(--ombre); }
-#recherche-notion { padding: 10px 14px; font-size: .95rem; background: var(--surface); }
+/* La recherche des notions est stylée par .recherche-education (lot 4, loupe à gauche). */
 .notion { display: flex; justify-content: space-between; align-items: center; gap: 8px; width: 100%; text-align: left; background: none; color: var(--texte); border-radius: 10px; padding: 7px 10px; font-weight: 500; font-size: .92rem; }
 .notion:hover { background: var(--accent-doux); color: var(--accent-doux-texte); }
 .notion .coche { color: var(--succes); font-weight: 800; }
@@ -1219,6 +1300,7 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 @media (max-width: 380px) { .nav-mobile-bouton { font-size: 10px; letter-spacing: -.01em; } }
 
 /* Changer d'appareil : export et import de la progression (issue #189). */
+.fichier-progression { display: flex; flex-direction: column; gap: 10px; padding: 22px; }
 .fichier-progression h2 { margin: 0 0 4px; }
 .fichier-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
 .fichier-actions label.bouton { cursor: pointer; }

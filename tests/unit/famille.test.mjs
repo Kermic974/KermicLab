@@ -102,3 +102,26 @@ test("consommations : regroupées par membre et par module, inconnus ignorés", 
   assert.equal(total.appels, 4);
   assert.equal(total.tokens, 1900);
 });
+
+test("comptes suivis : enfants puis élèves par classe et cours particuliers, triés, sans compte invalide", async () => {
+  const { comptesSuivis } = await import("../../web/famille.js");
+  const libelles = { famille: "Ma famille", particuliers: "Cours particuliers" };
+  assert.deepEqual(comptesSuivis({ libelles }), [], "ni enfant ni élève : rien à proposer");
+  const bilan = { jour: "2026-11-20", xp: 40 };
+  const groupes = comptesSuivis({
+    libelles,
+    enfants: [{ id: "e1", prenom: "Léo", bilan }, { id: "e2", prenom: "Maya" }, null, { prenom: "sans id" }],
+    eleves: {
+      classes: [{ id: "c1", nom: "4e B" }, { id: "c2", nom: "3e A" }],
+      eleves: [{ id: "s2", pseudo: "Nova", classeId: "c1" }, { id: "s1", pseudo: "Cosinus", classeId: "c1", bilan }, { id: "s3", pseudo: "Kepler", classeId: null }],
+    },
+  });
+  assert.deepEqual(groupes.map((g) => [g.groupe, g.comptes.map((c) => c.cle)]), [
+    ["Ma famille", ["famille:e1", "famille:e2"]],
+    ["4e B", ["eleve:s1", "eleve:s2"]],
+    ["Cours particuliers", ["eleve:s3"]],
+  ], "classe vide (3e A) absente, élèves triés par pseudo");
+  assert.equal(groupes[0].comptes[0].bilan, bilan);
+  assert.equal(groupes[0].comptes[1].bilan, null, "sans bilan : null, jamais undefined");
+  assert.equal(groupes[1].comptes[0].origine, "eleve");
+});

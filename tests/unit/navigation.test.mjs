@@ -3,8 +3,9 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import * as navigation from "../../web/navigation.js";
 
-test("navigation : « Mon tableau de bord » juste sous l'Accueil par défaut", () => {
-  assert.deepEqual(navigation.ORDRE_NAVIGATION_DEFAUT.slice(0, 2), ["accueil", "tableau-de-bord"]);
+test("navigation : cinq destinations par défaut, « Mon tableau de bord » fusionné avec l'Accueil (ADR 0039)", () => {
+  assert.deepEqual(navigation.ORDRE_NAVIGATION_DEFAUT, ["accueil", "education", "labs", "jeux", "progression"]);
+  assert.ok(navigation.ENTREES_NAVIGATION.includes("tableau-de-bord"), "l'entrée reste configurable");
   assert.deepEqual(navigation.ordreNavigation(undefined), [...navigation.ORDRE_NAVIGATION_DEFAUT]);
   assert.deepEqual(navigation.ordreNavigation([]), [...navigation.ORDRE_NAVIGATION_DEFAUT]);
   assert.deepEqual(navigation.ordreNavigation("accueil"), [...navigation.ORDRE_NAVIGATION_DEFAUT]);
@@ -15,11 +16,11 @@ test("navigation : ordre configuré, identifiants inconnus et doublons écartés
   assert.deepEqual(navigation.ordreNavigation(["inconnu"]), [...navigation.ORDRE_NAVIGATION_DEFAUT]);
 });
 
-test("navigation : config.json déclare un ordre valide qui place le tableau de bord sous l'Accueil", async () => {
+test("navigation : config.json déclare un ordre valide, l'Accueil en premier", async () => {
   const config = JSON.parse(await readFile("web/config.json", "utf8"));
   const ordre = navigation.ordreNavigation(config.navigation);
   assert.deepEqual(ordre, config.navigation, "chaque identifiant de config.json est connu");
-  assert.equal(ordre.indexOf("tableau-de-bord"), ordre.indexOf("accueil") + 1);
+  assert.equal(ordre[0], "accueil");
 });
 
 test("navigation : chaque entrée connue existe dans la page, une seule fois par barre", async () => {
@@ -39,4 +40,15 @@ test("navigation : vue ouverte par « Mon tableau de bord »", () => {
   assert.equal(navigation.vueTableauDeBord({ disponibles: ["profil", "compte"], prof: true }), "profil");
   assert.equal(navigation.vueTableauDeBord({ derniere: "classes", disponibles: tout, prof: true }), "classes");
   assert.equal(navigation.vueTableauDeBord({ derniere: "espace-famille", disponibles: ["profil", "compte"] }), "profil", "vue plus proposée : défaut");
+});
+
+test("espaces colorés : chaque écran a son espace, les vues du tableau de bord prennent celui de leur rôle", () => {
+  assert.equal(navigation.espaceDe("education"), "education");
+  assert.equal(navigation.espaceDe("defi"), "education", "le défi est un sous-écran d'Éducation");
+  assert.equal(navigation.espaceDe("espace-famille"), "famille");
+  for (const vue of ["suivi", "classes", "eleves"]) assert.equal(navigation.espaceDe(vue), "professeur");
+  assert.equal(navigation.espaceDe("contributions"), "contributions");
+  for (const ecran of ["accueil", "profil", "compte", "apropos", "inconnu", undefined]) assert.equal(navigation.espaceDe(ecran), "accueil");
+  const ecrans = ["accueil", "education", "defi", "labs", "jeux", "progression", "famille", "espace-famille", "suivi", "classes", "eleves", "contributions", "profil"];
+  assert.deepEqual([...new Set(ecrans.map(navigation.espaceDe))].sort(), [...navigation.ESPACES].sort(), "tous les espaces sont atteints");
 });

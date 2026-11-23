@@ -56,7 +56,8 @@ test("temps actif : compté seulement pendant l'activité, en pause après une m
   const { page, contexte, erreurs } = await demarrer({ horloge: true });
   // 5 interactions espacées de 30 s : 2 min entre la première et la dernière, puis 1 min de fenêtre d'activité.
   for (let i = 0; i < 5; i++) {
-    await page.mouse.click(640, 860);
+    // Clic sur un texte neutre (l'accroche de l'en-tête) : un point fixe de l'écran peut tomber sur un lien selon la mise en page.
+    await page.locator("#accroche").click();
     await page.clock.runFor(30_000);
   }
   // Dix minutes sans aucune interaction : le compteur ne bouge plus.
@@ -201,6 +202,79 @@ test("accessibilité : navigation au clavier, une seule page courante, accordéo
   assert.ok(parseFloat(await p.locator("[aria-controls=edu-college] .chevron").evaluate((n) => getComputedStyle(n).transitionDuration)) <= 0.001, "aucune animation perceptible");
   await p.keyboard.press("Enter");
   assert.equal(await bouton.getAttribute("aria-expanded"), "false");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("écran d'arrivée unifié : rien avant la première activité, puis chiffres clés et journal des découvertes (ADR 0039)", async () => {
+  const vierge = await demarrer({ horloge: true });
+  assert.equal(await vierge.page.locator("#chiffres-accueil").isHidden(), true, "aucun zéro affiché à la première visite");
+  assert.equal(await vierge.page.locator("#journal-accueil").isHidden(), true);
+  assert.deepEqual(vierge.erreurs, []);
+  await vierge.contexte.close();
+
+  const { page, contexte, erreurs } = await demarrer({ horloge: true, progression: {
+    version: 1, questions: 3, xp: 140, notions: ["pythagore", "la-cellule"], serie: 2, serieMax: 4, dernierJour: "2026-11-06",
+    badges: [], jours: { "2026-11-06": { q: 1, n: 0, xp: 40 } }, derniereNotion: "pythagore", defiJour: null,
+    decouvertes: {
+      notion: { pythagore: { premiere: "2026-11-05", ouvertures: 2 }, "la-cellule": { premiere: "2026-11-02", ouvertures: 1 } },
+      jeu: { demineur: { premiere: "2026-11-06", ouvertures: 1 } },
+    },
+  } });
+  await page.locator("#chiffres-accueil").waitFor();
+  assert.equal(await page.locator("#accueil-xp").textContent(), "140");
+  assert.equal(await page.locator("#accueil-notions").textContent(), "2");
+  assert.equal(await page.locator("#accueil-notions-aide").textContent(), "sur 3 au catalogue");
+  assert.equal(await page.locator("#accueil-serie").textContent(), "2 j");
+  assert.equal(await page.locator("#accueil-serie-aide").textContent(), "record : 4 j");
+  const lignes = page.locator("#journal-liste .journal-entree");
+  assert.equal(await lignes.count(), 3);
+  assert.deepEqual(await page.locator("#journal-liste strong").allTextContents(), ["Démineur", "Le théorème de Pythagore", "La cellule"], "du plus récent au plus ancien");
+  assert.deepEqual((await page.locator("#journal-liste .journal-quand").allTextContents()).slice(0, 2), ["aujourd'hui", "hier"]);
+  // Accès rapides : Éducation, Jeux, Labs et Défi express.
+  assert.deepEqual(await page.locator(".entrees-accueil [data-nav]").evaluateAll((b) => b.map((x) => x.dataset.nav)), ["education", "jeux", "labs", "defi"]);
+  await capturer(page, "accueil-unifie");
+  // Progression (lot 3) : anneau d'XP du niveau en cours et filtre par niveau des matières (collège et lycée explorés).
+  await page.click(".barre-laterale [data-nav=progression]");
+  assert.equal(await page.locator("#progres-niveau-num").evaluate((n) => n.style.getPropertyValue("--part")), "0.4", "140 XP : 40 % du niveau 2");
+  assert.deepEqual(await page.locator("#filtre-niveau-matieres button").allTextContents(), ["Tout", "Collège", "Lycée"]);
+  assert.equal(await page.locator('[data-groupe-niveau="tous"]').getAttribute("aria-pressed"), "true");
+  await page.click('[data-groupe-niveau="lycee"]');
+  assert.deepEqual(await page.locator("#progression-matieres .nom").allTextContents(), ["SVT"], "seule la cellule (seconde) est au lycée");
+  assert.equal(await page.locator('[data-groupe-niveau="lycee"]').getAttribute("aria-pressed"), "true");
+  await page.click('[data-groupe-niveau="college"]');
+  assert.deepEqual(await page.locator("#progression-matieres .nom").allTextContents(), ["Maths"]);
+  await page.click(".barre-laterale [data-nav=accueil]");
+  // Changement de langue : chiffres et journal, calculés hors data-i18n, suivent la langue.
+  await page.selectOption("#langue", "en");
+  await page.waitForFunction(() => document.querySelector("#accueil-serie-aide")?.textContent === "best: 4 d");
+  assert.equal(await page.locator("#accueil-serie").textContent(), "2 d");
+  assert.deepEqual((await page.locator("#journal-liste .journal-quand").allTextContents()).slice(0, 2), ["today", "yesterday"]);
+  await page.selectOption("#langue", "fr");
+  await page.waitForFunction(() => document.querySelector("#accueil-serie-aide")?.textContent === "record : 4 j");
+  // Une ligne du journal rouvre l'expérience.
+  await lignes.nth(1).click();
+  await page.locator("#bulle-lab[open]").waitFor();
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("progression par matière : affichée aussi pour des notions hors primaire, collège et lycée (niveau « autres »)", async () => {
+  const { page, contexte, erreurs } = await demarrer({ progression: {
+    version: 1, questions: 1, xp: 30, notions: ["culture-g"], serie: 1, serieMax: 1, dernierJour: "2026-11-06",
+    badges: [], jours: {}, derniereNotion: "culture-g", defiJour: null,
+    decouvertes: { notion: { "culture-g": { premiere: "2026-11-06", ouvertures: 1 } } },
+  } });
+  await page.route(`${api}/api/catalogue`, (r) => r.fulfill({
+    contentType: "application/json", headers: { "access-control-allow-origin": "*" },
+    body: JSON.stringify({ notions: [...CATALOGUE_TEST, { id: "culture-g", titre: "Culture générale", version: "1.0.0", niveau: "autres", matiere: "philosophie" }] })
+  }));
+  await page.reload();
+  await page.locator("#entree-education", { hasText: "notions" }).waitFor();
+  await page.click(".barre-laterale [data-nav=progression]");
+  await page.locator("#bloc-matieres").waitFor({ state: "visible" });
+  assert.equal(await page.locator("#progression-matieres li").count(), 1);
+  assert.equal(await page.locator("#filtre-niveau-matieres").isHidden(), true, "aucun groupe de niveaux à filtrer");
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });

@@ -170,6 +170,19 @@ test("famille : invitation d'un compte solo, cahier assigné avec calibrage, bil
   assert.match(await parent.page.locator("#ef-performance").textContent(), /\d+ %/);
   await capturer(parent.page, "espace-famille-tableau-de-bord", { pleinePage: true });
 
+  // Progression (ADR 0039, lot 3) : le parent passe de sa progression à celle de Noé, en lecture seule.
+  await parent.page.evaluate(() => { location.hash = "progression"; });
+  const choix = parent.page.locator("#progression-compte-choix");
+  await parent.page.locator("#progression-compte").waitFor({ state: "visible" });
+  assert.deepEqual(await choix.locator("optgroup").evaluateAll((g) => g.map((x) => x.label)), ["Ma famille"]);
+  await choix.selectOption({ label: "Noé" });
+  await parent.page.locator("#progression-suivie").waitFor();
+  assert.equal(await parent.page.locator("#salut").textContent(), "Progression de Noé");
+  assert.match(await parent.page.locator("#progression-suivie-cadre").textContent(), /Toutes les matières/);
+  assert.ok((await parent.page.locator("#progression-suivie-chiffres dt").allTextContents()).includes("Badges"), "les badges remontent à la famille");
+  await parent.page.click("#progression-ouvrir-suivi");
+  await parent.page.locator("#espace-famille").waitFor({ state: "visible" });
+
   // Deux enfants et des travaux scolaires distincts pour vérifier la sélection multiple.
   const db = env.DB.sqlite;
   const lien = db.prepare("SELECT * FROM familles_liens").get();

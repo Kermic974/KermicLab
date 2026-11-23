@@ -32,6 +32,10 @@ const etat = {
   notionCourante: null, compte: null, enfants: [], familleChargee: false, familleErreur: false,
   memoire: false, pseudo: null, reprise: false, cercle: null, trophees: {},
   ecran: "accueil", registre: experiences.creerRegistre([]), ouverts: new Set(), moteur: null, llmActif: false, llmDisponible: false,
+  // Progression consultée : null pour la sienne, sinon la clé d'un compte suivi (« famille:<id> » ou « eleve:<id> »).
+  compteSuivi: null,
+  // Filtre de la progression par matière : "tous" ou un groupe de niveaux (primaire, collège, lycée).
+  niveauMatieres: "tous",
   defiIa: { ia: false, generationsParJour: 0, restantesServeur: null },
   cahiersIa: { ia: false, generationsParJour: 0, restantesServeur: null, modele: "" },
   // Configuration centralisée exposée par le Worker (/api/llm/status, ADR 0019) et skills actifs.
@@ -115,6 +119,9 @@ async function appliquerLangue(langue) {
   rafraichirTheme();
   rafraichirControleLlm();
   etat.cercle?.rafraichir();
+  // Choix du compte suivi (ADR 0039, D8) : libellés calculés hors data-i18n (les chiffres de l'Accueil suivent déjà
+  // par rafraichirPastille → rafraichirTableau → rendreApercu).
+  rendreChoixCompte();
   if (etat.ecran === "progression") rendreProgression();
   rafraichirDefiTextes();
   rafraichirFamille();
@@ -1445,6 +1452,7 @@ function rafraichirFamilleCompte() {
   const m = familleEtat.moi;
   const lie = !!jetonFamille();
   $("#entree-espace-famille").hidden = !m?.parent;
+  $("#accueil-famille").hidden = !m?.parent;
   $("#famille-ouvrir-espace").hidden = !m?.parent;
   // Lien rapide de la navigation : l'Espace famille pour un parent, le bloc Famille de « Mon compte » sinon.
   for (const navFamille of [$("#nav-famille"), $("#nav-mobile-famille")]) {
@@ -2142,6 +2150,7 @@ function actualiserContributionsLocales() {
 function rafraichirProfNav() {
   const actif = profActif();
   for (const id of ["#nav-suivi", "#nav-classes", "#nav-eleves", "#nav-mobile-suivi"]) $(id).hidden = !actif;
+  $("#accueil-prof").hidden = !actif;
   $("#profil-prof").hidden = !actif;
   // Filtres de « Mon tableau de bord » : mêmes droits que les entrées de navigation, même si la configuration les retire.
   const contribVisible = !$("#nav-contributions").hidden;
@@ -4773,6 +4782,8 @@ function remplirProgres() {
   const p = etat.progres;
   const { niveau, xpDansNiveau, xpParNiveau } = progression.niveau(p);
   $("#progres-niveau-num").textContent = String(niveau);
+  // Anneau d'XP (ADR 0039, lot 3) : la part du niveau en cours colore le pourtour ; le texte et <progress> restent.
+  $("#progres-niveau-num").style.setProperty("--part", String(xpDansNiveau / xpParNiveau));
   $("#progres-niveau").textContent = t("niveauLong", { n: niveau });
   $("#progres-xp").max = xpParNiveau; $("#progres-xp").value = xpDansNiveau;
   $("#progres-xp-texte").textContent = t("xpAvantNiveau", { n: xpParNiveau - xpDansNiveau, m: niveau + 1 });
@@ -5487,6 +5498,7 @@ async function demarrer() {
   brancherFamille();
   brancherContributions();
   brancherProfesseur();
+  brancherComptesSuivis();
   brancherTestRoles();
   void verifierConnexion().then(rafraichirContributions);
 
@@ -5905,10 +5917,17 @@ const sectionDe = (ecran) => { const parent = PARENTS[ecran] ?? ecran; return PA
 
 function rafraichirEntete() {
   const accueil = etat.ecran === "accueil";
+  // Bandeau coloré de l'espace courant (ADR 0039 § 4).
+  document.documentElement.dataset.espace = navigation.espaceDe(etat.ecran);
   $("#salut").textContent = accueil
     ? etat.pseudo ? t("salut", { pseudo: etat.pseudo }) : t("salutAnonyme")
     : t({ education: "navEducation", labs: "navLabs", jeux: "navJeux", progression: "navProgression", defi: "navDefi", profil: "navProfil", famille: "familleTitre", "espace-famille": "efTitre", "connexion-en-cours": "connexionEnCours", compte: "compteTitre", contributions: "contribTitre", suivi: "navSuivi", classes: "navClasses", eleves: "navEleves", apropos: "navAPropos" }[etat.ecran]);
   $("#accroche").textContent = t(accueil ? "accroche" : etat.ecran === "connexion-en-cours" ? "connexionEnCoursAide" : `${etat.ecran}Intro`);
+  const suivi = etat.ecran === "progression" ? compteSuiviCourant() : null;
+  if (suivi) {
+    $("#salut").textContent = t("progressionTitreSuivi", { nom: suivi.nom });
+    $("#accroche").textContent = suivi.bilan ? t("progressionAccrocheSuivi", { date: dateCourte(suivi.bilan.jour) }) : t("progressionAccrocheSansBilan");
+  }
 }
 
 /** Vue ouverte par « Mon tableau de bord » : la dernière consultée si elle est encore proposée dans ses filtres. */
@@ -5938,7 +5957,7 @@ function afficherEcran(cle, { focus = true } = {}) {
   etat.moteur?.contexte({ section: sectionDe(etat.ecran) });
   decouvrirEnSilence("section", sectionDe(etat.ecran));
   if (etat.ecran === "defi" && changement) ouvrirDefi();
-  if (etat.ecran === "progression") rendreProgression();
+  if (etat.ecran === "progression") { rendreProgression(); if (changement) void preparerComptesSuivis(); }
   if (etat.ecran === "contributions" && changement) void ouvrirContributions();
   if (etat.ecran === "compte") rafraichirCompte();
   if (etat.ecran === "espace-famille" && changement) void ouvrirEspaceFamille();
@@ -5971,16 +5990,21 @@ function marquerNavigation(cle) {
   // « Ma famille » mène à l'Espace famille : il est la page courante quand cet écran est affiché.
   const familles = [$("#nav-famille"), $("#nav-mobile-famille")];
   const groupes = [
+    // L'avatar est l'entrée « Mon espace » (ADR 0039 § 3) : page courante quand une vue personnelle est affichée.
     [...document.querySelectorAll(".barre-laterale .nav-bouton[data-nav], .barre-pied .profil-carte[data-action=\"profil\"]")],
-    [...document.querySelectorAll(".nav-mobile .nav-mobile-bouton[data-nav], #nav-mobile-autres .nav-mobile-bouton[data-nav]")],
+    [...document.querySelectorAll(".nav-mobile .nav-mobile-bouton[data-nav], #nav-mobile-autres .nav-mobile-bouton[data-nav], .profil-mobile[data-action=\"profil\"]")],
   ];
   for (const boutons of groupes) {
     const famille = boutons.find((b) => familles.includes(b));
     const surFamille = !!famille && !famille.hidden && etat.ecran === "espace-famille" && famille.dataset.nav === "espace-famille";
-    const direct = etat.ecran !== cle && boutons.some((b) => !familles.includes(b) && !b.hidden && (b.dataset.nav ?? b.dataset.action) === etat.ecran);
+    // L'avatar ouvre le Profil, mais représente toutes les vues personnelles (« Mon espace », ADR 0039 § 3), sauf si la
+    // configuration remet l'entrée « Mon tableau de bord » dans cette barre : elle seule est alors la page courante.
+    const entreeTdb = boutons.some((b) => !b.classList.contains("profil-carte") && b.dataset.nav === "tableau-de-bord" && !b.hidden && !("navRetire" in b.dataset));
+    const cleDe = (b) => (b.classList.contains("profil-carte") ? (entreeTdb ? "profil" : "tableau-de-bord") : b.dataset.nav ?? b.dataset.action);
+    const direct = etat.ecran !== cle && boutons.some((b) => !familles.includes(b) && !b.hidden && cleDe(b) === etat.ecran);
     const cible = direct ? etat.ecran : cle;
     for (const b of boutons) {
-      const courant = familles.includes(b) ? surFamille : !surFamille && (b.dataset.nav ?? b.dataset.action) === cible;
+      const courant = familles.includes(b) ? surFamille : !surFamille && cleDe(b) === cible;
       if (courant) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
     }
   }
@@ -6056,7 +6080,17 @@ function basculerAccordeonFixe(bouton, visible = bouton.getAttribute("aria-expan
 
 function brancherAccordeonsFixes() {
   document.querySelectorAll("button[data-accordeon-fixe][aria-controls]").forEach((bouton) => {
-    bouton.addEventListener("click", () => basculerAccordeonFixe(bouton));
+    bouton.addEventListener("click", () => {
+      basculerAccordeonFixe(bouton);
+      // Lot 4 (ADR 0039) : sur grand écran, « Mes cahiers » est dans la colonne de droite mais son panneau s'ouvre sous
+      // la liste des notions ; un panneau ouvert hors de l'écran y est amené.
+      const panneau = $(`#${bouton.getAttribute("aria-controls")}`);
+      if (bouton.getAttribute("aria-expanded") !== "true" || !panneau) return;
+      const r = panneau.getBoundingClientRect();
+      if (r.top < 0 || r.top > window.innerHeight - 80) {
+        panneau.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      }
+    });
   });
 }
 
@@ -7003,6 +7037,93 @@ function rendreEntrees() {
   $("#entree-jeux").textContent = jeux ? t("entreeJeux", { n: jeux }) : "";
 }
 
+/* ---------- Progression des comptes suivis (ADR 0039, lot 3) ----------
+   Un parent ou un professeur passe de sa progression à celle d'un enfant ou d'un élève, en lecture seule, à partir des
+   bilans bornés déjà reçus par l'Espace famille et le suivi de classe : aucune donnée nouvelle n'est demandée. */
+function groupesComptesSuivis() {
+  return familleModule.comptesSuivis({
+    enfants: familleEtat.moi?.parent ? familleEtat.tableau?.enfants ?? [] : [],
+    eleves: profActif() ? profEtat.eleves : null,
+    libelles: { famille: t("progressionGroupeFamille"), particuliers: t("profParticuliers") },
+  });
+}
+
+function compteSuiviCourant() {
+  if (!etat.compteSuivi) return null;
+  return groupesComptesSuivis().flatMap((g) => g.comptes).find((c) => c.cle === etat.compteSuivi) ?? null;
+}
+
+/** Charge, si besoin, la famille du parent et les élèves du professeur, puis propose le choix du compte. */
+async function preparerComptesSuivis() {
+  const attentes = [];
+  if (familleEtat.moi?.parent && !familleEtat.tableau) attentes.push(chargerTableauFamille());
+  if (profActif() && !profEtat.eleves) attentes.push(ouvrirEleves());
+  if (attentes.length) await Promise.allSettled(attentes);
+  rendreChoixCompte();
+  if (etat.ecran === "progression") { rendreProgressionSuivie(); rafraichirEntete(); }
+}
+
+function rendreChoixCompte() {
+  const groupes = groupesComptesSuivis();
+  $("#progression-compte").hidden = !groupes.length;
+  if (etat.compteSuivi && !compteSuiviCourant()) etat.compteSuivi = null;
+  const choix = $("#progression-compte-choix");
+  choix.replaceChildren(option("moi", t("progressionMoi")), ...groupes.map((g) => {
+    const groupe = element("optgroup", { attributs: { label: g.groupe } });
+    groupe.append(...g.comptes.map((c) => option(c.cle, c.nom)));
+    return groupe;
+  }));
+  choix.value = etat.compteSuivi ?? "moi";
+}
+
+function rendreProgressionSuivie() {
+  const c = compteSuiviCourant();
+  document.documentElement.toggleAttribute("data-progression-suivie", !!c);
+  $("#progression-suivie").hidden = !c;
+  if (!c) return;
+  const b = c.bilan;
+  $("#progression-suivie-titre").textContent = t("progressionTitreSuivi", { nom: c.nom });
+  $("#progression-suivie-cadre").textContent = t(c.origine === "famille" ? "progressionCadreFamille" : "progressionCadreProf");
+  $("#progression-suivie-vide").hidden = !!b;
+  $("#progression-suivie-chiffres").hidden = !b;
+  $("#progression-suivie-grille").hidden = !b;
+  const ouvrir = $("#progression-ouvrir-suivi");
+  ouvrir.textContent = t(c.origine === "famille" ? "progressionOuvrirFamille" : "progressionOuvrirEleves");
+  ouvrir.dataset.nav = c.origine === "famille" ? "espace-famille" : "eleves";
+  if (!b) return;
+  const tuile = (cle, valeur, aide) => {
+    const d = element("div", { classe: "compteur" });
+    d.append(element("dt", { cle }), element("dd", { texte: String(valeur) }));
+    if (aide) d.append(element("span", { classe: "doux petit", texte: aide }));
+    return d;
+  };
+  $("#progression-suivie-chiffres").replaceChildren(
+    tuile("accueilXp", b.xp, t("progressionSuiviXpAide", { n: b.niveau })),
+    tuile("accueilSerie", t("accueilSerieValeur", { n: b.serie }), t("accueilSerieAide", { n: b.serieMax })),
+    tuile("progressionSuiviTemps", formatMinutes(b.tempsMin)),
+    tuile("progressionSuiviQuestions", b.questions),
+    ...(c.origine === "famille" ? [tuile("progressionSuiviBadges", b.badges.length)] : [])
+  );
+  $("#progression-suivie-jours").replaceChildren(barresSemaine(b, progression.jourLocal()));
+  const rep = familleModule.repartitionNotions(b);
+  $("#progression-suivie-repartition").textContent = t("efNotionsResume", { maitrisees: rep.maitrisee, encours: rep["en-cours"], arevoir: rep["a-revoir"], decouvertes: rep.decouverte });
+  const aRevoir = Object.entries(b.notions).filter(([, n]) => n.etat === "a-revoir").map(([id]) => notionParId(id)?.titre ?? id);
+  $("#progression-suivie-a-revoir-titre").hidden = !aRevoir.length;
+  $("#progression-suivie-a-revoir").replaceChildren(...aRevoir.map((titre) => element("li", { texte: titre })));
+}
+
+function choisirCompteSuivi(cle) {
+  etat.compteSuivi = cle && cle !== "moi" ? cle : null;
+  $("#progression-compte-choix").value = etat.compteSuivi ?? "moi";
+  rendreProgression();
+  rafraichirEntete();
+}
+
+function brancherComptesSuivis() {
+  $("#progression-compte-choix").addEventListener("change", (e) => choisirCompteSuivi(e.target.value));
+  $("#progression-revenir").addEventListener("click", () => { choisirCompteSuivi(null); $("#progression-compte-choix").focus(); });
+}
+
 /** Aperçu compact : n'apparaît qu'une fois qu'il y a quelque chose de réel à montrer. */
 function rendreApercu() {
   if (!etat.progres || !etat.textes.titre) return;
@@ -7014,6 +7135,50 @@ function rendreApercu() {
   ].filter(Boolean);
   $("#apercu-progression").hidden = !morceaux.length;
   $("#apercu-progression-texte").textContent = morceaux.join(" · ");
+  rendreSyntheseAccueil(c);
+}
+
+/**
+ * Écran d'arrivée unifié (ADR 0039 § 3) : trois chiffres clés et le journal des découvertes récentes. Comme l'aperçu,
+ * rien n'apparaît avant une activité réelle (aucun zéro affiché à la première visite).
+ */
+function rendreSyntheseAccueil(c = experiences.compteurs(etat.progres, etat.registre)) {
+  const p = etat.progres;
+  const actif = p.xp > 0 || c.notions > 0 || c.jeux > 0;
+  $("#chiffres-accueil").hidden = !actif;
+  if (actif) {
+    const { niveau, xpDansNiveau, xpParNiveau } = progression.niveau(p);
+    $("#accueil-xp").textContent = String(p.xp);
+    $("#accueil-xp-aide").textContent = t("accueilXpAide", { n: niveau, reste: xpParNiveau - xpDansNiveau });
+    $("#accueil-notions").textContent = String(c.notions);
+    $("#accueil-notions-aide").textContent = t("accueilNotionsAide", { total: etat.registre.deType("notion").length });
+    $("#accueil-serie").textContent = t("accueilSerieValeur", { n: progression.serieCourante(p) });
+    $("#accueil-serie-aide").textContent = t("accueilSerieAide", { n: p.serieMax });
+  }
+  const recents = experiences.journalRecent(p, etat.registre, { max: 5 });
+  $("#journal-accueil").hidden = !recents.length;
+  $("#journal-liste").replaceChildren(...recents.map((x) => {
+    const li = element("li", { attributs: { "data-type": x.type } });
+    const b = element("button", { classe: "journal-entree", attributs: { type: "button" } });
+    b.append(
+      element("span", { classe: "journal-quand", texte: jourRelatif(x.premiere) }),
+      element("strong", { texte: x.titre }),
+      element("span", { classe: "doux petit", texte: x.type === "jeu" ? t("navJeux") : t(`matiere_${x.matiere ?? "autres"}`) })
+    );
+    b.addEventListener("click", () => ouvrirNotion(etat.registre.trouver(x.id)));
+    li.append(b);
+    return li;
+  }));
+}
+
+/** « aujourd'hui », « hier », sinon le jour et la date dans la langue de l'interface. */
+function jourRelatif(jour) {
+  const maintenant = new Date();
+  const aujourdhui = progression.jourLocal(maintenant);
+  const hier = progression.jourLocal(new Date(maintenant.getFullYear(), maintenant.getMonth(), maintenant.getDate() - 1));
+  if (jour === aujourdhui) return t("journalAujourdhui");
+  if (jour === hier) return t("journalHier");
+  return new Date(`${jour}T12:00:00`).toLocaleDateString(etat.langue, { weekday: "short", day: "numeric", month: "short" });
 }
 
 /* ---------- Progression : tableau de bord personnel, qui grandit avec l'usage ---------- */
@@ -7021,6 +7186,7 @@ function rendreApercu() {
 function rendreProgression() {
   const p = etat.progres;
   if (!p || !etat.textes.titre) return;
+  rendreProgressionSuivie();
   const c = experiences.compteurs(p, etat.registre);
   const serie = progression.serieCourante(p);
   const tuiles = [
@@ -7038,8 +7204,22 @@ function rendreProgression() {
     return d;
   }));
 
-  const matieres = experiences.progressionParMatiere(p, etat.registre, MATIERES);
-  $("#bloc-matieres").hidden = !matieres.length;
+  const groupes = experiences.groupesExplores(p, etat.registre);
+  if (!groupes.includes(etat.niveauMatieres)) etat.niveauMatieres = "tous";
+  const filtre = $("#filtre-niveau-matieres");
+  filtre.hidden = groupes.length < 2;
+  filtre.replaceChildren(...(groupes.length < 2 ? [] : ["tous", ...groupes]).map((g) => {
+    const b = element("button", { classe: "puce-niveau", cle: `groupeNiveau_${g}`, attributs: { type: "button", "data-groupe-niveau": g, "aria-pressed": String(etat.niveauMatieres === g) } });
+    b.addEventListener("click", () => {
+      etat.niveauMatieres = g;
+      rendreProgression();
+      $(`[data-groupe-niveau="${g}"]`)?.focus();
+    });
+    return b;
+  }));
+  const matieres = experiences.progressionParMatiere(p, etat.registre, MATIERES, { groupe: etat.niveauMatieres === "tous" ? null : etat.niveauMatieres });
+  // Le bloc suit les matières explorées, quel que soit leur niveau (« autres » compris) ; le filtre ne fait que choisir.
+  $("#bloc-matieres").hidden = !experiences.progressionParMatiere(p, etat.registre, MATIERES).length;
   $("#progression-matieres").replaceChildren(...matieres.map(({ matiere, explorees, total }) => {
     const li = element("li", { classe: "progression-matiere" });
     const nom = t(`matiere_${matiere}`);
