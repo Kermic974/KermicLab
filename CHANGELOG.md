@@ -4,7 +4,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
-- **Espace Métiers : graphe des notions lisible** (ADR 0041) : dans le détail d'un métier, les MicroSkills affichent leur libellé (référentiel canonique), placé sans chevauchement ; le graphe se cadre sur son emprise à l'écran, aussi dans le back-office. / Careers space: readable MicroSkill labels and better framing of the topic graph.
+- **Barre du haut sur ordinateur : tout tient sur une ligne** : avec six destinations (Métiers compris) et « Mes espaces », les onglets débordaient de 1 024 à 1 366 px (Jeux et Progression masqués, onglet courant coupé). La barre se compacte désormais par paliers, selon la place mesurée : icônes des onglets, pseudo de l'avatar, nom du site, libellé de « Mes espaces », marges ; chaque élément garde son nom accessible. / Top bar: entries no longer overflow on desktop; the bar compacts progressively.
 
 - **Correctif : menu « Mes espaces » sans styles** : la résolution d'un conflit de fusion (lot 9 face à l'Espace Métiers) avait retiré de `main` les styles du menu, des pastilles et des écrans Famille et Professeur en deux colonnes, ainsi que des textes du menu. La PR #421 a rétabli dix textes ; celle-ci rétablit les styles et le dernier texte (`efIndicateurs`). / Fix: restored the "My spaces" menu and two-column screen styles lost in a merge.
 

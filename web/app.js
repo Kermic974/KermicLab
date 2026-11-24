@@ -5513,6 +5513,7 @@ async function demarrer() {
   brancherFamilleLocale();
   brancherNavMobile();
   brancherMenuEspaces();
+  brancherCompactageBarre();
   $("#ouvrir-chat").addEventListener("click", () => {
     if ($("#panneau-chat").hidden) ouvrirChat();
     else fermerChat({ rendreFocus: true });
@@ -6272,6 +6273,34 @@ function fermerMenuEspaces({ focus = true } = {}) {
   for (const id of BOUTONS_ESPACES) $(id).setAttribute("aria-expanded", "false");
   document.documentElement.toggleAttribute("data-menu-espaces", false);
   if (focus) boutonMenuEspaces?.focus({ preventScroll: true });
+}
+
+/**
+ * Barre du haut (≥ 1 024 px) : si les entrées ne tiennent pas sur une ligne, elle se compacte par paliers (icônes des
+ * onglets, pseudo de l'avatar, nom du site, libellé de « Mes espaces », marges) jusqu'à ce que tout soit visible.
+ */
+const PALIER_COMPACT_MAX = 5;
+let compactageDemande = 0;
+function compacterBarre() {
+  const barre = $(".barre-laterale");
+  const nav = barre.querySelector(".nav");
+  barre.removeAttribute("data-compact");
+  if (getComputedStyle(barre).flexDirection !== "row") return;
+  const deborde = () => nav.scrollWidth > nav.clientWidth + 1 || barre.scrollWidth > barre.clientWidth + 1;
+  for (let palier = 1; palier <= PALIER_COMPACT_MAX && deborde(); palier += 1) barre.dataset.compact = String(palier);
+}
+function demanderCompactage() {
+  cancelAnimationFrame(compactageDemande);
+  compactageDemande = requestAnimationFrame(compacterBarre);
+}
+function brancherCompactageBarre() {
+  addEventListener("resize", demanderCompactage);
+  const observateur = new MutationObserver(demanderCompactage);
+  for (const n of document.querySelectorAll(".barre-laterale .nav-bouton, .barre-laterale .profil-carte")) {
+    observateur.observe(n, { attributes: true, attributeFilter: ["hidden"], childList: true, subtree: true, characterData: true });
+  }
+  document.fonts?.ready?.then(demanderCompactage);
+  demanderCompactage();
 }
 
 /** Exécute `action` quand l'élément est affiché (contenu chargé après la navigation), au plus 5 s après. */
