@@ -113,9 +113,9 @@ test("le lien de participation reste visible (barre latérale et Profil), hors d
   // Contributions reste réservée aux rôles autorisés (ADR 0023 §6 bis) ; Tableau de bord, Mes classes et Mes élèves au rôle Professeur (ADR 0030).
   const destinations = {
     // « Ma famille » (barre latérale) : lien rapide vers « Mon compte » ou l'Espace famille, masqué sans compte local lié.
-    nav: ["accueil", "education", "labs", "jeux", "progression", "compte", "contributions", "suivi", "classes", "eleves"],
+    nav: ["accueil", "education", "labs", "metiers", "jeux", "progression", "compte", "contributions", "suivi", "classes", "eleves"],
     // Barre du bas : « Ma famille », Contributions et Suivi, regroupées sous « Plus » (sans data-nav) quand il y en a plusieurs.
-    "nav-mobile": ["accueil", "education", "labs", "jeux", "progression", "profil", "compte", "contributions", "suivi"],
+    "nav-mobile": ["accueil", "education", "labs", "metiers", "jeux", "progression", "profil", "compte", "contributions", "suivi"],
   };
   for (const [classe, attendues] of Object.entries(destinations)) {
     const bloc = html.match(new RegExp(`<nav class="${classe}"[\\s\\S]*?</nav>`))[0];
