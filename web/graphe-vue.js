@@ -4,6 +4,8 @@
 
 const PALETTE = ["#4f7cff", "#16a085", "#e08a1e", "#d6457a", "#8b5cf6", "#0ea5c6", "#e0533f", "#7cb518", "#c2410c", "#6366f1", "#0d9488", "#c026d3", "#ca8a04", "#2563eb", "#9333ea", "#15803d"];
 export const COULEUR_TRANS = "#f5b700";
+/** Couleur des nœuds et relations de la couche métiers (chantier Métiers, lot 4). */
+export const COULEUR_METIER = "#e11d48";
 
 /** Couleur stable d'une discipline, d'après son rang dans la liste triée. */
 export function couleurs(disciplines) {
@@ -65,8 +67,8 @@ export function creerVue(canvas, graphe, { etat, onSelection }) {
       if (!a || !b) continue;
       const surChemin = enChemin && chemin.has(l.a) && chemin.has(l.b);
       const relie = selection !== null && (l.a === selection || l.b === selection);
-      ctx.globalAlpha = surChemin || relie ? 0.95 : enChemin ? 0.06 : l.type === "prerequis" ? 0.5 : 0.16;
-      ctx.strokeStyle = surChemin ? texte : l.transdisciplinaire ? COULEUR_TRANS : teintes.get(graphe.noeuds[l.b].disciplines[0]) ?? doux;
+      ctx.globalAlpha = surChemin || relie ? 0.95 : enChemin ? 0.06 : l.type === "prerequis" ? 0.5 : l.type === "metier" ? 0.1 : 0.16;
+      ctx.strokeStyle = surChemin ? texte : l.type === "metier" ? COULEUR_METIER : l.transdisciplinaire ? COULEUR_TRANS : teintes.get(graphe.noeuds[l.b].disciplines[0]) ?? doux;
       ctx.lineWidth = surChemin ? 3 : l.type === "prerequis" ? 1.2 : 0.6;
       ctx.beginPath(); ctx.moveTo(a.sx, a.sy); ctx.lineTo(b.sx, b.sy); ctx.stroke();
       if (l.type === "prerequis" && (surChemin || relie || !enChemin) && a.f > 0.35) {
@@ -83,54 +85,24 @@ export function creerVue(canvas, graphe, { etat, onSelection }) {
     const ordre = [...visibles].filter((i) => projetes[i]).sort((i, j) => projetes[j].profondeur - projetes[i].profondeur);
     for (const i of ordre) {
       const n = graphe.noeuds[i], p = projetes[i];
-      const base = n.type === "notion" ? 7 : n.transdisciplinaire ? 4.5 : 3;
+      const base = n.type === "notion" ? 7 : n.type === "metier" ? 6 : n.transdisciplinaire ? 4.5 : 3;
       const r = Math.max(1.2, base * p.f);
       p.r = r;
-      ctx.globalAlpha = enChemin && !chemin.has(i) ? 0.18 : n.type === "notion" ? 0.95 : 0.8;
-      ctx.fillStyle = n.transdisciplinaire ? COULEUR_TRANS : teintes.get(n.disciplines[0]) ?? doux;
+      ctx.globalAlpha = enChemin && !chemin.has(i) ? 0.18 : n.type === "microskill" ? 0.8 : 0.95;
+      ctx.fillStyle = n.type === "metier" ? COULEUR_METIER : n.transdisciplinaire ? COULEUR_TRANS : teintes.get(n.disciplines[0]) ?? doux;
       ctx.beginPath(); ctx.arc(p.sx, p.sy, r, 0, Math.PI * 2); ctx.fill();
       if (chemin.has(i) || i === selection || entoures.has(i)) {
         ctx.globalAlpha = 1; ctx.lineWidth = 2.5; ctx.strokeStyle = texte;
         ctx.beginPath(); ctx.arc(p.sx, p.sy, r + 3, 0, Math.PI * 2); ctx.stroke();
       }
     }
-    // Étiquettes : la sélection, le chemin, les notions proches de la caméra et, sur demande, toutes les notions et
-    // MicroSkills (petit graphe). Les MicroSkills, plus discrètes, passent derrière les notions.
-    ctx.globalAlpha = 1; ctx.textBaseline = "middle";
-    const etiquetee = (i) => {
-      const n = graphe.noeuds[i];
-      if (i === selection || chemin.has(i)) return true;
-      if (n.type === "notion") return nommerNotions || (projetes[i].f > 0.95 && ordre.length < 900);
-      return nommerMicroskills;
-    };
-    // Placement sans chevauchement : la sélection, puis les notions (toujours écrites), puis les MicroSkills, chacune
-    // seulement si elle a la place et tient dans le cadre (les autres se lisent en touchant leur point).
-    const priorite = (i) => (i === selection ? 0 : chemin.has(i) ? 1 : graphe.noeuds[i].type === "notion" ? 2 : 3);
-    const etiquetees = ordre.filter(etiquetee).sort((i, j) => priorite(i) - priorite(j) || projetes[i].profondeur - projetes[j].profondeur);
-    const fond = s.getPropertyValue("--surface").trim() || "#fff";
-    const places = [];
-    const libre = (r) => places.every((q) => r.x1 <= q.x0 || r.x0 >= q.x1 || r.y1 <= q.y0 || r.y0 >= q.y1);
-    let ecrites = 0;
-    for (const i of etiquetees) {
-      if (ecrites >= 90) break;
-      const p = projetes[i], n = graphe.noeuds[i], fort = priorite(i) < 3;
-      ctx.font = fort ? "600 12px ui-sans-serif, system-ui, sans-serif" : "500 10.5px ui-sans-serif, system-ui, sans-serif";
-      const largeurTexte = ctx.measureText(n.libelle).width, h = fort ? 15 : 13;
-      // Côté de l'image précédente d'abord, puis l'autre (droite par défaut) ; une notion s'écrit même sans place libre.
-      const rectA = (cote) => {
-        const x = cote === "d" ? p.sx + p.r + 4 : p.sx - p.r - 4 - largeurTexte;
-        return { cote, x, x0: x - 1, x1: x + largeurTexte + 1, y0: p.sy - h / 2, y1: p.sy + h / 2 };
-      };
-      const ordreCotes = cotes.get(i) === "g" ? ["g", "d"] : ["d", "g"];
-      const candidats = ordreCotes.map(rectA).filter((r) => r.x0 >= 2 && r.x1 <= largeur - 2);
-      const rect = candidats.find(libre) ?? (fort ? rectA(ordreCotes[0]) : null);
-      if (!rect) { cotes.delete(i); continue; }
-      cotes.set(i, rect.cote);
-      const x = rect.x;
-      places.push(rect);
-      ecrites++;
-      ctx.lineWidth = 3; ctx.strokeStyle = fond; ctx.fillStyle = fort ? texte : doux;
-      ctx.strokeText(n.libelle, x, p.sy); ctx.fillText(n.libelle, x, p.sy);
+    // Étiquettes : la sélection, le chemin, et les notions proches de la caméra.
+    ctx.globalAlpha = 1; ctx.font = "600 12px ui-sans-serif, system-ui, sans-serif"; ctx.textBaseline = "middle";
+    const etiquetees = ordre.filter((i) => i === selection || chemin.has(i) || (graphe.noeuds[i].type !== "microskill" && (nommerNotions || (projetes[i].f > 0.95 && ordre.length < 900))));
+    for (const i of etiquetees.slice(-60)) {
+      const p = projetes[i], t = graphe.noeuds[i].libelle;
+      ctx.lineWidth = 3; ctx.strokeStyle = s.getPropertyValue("--surface").trim() || "#fff"; ctx.fillStyle = texte;
+      ctx.strokeText(t, p.sx + p.r + 4, p.sy); ctx.fillText(t, p.sx + p.r + 4, p.sy);
     }
   }
 

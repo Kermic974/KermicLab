@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { cheminLePlusCourt, compacter, construireGraphe, decompacter, disciplineDe, disposer, filtrer, indicateurs, libelleDe } from "../../web/graphe-referentiel.js";
+import { cheminLePlusCourt, compacter, construireGraphe, decompacter, disciplineDe, disposer, filtrer, indicateurs, libelleDe, notionsDemandees, sousEnsemble } from "../../web/graphe-referentiel.js";
 
 // Graphe du référentiel (ADR 0040) : construction, disposition déterministe, filtres et plus court chemin.
 const projection = {
@@ -91,12 +91,34 @@ test("graphe : sous-graphe autonome, disposition propre et déterministe", async
   assert.deepEqual(sousGraphe(lu, ["notion.maths.b"]).graphe.noeuds, a.graphe.noeuds, "même entrée, même disposition");
 });
 
-test("graphe : options de disposition (ressorts, répulsion) ; défauts inchangés pour le graphe complet", async () => {
-  const { disposer } = await import("../../web/graphe-referentiel.js");
-  const defauts = disposer(graphe, { iterations: 30 });
-  assert.deepEqual(disposer(graphe, { iterations: 30, reposPrerequis: 70, reposMicroskill: 26, repulsion: 260 }), defauts, "options explicites = défauts");
-  const aere = disposer(graphe, { iterations: 30, reposPrerequis: 150, reposMicroskill: 70, repulsion: 1400 });
-  assert.notDeepEqual(aere, defauts, "les options changent la disposition");
-  const ecart = (pos) => { const [a, b] = [pos[0], pos[1]]; return Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]); };
-  assert.ok(ecart(aere) > ecart(defauts), "ressort de prérequis plus long : notions a et b plus éloignées");
+// Couche métiers (chantier Métiers, lot 4) : un nœud par métier, relié aux notions de ses disciplines.
+const metiers = {
+  disciplines: [{ id: "algebre", notions: ["notion.maths.a", "notion.maths.b"] }, { id: "optique", notions: ["notion.physique.c", "notion.absente.x"] }],
+  metiers: [{ id: "opticien", nom: "Opticien-lunetier", disciplines: ["optique", "algebre"] }, { id: "comptable", nom: "Comptable", disciplines: ["algebre"] }]
+};
+const avecMetiers = construireGraphe(projection, { metiers });
+const luM = decompacter(JSON.parse(JSON.stringify(compacter(avecMetiers, disposer(avecMetiers, { iterations: 20 })))));
+const iM = (id) => luM.noeuds.findIndex((n) => n.id === id);
+
+test("graphe : couche métiers, nœuds après les MicroSkills, libellés relus, notions inconnues ignorées", () => {
+  assert.deepEqual(avecMetiers.noeuds.slice(-2).map((n) => [n.id, n.type]), [["metier.comptable", "metier"], ["metier.opticien", "metier"]]);
+  assert.equal(avecMetiers.liens.filter((l) => l.type === "metier").length, 5, "opticien → a, b, c ; comptable → a, b");
+  assert.equal(luM.noeuds[iM("metier.opticien")].libelle, "Opticien-lunetier");
+  assert.equal(luM.noeuds[iM("notion.maths.a")].libelle, "A", "libellé déduit de l'identifiant hors couche métiers");
+  assert.equal(compacter(graphe, disposer(graphe, { iterations: 1 })).libelles, undefined, "sans couche : forme publiée inchangée");
+});
+
+test("graphe : indicateurs, demande des notions, filtre et chemin avec la couche métiers", () => {
+  const ind = indicateurs(luM);
+  assert.equal(ind.metiers, 2);
+  assert.equal(ind.notionsAvecMetier, 3);
+  assert.deepEqual(ind.disciplines.map((d) => [d.discipline, d.sansMetier]), [["maths", 0], ["physique", 1]], "le métier n'est pas une discipline");
+  assert.equal(indicateurs(lu).metiers, 0);
+  assert.equal(indicateurs(lu).disciplines[0].sansMetier, undefined);
+  assert.deepEqual(notionsDemandees(luM).map((x) => [x.id, x.metiers]), [["notion.maths.a", 2], ["notion.maths.b", 2], ["notion.physique.c", 1]]);
+  assert.equal([...filtrer(luM, { metiers: false }).noeuds].some((k) => luM.noeuds[k].type === "metier"), false);
+  const physique = filtrer(luM, { discipline: "physique", microskills: false });
+  assert.deepEqual([...physique.noeuds].map((k) => luM.noeuds[k].id).filter((id) => id.startsWith("metier.")), ["metier.opticien"], "un métier suit la discipline de ses notions");
+  assert.deepEqual(cheminLePlusCourt(luM, iM("metier.comptable"), iM("notion.physique.c")).map((k) => luM.noeuds[k].id), ["metier.comptable", "notion.maths.b", "notion.physique.c"]);
+  assert.deepEqual([...sousEnsemble(luM, ["notion.maths.a"]).noeuds].map((k) => luM.noeuds[k].type).includes("metier"), false, "le sous-graphe de l'Espace Métiers ignore la couche");
 });
