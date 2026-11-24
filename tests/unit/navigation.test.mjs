@@ -3,8 +3,8 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import * as navigation from "../../web/navigation.js";
 
-test("navigation : cinq destinations par défaut, « Mon tableau de bord » fusionné avec l'Accueil (ADR 0039)", () => {
-  assert.deepEqual(navigation.ORDRE_NAVIGATION_DEFAUT, ["accueil", "education", "labs", "jeux", "progression"]);
+test("navigation : six destinations par défaut dont Métiers (ADR 0041), « Mon tableau de bord » fusionné avec l'Accueil (ADR 0039)", () => {
+  assert.deepEqual(navigation.ORDRE_NAVIGATION_DEFAUT, ["accueil", "education", "labs", "metiers", "jeux", "progression"]);
   assert.ok(navigation.ENTREES_NAVIGATION.includes("tableau-de-bord"), "l'entrée reste configurable");
   assert.deepEqual(navigation.ordreNavigation(undefined), [...navigation.ORDRE_NAVIGATION_DEFAUT]);
   assert.deepEqual(navigation.ordreNavigation([]), [...navigation.ORDRE_NAVIGATION_DEFAUT]);
@@ -49,7 +49,7 @@ test("espaces colorés : chaque écran a son espace, les vues du tableau de bord
   for (const vue of ["suivi", "classes", "eleves"]) assert.equal(navigation.espaceDe(vue), "professeur");
   assert.equal(navigation.espaceDe("contributions"), "contributions");
   for (const ecran of ["accueil", "profil", "compte", "apropos", "inconnu", undefined]) assert.equal(navigation.espaceDe(ecran), "accueil");
-  const ecrans = ["accueil", "education", "defi", "labs", "jeux", "progression", "famille", "espace-famille", "suivi", "classes", "eleves", "contributions", "profil"];
+  const ecrans = ["accueil", "education", "defi", "labs", "metiers", "jeux", "progression", "famille", "espace-famille", "suivi", "classes", "eleves", "contributions", "profil"];
   assert.deepEqual([...new Set(ecrans.map(navigation.espaceDe))].sort(), [...navigation.ESPACES].sort(), "tous les espaces sont atteints");
 });
 

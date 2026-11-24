@@ -11,16 +11,16 @@
 
 /** Entrées connues de la navigation (attribut `data-nav-id` des boutons). */
 export const ENTREES_NAVIGATION = Object.freeze([
-  "accueil", "tableau-de-bord", "education", "labs", "jeux", "progression", "profil",
+  "accueil", "tableau-de-bord", "education", "labs", "metiers", "jeux", "progression", "profil",
   "famille", "contributions", "suivi", "classes", "eleves",
 ]);
 
 /**
- * Ordre par défaut (ADR 0039 § 3) : cinq destinations. « Mon tableau de bord » a fusionné avec l'Accueil ; ses vues
+ * Ordre par défaut (ADR 0039 § 3, ADR 0041) : six destinations, dont l'Espace Métiers. « Mon tableau de bord » a fusionné avec l'Accueil ; ses vues
  * (Profil, Mon compte, Famille, Contributions, Professeur) s'ouvrent par l'avatar (« Mon espace ») et par leur barre de
  * filtres. L'entrée reste configurable : il suffit de l'ajouter à la clé `navigation` de `web/config.json`.
  */
-export const ORDRE_NAVIGATION_DEFAUT = Object.freeze(["accueil", "education", "labs", "jeux", "progression"]);
+export const ORDRE_NAVIGATION_DEFAUT = Object.freeze(["accueil", "education", "labs", "metiers", "jeux", "progression"]);
 
 /** Vues du tableau de bord, dans l'ordre de la barre de filtres. */
 export const VUES_TABLEAU_DE_BORD = Object.freeze([
@@ -69,9 +69,9 @@ export function vueTableauDeBord({ derniere = null, disponibles = [], prof = fal
  * Espaces colorés (ADR 0039 § 4) : chaque écran appartient à un espace dont la couleur habille le bandeau d'en-tête.
  * Les vues de « Mon tableau de bord » prennent la couleur de leur rôle ; un écran inconnu reste dans l'espace Accueil.
  */
-export const ESPACES = Object.freeze(["accueil", "education", "labs", "jeux", "progression", "famille", "professeur", "contributions"]);
+export const ESPACES = Object.freeze(["accueil", "education", "labs", "metiers", "jeux", "progression", "famille", "professeur", "contributions"]);
 const ESPACE_DES_ECRANS = Object.freeze({
-  education: "education", defi: "education", labs: "labs", jeux: "jeux", progression: "progression",
+  education: "education", defi: "education", labs: "labs", metiers: "metiers", jeux: "jeux", progression: "progression",
   famille: "famille", "espace-famille": "famille", suivi: "professeur", classes: "professeur", eleves: "professeur",
   contributions: "contributions",
 });

@@ -16,7 +16,7 @@ Décision : [ADR 0026](../decisions/0026-back-office.md). Interface : `https://k
 | Télémétrie | Tokens entrants et sortants, modèles, durée, requêtes, refus | `worker/src/telemetrie.js` |
 | Charte graphique | Trois thèmes ou couleurs personnalisées, aperçu clair et sombre | `web/theme.js` |
 | Contenus | Inventaire, masquage et mise en avant à chaud, parcours, brouillons envoyés en revue | `worker/src/contenus.js` |
-| Graphe du référentiel | Notions, MicroSkills et prérequis en 3D (canvas, sans dépendance) : filtres, recherche, voisinage, plus court chemin, indicateurs par discipline ; disposition calculée au build — [ADR 0040](../decisions/0040-graphe-referentiel-back-office.md) | `web/admin/graphe-referentiel.js`, `graphe-vue.js` |
+| Graphe du référentiel | Notions, MicroSkills et prérequis en 3D (canvas, sans dépendance) : filtres, recherche, voisinage, plus court chemin, indicateurs par discipline ; disposition calculée au build — [ADR 0040](../decisions/0040-graphe-referentiel-back-office.md) | `web/graphe-referentiel.js`, `graphe-vue.js` |
 | Souscriptions | Offres composées d'un rôle, de fonctionnalités et de limites ; sous-module financier (coût de revient, prix ↔ marge, seuil de rentabilité) — [ADR 0031](../decisions/0031-souscriptions-financier.md) ; coûts fixes répartis par abonnés visés et Finance simplifiée en graphiques — [ADR 0036](../decisions/0036-finance-simplifiee.md) | `worker/src/souscriptions.js`, `web/admin/financier.js` |
 | Harness | Modèles, budgets, quotas, skills, instructions complémentaires (limites de l'offre « Gratuit ») | `worker/src/reglages.js`, `configuration.js` |
 | Journal | Trace des actions (action et cible, jamais le contenu) | table `journal_admin` |

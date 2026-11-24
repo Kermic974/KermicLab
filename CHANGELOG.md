@@ -4,7 +4,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
-- **Refonte UX, lot 9 — accès rapides « Mes espaces » et espaces Famille / Professeur** (ADR 0039, D9) : un bouton « Mes espaces » de la barre de navigation (et de la barre du bas sur mobile) ouvre un menu avec les espaces du compte (Espace famille, Suivi de classe, Mes classes, Mes élèves, Contributions), un raccourci par enfant (sa progression) et par classe (ses élèves), et les actions « Donner une activité », « Ajouter un enfant » et « Nouvelle classe ». La sous-navigation ne garde que les vues de l'espace affiché. L'Espace famille et les écrans du professeur passent en pleine largeur, en deux colonnes (contenu à gauche, indicateurs à droite), avec leurs actions principales en en-tête et les élèves et classes en grille. Le libellé anglais « View as » de l'Espace famille devient « Afficher le suivi de ». / Redesign batch 9: "My spaces" quick-access menu, lighter sub-navigation and two-column family and teacher screens.
+- **Espace Métiers** (ADR 0041) : nouvel espace du site, « Des notions aux métiers ». Quatre anneaux relient les notions KermicLab, 26 disciplines, 38 métiers et leurs gestes ; choisir un élément allume toute sa chaîne. Le détail liste les notions à travailler (ouvrables comme dans Éducation) et montre leur graphe 3D (prérequis directs, MicroSkills). Données : `referentiel/metiers-v0.json`, validé au build contre le référentiel. / New Careers space linking KermicLab topics to subjects, jobs and job skills, with a 3D topic graph in the details.
 
 ## [0.2.0] — 2026-11-23
 

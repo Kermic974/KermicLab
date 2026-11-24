@@ -214,9 +214,9 @@ test("Mon tableau de bord (ordre par défaut) : sous l'Accueil, vues du professe
   await page.click("#formulaire-pseudo button[type=submit]");
   await page.click("#contrib-demo-prof");
   await page.locator("#contrib-tableau").waitFor({ state: "visible" });
-  // Barre latérale : cinq destinations (ADR 0039) ; les vues personnelles s'ouvrent par l'avatar « Mon espace ».
+  // Barre latérale : six destinations (ADR 0039, 0041) ; les vues personnelles s'ouvrent par l'avatar « Mon espace ».
   const entrees = page.locator(".barre-laterale nav [data-nav]:not([hidden])");
-  assert.deepEqual(await entrees.evaluateAll((b) => b.map((n) => n.dataset.nav)), ["accueil", "education", "labs", "jeux", "progression"]);
+  assert.deepEqual(await entrees.evaluateAll((b) => b.map((n) => n.dataset.nav)), ["accueil", "education", "labs", "metiers", "jeux", "progression"]);
   const tdb = page.locator(".barre-pied .profil-carte");
   assert.equal(await tdb.getAttribute("aria-current"), "page", "Contributions est une vue du tableau de bord");
   // Lot 9 : les filtres ne gardent que les vues de l'espace affiché ; Contributions est seule dans le sien.
