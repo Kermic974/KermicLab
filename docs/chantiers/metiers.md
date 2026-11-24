@@ -1,6 +1,6 @@
 # Chantier : Espace Métiers, compléter le référentiel et alimenter le graphe
 
-**Niveau actuel : 1 (format v2 livré, import ONISEP non commencé)**
+**Niveau actuel : 2 (format v2 et import livrés, en attente de l'instantané ONISEP)**
 
 Décisions : [ADR 0041](../decisions/0041-espace-metiers.md) (Espace Métiers) et
 [ADR 0042](../decisions/0042-referentiel-metiers-onisep.md) (format v2, import ONISEP, proposé). Données :
@@ -55,13 +55,22 @@ Règles :
 |---|---|---|
 | 0 | Accès aux données : récupérer l'instantané Idéo, confirmer la licence, le déposer sous `referentiel/sources/onisep/` (daté) ; analyse chiffrée réelle (domaines, niveaux, centres d'intérêt) | À faire, action manuelle ([actions manuelles](../actions-manuelles.md#espace-métiers-chantier-métiers)) |
 | 1 | **Format v2** : statut des associations métier → disciplines (`correspondance` : `v5` / `proposition` / `validee`, `validee` exige une date `relue` humaine), champs `onisep`, `rome`, `niveauAcces`, `domaines` ; schéma JSON `referentiel/metiers.schema.json` ; validation étendue ; indicateurs de couverture au build | Fait (ce lot) |
-| 2 | Script d'import déterministe `scripts/importer-onisep.mjs` : instantané → candidats normalisés (slug, dédoublonnage, rattachement des 38 métiers existants à leur `MET.<n>`), rapport de couverture ; aucun appel réseau | À faire, après le lot 0 |
+| 2 | Script d'import déterministe `npm run import:onisep -- <instantané>` (`scripts/importer-onisep.mjs`, `scripts/lib/onisep.mjs`) : CSV (`;` ou `,`) ou JSON, colonnes reconnues par alias, candidats normalisés (slug, ROME, niveau), rattachement des métiers existants par identifiant ou intitulé, `--appliquer` complète `onisep`, `rome`, `niveauAcces`, `domaines` sans écraser, rapport (`--json`) ; aucun appel réseau | Fait, testé sur une fixture fictive (`tests/unit/onisep.test.mjs`) ; à lancer sur l'instantané réel |
 | 3 | Rattachement métier → disciplines → notions : règles (domaine, ROME → disciplines), nouvelles disciplines (langues, EPS, musique, mécanique, électricité…), préparation par IA (`claude-sonnet-5-5` via `llm.js`) marquée `proposition`, validation humaine (back-office ou PR) | À faire |
 | 4 | Alimenter le graphe : couche « métiers » facultative dans `referentiel-graphe.json` (nœuds métier et discipline), indicateurs (notions les plus demandées, notions orphelines, métiers sans notion, plus court chemin notion → métier) dans le back-office | À faire |
 | 5 | Passage à l'échelle de l'écran : anneaux regroupés par domaine (dépliables), filtre par niveau d'accès, recherche par synonymes, liste paginée comme chemin principal sur mobile ; tests e2e | À faire |
 | 6 | Montée en charge par vagues : pilote d'environ 40 métiers ciblant les matières peu couvertes (mathématiques, français, langues, EPS) et les métiers accessibles en CAP ou bac pro ; puis un domaine ONISEP par PR. Cible : au moins 5 métiers par matière, 50 % des notions reliées | À faire |
 
 Chaque lot : `npm run ci` vert, cette fiche et `docs/actions-manuelles.md` à jour, validation du CODEOWNER.
+
+## Importer un instantané ONISEP
+
+1. Déposer le fichier sous `referentiel/sources/onisep/` (nom daté, voir le README du dossier).
+2. `npm run import:onisep -- referentiel/sources/onisep/<fichier>` : rapport et `candidats.json` à côté de l'instantané.
+   Si les colonnes indispensables ne sont pas reconnues, ajouter l'alias dans `COLONNES` (`scripts/lib/onisep.mjs`).
+3. Relire les rattachements du rapport, puis relancer avec `--appliquer`.
+4. Les candidats alimentent les vagues du lot 6 : un métier n'entre dans le référentiel qu'avec ses disciplines et
+   ses gestes, en `correspondance: "proposition"`.
 
 ## Format v2 en bref
 
