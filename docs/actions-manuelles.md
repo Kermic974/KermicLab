@@ -2,6 +2,18 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Espace Métiers (chantier Métiers)
+
+Plan : [chantier Métiers](chantiers/metiers.md), [ADR 0042](decisions/0042-referentiel-metiers-onisep.md).
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Récupérer les données métiers de l'ONISEP | data.gouv.fr, jeux « Idéo-Fiches métiers » et « Idéo-Métiers Onisep » | Analyse et import du chantier | Extrait `referentiel/sources/onisep/ideo-metiers-2026-11-24.json` versionné (accès réseau ouvert à `data.onisep.fr` et `static.data.gouv.fr` dans l'environnement cloud) | fait |
+| Accepter la licence ODbL des données ONISEP | [ADR 0042 §2](decisions/0042-referentiel-metiers-onisep.md), `referentiel/sources/onisep/README.md` | La licence est l'ODbL (et non Etalab) : attribution obligatoire (en place) et partage à l'identique des bases dérivées publiées (`metiers-v0.json`, `dist/metiers.json`) | Décision notée dans l'ADR 0042 ; sinon retirer les champs ONISEP avant publication | à faire |
+| Vérifier les 21 correspondances métier ↔ fiche ONISEP choisies par l'agent | `referentiel/metiers-v0.json` (champ `onisep`), liste dans le chantier Métiers | Rapprochements non exacts (ex. « Resp. logistique » → ingénieur logistique, « Content Strategist » → concepteur-rédacteur) | Correspondances confirmées ou corrigées par une PR | à faire |
+| Valider l'ADR 0042 (format v2, import ONISEP) | [ADR 0042](decisions/0042-referentiel-metiers-onisep.md) | Décision de structure des données et de source externe | ADR passée au statut accepté | à faire |
+| Relire les 79 associations métier → disciplines (38 de la V5, 41 de la vague pilote), les 26 disciplines « proposition » et les règles ROME | `referentiel/metiers-v0.json`, `referentiel/regles-metiers.json` | Associations reprises de la maquette V5 ou proposées par un agent (gestes, niveaux d'accès, notions) ; public mineur | Champs `correspondance: "validee"` et `relue` renseignés par un humain | à faire |
+
 ## Relecture humaine vérifiable (ADR 0039)
 
 | Action | Où | Pourquoi | Comment confirmer | Statut |

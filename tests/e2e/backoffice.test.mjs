@@ -138,7 +138,17 @@ test("back-office : graphe du référentiel, filtres, détails d'un nœud et plu
   await page.locator("#graphe-details button", { hasText: "Tout afficher" }).waitFor();
   await page.locator("#ecran button", { hasText: "Réinitialiser" }).click();
   await page.locator("#message", { hasText: "Vue du graphe réinitialisée." }).waitFor();
-  assert.match(await page.locator("#graphe-etat").textContent(), /Affichés : 477 notion/);
+  assert.match(await page.locator("#graphe-etat").textContent(), /Affichés : 477 notion.*, 0 métier\(s\)/, "couche métiers masquée par défaut");
+
+  // Couche métiers (chantier Métiers, lot 4) : affichage, classement des notions demandées, détails d'un métier.
+  const nbMetiers = JSON.parse(await readFile(`${racine}dist/metiers.json`, "utf8")).metiers.length;
+  await page.check("#graphe-metiers");
+  assert.match(await page.locator("#graphe-etat").textContent(), new RegExp(`, ${nbMetiers} métier\\(s\\)`));
+  assert.ok(await page.locator("#graphe-demandees li").count() > 0, "notions les plus demandées");
+  await page.fill("#graphe-recherche", "boulanger");
+  await page.locator("#graphe-resultats button", { hasText: "Boulanger" }).click();
+  await page.locator("#graphe-details:not([hidden]) h3", { hasText: "Boulanger" }).waitFor();
+  assert.match(await page.locator("#graphe-details").textContent(), /Métier.*Notions travaillées/s);
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });

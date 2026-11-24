@@ -11,7 +11,7 @@ import { genererSeoStatique } from "./lib/seo.mjs";
 
 import { synchroniserProjectionV0 } from "./lib/referentiel-projection.mjs";
 import { compacter, construireGraphe, disposer } from "../web/graphe-referentiel.js";
-import { enrichirMetiers, verifierMetiers } from "../web/metiers.js";
+import { couvertureMetiers, enrichirMetiers, verifierMetiers } from "../web/metiers.js";
 
 const racine = fileURLToPath(new URL("..", import.meta.url));
 const { version } = JSON.parse(await readFile(`${racine}package.json`, "utf8"));
@@ -48,16 +48,21 @@ await writeFile(`${racine}dist/trophees.json`, `${JSON.stringify(collectionTroph
 // back-office et par l'Espace Métiers. Données de l'Espace Métiers (ADR 0041) : validées contre le référentiel.
 {
   const projection = JSON.parse(await readFile(`${racine}referentiel/projection-v0.json`, "utf8"));
-  const graphe = construireGraphe(projection);
-  await writeFile(`${racine}dist/referentiel-graphe.json`, `${JSON.stringify(compacter(graphe, disposer(graphe)))}\n`);
-  console.log(`Graphe du référentiel : ${graphe.noeuds.length} nœuds, ${graphe.liens.length} relations${graphe.ignores ? `, ${graphe.ignores} référence(s) inconnue(s) ignorée(s)` : ""}.`);
   const metiers = JSON.parse(await readFile(`${racine}referentiel/metiers-v0.json`, "utf8"));
   const erreurs = verifierMetiers(metiers, new Set(Object.values(projection.notions)));
   if (erreurs.length) throw new Error(`referentiel/metiers-v0.json :\n- ${erreurs.join("\n- ")}`);
+  // Couche métiers (chantier Métiers, lot 4) : chaque métier relié aux notions de ses disciplines.
+  const graphe = construireGraphe(projection, { metiers });
+  await writeFile(`${racine}dist/referentiel-graphe.json`, `${JSON.stringify(compacter(graphe, disposer(graphe)))}\n`);
+  console.log(`Graphe du référentiel : ${graphe.noeuds.length} nœuds (dont ${graphe.noeuds.filter((n) => n.type === "metier").length} métiers), ${graphe.liens.length} relations${graphe.ignores ? `, ${graphe.ignores} référence(s) inconnue(s) ignorée(s)` : ""}.`);
   const titres = new Map(catalogue.index.maquettes.map((m) => [m.id, m.titre]));
   const publie = enrichirMetiers(metiers, projection, titres);
   await writeFile(`${racine}dist/metiers.json`, `${JSON.stringify(publie)}\n`);
   console.log(`Espace Métiers : ${metiers.metiers.length} métiers, ${metiers.disciplines.length} disciplines, ${Object.keys(publie.notions).length} notions reliées.`);
+  // Couverture (chantier Métiers, docs/chantiers/metiers.md) : information, jamais bloquante.
+  const c = couvertureMetiers(metiers, Object.values(projection.notions));
+  const statuts = (s) => Object.entries(s).map(([k, n]) => `${k} ${n}`).join(", ");
+  console.log(`Couverture métiers : ${c.notions.reliees}/${c.notions.total} notions reliées ; ONISEP ${c.avecOnisep}/${c.metiers}, ROME ${c.avecRome}/${c.metiers}, niveau d'accès ${c.avecNiveau}/${c.metiers} ; correspondances métiers (${statuts(c.correspondances.metiers)}), disciplines (${statuts(c.correspondances.disciplines)}).`);
 }
 await versionnerRessources(`${racine}dist`);
 // Blog (issue #277) : écrit après la boîte à idées et le versionnement, qui ne parcourent que les pages de la racine

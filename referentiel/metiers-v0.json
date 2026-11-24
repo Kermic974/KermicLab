@@ -1,6 +1,31 @@
 {
-  "version": 1,
-  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider.",
+  "version": 2,
+  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès. Lot 3 et vague pilote du lot 6 (2026-11-24) : 14 disciplines et 41 métiers ajoutés par un agent, en correspondance « proposition », sans code ROME (apporté par l’import ONISEP). Import ONISEP du 2026-11-24 (extrait referentiel/sources/onisep/ideo-metiers-2026-11-24.json, licence ODbL) : identifiants, codes ROME, niveaux d’accès, domaines et synonymes de 74 métiers.",
+  "sources": [
+    {
+      "nom": "Idéo-Fiches métiers",
+      "producteur": "Onisep",
+      "licence": "ODbL 1.0",
+      "url": "https://www.data.gouv.fr/datasets/ideo-fiches-metiers",
+      "date": "2026-11-24",
+      "champs": [
+        "onisep",
+        "rome",
+        "niveauAcces",
+        "synonymes"
+      ]
+    },
+    {
+      "nom": "Idéo-Métiers Onisep",
+      "producteur": "Onisep",
+      "licence": "ODbL 1.0",
+      "url": "https://www.data.gouv.fr/datasets/ideo-metiers-onisep",
+      "date": "2026-11-24",
+      "champs": [
+        "domaines"
+      ]
+    }
+  ],
   "categories": [
     {
       "id": "disc",
@@ -31,6 +56,21 @@
       "id": "health",
       "libelle": "Santé et soins",
       "couleur": "#0f766e"
+    },
+    {
+      "id": "btp",
+      "libelle": "Bâtiment, industrie et transport",
+      "couleur": "#475569"
+    },
+    {
+      "id": "services",
+      "libelle": "Services, droit, sport et tourisme",
+      "couleur": "#1e3a8a"
+    },
+    {
+      "id": "nature",
+      "libelle": "Agriculture et nature",
+      "couleur": "#4d7c0f"
     }
   ],
   "disciplines": [
@@ -44,6 +84,22 @@
       "notions": [
         "notion.physique-chimie.ondes",
         "notion.physique-chimie.son-et-lumiere"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "agronomie-vegetale",
+      "nom": "Agronomie",
+      "savoirFaire": [
+        "Analyse de sol",
+        "Conduite de culture"
+      ],
+      "notions": [
+        "notion.svt.agrosystemes-et-sols",
+        "notion.svt.photosynthese",
+        "notion.svt.photosynthese-et-productivite-l",
+        "notion.svt.developpement-vegetaux-cm",
+        "notion.svt.domestication-et-selection-l"
       ],
       "correspondance": "proposition"
     },
@@ -74,6 +130,38 @@
         "notion.svt.ecosystemes-et-biodiversite"
       ],
       "correspondance": "v5"
+    },
+    {
+      "id": "calcul-professionnel",
+      "nom": "Calcul professionnel",
+      "savoirFaire": [
+        "Métrés et quantités",
+        "Calcul de coûts"
+      ],
+      "notions": [
+        "notion.mathematiques.proportionnalite",
+        "notion.mathematiques.pourcentages-et-evolutions-c4",
+        "notion.mathematiques.perimetres-aires",
+        "notion.mathematiques.volumes",
+        "notion.mathematiques.echelle-et-plans-cm",
+        "notion.mathematiques.durees-et-horaires-cm"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "chimie-analytique",
+      "nom": "Chimie analytique",
+      "savoirFaire": [
+        "Dosage",
+        "Préparation de solutions"
+      ],
+      "notions": [
+        "notion.physique-chimie.absorbance-et-dosages",
+        "notion.physique-chimie.acides-bases-et-ph-l",
+        "notion.physique-chimie.solutions-et-concentration-l",
+        "notion.physique-chimie.quantite-de-matiere"
+      ],
+      "correspondance": "proposition"
     },
     {
       "id": "chimie-des-materiaux",
@@ -156,6 +244,67 @@
       "correspondance": "proposition"
     },
     {
+      "id": "droit-et-institutions",
+      "nom": "Droit et institutions",
+      "savoirFaire": [
+        "Procédure",
+        "Rédaction d’actes"
+      ],
+      "notions": [
+        "notion.emc.etat-de-droit",
+        "notion.emc.justice",
+        "notion.emc.emc-justice-et-securite-l",
+        "notion.emc.emc-libertes-et-droits-l",
+        "notion.emc.democratie"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "economie",
+      "nom": "Économie",
+      "savoirFaire": [
+        "Élasticité prix",
+        "Analyse offre/demande"
+      ],
+      "notions": [
+        "notion.ses.marche-concurrentiel",
+        "notion.ses.croissance-economique",
+        "notion.ses.mondialisation-commerce"
+      ],
+      "correspondance": "v5"
+    },
+    {
+      "id": "education-physique",
+      "nom": "Sciences du sport",
+      "savoirFaire": [
+        "Planification d’entraînement",
+        "Prévention des blessures"
+      ],
+      "notions": [
+        "notion.eps.eps-sante-et-performance-l",
+        "notion.eps.eps-endurance-et-sante-c4",
+        "notion.eps.eps-sports-collectifs-et-arbitrage-c4",
+        "notion.svt.contraction-musculaire",
+        "notion.svt.organisme-et-effort-6e"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "electricite-electronique",
+      "nom": "Électricité et électronique",
+      "savoirFaire": [
+        "Câblage de circuits",
+        "Mesures électriques"
+      ],
+      "notions": [
+        "notion.physique-chimie.lois-de-l-electricite-l",
+        "notion.physique-chimie.electricite",
+        "notion.physique-chimie.condensateur-et-circuit-rc",
+        "notion.technologie.objets-connectes-et-programmation-c4"
+      ],
+      "correspondance": "proposition"
+    },
+    {
       "id": "environnement",
       "nom": "Environnement",
       "savoirFaire": [
@@ -171,15 +320,17 @@
       "correspondance": "v5"
     },
     {
-      "id": "gestion",
-      "nom": "Gestion",
+      "id": "expression-ecrite",
+      "nom": "Expression écrite",
       "savoirFaire": [
-        "Diagramme de Gantt",
-        "Allocation ressources"
+        "Rédaction structurée",
+        "Argumentation"
       ],
       "notions": [
-        "notion.mathematiques.proportionnalite",
-        "notion.mathematiques.tableaux-graphiques-cm"
+        "notion.francais.argumentation",
+        "notion.francais.ecrire-et-reecrire-c4",
+        "notion.francais.langue-et-style-l",
+        "notion.francais.vocabulaire-et-orthographe-c4"
       ],
       "correspondance": "proposition"
     },
@@ -199,6 +350,21 @@
       "correspondance": "v5"
     },
     {
+      "id": "geologie",
+      "nom": "Géologie",
+      "savoirFaire": [
+        "Lecture de carte géologique",
+        "Datation des roches"
+      ],
+      "notions": [
+        "notion.svt.structure-de-la-terre",
+        "notion.svt.seismes-et-volcans",
+        "notion.svt.histoire-de-la-terre-et-datation",
+        "notion.geographie.risques-naturels"
+      ],
+      "correspondance": "proposition"
+    },
+    {
       "id": "geometrie",
       "nom": "Géométrie",
       "savoirFaire": [
@@ -214,6 +380,19 @@
       "correspondance": "v5"
     },
     {
+      "id": "gestion",
+      "nom": "Gestion",
+      "savoirFaire": [
+        "Diagramme de Gantt",
+        "Allocation ressources"
+      ],
+      "notions": [
+        "notion.mathematiques.proportionnalite",
+        "notion.mathematiques.tableaux-graphiques-cm"
+      ],
+      "correspondance": "proposition"
+    },
+    {
       "id": "histoire",
       "nom": "Histoire",
       "savoirFaire": [
@@ -227,6 +406,22 @@
       "correspondance": "v5"
     },
     {
+      "id": "histoire-de-l-art",
+      "nom": "Histoire de l’art et patrimoine",
+      "savoirFaire": [
+        "Analyse d’œuvre",
+        "Datation des styles"
+      ],
+      "notions": [
+        "notion.histoire.antiquite",
+        "notion.histoire.moyen-age",
+        "notion.histoire.renaissance",
+        "notion.arts-plastiques.arts-oeuvre-et-engagement-c4",
+        "notion.philosophie.art"
+      ],
+      "correspondance": "proposition"
+    },
+    {
       "id": "informatique",
       "nom": "Informatique",
       "savoirFaire": [
@@ -237,6 +432,21 @@
         "notion.mathematiques.algorithmique-python-l",
         "notion.technologie.nsi-algorithmes-et-donnees-l",
         "notion.technologie.nsi-bases-de-donnees-et-systemes-l"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "langues-vivantes",
+      "nom": "Langues vivantes",
+      "savoirFaire": [
+        "Compréhension orale",
+        "Expression écrite en langue étrangère"
+      ],
+      "notions": [
+        "notion.anglais.anglais-expression-orale-et-ecrite-l",
+        "notion.anglais.anglais-culture-et-civilisation-l",
+        "notion.anglais.anglais-grammaire-et-temps-l",
+        "notion.anglais.anglais-3e-c4"
       ],
       "correspondance": "proposition"
     },
@@ -278,6 +488,68 @@
       "notions": [
         "notion.technologie.snt-donnees-et-web-l",
         "notion.emc.esprit-critique-et-medias-c4"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "mecanique",
+      "nom": "Mécanique",
+      "savoirFaire": [
+        "Calcul de forces",
+        "Lecture de schémas cinématiques"
+      ],
+      "notions": [
+        "notion.physique-chimie.lois-de-newton",
+        "notion.physique-chimie.energie-mecanique",
+        "notion.physique-chimie.mouvement-et-interactions-l",
+        "notion.mathematiques.vecteurs"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "musique",
+      "nom": "Musique",
+      "savoirFaire": [
+        "Lecture de partition",
+        "Écoute analytique"
+      ],
+      "notions": [
+        "notion.musique.musique-ecoute-creation-et-histoire-l",
+        "notion.musique.musique-genres-et-formes-c4",
+        "notion.musique.musique-creation-et-engagement-c4",
+        "notion.musique.musique-notes-et-rythme-cm"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "nutrition-alimentation",
+      "nom": "Nutrition et alimentation",
+      "savoirFaire": [
+        "Équilibre alimentaire",
+        "Hygiène alimentaire"
+      ],
+      "notions": [
+        "notion.svt.nutrition-et-digestion",
+        "notion.svt.metabolisme-et-enzymes",
+        "notion.svt.microbiote-et-sante-l",
+        "notion.physique-chimie.transformations-chimiques-c4"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "physiologie-humaine",
+      "nom": "Physiologie humaine",
+      "savoirFaire": [
+        "Surveillance des constantes",
+        "Fonctionnement des organes"
+      ],
+      "notions": [
+        "notion.svt.respiration-et-circulation",
+        "notion.svt.systeme-immunitaire",
+        "notion.svt.immunite-adaptative",
+        "notion.svt.glycemie-et-diabete",
+        "notion.svt.reproduction-humaine",
+        "notion.svt.microbes-et-sante-c4"
       ],
       "correspondance": "proposition"
     },
@@ -373,20 +645,6 @@
         "notion.mathematiques.probabilites"
       ],
       "correspondance": "v5"
-    },
-    {
-      "id": "economie",
-      "nom": "Économie",
-      "savoirFaire": [
-        "Élasticité prix",
-        "Analyse offre/demande"
-      ],
-      "notions": [
-        "notion.ses.marche-concurrentiel",
-        "notion.ses.croissance-economique",
-        "notion.ses.mondialisation-commerce"
-      ],
-      "correspondance": "v5"
     }
   ],
   "metiers": [
@@ -403,7 +661,8 @@
         "Tests utilisateurs",
         "Architecture info"
       ],
-      "contexte": "Conception d’interfaces numériques centrées sur l’humain."
+      "contexte": "Conception d’interfaces numériques centrées sur l’humain.",
+      "correspondance": "v5"
     },
     {
       "id": "data-analyst",
@@ -418,7 +677,21 @@
         "Nettoyage données",
         "Datavisualisation"
       ],
-      "contexte": "Transformation de données brutes en indicateurs décisionnels."
+      "contexte": "Transformation de données brutes en indicateurs décisionnels.",
+      "correspondance": "v5",
+      "onisep": "MET.7930",
+      "rome": [
+        "M1403"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "informatique, Internet/bases de données",
+        "informatique, Internet/informatique (généralités)",
+        "sciences/mathématiques"
+      ],
+      "synonymes": [
+        "data analyst (analyste de données)"
+      ]
     },
     {
       "id": "developpeur-web",
@@ -433,7 +706,24 @@
         "Débogage JS",
         "Gestion API REST"
       ],
-      "contexte": "Création et maintenance d’applications web interactives."
+      "contexte": "Création et maintenance d’applications web interactives.",
+      "correspondance": "v5",
+      "onisep": "MET.12",
+      "rome": [
+        "M1805"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "informatique, Internet/développement, programmation, logiciel"
+      ],
+      "synonymes": [
+        "analyste-programmeur/euse",
+        "codeur/euse",
+        "développeur/euse logiciel",
+        "ingénieur/euse en études et développement informatiques",
+        "développeur informatique",
+        "développeuse informatique"
+      ]
     },
     {
       "id": "architecte-cloud",
@@ -448,7 +738,21 @@
         "Sécurisation IAM",
         "Conteneurisation"
       ],
-      "contexte": "Infrastructure distribuée haute disponibilité."
+      "contexte": "Infrastructure distribuée haute disponibilité.",
+      "correspondance": "v5",
+      "onisep": "MET.228",
+      "rome": [
+        "M1802"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/systèmes et réseaux"
+      ],
+      "synonymes": [
+        "chef/fe de projet cloud et virtualisation",
+        "ingénieur cloud computing (informatique en nuage)",
+        "ingénieure cloud computing (informatique en nuage)"
+      ]
     },
     {
       "id": "ebeniste",
@@ -463,7 +767,24 @@
         "Finition au tampon",
         "Lecture de plan"
       ],
-      "contexte": "Fabrication de mobilier sur mesure et restauration."
+      "contexte": "Fabrication de mobilier sur mesure et restauration.",
+      "correspondance": "v5",
+      "onisep": "MET.289",
+      "rome": [
+        "H2207"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "construction, architecture, travaux publics/agencement",
+        "construction, architecture, travaux publics/ameublement",
+        "arts, culture, artisanat/artisanat d'art",
+        "matières premières, fabrication, industries/bois",
+        "arts, culture, artisanat/restauration d'art"
+      ],
+      "synonymes": [
+        "restaurateur/trice de meubles anciens",
+        "ébéniste"
+      ]
     },
     {
       "id": "ceramiste",
@@ -478,7 +799,21 @@
         "Formulation émaux",
         "Conduite cuisson"
       ],
-      "contexte": "Création d’objets utilitaires et artistiques en terre cuite."
+      "contexte": "Création d’objets utilitaires et artistiques en terre cuite.",
+      "correspondance": "v5",
+      "onisep": "MET.309",
+      "rome": [
+        "B1201"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "matières premières, fabrication, industries/céramique, composites"
+      ],
+      "synonymes": [
+        "potier/ère",
+        "céramiste"
+      ]
     },
     {
       "id": "maroquinier",
@@ -493,7 +828,20 @@
         "Point sellier",
         "Parage du cuir"
       ],
-      "contexte": "Confection d’articles de maroquinerie haute précision."
+      "contexte": "Confection d’articles de maroquinerie haute précision.",
+      "correspondance": "v5",
+      "onisep": "MET.566",
+      "rome": [
+        "B1802"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "maroquinier",
+        "maroquinière"
+      ]
     },
     {
       "id": "menuisier-agenceur",
@@ -508,7 +856,24 @@
         "Usinage CNC",
         "Pose sur chantier"
       ],
-      "contexte": "Aménagement intérieur bois et agencement d’espaces."
+      "contexte": "Aménagement intérieur bois et agencement d’espaces.",
+      "correspondance": "v5",
+      "onisep": "MET.439",
+      "rome": [
+        "F1607",
+        "H2206"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "construction, architecture, travaux publics/agencement",
+        "construction, architecture, travaux publics/ameublement",
+        "matières premières, fabrication, industries/bois",
+        "construction, architecture, travaux publics/menuiserie"
+      ],
+      "synonymes": [
+        "menuisier",
+        "menuisière"
+      ]
     },
     {
       "id": "acheteur-industriel",
@@ -523,7 +888,23 @@
         "Négociation",
         "Sourcing mondial"
       ],
-      "contexte": "Optimisation de la chaîne d’approvisionnement."
+      "contexte": "Optimisation de la chaîne d’approvisionnement.",
+      "correspondance": "v5",
+      "onisep": "MET.571",
+      "rome": [
+        "M1101"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "commerce, marketing, vente/achat, approvisionnement",
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "acheteur/euse-approvisionneur/euse",
+        "ingénieur/e achat",
+        "acheteur",
+        "acheteuse"
+      ]
     },
     {
       "id": "charge-daffaires",
@@ -538,7 +919,8 @@
         "Prospection B2B",
         "Suivi de marge"
       ],
-      "contexte": "Développement commercial et pilotage de contrats."
+      "contexte": "Développement commercial et pilotage de contrats.",
+      "correspondance": "v5"
     },
     {
       "id": "resp-logistique",
@@ -553,7 +935,23 @@
         "Planification flux",
         "Audit entrepôt"
       ],
-      "contexte": "Coordination des flux physiques et des stocks."
+      "contexte": "Coordination des flux physiques et des stocks.",
+      "correspondance": "v5",
+      "onisep": "MET.733",
+      "rome": [
+        "N1301"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "logistique, transport/logistique"
+      ],
+      "synonymes": [
+        "directeur/trice logistique",
+        "responsable logistique",
+        "supply chain manager (directeur/trice de la chaîne logistique)",
+        "ingénieur logistique",
+        "ingénieure logistique"
+      ]
     },
     {
       "id": "controleur-gestion",
@@ -568,7 +966,23 @@
         "Analyse des écarts",
         "Reporting financier"
       ],
-      "contexte": "Pilotage de la performance économique de l’entreprise."
+      "contexte": "Pilotage de la performance économique de l’entreprise.",
+      "correspondance": "v5",
+      "onisep": "MET.410",
+      "rome": [
+        "M1204"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise"
+      ],
+      "synonymes": [
+        "analyste de gestion",
+        "contrôleur/euse financier/ère",
+        "responsable planification et gestion",
+        "contrôleur de gestion",
+        "contrôleuse de gestion"
+      ]
     },
     {
       "id": "content-strategist",
@@ -583,7 +997,20 @@
         "Rédaction SEO",
         "Storytelling"
       ],
-      "contexte": "Production de contenus à forte valeur ajoutée."
+      "contexte": "Production de contenus à forte valeur ajoutée.",
+      "correspondance": "v5",
+      "onisep": "MET.316",
+      "rome": [
+        "E1104"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/journalisme, édition, publicité"
+      ],
+      "synonymes": [
+        "concepteur-rédacteur",
+        "conceptrice-rédactrice"
+      ]
     },
     {
       "id": "traffic-manager",
@@ -598,7 +1025,21 @@
         "Optimisation ROAS",
         "Paramétrage Analytics"
       ],
-      "contexte": "Acquisition et conversion d’audience en ligne."
+      "contexte": "Acquisition et conversion d’audience en ligne.",
+      "correspondance": "v5",
+      "onisep": "MET.489",
+      "rome": [
+        "E1402"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/journalisme, édition, publicité",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "responsable gestion de trafic web",
+        "traffic manager (responsable de la promotion en ligne)"
+      ]
     },
     {
       "id": "brand-manager",
@@ -613,7 +1054,22 @@
         "Veille culturelle",
         "Brief créatif"
       ],
-      "contexte": "Construction et cohérence de l’identité de marque."
+      "contexte": "Construction et cohérence de l’identité de marque.",
+      "correspondance": "v5",
+      "onisep": "MET.539",
+      "rome": [
+        "M1703"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "gestionnaire de produit",
+        "responsable ou spécialiste produit",
+        "chef de produit marketing (mercatique)",
+        "cheffe de produit marketing (mercatique)"
+      ]
     },
     {
       "id": "community-builder",
@@ -628,7 +1084,25 @@
         "Modération active",
         "Événementiel"
       ],
-      "contexte": "Fédérer et engager une communauté autour d’un projet."
+      "contexte": "Fédérer et engager une communauté autour d’un projet.",
+      "correspondance": "v5",
+      "onisep": "MET.93",
+      "rome": [
+        "E1101"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "information-communication, audiovisuel/communication",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "animateur/trice de communauté",
+        "animateur/trice de communauté Web",
+        "animateur/trice de réseaux sociaux",
+        "animateur/trice de site web",
+        "community manager (animateur de communauté en ligne)",
+        "community manager (animatrice de communauté en ligne)"
+      ]
     },
     {
       "id": "ing-biomedical",
@@ -643,7 +1117,22 @@
         "Conformité normes",
         "Maintenance préventive"
       ],
-      "contexte": "Conception et suivi des dispositifs médicaux."
+      "contexte": "Conception et suivi des dispositifs médicaux.",
+      "correspondance": "v5",
+      "onisep": "MET.911",
+      "rome": [
+        "H1206"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "santé, social, sport/santé (généralités)"
+      ],
+      "synonymes": [
+        "responsable d'unité biomédicale",
+        "responsable du service biomédical",
+        "ingénieur biomédical",
+        "ingénieure biomédicale"
+      ]
     },
     {
       "id": "eco-concepteur",
@@ -658,7 +1147,24 @@
         "Substitution matériaux",
         "Éco-audit"
       ],
-      "contexte": "Réduction de l’empreinte environnementale des produits."
+      "contexte": "Réduction de l’empreinte environnementale des produits.",
+      "correspondance": "v5",
+      "onisep": "MET.633",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/environnement (généralités)",
+        "matières premières, fabrication, industries/fonction production (généralités)",
+        "matières premières, fabrication, industries/matériaux"
+      ],
+      "synonymes": [
+        "chef/fe de projet en éco-développement",
+        "éco-concepteur/trice",
+        "expert/e éco-conception et ACV (analyse du cycle de vie)",
+        "ingénieur/e procédés en éco-conception",
+        "ingénieur/e produits éco-conception",
+        "ingénieur éco-concepteur",
+        "ingénieure éco-conceptrice"
+      ]
     },
     {
       "id": "geometre-topographe",
@@ -673,7 +1179,21 @@
         "Calculer des coordonnées",
         "Produire un plan"
       ],
-      "contexte": "Mesure, représentation et implantation précise des espaces."
+      "contexte": "Mesure, représentation et implantation précise des espaces.",
+      "correspondance": "v5",
+      "onisep": "MET.408",
+      "rome": [
+        "F1107"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "construction, architecture, travaux publics/bureau d'études BTP",
+        "sciences/sciences de la Terre",
+        "construction, architecture, travaux publics/travaux publics"
+      ],
+      "synonymes": [
+        "géomètre-topographe"
+      ]
     },
     {
       "id": "ingenieur-genie-civil",
@@ -689,7 +1209,22 @@
         "Modéliser des efforts",
         "Contrôler une conformité"
       ],
-      "contexte": "Conception et suivi d’ouvrages durables et sûrs."
+      "contexte": "Conception et suivi d’ouvrages durables et sûrs.",
+      "correspondance": "v5",
+      "onisep": "MET.182",
+      "rome": [
+        "F1106"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "construction, architecture, travaux publics/génie civil, construction (généralités)",
+        "construction, architecture, travaux publics/travaux publics"
+      ],
+      "synonymes": [
+        "ingénieur/e génie civil",
+        "ingénieur du BTP",
+        "ingénieure du BTP"
+      ]
     },
     {
       "id": "technicien-de-laboratoire",
@@ -704,7 +1239,28 @@
         "Réaliser un dosage",
         "Interpréter des mesures"
       ],
-      "contexte": "Réalisation d’analyses et contrôle de la fiabilité des résultats."
+      "contexte": "Réalisation d’analyses et contrôle de la fiabilité des résultats.",
+      "correspondance": "v5",
+      "onisep": "MET.36",
+      "rome": [
+        "H1210",
+        "H1503"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "sciences/chimie",
+        "matières premières, fabrication, industries/matériaux",
+        "matières premières, fabrication, industries/méthodes industrialisation"
+      ],
+      "synonymes": [
+        "analyste de laboratoire",
+        "laborantin/e en chimie",
+        "technicien/ne analyse-contrôle en industrie chimique",
+        "technicien/ne d'analyses chimiques",
+        "technicien/ne de laboratoire",
+        "technicien chimiste",
+        "technicienne chimiste"
+      ]
     },
     {
       "id": "biologiste-de-lenvironnement",
@@ -720,7 +1276,22 @@
         "Identifier des indicateurs",
         "Analyser une évolution"
       ],
-      "contexte": "Étude de la biodiversité et de la qualité des écosystèmes."
+      "contexte": "Étude de la biodiversité et de la qualité des écosystèmes.",
+      "correspondance": "v5",
+      "onisep": "MET.589",
+      "rome": [
+        "K2402"
+      ],
+      "niveauAcces": "bac+8",
+      "domaines": [
+        "sciences/biologie",
+        "environnement, énergies, propreté/environnement (généralités)"
+      ],
+      "synonymes": [
+        "chercheur/euse en biologie de l'environnement",
+        "écologue",
+        "biologiste en environnement"
+      ]
     },
     {
       "id": "agronome",
@@ -736,7 +1307,21 @@
         "Comparer des rendements",
         "Concevoir un itinéraire cultural"
       ],
-      "contexte": "Amélioration des systèmes de production agricole."
+      "contexte": "Amélioration des systèmes de production agricole.",
+      "correspondance": "v5",
+      "onisep": "MET.428",
+      "rome": [
+        "A1303"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "agriculture, animaux/agriculture (généralités)",
+        "matières premières, fabrication, industries/agroalimentaire"
+      ],
+      "synonymes": [
+        "ingénieur/e agronome",
+        "agronome"
+      ]
     },
     {
       "id": "urbaniste",
@@ -752,7 +1337,25 @@
         "Cartographier des usages",
         "Évaluer un scénario"
       ],
-      "contexte": "Conception de projets urbains à partir des besoins et contraintes du territoire."
+      "contexte": "Conception de projets urbains à partir des besoins et contraintes du territoire.",
+      "correspondance": "v5",
+      "onisep": "MET.407",
+      "rome": [
+        "K1802"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/droit appliqué",
+        "environnement, énergies, propreté/urbanisme"
+      ],
+      "synonymes": [
+        "chargé/e d'études en urbanisme",
+        "chef/fe de projet urbaniste",
+        "consultant/e urbaniste",
+        "urbaniste concepteur/trice",
+        "urbaniste conseil",
+        "urbaniste"
+      ]
     },
     {
       "id": "professeur-de-sciences",
@@ -768,7 +1371,23 @@
         "Conduire une expérimentation",
         "Évaluer un raisonnement"
       ],
-      "contexte": "Transmission des démarches scientifiques et accompagnement des apprentissages."
+      "contexte": "Transmission des démarches scientifiques et accompagnement des apprentissages.",
+      "correspondance": "v5",
+      "onisep": "MET.51",
+      "rome": [
+        "K2107"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "lettres, langues, enseignement/enseignement"
+      ],
+      "synonymes": [
+        "enseignant/e",
+        "enseignant/e du second degré",
+        "professeur/e de lycée général et technologique",
+        "professeur de collège et de lycée",
+        "professeure de collège et de lycée"
+      ]
     },
     {
       "id": "journaliste-scientifique",
@@ -784,7 +1403,8 @@
         "Vulgariser un résultat",
         "Structurer un article"
       ],
-      "contexte": "Médiation fiable de connaissances scientifiques auprès du public."
+      "contexte": "Médiation fiable de connaissances scientifiques auprès du public.",
+      "correspondance": "v5"
     },
     {
       "id": "analyste-des-risques",
@@ -800,7 +1420,25 @@
         "Estimer une probabilité",
         "Prioriser des mesures"
       ],
-      "contexte": "Identification, quantification et suivi des risques."
+      "contexte": "Identification, quantification et suivi des risques.",
+      "correspondance": "v5",
+      "onisep": "MET.555",
+      "rome": [
+        "M1201"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise",
+        "banque, assurances, immobilier/assurances",
+        "banque, assurances, immobilier/finances",
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "gestionnaire des risques",
+        "manager/euse des risques et des assurances",
+        "manager de risques (risk manager)",
+        "manageuse de risques (risk manager)"
+      ]
     },
     {
       "id": "mediateur-scientifique",
@@ -816,7 +1454,25 @@
         "Concevoir un atelier",
         "Animer une démonstration"
       ],
-      "contexte": "Création de passerelles entre science, culture et publics."
+      "contexte": "Création de passerelles entre science, culture et publics.",
+      "correspondance": "v5",
+      "onisep": "MET.108",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "sciences/biologie",
+        "sciences/chimie",
+        "environnement, énergies, propreté/environnement (généralités)",
+        "informatique, Internet/informatique (généralités)",
+        "sciences/mathématiques",
+        "sciences/physique"
+      ],
+      "synonymes": [
+        "animateur/trice territorial/e en médiation scientifique",
+        "chargé/e de médiation scientifique",
+        "responsable de la médiation scientifique",
+        "médiateur scientifique",
+        "médiatrice scientifique"
+      ]
     },
     {
       "id": "medecin-generaliste",
@@ -832,7 +1488,20 @@
         "Établir une orientation diagnostique",
         "Coordonner un parcours de soins"
       ],
-      "contexte": "Prévention, diagnostic initial et suivi global des patients."
+      "contexte": "Prévention, diagnostic initial et suivi global des patients.",
+      "correspondance": "v5",
+      "onisep": "MET.869",
+      "rome": [
+        "J1102"
+      ],
+      "niveauAcces": "bac+9",
+      "domaines": [
+        "santé, social, sport/médical"
+      ],
+      "synonymes": [
+        "docteur en médecine",
+        "médecin généraliste"
+      ]
     },
     {
       "id": "infirmier",
@@ -848,7 +1517,20 @@
         "Réaliser un soin protocolisé",
         "Transmettre des observations"
       ],
-      "contexte": "Soins, surveillance clinique et coordination au contact des patients."
+      "contexte": "Soins, surveillance clinique et coordination au contact des patients.",
+      "correspondance": "v5",
+      "onisep": "MET.38",
+      "rome": [
+        "J1506"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "santé, social, sport/paramédical"
+      ],
+      "synonymes": [
+        "infirmier",
+        "infirmière"
+      ]
     },
     {
       "id": "aide-soignant",
@@ -864,7 +1546,22 @@
         "Observer une évolution clinique",
         "Appliquer les règles d’hygiène"
       ],
-      "contexte": "Accompagnement, confort et observation quotidienne des personnes soignées."
+      "contexte": "Accompagnement, confort et observation quotidienne des personnes soignées.",
+      "correspondance": "v5",
+      "onisep": "MET.561",
+      "rome": [
+        "J1501"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "santé, social, sport/paramédical"
+      ],
+      "synonymes": [
+        "aide infirmier/ère",
+        "assistant/e en soins",
+        "aide-soignant",
+        "aide-soignante"
+      ]
     },
     {
       "id": "pharmacien",
@@ -880,7 +1577,22 @@
         "Sécuriser une dispensation",
         "Conseiller sur le bon usage"
       ],
-      "contexte": "Délivrance sécurisée, conseil et suivi des produits de santé."
+      "contexte": "Délivrance sécurisée, conseil et suivi des produits de santé.",
+      "correspondance": "v5",
+      "onisep": "MET.767",
+      "rome": [
+        "J1202"
+      ],
+      "niveauAcces": "bac+6",
+      "domaines": [
+        "santé, social, sport/médical"
+      ],
+      "synonymes": [
+        "pharmacien/ne adjoint/e d'officine",
+        "pharmacien/ne titulaire d'officine",
+        "pharmacien d'officine",
+        "pharmacienne d'officine"
+      ]
     },
     {
       "id": "sage-femme",
@@ -896,7 +1608,21 @@
         "Accompagner un accouchement",
         "Conduire une action de prévention"
       ],
-      "contexte": "Suivi médical, prévention et accompagnement autour de la grossesse et de la naissance."
+      "contexte": "Suivi médical, prévention et accompagnement autour de la grossesse et de la naissance.",
+      "correspondance": "v5",
+      "onisep": "MET.787",
+      "rome": [
+        "J1104"
+      ],
+      "niveauAcces": "bac+6",
+      "domaines": [
+        "santé, social, sport/médical"
+      ],
+      "synonymes": [
+        "accoucheur/euse",
+        "maïeuticien",
+        "sage-femme"
+      ]
     },
     {
       "id": "kinesitherapeute",
@@ -912,7 +1638,21 @@
         "Construire un programme de rééducation",
         "Guider un exercice thérapeutique"
       ],
-      "contexte": "Évaluation et rééducation des fonctions motrices et respiratoires."
+      "contexte": "Évaluation et rééducation des fonctions motrices et respiratoires.",
+      "correspondance": "v5",
+      "onisep": "MET.29",
+      "rome": [
+        "J1404"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "santé, social, sport/paramédical"
+      ],
+      "synonymes": [
+        "kinésithérapeute",
+        "physiothérapeute",
+        "masseur-kinésithérapeute"
+      ]
     },
     {
       "id": "dentiste",
@@ -928,7 +1668,21 @@
         "Planifier un soin dentaire",
         "Prévenir les risques infectieux"
       ],
-      "contexte": "Prévention, diagnostic et traitement des affections bucco-dentaires."
+      "contexte": "Prévention, diagnostic et traitement des affections bucco-dentaires.",
+      "correspondance": "v5",
+      "onisep": "MET.870",
+      "rome": [
+        "J1103"
+      ],
+      "niveauAcces": "bac+6",
+      "domaines": [
+        "santé, social, sport/médical"
+      ],
+      "synonymes": [
+        "dentiste",
+        "chirurgien-dentiste",
+        "chirurgienne-dentiste"
+      ]
     },
     {
       "id": "technicien-de-laboratoire-medical",
@@ -944,7 +1698,25 @@
         "Exécuter une analyse contrôlée",
         "Valider la qualité technique"
       ],
-      "contexte": "Réalisation et contrôle technique des analyses de biologie médicale."
+      "contexte": "Réalisation et contrôle technique des analyses de biologie médicale.",
+      "correspondance": "v5",
+      "onisep": "MET.771",
+      "rome": [
+        "J1302"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "sciences/biologie",
+        "santé, social, sport/paramédical"
+      ],
+      "synonymes": [
+        "laborantin/ne",
+        "laborantin/ne d'analyses médicales",
+        "technicien/ne de laboratoire d'analyses",
+        "technicien/ne de laboratoire médical",
+        "technicien d'analyses biomédicales",
+        "technicienne d'analyses biomédicales"
+      ]
     },
     {
       "id": "manipulateur-en-electroradiologie-medicale",
@@ -960,7 +1732,22 @@
         "Positionner un patient",
         "Appliquer la radioprotection"
       ],
-      "contexte": "Réalisation d’examens d’imagerie et de traitements utilisant des rayonnements."
+      "contexte": "Réalisation d’examens d’imagerie et de traitements utilisant des rayonnements.",
+      "correspondance": "v5",
+      "onisep": "MET.416",
+      "rome": [
+        "J1306"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "santé, social, sport/paramédical"
+      ],
+      "synonymes": [
+        "manipulateur/trice ERM",
+        "manipulateur/trice-radio",
+        "manipulateur d'électroradiologie médicale",
+        "manipulatrice d'électroradiologie médicale"
+      ]
     },
     {
       "id": "psychologue",
@@ -976,7 +1763,1271 @@
         "Analyser une situation clinique",
         "Construire un accompagnement"
       ],
-      "contexte": "Évaluation et accompagnement psychologique des personnes et des groupes."
+      "contexte": "Évaluation et accompagnement psychologique des personnes et des groupes.",
+      "correspondance": "v5",
+      "onisep": "MET.871",
+      "rome": [
+        "K1104"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "histoire-géographie, psychologie, sociologie/psychologie"
+      ],
+      "synonymes": [
+        "psychologue"
+      ]
+    },
+    {
+      "id": "boulanger",
+      "nom": "Boulanger",
+      "categorie": "craft",
+      "disciplines": [
+        "nutrition-alimentation",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Pétrissage et façonnage",
+        "Calcul des proportions de recette",
+        "Surveillance de la fermentation"
+      ],
+      "contexte": "Fabrication quotidienne du pain et des viennoiseries.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap",
+      "onisep": "MET.17",
+      "rome": [
+        "D1102"
+      ],
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "boulanger/ère-pâtissier/ère",
+        "ouvrier/ère boulanger/ère",
+        "boulanger",
+        "boulangère"
+      ]
+    },
+    {
+      "id": "patissier",
+      "nom": "Pâtissier",
+      "categorie": "craft",
+      "disciplines": [
+        "nutrition-alimentation",
+        "calcul-professionnel",
+        "chimie-des-materiaux"
+      ],
+      "gestes": [
+        "Pesée précise des ingrédients",
+        "Tempérage du chocolat",
+        "Décoration et dressage"
+      ],
+      "contexte": "Création de gâteaux, entremets et desserts.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap",
+      "onisep": "MET.152",
+      "rome": [
+        "D1104"
+      ],
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "boulanger/ère-pâtissier/ère",
+        "pâtissier/ère-chocolatier/ère",
+        "pâtissier/ère-confiseur/euse",
+        "pâtissier/ère de restaurant",
+        "pâtissier",
+        "pâtissière"
+      ]
+    },
+    {
+      "id": "cuisinier",
+      "nom": "Cuisinier",
+      "categorie": "services",
+      "disciplines": [
+        "nutrition-alimentation",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Mise en place des postes",
+        "Respect des règles d’hygiène",
+        "Gestion des cuissons"
+      ],
+      "contexte": "Préparation des plats en restaurant ou en collectivité.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap",
+      "onisep": "MET.420",
+      "rome": [
+        "G1601"
+      ],
+      "domaines": [
+        "hôtellerie-restauration, tourisme/restauration"
+      ],
+      "synonymes": [
+        "cuisinier/ère",
+        "chef de cuisine",
+        "cheffe de cuisine"
+      ]
+    },
+    {
+      "id": "fleuriste",
+      "nom": "Fleuriste",
+      "categorie": "craft",
+      "disciplines": [
+        "agronomie-vegetale",
+        "arts-plastiques",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Composition florale",
+        "Entretien des végétaux",
+        "Conseil au client"
+      ],
+      "contexte": "Création de bouquets et vente de plantes.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap",
+      "onisep": "MET.18",
+      "rome": [
+        "D1209"
+      ],
+      "domaines": [
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "animateur/trice commercial/e de point de vente horticole",
+        "fleuriste"
+      ]
+    },
+    {
+      "id": "coiffeur",
+      "nom": "Coiffeur",
+      "categorie": "craft",
+      "disciplines": [
+        "chimie-des-materiaux",
+        "arts-plastiques",
+        "communication"
+      ],
+      "gestes": [
+        "Coupe et coiffage",
+        "Préparation des colorations",
+        "Diagnostic du cheveu"
+      ],
+      "contexte": "Soin et mise en forme des cheveux en salon.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap",
+      "onisep": "MET.39",
+      "rome": [
+        "D1202"
+      ],
+      "domaines": [
+        "santé, social, sport/esthétique"
+      ],
+      "synonymes": [
+        "coiffeur",
+        "coiffeuse"
+      ]
+    },
+    {
+      "id": "electricien-du-batiment",
+      "nom": "Électricien du bâtiment",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "calcul-professionnel",
+        "geometrie"
+      ],
+      "gestes": [
+        "Lecture de schémas électriques",
+        "Tirage et raccordement de câbles",
+        "Contrôle de sécurité de l’installation"
+      ],
+      "contexte": "Installation électrique de logements et de bureaux.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap",
+      "onisep": "MET.56",
+      "rome": [
+        "F1602"
+      ],
+      "domaines": [
+        "électricité, électronique, robotique/électrotechnique",
+        "construction, architecture, travaux publics/équipement technique",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "électricien/ne bâtiment",
+        "électricien/ne d'équipement",
+        "électricien/ne monteur/euse installateur/trice en équipements électriques",
+        "monteur/euse électricien/ne",
+        "électricien installateur",
+        "électricienne installatrice"
+      ]
+    },
+    {
+      "id": "plombier-chauffagiste",
+      "nom": "Plombier-chauffagiste",
+      "categorie": "btp",
+      "disciplines": [
+        "calcul-professionnel",
+        "physique",
+        "geometrie"
+      ],
+      "gestes": [
+        "Façonnage de tuyauteries",
+        "Pose d’équipements sanitaires",
+        "Réglage d’une chaudière"
+      ],
+      "contexte": "Installation et entretien des réseaux d’eau et de chauffage.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap",
+      "onisep": "MET.266",
+      "rome": [
+        "F1603"
+      ],
+      "domaines": [
+        "construction, architecture, travaux publics/équipement technique"
+      ],
+      "synonymes": [
+        "installateur/trice sanitaire",
+        "monteur/euse en installations sanitaires",
+        "monteur/euse sanitaire",
+        "plombier",
+        "plombière"
+      ]
+    },
+    {
+      "id": "macon",
+      "nom": "Maçon",
+      "categorie": "btp",
+      "disciplines": [
+        "calcul-professionnel",
+        "geometrie",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Implantation de l’ouvrage",
+        "Dosage du béton",
+        "Montage de murs d’aplomb"
+      ],
+      "contexte": "Construction des murs, dalles et fondations.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap",
+      "onisep": "MET.94",
+      "rome": [
+        "F1703"
+      ],
+      "domaines": [
+        "construction, architecture, travaux publics/maçonnerie, béton armé"
+      ],
+      "synonymes": [
+        "constructeur/trice en maçonnerie et béton armé du bâtiment",
+        "maçon",
+        "maçonne"
+      ]
+    },
+    {
+      "id": "charpentier",
+      "nom": "Charpentier",
+      "categorie": "btp",
+      "disciplines": [
+        "geometrie",
+        "calcul-professionnel",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Épure et traçage",
+        "Taille des assemblages",
+        "Levage de la charpente"
+      ],
+      "contexte": "Conception et pose de charpentes en bois.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap",
+      "onisep": "MET.9",
+      "rome": [
+        "F1503"
+      ],
+      "domaines": [
+        "matières premières, fabrication, industries/bois",
+        "construction, architecture, travaux publics/charpente, couverture"
+      ],
+      "synonymes": [
+        "constructeur/trice bois",
+        "charpentier bois",
+        "charpentière bois"
+      ]
+    },
+    {
+      "id": "mecanicien-automobile",
+      "nom": "Mécanicien automobile",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique"
+      ],
+      "gestes": [
+        "Diagnostic électronique",
+        "Remplacement de pièces",
+        "Essai du véhicule"
+      ],
+      "contexte": "Entretien et réparation des véhicules.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac",
+      "onisep": "MET.664",
+      "rome": [
+        "I1604"
+      ],
+      "domaines": [
+        "mécanique/automobile",
+        "mécanique/mécanique (généralités)"
+      ],
+      "synonymes": [
+        "garagiste",
+        "mécanicien/ne automobile",
+        "technicien automobile",
+        "technicienne automobile"
+      ]
+    },
+    {
+      "id": "soudeur",
+      "nom": "Soudeur",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "physique",
+        "geometrie"
+      ],
+      "gestes": [
+        "Lecture de plan de pièce",
+        "Réglage du poste de soudage",
+        "Contrôle visuel des soudures"
+      ],
+      "contexte": "Assemblage de pièces métalliques par fusion.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap",
+      "onisep": "MET.899",
+      "rome": [
+        "H2913"
+      ],
+      "domaines": [
+        "mécanique/travail des métaux"
+      ],
+      "synonymes": [
+        "opérateur/trice en techniques de soudage",
+        "soudeur",
+        "soudeuse"
+      ]
+    },
+    {
+      "id": "technicien-de-maintenance-industrielle",
+      "nom": "Technicien de maintenance industrielle",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "informatique"
+      ],
+      "gestes": [
+        "Diagnostic de panne",
+        "Maintenance préventive",
+        "Remise en service d’une ligne"
+      ],
+      "contexte": "Entretien des machines de production.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+2",
+      "onisep": "MET.866",
+      "rome": [
+        "I1304"
+      ],
+      "domaines": [
+        "mécanique/automatismes",
+        "électricité, électronique, robotique/électronique",
+        "électricité, électronique, robotique/électrotechnique",
+        "matières premières, fabrication, industries/maintenance, qualité",
+        "mécanique/mécanique (généralités)"
+      ],
+      "synonymes": [
+        "agent/e de maintenance industrielle",
+        "maintenancier/ère industriel/le",
+        "responsable de maintenance",
+        "technicien de maintenance industrielle",
+        "technicienne de maintenance industrielle"
+      ]
+    },
+    {
+      "id": "ingenieur-mecanique",
+      "nom": "Ingénieur en mécanique",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "logique-mathematique",
+        "physique"
+      ],
+      "gestes": [
+        "Calcul de structures",
+        "Modélisation 3D",
+        "Essais de prototypes"
+      ],
+      "contexte": "Conception de systèmes et de pièces mécaniques.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+5",
+      "onisep": "MET.401",
+      "rome": [
+        "H1206",
+        "H2502"
+      ],
+      "domaines": [
+        "mécanique/mécanique (généralités)"
+      ],
+      "synonymes": [
+        "ingénieur en mécanique",
+        "ingénieure en mécanique"
+      ]
+    },
+    {
+      "id": "pilote-de-ligne",
+      "nom": "Pilote de ligne",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "langues-vivantes",
+        "geographie"
+      ],
+      "gestes": [
+        "Préparation du plan de vol",
+        "Communication radio en anglais",
+        "Gestion des systèmes de bord"
+      ],
+      "contexte": "Conduite d’avions de transport de passagers.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+3",
+      "onisep": "MET.400",
+      "rome": [
+        "N2102"
+      ],
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "commandant/e de bord (Captain)",
+        "officier/ère pilote de ligne-copilote (First officer)",
+        "pilote de ligne"
+      ]
+    },
+    {
+      "id": "technicien-reseaux",
+      "nom": "Technicien réseaux",
+      "categorie": "app",
+      "disciplines": [
+        "reseaux",
+        "informatique",
+        "electricite-electronique"
+      ],
+      "gestes": [
+        "Câblage et brassage",
+        "Configuration d’équipements",
+        "Supervision du réseau"
+      ],
+      "contexte": "Installation et maintenance des réseaux informatiques.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+2"
+    },
+    {
+      "id": "traducteur-interprete",
+      "nom": "Traducteur-interprète",
+      "categorie": "mkt",
+      "disciplines": [
+        "langues-vivantes",
+        "linguistique",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Traduction de documents",
+        "Interprétation orale",
+        "Recherche terminologique"
+      ],
+      "contexte": "Passage d’un texte ou d’un discours d’une langue à une autre.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+5",
+      "onisep": "MET.768",
+      "rome": [
+        "E1108"
+      ],
+      "domaines": [
+        "lettres, langues, enseignement/langues"
+      ],
+      "synonymes": [
+        "interprète de conférences",
+        "interprète de liaison",
+        "traducteur/trice littéraire",
+        "traducteur/trice-rédacteur/trice",
+        "traducteur-interprète",
+        "traductrice-interprète"
+      ]
+    },
+    {
+      "id": "journaliste",
+      "nom": "Journaliste",
+      "categorie": "mkt",
+      "disciplines": [
+        "expression-ecrite",
+        "histoire",
+        "communication"
+      ],
+      "gestes": [
+        "Enquête et vérification des sources",
+        "Rédaction d’articles",
+        "Interview"
+      ],
+      "contexte": "Recherche, vérification et diffusion de l’information.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+3",
+      "onisep": "MET.45",
+      "rome": [
+        "E1106"
+      ],
+      "domaines": [
+        "information-communication, audiovisuel/journalisme, édition, publicité"
+      ],
+      "synonymes": [
+        "flash-man",
+        "journaliste scientifique",
+        "journaliste"
+      ]
+    },
+    {
+      "id": "ingenieur-du-son",
+      "nom": "Ingénieur du son",
+      "categorie": "mkt",
+      "disciplines": [
+        "acoustique",
+        "musique",
+        "informatique"
+      ],
+      "gestes": [
+        "Placement des micros",
+        "Mixage",
+        "Mastering"
+      ],
+      "contexte": "Prise de son et mixage pour la musique, le spectacle ou l’audiovisuel.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+2",
+      "onisep": "MET.585",
+      "rome": [
+        "L1508"
+      ],
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle",
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "concepteur/trice son",
+        "directeur/trice de son",
+        "régisseur/euse son",
+        "responsable de production son",
+        "technicien/ne du son",
+        "ingénieur du son",
+        "ingénieure du son"
+      ]
+    },
+    {
+      "id": "musicien",
+      "nom": "Musicien",
+      "categorie": "craft",
+      "disciplines": [
+        "musique",
+        "acoustique"
+      ],
+      "gestes": [
+        "Déchiffrage de partition",
+        "Répétition en ensemble",
+        "Interprétation sur scène"
+      ],
+      "contexte": "Interprétation d’œuvres musicales en concert ou en studio.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac",
+      "onisep": "MET.6",
+      "rome": [
+        "L1202"
+      ],
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle"
+      ],
+      "synonymes": [
+        "concertiste",
+        "instrumentiste",
+        "musicien",
+        "musicienne"
+      ]
+    },
+    {
+      "id": "restaurateur-d-oeuvres-d-art",
+      "nom": "Restaurateur d’œuvres d’art",
+      "categorie": "craft",
+      "disciplines": [
+        "histoire-de-l-art",
+        "chimie-analytique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Constat d’état",
+        "Nettoyage et consolidation",
+        "Retouche réversible"
+      ],
+      "contexte": "Conservation et restauration d’œuvres anciennes.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+5",
+      "onisep": "MET.52",
+      "rome": [
+        "B1302"
+      ],
+      "domaines": [
+        "arts, culture, artisanat/restauration d'art"
+      ],
+      "synonymes": [
+        "artisan/e-restaurateur/trice",
+        "conservateur/trice-restaurateur/trice",
+        "restaurateur d'oeuvres d'art",
+        "restauratrice d'oeuvres d'art"
+      ]
+    },
+    {
+      "id": "professeur-des-ecoles",
+      "nom": "Professeur des écoles",
+      "categorie": "services",
+      "disciplines": [
+        "expression-ecrite",
+        "psychologie-cognitive",
+        "logique-mathematique"
+      ],
+      "gestes": [
+        "Préparation de séquences",
+        "Différenciation pédagogique",
+        "Évaluation des acquis"
+      ],
+      "contexte": "Enseignement de toutes les matières en maternelle et en élémentaire.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+5",
+      "onisep": "MET.557",
+      "rome": [
+        "K2106"
+      ],
+      "domaines": [
+        "lettres, langues, enseignement/enseignement"
+      ],
+      "synonymes": [
+        "enseignant/e",
+        "instituteur/trice",
+        "maître/esse d'école",
+        "professeur des écoles",
+        "professeure des écoles"
+      ]
+    },
+    {
+      "id": "professeur-de-musique",
+      "nom": "Professeur de musique",
+      "categorie": "services",
+      "disciplines": [
+        "musique",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Choix du répertoire",
+        "Direction de chœur",
+        "Accompagnement des progrès"
+      ],
+      "contexte": "Enseignement de la musique au collège, au lycée ou en conservatoire.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+2",
+      "onisep": "MET.293",
+      "rome": [
+        "K2105"
+      ],
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle",
+        "lettres, langues, enseignement/enseignement",
+        "santé, social, sport/sport"
+      ],
+      "synonymes": [
+        "enseignant/e artistique",
+        "professeur/e d'éducation musicale et chant choral",
+        "professeur/e d'enseignement artistique",
+        "professeur de musique ou de danse",
+        "professeure de musique ou de danse"
+      ]
+    },
+    {
+      "id": "bibliothecaire",
+      "nom": "Bibliothécaire",
+      "categorie": "services",
+      "disciplines": [
+        "histoire",
+        "expression-ecrite",
+        "informatique"
+      ],
+      "gestes": [
+        "Catalogage",
+        "Conseil de lecture",
+        "Animation culturelle"
+      ],
+      "contexte": "Gestion et valorisation des collections d’une bibliothèque.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac",
+      "onisep": "MET.44",
+      "rome": [
+        "K1601"
+      ],
+      "domaines": [
+        "information-communication, audiovisuel/bibliothèque, documentation"
+      ],
+      "synonymes": [
+        "assistant/e de conservation du patrimoine et des bibliothèques (FPT)",
+        "assistant/e spécialisé/e des bibliothèques et des musées d’administrations parisiennes, spécialité bibliothèques (Ville de Paris)",
+        "bibliothécaire",
+        "bibliothécaire assistant/e spécialisé/e (FPE)",
+        "médiathécaire-documentaliste",
+        "responsable d'une mission transversale en bibliothèque-médiathèque",
+        "responsable d'un pôle d'activité de la bibliothèque",
+        "responsable d'équipe ou de projet en bibliothèque-médiathèque"
+      ]
+    },
+    {
+      "id": "guide-conferencier",
+      "nom": "Guide-conférencier",
+      "categorie": "services",
+      "disciplines": [
+        "histoire-de-l-art",
+        "langues-vivantes",
+        "histoire"
+      ],
+      "gestes": [
+        "Préparation d’un parcours de visite",
+        "Commentaire d’œuvres",
+        "Animation de groupe"
+      ],
+      "contexte": "Visites commentées de musées, monuments et villes.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+3",
+      "onisep": "MET.941",
+      "rome": [
+        "G1201"
+      ],
+      "domaines": [
+        "arts, culture, artisanat/activités culturelles",
+        "histoire-géographie, psychologie, sociologie/histoire",
+        "arts, culture, artisanat/histoire de l'art",
+        "hôtellerie-restauration, tourisme/tourisme"
+      ],
+      "synonymes": [
+        "guide-conférencier",
+        "guide-conférencière"
+      ]
+    },
+    {
+      "id": "avocat",
+      "nom": "Avocat",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "droit-des-contrats"
+      ],
+      "gestes": [
+        "Analyse d’un dossier",
+        "Rédaction de conclusions",
+        "Plaidoirie"
+      ],
+      "contexte": "Conseil et défense de clients devant la justice.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+7",
+      "onisep": "MET.33",
+      "rome": [
+        "K1903"
+      ],
+      "domaines": [
+        "économie, droit, politique/activité judiciaire"
+      ],
+      "synonymes": [
+        "avocat/e civiliste",
+        "avocat/e d'affaires",
+        "avocat/e pénaliste",
+        "avocat",
+        "avocate"
+      ]
+    },
+    {
+      "id": "greffier",
+      "nom": "Greffier",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Tenue des audiences",
+        "Rédaction des actes",
+        "Accueil des justiciables"
+      ],
+      "contexte": "Garant de la procédure aux côtés des magistrats.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+2",
+      "onisep": "MET.72",
+      "rome": [
+        "K1902"
+      ],
+      "domaines": [
+        "économie, droit, politique/activité judiciaire"
+      ],
+      "synonymes": [
+        "greffier/ère des services judiciaires",
+        "greffier",
+        "greffière"
+      ]
+    },
+    {
+      "id": "gardien-de-la-paix",
+      "nom": "Gardien de la paix",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "physiologie-humaine"
+      ],
+      "gestes": [
+        "Patrouille et prévention",
+        "Rédaction de procès-verbaux",
+        "Gestes de premiers secours"
+      ],
+      "contexte": "Sécurité des personnes et des biens.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac",
+      "onisep": "MET.336",
+      "rome": [
+        "K1706"
+      ],
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "policier/ère",
+        "gardien de la paix",
+        "gardienne de la paix"
+      ]
+    },
+    {
+      "id": "educateur-sportif",
+      "nom": "Éducateur sportif",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "physiologie-humaine",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Conception de séances",
+        "Sécurité des pratiquants",
+        "Adaptation au public"
+      ],
+      "contexte": "Encadrement d’activités sportives pour tous les âges.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac",
+      "onisep": "MET.783",
+      "rome": [
+        "G1204"
+      ],
+      "domaines": [
+        "santé, social, sport/sport"
+      ],
+      "synonymes": [
+        "coach sportif/ive",
+        "moniteur/euse sportif/ive",
+        "éducateur sportif",
+        "éducatrice sportive"
+      ]
+    },
+    {
+      "id": "archeologue",
+      "nom": "Archéologue",
+      "categorie": "disc",
+      "disciplines": [
+        "histoire",
+        "geographie",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Fouille stratigraphique",
+        "Relevé et inventaire",
+        "Datation des objets"
+      ],
+      "contexte": "Étude des traces matérielles des sociétés passées.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+5",
+      "onisep": "MET.166",
+      "rome": [
+        "K2401"
+      ],
+      "domaines": [
+        "histoire-géographie, psychologie, sociologie/histoire"
+      ],
+      "synonymes": [
+        "archéologue"
+      ]
+    },
+    {
+      "id": "geologue",
+      "nom": "Géologue",
+      "categorie": "disc",
+      "disciplines": [
+        "geologie",
+        "chimie-analytique",
+        "geographie"
+      ],
+      "gestes": [
+        "Relevé de terrain",
+        "Analyse d’échantillons",
+        "Cartographie des sols"
+      ],
+      "contexte": "Étude du sous-sol pour la construction, l’eau ou les risques.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+5",
+      "onisep": "MET.570",
+      "rome": [
+        "F1105"
+      ],
+      "domaines": [
+        "environnement, énergies, propreté/déchets, pollutions et risques",
+        "environnement, énergies, propreté/énergies",
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "ingénieur/e géologue",
+        "géologue"
+      ]
+    },
+    {
+      "id": "meteorologue",
+      "nom": "Météorologue",
+      "categorie": "disc",
+      "disciplines": [
+        "physique",
+        "statistiques",
+        "environnement"
+      ],
+      "gestes": [
+        "Analyse des données d’observation",
+        "Lecture de modèles numériques",
+        "Rédaction de bulletins"
+      ],
+      "contexte": "Prévision du temps et étude du climat.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+5",
+      "onisep": "MET.164",
+      "rome": [
+        "M1809"
+      ],
+      "domaines": [
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "météorologue",
+        "météorologiste"
+      ]
+    },
+    {
+      "id": "agriculteur",
+      "nom": "Agriculteur",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "environnement",
+        "gestion"
+      ],
+      "gestes": [
+        "Préparation des sols",
+        "Suivi des cultures",
+        "Gestion de l’exploitation"
+      ],
+      "contexte": "Production végétale ou animale sur une exploitation.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac",
+      "onisep": "MET.547",
+      "rome": [
+        "A1416"
+      ],
+      "domaines": [
+        "agriculture, animaux/agriculture (généralités)",
+        "agriculture, animaux/cultures",
+        "agriculture, animaux/élevage, aquaculture"
+      ],
+      "synonymes": [
+        "chef/fe d'exploitation",
+        "exploitant/e agricole",
+        "agriculteur",
+        "agricultrice"
+      ]
+    },
+    {
+      "id": "jardinier-paysagiste",
+      "nom": "Jardinier paysagiste",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "geometrie"
+      ],
+      "gestes": [
+        "Plantation et taille",
+        "Lecture d’un plan d’aménagement",
+        "Entretien des espaces verts"
+      ],
+      "contexte": "Création et entretien de jardins et d’espaces verts.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap",
+      "onisep": "MET.120",
+      "rome": [
+        "A1203"
+      ],
+      "domaines": [
+        "environnement, énergies, propreté/aménagement paysager"
+      ],
+      "synonymes": [
+        "jardinier/ère d'espaces verts",
+        "jardinier/ère-paysagiste",
+        "jardinier/ère paysagiste en aménagement",
+        "jardinier/ère paysagiste en entretien",
+        "ouvrier paysagiste",
+        "ouvrière paysagiste"
+      ]
+    },
+    {
+      "id": "veterinaire",
+      "nom": "Vétérinaire",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "chimie-analytique",
+        "physiologie-humaine"
+      ],
+      "gestes": [
+        "Examen clinique",
+        "Diagnostic et prescription",
+        "Chirurgie"
+      ],
+      "contexte": "Soins aux animaux domestiques et d’élevage.",
+      "correspondance": "proposition",
+      "onisep": "MET.171",
+      "rome": [
+        "A1504"
+      ],
+      "niveauAcces": "bac+6",
+      "domaines": [
+        "agriculture, animaux/soins aux animaux"
+      ],
+      "synonymes": [
+        "vétérinaire"
+      ]
+    },
+    {
+      "id": "dieteticien",
+      "nom": "Diététicien",
+      "categorie": "health",
+      "disciplines": [
+        "nutrition-alimentation",
+        "physiologie-humaine",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Bilan alimentaire",
+        "Élaboration de menus adaptés",
+        "Éducation nutritionnelle"
+      ],
+      "contexte": "Conseil en alimentation pour la santé.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+2",
+      "onisep": "MET.672",
+      "rome": [
+        "J1402"
+      ],
+      "domaines": [
+        "santé, social, sport/paramédical"
+      ],
+      "synonymes": [
+        "diététicien",
+        "diététicienne"
+      ]
+    },
+    {
+      "id": "opticien-lunetier",
+      "nom": "Opticien-lunetier",
+      "categorie": "health",
+      "disciplines": [
+        "physique",
+        "physiologie-humaine",
+        "communication"
+      ],
+      "gestes": [
+        "Contrôle de la vue",
+        "Choix et montage des verres",
+        "Ajustage des montures"
+      ],
+      "contexte": "Conseil et fabrication d’équipements optiques.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+2",
+      "onisep": "MET.281",
+      "rome": [
+        "J1405"
+      ],
+      "domaines": [
+        "santé, social, sport/paramédical"
+      ],
+      "synonymes": [
+        "opticien-lunetier",
+        "opticienne-lunetière"
+      ]
+    },
+    {
+      "id": "ambulancier",
+      "nom": "Ambulancier",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "geographie"
+      ],
+      "gestes": [
+        "Transport sécurisé du patient",
+        "Gestes d’urgence",
+        "Hygiène du véhicule"
+      ],
+      "contexte": "Transport des malades et des blessés.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap",
+      "onisep": "MET.417",
+      "rome": [
+        "J1305"
+      ],
+      "domaines": [
+        "santé, social, sport/paramédical",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "conducteur/trice ambulancier/ère",
+        "transporteur/euse sanitaire",
+        "ambulancier",
+        "ambulancière"
+      ]
+    },
+    {
+      "id": "auxiliaire-de-puericulture",
+      "nom": "Auxiliaire de puériculture",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Soins d’hygiène du nourrisson",
+        "Éveil et jeux",
+        "Observation du développement"
+      ],
+      "contexte": "Soins et accompagnement des jeunes enfants.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac",
+      "onisep": "MET.415",
+      "rome": [
+        "J1304"
+      ],
+      "domaines": [
+        "santé, social, sport/paramédical"
+      ],
+      "synonymes": [
+        "auxiliaire-puériculteur/trice",
+        "auxiliaire de puériculture"
+      ]
+    },
+    {
+      "id": "comptable",
+      "nom": "Comptable",
+      "categorie": "trade",
+      "disciplines": [
+        "comptabilite",
+        "statistiques",
+        "droit-des-contrats"
+      ],
+      "gestes": [
+        "Saisie des écritures",
+        "Rapprochement bancaire",
+        "Préparation du bilan"
+      ],
+      "contexte": "Tenue des comptes d’une entreprise.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+2",
+      "onisep": "MET.11",
+      "rome": [
+        "M1203"
+      ],
+      "domaines": [
+        "gestion des entreprises, comptabilité/comptabilité"
+      ],
+      "synonymes": [
+        "collaborateur/trice comptable",
+        "comptable général/e",
+        "comptable unique",
+        "comptable"
+      ]
+    },
+    {
+      "id": "conseiller-bancaire",
+      "nom": "Conseiller bancaire",
+      "categorie": "trade",
+      "disciplines": [
+        "economie",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Analyse de la situation du client",
+        "Simulation de prêt",
+        "Conseil en épargne"
+      ],
+      "contexte": "Accompagnement des clients dans leurs projets financiers.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+2"
+    },
+    {
+      "id": "vendeur-conseil",
+      "nom": "Vendeur-conseil",
+      "categorie": "trade",
+      "disciplines": [
+        "communication",
+        "calcul-professionnel",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Accueil et écoute du client",
+        "Mise en rayon",
+        "Encaissement"
+      ],
+      "contexte": "Conseil et vente en magasin.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap",
+      "onisep": "MET.860",
+      "rome": [
+        "D1106",
+        "D1212",
+        "D1214"
+      ],
+      "domaines": [
+        "commerce, marketing, vente/achat, approvisionnement",
+        "commerce, marketing, vente/grande distribution et petits commerces",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "conseiller/ère de clientèle",
+        "conseiller/ère en vente",
+        "employé/e de commerce",
+        "employé/e de libre-service",
+        "vendeur en magasin",
+        "vendeuse en magasin"
+      ]
     }
   ]
 }

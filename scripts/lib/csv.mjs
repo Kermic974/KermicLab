@@ -1,4 +1,4 @@
-export function lireCsv(texte) {
+export function lireCsv(texte, { separateur = "," } = {}) {
   const lignes = [];
   let ligne = [], champ = "", cite = false, ferme = false;
   for (let i = 0; i < texte.length; i++) {
@@ -7,10 +7,10 @@ export function lireCsv(texte) {
       if (c !== '"') champ += c;
       else if (texte[i + 1] === '"') { champ += '"'; i++; }
       else { cite = false; ferme = true; }
-    } else if (c === "," || c === "\n" || c === "\r") {
+    } else if (c === separateur || c === "\n" || c === "\r") {
       ligne.push(champ);
       champ = ""; ferme = false;
-      if (c !== ",") {
+      if (c !== separateur) {
         if (c === "\r" && texte[i + 1] === "\n") i++;
         lignes.push(ligne); ligne = [];
       }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><metiers xmlns:exsl="http://exslt.org/common">
+    <metier>
+        <identifiant>MET.2001</identifiant>
+        <nom_metier>gardien/ne de phare</nom_metier>
+        <libelle_feminin>gardienne de phare</libelle_feminin>
+        <libelle_masculin>gardien de phare</libelle_masculin>
+        <synonymes>
+            <synonyme>
+                <nom_metier>veilleur/euse de côte</nom_metier>
+                <libelle_feminin>veilleuse de côte</libelle_feminin>
+                <libelle_masculin>veilleur de côte</libelle_masculin>
+            </synonyme>
+        </synonymes>
+        <romesV3>
+            <romeV3>N3101</romeV3>
+        </romesV3>
+        <competences><![CDATA[<h5>Texte descriptif</h5><p>Jamais <metier>repris</metier>.</p>]]></competences>
+        <metiers_associes>
+            <metier_associe>
+                <id>MET.2002</id>
+                <libelle>marin/e</libelle>
+            </metier_associe>
+        </metiers_associes>
+        <niveau_acces_min>
+            <id>REF.406</id>
+            <libelle>3E</libelle>
+        </niveau_acces_min>
+        <centres_interet>
+            <centre_interet>
+                <id>T-ITM.1</id>
+                <libelle>j&apos;aime la mer &amp; le vent</libelle>
+            </centre_interet>
+        </centres_interet>
+    </metier>
+    <metier>
+        <identifiant>MET.2002</identifiant>
+        <nom_metier>marin/e</nom_metier>
+        <libelle_feminin>marine</libelle_feminin>
+        <libelle_masculin>marin</libelle_masculin>
+        <synonymes></synonymes>
+        <romesV3></romesV3>
+        <niveau_acces_min>
+            <id>REF.420</id>
+            <libelle>bac + 9 et plus</libelle>
+        </niveau_acces_min>
+    </metier>
+</metiers>

@@ -5,12 +5,14 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer } from "./outils.mjs";
 
-let serveur, nav, api, htmlMaquette;
+let serveur, nav, api, htmlMaquette, donnees;
 before(async () => {
   const csp = (await readFile(`${racine}dist/_headers`, "utf8")).match(/Content-Security-Policy: (.*)/)[1];
   serveur = await servir(`${racine}dist`, { headers: { "content-security-policy": csp, "referrer-policy": "no-referrer" } });
   nav = await navigateur();
   htmlMaquette = await readFile(`${racine}catalogue/trigo-cercle/page.html`, "utf8");
+  // Volumes lus dans les données publiées : le référentiel grandit par vagues d'import (chantier Métiers).
+  donnees = JSON.parse(await readFile(`${racine}dist/metiers.json`, "utf8"));
   const { apiUrl } = JSON.parse(await readFile(`${racine}dist/config.json`, "utf8"));
   api = apiUrl || serveur.url;
 });
@@ -36,13 +38,15 @@ test("métiers : anneaux, filtres, chaîne d'un métier, notions KermicLab et gr
   assert.equal(new URL(page.url()).hash, "#metiers");
   assert.equal(await page.evaluate(() => document.documentElement.dataset.espace), "metiers", "bandeau à la couleur de l'espace");
   await page.locator("#metiers-liste .metiers-item").first().waitFor();
-  assert.match(await page.locator("#metiers-etat").textContent(), /38 métier\(s\) affiché\(s\) · 26 disciplines · 60 notions KermicLab reliées/);
-  assert.equal(await page.locator("#metiers-anneaux .metiers-noeud.metier").count(), 38);
-  assert.equal(await page.locator("#metiers-anneaux .metiers-noeud.notion").count(), 60);
+  const [nbMetiers, nbDisciplines, nbNotions] = [donnees.metiers.length, donnees.disciplines.length, Object.keys(donnees.notions).length];
+  assert.ok(nbMetiers >= 38 && nbNotions >= 60, "au moins le référentiel de la maquette V5");
+  assert.equal(await page.locator("#metiers-etat").textContent(), `${nbMetiers} métier(s) affiché(s) · ${nbDisciplines} disciplines · ${nbNotions} notions KermicLab reliées`);
+  assert.equal(await page.locator("#metiers-anneaux .metiers-noeud.metier").count(), nbMetiers);
+  assert.equal(await page.locator("#metiers-anneaux .metiers-noeud.notion").count(), nbNotions);
 
   // Filtres : famille de métiers puis recherche sans accents.
   await page.locator("#metiers-categories [data-categorie=health]").click();
-  assert.equal(await page.locator("#metiers-liste .metiers-item").count(), 10);
+  assert.equal(await page.locator("#metiers-liste .metiers-item").count(), donnees.metiers.filter((m) => m.categorie === "health").length);
   await page.locator("#metiers-categories [data-categorie=\"\"]").click();
   await page.fill("#metiers-recherche", "ebeniste");
   assert.deepEqual(await page.locator("#metiers-liste .metiers-item strong").allTextContents(), ["Ébéniste"]);
@@ -64,6 +68,21 @@ test("métiers : anneaux, filtres, chaîne d'un métier, notions KermicLab et gr
   await detail.locator(".metiers-notion .metiers-pastille.notion", { hasText: "Statistiques" }).first().click();
   assert.equal(await detail.locator(".sur-titre").textContent(), "Notion KermicLab");
   assert.ok(await detail.locator(".metiers-bloc .metiers-pastille.metier").count() > 5, "les métiers qui mobilisent les statistiques");
+
+  // Lot 5 du chantier Métiers : filtre par niveau d'accès, niveau et statut de relecture dans le détail, liste par pages.
+  await page.selectOption("#metiers-niveau", "cap");
+  assert.equal(await page.locator("#metiers-liste .metiers-item").count(), donnees.metiers.filter((m) => m.niveauAcces === "cap").length);
+  await page.locator("#metiers-liste [data-metier=boulanger]").click();
+  const texteBoulanger = await detail.textContent();
+  for (const attendu of ["Niveau d'accès minimum : CAP", "Fiche proposée, en cours de relecture."]) assert.ok(texteBoulanger.includes(attendu), attendu);
+  assert.match(await page.locator("#metiers-sources").textContent(), /Onisep, « Idéo-Fiches métiers » .*licence ODbL/, "attribution exigée par la licence");
+  await page.selectOption("#metiers-niveau", "");
+  assert.equal(await detail.isHidden(), true, "changer de filtre referme le détail");
+  if (nbMetiers > 50) {
+    assert.equal(await page.locator("#metiers-liste .metiers-item").count(), 50, "première page");
+    await page.click("#metiers-plus");
+    assert.equal(await page.locator("#metiers-liste .metiers-item").count(), Math.min(100, nbMetiers));
+  }
 
   // Ouvrir la notion : la bulle du catalogue s'ouvre (même mécanisme que l'espace Éducation). L'API simulée ne connaît
   // que quelques notions, dont « electricite » (physique) : seules les notions du catalogue chargé ont ce bouton.
