@@ -96,7 +96,7 @@ function aleatoire(graine) {
  * centre de sa discipline). Déterministe ; calculée au build, pas dans le navigateur. Renvoie des [x, y, z] entiers,
  * dans l'ordre de `graphe.noeuds`.
  */
-export function disposer(graphe, { iterations = 160, graine = 974 } = {}) {
+export function disposer(graphe, { iterations = 160, graine = 974, reposPrerequis = 70, reposMicroskill = 26, repulsion = 260 } = {}) {
   const n = graphe.noeuds.length;
   const hasard = aleatoire(graine);
   const index = new Map(graphe.noeuds.map((noeud, i) => [noeud.id, i]));
@@ -130,7 +130,7 @@ export function disposer(graphe, { iterations = 160, graine = 974 } = {}) {
     const d = boule(28);
     for (let k = 0; k < 3; k++) pos[i * 3 + k] = (parent === undefined ? centres.get(noeud.disciplines[0])[k] : pos[parent * 3 + k]) + d[k];
   });
-  const liens = graphe.liens.map((l) => [index.get(l.source), index.get(l.cible), l.type === "prerequis" ? 70 : 26, l.type === "prerequis" ? 0.03 : 0.12]);
+  const liens = graphe.liens.map((l) => [index.get(l.source), index.get(l.cible), l.type === "prerequis" ? reposPrerequis : reposMicroskill, l.type === "prerequis" ? 0.03 : 0.12]);
   const cellule = 48;
   for (let it = 0; it < iterations; it++) {
     const alpha = 1 - it / iterations;
@@ -150,7 +150,7 @@ export function disposer(graphe, { iterations = 160, graine = 974 } = {}) {
           let d2 = x * x + y * y + z * z;
           if (d2 < 0.01) { x = hasard() - 0.5; y = hasard() - 0.5; z = hasard() - 0.5; d2 = 0.5; }
           if (d2 > cellule * cellule * 4) continue;
-          const f = (alpha * 260) / d2;
+          const f = (alpha * repulsion) / d2;
           vit[i * 3] += x * f; vit[i * 3 + 1] += y * f; vit[i * 3 + 2] += z * f;
           vit[j * 3] -= x * f; vit[j * 3 + 1] -= y * f; vit[j * 3 + 2] -= z * f;
         }
@@ -328,7 +328,10 @@ export function sousGraphe(graphe, ids, options = {}) {
     noeuds: [...noeuds].sort((a, b) => a - b).map((i) => ({ id: graphe.noeuds[i].id, type: graphe.noeuds[i].type, disciplines: graphe.noeuds[i].disciplines })),
     liens: liens.map((k) => ({ source: graphe.noeuds[graphe.liens[k].a].id, cible: graphe.noeuds[graphe.liens[k].b].id, type: graphe.liens[k].type }))
   };
-  const resultat = decompacter(compacter(local, disposer(local, { iterations: 120 })));
+  // Disposition plus aérée que le graphe complet : les étiquettes des MicroSkills doivent tenir autour de leur notion.
+  // La profondeur est aplatie (×0,35) : vu de face, l'écart reste dans le plan de l'écran, où les étiquettes se lisent.
+  const positions = disposer(local, { iterations: 160, reposPrerequis: 150, reposMicroskill: 70, repulsion: 1400 }).map(([x, y, z]) => [x, y, Math.round(z * 0.35)]);
+  const resultat = decompacter(compacter(local, positions));
   const index = new Map(resultat.noeuds.map((n) => [n.id, n.i]));
   return { graphe: resultat, centres: new Set([...centres].map((i) => index.get(graphe.noeuds[i].id))) };
 }

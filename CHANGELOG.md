@@ -4,7 +4,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
-- **Espace Métiers, vague 1** (chantier Métiers, lot 6) : 32 nouveaux métiers issus des fiches ONISEP (maître-nageur, professeur d'EPS, luthier, chanteur, archiviste, libraire, géomaticien, statisticien, notaire, généticien…), 11 disciplines (mathématiques appliquées, probabilités et statistique, littérature, histoire contemporaine, aménagement du territoire, philosophie et éthique, économie et société, optique, énergétique, génétique, sciences de la Terre) et des notions ajoutées aux disciplines à relire. 111 métiers, 370 notions sur 477 reliées à un métier ; chaque matière est mobilisée par au moins 7 métiers. / Careers wave 1: 111 careers, 78% of topics linked.
+- **Espace Métiers : graphe des notions lisible** (ADR 0041) : dans le détail d'un métier, les MicroSkills affichent leur libellé (référentiel canonique, 1 995 / 1 995 couvertes), placé sans chevauchement et sans sauter d'un côté à l'autre ; le graphe se cadre sur son emprise à l'écran et se recadre quand l'écran tourne, aussi dans le back-office. / Careers space: readable MicroSkill labels and better framing of the topic graph.
 
 - **Barre du haut sur ordinateur : tout tient sur une ligne** : avec six destinations (Métiers compris) et « Mes espaces », les onglets débordaient de 1 024 à 1 366 px (Jeux et Progression masqués, onglet courant coupé). La barre se compacte désormais par paliers, selon la place mesurée : icônes des onglets, pseudo de l'avatar, nom du site, libellé de « Mes espaces », marges ; chaque élément garde son nom accessible. / Top bar: entries no longer overflow on desktop; the bar compacts progressively.
 

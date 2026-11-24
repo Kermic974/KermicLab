@@ -107,6 +107,20 @@ test("métiers : mobile (390 px), sans débordement horizontal, détail lisible"
   assert.ok(debord <= 0, `déborde de ${debord}px`);
   assert.equal(await page.locator(".nav-mobile [data-nav=metiers][aria-current=page]").count(), 1);
   await capturer(page, "metiers-mobile", { pleinePage: true });
+
+  // Téléphone tourné : le graphe des notions se recadre sur le nouveau format (il ne déborde pas, ne rapetisse pas).
+  const emprise = () => page.locator("#metiers-detail .metiers-canvas").evaluate((c) => {
+    const { width: l, height: h } = c, d = c.getContext("2d").getImageData(0, 0, l, h).data;
+    let x0 = l, x1 = 0, y0 = h, y1 = 0;
+    for (let y = 0; y < h; y++) for (let x = 0; x < l; x++) if (d[(y * l + x) * 4 + 3] > 0) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
+    return { l, h, x0, x1, y0, y1 };
+  });
+  await page.setViewportSize({ width: 844, height: 390 });
+  await page.locator("#metiers-detail .metiers-canvas").scrollIntoViewIfNeeded();
+  await page.waitForTimeout(500);
+  const e = await emprise();
+  assert.ok(e.y0 > 2 && e.y1 < e.h - 3, `le graphe tient en hauteur après rotation (${e.y0}–${e.y1} sur ${e.h})`);
+  assert.ok(e.y1 - e.y0 > e.h * 0.5, "le graphe occupe le cadre après rotation");
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
