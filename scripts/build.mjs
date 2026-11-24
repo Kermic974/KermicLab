@@ -55,7 +55,7 @@ await writeFile(`${racine}dist/trophees.json`, `${JSON.stringify(collectionTroph
   const erreurs = verifierMetiers(metiers, new Set(Object.values(projection.notions)));
   if (erreurs.length) throw new Error(`referentiel/metiers-v0.json :\n- ${erreurs.join("\n- ")}`);
   const titres = new Map(catalogue.index.maquettes.map((m) => [m.id, m.titre]));
-  const publie = enrichirMetiers(metiers, projection, titres);
+  const publie = enrichirMetiers(metiers, projection, titres, await libellesMicroskills(`${racine}referentiel/objets`));
   await writeFile(`${racine}dist/metiers.json`, `${JSON.stringify(publie)}\n`);
   console.log(`Espace Métiers : ${metiers.metiers.length} métiers, ${metiers.disciplines.length} disciplines, ${Object.keys(publie.notions).length} notions reliées.`);
 }
@@ -200,4 +200,15 @@ async function ecrireContenus(sortie, dossiers, index) {
   }
   notions.sort((a, b) => a.titre.localeCompare(b.titre, "fr"));
   await writeFile(`${sortie}/index.json`, `${JSON.stringify({ notions })}\n`);
+}
+
+// Libellés des MicroSkills canoniques (fichiers microskill.*.json sous referentiel/objets, champ label) : id → libellé.
+async function libellesMicroskills(dossier) {
+  const libelles = new Map();
+  for (const entree of await readdir(dossier, { recursive: true })) {
+    if (!/(^|\/)microskill\.[^/]+\.json$/.test(entree)) continue;
+    const objet = JSON.parse(await readFile(`${dossier}/${entree}`, "utf8"));
+    if (objet?.type === "microskill" && typeof objet.id === "string" && typeof objet.label === "string") libelles.set(objet.id, objet.label);
+  }
+  return libelles;
 }

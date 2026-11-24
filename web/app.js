@@ -6641,9 +6641,11 @@ function rendreDetailMetiers(actifs) {
   enfants.push(blocNotions);
   if (notions.length && espaceMetiers.graphe) {
     const { graphe: local, centres } = grapheRef.sousGraphe(espaceMetiers.graphe, notions);
-    // Titres du catalogue à la place des identifiants (« NSI : structures de données… » plutôt que « Nsi algorithmes… »).
+    // Titres du catalogue et libellés des MicroSkills à la place des identifiants (« NSI : structures de données… »
+    // plutôt que « Nsi algorithmes… »).
+    const libellesMs = new Map(notions.flatMap((id) => carte.notions.get(id).microskills.map((m) => [m.id, m.libelle])));
     for (const n of local.noeuds) {
-      if (n.type !== "notion") continue;
+      if (n.type !== "notion") { n.libelle = libellesMs.get(n.id) ?? n.libelle; continue; }
       const slug = n.id.split(".").slice(2).join(".");
       n.libelle = etat.registre?.trouver(slug)?.titre ?? carte.notions.get(n.id)?.titre ?? n.libelle;
     }
@@ -6655,7 +6657,7 @@ function rendreDetailMetiers(actifs) {
     enfants.push(bloc("metiersBlocGraphe", legende, scene));
     let pointe = null;
     const vue = creerVueGraphe(canvas, local, {
-      etat: () => ({ visibles: ensemble.noeuds, liens: ensemble.liens, chemin: new Set(), selection: pointe, couleurs: espaceMetiers.couleurs3d, entoures: centres, nommerNotions: true }),
+      etat: () => ({ visibles: ensemble.noeuds, liens: ensemble.liens, chemin: new Set(), selection: pointe, couleurs: espaceMetiers.couleurs3d, entoures: centres, nommerNotions: true, nommerMicroskills: true }),
       onSelection: (i) => {
         pointe = i;
         const noeudChoisi = i === null ? null : local.noeuds[i];
