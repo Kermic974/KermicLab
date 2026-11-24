@@ -6661,7 +6661,7 @@ function rendreDetailMetiers(actifs) {
       onSelection: (i) => {
         pointe = i;
         const noeudChoisi = i === null ? null : local.noeuds[i];
-        legende.textContent = noeudChoisi ? `${noeudChoisi.libelle} · ${noeudChoisi.type === "notion" ? t("metiersType_notion") : "MicroSkill"}` : t("metiersGrapheAide", { notions: ensemble.centres.size, noeuds: ensemble.noeuds.size });
+        legende.textContent = noeudChoisi ? `${noeudChoisi.libelle} · ${t(noeudChoisi.type === "notion" ? "metiersType_notion" : "metiersType_microskill")}` : t("metiersGrapheAide", { notions: ensemble.centres.size, noeuds: ensemble.noeuds.size });
         vue.dessiner();
       }
     });

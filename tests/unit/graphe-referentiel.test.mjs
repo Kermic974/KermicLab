@@ -90,3 +90,13 @@ test("graphe : sous-graphe autonome, disposition propre et déterministe", async
   assert.deepEqual([...a.centres].map((i) => a.graphe.noeuds[i].id), ["notion.maths.b"]);
   assert.deepEqual(sousGraphe(lu, ["notion.maths.b"]).graphe.noeuds, a.graphe.noeuds, "même entrée, même disposition");
 });
+
+test("graphe : options de disposition (ressorts, répulsion) ; défauts inchangés pour le graphe complet", async () => {
+  const { disposer } = await import("../../web/graphe-referentiel.js");
+  const defauts = disposer(graphe, { iterations: 30 });
+  assert.deepEqual(disposer(graphe, { iterations: 30, reposPrerequis: 70, reposMicroskill: 26, repulsion: 260 }), defauts, "options explicites = défauts");
+  const aere = disposer(graphe, { iterations: 30, reposPrerequis: 150, reposMicroskill: 70, repulsion: 1400 });
+  assert.notDeepEqual(aere, defauts, "les options changent la disposition");
+  const ecart = (pos) => { const [a, b] = [pos[0], pos[1]]; return Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]); };
+  assert.ok(ecart(aere) > ecart(defauts), "ressort de prérequis plus long : notions a et b plus éloignées");
+});

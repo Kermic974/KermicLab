@@ -20,6 +20,12 @@ export function creerVue(canvas, graphe, { etat, onSelection }) {
   const ctx = canvas.getContext("2d");
   const camera = { lacet: 0.6, tangage: -0.25, distance: 1400, cible: [0, 0, 0] };
   let largeur = 0, hauteur = 0, ratio = 1, image = 0, auto = false, projetes = [];
+  // Cadrage automatique en cours (posé par centrer, levé par un zoom ou un « viser ») : refait quand le cadre change de
+  // taille, sinon un graphe cadré en portrait déborderait une fois le téléphone tourné.
+  let cadreAuto = false;
+  // Côté de l'étiquette de chaque nœud à l'image précédente : gardé tant qu'il reste libre, pour que les étiquettes ne
+  // sautent pas d'un côté à l'autre pendant une rotation.
+  const cotes = new Map();
   const reduit = globalThis.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
   const style = () => getComputedStyle(canvas);
@@ -110,11 +116,16 @@ export function creerVue(canvas, graphe, { etat, onSelection }) {
       const p = projetes[i], n = graphe.noeuds[i], fort = priorite(i) < 3;
       ctx.font = fort ? "600 12px ui-sans-serif, system-ui, sans-serif" : "500 10.5px ui-sans-serif, system-ui, sans-serif";
       const largeurTexte = ctx.measureText(n.libelle).width, h = fort ? 15 : 13;
-      // À droite du point, sinon à gauche ; une notion s'écrit même sans place libre (à droite).
-      const rectA = (x) => ({ x, x0: x - 1, x1: x + largeurTexte + 1, y0: p.sy - h / 2, y1: p.sy + h / 2 });
-      const candidats = [rectA(p.sx + p.r + 4), rectA(p.sx - p.r - 4 - largeurTexte)].filter((r) => r.x0 >= 2 && r.x1 <= largeur - 2);
-      const rect = candidats.find(libre) ?? (fort ? rectA(p.sx + p.r + 4) : null);
-      if (!rect) continue;
+      // Côté de l'image précédente d'abord, puis l'autre (droite par défaut) ; une notion s'écrit même sans place libre.
+      const rectA = (cote) => {
+        const x = cote === "d" ? p.sx + p.r + 4 : p.sx - p.r - 4 - largeurTexte;
+        return { cote, x, x0: x - 1, x1: x + largeurTexte + 1, y0: p.sy - h / 2, y1: p.sy + h / 2 };
+      };
+      const ordreCotes = cotes.get(i) === "g" ? ["g", "d"] : ["d", "g"];
+      const candidats = ordreCotes.map(rectA).filter((r) => r.x0 >= 2 && r.x1 <= largeur - 2);
+      const rect = candidats.find(libre) ?? (fort ? rectA(ordreCotes[0]) : null);
+      if (!rect) { cotes.delete(i); continue; }
+      cotes.set(i, rect.cote);
       const x = rect.x;
       places.push(rect);
       ecrites++;
@@ -156,15 +167,17 @@ export function creerVue(canvas, graphe, { etat, onSelection }) {
     const y = v * ct + w * st, zr = -v * st + w * ct;
     camera.cible = [u * cl + zr * sl, y, -u * sl + zr * cl];
     camera.distance = Math.max(80, Math.min(6000, distance));
+    cadreAuto = true;
     planifier();
   }
   function viser(i) {
     const n = graphe.noeuds[i];
     camera.cible = [n.x, n.y, n.z]; camera.distance = Math.min(camera.distance, 420);
+    cadreAuto = false;
     planifier();
   }
   const tourner = (dl, dt) => { camera.lacet += dl; camera.tangage = Math.max(-1.45, Math.min(1.45, camera.tangage + dt)); planifier(); };
-  const zoomer = (facteur) => { camera.distance = Math.max(80, Math.min(6000, camera.distance * facteur)); planifier(); };
+  const zoomer = (facteur) => { camera.distance = Math.max(80, Math.min(6000, camera.distance * facteur)); cadreAuto = false; planifier(); };
 
   function noeudSous(x, y) {
     let meilleur = null, dist = Infinity;
@@ -220,7 +233,7 @@ export function creerVue(canvas, graphe, { etat, onSelection }) {
   canvas.addEventListener("pointercancel", surHaut);
   canvas.addEventListener("wheel", surMolette, { passive: false });
   canvas.addEventListener("keydown", surClavier);
-  const observateur = typeof ResizeObserver === "function" ? new ResizeObserver(() => { dimensionner(); planifier(); }) : null;
+  const observateur = typeof ResizeObserver === "function" ? new ResizeObserver(() => { dimensionner(); if (cadreAuto) centrer(); else planifier(); }) : null;
   observateur?.observe(canvas);
 
   return {

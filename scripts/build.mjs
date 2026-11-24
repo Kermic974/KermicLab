@@ -12,6 +12,7 @@ import { genererSeoStatique } from "./lib/seo.mjs";
 import { synchroniserProjectionV0 } from "./lib/referentiel-projection.mjs";
 import { compacter, construireGraphe, disposer } from "../web/graphe-referentiel.js";
 import { enrichirMetiers, verifierMetiers } from "../web/metiers.js";
+import { libellesMicroskills } from "./lib/libelles-microskills.mjs";
 
 const racine = fileURLToPath(new URL("..", import.meta.url));
 const { version } = JSON.parse(await readFile(`${racine}package.json`, "utf8"));
@@ -200,15 +201,4 @@ async function ecrireContenus(sortie, dossiers, index) {
   }
   notions.sort((a, b) => a.titre.localeCompare(b.titre, "fr"));
   await writeFile(`${sortie}/index.json`, `${JSON.stringify({ notions })}\n`);
-}
-
-// Libellés des MicroSkills canoniques (fichiers microskill.*.json sous referentiel/objets, champ label) : id → libellé.
-async function libellesMicroskills(dossier) {
-  const libelles = new Map();
-  for (const entree of await readdir(dossier, { recursive: true })) {
-    if (!/(^|\/)microskill\.[^/]+\.json$/.test(entree)) continue;
-    const objet = JSON.parse(await readFile(`${dossier}/${entree}`, "utf8"));
-    if (objet?.type === "microskill" && typeof objet.id === "string" && typeof objet.label === "string") libelles.set(objet.id, objet.label);
-  }
-  return libelles;
 }
