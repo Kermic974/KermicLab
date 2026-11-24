@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Chat sur ordinateur peu haut** : le panneau flottant réserve la hauteur de la navigation collante ; à 1 280 × 720, il ne recouvre plus « À propos ». Le mode plein écran conserve sa couverture prévue. / Keep navigation accessible above the floating chat on short desktop screens.
+
 - **Vagues complémentaires de métiers** (chantier Métiers) : outil `npm run vague:metiers` pour faire entrer les 1 032 fiches ONISEP restantes par vagues (squelette par domaine avec nom affiché, famille et disciplines proposées, vérification, garde anti-recopie, fusion en « proposition ») ; repli des disciplines par domaine ONISEP pour les fiches sans code ROME ; le test de l'écran Métiers suit la limite des anneaux au-delà de 120 métiers. / Tooling for further ONISEP career waves.
 
 - **Tests Windows** : conversion des URL de fichier des tests CLI ONISEP et libellés MicroSkills avec `fileURLToPath`, pour éviter le lecteur Windows doublé ; assertions inchangées. / Fix Windows file URL paths in ONISEP CLI and MicroSkill label tests.
