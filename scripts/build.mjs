@@ -12,6 +12,7 @@ import { genererSeoStatique } from "./lib/seo.mjs";
 import { synchroniserProjectionV0 } from "./lib/referentiel-projection.mjs";
 import { compacter, construireGraphe, disposer } from "../web/graphe-referentiel.js";
 import { couvertureMetiers, enrichirMetiers, verifierMetiers } from "../web/metiers.js";
+import { libellesMicroskills } from "./lib/libelles-microskills.mjs";
 
 const racine = fileURLToPath(new URL("..", import.meta.url));
 const { version } = JSON.parse(await readFile(`${racine}package.json`, "utf8"));

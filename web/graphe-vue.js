@@ -96,13 +96,43 @@ export function creerVue(canvas, graphe, { etat, onSelection }) {
         ctx.beginPath(); ctx.arc(p.sx, p.sy, r + 3, 0, Math.PI * 2); ctx.stroke();
       }
     }
-    // Étiquettes : la sélection, le chemin, et les notions proches de la caméra.
-    ctx.globalAlpha = 1; ctx.font = "600 12px ui-sans-serif, system-ui, sans-serif"; ctx.textBaseline = "middle";
-    const etiquetees = ordre.filter((i) => i === selection || chemin.has(i) || (graphe.noeuds[i].type !== "microskill" && (nommerNotions || (projetes[i].f > 0.95 && ordre.length < 900))));
-    for (const i of etiquetees.slice(-60)) {
-      const p = projetes[i], t = graphe.noeuds[i].libelle;
-      ctx.lineWidth = 3; ctx.strokeStyle = s.getPropertyValue("--surface").trim() || "#fff"; ctx.fillStyle = texte;
-      ctx.strokeText(t, p.sx + p.r + 4, p.sy); ctx.fillText(t, p.sx + p.r + 4, p.sy);
+    // Étiquettes : la sélection, le chemin, les notions et métiers proches de la caméra et, sur demande, toutes les
+    // notions et MicroSkills (petit graphe). Les MicroSkills, plus discrètes, passent derrière les notions et métiers.
+    ctx.globalAlpha = 1; ctx.textBaseline = "middle";
+    const etiquetee = (i) => {
+      const n = graphe.noeuds[i];
+      if (i === selection || chemin.has(i)) return true;
+      if (n.type !== "microskill") return nommerNotions || (projetes[i].f > 0.95 && ordre.length < 900);
+      return nommerMicroskills;
+    };
+    // Placement sans chevauchement : la sélection, puis les notions et métiers (toujours écrits), puis les MicroSkills,
+    // chacune seulement si elle a la place et tient dans le cadre (les autres se lisent en touchant leur point).
+    const priorite = (i) => (i === selection ? 0 : chemin.has(i) ? 1 : graphe.noeuds[i].type !== "microskill" ? 2 : 3);
+    const etiquetees = ordre.filter(etiquetee).sort((i, j) => priorite(i) - priorite(j) || projetes[i].profondeur - projetes[j].profondeur);
+    const fond = s.getPropertyValue("--surface").trim() || "#fff";
+    const places = [];
+    const libre = (r) => places.every((q) => r.x1 <= q.x0 || r.x0 >= q.x1 || r.y1 <= q.y0 || r.y0 >= q.y1);
+    let ecrites = 0;
+    for (const i of etiquetees) {
+      if (ecrites >= 90) break;
+      const p = projetes[i], n = graphe.noeuds[i], fort = priorite(i) < 3;
+      ctx.font = fort ? "600 12px ui-sans-serif, system-ui, sans-serif" : "500 10.5px ui-sans-serif, system-ui, sans-serif";
+      const largeurTexte = ctx.measureText(n.libelle).width, h = fort ? 15 : 13;
+      // Côté de l'image précédente d'abord, puis l'autre (droite par défaut) ; une notion s'écrit même sans place libre.
+      const rectA = (cote) => {
+        const x = cote === "d" ? p.sx + p.r + 4 : p.sx - p.r - 4 - largeurTexte;
+        return { cote, x, x0: x - 1, x1: x + largeurTexte + 1, y0: p.sy - h / 2, y1: p.sy + h / 2 };
+      };
+      const ordreCotes = cotes.get(i) === "g" ? ["g", "d"] : ["d", "g"];
+      const candidats = ordreCotes.map(rectA).filter((r) => r.x0 >= 2 && r.x1 <= largeur - 2);
+      const rect = candidats.find(libre) ?? (fort ? rectA(ordreCotes[0]) : null);
+      if (!rect) { cotes.delete(i); continue; }
+      cotes.set(i, rect.cote);
+      const x = rect.x;
+      places.push(rect);
+      ecrites++;
+      ctx.lineWidth = 3; ctx.strokeStyle = fond; ctx.fillStyle = fort ? texte : doux;
+      ctx.strokeText(n.libelle, x, p.sy); ctx.fillText(n.libelle, x, p.sy);
     }
   }
 
