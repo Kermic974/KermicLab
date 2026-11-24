@@ -39,7 +39,7 @@ const definitions = {
       ["rejoindre", "", "Rejoindre un professeur : lien ou code d'invitation ouvert par un élève connecté"],
       ["contributions", "#contributions", "Contributions (prof, contributeur) : écran dédié, masqué tant que connexionActive vaut false ; démo ?demo=contributions"],
       ["comptes", null, "Type de profil : dialogue Profil, bloc masqué tant que connexionActive vaut false"],
-      ["backoffice", "admin/", "Back-office : page séparée /admin/, clé partagée, onze écrans (ADR 0026, 0031)"]
+      ["backoffice", "admin/", "Back-office : page séparée /admin/, clé partagée, douze écrans dont le graphe du référentiel (ADR 0026, 0031, 0040)"]
     ]
   },
   "notion.html": {
