@@ -5526,6 +5526,7 @@ async function demarrer() {
 
   ajouterBienvenue();
   brancherTemps();
+  brancherNavigation();
   await chargerCatalogue();
   void chargerParcours();
   $("#recherche-notion").addEventListener("input", rendreCatalogue);
@@ -5593,7 +5594,7 @@ async function demarrer() {
     }
   });
 
-  brancherNavigation();
+  afficherEcran(location.hash.slice(1), { focus: false });
   brancherAccordeonsFixes();
   brancherCahiers();
   brancherBulle();
@@ -6157,6 +6158,10 @@ function formaterDuree(ms) {
   return minutes ? t("dureeMinutes", { m: minutes }) : t("dureeMoinsMinute");
 }
 
+/**
+ * Écouteurs de la navigation, branchés avant le chargement du catalogue : sur une connexion lente, « Se connecter »
+ * et les onglets répondent tout de suite. L'écran de l'adresse est (ré)affiché une fois le démarrage terminé.
+ */
 function brancherNavigation() {
   const suivreAdresse = () => {
     const cle = location.hash.slice(1);
@@ -6164,7 +6169,6 @@ function brancherNavigation() {
   };
   window.addEventListener("popstate", suivreAdresse);
   window.addEventListener("hashchange", suivreAdresse);
-  afficherEcran(location.hash.slice(1), { focus: false });
   document.addEventListener("click", (e) => {
     const bouton = e.target.closest("[data-nav], [data-action]");
     if (!bouton || bouton.closest("dialog")) return;

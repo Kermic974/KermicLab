@@ -4,6 +4,12 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+## [0.2.0] — 2026-11-23
+
+- **Correctif : « Se connecter » sans effet au chargement** : les boutons de navigation (dont « Se connecter » et les onglets) ne répondaient qu'une fois le catalogue chargé, soit plusieurs secondes sur une connexion lente ; les clics faits avant étaient perdus. La navigation est désormais branchée dès le démarrage. Tests : catalogue lent, et compte en ligne retrouvé sur un nouvel appareil. / Fix: navigation buttons, including "Log in", were inert until the catalogue had loaded.
+
+- **Back-office : écran « Graphe du référentiel »** (ADR 0040) : les notions, MicroSkills et prérequis du référentiel en 3D (canvas 2D en perspective, sans dépendance ajoutée), avec filtre par discipline, recherche, isolement d'un voisinage, plus court chemin et tableau par discipline ; la disposition est calculée au build (`dist/admin/referentiel-graphe.json`). / Back-office: 3D graph of the curriculum referential.
+
 - **Refonte UX, lot 8 — accessibilité** (ADR 0039) : audit des destinations à 1 280, 900, 390 et 320 px, en clair et en sombre, en français et en anglais. Les couleurs d'état succès, chaud et danger sont foncées en thème clair pour un contraste d'au moins 4,5:1 (y compris sur leur fond doux), l'initiale de l'avatar passe à 5,5:1, les liens du pied de page et les liens de mode des Labs atteignent 28 et 32 px de haut. Test de non-régression (contrastes, cibles, onglets sur une ligne, 320 px sans défilement horizontal). La refonte de l'ADR 0039 est livrée. / Redesign batch 8: accessibility pass (state colour contrast, target sizes, 320 px); the redesign is complete.
 
 - **Refonte UX, lot 7 — onglets en haut sur grand écran** (ADR 0039, D1) : à partir de 1 024 px, la barre latérale devient une barre horizontale (marque, destinations en onglets sur une seule ligne, idées, À propos, Je participe et avatar en icônes qui gardent leur nom accessible) ; entre 1 024 et 1 199 px, les onglets n'affichent que leur libellé. Le rail d'icônes couvre 721 à 1 023 px, la barre du bas 720 px et moins. / Redesign batch 7: top tab bar on large screens.
