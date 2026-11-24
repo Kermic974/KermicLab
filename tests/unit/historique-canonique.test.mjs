@@ -4,7 +4,7 @@ import { mkdtemp, mkdir, writeFile, rename, rm } from "node:fs/promises";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { execFileSync } from "node:child_process";
-import { lireHistorique } from "../../scripts/lib/referentiel-historique.mjs";
+import { lireHistorique, lireCorpusRevision, lireFichiersRevision } from "../../scripts/lib/referentiel-historique.mjs";
 
 async function depot(t) {
   const cwd = await mkdtemp(join(tmpdir(), "s6-historique-"));
@@ -60,4 +60,26 @@ test("le cache des blobs ne masque pas un doublon d’identité historique", asy
   commit();
   git("update-ref", "refs/remotes/origin/main", "HEAD");
   await assert.rejects(lireHistorique(cwd, "experiences/objets"), /dupliqué/);
+});
+
+test("les lecteurs figés conservent les sources UTF-8 et refusent les chemins hors périmètre", async t => {
+  const { cwd, git, commit } = await depot(t);
+  await mkdir(join(cwd, "catalogue/test"), { recursive: true });
+  await mkdir(join(cwd, "referentiel/objets"), { recursive: true });
+  const chemin = "catalogue/test/contenu.json";
+  const avant = '{"texte":"Été 😀"}\r\n';
+  await writeFile(join(cwd, chemin), avant);
+  const objet = { id: "notion.maths.fixture", version: 1, label: "Avant" };
+  await writeFile(join(cwd, "referentiel/objets/a.json"), JSON.stringify(objet));
+  commit();
+  const revision = git("rev-parse", "HEAD");
+  await writeFile(join(cwd, chemin), '{"texte":"Courant modifié"}');
+  await writeFile(join(cwd, "referentiel/objets/a.json"), JSON.stringify({ ...objet, version: 2 }));
+  const sources = await lireFichiersRevision(cwd, revision, [chemin]);
+  assert.equal(sources.get(chemin).toString("utf8"), avant);
+  assert.deepEqual((await lireCorpusRevision(cwd, revision)).get(objet.id), objet);
+  await assert.rejects(lireFichiersRevision(cwd, revision, ["catalogue/../worker/secret.json"]), /interdite/);
+  await assert.rejects(lireFichiersRevision(cwd, revision, ["docs/secret.md"]), /interdite/);
+  await assert.rejects(lireFichiersRevision(cwd, revision, ["catalogue/test/absent.json"]), /absente/);
+  await assert.rejects(lireCorpusRevision(cwd, "--help"), /invalide/);
 });

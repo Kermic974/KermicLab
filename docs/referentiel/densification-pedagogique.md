@@ -2,6 +2,8 @@
 
 Voir le [diagnostic](diagnostic-densification.md) et les [relations à revoir](relations-a-revoir.md). Détail de la physique-chimie : [journal pilote](v0.5-physique-chimie-densification.md).
 
+Actualisation proposée pour S6 : la PR 04 soumet les Notions, MicroSkills et Skills nécessaires au corpus public comme candidats review, sans changer leurs contenus ni les relations. Le [journal dédié](../experiences/cibles-et-extension-s6.md) détaille les versions et les sources ; la revue humaine de cette proposition est requise avant fusion. Les réserves pédagogiques ci-dessous ne sont pas levées et aucun objet n’est déclaré validated.
+
 ## Méthode
 
 - Source : `referentiel/objets/v0.5/<discipline>/` (corpus canonique) ; `referentiel/projection-v0.json` est mis à jour pour rester cohérent, puis `npm run build` régénère `competences` et `prerequis` des fiches.
