@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Refonte UX, lot 9 — accès rapides « Mes espaces » et espaces Famille / Professeur** (ADR 0039, D9) : un bouton « Mes espaces » de la barre de navigation (et de la barre du bas sur mobile) ouvre un menu avec les espaces du compte (Espace famille, Suivi de classe, Mes classes, Mes élèves, Contributions), un raccourci par enfant (sa progression) et par classe (ses élèves), et les actions « Donner une activité », « Ajouter un enfant » et « Nouvelle classe ». La sous-navigation ne garde que les vues de l'espace affiché. L'Espace famille et les écrans du professeur passent en pleine largeur, en deux colonnes (contenu à gauche, indicateurs à droite), avec leurs actions principales en en-tête et les élèves et classes en grille. Le libellé anglais « View as » de l'Espace famille devient « Afficher le suivi de ». / Redesign batch 9: "My spaces" quick-access menu, lighter sub-navigation and two-column family and teacher screens.
+
 ## [0.2.0] — 2026-11-23
 
 - **Correctif : « Se connecter » sans effet au chargement** : les boutons de navigation (dont « Se connecter » et les onglets) ne répondaient qu'une fois le catalogue chargé, soit plusieurs secondes sur une connexion lente ; les clics faits avant étaient perdus. La navigation est désormais branchée dès le démarrage. Tests : catalogue lent, et compte en ligne retrouvé sur un nouvel appareil. / Fix: navigation buttons, including "Log in", were inert until the catalogue had loaded.

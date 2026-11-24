@@ -76,3 +76,53 @@ const ESPACE_DES_ECRANS = Object.freeze({
   contributions: "contributions",
 });
 export const espaceDe = (ecran) => ESPACE_DES_ECRANS[ecran] ?? "accueil";
+
+/**
+ * Menu « Mes espaces » (accès rapides de la barre de navigation) : les espaces liés au compte et au rôle, avec des
+ * raccourcis directs. Un parent y trouve l'Espace famille, chacun de ses enfants (sa progression) et les actions
+ * « Donner une activité » et « Ajouter un enfant » ; un professeur, ses trois écrans, chacune de ses classes (ses élèves)
+ * et « Donner une activité » / « Nouvelle classe » ; un contributeur, l'écran Contributions. Liste vide : pas de menu.
+ *
+ * @param {object} p
+ * @param {"parent"|"membre"|null} p.famille rôle dans la famille (`membre` : compte lié sans rôle parent)
+ * @param {Array<{id: string, prenom?: string}>} [p.enfants]
+ * @param {boolean} [p.prof]
+ * @param {Array<{id: string, nom?: string}>} [p.classes]
+ * @param {boolean} [p.contributions]
+ * @returns {Array<{id: string, liens: Array<object>}>}
+ */
+export function sectionsEspaces({ famille = null, enfants = [], prof = false, classes = [], contributions = false } = {}) {
+  const sections = [];
+  if (famille === "parent") {
+    const liste = (Array.isArray(enfants) ? enfants : []).filter((e) => e && typeof e.id === "string");
+    sections.push({ id: "famille", liens: [
+      { type: "ecran", cle: "espace-famille" },
+      ...liste.map((e) => ({ type: "compte", cle: `famille:${e.id}`, texte: String(e.prenom ?? "") })),
+      { type: "action", action: "activite-famille" },
+      { type: "action", action: "ajouter-enfant" },
+    ] });
+  } else if (famille === "membre") {
+    sections.push({ id: "famille", liens: [{ type: "ecran", cle: "compte", texte: "famille" }] });
+  }
+  if (prof) {
+    const liste = (Array.isArray(classes) ? classes : []).filter((c) => c && typeof c.id === "string");
+    sections.push({ id: "professeur", liens: [
+      { type: "ecran", cle: "suivi" }, { type: "ecran", cle: "classes" }, { type: "ecran", cle: "eleves" },
+      ...liste.map((c) => ({ type: "classe", id: c.id, texte: String(c.nom ?? "") })),
+      { type: "action", action: "activite-prof" },
+      { type: "action", action: "nouvelle-classe" },
+    ] });
+  }
+  if (contributions) sections.push({ id: "contributions", liens: [{ type: "ecran", cle: "contributions" }] });
+  return sections;
+}
+
+/**
+ * Sous-navigation des vues personnelles : seules les vues de l'espace affiché restent (Profil et Mon compte ensemble,
+ * les trois écrans du professeur ensemble…) ; les autres espaces s'ouvrent par le menu « Mes espaces ».
+ */
+const GROUPE_VUE = Object.freeze({
+  profil: "personnel", compte: "personnel", "connexion-en-cours": "personnel", famille: "personnel",
+  "espace-famille": "famille", suivi: "professeur", classes: "professeur", eleves: "professeur", contributions: "contributions",
+});
+export const groupeVue = (vue) => GROUPE_VUE[vue] ?? null;

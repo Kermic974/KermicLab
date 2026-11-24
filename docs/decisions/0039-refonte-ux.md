@@ -32,6 +32,13 @@
    des bilans bornés déjà reçus (ADR 0029 §4, ADR 0030 §6) : aucune donnée nouvelle n'est demandée ni transmise. Le
    professeur ne voit que les notions de sa matière et pas les badges, comme dans « Mes élèves ». Liste construite par
    `comptesSuivis` (`web/famille.js`).
+9. **D9 — Accès rapides « Mes espaces »** (demande du propriétaire du 2026-11-24) : les espaces liés au compte et au rôle
+   (Famille, Professeur, Contributions) ne sont pas des destinations de la barre (D6) ; un seul bouton « Mes espaces »
+   les regroupe, dans la barre latérale ou du haut et dans la barre du bas (s'il reste une place de 44 px à 320 px). Il
+   ouvre un menu : les écrans de chaque espace, un raccourci par enfant (sa progression) et par classe (ses élèves), et
+   les actions principales. La sous-navigation des vues personnelles ne garde que les vues de l'espace affiché. Les
+   écrans Espace famille, Suivi de classe, Mes classes et Mes élèves passent en pleine largeur et en deux colonnes.
+   Contenu du menu calculé par `sectionsEspaces` (`web/navigation.js`).
 
 Hors décision, et écarté : carte de suivi d'audience visible des élèves, connexion Google ou Microsoft des parents,
 phrase secrète de synchronisation, sélecteur de profils fictifs hors mode démo, gestionnaires `onclick` dans le HTML.
@@ -42,7 +49,7 @@ Par lots, une PR chacun, dans l'ordre de [docs/chantiers/refonte-ux.md § 8](../
 bandeaux (lot 1), écran d'arrivée (2), Progression (3), Éducation et Labs (4), Jeux (5), Professeur, Famille et
 Contributions (6), navigation grand écran (7), passe accessibilité (8).
 
-Les huit lots sont livrés (2026-11-24) ; le détail par lot est dans [docs/chantiers/refonte-ux.md](../chantiers/refonte-ux.md).
+Les huit lots sont livrés (2026-11-24), puis le lot 9 (D9, accès rapides et espaces Famille / Professeur) ; le détail par lot est dans [docs/chantiers/refonte-ux.md](../chantiers/refonte-ux.md).
 
 ## Conséquences
 

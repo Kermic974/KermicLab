@@ -1462,6 +1462,7 @@ function rafraichirFamilleCompte() {
     navFamille.dataset.nav = m?.parent ? "espace-famille" : "compte";
   }
   marquerNavigation(sectionDe(etat.ecran));
+  rendreMenuEspaces();
   $("#famille-compte-solo").hidden = !m || !!m.parent || !!m.enfant;
   $("#famille-compte-statut").textContent = !lie ? t("fcNonLie")
     : !m ? t("fcIndisponible")
@@ -1696,6 +1697,7 @@ function chiffre(dt, dd) {
 }
 
 function rendreEspaceFamille() {
+  rendreMenuEspaces();
   const complet = familleEtat.tableau;
   const tableau = complet && { ...complet, enfants: complet.enfants.filter((e) => !familleEtat.enfantsMasques.has(e.id)) };
   const m = familleEtat.moi;
@@ -2241,6 +2243,7 @@ function ligneInvitation(i) {
 }
 
 function rendreClasses() {
+  rendreMenuEspaces();
   const donnees = profEtat.classes;
   if (!donnees) {
     $("#classes-contenu").hidden = true;
@@ -2414,6 +2417,7 @@ async function ouvrirEleves() {
 const nomClasse = (id) => profEtat.eleves?.classes.find((c) => c.id === id)?.nom ?? t("profParticulier");
 
 function rendreEleves() {
+  rendreMenuEspaces();
   const donnees = profEtat.eleves;
   if (!donnees) {
     $("#eleves-contenu").hidden = true;
@@ -5505,6 +5509,7 @@ async function demarrer() {
   brancherCompte();
   brancherFamilleLocale();
   brancherNavMobile();
+  brancherMenuEspaces();
   $("#ouvrir-chat").addEventListener("click", () => {
     if ($("#panneau-chat").hidden) ouvrirChat();
     else fermerChat({ rendreFocus: true });
@@ -5972,10 +5977,19 @@ function afficherEcran(cle, { focus = true } = {}) {
   });
   marquerNavigation(sectionDe(etat.ecran));
   $("#ouvrir-connexion").hidden = !$("#navigation-personnelle").hidden;
+  // Sous-navigation allégée (lot 9, ADR 0039) : seules les vues de l'espace affiché ; les autres sont dans « Mes espaces ».
+  const groupe = navigation.groupeVue(ecran);
+  let vuesDuGroupe = 0;
   for (const bouton of document.querySelectorAll("#navigation-personnelle [data-nav]")) {
     if (bouton.dataset.nav === ecran) bouton.setAttribute("aria-current", "page");
     else bouton.removeAttribute("aria-current");
+    const autre = !!groupe && navigation.groupeVue(bouton.dataset.nav) !== groupe;
+    bouton.toggleAttribute("data-autre-espace", autre);
+    if (!autre && !bouton.hidden) vuesDuGroupe += 1;
   }
+  $("#navigation-personnelle").toggleAttribute("data-une-vue", vuesDuGroupe < 2);
+  if (changement) fermerMenuEspaces({ focus: false });
+  if (!$("#menu-espaces").hidden) rendreMenuEspaces();
   rafraichirEntete();
   etat.moteur?.contexte({ section: sectionDe(etat.ecran) });
   decouvrirEnSilence("section", sectionDe(etat.ecran));
@@ -6061,6 +6075,7 @@ function agencerNavMobile() {
   for (const b of extras) (regrouper ? panneau : barre).insertBefore(b, regrouper ? null : plus);
   plus.hidden = !regrouper;
   if (!regrouper) fermerNavMobilePlus({ focus: false });
+  ajusterEspacesMobile();
   marquerNavigation(sectionDe(etat.ecran));
 }
 
@@ -6092,6 +6107,254 @@ function brancherNavMobile() {
   const observateur = new MutationObserver(agencerNavMobile);
   for (const id of NAV_MOBILE_EXTRAS) observateur.observe($(id), { attributes: true, attributeFilter: ["hidden"] });
   agencerNavMobile();
+}
+
+/* ---------- Menu « Mes espaces » : accès rapides de la barre de navigation (lot 9, ADR 0039) ----------
+   Les espaces liés au compte et au rôle (famille, professeur, contributions) ne sont pas des destinations de la barre :
+   un seul bouton les regroupe, avec un raccourci par enfant et par classe et les actions principales. Le même panneau
+   s'ouvre depuis la barre latérale (ou du haut) et depuis la barre du bas sur mobile. */
+const BOUTONS_ESPACES = ["#nav-espaces", "#nav-mobile-espaces"];
+let boutonMenuEspaces = null;
+
+function sectionsEspacesCourantes() {
+  const m = familleEtat.moi;
+  return navigation.sectionsEspaces({
+    famille: m?.parent ? "parent" : m && !$("#nav-famille").hidden ? "membre" : null,
+    enfants: m?.parent ? familleEtat.tableau?.enfants ?? [] : [],
+    prof: profActif(),
+    classes: profEtat.eleves?.classes ?? profEtat.classes?.classes ?? [],
+    contributions: !$("#nav-contributions").hidden,
+  });
+}
+
+const LIBELLE_ECRAN_ESPACE = { "espace-famille": "efTitre", compte: "navFamille", suivi: "navSuivi", classes: "navClasses", eleves: "navEleves", contributions: "navContributions" };
+const ICONE_ECRAN_ESPACE = { "espace-famille": "i-famille", compte: "i-famille", suivi: "i-boussole", classes: "i-equipe", eleves: "i-utilisateur", contributions: "i-crayon" };
+const ACTION_ESPACE = { "activite-famille": "actDonner", "ajouter-enfant": "efAjouter", "activite-prof": "actDonner", "nouvelle-classe": "profNouvelleClasse" };
+
+function lienEspace(l) {
+  if (l.type === "ecran") {
+    const b = element("button", { classe: "menu-espaces-lien", attributs: { type: "button", "data-nav": l.cle } });
+    b.append(icone(ICONE_ECRAN_ESPACE[l.cle] ?? "i-fleche"), element("span", { texte: t(LIBELLE_ECRAN_ESPACE[l.cle]) }));
+    if (etat.ecran === l.cle) b.setAttribute("aria-current", "page");
+    return b;
+  }
+  if (l.type === "compte" || l.type === "classe") {
+    const compte = l.type === "compte";
+    const b = element("button", { classe: "menu-espaces-puce", attributs: {
+      type: "button", [compte ? "data-espace-compte" : "data-espace-classe"]: compte ? l.cle : l.id,
+      "aria-label": t(compte ? "espacesEnfantAria" : "espacesClasseAria", { nom: l.texte }),
+    } });
+    b.append(element("span", { classe: "pastille-initiale", texte: compte ? (l.texte.trim()[0] ?? "?").toUpperCase() : "" }), element("span", { texte: l.texte }));
+    if (!compte) b.firstChild.replaceChildren(icone("i-equipe"));
+    return b;
+  }
+  return element("button", { classe: "secondaire petit-bouton", texte: t(ACTION_ESPACE[l.action]), attributs: { type: "button", "data-espace-action": l.action } });
+}
+
+/**
+ * Barre du bas : au plus 7 entrées tactiles de 44 px à 320 px de large. Quand la configuration y met déjà les entrées de
+ * rôle (sous « Plus »), le bouton « Espaces » ne s'ajoute pas : ces écrans y sont déjà.
+ */
+function ajusterEspacesMobile(disponible = sectionsEspacesCourantes().length > 0) {
+  const bouton = $("#nav-mobile-espaces");
+  const autres = document.querySelectorAll(".nav-mobile .nav-mobile-bouton:not([hidden]):not(#nav-mobile-espaces)").length;
+  bouton.hidden = !disponible || autres >= 7;
+  if (bouton.hidden && boutonMenuEspaces === bouton) fermerMenuEspaces({ focus: false });
+}
+
+function icone(id) {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("class", "ico");
+  svg.setAttribute("aria-hidden", "true");
+  const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+  use.setAttribute("href", `#${id}`);
+  svg.append(use);
+  return svg;
+}
+
+function rendreMenuEspaces() {
+  const sections = sectionsEspacesCourantes();
+  $("#nav-espaces").hidden = !sections.length;
+  ajusterEspacesMobile(sections.length > 0);
+  if (!sections.length) { fermerMenuEspaces({ focus: false }); $("#menu-espaces-sections").replaceChildren(); return; }
+  if ($("#menu-espaces").hidden) return;
+  $("#menu-espaces-sections").replaceChildren(...sections.map((section) => {
+    const bloc = element("section", { classe: "menu-espaces-groupe", attributs: { "data-espace-carte": section.id, "aria-labelledby": `menu-espaces-${section.id}` } });
+    bloc.append(element("h2", { classe: "menu-espaces-titre", texte: t(`espacesGroupe_${section.id}`), attributs: { id: `menu-espaces-${section.id}` } }));
+    const parType = (types) => section.liens.filter((l) => types.includes(l.type));
+    const liens = element("div", { classe: "menu-espaces-liens" });
+    liens.append(...parType(["ecran"]).map(lienEspace));
+    bloc.append(liens);
+    const puces = parType(["compte", "classe"]);
+    if (puces.length) {
+      bloc.append(element("p", { classe: "menu-espaces-sous", texte: t(section.id === "famille" ? "espacesEnfants" : "espacesClasses") }));
+      const liste = element("div", { classe: "menu-espaces-puces" });
+      liste.append(...puces.map(lienEspace));
+      bloc.append(liste);
+    } else if (section.id === "famille" && familleEtat.moi?.parent && !familleEtat.tableau) {
+      bloc.append(element("p", { classe: "doux petit", texte: t("espacesChargement") }));
+    }
+    const actions = parType(["action"]);
+    if (actions.length) {
+      const zone = element("div", { classe: "actions menu-espaces-actions" });
+      zone.append(...actions.map(lienEspace));
+      bloc.append(zone);
+    }
+    return bloc;
+  }));
+}
+
+/** Famille du parent et élèves du professeur : chargés à l'ouverture du menu s'ils ne le sont pas encore. */
+async function chargerDonneesEspaces() {
+  const attentes = [];
+  if (familleEtat.moi?.parent && !familleEtat.tableau) attentes.push(chargerTableauFamille());
+  if (profActif() && !profEtat.eleves) attentes.push(ouvrirEleves());
+  await Promise.allSettled(attentes);
+}
+
+function placerMenuEspaces() {
+  const panneau = $("#menu-espaces");
+  if (panneau.hidden || !boutonMenuEspaces) return;
+  const r = boutonMenuEspaces.getBoundingClientRect();
+  const marge = 12;
+  const largeur = Math.min(380, innerWidth - 2 * marge);
+  Object.assign(panneau.style, { width: `${largeur}px`, top: "", bottom: "", left: "", maxHeight: "" });
+  const borne = (x) => Math.round(Math.min(Math.max(marge, x), innerWidth - largeur - marge));
+  const lateral = getComputedStyle($(".barre-laterale")).flexDirection === "column" && boutonMenuEspaces.id === "nav-espaces";
+  if (boutonMenuEspaces.id === "nav-mobile-espaces") {
+    // Barre du bas : au-dessus de la barre.
+    panneau.style.left = `${borne(r.right - largeur)}px`;
+    panneau.style.bottom = `${Math.round(innerHeight - r.top + 8)}px`;
+    panneau.style.maxHeight = `${Math.round(r.top - 8 - marge)}px`;
+  } else if (lateral) {
+    // Barre latérale ou rail : à droite du bouton.
+    panneau.style.left = `${Math.round(Math.min(r.right + 8, innerWidth - largeur - marge))}px`;
+    const haut = Math.max(marge, Math.min(r.top, innerHeight - panneau.offsetHeight - marge));
+    panneau.style.top = `${Math.round(haut)}px`;
+    panneau.style.maxHeight = `${Math.round(innerHeight - haut - marge)}px`;
+  } else {
+    // Barre du haut : sous le bouton.
+    panneau.style.left = `${borne(r.left)}px`;
+    panneau.style.top = `${Math.round(r.bottom + 8)}px`;
+    panneau.style.maxHeight = `${Math.round(innerHeight - r.bottom - 8 - marge)}px`;
+  }
+}
+
+function ouvrirMenuEspaces(bouton) {
+  const panneau = $("#menu-espaces");
+  boutonMenuEspaces = bouton;
+  panneau.hidden = false;
+  for (const id of BOUTONS_ESPACES) $(id).setAttribute("aria-expanded", String($(id) === bouton));
+  document.documentElement.toggleAttribute("data-menu-espaces", true);
+  rendreMenuEspaces();
+  placerMenuEspaces();
+  panneau.querySelector("button")?.focus({ preventScroll: true });
+  void chargerDonneesEspaces().then(() => {
+    if (panneau.hidden) return;
+    // Le rendu remplace les boutons : le focus revient au premier s'il était dans le menu.
+    const focusDedans = panneau.contains(document.activeElement);
+    rendreMenuEspaces();
+    placerMenuEspaces();
+    if (focusDedans) panneau.querySelector("button")?.focus({ preventScroll: true });
+  });
+}
+
+function fermerMenuEspaces({ focus = true } = {}) {
+  const panneau = $("#menu-espaces");
+  if (panneau.hidden) return;
+  panneau.hidden = true;
+  for (const id of BOUTONS_ESPACES) $(id).setAttribute("aria-expanded", "false");
+  document.documentElement.toggleAttribute("data-menu-espaces", false);
+  if (focus) boutonMenuEspaces?.focus({ preventScroll: true });
+}
+
+/** Exécute `action` quand l'élément est affiché (contenu chargé après la navigation), au plus 5 s après. */
+function quandVisible(el, action) {
+  const debut = Date.now();
+  const essai = () => {
+    if (el.offsetParent || el.getClientRects().length) action();
+    else if (Date.now() - debut < 5000) setTimeout(essai, 100);
+  };
+  essai();
+}
+
+function defilerVers(el) {
+  el.scrollIntoView({ block: "start", behavior: mouvementReduit() ? "auto" : "smooth" });
+}
+
+function ouvrirAjoutEnfant() {
+  if (etat.ecran !== "espace-famille") naviguer("espace-famille");
+  const ajout = $("#ef-ajout");
+  ajout.open = true;
+  quandVisible(ajout, () => { defilerVers(ajout); ajout.querySelector("input:not([type=radio]), input")?.focus({ preventScroll: true }); });
+}
+
+function ouvrirNouvelleClasse() {
+  if (etat.ecran !== "classes") naviguer("classes");
+  const ajout = $("#classes-ajout");
+  ajout.open = true;
+  quandVisible(ajout, () => { defilerVers(ajout); $("#classe-nom").focus({ preventScroll: true }); });
+}
+
+function ouvrirCompteSuiviDepuisMenu(cle) {
+  etat.compteSuivi = cle;
+  if (etat.ecran === "progression") choisirCompteSuivi(cle);
+  else naviguer("progression");
+}
+
+function ouvrirClasseDepuisMenu(classeId) {
+  profEtat.filtre = classeId;
+  if (etat.ecran === "eleves" && profEtat.eleves) rendreEleves();
+  else naviguer("eleves");
+}
+
+async function actionEspace(action) {
+  if (action === "ajouter-enfant") ouvrirAjoutEnfant();
+  else if (action === "nouvelle-classe") ouvrirNouvelleClasse();
+  else if (action === "activite-famille") {
+    if (etat.ecran !== "espace-famille") naviguer("espace-famille");
+    await chargerDonneesEspaces();
+    ouvrirDialogueActiviteFamille();
+  } else if (action === "activite-prof") {
+    if (etat.ecran !== "suivi") naviguer("suivi");
+    await chargerDonneesEspaces();
+    ouvrirDialogueActivite();
+  }
+}
+
+function brancherMenuEspaces() {
+  const panneau = $("#menu-espaces");
+  for (const id of BOUTONS_ESPACES) {
+    $(id).addEventListener("click", (e) => {
+      if (!panneau.hidden && boutonMenuEspaces === e.currentTarget) fermerMenuEspaces();
+      else ouvrirMenuEspaces(e.currentTarget);
+    });
+  }
+  panneau.addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    // Les entrées `data-nav` sont suivies par le gestionnaire global de la navigation.
+    fermerMenuEspaces({ focus: false });
+    if (b.dataset.espaceCompte) ouvrirCompteSuiviDepuisMenu(b.dataset.espaceCompte);
+    else if (b.dataset.espaceClasse) ouvrirClasseDepuisMenu(b.dataset.espaceClasse);
+    else if (b.dataset.espaceAction) void actionEspace(b.dataset.espaceAction);
+  });
+  document.addEventListener("click", (e) => {
+    if (panneau.hidden || panneau.contains(e.target) || BOUTONS_ESPACES.some((id) => $(id).contains(e.target))) return;
+    fermerMenuEspaces({ focus: false });
+  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !panneau.hidden) fermerMenuEspaces(); });
+  addEventListener("resize", () => fermerMenuEspaces({ focus: false }));
+  // Les droits (famille, professeur, contributions) sont posés par plusieurs modules sur les entrées de navigation.
+  const observateur = new MutationObserver(() => rendreMenuEspaces());
+  for (const id of ["#nav-famille", "#nav-suivi", "#nav-contributions"]) observateur.observe($(id), { attributes: true, attributeFilter: ["hidden"] });
+  $("#ef-ajouter-enfant").addEventListener("click", ouvrirAjoutEnfant);
+  $("#classes-nouvelle").addEventListener("click", ouvrirNouvelleClasse);
+  $("#eleves-activite").addEventListener("click", () => {
+    const classes = profEtat.eleves?.classes ?? [];
+    ouvrirDialogueActivite({ classeId: classes.some((c) => c.id === profEtat.filtre) ? profEtat.filtre : null });
+  });
+  rendreMenuEspaces();
 }
 
 /** Accordéons écrits dans la page (mini-lab, cahiers) : même comportement que ceux de l'arbre Éducation. */

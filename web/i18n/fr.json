@@ -1415,7 +1415,7 @@
   "navFamilleCourt": "Famille",
   "navPlus": "Plus",
   "navPlusTitre": "Autres destinations",
-  "efViewAs": "View as",
+  "efViewAs": "Afficher le suivi de",
   "efViewAsAide": "Coche les enfants dont tu souhaites consulter le suivi. Tous sont sélectionnés par défaut.",
   "efSelectionVide": "Sélectionne au moins un enfant pour afficher son suivi.",
   "efDonneProfesseur": "Donné par Professeur",
@@ -1602,5 +1602,16 @@
   "categorieJeu_mots": "Lettres et mots",
   "contribAvant": "Avant",
   "contribApres": "Après",
-  "contribAvantVide": "(nouveau passage)"
+  "contribAvantVide": "(nouveau passage)",
+  "navEspaces": "Mes espaces",
+  "navEspacesCourt": "Espaces",
+  "efIndicateurs": "Indicateurs",
+  "espacesGroupe_famille": "Famille",
+  "espacesGroupe_professeur": "Professeur",
+  "espacesGroupe_contributions": "Contributions",
+  "espacesEnfants": "Mes enfants",
+  "espacesClasses": "Mes classes",
+  "espacesEnfantAria": "Progression de {nom}",
+  "espacesClasseAria": "Élèves de la classe {nom}",
+  "espacesChargement": "Chargement…"
 }
