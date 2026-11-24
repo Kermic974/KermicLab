@@ -36,11 +36,27 @@ async function espace(t, objet = base, unites = [unite]) {
 }
 const contient = (r, regle) => assert.ok(r.issues.some(i => i.rule === regle), JSON.stringify(r));
 
-test("F-CLI-VALID", async t => {
+test("F-CORE-VALID", async t => {
   const { rapport } = await espace(t);
   const r = await rapport();
   assert.deepEqual([r.verdict, r.errors, r.warnings, r.objects], ["PASS", 0, 0, 1]);
   assert.deepEqual(await rapport(), r);
+});
+test("F-LAB-VALID", async t => {
+  const exercice = { ...base, type: "exercise", task: { format: "qcm", prompt: source, expected: source } };
+  const model = { ...source, anchor: "modele" };
+  const objectif = { ...source, anchor: "mission" };
+  const mission = { ...base, id: "experience.maths.mission", type: "mission", sources: [objectif],
+    components: [{ id: exercice.id, version: 1 }], successCriteria: [objectif] };
+  const lab = { ...base, id: "experience.maths.lab", type: "lab", sources: [model],
+    parameters: model, interactions: model, limits: model, components: [{ id: mission.id, version: 1 }] };
+  const { rapport, ecrire } = await espace(t, exercice, [unite,
+    { experienceId: "modele", parameters: { longueur: 1 }, interactions: ["Déplacer le point."], limits: ["Modèle simplifié."] },
+    { experienceId: "mission", consigne: "Explore le modèle puis calcule.", successCriteria: ["Repérer la valeur attendue."] }]);
+  await ecrire("experiences/objets/mission.json", mission);
+  await ecrire("experiences/objets/lab.json", lab);
+  const r = await rapport();
+  assert.deepEqual([r.verdict, r.errors, r.warnings, r.objects], ["PASS", 0, 0, 3]);
 });
 test("F-JSON-ERROR", async t => {
   const { rapport } = await espace(t, "{");

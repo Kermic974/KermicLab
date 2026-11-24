@@ -24,8 +24,8 @@ function verifier(objets, { cibles = [cible], historique = [], revueValide = tru
   return issues;
 }
 
-test("F-CORE-VALID", () => assert.deepEqual(verifier([a, b]), []));
-test("F-LAB-VALID", () => {
+test("identités et cibles ordinaires cohérentes", () => assert.deepEqual(verifier([a, b]), []));
+test("composition Lab et mission permise", () => {
   const mission = experience("mission", { type: "mission", components: [ref(a)] });
   const lab = experience("lab", { type: "lab", components: [ref(mission)] });
   assert.deepEqual(verifier([lab, mission, a]), []);
