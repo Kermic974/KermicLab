@@ -64,7 +64,7 @@ async function lireEtat(cwd, revision, chemin, cache) {
 
 export async function lireCorpusRevision(cwd, revision, chemin = "referentiel/objets") {
   if (!/^[a-f0-9]{40,64}(?![\s\S])/.test(revision)) throw new Error("Révision Git invalide.");
-  if (!["referentiel/objets", "experiences/objets"].includes(chemin)) throw new Error("Espace canonique inconnu.");
+  if (!["referentiel/objets", "experiences/objets", "evaluations/objets"].includes(chemin)) throw new Error("Espace canonique inconnu.");
   return lireEtat(cwd, revision, chemin, new Map());
 }
 
@@ -87,13 +87,16 @@ export async function lireFichiersRevision(cwd, revision, chemins) {
   return new Map(chemins.map(p => [p, Buffer.from(blobs.get(arbre.get(p)))]));
 }
 
-export async function lireHistorique(cwd, chemin = "referentiel/objets") {
-  if (!["referentiel/objets", "experiences/objets"].includes(chemin)) throw new Error("Espace canonique inconnu.");
+export async function lireHistorique(cwd, chemin = "referentiel/objets", revisionCible = null) {
+  if (!["referentiel/objets", "experiences/objets", "evaluations/objets"].includes(chemin)) throw new Error("Espace canonique inconnu.");
   const git = gitDe(cwd);
   if ((await git("rev-parse", "--is-shallow-repository")).trim() !== "false") throw new Error("Historique Git incomplet.");
-  const base = (await git("merge-base", "HEAD", "refs/remotes/origin/main")).trim();
+  if (revisionCible !== null && !/^[a-f0-9]{40,64}(?![\s\S])/.test(revisionCible)) throw new Error("Révision Git invalide.");
+  const base = revisionCible || (await git("merge-base", "HEAD", "refs/remotes/origin/main")).trim();
   // S6 versionne aussi le contenu lié : un commit source seul doit rester visible.
-  const perimetre = chemin === "experiences/objets" ? [chemin, "catalogue", "Sample/lab", "src/pedagogy"] : [chemin];
+  const perimetre = chemin === "evaluations/objets"
+    ? [chemin, "experiences/objets", "catalogue", "Sample/lab", "src/pedagogy", "evaluations/methodes.json", "web/evaluation-correction-v*.js"]
+    : chemin === "experiences/objets" ? [chemin, "catalogue", "Sample/lab", "src/pedagogy"] : [chemin];
   const revisions = (await git("rev-list", "--first-parent", "--full-history", "--reverse", base, "--", ...perimetre)).trim().split("\n").filter(Boolean);
   const historique = [];
   const cache = new Map();

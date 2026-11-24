@@ -34,6 +34,6 @@ La production est vérifiée sur le SHA déployé, pas sur un statut de PR : ré
 
 ## État au relevé
 
-S7-A proposé. S7-B à S10-C planifiés. Aucune série n'est déclarée livrée par la création du suivi, de ce plan ou de la norme proposée. Les politiques S8–S10 non adoptées restent explicitement ouvertes dans leurs pages source.
+S7-A adopté par la fusion humaine de [#428](https://github.com/Kermic974/KermicLab/pull/428) à `3e504246`, CI GitHub verte ; Windows final : 1 034 tests unitaires et 1 207 tests navigateur réussis, un ignoré. S7-B est en implémentation sur `feat/s7-contrats` : [contrats techniques](contrats-s7.md), [bilan de couverture](couverture-s7.md). S7-C à S10-C restent à livrer. Aucune série n'est déclarée livrée par l'adoption seule. Les politiques S8–S10 non adoptées restent explicitement ouvertes dans leurs pages source.
 
 English summary: deliver and verify S7, then S8, S9 and S10. Each series has adoption, implementation and production evidence; S6 migration remains an explicit prerequisite for public S7 integration.

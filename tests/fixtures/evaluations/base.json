@@ -1,0 +1,61 @@
+{
+  "definition": {
+    "id": "evaluation.maths.calcul-demo",
+    "type": "evaluation",
+    "version": 1,
+    "status": "draft",
+    "label": "Évaluation synthétique du calcul",
+    "experience": { "id": "experience.maths.calcul-demo", "version": 1 },
+    "submissionPolicy": { "allowPartial": true, "maxSubmissions": 3 },
+    "criteria": [{
+      "id": "calcul",
+      "unit": { "id": "experience.maths.calcul-demo", "version": 1 },
+      "method": { "id": "catalogue-qcm", "version": 1, "mode": "deterministic" },
+      "observationKinds": ["answer", "help"],
+      "bindings": [{ "target": { "id": "microskill.maths.calculer", "version": 1 }, "relation": "direct" }]
+    }],
+    "provenance": [{ "path": "docs/evaluation-demo.md", "anchor": "fixture" }]
+  },
+  "experience": {
+    "id": "experience.maths.calcul-demo", "type": "exercise", "version": 1, "status": "draft",
+    "targets": ["microskill.maths.calculer", "skill.maths.calcul"],
+    "task": {
+      "format": "qcm",
+      "prompt": { "path": "catalogue/demo/contenu.json", "anchor": "question-deux", "format": "catalogue-json" },
+      "expected": { "path": "catalogue/demo/contenu.json", "anchor": "question-deux", "format": "catalogue-json" }
+    }
+  },
+  "prepared": { "experienceId": "question-deux", "type": "qcm", "question": "Combien font 1 + 1 ?", "choix": ["1", "2", "3"], "bonne": 1, "explication": "Un et un font deux.", "erreurs": [{ "choix": 0, "message": "Il manque une unité." }] },
+  "targets": [
+    { "id": "microskill.maths.calculer", "type": "microskill", "version": 1, "status": "draft" },
+    { "id": "skill.maths.calcul", "type": "skill", "version": 1, "status": "draft" }
+  ],
+  "attempt": {
+    "recordType": "attempt", "id": "attempt.00000000000000000000000000000001",
+    "definition": { "id": "evaluation.maths.calcul-demo", "version": 1 },
+    "experience": { "id": "experience.maths.calcul-demo", "version": 1 },
+    "openedOn": "2026-11-24", "origin": "synthetic"
+  },
+  "observation": {
+    "recordType": "observation", "id": "observation.00000000000000000000000000000001",
+    "attemptId": "attempt.00000000000000000000000000000001", "sequence": 1, "day": "2026-11-24",
+    "criterionId": "calcul", "kind": "answer", "responseState": "provided", "origin": "local-evaluator"
+  },
+  "submission": {
+    "recordType": "submission", "id": "submission.00000000000000000000000000000001",
+    "attemptId": "attempt.00000000000000000000000000000001", "sequence": 2, "day": "2026-11-24",
+    "observations": ["observation.00000000000000000000000000000001"]
+  },
+  "decision": {
+    "recordType": "decision", "id": "decision.00000000000000000000000000000001",
+    "attemptId": "attempt.00000000000000000000000000000001", "sequence": 3, "day": "2026-11-24",
+    "submissionId": "submission.00000000000000000000000000000001", "criterionId": "calcul",
+    "definition": { "id": "evaluation.maths.calcul-demo", "version": 1 },
+    "experience": { "id": "experience.maths.calcul-demo", "version": 1 },
+    "method": { "id": "catalogue-qcm", "version": 1, "mode": "deterministic" },
+    "state": "confirmed", "outcome": "success",
+    "evidence": ["observation.00000000000000000000000000000001"],
+    "diagnostic": { "state": "indeterminate", "matches": [] },
+    "producer": "local-evaluator", "reason": "automatic-correction", "replayability": "synthetic"
+  }
+}
