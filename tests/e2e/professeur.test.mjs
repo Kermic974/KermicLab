@@ -395,3 +395,37 @@ test("activités (démo) : tableau de bord rempli et défi donné à la classe, 
   assert.deepEqual(erreurs, []);
   await session.contexte.close();
 });
+
+test("barre du haut : six destinations et « Mes espaces » tiennent sur une ligne de 1 024 à 1 440 px (compactage)", async () => {
+  const session = await appareil(null, { raccourcis: false });
+  const { page, erreurs } = session;
+  await page.goto(`${serveur.url}/?demo=contributions#contributions`);
+  await page.locator("#dialogue-pseudo[open]").waitFor();
+  await page.fill("#pseudo", "Démo");
+  await page.click("#formulaire-pseudo button[type=submit]");
+  await page.click("#contrib-demo-prof");
+  await page.locator("#nav-espaces").waitFor();
+  for (const largeur of [1024, 1200, 1280, 1366, 1440]) {
+    await page.setViewportSize({ width: largeur, height: 800 });
+    await page.waitForTimeout(120);
+    const etat = await page.evaluate(() => {
+      const nav = document.querySelector(".barre-laterale .nav");
+      const cadre = nav.getBoundingClientRect();
+      const coupees = [...nav.querySelectorAll(".nav-bouton:not([hidden])")].filter((b) => {
+        const r = b.getBoundingClientRect();
+        return r.left < cadre.left - 1 || r.right > cadre.right + 1;
+      }).map((b) => b.dataset.nav);
+      return { deborde: nav.scrollWidth - nav.clientWidth, coupees, espaces: document.querySelector("#nav-espaces").getAttribute("aria-label") ?? document.querySelector("#nav-espaces").textContent.trim() };
+    });
+    assert.ok(etat.deborde <= 1, `${largeur} px : la barre déborde de ${etat.deborde} px`);
+    assert.deepEqual(etat.coupees, [], `${largeur} px : entrées coupées`);
+    assert.match(etat.espaces, /Mes espaces/, `${largeur} px : « Mes espaces » garde son nom`);
+  }
+  // Le menu s'ouvre toujours depuis la barre compactée.
+  await page.setViewportSize({ width: 1024, height: 800 });
+  await page.waitForTimeout(120);
+  await page.click("#nav-espaces");
+  await page.locator("#menu-espaces").waitFor({ state: "visible" });
+  assert.deepEqual(erreurs, []);
+  await session.contexte.close();
+});
