@@ -808,6 +808,7 @@ dialog.bulle-lab[open] { display: flex; }
 /* Défi express */
 #defi, #profil, #compte { max-width: 760px; }
 .navigation-personnelle { margin: 0 0 14px; }
+.navigation-personnelle[data-une-vue], .navigation-personnelle [data-autre-espace] { display: none !important; }
 .navigation-personnelle [aria-current="page"] { background: var(--accent-doux); color: var(--accent-doux-texte); border-color: transparent; }
 #compte-options-connexion { margin-bottom: 16px; }
 #compte-options-connexion > p { margin: 0 0 10px; }
