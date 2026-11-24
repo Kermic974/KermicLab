@@ -5529,6 +5529,7 @@ async function demarrer() {
 
   ajouterBienvenue();
   brancherTemps();
+  brancherMetiers();
   brancherNavigation();
   await chargerCatalogue();
   void chargerParcours();
