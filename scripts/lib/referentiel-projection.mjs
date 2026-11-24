@@ -123,8 +123,13 @@ export async function synchroniserProjectionV0(racine, { ecrire = false } = {}) 
   }
   const dossier = join(racine, "referentiel", "objets");
   const noms = await readdir(dossier, { recursive: true, withFileTypes: true });
-  const corpus = await Promise.all(noms.filter(e => e.isFile() && e.name.endsWith(".json"))
-    .map(e => join(e.parentPath, e.name)).sort().map(lireJson));
+  const chemins = noms.filter(e => e.isFile() && e.name.endsWith(".json"))
+    .map(e => join(e.parentPath, e.name)).sort();
+  const corpus = [];
+  // Évite EMFILE sur les corpus volumineux, en conservant l’ordre de la projection.
+  for (let i = 0; i < chemins.length; i += 64) {
+    corpus.push(...await Promise.all(chemins.slice(i, i + 64).map(lireJson)));
+  }
   const changements = [];
   for (const [nom, attendu] of projeterFiches(config, corpus)) {
     const fichier = join(racine, "catalogue", nom, "fiche.md");
