@@ -48,12 +48,13 @@ await writeFile(`${racine}dist/trophees.json`, `${JSON.stringify(collectionTroph
 // back-office et par l'Espace Métiers. Données de l'Espace Métiers (ADR 0041) : validées contre le référentiel.
 {
   const projection = JSON.parse(await readFile(`${racine}referentiel/projection-v0.json`, "utf8"));
-  const graphe = construireGraphe(projection);
-  await writeFile(`${racine}dist/referentiel-graphe.json`, `${JSON.stringify(compacter(graphe, disposer(graphe)))}\n`);
-  console.log(`Graphe du référentiel : ${graphe.noeuds.length} nœuds, ${graphe.liens.length} relations${graphe.ignores ? `, ${graphe.ignores} référence(s) inconnue(s) ignorée(s)` : ""}.`);
   const metiers = JSON.parse(await readFile(`${racine}referentiel/metiers-v0.json`, "utf8"));
   const erreurs = verifierMetiers(metiers, new Set(Object.values(projection.notions)));
   if (erreurs.length) throw new Error(`referentiel/metiers-v0.json :\n- ${erreurs.join("\n- ")}`);
+  // Couche métiers (chantier Métiers, lot 4) : chaque métier relié aux notions de ses disciplines.
+  const graphe = construireGraphe(projection, { metiers });
+  await writeFile(`${racine}dist/referentiel-graphe.json`, `${JSON.stringify(compacter(graphe, disposer(graphe)))}\n`);
+  console.log(`Graphe du référentiel : ${graphe.noeuds.length} nœuds (dont ${graphe.noeuds.filter((n) => n.type === "metier").length} métiers), ${graphe.liens.length} relations${graphe.ignores ? `, ${graphe.ignores} référence(s) inconnue(s) ignorée(s)` : ""}.`);
   const titres = new Map(catalogue.index.maquettes.map((m) => [m.id, m.titre]));
   const publie = enrichirMetiers(metiers, projection, titres);
   await writeFile(`${racine}dist/metiers.json`, `${JSON.stringify(publie)}\n`);
