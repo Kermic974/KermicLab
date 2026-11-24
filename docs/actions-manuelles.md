@@ -2,6 +2,15 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Sources ouvertes de l'Éducation nationale (ADR 0042)
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Valider l'ADR 0042 | [ADR 0042](decisions/0042-sources-ouvertes-education.md) | Nouvelle source de données pour le pilotage du catalogue | Statut de l'ADR passé à « accepté » | à faire |
+| Relire la table compétences nationales → notions | `referentiel/sources-ouvertes/correspondances-evaluations.json`, [rapport](referentiel/sources-ouvertes.md) | Correspondances proposées par un agent (statut `proposition`) ; elles fixent les notions prioritaires | `statut` passé à `relue` dans le fichier, puis `npm run sources:rapport` | à faire |
+| Vérifier la licence des jeux Futur Pro | [data.education.gouv.fr](https://data.education.gouv.fr/explore/dataset/futurpro_familles_metiers/) | Licence non indiquée au catalogue : préalable à leur usage dans l'Espace Métiers | Licence notée dans le chantier `sources-ouvertes.md` | à faire |
+| Signaler au producteur que le jeu « programmes » s'arrête en 2020-2021 | Page du jeu `fr-en-programmes-enseignement-premier-degre` (formulaire de contact du portail) | Les programmes de cycles 1 à 3 de 2024 et l'EMC 2024 manquent | Réponse du producteur ou jeu mis à jour (`npm run sources:importer`) | à faire |
+
 ## Relecture humaine vérifiable (ADR 0039)
 
 | Action | Où | Pourquoi | Comment confirmer | Statut |

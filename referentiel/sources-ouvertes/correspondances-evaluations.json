@@ -1,0 +1,578 @@
+{
+  "version": 1,
+  "statut": "proposition",
+  "seuil": 60,
+  "note": "Compétence nationale (dernière année des évaluations Repères) → notions du catalogue qui la travaillent. Correspondances proposées par un agent, à relire (ADR 0042). Une liste vide signale une compétence sans notion (souvent orale).",
+  "correspondances": [
+    {
+      "niveau": "CP",
+      "competence": "Comprendre des mots à l'oral",
+      "notions": []
+    },
+    {
+      "niveau": "CP",
+      "competence": "Comprendre des phrases à l'oral",
+      "notions": []
+    },
+    {
+      "niveau": "CP",
+      "competence": "Comprendre des textes à l'oral",
+      "notions": []
+    },
+    {
+      "niveau": "CP",
+      "competence": "Connaître le nom des lettres et le son qu'elles produisent",
+      "notions": [
+        "lettres-et-sons-c2"
+      ]
+    },
+    {
+      "niveau": "CP",
+      "competence": "Manipuler des phonèmes",
+      "notions": [
+        "lettres-et-sons-c2"
+      ]
+    },
+    {
+      "niveau": "CP",
+      "competence": "Manipuler des syllabes",
+      "notions": [
+        "syllabes-et-mots-c2"
+      ]
+    },
+    {
+      "niveau": "CP",
+      "competence": "Reconnaître les différentes écritures d’une lettre",
+      "notions": [
+        "lettres-et-sons-c2"
+      ]
+    },
+    {
+      "niveau": "CP",
+      "competence": "Comparer des nombres",
+      "notions": [
+        "comparer-et-ranger-c2"
+      ]
+    },
+    {
+      "niveau": "CP",
+      "competence": "Écrire des nombres entiers",
+      "notions": [
+        "nombres-jusqu-a-100-c2"
+      ]
+    },
+    {
+      "niveau": "CP",
+      "competence": "Lire des nombres entiers",
+      "notions": [
+        "nombres-jusqu-a-100-c2"
+      ]
+    },
+    {
+      "niveau": "CP",
+      "competence": "Placer un nombre sur une ligne graduée",
+      "notions": [
+        "comparer-et-ranger-c2"
+      ]
+    },
+    {
+      "niveau": "CP",
+      "competence": "Quantifier des collections",
+      "notions": [
+        "nombres-jusqu-a-100-c2"
+      ]
+    },
+    {
+      "niveau": "CP",
+      "competence": "Reproduire un assemblage",
+      "notions": [
+        "figures-planes-c2"
+      ]
+    },
+    {
+      "niveau": "CP",
+      "competence": "Résoudre des problèmes",
+      "notions": [
+        "problemes-c2"
+      ]
+    },
+    {
+      "niveau": "CE1",
+      "competence": "Comprendre des mots à l'oral",
+      "notions": [
+        "vocabulaire-et-dictionnaire-c2"
+      ]
+    },
+    {
+      "niveau": "CE1",
+      "competence": "Comprendre des phrases à l'oral",
+      "notions": []
+    },
+    {
+      "niveau": "CE1",
+      "competence": "Comprendre des phrases lues seul(e)",
+      "notions": [
+        "la-phrase-c2",
+        "lire-et-comprendre-c2"
+      ]
+    },
+    {
+      "niveau": "CE1",
+      "competence": "Comprendre un texte lu seul(e)",
+      "notions": [
+        "lire-et-comprendre-c2"
+      ]
+    },
+    {
+      "niveau": "CE1",
+      "competence": "Écrire des mots",
+      "notions": [
+        "homophones-et-orthographe-c2"
+      ]
+    },
+    {
+      "niveau": "CE1",
+      "competence": "Écrire des syllabes",
+      "notions": [
+        "syllabes-et-mots-c2"
+      ]
+    },
+    {
+      "niveau": "CE1",
+      "competence": "Lire à voix haute des mots",
+      "notions": []
+    },
+    {
+      "niveau": "CE1",
+      "competence": "Lire à voix haute un texte",
+      "notions": []
+    },
+    {
+      "niveau": "CE1",
+      "competence": "Additionner",
+      "notions": [
+        "addition-c2"
+      ]
+    },
+    {
+      "niveau": "CE1",
+      "competence": "Calculer mentalement",
+      "notions": [
+        "addition-c2",
+        "doubles-et-moities-c2"
+      ]
+    },
+    {
+      "niveau": "CE1",
+      "competence": "Écrire des nombres entiers",
+      "notions": [
+        "nombres-jusqu-a-1000-c2"
+      ]
+    },
+    {
+      "niveau": "CE1",
+      "competence": "Lire des nombres entiers",
+      "notions": [
+        "nombres-jusqu-a-1000-c2"
+      ]
+    },
+    {
+      "niveau": "CE1",
+      "competence": "Placer un nombre sur une ligne graduée",
+      "notions": [
+        "comparer-et-ranger-c2"
+      ]
+    },
+    {
+      "niveau": "CE1",
+      "competence": "Reproduire un assemblage",
+      "notions": [
+        "figures-planes-c2"
+      ]
+    },
+    {
+      "niveau": "CE1",
+      "competence": "Résoudre des problèmes",
+      "notions": [
+        "problemes-c2"
+      ]
+    },
+    {
+      "niveau": "CE1",
+      "competence": "Soustraire",
+      "notions": [
+        "soustraction-c2"
+      ]
+    },
+    {
+      "niveau": "CE2",
+      "competence": "Comprendre des phrases lues seul(e)",
+      "notions": [
+        "lire-et-comprendre-c2"
+      ]
+    },
+    {
+      "niveau": "CE2",
+      "competence": "Comprendre un texte et des phrases à l'oral",
+      "notions": []
+    },
+    {
+      "niveau": "CE2",
+      "competence": "Comprendre un texte lu seul(e)",
+      "notions": [
+        "lire-et-comprendre-c2"
+      ]
+    },
+    {
+      "niveau": "CE2",
+      "competence": "Différencier les principales classes de mots",
+      "notions": [
+        "noms-et-determinants-c2",
+        "verbe-sujet-adjectif-c2"
+      ]
+    },
+    {
+      "niveau": "CE2",
+      "competence": "Écrire des mots",
+      "notions": [
+        "homophones-et-orthographe-c2"
+      ]
+    },
+    {
+      "niveau": "CE2",
+      "competence": "Lire à voix haute un texte",
+      "notions": []
+    },
+    {
+      "niveau": "CE2",
+      "competence": "Mémoriser des temps de conjugaison",
+      "notions": [
+        "temps-des-verbes-c2"
+      ]
+    },
+    {
+      "niveau": "CE2",
+      "competence": "Reconnaître les principaux constituants de la phrase",
+      "notions": [
+        "verbe-sujet-adjectif-c2"
+      ]
+    },
+    {
+      "niveau": "CE2",
+      "competence": "Utiliser des marques d'accord pour les noms et adjectifs",
+      "notions": [
+        "singulier-pluriel-masculin-feminin-c2"
+      ]
+    },
+    {
+      "niveau": "CE2",
+      "competence": "Écrire des nombres entiers",
+      "notions": [
+        "nombres-jusqu-a-10000-c2"
+      ]
+    },
+    {
+      "niveau": "CE2",
+      "competence": "Lire des nombres entiers",
+      "notions": [
+        "nombres-jusqu-a-10000-c2"
+      ]
+    },
+    {
+      "niveau": "CE2",
+      "competence": "Mémoriser des faits numériques",
+      "notions": [
+        "tables-de-multiplication-c2"
+      ]
+    },
+    {
+      "niveau": "CE2",
+      "competence": "Mémoriser des procédures",
+      "notions": [
+        "perimetre-et-calcul-mental-c2"
+      ]
+    },
+    {
+      "niveau": "CE2",
+      "competence": "Ordonner des nombres",
+      "notions": [
+        "comparer-et-ranger-c2"
+      ]
+    },
+    {
+      "niveau": "CE2",
+      "competence": "Placer un nombre sur une ligne graduée",
+      "notions": [
+        "comparer-et-ranger-c2"
+      ]
+    },
+    {
+      "niveau": "CE2",
+      "competence": "Poser et calculer",
+      "notions": [
+        "addition-c2",
+        "multiplication-posee-ce2-c2",
+        "soustraction-c2"
+      ]
+    },
+    {
+      "niveau": "CE2",
+      "competence": "Reconnaître un nombre à partir de sa décomposition additive",
+      "notions": [
+        "nombres-jusqu-a-10000-c2"
+      ]
+    },
+    {
+      "niveau": "CE2",
+      "competence": "Résoudre des problèmes",
+      "notions": [
+        "problemes-c2"
+      ]
+    },
+    {
+      "niveau": "CM1",
+      "competence": "Comprendre des textes à l'oral",
+      "notions": []
+    },
+    {
+      "niveau": "CM1",
+      "competence": "Comprendre un texte lu seul(e)",
+      "notions": [
+        "lecture-comprehension-cm"
+      ]
+    },
+    {
+      "niveau": "CM1",
+      "competence": "Différencier les principales classes de mots",
+      "notions": [
+        "nature-des-mots-cm"
+      ]
+    },
+    {
+      "niveau": "CM1",
+      "competence": "Écrire des mots",
+      "notions": [
+        "orthographe-lexicale-cm"
+      ]
+    },
+    {
+      "niveau": "CM1",
+      "competence": "Identifier la relation sujet - verbe",
+      "notions": [
+        "accords-cm",
+        "fonctions-dans-la-phrase-cm"
+      ]
+    },
+    {
+      "niveau": "CM1",
+      "competence": "Lire à voix haute un texte",
+      "notions": []
+    },
+    {
+      "niveau": "CM1",
+      "competence": "Mémoriser des temps de conjugaison",
+      "notions": [
+        "conjugaison-cm"
+      ]
+    },
+    {
+      "niveau": "CM1",
+      "competence": "Reconnaître les principaux constituants de la phrase",
+      "notions": [
+        "fonctions-dans-la-phrase-cm"
+      ]
+    },
+    {
+      "niveau": "CM1",
+      "competence": "Savoir trouver des mots de la même famille",
+      "notions": [
+        "formation-des-mots-cm"
+      ]
+    },
+    {
+      "niveau": "CM1",
+      "competence": "Savoir trouver des synonymes",
+      "notions": [
+        "vocabulaire-cm"
+      ]
+    },
+    {
+      "niveau": "CM1",
+      "competence": "Utiliser des marques d'accord pour les noms et adjectifs",
+      "notions": [
+        "accords-cm",
+        "groupe-nominal-cm"
+      ]
+    },
+    {
+      "niveau": "CM1",
+      "competence": "Écrire des nombres entiers",
+      "notions": [
+        "grands-nombres-cm"
+      ]
+    },
+    {
+      "niveau": "CM1",
+      "competence": "Mémoriser des faits numériques",
+      "notions": [
+        "calcul-mental-cm",
+        "multiplication-posee-cm"
+      ]
+    },
+    {
+      "niveau": "CM1",
+      "competence": "Mémoriser des procédures",
+      "notions": [
+        "calcul-mental-cm"
+      ]
+    },
+    {
+      "niveau": "CM1",
+      "competence": "Placer un nombre sur une ligne graduée",
+      "notions": [
+        "fractions-cm",
+        "nombres-decimaux-cm"
+      ]
+    },
+    {
+      "niveau": "CM1",
+      "competence": "Poser et calculer",
+      "notions": [
+        "addition-soustraction-posees-cm",
+        "division-euclidienne-cm",
+        "multiplication-posee-cm"
+      ]
+    },
+    {
+      "niveau": "CM1",
+      "competence": "Reconnaître un nombre à partir de sa décomposition additive",
+      "notions": [
+        "grands-nombres-cm"
+      ]
+    },
+    {
+      "niveau": "CM1",
+      "competence": "Résoudre des problèmes",
+      "notions": [
+        "problemes-a-etapes-cm"
+      ]
+    },
+    {
+      "niveau": "CM2",
+      "competence": "Comprendre des textes à l'oral",
+      "notions": []
+    },
+    {
+      "niveau": "CM2",
+      "competence": "Comprendre un texte lu seul(e)",
+      "notions": [
+        "lecture-comprehension-cm"
+      ]
+    },
+    {
+      "niveau": "CM2",
+      "competence": "Différencier les principales classes de mots",
+      "notions": [
+        "nature-des-mots-cm"
+      ]
+    },
+    {
+      "niveau": "CM2",
+      "competence": "Écrire des mots",
+      "notions": [
+        "orthographe-lexicale-cm"
+      ]
+    },
+    {
+      "niveau": "CM2",
+      "competence": "Lire à voix haute un texte",
+      "notions": []
+    },
+    {
+      "niveau": "CM2",
+      "competence": "Maîtriser l'accord du verbe conjugué",
+      "notions": [
+        "accords-cm",
+        "conjugaison-cm"
+      ]
+    },
+    {
+      "niveau": "CM2",
+      "competence": "Reconnaître les principaux constituants de la phrase",
+      "notions": [
+        "fonctions-dans-la-phrase-cm"
+      ]
+    },
+    {
+      "niveau": "CM2",
+      "competence": "Savoir trouver des synonymes et des mots de la même famille",
+      "notions": [
+        "formation-des-mots-cm",
+        "vocabulaire-cm"
+      ]
+    },
+    {
+      "niveau": "CM2",
+      "competence": "Utiliser des marques d'accord pour les noms et adjectifs",
+      "notions": [
+        "accords-cm",
+        "groupe-nominal-cm"
+      ]
+    },
+    {
+      "niveau": "CM2",
+      "competence": "Écrire des nombres entiers",
+      "notions": [
+        "grands-nombres-cm"
+      ]
+    },
+    {
+      "niveau": "CM2",
+      "competence": "Mémoriser des faits numériques",
+      "notions": [
+        "calcul-mental-cm",
+        "multiplication-posee-cm"
+      ]
+    },
+    {
+      "niveau": "CM2",
+      "competence": "Mémoriser des procédures",
+      "notions": [
+        "calcul-mental-cm"
+      ]
+    },
+    {
+      "niveau": "CM2",
+      "competence": "Placer un nombre sur une ligne graduée",
+      "notions": [
+        "fractions-cm",
+        "nombres-decimaux-cm"
+      ]
+    },
+    {
+      "niveau": "CM2",
+      "competence": "Poser et calculer",
+      "notions": [
+        "addition-soustraction-posees-cm",
+        "division-euclidienne-cm",
+        "multiplication-posee-cm"
+      ]
+    },
+    {
+      "niveau": "CM2",
+      "competence": "Résoudre des problèmes",
+      "notions": [
+        "problemes-a-etapes-cm"
+      ]
+    },
+    {
+      "niveau": "CM2",
+      "competence": "Utiliser différentes représentations des nombres",
+      "notions": [
+        "fractions-cm",
+        "fractions-operations-cm",
+        "nombres-decimaux-cm"
+      ]
+    }
+  ]
+}

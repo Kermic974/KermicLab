@@ -1,0 +1,954 @@
+{
+  "source": {
+    "licence": "Licence Ouverte v2.0 (Etalab)",
+    "extrait_le": "2026-11-24",
+    "jeux": [
+      {
+        "id": "fr-en-programmes-enseignement-premier-degre",
+        "url": "https://data.education.gouv.fr/explore/dataset/fr-en-programmes-enseignement-premier-degre/"
+      },
+      {
+        "id": "fr-en-programmes-enseignement-2nd-degre",
+        "url": "https://data.education.gouv.fr/explore/dataset/fr-en-programmes-enseignement-2nd-degre/"
+      }
+    ]
+  },
+  "programmes": [
+    {
+      "niveau": "cycle-1",
+      "discipline": "",
+      "descriptif": "Programmes d'enseignement - École maternelle : modification",
+      "texte": "Arrêté du 17-7-2020 et J.O. du 28-7-2020",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE2018712A",
+      "contenu": "https://cache.media.education.gouv.fr/file/31/89/4/ensel712_annexe_1312894.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "cycle-2",
+      "discipline": "",
+      "descriptif": "Cycle des apprentissages fondamentaux (cycle 2), cycle de consolidation (cycle 3) et cycle des approfondissements (cycle 4) : modification",
+      "texte": "Arrêté du 17-7-2020 et J.O. du 28-7-2020",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE2018714A",
+      "contenu": "https://cache.media.education.gouv.fr/file/31/88/5/ensel714_annexe1_1312885.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "cycle-3",
+      "discipline": "",
+      "descriptif": "Cycle des apprentissages fondamentaux (cycle 2), cycle de consolidation (cycle 3) et cycle des approfondissements (cycle 4) : modification",
+      "texte": "Arrêté du 17-7-2020 et J.O. du 28-7-2020",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE2018714A",
+      "contenu": "https://cache.media.education.gouv.fr/file/31/88/7/ensel714_annexe2_1312887.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "cycle-4",
+      "discipline": "",
+      "descriptif": "Cycle des apprentissages fondamentaux (cycle 2), cycle de consolidation (cycle 3) et cycle des approfondissements (cycle 4) : modification",
+      "texte": "Arrêté du 17-7-2020 et J.O. du 28-7-2020",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE2018714A",
+      "contenu": "https://cache.media.education.gouv.fr/file/31/89/1/ensel714_annexe3_1312891.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Écologie-agronomie-territoires-développement durable",
+      "descriptif": "instructions relatives aux enseignements facultatifs/optionnels et unités facultatives proposés dans les établissements de l’enseignement technique agricole",
+      "texte": "Note de service DGER/SDPFE/2019-461 18/06/2019",
+      "lien": "",
+      "contenu": "https://info.agriculture.gouv.fr/gedei/site/bo-agri/instruction-2019-461/telechargement",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Éducation physique et sportive",
+      "descriptif": "Programme d'éducation physique et sportive du lycée général et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901574A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/91/9/spe574_annexe1_1062919.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Enseignement moral et civique",
+      "descriptif": "Programme d'enseignement moral et civique de seconde générale et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901572A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/90/0/spe572_annexe1_1062900.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Enseignement optionnel d'arts",
+      "descriptif": "Programme d'enseignement optionnel d'arts de seconde générale et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901566A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/69/3/spe566_annexe1CORR_1063693.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Enseignement optionnel d'arts du cirque",
+      "descriptif": "Programme d'enseignement optionnel d'arts de seconde générale et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901566A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/69/3/spe566_annexe1CORR_1063693.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Enseignement optionnel d'éducation physique et sportive",
+      "descriptif": "Programme d'enseignement optionnel d'éducation physique et sportive du lycée général et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901574A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/92/1/spe574_annexe2_1062921.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Enseignement optionnel de biotechnologies",
+      "descriptif": "Programme d'enseignement optionnel de biotechnologies de seconde générale et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901568A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/45/5/spe568_annexe_1062455.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Enseignement optionnel de création et culture-design",
+      "descriptif": "Programme d'enseignement optionnel de création et culture-design de seconde générale et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901569A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/48/2/spe569_annexe_1062482.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Enseignement optionnel de création et innovation technologiques",
+      "descriptif": "Programme d'enseignement optionnel de création et innovation technologiques et de sciences de l'ingénieur de seconde générale et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901570A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/53/1/spe570_annexe_1062531.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Enseignement optionnel de culture et pratique de la danse, de la musique ou du théâtre",
+      "descriptif": "Programme d'enseignement optionnel de culture et pratique de la danse, de la musique ou du théâtre de seconde générale et technologique",
+      "texte": "arrêté du 31-7-2019 - J.O. du 14-8-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1918795A",
+      "contenu": "https://cache.media.education.gouv.fr/file/31/99/2/ensel795_annexe_1160992.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Enseignement optionnel de langues et cultures de l'Antiquité",
+      "descriptif": "Programme d'enseignement optionnel de langues et cultures de l'Antiquité de seconde générale et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901579A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/70/1/spe579_annexe1CORR_1063701.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Enseignement optionnel de management et gestion",
+      "descriptif": "Programme d'enseignement optionnel de management et gestion de seconde générale et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901629A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/55/6/spe629_annexe_1062556.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Enseignement optionnel de santé et social",
+      "descriptif": "Programme d'enseignement optionnel de santé et social de seconde générale et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901636A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/60/7/spe636_annexe_1062607.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Enseignement optionnel de sciences de l'ingénieur",
+      "descriptif": "Programme d'enseignement optionnel de création et innovation technologiques et de sciences de l'ingénieur de seconde générale et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901570A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/53/1/spe570_annexe_1062531.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Enseignement optionnel de sciences et laboratoire",
+      "descriptif": "Programme d'enseignement optionnel de sciences et laboratoire de seconde générale et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901637A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/63/3/spe637_annexe_1062633.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Français",
+      "descriptif": "Programme de français de seconde générale et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901575A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/92/8/spe575_annexe1_1062928.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Hippologie et équitation ou Autres pratiques sportives",
+      "descriptif": "instructions relatives aux enseignements facultatifs/optionnels et unités facultatives proposés dans les établissements de l’enseignement technique agricole",
+      "texte": "Note de service DGER/SDPFE/2019-461 18/06/2019",
+      "lien": "",
+      "contenu": "https://info.agriculture.gouv.fr/gedei/site/bo-agri/instruction-2019-461/telechargement",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Histoire-géographie",
+      "descriptif": "Programme d'histoire-géographie de seconde générale et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901577A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/69/9/spe577_annexe1CORR_1063699.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Langues vivantes",
+      "descriptif": "Programme de langues vivantes de seconde générale et technologique, enseignements commun et optionnel",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901585A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/95/2/spe585_annexe1_1062952.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Mathématiques",
+      "descriptif": "Programme de mathématiques de seconde générale et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901631A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/95/7/spe631_annexe_1062957.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Physique-chimie",
+      "descriptif": "Programme de physique-chimie de seconde générale et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901634A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/98/9/spe634_annexe_1062989.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Pratiques professionnelles",
+      "descriptif": "instructions relatives aux enseignements facultatifs/optionnels et unités facultatives proposés dans les établissements de l’enseignement technique agricole",
+      "texte": "Note de service DGER/SDPFE/2019-461 18/06/2019",
+      "lien": "",
+      "contenu": "https://info.agriculture.gouv.fr/gedei/site/bo-agri/instruction-2019-461/telechargement",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Pratiques sociales et culturelles",
+      "descriptif": "instructions relatives aux enseignements facultatifs/optionnels et unités facultatives proposés dans les établissements de l’enseignement technique agricole",
+      "texte": "Note de service DGER/SDPFE/2019-461 18/06/2019",
+      "lien": "",
+      "contenu": "https://info.agriculture.gouv.fr/gedei/site/bo-agri/instruction-2019-461/telechargement",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Sciences de la vie et de la Terre",
+      "descriptif": "Programme de sciences de la vie et de la Terre de seconde générale et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901647A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/00/8/spe647_annexe_1063008.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Sciences économiques et sociales",
+      "descriptif": "Programme de sciences économiques et sociales de seconde générale et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901638A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/05/3/spe638_annexe_1063053.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "seconde",
+      "discipline": "Sciences numériques et technologie",
+      "descriptif": "Programme de sciences numériques et technologie de seconde générale et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901641A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/08/5/spe641_annexe_1063085.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Agronomie-Economie-Territoires",
+      "descriptif": "instructions relatives aux enseignements facultatifs/optionnels et unités facultatives proposés dans les établissements de l’enseignement technique agricole",
+      "texte": "Note de service DGER/SDPFE/2019-461 18/06/2019",
+      "lien": "",
+      "contenu": "https://info.agriculture.gouv.fr/gedei/site/bo-agri/instruction-2019-461/telechargement",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Biologie-écologie",
+      "descriptif": "Arrêté du 23 juillet 2019 fixant le programme d'enseignement de spécialité de biologie-écologie des classes de première et terminale de la voie générale",
+      "texte": "Arrêté du 23 juillet 2019 fixant le programme d'enseignement de spécialité de biologie-écologie des classes de première et terminale de la voie générale",
+      "lien": "",
+      "contenu": "https://info.agriculture.gouv.fr/gedei/site/bo-agri/document_administratif-d5217262-3559-40af-89f0-fb0075ad9098/telechargement",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Éducation physique et sportive",
+      "descriptif": "Programme d'éducation physique et sportive du lycée général et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901574A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/91/9/spe574_annexe1_1062919.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Enseignement de spécialité d'arts",
+      "descriptif": "Programme de spécialité d'arts de première et terminale générales",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901567A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/84/6/spe567_annexe_22-1_1063846.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Enseignement moral et civique",
+      "descriptif": "Programme d'enseignement moral et civique de première des voies générale et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901572A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/84/8/spe572_annexe2_22-1_1063848.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Enseignement optionnel d'arts",
+      "descriptif": "Programme d’enseignement optionnel d'arts de première et terminale générales et technologiques",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901566A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/69/5/spe566_annexe2CORR_1063695.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Enseignement optionnel d'éducation physique et sportive",
+      "descriptif": "Programme d'enseignement optionnel d'éducation physique et sportive du lycée général et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901574A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/91/9/spe574_annexe1_1062919.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Enseignement optionnel de langues et cultures de l'Antiquité",
+      "descriptif": "Programme d'enseignement optionnel de langues et cultures de l'Antiquité de première générale",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901579A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/85/5/spe579_annexe2_1062855.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Enseignement scientifique",
+      "descriptif": "Programme d'enseignement scientifique de première générale",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901573A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/13/4/spe573_annexe_1063134.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Français",
+      "descriptif": "Programme de français de première des voies générale et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901575A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/93/0/spe575_annexe2_1062930.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Hippologie et équitation",
+      "descriptif": "instructions relatives aux enseignements facultatifs/optionnels et unités facultatives proposés dans les établissements de l’enseignement technique agricole",
+      "texte": "Note de service DGER/SDPFE/2019-461 18/06/2019",
+      "lien": "",
+      "contenu": "https://info.agriculture.gouv.fr/gedei/site/bo-agri/instruction-2019-461/telechargement",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Histoire-géographie",
+      "descriptif": "Programme d'histoire-géographie de première générale",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901577A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/93/9/spe577_annexe2_1062939.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Histoire-géographie, géopolitique et sciences politiques",
+      "descriptif": "Programme d'histoire-géographie, géopolitique et sciences politiques de première générale",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901576A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/92/5/spe576_annexe_1062925.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Humanités, littérature et philosophie",
+      "descriptif": "Programme d'humanités, littérature et philosophie de première générale",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901578A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/00/2/spe578_annexe_1063002.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Langues vivantes",
+      "descriptif": "Programme de langues vivantes de première et terminale générale et technologique, enseignements commun et optionnel",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901585A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/70/3/spe585_annexe2CORR_1063703.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - allemand",
+      "descriptif": "Programme de langues, littératures et cultures étrangères et régionales - allemand - de première générale",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901590A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/11/1/spe590_annexe1_1063111.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - anglais",
+      "descriptif": "Programme de langues, littératures et cultures étrangères et régionales - anglais - de première générale",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901590A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/85/0/spe590_annexe2_22-1_1063850.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - basque",
+      "descriptif": "Programme de langues, littératures et cultures étrangères - basque - de première générale",
+      "texte": "arrêté du 28-6-2019 - J.O. du 7-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1916484A",
+      "contenu": "https://cache.media.education.gouv.fr/file/28/37/0/ensel484_annexe5_1151370.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - breton",
+      "descriptif": "Programme de langues, littératures et cultures étrangères - breton - de première générale",
+      "texte": "arrêté du 28-6-2019 - J.O. du 7-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1916484A",
+      "contenu": "https://cache.media.education.gouv.fr/file/28/37/4/ensel484_annexe6_1151374.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - catalan",
+      "descriptif": "Programme de langues, littératures et cultures étrangères - catalan - de première générale",
+      "texte": "arrêté du 28-6-2019 - J.O. du 7-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1916484A",
+      "contenu": "https://cache.media.education.gouv.fr/file/28/37/6/ensel484_annexe7_1151376.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - corse",
+      "descriptif": "Programme de langues, littératures et cultures étrangères - corse - de première générale",
+      "texte": "arrêté du 28-6-2019 - J.O. du 7-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1916484A",
+      "contenu": "https://cache.media.education.gouv.fr/file/28/37/8/ensel484_annexe8_1151378.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - créole",
+      "descriptif": "Programme de langues, littératures et cultures étrangères - créole - de première générale",
+      "texte": "arrêté du 28-6-2019 - J.O. du 7-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1916484A",
+      "contenu": "https://cache.media.education.gouv.fr/file/28/38/0/ensel484_annexe9_1151380.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - espagnol",
+      "descriptif": "Programme de langues, littératures et cultures étrangères et régionales - espagnol - de première générale",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901590A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/85/2/spe590_annexe3_22-1_1063852.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - italien",
+      "descriptif": "Programme de langues, littératures et cultures étrangères et régionales - italien - de première générale",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901590A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/85/4/spe590_annexe4_22-1_1063854.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - occitan",
+      "descriptif": "Programme de langues, littératures et cultures étrangères - occitan - de première générale",
+      "texte": "arrêté du 28-6-2019 - J.O. du 7-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1916484A",
+      "contenu": "https://cache.media.education.gouv.fr/file/28/38/2/ensel484_annexe10_1151382.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - tahitien",
+      "descriptif": "Programme de langues, littératures et cultures étrangères - tahitien - de première générale",
+      "texte": "arrêté du 28-6-2019 - J.O. du 7-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1916484A",
+      "contenu": "https://cache.media.education.gouv.fr/file/28/38/4/ensel484_annexe11_1151384.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Littérature et langues et cultures de l'Antiquité",
+      "descriptif": "Programme de littérature et langues et cultures de l'Antiquité de première générale",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901582A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/14/8/spe582_annexe_1063148.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Mathématiques",
+      "descriptif": "Programme de mathématiques de première générale",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901632A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/16/8/spe632_annexe_1063168.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Numérique et sciences informatiques",
+      "descriptif": "Programme de numérique et sciences informatiques de première générale",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901633A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/26/8/spe633_annexe_1063268.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Physique-chimie",
+      "descriptif": "Programme de physique-chimie de première générale",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901635A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/43/2/spe635_annexe_1063432.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Pratiques sociales et culturelles",
+      "descriptif": "instructions relatives aux enseignements facultatifs/optionnels et unités facultatives proposés dans les établissements de l’enseignement technique agricole",
+      "texte": "Note de service DGER/SDPFE/2019-461 18/06/2019",
+      "lien": "",
+      "contenu": "https://info.agriculture.gouv.fr/gedei/site/bo-agri/instruction-2019-461/telechargement",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Sciences de l'ingénieur",
+      "descriptif": "Programme de sciences de l'ingénieur de première et terminale générales",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901640A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/43/6/spe640_annexe_1063436.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Sciences de la vie et de la Terre",
+      "descriptif": "Programme de sciences de la vie et de la Terre de première générale",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901648A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/54/2/spe648_annexe_1063542.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "premiere",
+      "discipline": "Sciences économiques et sociales",
+      "descriptif": "Programme de sciences économiques et sociales de première générale",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901639A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/54/4/spe639_annexe_1063544.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Agronomie-Economie-Territoires",
+      "descriptif": "instructions relatives aux enseignements facultatifs/optionnels et unités facultatives proposés dans les établissements de l’enseignement technique agricole",
+      "texte": "Note de service DGER/SDPFE/2019-461 18/06/2019",
+      "lien": "",
+      "contenu": "https://info.agriculture.gouv.fr/gedei/site/bo-agri/instruction-2019-461/telechargement",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Biologie-écologie",
+      "descriptif": "Arrêté du 23 juillet 2019 fixant le programme d'enseignement de spécialité de biologie-écologie des classes de première et terminale de la voie générale",
+      "texte": "Arrêté du 23 juillet 2019 fixant le programme d'enseignement de spécialité de biologie-écologie des classes de première et terminale de la voie générale",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=AGRE1904996A",
+      "contenu": "https://info.agriculture.gouv.fr/gedei/site/bo-agri/document_administratif-d5217262-3559-40af-89f0-fb0075ad9098/telechargement",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Droit et grands enjeux du monde contemporain",
+      "descriptif": "Programme de l'enseignement optionnel de droit et grands enjeux du monde contemporain de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921266A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/65/0/spe266_annexe_1158650.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Éducation physique et sportive",
+      "descriptif": "Programme d'éducation physique et sportive du lycée général et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901574A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/91/9/spe574_annexe1_1062919.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Enseignement de spécialité d'arts (Arts plastiques, Cinéma-audiovisuel, Danse, Histoire des arts, Théâtre)",
+      "descriptif": "Programme de l'enseignement de spécialité d'arts des classes de première et terminale de la voie générale : modification",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921245A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/02/6/spe245_annexe_1159026.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Enseignement de spécialité d'arts (musique)",
+      "descriptif": "Programme de spécialité d'arts de première et terminale générales",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901567A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/84/6/spe567_annexe_22-1_1063846.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Enseignement moral et civique",
+      "descriptif": "Programme d'enseignement moral et civique de la classe terminale des voies générale et technologique",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921244A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/89/7/spe244_annexe_1158897.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Enseignement optionnel d'arts (Arts plastiques, Cinéma-audiovisuel, Danse, Histoire des arts, Théâtre)",
+      "descriptif": "Programme de l'enseignement optionnel d'arts des classes de première et terminale des voies générale et technologique : modification",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921263A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/15/4/spe263_annexe_1159154.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Enseignement optionnel d'arts (musique)",
+      "descriptif": "Programme d’enseignement optionnel d'arts de première et terminale générales et technologiques",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901566A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/69/5/spe566_annexe2CORR_1063695.pdf",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Enseignement optionnel d'éducation physique et sportive",
+      "descriptif": "Programme d'enseignement optionnel d'éducation physique et sportive du lycée général et technologique",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901574A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/91/9/spe574_annexe1_1062919.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Enseignement scientifique",
+      "descriptif": "Programme d'enseignement scientifique de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921241A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/84/7/spe241_annexe_1158847.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Hippologie et équitation",
+      "descriptif": "instructions relatives aux enseignements facultatifs/optionnels et unités facultatives proposés dans les établissements de l’enseignement technique agricole",
+      "texte": "Note de service DGER/SDPFE/2019-461 18/06/2019",
+      "lien": "",
+      "contenu": "https://info.agriculture.gouv.fr/gedei/site/bo-agri/instruction-2019-461/telechargement",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Histoire-géographie",
+      "descriptif": "Programme de l'enseignement d'histoire-géographie de la classe terminale de la voie générale et de la classe terminale de la voie technologique",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921243A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/17/2/spe243_annexe1_1159172.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Histoire-géographie, géopolitique et sciences politiques",
+      "descriptif": "Programme de l'enseignement de spécialité d'histoire-géographie, géopolitique et sciences politiques de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921254A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/18/0/spe254_annexe_1159180.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Humanités, littérature et philosophie",
+      "descriptif": "Programme de l'enseignement de spécialité d'humanités, littérature et philosophie de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921255A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/92/0/spe255_annexe_1158920.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Langues et cultures de l'Antiquité",
+      "descriptif": "Programme de l'enseignement optionnel de langues et cultures de l'Antiquité de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921267A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/69/4/spe267_annexe_1158694.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Langues vivantes",
+      "descriptif": "Programme de langues vivantes de première et terminale générale et technologique, enseignements commun et optionnel",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901585A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/70/3/spe585_annexe2CORR_1063703.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - allemand",
+      "descriptif": "Programme de l'enseignement de spécialité de langues, littératures et cultures étrangères et régionales de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921256A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/99/2/spe256_annexe1_1158992.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - anglais",
+      "descriptif": "Programme de l'enseignement de spécialité de langues, littératures et cultures étrangères et régionales de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921256A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/99/9/spe256_annexe2_1158999.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - basque",
+      "descriptif": "Programme de l'enseignement de spécialité de langues, littératures et cultures étrangères et régionales de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921256A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/00/5/spe256_annexe5_1159005.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - breton",
+      "descriptif": "Programme de l'enseignement de spécialité de langues, littératures et cultures étrangères et régionales de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921256A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/00/7/spe256_annexe6_1159007.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - catalan",
+      "descriptif": "Programme de l'enseignement de spécialité de langues, littératures et cultures étrangères et régionales de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921256A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/00/9/spe256_annexe7_1159009.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - corse",
+      "descriptif": "Programme de l'enseignement de spécialité de langues, littératures et cultures étrangères et régionales de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921256A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/01/1/spe256_annexe8_1159011.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - créole",
+      "descriptif": "Programme de l'enseignement de spécialité de langues, littératures et cultures étrangères et régionales de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921256A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/01/3/spe256_annexe9_1159013.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - espagnol",
+      "descriptif": "Programme de l'enseignement de spécialité de langues, littératures et cultures étrangères et régionales de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921256A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/00/1/spe256_annexe3_1159001.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - italien",
+      "descriptif": "Programme de l'enseignement de spécialité de langues, littératures et cultures étrangères et régionales de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921256A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/00/3/spe256_annexe4_1159003.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - occitan - langue d'oc",
+      "descriptif": "Programme de l'enseignement de spécialité de langues, littératures et cultures étrangères et régionales de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921256A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/01/5/spe256_annexe10_1159015.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Langues, littératures et cultures étrangères et régionales - tahitien",
+      "descriptif": "Programme de l'enseignement de spécialité de langues, littératures et cultures étrangères et régionales de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921256A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/01/7/spe256_annexe11_1159017.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Littérature et langues et cultures de l'Antiquité",
+      "descriptif": "Programme d'enseignement de spécialité de littérature et langues et cultures de l'Antiquité de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921257A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/89/5/spe257_annexe_1158895.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Mathématiques",
+      "descriptif": "Programme de l'enseignement de spécialité de mathématiques de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921246A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/90/7/spe246_annexe_1158907.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Mathématiques complémentaires",
+      "descriptif": "Programme de l'enseignement optionnel de mathématiques complémentaires de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921265A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/13/4/spe265_annexe_1159134.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Mathématiques expertes",
+      "descriptif": "Programme de l'enseignement optionnel de mathématiques expertes de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921264A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/82/5/spe264_annexe_1158825.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Numérique et sciences informatiques",
+      "descriptif": "Programme de l'enseignement de spécialité de numérique et sciences informatiques de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921247A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/93/3/spe247_annexe_1158933.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Philosophie",
+      "descriptif": "Programme de l'enseignement de philosophie de la classe terminale de la voie générale et de la classe terminale de la voie technologique",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921238A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/15/9/spe238_annexe1_1159159.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Physique-chimie",
+      "descriptif": "Programme de l'enseignement de spécialité de physique-chimie de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921249A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/92/9/spe249_annexe_1158929.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Pratiques sociales et culturelles",
+      "descriptif": "instructions relatives aux enseignements facultatifs/optionnels et unités facultatives proposés dans les établissements de l’enseignement technique agricole",
+      "texte": "Note de service DGER/SDPFE/2019-461 18/06/2019",
+      "lien": "",
+      "contenu": "https://info.agriculture.gouv.fr/gedei/site/bo-agri/instruction-2019-461/telechargement",
+      "rentree": "2019"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Sciences de l'ingénieur",
+      "descriptif": "Programme de sciences de l'ingénieur de première et terminale générales",
+      "texte": "arrêté du 17-1-2019 - J.O. du 20-1-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1901640A",
+      "contenu": "http://cache.media.education.gouv.fr/file/SP1-MEN-22-1-2019/43/6/spe640_annexe_1063436.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Sciences de la vie et de la Terre",
+      "descriptif": "Programme de l'enseignement de spécialité de sciences de la vie et de la Terre de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921252A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/11/4/spe252_annexe_1159114.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Sciences économiques et sociales",
+      "descriptif": "Programme de l'enseignement de spécialité de sciences économiques et sociales de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921253A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/82/1/spe253_annexe_1158821.pdf",
+      "rentree": "2020"
+    },
+    {
+      "niveau": "terminale",
+      "discipline": "Sciences physiques (complément de l'enseignement de spécialité de sciences de l'ingénieur)",
+      "descriptif": "Programme de l'enseignement de sciences physiques, complément de l'enseignement de spécialité de sciences de l'ingénieur de la classe terminale de la voie générale",
+      "texte": "arrêté du 19-7-2019 - J.O. du 23-7-2019",
+      "lien": "http://www.legifrance.gouv.fr/WAspad/UnTexteDeJorf?numjo=MENE1921269A",
+      "contenu": "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/03/6/spe269_annexe_1159036.pdf",
+      "rentree": "2020"
+    }
+  ]
+}

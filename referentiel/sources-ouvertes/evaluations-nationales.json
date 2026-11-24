@@ -1,0 +1,604 @@
+{
+  "source": {
+    "licence": "Licence Ouverte v2.0 (Etalab)",
+    "extrait_le": "2026-11-24",
+    "jeux": [
+      {
+        "id": "fr-en-evaluations_nationales_cp_region",
+        "url": "https://data.education.gouv.fr/explore/dataset/fr-en-evaluations_nationales_cp_region/"
+      },
+      {
+        "id": "fr-en-evaluations_nationales_ce1_region",
+        "url": "https://data.education.gouv.fr/explore/dataset/fr-en-evaluations_nationales_ce1_region/"
+      },
+      {
+        "id": "fr-en-evaluations_nationales_ce2_region",
+        "url": "https://data.education.gouv.fr/explore/dataset/fr-en-evaluations_nationales_ce2_region/"
+      },
+      {
+        "id": "fr-en-evaluations_nationales_cm1_region",
+        "url": "https://data.education.gouv.fr/explore/dataset/fr-en-evaluations_nationales_cm1_region/"
+      },
+      {
+        "id": "fr-en-evaluations_nationales_cm2_region",
+        "url": "https://data.education.gouv.fr/explore/dataset/fr-en-evaluations_nationales_cm2_region/"
+      }
+    ]
+  },
+  "evaluations": [
+    {
+      "niveau": "CP",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Comprendre des mots à l'oral",
+      "taux": 71.9
+    },
+    {
+      "niveau": "CP",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Comprendre des phrases à l'oral",
+      "taux": 83.9
+    },
+    {
+      "niveau": "CP",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Comprendre des textes à l'oral",
+      "taux": 85.3
+    },
+    {
+      "niveau": "CP",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Connaître le nom des lettres et le son qu'elles produisent",
+      "taux": 83.7
+    },
+    {
+      "niveau": "CP",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Manipuler des phonèmes",
+      "taux": 83
+    },
+    {
+      "niveau": "CP",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Manipuler des syllabes",
+      "taux": 81.2
+    },
+    {
+      "niveau": "CP",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Reconnaître les différentes écritures d’une lettre",
+      "taux": 68.7
+    },
+    {
+      "niveau": "CP",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Comparer des nombres",
+      "taux": 80.6
+    },
+    {
+      "niveau": "CP",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Écrire des nombres entiers",
+      "taux": 89.6
+    },
+    {
+      "niveau": "CP",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Lire des nombres entiers",
+      "taux": 92.2
+    },
+    {
+      "niveau": "CP",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Placer un nombre sur une ligne graduée",
+      "taux": 77.9
+    },
+    {
+      "niveau": "CP",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Quantifier des collections",
+      "taux": 85.1
+    },
+    {
+      "niveau": "CP",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Reproduire un assemblage",
+      "taux": 83.8
+    },
+    {
+      "niveau": "CP",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Résoudre des problèmes",
+      "taux": 69.3
+    },
+    {
+      "niveau": "CE1",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Comprendre des mots à l'oral",
+      "taux": 77
+    },
+    {
+      "niveau": "CE1",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Comprendre des phrases à l'oral",
+      "taux": 82.3
+    },
+    {
+      "niveau": "CE1",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Comprendre des phrases lues seul(e)",
+      "taux": 82.4
+    },
+    {
+      "niveau": "CE1",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Comprendre un texte lu seul(e)",
+      "taux": 83.2
+    },
+    {
+      "niveau": "CE1",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Écrire des mots",
+      "taux": 72.4
+    },
+    {
+      "niveau": "CE1",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Écrire des syllabes",
+      "taux": 86.2
+    },
+    {
+      "niveau": "CE1",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Lire à voix haute des mots",
+      "taux": 71.5
+    },
+    {
+      "niveau": "CE1",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Lire à voix haute un texte",
+      "taux": 67.5
+    },
+    {
+      "niveau": "CE1",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Additionner",
+      "taux": 62.3
+    },
+    {
+      "niveau": "CE1",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Calculer mentalement",
+      "taux": 76.5
+    },
+    {
+      "niveau": "CE1",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Écrire des nombres entiers",
+      "taux": 76.6
+    },
+    {
+      "niveau": "CE1",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Lire des nombres entiers",
+      "taux": 78.4
+    },
+    {
+      "niveau": "CE1",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Placer un nombre sur une ligne graduée",
+      "taux": 64
+    },
+    {
+      "niveau": "CE1",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Reproduire un assemblage",
+      "taux": 83.9
+    },
+    {
+      "niveau": "CE1",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Résoudre des problèmes",
+      "taux": 48
+    },
+    {
+      "niveau": "CE1",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Soustraire",
+      "taux": 63.2
+    },
+    {
+      "niveau": "CE2",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Comprendre des phrases lues seul(e)",
+      "taux": 81.4
+    },
+    {
+      "niveau": "CE2",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Comprendre un texte et des phrases à l'oral",
+      "taux": 81.3
+    },
+    {
+      "niveau": "CE2",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Comprendre un texte lu seul(e)",
+      "taux": 62.7
+    },
+    {
+      "niveau": "CE2",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Différencier les principales classes de mots",
+      "taux": 61.8
+    },
+    {
+      "niveau": "CE2",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Écrire des mots",
+      "taux": 66.1
+    },
+    {
+      "niveau": "CE2",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Lire à voix haute un texte",
+      "taux": 67.9
+    },
+    {
+      "niveau": "CE2",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Mémoriser des temps de conjugaison",
+      "taux": 65.2
+    },
+    {
+      "niveau": "CE2",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Reconnaître les principaux constituants de la phrase",
+      "taux": 55.2
+    },
+    {
+      "niveau": "CE2",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Utiliser des marques d'accord pour les noms et adjectifs",
+      "taux": 60.4
+    },
+    {
+      "niveau": "CE2",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Écrire des nombres entiers",
+      "taux": 83.5
+    },
+    {
+      "niveau": "CE2",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Lire des nombres entiers",
+      "taux": 88.5
+    },
+    {
+      "niveau": "CE2",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Mémoriser des faits numériques",
+      "taux": 53.5
+    },
+    {
+      "niveau": "CE2",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Mémoriser des procédures",
+      "taux": 56.2
+    },
+    {
+      "niveau": "CE2",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Ordonner des nombres",
+      "taux": 69.2
+    },
+    {
+      "niveau": "CE2",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Placer un nombre sur une ligne graduée",
+      "taux": 64.6
+    },
+    {
+      "niveau": "CE2",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Poser et calculer",
+      "taux": 48.3
+    },
+    {
+      "niveau": "CE2",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Reconnaître un nombre à partir de sa décomposition additive",
+      "taux": 68.5
+    },
+    {
+      "niveau": "CE2",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Résoudre des problèmes",
+      "taux": 47.7
+    },
+    {
+      "niveau": "CM1",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Comprendre des textes à l'oral",
+      "taux": 78.4
+    },
+    {
+      "niveau": "CM1",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Comprendre un texte lu seul(e)",
+      "taux": 67.3
+    },
+    {
+      "niveau": "CM1",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Différencier les principales classes de mots",
+      "taux": 62.8
+    },
+    {
+      "niveau": "CM1",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Écrire des mots",
+      "taux": 60.7
+    },
+    {
+      "niveau": "CM1",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Identifier la relation sujet - verbe",
+      "taux": 55.2
+    },
+    {
+      "niveau": "CM1",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Lire à voix haute un texte",
+      "taux": 57.7
+    },
+    {
+      "niveau": "CM1",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Mémoriser des temps de conjugaison",
+      "taux": 50.3
+    },
+    {
+      "niveau": "CM1",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Reconnaître les principaux constituants de la phrase",
+      "taux": 57
+    },
+    {
+      "niveau": "CM1",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Savoir trouver des mots de la même famille",
+      "taux": 73.6
+    },
+    {
+      "niveau": "CM1",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Savoir trouver des synonymes",
+      "taux": 61
+    },
+    {
+      "niveau": "CM1",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Utiliser des marques d'accord pour les noms et adjectifs",
+      "taux": 61.7
+    },
+    {
+      "niveau": "CM1",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Écrire des nombres entiers",
+      "taux": 84.9
+    },
+    {
+      "niveau": "CM1",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Mémoriser des faits numériques",
+      "taux": 34.3
+    },
+    {
+      "niveau": "CM1",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Mémoriser des procédures",
+      "taux": 45.6
+    },
+    {
+      "niveau": "CM1",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Placer un nombre sur une ligne graduée",
+      "taux": 75.8
+    },
+    {
+      "niveau": "CM1",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Poser et calculer",
+      "taux": 52.1
+    },
+    {
+      "niveau": "CM1",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Reconnaître un nombre à partir de sa décomposition additive",
+      "taux": 63.8
+    },
+    {
+      "niveau": "CM1",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Résoudre des problèmes",
+      "taux": 61.1
+    },
+    {
+      "niveau": "CM2",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Comprendre des textes à l'oral",
+      "taux": 75.4
+    },
+    {
+      "niveau": "CM2",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Comprendre un texte lu seul(e)",
+      "taux": 56.1
+    },
+    {
+      "niveau": "CM2",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Différencier les principales classes de mots",
+      "taux": 61.6
+    },
+    {
+      "niveau": "CM2",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Écrire des mots",
+      "taux": 65
+    },
+    {
+      "niveau": "CM2",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Lire à voix haute un texte",
+      "taux": 53.2
+    },
+    {
+      "niveau": "CM2",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Maîtriser l'accord du verbe conjugué",
+      "taux": 47.8
+    },
+    {
+      "niveau": "CM2",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Reconnaître les principaux constituants de la phrase",
+      "taux": 54.5
+    },
+    {
+      "niveau": "CM2",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Savoir trouver des synonymes et des mots de la même famille",
+      "taux": 73.9
+    },
+    {
+      "niveau": "CM2",
+      "annee": "2025",
+      "discipline": "Français",
+      "competence": "Utiliser des marques d'accord pour les noms et adjectifs",
+      "taux": 60.5
+    },
+    {
+      "niveau": "CM2",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Écrire des nombres entiers",
+      "taux": 80.8
+    },
+    {
+      "niveau": "CM2",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Mémoriser des faits numériques",
+      "taux": 38.7
+    },
+    {
+      "niveau": "CM2",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Mémoriser des procédures",
+      "taux": 43.5
+    },
+    {
+      "niveau": "CM2",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Placer un nombre sur une ligne graduée",
+      "taux": 58
+    },
+    {
+      "niveau": "CM2",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Poser et calculer",
+      "taux": 45.9
+    },
+    {
+      "niveau": "CM2",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Résoudre des problèmes",
+      "taux": 50.6
+    },
+    {
+      "niveau": "CM2",
+      "annee": "2025",
+      "discipline": "Mathématiques",
+      "competence": "Utiliser différentes représentations des nombres",
+      "taux": 61.2
+    }
+  ]
+}

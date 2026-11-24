@@ -15,6 +15,8 @@
     "check:referentiel": "node scripts/check-referentiel.mjs",
     "check:experiences": "node scripts/check-experiences.mjs",
     "check:artefacts": "node scripts/check-artefacts.mjs",
+    "sources:importer": "node scripts/sources-ouvertes.mjs importer",
+    "sources:rapport": "node scripts/sources-ouvertes.mjs rapport",
     "test": "node --test \"tests/unit/*.test.mjs\"",
     "test:e2e": "node --test --test-concurrency=1 \"tests/e2e/*.test.mjs\"",
     "test:captures": "KERMICLAB_CAPTURES=captures node --test --test-concurrency=1 \"tests/e2e/*.test.mjs\"",

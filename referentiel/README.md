@@ -25,6 +25,12 @@ Le build lit les Relations sortantes et les placements du Curriculum désigné. 
 
 `npm run build` met à jour les champs générés. `npm run check:pages` signale les valeurs ou l’ordre obsolètes sans modifier les fiches. Le pilote #256 et les neuf lots #257 ont été qualifiés. Le [bilan S4 v0.5](../docs/referentiel/bilan-s4-v0.5.md) relie les journaux aux preuves.
 
+## Sources ouvertes de l'Éducation nationale
+
+`sources-ouvertes/` contient les instantanés des évaluations nationales et des programmes (data.education.gouv.fr,
+Licence Ouverte) et la table compétences nationales → notions. Voir l'[ADR 0042](../docs/decisions/0042-sources-ouvertes-education.md),
+le [chantier](../docs/chantiers/sources-ouvertes.md) et le [rapport généré](../docs/referentiel/sources-ouvertes.md).
+
 ## Création des lots v0.5
 
 Voir [le guide de génération](generation-v0.5.md) et [l’inventaire public](inventaire-v0.5.json).
