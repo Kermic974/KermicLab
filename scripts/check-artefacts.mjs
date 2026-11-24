@@ -39,7 +39,7 @@ export async function verifierArtefacts(racine = process.cwd()) {
     if (valeurs.length !== colonnes.length || valeurs.some(v => !v.trim())) {
       signaler("S5-LIGNE", lieu, "Huit champs non vides sont requis."); continue;
     }
-    if (!/^S4-[A-Z0-9-]+$/.test(r.rule_id) || ids.has(r.rule_id)) signaler("S5-REGLE", lieu, "Identifiant invalide ou dupliqué.");
+    if (!/^S[46]-[A-Z0-9-]+$/.test(r.rule_id) || ids.has(r.rule_id)) signaler("S5-REGLE", lieu, "Identifiant invalide ou dupliqué.");
     ids.add(r.rule_id);
     if (!["1", "2", "3", "4"].includes(r.level) || !["ERROR", "WARNING"].includes(r.severity)) {
       signaler("S5-VALEUR", lieu, "Niveau ou sévérité invalide.");
@@ -49,7 +49,8 @@ export async function verifierArtefacts(racine = process.cwd()) {
     else {
       try {
         const decision = await lire(source.decision);
-        if (!decision.includes("D1") || !/^https:\/\/app\.notion\.com\/p\/[a-f0-9]{32}$/.test(source.reference)) throw new Error();
+        const adoption = r.rule_id.startsWith("S6-") ? "D6-1" : "D1";
+        if (!decision.includes(adoption) || !/^https:\/\/app\.notion\.com\/p\/[a-f0-9]{32}$/.test(source.reference)) throw new Error();
       } catch { signaler("S5-SOURCE", lieu, "Source ou décision d’adoption invalide."); }
     }
     for (const champ of ["implementation", "test_refs", "fixture_refs"]) {

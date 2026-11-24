@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **S6 — validateur et historique** : commande `check:experiences`, diagnostics structurels et métier, références, variantes, tâches préparées, cycle de vie et révision des sources liées ; 22 règles S6 traçables dans les artefacts S5, rapport JSON conservé en CI. Lecture Git par lots pour S4/S6, sans supprimer de révision publiée. Aucun objet ni index S6 public n’est encore livré. / Experience validation and source-aware history, deterministic reports and CI evidence; public corpus migration follows.
+
 ## [0.1.0] — 2026-11-18
 
 - **Éducation : le collège découpé par classe** : la barre « Ma classe » propose 6e, 5e, 4e et 3e au lieu de « Collège ». Nouveau champ facultatif `classes` des fiches (6e à 3e, cohérent avec les cycles de `niveaux`, vérifié au build), renseigné pour les 92 notions de collège du catalogue public d'après les programmes ; une notion enseignée sur plusieurs années apparaît dans chacune, une notion sans classe reste sous « Collège ». Attributions à relire. / Middle-school topics now split by grade (6e–3e) in the Education screen.
