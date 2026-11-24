@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Espace Métiers : graphe des notions lisible** (ADR 0041) : dans le détail d'un métier, les MicroSkills affichent leur libellé (référentiel canonique), placé sans chevauchement ; le graphe se cadre sur son emprise à l'écran, aussi dans le back-office. / Careers space: readable MicroSkill labels and better framing of the topic graph.
+
 - **Correctif : menu « Mes espaces » sans styles** : la résolution d'un conflit de fusion (lot 9 face à l'Espace Métiers) avait retiré de `main` les styles du menu, des pastilles et des écrans Famille et Professeur en deux colonnes, ainsi que des textes du menu. La PR #421 a rétabli dix textes ; celle-ci rétablit les styles et le dernier texte (`efIndicateurs`). / Fix: restored the "My spaces" menu and two-column screen styles lost in a merge.
 
 - **Espace Métiers** (ADR 0041) : nouvel espace du site, « Des notions aux métiers ». Quatre anneaux relient les notions KermicLab, 26 disciplines, 38 métiers et leurs gestes ; choisir un élément allume toute sa chaîne. Le détail liste les notions à travailler (ouvrables comme dans Éducation) et montre leur graphe 3D (prérequis directs, MicroSkills). Données : `referentiel/metiers-v0.json`, validé au build contre le référentiel. / New Careers space linking KermicLab topics to subjects, jobs and job skills, with a 3D topic graph in the details.
