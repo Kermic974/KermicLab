@@ -4,6 +4,10 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Tests Windows** : conversion des URL de fichier des tests CLI ONISEP et libellés MicroSkills avec `fileURLToPath`, pour éviter le lecteur Windows doublé ; assertions inchangées. / Fix Windows file URL paths in ONISEP CLI and MicroSkill label tests.
+
+- **S7 → S10, préparation des livraisons** : audit des 36 pages Notion et du runtime réel, proposition S7 v1.0.0 / ADR 0043, matrice de vérification et chaîne de livraisons successives. Les propositions restent soumises à adoption humaine ; aucune série n'est déclarée implémentée ou déployée. / Prepare the S7–S10 delivery chain and proposed S7 contract; no implementation or deployment is claimed.
+
 - **Espace Métiers : graphe des notions lisible** (ADR 0041) : dans le détail d'un métier, les MicroSkills affichent leur libellé (référentiel canonique, 1 995 / 1 995 couvertes), placé sans chevauchement et sans sauter d'un côté à l'autre ; le graphe se cadre sur son emprise à l'écran et se recadre quand l'écran tourne, aussi dans le back-office. / Careers space: readable MicroSkill labels and better framing of the topic graph.
 
 - **Barre du haut sur ordinateur : tout tient sur une ligne** : avec six destinations (Métiers compris) et « Mes espaces », les onglets débordaient de 1 024 à 1 366 px (Jeux et Progression masqués, onglet courant coupé). La barre se compacte désormais par paliers, selon la place mesurée : icônes des onglets, pseudo de l'avatar, nom du site, libellé de « Mes espaces », marges ; chaque élément garde son nom accessible. / Top bar: entries no longer overflow on desktop; the bar compacts progressively.

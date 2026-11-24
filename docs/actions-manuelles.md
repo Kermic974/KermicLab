@@ -2,6 +2,15 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Adoption S7 et livraisons S7 → S10
+
+Suivi : [#427](https://github.com/Kermic974/KermicLab/issues/427). [Chaîne de livraison](evaluation/livraison-s7-s10.md).
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Examiner les décisions D7-1 à D7-8 et adopter le contrat S7 par revue/fusion après CI verte | [ADR 0043](decisions/0043-adoption-evaluation-s7.md), [S7 v1.0.0 proposé](referentiel/normes/S7-v1.0.0.md), PR S7-A liée à #427 | Les pages Notion sont préparatoires ; AGENTS.md exige la validation humaine. Aucun résultat V0 complet ou rejeu de réponse non conservée ne peut être inventé | Adoption explicite sur la révision de PR, fusion constatée ; statut normatif actualisé avec preuve dans la PR suivante | à faire |
+| Relire les critères, cibles, diagnostics et limites du pilote S7 avant qualification publique | [Matrice S7-01 à S7-20](referentiel/normes/S7-v1.0.0.md), dépendance [S6 #384](https://github.com/Kermic974/KermicLab/issues/384) | Un PASS structurel ne valide ni la justesse pédagogique ni les affirmations clientes | Revue humaine consignée avec version/périmètre ; aucun champ relue rempli par l'agent | à faire |
+
 ## Espace Métiers (chantier Métiers)
 
 Plan : [chantier Métiers](chantiers/metiers.md), [ADR 0042](decisions/0042-referentiel-metiers-onisep.md).

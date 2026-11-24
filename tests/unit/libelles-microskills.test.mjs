@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { mkdtemp, mkdir, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { libellesMicroskills } from "../../scripts/lib/libelles-microskills.mjs";
 
 // Espace Métiers (ADR 0041) : libellés des MicroSkills lus dans les objets canoniques, par nom de fichier.
@@ -32,7 +33,7 @@ test("libellés des MicroSkills : sous-dossiers, autres objets ignorés, lecture
 });
 
 test("libellés des MicroSkills : le référentiel réel donne un libellé à chaque MicroSkill de la projection", async () => {
-  const racine = new URL("../../referentiel/", import.meta.url).pathname;
+  const racine = fileURLToPath(new URL("../../referentiel/", import.meta.url));
   const libelles = await libellesMicroskills(join(racine, "objets"));
   const { readFile } = await import("node:fs/promises");
   const projection = JSON.parse(await readFile(join(racine, "projection-v0.json"), "utf8"));
