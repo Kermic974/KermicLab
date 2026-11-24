@@ -77,6 +77,9 @@
       <button type="button" class="nav-bouton" data-nav-groupe="barre" data-nav-id="classes" data-nav="classes" id="nav-classes" hidden><svg class="ico" aria-hidden="true"><use href="#i-equipe"/></svg><span class="nav-texte" data-i18n="navClasses"></span></button>
       <button type="button" class="nav-bouton" data-nav-groupe="barre" data-nav-id="eleves" data-nav="eleves" id="nav-eleves" hidden><svg class="ico" aria-hidden="true"><use href="#i-utilisateur"/></svg><span class="nav-texte" data-i18n="navEleves"></span></button>
     </nav>
+    <!-- Accès rapides (menu « Mes espaces ») : espaces liés au compte et au rôle, chaque enfant, chaque classe et les
+         actions principales. Affiché seulement s'il y a au moins un espace (web/navigation.js, sectionsEspaces). -->
+    <button type="button" class="nav-bouton nav-espaces" id="nav-espaces" aria-expanded="false" aria-controls="menu-espaces" aria-haspopup="true" hidden><svg class="ico" aria-hidden="true"><use href="#i-tableau"/></svg><span class="nav-texte" data-i18n="navEspaces"></span><svg class="ico petit-ico nav-espaces-chevron" aria-hidden="true"><use href="#i-chevron"/></svg></button>
     <div class="barre-pied">
       <div class="nav-idees" data-boite-idees-hote></div>
       <button type="button" class="nav-bouton" data-nav="apropos"><svg class="ico" aria-hidden="true"><use href="#i-aide"/></svg><span class="nav-texte" data-i18n="navAPropos"></span></button>
@@ -550,7 +553,12 @@
   <button type="button" class="nav-mobile-bouton" data-nav-groupe="mobile" data-nav-id="contributions" data-nav="contributions" id="nav-mobile-contributions" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-crayon"/></svg></span><span data-i18n="navContributionsCourt"></span></button>
   <button type="button" class="nav-mobile-bouton" data-nav-groupe="mobile" data-nav-id="suivi" data-nav="suivi" id="nav-mobile-suivi" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-equipe"/></svg></span><span data-i18n="navSuiviCourt"></span></button>
   <button type="button" class="nav-mobile-bouton" id="nav-mobile-plus" aria-expanded="false" aria-controls="nav-mobile-autres" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-points"/></svg></span><span data-i18n="navPlus"></span></button>
+  <button type="button" class="nav-mobile-bouton nav-espaces" id="nav-mobile-espaces" aria-expanded="false" aria-controls="menu-espaces" aria-haspopup="true" hidden><span class="nav-mobile-ico"><svg class="ico" aria-hidden="true"><use href="#i-tableau"/></svg></span><span data-i18n="navEspacesCourt"></span></button>
 </nav>
+<!-- Menu « Mes espaces » : un seul panneau, ouvert par le bouton de la barre latérale ou celui de la barre du bas. -->
+<div id="menu-espaces" class="menu-espaces" role="region" data-i18n-aria="navEspaces" hidden>
+  <div id="menu-espaces-sections" class="menu-espaces-sections"></div>
+</div>
 <div id="nav-mobile-autres" class="nav-mobile-autres" data-i18n-aria="navPlusTitre" role="group" hidden></div>
 <!-- Entrées retirées de la navigation par la configuration : conservées (le code les met à jour), jamais affichées. -->
 <div id="nav-reserve" hidden></div>
@@ -1035,109 +1043,117 @@
 
 <!-- Espace famille des comptes locaux (ADR 0029) : tableau de bord du parent, gestion des enfants, cahiers assignés,
      consommations. Données lues par l'API /api/famille/ avec la session du compte local. -->
-<section id="espace-famille" class="carte ecran-personnel" data-ecrans="espace-famille" aria-labelledby="ef-titre" hidden>
-  <div class="dialogue-entete">
-    <h2 id="ef-titre" data-i18n="efTitre"></h2>
-    <button type="button" class="secondaire" id="ef-actualiser" data-i18n="efActualiser"></button>
+<section id="espace-famille" class="carte ecran-personnel espace-role" data-ecrans="espace-famille" aria-labelledby="ef-titre" hidden>
+  <!-- Lot 9 (ADR 0039) : le bandeau porte déjà le titre ; l'en-tête garde les actions principales. Deux colonnes sur
+       grand écran : les enfants et leurs activités à gauche, les indicateurs et les consommations à droite. -->
+  <div class="espace-entete">
+    <h2 id="ef-titre" class="visuellement-cache" data-i18n="efTitre"></h2>
+    <div class="actions espace-actions">
+      <button type="button" class="bouton" id="ef-donner-activite" data-i18n="actDonner"></button>
+      <button type="button" class="secondaire" id="ef-ajouter-enfant" data-i18n="efAjouter"></button>
+      <button type="button" class="secondaire" id="ef-actualiser" data-i18n="efActualiser"></button>
+    </div>
   </div>
   <p id="ef-etat" class="doux" role="status" aria-live="polite"></p>
   <div id="ef-contenu" hidden>
-    <fieldset class="ef-bloc" id="ef-vue-enfants">
+    <fieldset class="ef-bloc ef-vue" id="ef-vue-enfants">
       <legend data-i18n="efViewAs"></legend>
       <p class="doux petit" data-i18n="efViewAsAide"></p>
       <div id="ef-selection-enfants" class="actions"></div>
       <p id="ef-selection-vide" class="doux" data-i18n="efSelectionVide" hidden></p>
     </fieldset>
-    <section class="ef-bloc" aria-labelledby="ef-professeurs-titre">
-      <h3 id="ef-professeurs-titre" data-i18n="efDonneProfesseur"></h3>
-      <p id="ef-professeurs-vide" class="doux" data-i18n="efProfesseursVide"></p>
-      <div id="ef-professeurs" class="ef-enfants"></div>
-    </section>
     <section class="ef-bloc" aria-labelledby="ef-synthese-titre">
       <h3 id="ef-synthese-titre" data-i18n="efSynthese"></h3>
       <dl id="ef-chiffres" class="chiffres"></dl>
       <ul id="ef-alertes" class="ef-alertes"></ul>
     </section>
-    <!-- Tableau de bord du parent (ADR 0029 §8) : engagement et performance, comparatif par enfant, activités données. -->
-    <section class="ef-bloc" aria-labelledby="ef-engagement-titre">
-      <div class="dialogue-entete">
-        <h3 id="ef-engagement-titre" data-i18n="suiviEngagement"></h3>
-        <button type="button" class="bouton petit-bouton" id="ef-donner-activite" data-i18n="actDonner"></button>
+    <div class="espace-colonnes">
+      <div class="espace-principal">
+        <section class="ef-bloc" aria-labelledby="ef-enfants-titre">
+          <h3 id="ef-enfants-titre" data-i18n="efEnfants"></h3>
+          <p id="ef-vide" class="doux" data-i18n="efAucunEnfant" hidden></p>
+          <div id="ef-enfants" class="ef-enfants"></div>
+          <details id="ef-ajout" class="famille-ajout">
+            <summary data-i18n="efAjouter"></summary>
+            <p class="doux petit" data-i18n="efAjouterAide"></p>
+            <fieldset class="ef-mode">
+              <legend class="etiquette-champ" data-i18n="efAjoutMode"></legend>
+              <label><input type="radio" name="ef-mode" value="code" checked> <span data-i18n="efModeCode"></span></label>
+              <label><input type="radio" name="ef-mode" value="creation"> <span data-i18n="efModeCreation"></span></label>
+            </fieldset>
+            <form id="ef-formulaire-ajout" class="formulaire-profil" novalidate>
+              <div id="ef-ajout-code">
+                <label for="ef-code" class="etiquette-champ" data-i18n="efCodeLabel"></label>
+                <input id="ef-code" type="text" maxlength="9" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="ef-code-aide">
+                <p id="ef-code-aide" class="doux petit" data-i18n="efCodeAide"></p>
+              </div>
+              <div id="ef-ajout-creation" hidden>
+                <label for="ef-identifiant" class="etiquette-champ" data-i18n="compteIdentifiantLabel"></label>
+                <input id="ef-identifiant" type="text" maxlength="32" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="ef-identifiant-aide">
+                <p id="ef-identifiant-aide" class="doux petit" data-i18n="efIdentifiantAide"></p>
+                <label for="ef-mdp" class="etiquette-champ" data-i18n="efMdpEnfant"></label>
+                <input id="ef-mdp" type="password" maxlength="128" autocomplete="new-password" aria-describedby="ef-mdp-aide">
+                <p id="ef-mdp-aide" class="doux petit" data-i18n="efMdpAide"></p>
+              </div>
+              <label for="ef-prenom" class="etiquette-champ" data-i18n="enfantPrenomLabel"></label>
+              <input id="ef-prenom" type="text" maxlength="20" autocomplete="off" spellcheck="false" aria-describedby="ef-prenom-aide">
+              <p id="ef-prenom-aide" class="doux petit" data-i18n="enfantPrenomAide"></p>
+              <fieldset class="tranches">
+                <legend class="etiquette-champ" data-i18n="enfantTrancheLabel"></legend>
+                <label><input type="radio" name="ef-tranche" value="6-10"> <span data-i18n="tranche_6-10"></span></label>
+                <label><input type="radio" name="ef-tranche" value="11-14"> <span data-i18n="tranche_11-14"></span></label>
+                <label><input type="radio" name="ef-tranche" value="15-17"> <span data-i18n="tranche_15-17"></span></label>
+              </fieldset>
+              <label class="case-memoire">
+                <input type="checkbox" id="ef-consentement">
+                <span><strong data-i18n="consentementTitre"></strong><span class="doux petit" data-i18n="consentementTexte"></span></span>
+              </label>
+              <p id="ef-ajout-erreur" class="erreur-champ" aria-live="assertive"></p>
+              <button type="submit" class="bouton" id="ef-ajouter-bouton" data-i18n="efAjouterBouton"></button>
+            </form>
+          </details>
+        </section>
+        <section class="ef-bloc" aria-labelledby="ef-activites-titre">
+          <h3 id="ef-activites-titre" data-i18n="efActivites"></h3>
+          <p id="ef-activites-vide" class="doux" data-i18n="efAucuneActivite"></p>
+          <div id="ef-activites" class="ef-enfants"></div>
+        </section>
+        <section class="ef-bloc" aria-labelledby="ef-professeurs-titre">
+          <h3 id="ef-professeurs-titre" data-i18n="efDonneProfesseur"></h3>
+          <p id="ef-professeurs-vide" class="doux" data-i18n="efProfesseursVide"></p>
+          <div id="ef-professeurs" class="ef-enfants"></div>
+        </section>
+        <section class="ef-bloc" aria-labelledby="ef-comparatif-titre">
+          <h3 id="ef-comparatif-titre" data-i18n="efComparatif"></h3>
+          <div class="ef-tableau-defilant"><table id="ef-comparatif" class="ef-conso"></table></div>
+        </section>
       </div>
-      <dl id="ef-engagement" class="chiffres"></dl>
-    </section>
-    <section class="ef-bloc" aria-labelledby="ef-performance-titre">
-      <h3 id="ef-performance-titre" data-i18n="suiviPerformance"></h3>
-      <dl id="ef-performance" class="chiffres"></dl>
-      <p id="ef-a-revoir" class="doux petit"></p>
-    </section>
-    <section class="ef-bloc" aria-labelledby="ef-comparatif-titre">
-      <h3 id="ef-comparatif-titre" data-i18n="efComparatif"></h3>
-      <div class="ef-tableau-defilant"><table id="ef-comparatif" class="ef-conso"></table></div>
-    </section>
-    <section class="ef-bloc" aria-labelledby="ef-activites-titre">
-      <h3 id="ef-activites-titre" data-i18n="efActivites"></h3>
-      <p id="ef-activites-vide" class="doux" data-i18n="efAucuneActivite"></p>
-      <div id="ef-activites" class="ef-enfants"></div>
-    </section>
-    <section class="ef-bloc" aria-labelledby="ef-enfants-titre">
-      <h3 id="ef-enfants-titre" data-i18n="efEnfants"></h3>
-      <p id="ef-vide" class="doux" data-i18n="efAucunEnfant" hidden></p>
-      <div id="ef-enfants" class="ef-enfants"></div>
-      <details id="ef-ajout" class="famille-ajout">
-        <summary data-i18n="efAjouter"></summary>
-        <p class="doux petit" data-i18n="efAjouterAide"></p>
-        <fieldset class="ef-mode">
-          <legend class="etiquette-champ" data-i18n="efAjoutMode"></legend>
-          <label><input type="radio" name="ef-mode" value="code" checked> <span data-i18n="efModeCode"></span></label>
-          <label><input type="radio" name="ef-mode" value="creation"> <span data-i18n="efModeCreation"></span></label>
-        </fieldset>
-        <form id="ef-formulaire-ajout" class="formulaire-profil" novalidate>
-          <div id="ef-ajout-code">
-            <label for="ef-code" class="etiquette-champ" data-i18n="efCodeLabel"></label>
-            <input id="ef-code" type="text" maxlength="9" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-describedby="ef-code-aide">
-            <p id="ef-code-aide" class="doux petit" data-i18n="efCodeAide"></p>
-          </div>
-          <div id="ef-ajout-creation" hidden>
-            <label for="ef-identifiant" class="etiquette-champ" data-i18n="compteIdentifiantLabel"></label>
-            <input id="ef-identifiant" type="text" maxlength="32" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="ef-identifiant-aide">
-            <p id="ef-identifiant-aide" class="doux petit" data-i18n="efIdentifiantAide"></p>
-            <label for="ef-mdp" class="etiquette-champ" data-i18n="efMdpEnfant"></label>
-            <input id="ef-mdp" type="password" maxlength="128" autocomplete="new-password" aria-describedby="ef-mdp-aide">
-            <p id="ef-mdp-aide" class="doux petit" data-i18n="efMdpAide"></p>
-          </div>
-          <label for="ef-prenom" class="etiquette-champ" data-i18n="enfantPrenomLabel"></label>
-          <input id="ef-prenom" type="text" maxlength="20" autocomplete="off" spellcheck="false" aria-describedby="ef-prenom-aide">
-          <p id="ef-prenom-aide" class="doux petit" data-i18n="enfantPrenomAide"></p>
-          <fieldset class="tranches">
-            <legend class="etiquette-champ" data-i18n="enfantTrancheLabel"></legend>
-            <label><input type="radio" name="ef-tranche" value="6-10"> <span data-i18n="tranche_6-10"></span></label>
-            <label><input type="radio" name="ef-tranche" value="11-14"> <span data-i18n="tranche_11-14"></span></label>
-            <label><input type="radio" name="ef-tranche" value="15-17"> <span data-i18n="tranche_15-17"></span></label>
-          </fieldset>
-          <label class="case-memoire">
-            <input type="checkbox" id="ef-consentement">
-            <span><strong data-i18n="consentementTitre"></strong><span class="doux petit" data-i18n="consentementTexte"></span></span>
-          </label>
-          <p id="ef-ajout-erreur" class="erreur-champ" aria-live="assertive"></p>
-          <button type="submit" class="bouton" id="ef-ajouter-bouton" data-i18n="efAjouterBouton"></button>
-        </form>
-      </details>
-    </section>
-    <section class="ef-bloc" aria-labelledby="ef-conso-titre">
-      <h3 id="ef-conso-titre" data-i18n="efConsommations"></h3>
-      <p class="doux petit" id="ef-conso-aide"></p>
-      <div class="ef-tableau-defilant"><table id="ef-conso" class="ef-conso"></table></div>
-    </section>
+      <aside class="espace-cote" data-i18n-aria="efIndicateurs">
+        <section class="ef-bloc" aria-labelledby="ef-engagement-titre">
+          <h3 id="ef-engagement-titre" data-i18n="suiviEngagement"></h3>
+          <dl id="ef-engagement" class="chiffres"></dl>
+        </section>
+        <section class="ef-bloc" aria-labelledby="ef-performance-titre">
+          <h3 id="ef-performance-titre" data-i18n="suiviPerformance"></h3>
+          <dl id="ef-performance" class="chiffres"></dl>
+          <p id="ef-a-revoir" class="doux petit"></p>
+        </section>
+        <section class="ef-bloc" aria-labelledby="ef-conso-titre">
+          <h3 id="ef-conso-titre" data-i18n="efConsommations"></h3>
+          <p class="doux petit" id="ef-conso-aide"></p>
+          <div class="ef-tableau-defilant"><table id="ef-conso" class="ef-conso"></table></div>
+        </section>
+      </aside>
+    </div>
   </div>
 </section>
 
 <!-- Expérience Professeur (ADR 0030 §9) : tableau de bord du professeur, indicateurs d'engagement et de performance,
      activités données (défis, évaluations, cahiers, objectifs) et élèves à suivre. -->
-<section id="suivi" class="carte ecran-personnel" data-ecrans="suivi" aria-labelledby="suivi-titre" hidden>
-  <div class="dialogue-entete">
-    <h2 id="suivi-titre" data-i18n="navSuivi"></h2>
-    <div class="actions">
+<section id="suivi" class="carte ecran-personnel espace-role" data-ecrans="suivi" aria-labelledby="suivi-titre" hidden>
+  <div class="espace-entete">
+    <h2 id="suivi-titre" class="visuellement-cache" data-i18n="navSuivi"></h2>
+    <div class="actions espace-actions">
       <button type="button" class="bouton" id="suivi-activite" data-i18n="actDonner"></button>
       <button type="button" class="secondaire" id="suivi-actualiser" data-i18n="efActualiser"></button>
     </div>
@@ -1146,38 +1162,47 @@
   <div id="suivi-contenu" hidden>
     <label class="prof-filtre"><span class="etiquette-champ" data-i18n="profFiltreClasse"></span>
       <select id="suivi-filtre"></select></label>
-    <section class="ef-bloc" aria-labelledby="suivi-engagement-titre">
-      <h3 id="suivi-engagement-titre" data-i18n="suiviEngagement"></h3>
-      <dl id="suivi-engagement" class="chiffres"></dl>
-    </section>
-    <section class="ef-bloc" aria-labelledby="suivi-performance-titre">
-      <h3 id="suivi-performance-titre" data-i18n="suiviPerformance"></h3>
-      <dl id="suivi-performance" class="chiffres"></dl>
-      <p id="suivi-a-revoir" class="petit"></p>
-    </section>
-    <section class="ef-bloc" aria-labelledby="suivi-classes-titre">
-      <h3 id="suivi-classes-titre" data-i18n="suiviParClasse"></h3>
-      <div class="ef-tableau-defilant"><table id="suivi-classes" class="ef-conso"></table></div>
-    </section>
-    <section class="ef-bloc" aria-labelledby="suivi-activites-titre">
-      <h3 id="suivi-activites-titre" data-i18n="suiviActivites"></h3>
-      <p id="suivi-activites-vide" class="doux" data-i18n="suiviAucuneActivite" hidden></p>
-      <div id="suivi-activites" class="ef-enfants"></div>
-    </section>
-    <section class="ef-bloc" aria-labelledby="suivi-a-suivre-titre">
-      <h3 id="suivi-a-suivre-titre" data-i18n="suiviASuivre"></h3>
-      <p id="suivi-a-suivre-vide" class="doux" data-i18n="suiviPersonneASuivre" hidden></p>
-      <ul id="suivi-a-suivre" class="ef-alertes"></ul>
-    </section>
+    <div class="espace-colonnes">
+      <div class="espace-principal">
+        <section class="ef-bloc" aria-labelledby="suivi-classes-titre">
+          <h3 id="suivi-classes-titre" data-i18n="suiviParClasse"></h3>
+          <div class="ef-tableau-defilant"><table id="suivi-classes" class="ef-conso"></table></div>
+        </section>
+        <section class="ef-bloc" aria-labelledby="suivi-activites-titre">
+          <h3 id="suivi-activites-titre" data-i18n="suiviActivites"></h3>
+          <p id="suivi-activites-vide" class="doux" data-i18n="suiviAucuneActivite" hidden></p>
+          <div id="suivi-activites" class="ef-enfants"></div>
+        </section>
+      </div>
+      <aside class="espace-cote" data-i18n-aria="efIndicateurs">
+        <section class="ef-bloc" aria-labelledby="suivi-engagement-titre">
+          <h3 id="suivi-engagement-titre" data-i18n="suiviEngagement"></h3>
+          <dl id="suivi-engagement" class="chiffres"></dl>
+        </section>
+        <section class="ef-bloc" aria-labelledby="suivi-performance-titre">
+          <h3 id="suivi-performance-titre" data-i18n="suiviPerformance"></h3>
+          <dl id="suivi-performance" class="chiffres"></dl>
+          <p id="suivi-a-revoir" class="petit"></p>
+        </section>
+        <section class="ef-bloc" aria-labelledby="suivi-a-suivre-titre">
+          <h3 id="suivi-a-suivre-titre" data-i18n="suiviASuivre"></h3>
+          <p id="suivi-a-suivre-vide" class="doux" data-i18n="suiviPersonneASuivre" hidden></p>
+          <ul id="suivi-a-suivre" class="ef-alertes"></ul>
+        </section>
+      </aside>
+    </div>
   </div>
 </section>
 
 <!-- Expérience Professeur (ADR 0030) : « Mes classes ». Données lues par l'API /api/professeur/ avec la session du compte
      local, ou par le double de démonstration (« Tester les rôles → Professeur »). -->
-<section id="classes" class="carte ecran-personnel" data-ecrans="classes" aria-labelledby="classes-titre" hidden>
-  <div class="dialogue-entete">
-    <h2 id="classes-titre" data-i18n="navClasses"></h2>
-    <button type="button" class="secondaire" id="classes-actualiser" data-i18n="efActualiser"></button>
+<section id="classes" class="carte ecran-personnel espace-role" data-ecrans="classes" aria-labelledby="classes-titre" hidden>
+  <div class="espace-entete">
+    <h2 id="classes-titre" class="visuellement-cache" data-i18n="navClasses"></h2>
+    <div class="actions espace-actions">
+      <button type="button" class="bouton" id="classes-nouvelle" data-i18n="profNouvelleClasse"></button>
+      <button type="button" class="secondaire" id="classes-actualiser" data-i18n="efActualiser"></button>
+    </div>
   </div>
   <p id="classes-etat" class="doux" role="status" aria-live="polite"></p>
   <div id="classes-contenu" hidden>
@@ -1199,43 +1224,52 @@
         <button type="button" class="secondaire petit-bouton" id="classes-lien-fermer" data-i18n="fermer"></button>
       </div>
     </div>
-    <section class="ef-bloc" aria-labelledby="classes-liste-titre">
-      <h3 id="classes-liste-titre" data-i18n="profMesClasses"></h3>
-      <p id="classes-vide" class="doux" data-i18n="profAucuneClasse" hidden></p>
-      <div id="classes-liste" class="ef-enfants"></div>
-      <details id="classes-ajout" class="famille-ajout">
-        <summary data-i18n="profNouvelleClasse"></summary>
-        <form id="formulaire-classe" class="formulaire-profil formulaire-prof" novalidate>
-          <label for="classe-nom" class="etiquette-champ" data-i18n="profClasseNom"></label>
-          <input id="classe-nom" type="text" maxlength="30" autocomplete="off" spellcheck="false" aria-describedby="classe-nom-aide">
-          <p id="classe-nom-aide" class="doux petit" data-i18n="profClasseNomAide"></p>
-          <label for="classe-matiere" class="etiquette-champ" data-i18n="profMatiere"></label>
-          <select id="classe-matiere"></select>
-          <label for="classe-niveau" class="etiquette-champ" data-i18n="profNiveau"></label>
-          <select id="classe-niveau"></select>
-          <p id="classe-erreur" class="erreur-champ" role="status" aria-live="polite"></p>
-          <button type="submit" class="bouton" data-i18n="profCreerClasse"></button>
-        </form>
-      </details>
-    </section>
-    <section class="ef-bloc" aria-labelledby="classes-particuliers-titre">
-      <h3 id="classes-particuliers-titre" data-i18n="profParticuliers"></h3>
-      <p class="doux" id="classes-particuliers"></p>
-      <div class="actions">
-        <label class="prof-duree"><span class="visuellement-cache" data-i18n="profDuree"></span>
-          <select id="particulier-duree" data-prof-duree></select></label>
-        <button type="button" class="bouton petit-bouton" id="particulier-lien" data-i18n="profLienParticulier"></button>
+    <div class="espace-colonnes">
+      <div class="espace-principal">
+        <section class="ef-bloc" aria-labelledby="classes-liste-titre">
+          <h3 id="classes-liste-titre" data-i18n="profMesClasses"></h3>
+          <p id="classes-vide" class="doux" data-i18n="profAucuneClasse" hidden></p>
+          <div id="classes-liste" class="ef-enfants grille-cartes"></div>
+          <details id="classes-ajout" class="famille-ajout">
+            <summary data-i18n="profNouvelleClasse"></summary>
+            <form id="formulaire-classe" class="formulaire-profil formulaire-prof" novalidate>
+              <label for="classe-nom" class="etiquette-champ" data-i18n="profClasseNom"></label>
+              <input id="classe-nom" type="text" maxlength="30" autocomplete="off" spellcheck="false" aria-describedby="classe-nom-aide">
+              <p id="classe-nom-aide" class="doux petit" data-i18n="profClasseNomAide"></p>
+              <label for="classe-matiere" class="etiquette-champ" data-i18n="profMatiere"></label>
+              <select id="classe-matiere"></select>
+              <label for="classe-niveau" class="etiquette-champ" data-i18n="profNiveau"></label>
+              <select id="classe-niveau"></select>
+              <p id="classe-erreur" class="erreur-champ" role="status" aria-live="polite"></p>
+              <button type="submit" class="bouton" data-i18n="profCreerClasse"></button>
+            </form>
+          </details>
+        </section>
       </div>
-      <ul id="particulier-invitations" class="prof-invitations"></ul>
-    </section>
+      <aside class="espace-cote" data-i18n-aria="profParticuliers">
+        <section class="ef-bloc" aria-labelledby="classes-particuliers-titre">
+          <h3 id="classes-particuliers-titre" data-i18n="profParticuliers"></h3>
+          <p class="doux" id="classes-particuliers"></p>
+          <div class="actions">
+            <label class="prof-duree"><span class="visuellement-cache" data-i18n="profDuree"></span>
+              <select id="particulier-duree" data-prof-duree></select></label>
+            <button type="button" class="bouton petit-bouton" id="particulier-lien" data-i18n="profLienParticulier"></button>
+          </div>
+          <ul id="particulier-invitations" class="prof-invitations"></ul>
+        </section>
+      </aside>
+    </div>
   </div>
 </section>
 
 <!-- Expérience Professeur (ADR 0030) : « Mes élèves », suivi des élèves affiliés (classes et cours particuliers). -->
-<section id="eleves" class="carte ecran-personnel" data-ecrans="eleves" aria-labelledby="eleves-titre" hidden>
-  <div class="dialogue-entete">
-    <h2 id="eleves-titre" data-i18n="navEleves"></h2>
-    <button type="button" class="secondaire" id="eleves-actualiser" data-i18n="efActualiser"></button>
+<section id="eleves" class="carte ecran-personnel espace-role" data-ecrans="eleves" aria-labelledby="eleves-titre" hidden>
+  <div class="espace-entete">
+    <h2 id="eleves-titre" class="visuellement-cache" data-i18n="navEleves"></h2>
+    <div class="actions espace-actions">
+      <button type="button" class="bouton" id="eleves-activite" data-i18n="actDonner"></button>
+      <button type="button" class="secondaire" id="eleves-actualiser" data-i18n="efActualiser"></button>
+    </div>
   </div>
   <p id="eleves-etat" class="doux" role="status" aria-live="polite"></p>
   <div id="eleves-contenu" hidden>
@@ -1250,7 +1284,7 @@
     <section class="ef-bloc" aria-labelledby="eleves-liste-titre">
       <h3 id="eleves-liste-titre" data-i18n="profListeEleves"></h3>
       <p id="eleves-vide" class="doux" data-i18n="profAucunEleve" hidden></p>
-      <div id="eleves-liste" class="ef-enfants"></div>
+      <div id="eleves-liste" class="ef-enfants grille-cartes"></div>
     </section>
   </div>
 </section>

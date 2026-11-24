@@ -20,6 +20,10 @@ et 320 px, en clair et en sombre, en français et en anglais (défilement horizo
 accessibles) ; couleurs d'état succès, chaud et danger foncées en thème clair (≥ 4,5:1 sur blanc et sur leur fond doux),
 initiale de l'avatar à 5,5:1, cibles du pied de page et des liens de mode des Labs portées à 28 et 32 px. Les cases à
 cocher sous 24 px sont dans leur libellé (cible élargie). Test e2e de non-régression dans `tests/e2e/chat.test.mjs`.
+Lot 9 (demande du propriétaire du 2026-11-24, D9) : menu « Mes espaces » dans la barre (accès rapides : espaces du
+rôle, chaque enfant, chaque classe, « Donner une activité », « Ajouter un enfant », « Nouvelle classe »), sous-navigation
+limitée aux vues de l'espace affiché, écrans Espace famille, Suivi de classe, Mes classes et Mes élèves en pleine largeur
+et en deux colonnes (contenu à gauche, indicateurs à droite), actions principales en en-tête, élèves et classes en grille.
 
 ## 1. Objet et sources
 
@@ -122,3 +126,5 @@ dans 13 fichiers de tests e2e) : elle doit partir d'un ADR et d'une maquette cor
 7. ✅ **Navigation grand écran** (D1), si retenue : en dernier, une fois les écrans stabilisés, pour limiter la reprise des
    tests e2e.
 8. ✅ **Passe finale** : accessibilité (cibles 44 px, contrastes, lecteurs d'écran), 320 px, thème sombre, anglais.
+9. ✅ **Espaces Famille et Professeur, accès rapides** (D9) : menu « Mes espaces », sous-navigation par espace, écrans en
+   deux colonnes.

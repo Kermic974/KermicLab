@@ -185,6 +185,31 @@ test("famille : invitation d'un compte solo, cahier assigné avec calibrage, bil
   await parent.page.click("#progression-ouvrir-suivi");
   await parent.page.locator("#espace-famille").waitFor({ state: "visible" });
 
+  // Lot 9 (ADR 0039) : menu « Mes espaces » de la barre, avec l'Espace famille, chaque enfant et les actions.
+  const menu = parent.page.locator("#nav-espaces");
+  await menu.click();
+  const raccourciNoe = parent.page.locator("#menu-espaces [data-espace-compte]");
+  await raccourciNoe.first().waitFor();
+  assert.deepEqual(await parent.page.locator("#menu-espaces .menu-espaces-titre").allTextContents(), ["Famille"]);
+  assert.deepEqual(await raccourciNoe.evaluateAll((l) => l.map((b) => b.getAttribute("aria-label"))), ["Progression de Noé"]);
+  assert.equal(await parent.page.locator('#menu-espaces [data-nav="espace-famille"]').getAttribute("aria-current"), "page");
+  assert.equal(await parent.page.evaluate(() => document.activeElement.closest("#menu-espaces") !== null), true, "le focus entre dans le menu");
+  await capturer(parent.page, "menu-mes-espaces");
+  await parent.page.keyboard.press("Escape");
+  assert.equal(await parent.page.locator("#menu-espaces").isHidden(), true, "Échap referme le menu");
+  assert.equal(await parent.page.evaluate(() => document.activeElement.id), "nav-espaces", "le focus revient au bouton");
+  assert.equal(await parent.page.locator("#navigation-personnelle").isVisible(), false, "l'Espace famille est seul dans son espace");
+  await menu.click();
+  await raccourciNoe.first().click();
+  await parent.page.locator("#progression-suivie").waitFor();
+  assert.equal(await parent.page.locator("#salut").textContent(), "Progression de Noé");
+  await menu.click();
+  await parent.page.click('#menu-espaces [data-espace-action="ajouter-enfant"]');
+  await parent.page.locator("#ef-formulaire-ajout").waitFor({ state: "visible" });
+  assert.equal(new URL(parent.page.url()).hash, "#espace-famille");
+  await parent.page.locator("#ef-ajout summary").click();
+  assert.equal(await parent.page.locator("#ef-ajout").getAttribute("open"), null);
+
   // Deux enfants et des travaux scolaires distincts pour vérifier la sélection multiple.
   const db = env.DB.sqlite;
   const lien = db.prepare("SELECT * FROM familles_liens").get();

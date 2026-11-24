@@ -52,3 +52,30 @@ test("espaces colorés : chaque écran a son espace, les vues du tableau de bord
   const ecrans = ["accueil", "education", "defi", "labs", "metiers", "jeux", "progression", "famille", "espace-famille", "suivi", "classes", "eleves", "contributions", "profil"];
   assert.deepEqual([...new Set(ecrans.map(navigation.espaceDe))].sort(), [...navigation.ESPACES].sort(), "tous les espaces sont atteints");
 });
+
+test("menu « Mes espaces » : sections selon la famille, le rôle de professeur et les contributions", async () => {
+  const { sectionsEspaces } = await import("../../web/navigation.js");
+  assert.deepEqual(sectionsEspaces({}), [], "aucun espace : pas de menu");
+  const parent = sectionsEspaces({ famille: "parent", enfants: [{ id: "e1", prenom: "Noé" }, { id: 3 }, null] });
+  assert.deepEqual(parent.map((s) => s.id), ["famille"]);
+  assert.deepEqual(parent[0].liens, [
+    { type: "ecran", cle: "espace-famille" },
+    { type: "compte", cle: "famille:e1", texte: "Noé" },
+    { type: "action", action: "activite-famille" },
+    { type: "action", action: "ajouter-enfant" },
+  ], "un raccourci par enfant valide, puis les actions");
+  assert.deepEqual(sectionsEspaces({ famille: "membre" })[0].liens, [{ type: "ecran", cle: "compte", texte: "famille" }]);
+  const tout = sectionsEspaces({ famille: "parent", prof: true, classes: [{ id: "c1", nom: "4e B" }], contributions: true });
+  assert.deepEqual(tout.map((s) => s.id), ["famille", "professeur", "contributions"]);
+  assert.deepEqual(tout[1].liens.filter((l) => l.type === "ecran").map((l) => l.cle), ["suivi", "classes", "eleves"]);
+  assert.deepEqual(tout[1].liens.find((l) => l.type === "classe"), { type: "classe", id: "c1", texte: "4e B" });
+});
+
+test("sous-navigation : vues regroupées par espace", async () => {
+  const { groupeVue } = await import("../../web/navigation.js");
+  assert.equal(groupeVue("profil"), groupeVue("compte"));
+  assert.equal(groupeVue("suivi"), "professeur");
+  assert.equal(groupeVue("classes"), groupeVue("eleves"));
+  assert.notEqual(groupeVue("espace-famille"), groupeVue("compte"));
+  assert.equal(groupeVue("inconnu"), null);
+});

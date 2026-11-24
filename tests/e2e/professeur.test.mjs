@@ -219,14 +219,20 @@ test("Mon tableau de bord (ordre par défaut) : sous l'Accueil, vues du professe
   assert.deepEqual(await entrees.evaluateAll((b) => b.map((n) => n.dataset.nav)), ["accueil", "education", "labs", "metiers", "jeux", "progression"]);
   const tdb = page.locator(".barre-pied .profil-carte");
   assert.equal(await tdb.getAttribute("aria-current"), "page", "Contributions est une vue du tableau de bord");
-  // Les filtres : les vues proposées suivent le rôle.
+  // Lot 9 : les filtres ne gardent que les vues de l'espace affiché ; Contributions est seule dans le sien.
   const filtres = page.locator("#navigation-personnelle [data-nav]:visible");
-  assert.deepEqual(await filtres.allTextContents(), ["Profil", "Mon compte", "Contributions", "Suivi de classe", "Mes classes", "Mes élèves"]);
-  assert.equal(await page.locator('#navigation-personnelle [data-nav="contributions"]').getAttribute("aria-current"), "page");
-  await page.click('#navigation-personnelle [data-nav="classes"]');
+  assert.deepEqual(await filtres.allTextContents(), []);
+  // Les autres espaces s'ouvrent par le menu « Mes espaces » de la barre (accès rapides).
+  const menu = page.locator("#nav-espaces");
+  await menu.click();
+  assert.equal(await menu.getAttribute("aria-expanded"), "true");
+  assert.deepEqual(await page.locator("#menu-espaces .menu-espaces-titre").allTextContents(), ["Professeur", "Contributions"]);
+  await page.click('#menu-espaces [data-nav="classes"]');
+  assert.equal(await page.locator("#menu-espaces").isHidden(), true, "un choix referme le menu");
   await page.locator(".prof-classe").first().waitFor();
   assert.equal(new URL(page.url()).hash, "#classes");
   assert.equal(await tdb.getAttribute("aria-current"), "page");
+  assert.deepEqual(await filtres.allTextContents(), ["Suivi de classe", "Mes classes", "Mes élèves"]);
   assert.equal(await page.locator('#navigation-personnelle [data-nav="classes"]').getAttribute("aria-current"), "page");
   // L'Accueil propose la carte « Tes classes », qui rouvre le suivi ; l'avatar mène au Profil et à ses filtres.
   await page.click('.barre-laterale [data-nav="accueil"]');
