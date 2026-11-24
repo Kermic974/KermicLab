@@ -4,15 +4,13 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
-- **Espace Métiers à l'échelle** (chantier Métiers, lot 5) : filtre par niveau d'accès (CAP à bac + 8), recherche dans les synonymes, domaines et codes ROME, liste par pages de 50, niveau d'accès et mention « Fiche proposée, en cours de relecture » dans le détail ; au-delà de 120 métiers, les anneaux ne montrent que ceux du filtre. / Careers space: entry-level filter, wider search, paged list, ready for the ONISEP import.
-
-- **Graphe du référentiel : couche métiers** (chantier Métiers, lot 4) : le back-office peut afficher les métiers dans le graphe 3D, reliés aux notions de leurs disciplines (case « Métiers »), avec le nombre de notions reliées à un métier, les notions sans métier par discipline et le classement des notions les plus demandées. L'Espace Métiers compte 79 métiers (vague pilote de 41 métiers et 14 disciplines, à relire) et relie 114 notions sur 477. / Curriculum graph: optional careers layer and demand indicators in the back-office; 79 careers.
-
-- **Référentiel des métiers, format v2** (ADR 0042, [chantier Métiers](docs/chantiers/metiers.md)) : chaque métier porte le statut de sa correspondance (`v5`, `proposition`, `validee` avec date de relecture humaine) et peut recevoir son identifiant ONISEP, ses codes ROME, son niveau d'accès et ses domaines ; schéma `referentiel/metiers.schema.json` ; le build affiche la couverture (60 notions sur 477 reliées à un métier). Prépare l'import des fiches métiers de l'ONISEP. / Careers referential v2: link status, ONISEP and ROME identifiers, access level, coverage report.
-
-- **Refonte UX, lot 9 — accès rapides « Mes espaces » et espaces Famille / Professeur** (ADR 0039, D9) : un bouton « Mes espaces » de la barre de navigation (et de la barre du bas sur mobile) ouvre un menu avec les espaces du compte (Espace famille, Suivi de classe, Mes classes, Mes élèves, Contributions), un raccourci par enfant (sa progression) et par classe (ses élèves), et les actions « Donner une activité », « Ajouter un enfant » et « Nouvelle classe ». La sous-navigation ne garde que les vues de l'espace affiché. L'Espace famille et les écrans du professeur passent en pleine largeur, en deux colonnes (contenu à gauche, indicateurs à droite), avec leurs actions principales en en-tête et les élèves et classes en grille. Le libellé anglais « View as » de l'Espace famille devient « Afficher le suivi de ». / Redesign batch 9: "My spaces" quick-access menu, lighter sub-navigation and two-column family and teacher screens.
+- **Correctif : menu « Mes espaces » sans styles** : la résolution d'un conflit de fusion (lot 9 face à l'Espace Métiers) avait retiré de `main` les styles du menu, des pastilles et des écrans Famille et Professeur en deux colonnes, ainsi que des textes du menu. La PR #421 a rétabli dix textes ; celle-ci rétablit les styles et le dernier texte (`efIndicateurs`). / Fix: restored the "My spaces" menu and two-column screen styles lost in a merge.
 
 - **Espace Métiers** (ADR 0041) : nouvel espace du site, « Des notions aux métiers ». Quatre anneaux relient les notions KermicLab, 26 disciplines, 38 métiers et leurs gestes ; choisir un élément allume toute sa chaîne. Le détail liste les notions à travailler (ouvrables comme dans Éducation) et montre leur graphe 3D (prérequis directs, MicroSkills). Données : `referentiel/metiers-v0.json`, validé au build contre le référentiel. / New Careers space linking KermicLab topics to subjects, jobs and job skills, with a 3D topic graph in the details.
+
+- **Build Windows** : lecture des objets S4 par lots bornés, pour éviter `EMFILE` avec le corpus étendu de 8 250 objets ; mêmes fichiers et même ordre de projection. / Bound S4 file reads to prevent Windows file-handle exhaustion.
+
+- **Correctif de traduction** : libellés français et anglais du menu « Mes espaces » et de son bouton mobile, manquants après la synchronisation de main ; contrôle i18n rétabli. / Restore the missing desktop and mobile My spaces labels in both languages.
 
 ## [0.2.0] — 2026-11-23
 

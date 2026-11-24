@@ -11,19 +11,30 @@ Toutes les PR ciblent `main`. Chaque description contient le suivi, la dépendan
 | 03 | 02 | `check:experiences`, historique, S5, rapports et CI | Références/cycles/versions, PASS/ERROR/WARNING, preuve de chaque règle, rapport conservé en échec |
 | 04 | 03 | Compléments S4 jeux/lab nécessaires | Cibles sourcées en review, pas de placement inventé, compatibilité des projections contrôlée |
 | 05 | 04 | Adaptateurs, ancres, mapping événements, manifeste, export build et pilote | Huit notions, 2048, échecs et lab ; rendu et consommateurs inchangés, build idempotent |
-| 06 | 05 | Mathématiques : 33 notions restantes | Journal de lot, unités couvertes, omissions justifiées, projection et événements compatibles |
-| 07 | 06 | Physique-chimie : 22 restantes | Idem, dont alternatives aux figures |
-| 08 | 07 | SVT : 23 restantes | Idem |
-| 09 | 08 | Histoire : 15 restantes | Idem, prérequis V0 récents examinés |
-| 10 | 09 | Géographie : 17 | Idem |
-| 11 | 10 | Français : 9 restantes | Idem |
-| 12 | 11 | EMC : 12 | Idem |
-| 13 | 12 | SES : 10 | Idem |
-| 14 | 13 | Philosophie : 16 restantes | Idem |
+| 06 | 05 | Mathématiques : 111 notions restantes | Journal de lot, unités couvertes, omissions justifiées, projection et événements compatibles |
+| 07 | 06 | Physique-chimie : 45 restantes | Idem, dont alternatives aux figures |
+| 08 | 07 | SVT : 50 restantes | Idem |
+| 09 | 08 | Histoire : 49 restantes | Idem, prérequis V0 récents examinés |
+| 10 | 09 | Géographie : 40 | Idem |
+| 11 | 10 | Français : 57 restantes | Idem |
+| 12 | 11 | EMC : 36 | Idem |
+| 13 | 12 | SES : 14 | Idem |
+| 14 | 13 | Philosophie : 18 restantes | Idem |
 | 15 | 14 | Sept jeux restants | Académies, tâches paramétriques, règles préparées, aucun état individuel dans S6 |
-| 16 | 15 | Contrôle de fermeture et qualification | Couverture 174 fiches + lab, inventaire actualisé, CI Windows/Ubuntu, production, Notion et bilan |
+| 15a | 15 | Anglais : 14 notions | Même contrat et même journal de migration |
+| 15b | 15a | Technologie : 14 notions | Idem |
+| 15c | 15b | Arts plastiques : 7 notions | Idem |
+| 15d | 15c | Musique : 7 notions | Idem |
+| 15e | 15d | EPS : 7 notions | Idem |
+| 16 | 15e | Contrôle de fermeture et qualification | Couverture 486 fiches + lab à la base actualisée, inventaire recalculé, CI Windows/Ubuntu, production, Notion et bilan |
 
-Le pilote comprend `pythagore`, `fractions`, `trigo-cercle`, `antiquite`, `acides-et-bases`, `adn-et-division-cellulaire`, `analyse-texte`, `liberte-philosophie`, les jeux `2048`, `echecs` et le lab `systeme-solaire`. Les lots 06–14 couvrent les 157 notions restantes. Les nombres sont ceux de l’inventaire initial ; une arrivée sur main impose un complément explicite au manifeste final.
+Le pilote comprend `pythagore`, `fractions`, `trigo-cercle`, `antiquite`, `acides-et-bases`, `adn-et-division-cellulaire`, `analyse-texte`, `liberte-philosophie`, les jeux `2048`, `echecs` et le lab `systeme-solaire`. Au relevé actualisé, les lots 06–14 couvrent 420 notions, les lots 15a–15e les 49 notions des nouvelles disciplines, et le pilote les huit autres : 477 notions au total.
+
+## Actualisation du périmètre au 24 novembre 2026
+
+La base `7a37bb42937053581b4e038d260fbddfa48be327` contient 486 fiches (477 notions et 9 jeux), 476 contenus JSON et 8 250 objets S4. Les sources comportent 1 256 niveaux, 920 exemples et 2 896 exercices (2 059 QCM et 837 numériques). L’[inventaire initial](inventaire-s6.json) reste inchangé : il atteste ses 174 fiches à sa révision historique, sans prétendre couvrir les 312 notions arrivées depuis.
+
+La chaîne conserve ses repères 01–16 et ajoute cinq PR complémentaires 15a–15e, soit 21 PR prévues. La PR 04 devra qualifier les nouvelles cibles S4 et préparer une extension **explicite, sourcée et soumise à adoption** du périmètre de migration. Le simple ajout au plan ou au manifeste ne donne aucune dérogation de publication aux nouvelles sources : les conditions S6.8 restent applicables, notamment l’interdiction de publier avec des cibles draft. Le manifeste et les empreintes des nouvelles sources devront être revus avant leur export. Toute arrivée ultérieure impose le même rapprochement à la clôture.
 
 ## Vérification par livraison
 
