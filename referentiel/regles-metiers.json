@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "description": "Règles de rattachement proposé (chantier Métiers, lot 3) : préfixe de code ROME → disciplines de referentiel/metiers-v0.json. Le préfixe le plus long l'emporte ; au plus trois disciplines. Les rattachements produits restent en correspondance « proposition » jusqu'à une relecture humaine. Intitulés des domaines ROME donnés à titre indicatif, à vérifier sur le ROME en vigueur.",
+  "maxDisciplines": 3,
+  "regles": [
+    { "prefixe": "A", "domaine": "Agriculture, pêche, espaces naturels, soins aux animaux", "disciplines": ["agronomie-vegetale", "environnement", "biologie"] },
+    { "prefixe": "B", "domaine": "Arts et façonnage d'ouvrages d'art", "disciplines": ["arts-plastiques", "histoire-de-l-art", "science-des-materiaux"] },
+    { "prefixe": "C", "domaine": "Banque, assurance, immobilier", "disciplines": ["economie", "statistiques", "droit-des-contrats"] },
+    { "prefixe": "D", "domaine": "Commerce, vente, grande distribution", "disciplines": ["calcul-professionnel", "communication", "gestion"] },
+    { "prefixe": "D11", "domaine": "Commerce alimentaire, métiers de bouche", "disciplines": ["nutrition-alimentation", "calcul-professionnel"] },
+    { "prefixe": "E", "domaine": "Communication, média, multimédia", "disciplines": ["communication", "expression-ecrite", "design-graphique"] },
+    { "prefixe": "F", "domaine": "Construction, bâtiment, travaux publics", "disciplines": ["calcul-professionnel", "geometrie", "science-des-materiaux"] },
+    { "prefixe": "F11", "domaine": "Conception et études", "disciplines": ["geometrie", "mecanique", "geologie"] },
+    { "prefixe": "G", "domaine": "Hôtellerie, restauration, tourisme, loisirs", "disciplines": ["langues-vivantes", "communication", "geographie"] },
+    { "prefixe": "G12", "domaine": "Animation, loisirs, tourisme", "disciplines": ["education-physique", "langues-vivantes", "histoire-de-l-art"] },
+    { "prefixe": "G16", "domaine": "Production culinaire", "disciplines": ["nutrition-alimentation", "calcul-professionnel"] },
+    { "prefixe": "H", "domaine": "Industrie", "disciplines": ["mecanique", "science-des-materiaux", "chimie-des-materiaux"] },
+    { "prefixe": "I", "domaine": "Installation et maintenance", "disciplines": ["electricite-electronique", "mecanique"] },
+    { "prefixe": "J", "domaine": "Santé", "disciplines": ["physiologie-humaine", "biologie", "chimie-analytique"] },
+    { "prefixe": "J12", "domaine": "Praticiens médico-techniques", "disciplines": ["chimie-analytique", "physiologie-humaine", "physique"] },
+    { "prefixe": "J13", "domaine": "Rééducation et appareillage", "disciplines": ["physiologie-humaine", "education-physique"] },
+    { "prefixe": "K", "domaine": "Services à la personne et à la collectivité", "disciplines": ["psychologie-sociale", "droit-et-institutions", "communication"] },
+    { "prefixe": "K16", "domaine": "Culture et gestion documentaire", "disciplines": ["histoire", "histoire-de-l-art", "expression-ecrite"] },
+    { "prefixe": "K17", "domaine": "Défense, sécurité publique, secours", "disciplines": ["droit-et-institutions", "education-physique", "physiologie-humaine"] },
+    { "prefixe": "K19", "domaine": "Droit", "disciplines": ["droit-et-institutions", "droit-des-contrats", "expression-ecrite"] },
+    { "prefixe": "K21", "domaine": "Formation initiale et continue", "disciplines": ["expression-ecrite", "psychologie-cognitive", "linguistique"] },
+    { "prefixe": "L", "domaine": "Spectacle", "disciplines": ["musique", "acoustique", "arts-plastiques"] },
+    { "prefixe": "M", "domaine": "Support à l'entreprise", "disciplines": ["gestion", "comptabilite", "informatique"] },
+    { "prefixe": "M18", "domaine": "Systèmes d'information et de télécommunication", "disciplines": ["informatique", "reseaux", "logique-mathematique"] },
+    { "prefixe": "N", "domaine": "Transport et logistique", "disciplines": ["geographie", "calcul-professionnel", "gestion"] }
+  ]
+}

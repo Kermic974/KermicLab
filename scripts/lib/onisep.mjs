@@ -125,14 +125,21 @@ export function rapprocher(fiches, metiers) {
 
 const numero = (id) => Number(String(id ?? "").replace(/\D/g, "")) || 0;
 
-/** Applique les rattachements au référentiel : ajoute onisep, rome, niveauAcces et domaines sans écraser l'existant. */
+/**
+ * Applique les rattachements au référentiel : ajoute onisep, rome, niveauAcces et domaines sans écraser l'existant.
+ * Les valeurs existantes qui diffèrent de la fiche ONISEP sont listées dans `conflits` (à trancher par une relecture).
+ */
 export function appliquerRattachements(donnees, rattachements) {
   const parId = new Map(rattachements.map((r) => [r.metier, r]));
+  const conflits = [];
   return {
+    conflits,
     ...donnees,
     metiers: donnees.metiers.map((m) => {
       const r = parId.get(m.id);
       if (!r) return m;
+      if (m.niveauAcces && r.niveauAcces && m.niveauAcces !== r.niveauAcces) conflits.push({ metier: m.id, champ: "niveauAcces", referentiel: m.niveauAcces, onisep: r.niveauAcces });
+      if (m.rome?.length && r.rome.length && m.rome.join() !== r.rome.join()) conflits.push({ metier: m.id, champ: "rome", referentiel: m.rome, onisep: r.rome });
       const ajout = {};
       if (!m.onisep) ajout.onisep = r.onisep;
       if (!m.rome?.length && r.rome.length) ajout.rome = r.rome;
@@ -141,6 +148,34 @@ export function appliquerRattachements(donnees, rattachements) {
       return { ...m, ...ajout };
     })
   };
+}
+
+/**
+ * Disciplines proposées pour des codes ROME (lot 3) : pour chaque code, la règle au préfixe le plus long ; disciplines
+ * dédoublonnées dans l'ordre des codes puis des règles, limitées à `maxDisciplines`.
+ */
+export function proposerDisciplines(rome, { regles = [], maxDisciplines = 3 } = {}) {
+  const triees = [...regles].sort((a, b) => b.prefixe.length - a.prefixe.length);
+  const disciplines = [];
+  for (const code of rome ?? []) {
+    const regle = triees.find((r) => code.startsWith(r.prefixe));
+    for (const d of regle?.disciplines ?? []) if (!disciplines.includes(d)) disciplines.push(d);
+  }
+  return disciplines.slice(0, maxDisciplines);
+}
+
+/** Erreurs des règles : préfixe ROME bien formé et unique, disciplines connues du référentiel. */
+export function verifierRegles(regles, disciplinesConnues) {
+  const erreurs = [];
+  const vus = new Set();
+  for (const r of regles?.regles ?? []) {
+    if (!/^[A-N](\d{2}(\d{2})?)?$/.test(r.prefixe ?? "")) erreurs.push(`préfixe ROME invalide : ${r.prefixe}`);
+    if (vus.has(r.prefixe)) erreurs.push(`préfixe en double : ${r.prefixe}`);
+    vus.add(r.prefixe);
+    if (!r.disciplines?.length) erreurs.push(`${r.prefixe} : aucune discipline`);
+    for (const d of r.disciplines ?? []) if (!disciplinesConnues.has(d)) erreurs.push(`${r.prefixe} : discipline inconnue ${d}`);
+  }
+  return erreurs;
 }
 
 /** Rapport déterministe : volumes, rattachements, candidats par niveau d'accès et par domaine (premier niveau). */

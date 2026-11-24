@@ -22,11 +22,17 @@
    KermicLab ; seuls les identifiants et classifications sont repris.
 4. **Validation humaine** : tout rattachement produit par un import ou par l'IA entre en `proposition` et reste
    signalé à l'écran (« en cours de relecture ») jusqu'à sa validation.
-5. **Indicateurs de couverture** (`couvertureMetiers`) affichés par le build, non bloquants : métiers rattachés à
+5. **Règles de rattachement** (`referentiel/regles-metiers.json`) : préfixe de code ROME → disciplines, appliquées aux
+   candidats de l'import. Les propositions de disciplines, de gestes et de notions sont préparées par un agent dans une
+   PR ; aucun modèle n'est appelé à l'exécution ni par un script (les appels restent réservés à `worker/src/llm.js`).
+6. **Indicateurs de couverture** (`couvertureMetiers`) affichés par le build, non bloquants : métiers rattachés à
    l'ONISEP et au ROME, statuts, notions reliées par matière. Ils guident le choix des vagues d'import.
 
 ## Conséquences
 
-- Les 38 métiers existants passent en `correspondance: "v5"` ; aucun n'est encore validé.
+- Les 38 métiers existants passent en `correspondance: "v5"` ; aucun n'est encore validé. La vague pilote ajoute 41
+  métiers, 14 disciplines et 3 familles en `proposition`, sans code ROME (l'import les apporte ; les écarts de niveau
+  d'accès sont signalés comme conflits et jamais écrasés).
 - L'écran n'affiche pas encore les nouveaux champs (lot 5 du chantier).
-- Preuves : `tests/unit/metiers.test.mjs` (validation, statuts, identifiants, couverture, schéma).
+- Preuves : `tests/unit/metiers.test.mjs` (validation, statuts, identifiants, couverture, schéma),
+  `tests/unit/onisep.test.mjs` (import, rapprochement, conflits, règles ROME), `tests/e2e/metiers.test.mjs`.

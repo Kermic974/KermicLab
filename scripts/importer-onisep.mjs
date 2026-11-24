@@ -8,7 +8,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { dirname, extname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { appliquerRattachements, lireInstantane, normaliserFiche, rapportImport, rapprocher, reconnaitreColonnes } from "./lib/onisep.mjs";
+import { appliquerRattachements, lireInstantane, normaliserFiche, proposerDisciplines, rapportImport, rapprocher, reconnaitreColonnes } from "./lib/onisep.mjs";
 
 const racine = join(dirname(fileURLToPath(import.meta.url)), "..");
 const args = process.argv.slice(2);
@@ -44,11 +44,18 @@ if (!colonnes.onisep || !colonnes.nom) {
 const cheminMetiers = join(racine, "referentiel/metiers-v0.json");
 const metiers = JSON.parse(await readFile(cheminMetiers, "utf8"));
 const resultat = rapprocher(lignes.map((l) => normaliserFiche(l, colonnes)), metiers.metiers);
+const regles = JSON.parse(await readFile(join(racine, "referentiel/regles-metiers.json"), "utf8"));
+// Lot 3 : disciplines proposées par les règles ROME, à relire avant d'entrer dans le référentiel.
+for (const c of resultat.candidats) c.disciplinesProposees = proposerDisciplines(c.rome, regles);
 const rapport = rapportImport(resultat, colonnes);
 
 const fichierCandidats = sortieCandidats ?? join(dirname(source), "candidats.json");
 await writeFile(fichierCandidats, `${JSON.stringify({ source, candidats: resultat.candidats }, null, 2)}\n`);
-if (appliquer) await writeFile(cheminMetiers, `${JSON.stringify(appliquerRattachements(metiers, resultat.rattachements), null, 2)}\n`);
+if (appliquer) {
+  const { conflits, ...applique } = appliquerRattachements(metiers, resultat.rattachements);
+  rapport.conflits = conflits;
+  await writeFile(cheminMetiers, `${JSON.stringify(applique, null, 2)}\n`);
+}
 
 if (json) console.log(JSON.stringify(rapport, null, 2));
 else {
@@ -56,5 +63,6 @@ else {
   if (rapport.colonnesManquantes.length) console.log(`Colonnes non reconnues : ${rapport.colonnesManquantes.join(", ")}.`);
   console.log(`Par niveau d'accès : ${Object.entries(rapport.parNiveau).map(([k, n]) => `${k} ${n}`).join(", ")}.`);
   console.log(`Par domaine : ${Object.entries(rapport.parDomaine).slice(0, 15).map(([k, n]) => `${k} ${n}`).join(", ")}.`);
+  if (rapport.conflits?.length) console.log(`Conflits à trancher (valeur conservée) : ${rapport.conflits.map((c) => `${c.metier}.${c.champ}`).join(", ")}.`);
   console.log(`Candidats écrits dans ${fichierCandidats}${appliquer ? " ; rattachements appliqués à referentiel/metiers-v0.json" : ""}.`);
 }

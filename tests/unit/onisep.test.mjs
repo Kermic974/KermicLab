@@ -5,7 +5,7 @@ import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { appliquerRattachements, lireInstantane, niveauDepuisLibelle, normaliserFiche, rapportImport, rapprocher, reconnaitreColonnes, slugMetier } from "../../scripts/lib/onisep.mjs";
+import { appliquerRattachements, lireInstantane, niveauDepuisLibelle, normaliserFiche, proposerDisciplines, rapportImport, rapprocher, reconnaitreColonnes, slugMetier, verifierRegles } from "../../scripts/lib/onisep.mjs";
 import { verifierMetiers } from "../../web/metiers.js";
 
 // Chantier Métiers, lot 2 : import déterministe d'un instantané ONISEP (fixture fictive, identifiants inventés).
@@ -67,10 +67,11 @@ test("onisep : la commande produit le rapport et les candidats, codes de sortie"
   const script = new URL("../../scripts/importer-onisep.mjs", import.meta.url).pathname;
   const { stdout } = await exec(process.execPath, [script, fixture.pathname, "--candidats", join(dossier, "c.json"), "--json"]);
   const rapport = JSON.parse(stdout);
-  assert.deepEqual(rapport.rattachements.map((r) => r.metier), ["infirmier", "geometre-topographe"], "rattachés au référentiel réel par l'intitulé");
-  assert.equal(rapport.candidats, 3);
+  assert.deepEqual(rapport.rattachements.map((r) => r.metier), ["infirmier", "geometre-topographe", "boulanger"], "rattachés au référentiel réel par l'intitulé");
+  assert.equal(rapport.candidats, 2);
   const candidats = JSON.parse(await readFile(join(dossier, "c.json"), "utf8")).candidats;
   assert.ok(candidats.every((c) => c.onisep && c.slug));
+  assert.deepEqual(candidats.find((c) => c.slug === "chef-de-rayon").disciplinesProposees, ["calcul-professionnel", "communication", "gestion"], "règles ROME appliquées aux candidats");
   await assert.rejects(exec(process.execPath, [script]), (e) => e.code === 2);
 });
 
@@ -79,4 +80,32 @@ test("onisep : le référentiel réel reste valide après application (forme des
   const [metiers, proj] = await Promise.all([lire("metiers-v0.json"), lire("projection-v0.json")]);
   const r = rapprocher(fiches, metiers.metiers);
   assert.deepEqual(verifierMetiers(appliquerRattachements(metiers, r.rattachements), new Set(Object.values(proj.notions))), []);
+});
+
+test("onisep : application, conflits signalés sans écraser la valeur du référentiel", () => {
+  const r = rapprocher(fiches, referentiel);
+  const { conflits } = appliquerRattachements({ version: 2, metiers: referentiel }, r.rattachements);
+  assert.deepEqual(conflits, [{ metier: "geometre-topographe", champ: "niveauAcces", referentiel: "bac+3", onisep: "bac+2" }]);
+});
+
+test("règles ROME (lot 3) : préfixe le plus long, dédoublonnage, limite", () => {
+  const regles = { maxDisciplines: 3, regles: [
+    { prefixe: "J", disciplines: ["physiologie", "biologie", "chimie"] },
+    { prefixe: "J13", disciplines: ["physiologie", "sport"] },
+    { prefixe: "D", disciplines: ["calcul", "vente"] }
+  ] };
+  assert.deepEqual(proposerDisciplines(["J1301"], regles), ["physiologie", "sport"]);
+  assert.deepEqual(proposerDisciplines(["J1506", "D1102"], regles), ["physiologie", "biologie", "chimie"], "limité à trois");
+  assert.deepEqual(proposerDisciplines(["Z0000"], regles), []);
+  assert.deepEqual(verifierRegles({ regles: [{ prefixe: "J1", disciplines: ["x"] }, { prefixe: "D", disciplines: [] }, { prefixe: "D", disciplines: ["y"] }] }, new Set(["y"])), [
+    "préfixe ROME invalide : J1", "J1 : discipline inconnue x", "D : aucune discipline", "préfixe en double : D"
+  ]);
+});
+
+test("règles ROME réelles : disciplines connues, chaque discipline du référentiel atteignable ou utilisée", async () => {
+  const lire = async (f) => JSON.parse(await readFile(new URL(`../../referentiel/${f}`, import.meta.url), "utf8"));
+  const [regles, metiers] = await Promise.all([lire("regles-metiers.json"), lire("metiers-v0.json")]);
+  assert.deepEqual(verifierRegles(regles, new Set(metiers.disciplines.map((d) => d.id))), []);
+  assert.deepEqual(proposerDisciplines(["F1602"], regles), ["calcul-professionnel", "geometrie", "science-des-materiaux"]);
+  assert.deepEqual(proposerDisciplines(["G1602"], regles), ["nutrition-alimentation", "calcul-professionnel"]);
 });

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès.",
+  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès. Lot 3 et vague pilote du lot 6 (2026-11-24) : 14 disciplines et 41 métiers ajoutés par un agent, en correspondance « proposition », sans code ROME (apporté par l’import ONISEP).",
   "categories": [
     {
       "id": "disc",
@@ -31,6 +31,21 @@
       "id": "health",
       "libelle": "Santé et soins",
       "couleur": "#0f766e"
+    },
+    {
+      "id": "btp",
+      "libelle": "Bâtiment, industrie et transport",
+      "couleur": "#475569"
+    },
+    {
+      "id": "services",
+      "libelle": "Services, droit, sport et tourisme",
+      "couleur": "#1e3a8a"
+    },
+    {
+      "id": "nature",
+      "libelle": "Agriculture et nature",
+      "couleur": "#4d7c0f"
     }
   ],
   "disciplines": [
@@ -44,6 +59,22 @@
       "notions": [
         "notion.physique-chimie.ondes",
         "notion.physique-chimie.son-et-lumiere"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "agronomie-vegetale",
+      "nom": "Agronomie",
+      "savoirFaire": [
+        "Analyse de sol",
+        "Conduite de culture"
+      ],
+      "notions": [
+        "notion.svt.agrosystemes-et-sols",
+        "notion.svt.photosynthese",
+        "notion.svt.photosynthese-et-productivite-l",
+        "notion.svt.developpement-vegetaux-cm",
+        "notion.svt.domestication-et-selection-l"
       ],
       "correspondance": "proposition"
     },
@@ -74,6 +105,38 @@
         "notion.svt.ecosystemes-et-biodiversite"
       ],
       "correspondance": "v5"
+    },
+    {
+      "id": "calcul-professionnel",
+      "nom": "Calcul professionnel",
+      "savoirFaire": [
+        "Métrés et quantités",
+        "Calcul de coûts"
+      ],
+      "notions": [
+        "notion.mathematiques.proportionnalite",
+        "notion.mathematiques.pourcentages-et-evolutions-c4",
+        "notion.mathematiques.perimetres-aires",
+        "notion.mathematiques.volumes",
+        "notion.mathematiques.echelle-et-plans-cm",
+        "notion.mathematiques.durees-et-horaires-cm"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "chimie-analytique",
+      "nom": "Chimie analytique",
+      "savoirFaire": [
+        "Dosage",
+        "Préparation de solutions"
+      ],
+      "notions": [
+        "notion.physique-chimie.absorbance-et-dosages",
+        "notion.physique-chimie.acides-bases-et-ph-l",
+        "notion.physique-chimie.solutions-et-concentration-l",
+        "notion.physique-chimie.quantite-de-matiere"
+      ],
+      "correspondance": "proposition"
     },
     {
       "id": "chimie-des-materiaux",
@@ -156,6 +219,67 @@
       "correspondance": "proposition"
     },
     {
+      "id": "droit-et-institutions",
+      "nom": "Droit et institutions",
+      "savoirFaire": [
+        "Procédure",
+        "Rédaction d’actes"
+      ],
+      "notions": [
+        "notion.emc.etat-de-droit",
+        "notion.emc.justice",
+        "notion.emc.emc-justice-et-securite-l",
+        "notion.emc.emc-libertes-et-droits-l",
+        "notion.emc.democratie"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "economie",
+      "nom": "Économie",
+      "savoirFaire": [
+        "Élasticité prix",
+        "Analyse offre/demande"
+      ],
+      "notions": [
+        "notion.ses.marche-concurrentiel",
+        "notion.ses.croissance-economique",
+        "notion.ses.mondialisation-commerce"
+      ],
+      "correspondance": "v5"
+    },
+    {
+      "id": "education-physique",
+      "nom": "Sciences du sport",
+      "savoirFaire": [
+        "Planification d’entraînement",
+        "Prévention des blessures"
+      ],
+      "notions": [
+        "notion.eps.eps-sante-et-performance-l",
+        "notion.eps.eps-endurance-et-sante-c4",
+        "notion.eps.eps-sports-collectifs-et-arbitrage-c4",
+        "notion.svt.contraction-musculaire",
+        "notion.svt.organisme-et-effort-6e"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "electricite-electronique",
+      "nom": "Électricité et électronique",
+      "savoirFaire": [
+        "Câblage de circuits",
+        "Mesures électriques"
+      ],
+      "notions": [
+        "notion.physique-chimie.lois-de-l-electricite-l",
+        "notion.physique-chimie.electricite",
+        "notion.physique-chimie.condensateur-et-circuit-rc",
+        "notion.technologie.objets-connectes-et-programmation-c4"
+      ],
+      "correspondance": "proposition"
+    },
+    {
       "id": "environnement",
       "nom": "Environnement",
       "savoirFaire": [
@@ -171,15 +295,17 @@
       "correspondance": "v5"
     },
     {
-      "id": "gestion",
-      "nom": "Gestion",
+      "id": "expression-ecrite",
+      "nom": "Expression écrite",
       "savoirFaire": [
-        "Diagramme de Gantt",
-        "Allocation ressources"
+        "Rédaction structurée",
+        "Argumentation"
       ],
       "notions": [
-        "notion.mathematiques.proportionnalite",
-        "notion.mathematiques.tableaux-graphiques-cm"
+        "notion.francais.argumentation",
+        "notion.francais.ecrire-et-reecrire-c4",
+        "notion.francais.langue-et-style-l",
+        "notion.francais.vocabulaire-et-orthographe-c4"
       ],
       "correspondance": "proposition"
     },
@@ -199,6 +325,21 @@
       "correspondance": "v5"
     },
     {
+      "id": "geologie",
+      "nom": "Géologie",
+      "savoirFaire": [
+        "Lecture de carte géologique",
+        "Datation des roches"
+      ],
+      "notions": [
+        "notion.svt.structure-de-la-terre",
+        "notion.svt.seismes-et-volcans",
+        "notion.svt.histoire-de-la-terre-et-datation",
+        "notion.geographie.risques-naturels"
+      ],
+      "correspondance": "proposition"
+    },
+    {
       "id": "geometrie",
       "nom": "Géométrie",
       "savoirFaire": [
@@ -214,6 +355,19 @@
       "correspondance": "v5"
     },
     {
+      "id": "gestion",
+      "nom": "Gestion",
+      "savoirFaire": [
+        "Diagramme de Gantt",
+        "Allocation ressources"
+      ],
+      "notions": [
+        "notion.mathematiques.proportionnalite",
+        "notion.mathematiques.tableaux-graphiques-cm"
+      ],
+      "correspondance": "proposition"
+    },
+    {
       "id": "histoire",
       "nom": "Histoire",
       "savoirFaire": [
@@ -227,6 +381,22 @@
       "correspondance": "v5"
     },
     {
+      "id": "histoire-de-l-art",
+      "nom": "Histoire de l’art et patrimoine",
+      "savoirFaire": [
+        "Analyse d’œuvre",
+        "Datation des styles"
+      ],
+      "notions": [
+        "notion.histoire.antiquite",
+        "notion.histoire.moyen-age",
+        "notion.histoire.renaissance",
+        "notion.arts-plastiques.arts-oeuvre-et-engagement-c4",
+        "notion.philosophie.art"
+      ],
+      "correspondance": "proposition"
+    },
+    {
       "id": "informatique",
       "nom": "Informatique",
       "savoirFaire": [
@@ -237,6 +407,21 @@
         "notion.mathematiques.algorithmique-python-l",
         "notion.technologie.nsi-algorithmes-et-donnees-l",
         "notion.technologie.nsi-bases-de-donnees-et-systemes-l"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "langues-vivantes",
+      "nom": "Langues vivantes",
+      "savoirFaire": [
+        "Compréhension orale",
+        "Expression écrite en langue étrangère"
+      ],
+      "notions": [
+        "notion.anglais.anglais-expression-orale-et-ecrite-l",
+        "notion.anglais.anglais-culture-et-civilisation-l",
+        "notion.anglais.anglais-grammaire-et-temps-l",
+        "notion.anglais.anglais-3e-c4"
       ],
       "correspondance": "proposition"
     },
@@ -278,6 +463,68 @@
       "notions": [
         "notion.technologie.snt-donnees-et-web-l",
         "notion.emc.esprit-critique-et-medias-c4"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "mecanique",
+      "nom": "Mécanique",
+      "savoirFaire": [
+        "Calcul de forces",
+        "Lecture de schémas cinématiques"
+      ],
+      "notions": [
+        "notion.physique-chimie.lois-de-newton",
+        "notion.physique-chimie.energie-mecanique",
+        "notion.physique-chimie.mouvement-et-interactions-l",
+        "notion.mathematiques.vecteurs"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "musique",
+      "nom": "Musique",
+      "savoirFaire": [
+        "Lecture de partition",
+        "Écoute analytique"
+      ],
+      "notions": [
+        "notion.musique.musique-ecoute-creation-et-histoire-l",
+        "notion.musique.musique-genres-et-formes-c4",
+        "notion.musique.musique-creation-et-engagement-c4",
+        "notion.musique.musique-notes-et-rythme-cm"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "nutrition-alimentation",
+      "nom": "Nutrition et alimentation",
+      "savoirFaire": [
+        "Équilibre alimentaire",
+        "Hygiène alimentaire"
+      ],
+      "notions": [
+        "notion.svt.nutrition-et-digestion",
+        "notion.svt.metabolisme-et-enzymes",
+        "notion.svt.microbiote-et-sante-l",
+        "notion.physique-chimie.transformations-chimiques-c4"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "physiologie-humaine",
+      "nom": "Physiologie humaine",
+      "savoirFaire": [
+        "Surveillance des constantes",
+        "Fonctionnement des organes"
+      ],
+      "notions": [
+        "notion.svt.respiration-et-circulation",
+        "notion.svt.systeme-immunitaire",
+        "notion.svt.immunite-adaptative",
+        "notion.svt.glycemie-et-diabete",
+        "notion.svt.reproduction-humaine",
+        "notion.svt.microbes-et-sante-c4"
       ],
       "correspondance": "proposition"
     },
@@ -371,20 +618,6 @@
       "notions": [
         "notion.mathematiques.statistiques",
         "notion.mathematiques.probabilites"
-      ],
-      "correspondance": "v5"
-    },
-    {
-      "id": "economie",
-      "nom": "Économie",
-      "savoirFaire": [
-        "Élasticité prix",
-        "Analyse offre/demande"
-      ],
-      "notions": [
-        "notion.ses.marche-concurrentiel",
-        "notion.ses.croissance-economique",
-        "notion.ses.mondialisation-commerce"
       ],
       "correspondance": "v5"
     }
@@ -1015,6 +1248,734 @@
       ],
       "contexte": "Évaluation et accompagnement psychologique des personnes et des groupes.",
       "correspondance": "v5"
+    },
+    {
+      "id": "boulanger",
+      "nom": "Boulanger",
+      "categorie": "craft",
+      "disciplines": [
+        "nutrition-alimentation",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Pétrissage et façonnage",
+        "Calcul des proportions de recette",
+        "Surveillance de la fermentation"
+      ],
+      "contexte": "Fabrication quotidienne du pain et des viennoiseries.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap"
+    },
+    {
+      "id": "patissier",
+      "nom": "Pâtissier",
+      "categorie": "craft",
+      "disciplines": [
+        "nutrition-alimentation",
+        "calcul-professionnel",
+        "chimie-des-materiaux"
+      ],
+      "gestes": [
+        "Pesée précise des ingrédients",
+        "Tempérage du chocolat",
+        "Décoration et dressage"
+      ],
+      "contexte": "Création de gâteaux, entremets et desserts.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap"
+    },
+    {
+      "id": "cuisinier",
+      "nom": "Cuisinier",
+      "categorie": "services",
+      "disciplines": [
+        "nutrition-alimentation",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Mise en place des postes",
+        "Respect des règles d’hygiène",
+        "Gestion des cuissons"
+      ],
+      "contexte": "Préparation des plats en restaurant ou en collectivité.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap"
+    },
+    {
+      "id": "fleuriste",
+      "nom": "Fleuriste",
+      "categorie": "craft",
+      "disciplines": [
+        "agronomie-vegetale",
+        "arts-plastiques",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Composition florale",
+        "Entretien des végétaux",
+        "Conseil au client"
+      ],
+      "contexte": "Création de bouquets et vente de plantes.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap"
+    },
+    {
+      "id": "coiffeur",
+      "nom": "Coiffeur",
+      "categorie": "craft",
+      "disciplines": [
+        "chimie-des-materiaux",
+        "arts-plastiques",
+        "communication"
+      ],
+      "gestes": [
+        "Coupe et coiffage",
+        "Préparation des colorations",
+        "Diagnostic du cheveu"
+      ],
+      "contexte": "Soin et mise en forme des cheveux en salon.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap"
+    },
+    {
+      "id": "electricien-du-batiment",
+      "nom": "Électricien du bâtiment",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "calcul-professionnel",
+        "geometrie"
+      ],
+      "gestes": [
+        "Lecture de schémas électriques",
+        "Tirage et raccordement de câbles",
+        "Contrôle de sécurité de l’installation"
+      ],
+      "contexte": "Installation électrique de logements et de bureaux.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap"
+    },
+    {
+      "id": "plombier-chauffagiste",
+      "nom": "Plombier-chauffagiste",
+      "categorie": "btp",
+      "disciplines": [
+        "calcul-professionnel",
+        "physique",
+        "geometrie"
+      ],
+      "gestes": [
+        "Façonnage de tuyauteries",
+        "Pose d’équipements sanitaires",
+        "Réglage d’une chaudière"
+      ],
+      "contexte": "Installation et entretien des réseaux d’eau et de chauffage.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap"
+    },
+    {
+      "id": "macon",
+      "nom": "Maçon",
+      "categorie": "btp",
+      "disciplines": [
+        "calcul-professionnel",
+        "geometrie",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Implantation de l’ouvrage",
+        "Dosage du béton",
+        "Montage de murs d’aplomb"
+      ],
+      "contexte": "Construction des murs, dalles et fondations.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap"
+    },
+    {
+      "id": "charpentier",
+      "nom": "Charpentier",
+      "categorie": "btp",
+      "disciplines": [
+        "geometrie",
+        "calcul-professionnel",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Épure et traçage",
+        "Taille des assemblages",
+        "Levage de la charpente"
+      ],
+      "contexte": "Conception et pose de charpentes en bois.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap"
+    },
+    {
+      "id": "mecanicien-automobile",
+      "nom": "Mécanicien automobile",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique"
+      ],
+      "gestes": [
+        "Diagnostic électronique",
+        "Remplacement de pièces",
+        "Essai du véhicule"
+      ],
+      "contexte": "Entretien et réparation des véhicules.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap"
+    },
+    {
+      "id": "soudeur",
+      "nom": "Soudeur",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "physique",
+        "geometrie"
+      ],
+      "gestes": [
+        "Lecture de plan de pièce",
+        "Réglage du poste de soudage",
+        "Contrôle visuel des soudures"
+      ],
+      "contexte": "Assemblage de pièces métalliques par fusion.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap"
+    },
+    {
+      "id": "technicien-de-maintenance-industrielle",
+      "nom": "Technicien de maintenance industrielle",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "informatique"
+      ],
+      "gestes": [
+        "Diagnostic de panne",
+        "Maintenance préventive",
+        "Remise en service d’une ligne"
+      ],
+      "contexte": "Entretien des machines de production.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac"
+    },
+    {
+      "id": "ingenieur-mecanique",
+      "nom": "Ingénieur en mécanique",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "logique-mathematique",
+        "physique"
+      ],
+      "gestes": [
+        "Calcul de structures",
+        "Modélisation 3D",
+        "Essais de prototypes"
+      ],
+      "contexte": "Conception de systèmes et de pièces mécaniques.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+5"
+    },
+    {
+      "id": "pilote-de-ligne",
+      "nom": "Pilote de ligne",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "langues-vivantes",
+        "geographie"
+      ],
+      "gestes": [
+        "Préparation du plan de vol",
+        "Communication radio en anglais",
+        "Gestion des systèmes de bord"
+      ],
+      "contexte": "Conduite d’avions de transport de passagers.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+3"
+    },
+    {
+      "id": "technicien-reseaux",
+      "nom": "Technicien réseaux",
+      "categorie": "app",
+      "disciplines": [
+        "reseaux",
+        "informatique",
+        "electricite-electronique"
+      ],
+      "gestes": [
+        "Câblage et brassage",
+        "Configuration d’équipements",
+        "Supervision du réseau"
+      ],
+      "contexte": "Installation et maintenance des réseaux informatiques.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+2"
+    },
+    {
+      "id": "traducteur-interprete",
+      "nom": "Traducteur-interprète",
+      "categorie": "mkt",
+      "disciplines": [
+        "langues-vivantes",
+        "linguistique",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Traduction de documents",
+        "Interprétation orale",
+        "Recherche terminologique"
+      ],
+      "contexte": "Passage d’un texte ou d’un discours d’une langue à une autre.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+5"
+    },
+    {
+      "id": "journaliste",
+      "nom": "Journaliste",
+      "categorie": "mkt",
+      "disciplines": [
+        "expression-ecrite",
+        "histoire",
+        "communication"
+      ],
+      "gestes": [
+        "Enquête et vérification des sources",
+        "Rédaction d’articles",
+        "Interview"
+      ],
+      "contexte": "Recherche, vérification et diffusion de l’information.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+3"
+    },
+    {
+      "id": "ingenieur-du-son",
+      "nom": "Ingénieur du son",
+      "categorie": "mkt",
+      "disciplines": [
+        "acoustique",
+        "musique",
+        "informatique"
+      ],
+      "gestes": [
+        "Placement des micros",
+        "Mixage",
+        "Mastering"
+      ],
+      "contexte": "Prise de son et mixage pour la musique, le spectacle ou l’audiovisuel.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+2"
+    },
+    {
+      "id": "musicien",
+      "nom": "Musicien",
+      "categorie": "craft",
+      "disciplines": [
+        "musique",
+        "acoustique"
+      ],
+      "gestes": [
+        "Déchiffrage de partition",
+        "Répétition en ensemble",
+        "Interprétation sur scène"
+      ],
+      "contexte": "Interprétation d’œuvres musicales en concert ou en studio.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac"
+    },
+    {
+      "id": "restaurateur-d-oeuvres-d-art",
+      "nom": "Restaurateur d’œuvres d’art",
+      "categorie": "craft",
+      "disciplines": [
+        "histoire-de-l-art",
+        "chimie-analytique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Constat d’état",
+        "Nettoyage et consolidation",
+        "Retouche réversible"
+      ],
+      "contexte": "Conservation et restauration d’œuvres anciennes.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+5"
+    },
+    {
+      "id": "professeur-des-ecoles",
+      "nom": "Professeur des écoles",
+      "categorie": "services",
+      "disciplines": [
+        "expression-ecrite",
+        "psychologie-cognitive",
+        "logique-mathematique"
+      ],
+      "gestes": [
+        "Préparation de séquences",
+        "Différenciation pédagogique",
+        "Évaluation des acquis"
+      ],
+      "contexte": "Enseignement de toutes les matières en maternelle et en élémentaire.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+5"
+    },
+    {
+      "id": "professeur-de-musique",
+      "nom": "Professeur de musique",
+      "categorie": "services",
+      "disciplines": [
+        "musique",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Choix du répertoire",
+        "Direction de chœur",
+        "Accompagnement des progrès"
+      ],
+      "contexte": "Enseignement de la musique au collège, au lycée ou en conservatoire.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+5"
+    },
+    {
+      "id": "bibliothecaire",
+      "nom": "Bibliothécaire",
+      "categorie": "services",
+      "disciplines": [
+        "histoire",
+        "expression-ecrite",
+        "informatique"
+      ],
+      "gestes": [
+        "Catalogage",
+        "Conseil de lecture",
+        "Animation culturelle"
+      ],
+      "contexte": "Gestion et valorisation des collections d’une bibliothèque.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+3"
+    },
+    {
+      "id": "guide-conferencier",
+      "nom": "Guide-conférencier",
+      "categorie": "services",
+      "disciplines": [
+        "histoire-de-l-art",
+        "langues-vivantes",
+        "histoire"
+      ],
+      "gestes": [
+        "Préparation d’un parcours de visite",
+        "Commentaire d’œuvres",
+        "Animation de groupe"
+      ],
+      "contexte": "Visites commentées de musées, monuments et villes.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+3"
+    },
+    {
+      "id": "avocat",
+      "nom": "Avocat",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "droit-des-contrats"
+      ],
+      "gestes": [
+        "Analyse d’un dossier",
+        "Rédaction de conclusions",
+        "Plaidoirie"
+      ],
+      "contexte": "Conseil et défense de clients devant la justice.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+5"
+    },
+    {
+      "id": "greffier",
+      "nom": "Greffier",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Tenue des audiences",
+        "Rédaction des actes",
+        "Accueil des justiciables"
+      ],
+      "contexte": "Garant de la procédure aux côtés des magistrats.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+2"
+    },
+    {
+      "id": "gardien-de-la-paix",
+      "nom": "Gardien de la paix",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "physiologie-humaine"
+      ],
+      "gestes": [
+        "Patrouille et prévention",
+        "Rédaction de procès-verbaux",
+        "Gestes de premiers secours"
+      ],
+      "contexte": "Sécurité des personnes et des biens.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac"
+    },
+    {
+      "id": "educateur-sportif",
+      "nom": "Éducateur sportif",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "physiologie-humaine",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Conception de séances",
+        "Sécurité des pratiquants",
+        "Adaptation au public"
+      ],
+      "contexte": "Encadrement d’activités sportives pour tous les âges.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac"
+    },
+    {
+      "id": "archeologue",
+      "nom": "Archéologue",
+      "categorie": "disc",
+      "disciplines": [
+        "histoire",
+        "geographie",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Fouille stratigraphique",
+        "Relevé et inventaire",
+        "Datation des objets"
+      ],
+      "contexte": "Étude des traces matérielles des sociétés passées.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+5"
+    },
+    {
+      "id": "geologue",
+      "nom": "Géologue",
+      "categorie": "disc",
+      "disciplines": [
+        "geologie",
+        "chimie-analytique",
+        "geographie"
+      ],
+      "gestes": [
+        "Relevé de terrain",
+        "Analyse d’échantillons",
+        "Cartographie des sols"
+      ],
+      "contexte": "Étude du sous-sol pour la construction, l’eau ou les risques.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+5"
+    },
+    {
+      "id": "meteorologue",
+      "nom": "Météorologue",
+      "categorie": "disc",
+      "disciplines": [
+        "physique",
+        "statistiques",
+        "environnement"
+      ],
+      "gestes": [
+        "Analyse des données d’observation",
+        "Lecture de modèles numériques",
+        "Rédaction de bulletins"
+      ],
+      "contexte": "Prévision du temps et étude du climat.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+5"
+    },
+    {
+      "id": "agriculteur",
+      "nom": "Agriculteur",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "environnement",
+        "gestion"
+      ],
+      "gestes": [
+        "Préparation des sols",
+        "Suivi des cultures",
+        "Gestion de l’exploitation"
+      ],
+      "contexte": "Production végétale ou animale sur une exploitation.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac"
+    },
+    {
+      "id": "jardinier-paysagiste",
+      "nom": "Jardinier paysagiste",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "geometrie"
+      ],
+      "gestes": [
+        "Plantation et taille",
+        "Lecture d’un plan d’aménagement",
+        "Entretien des espaces verts"
+      ],
+      "contexte": "Création et entretien de jardins et d’espaces verts.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap"
+    },
+    {
+      "id": "veterinaire",
+      "nom": "Vétérinaire",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "chimie-analytique",
+        "physiologie-humaine"
+      ],
+      "gestes": [
+        "Examen clinique",
+        "Diagnostic et prescription",
+        "Chirurgie"
+      ],
+      "contexte": "Soins aux animaux domestiques et d’élevage.",
+      "correspondance": "proposition"
+    },
+    {
+      "id": "dieteticien",
+      "nom": "Diététicien",
+      "categorie": "health",
+      "disciplines": [
+        "nutrition-alimentation",
+        "physiologie-humaine",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Bilan alimentaire",
+        "Élaboration de menus adaptés",
+        "Éducation nutritionnelle"
+      ],
+      "contexte": "Conseil en alimentation pour la santé.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+2"
+    },
+    {
+      "id": "opticien-lunetier",
+      "nom": "Opticien-lunetier",
+      "categorie": "health",
+      "disciplines": [
+        "physique",
+        "physiologie-humaine",
+        "communication"
+      ],
+      "gestes": [
+        "Contrôle de la vue",
+        "Choix et montage des verres",
+        "Ajustage des montures"
+      ],
+      "contexte": "Conseil et fabrication d’équipements optiques.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+2"
+    },
+    {
+      "id": "ambulancier",
+      "nom": "Ambulancier",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "geographie"
+      ],
+      "gestes": [
+        "Transport sécurisé du patient",
+        "Gestes d’urgence",
+        "Hygiène du véhicule"
+      ],
+      "contexte": "Transport des malades et des blessés.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap"
+    },
+    {
+      "id": "auxiliaire-de-puericulture",
+      "nom": "Auxiliaire de puériculture",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Soins d’hygiène du nourrisson",
+        "Éveil et jeux",
+        "Observation du développement"
+      ],
+      "contexte": "Soins et accompagnement des jeunes enfants.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac"
+    },
+    {
+      "id": "comptable",
+      "nom": "Comptable",
+      "categorie": "trade",
+      "disciplines": [
+        "comptabilite",
+        "statistiques",
+        "droit-des-contrats"
+      ],
+      "gestes": [
+        "Saisie des écritures",
+        "Rapprochement bancaire",
+        "Préparation du bilan"
+      ],
+      "contexte": "Tenue des comptes d’une entreprise.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+2"
+    },
+    {
+      "id": "conseiller-bancaire",
+      "nom": "Conseiller bancaire",
+      "categorie": "trade",
+      "disciplines": [
+        "economie",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Analyse de la situation du client",
+        "Simulation de prêt",
+        "Conseil en épargne"
+      ],
+      "contexte": "Accompagnement des clients dans leurs projets financiers.",
+      "correspondance": "proposition",
+      "niveauAcces": "bac+2"
+    },
+    {
+      "id": "vendeur-conseil",
+      "nom": "Vendeur-conseil",
+      "categorie": "trade",
+      "disciplines": [
+        "communication",
+        "calcul-professionnel",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Accueil et écoute du client",
+        "Mise en rayon",
+        "Encaissement"
+      ],
+      "contexte": "Conseil et vente en magasin.",
+      "correspondance": "proposition",
+      "niveauAcces": "cap"
     }
   ]
 }
