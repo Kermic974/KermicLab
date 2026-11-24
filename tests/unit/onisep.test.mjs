@@ -5,6 +5,7 @@ import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { appliquerRattachements, completerFiches, extraitCompact, fichesDeLExtrait, fusionnerFiches, lireInstantane, niveauDepuisLibelle, normaliserFiche, proposerDisciplines, rapportImport, rapprocher, reconnaitreColonnes, slugMetier, verifierRegles } from "../../scripts/lib/onisep.mjs";
 import { verifierMetiers } from "../../web/metiers.js";
 
@@ -72,8 +73,8 @@ test("onisep : un métier déjà rattaché ne reçoit pas une autre fiche de mê
 test("onisep : la commande produit le rapport et les candidats, codes de sortie", async () => {
   const exec = promisify(execFile);
   const dossier = await mkdtemp(join(tmpdir(), "onisep-"));
-  const script = new URL("../../scripts/importer-onisep.mjs", import.meta.url).pathname;
-  const { stdout } = await exec(process.execPath, [script, fixture.pathname, "--candidats", join(dossier, "c.json"), "--json"]);
+  const script = fileURLToPath(new URL("../../scripts/importer-onisep.mjs", import.meta.url));
+  const { stdout } = await exec(process.execPath, [script, fileURLToPath(fixture), "--candidats", join(dossier, "c.json"), "--json"]);
   const rapport = JSON.parse(stdout);
   assert.equal(rapport.fiches, 5);
   assert.equal(rapport.rattachements.length + rapport.candidats, 5, "chaque fiche est rattachée ou candidate");
