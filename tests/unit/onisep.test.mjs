@@ -37,6 +37,8 @@ test("onisep : normalisation des fiches (slug, ROME, niveau, listes)", () => {
   assert.equal(slugMetier("Ingénieur(e) acousticien(ne)"), "ingenieur-acousticien");
   assert.equal(slugMetier("gardien/ne de police municipale"), "gardien-de-police-municipale", "écriture inclusive ONISEP");
   assert.equal(slugMetier("accompagnant / accompagnante d'élèves"), "accompagnant-d-eleves");
+  assert.equal(slugMetier("moniteur/trice-éducateur/trice"), "moniteur-educateur", "trait d'union conservé");
+  assert.equal(slugMetier("contrôleur / euse aérien/ne"), "controleur-aerien");
   assert.equal(slugMetier("Restaurateur d’œuvres d’art"), slugMetier("restaurateur/trice d'oeuvres d'art"));
   assert.equal(niveauDepuisLibelle("bac + 4"), "bac+4");
   assert.equal(niveauDepuisLibelle("bac + 9 et plus"), "bac+9");

@@ -52,12 +52,13 @@ const majuscule = (s) => (s ? s[0].toUpperCase() + s.slice(1) : s);
 /**
  * Nom affiché d'une fiche, à partir des formes masculine et féminine que l'extrait range parmi les synonymes (formes
  * sans « / » dont le slug est celui de l'intitulé). La fin commune n'est écrite qu'une fois : « Boulanger, boulangère »,
- * « Moniteur, monitrice d'escalade ». Sans forme féminine distincte : l'intitulé sans écriture inclusive.
+ * « Moniteur, monitrice d'escalade » (un seul mot diffère, sinon les deux formes en entier). Sans forme féminine
+ * distincte : l'intitulé sans écriture inclusive.
  */
 export function nomAffiche(fiche) {
   const formes = (fiche.synonymes ?? []).filter((s) => !s.includes("/"));
   const i = formes.findIndex((s) => slugMetier(s) === fiche.slug);
-  if (i < 0) return majuscule(String(fiche.nom).replace(/\s*\/\s*[^\s/]+/g, "").replace(/\s+/g, " ").trim());
+  if (i < 0) return majuscule(String(fiche.nom).replace(/\s*\/\s*[^\s/-]+/g, "").replace(/\s+/g, " ").trim());
   const masculin = formes[i].split(" ");
   const feminin = (formes[i + 1] ?? "").split(" ");
   if (feminin.length !== masculin.length || cle(feminin.join(" ")) === cle(masculin.join(" "))) return majuscule(masculin.join(" "));
@@ -65,6 +66,8 @@ export function nomAffiche(fiche) {
   while (commun < masculin.length - 1 && masculin.at(-1 - commun) === feminin.at(-1 - commun)) commun++;
   const fin = masculin.slice(masculin.length - commun).join(" ");
   const debut = (mots) => mots.slice(0, mots.length - commun).join(" ");
+  // Factoriser seulement quand un seul mot diffère, hors parenthèses ; sinon les deux formes en entier.
+  if (masculin.length - commun > 1 || /[()]/.test(debut(masculin) + debut(feminin))) return `${majuscule(masculin.join(" "))}, ${feminin.join(" ")}`;
   return `${majuscule(debut(masculin))}, ${debut(feminin)}${fin ? ` ${fin}` : ""}`;
 }
 

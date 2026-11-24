@@ -30,7 +30,7 @@ export const normaliserEntete = (s) => sansAccents(s).replace(/[^a-z0-9]+/g, " "
  * « chef-de-rayon », « accompagnant / accompagnante d'élèves » → « accompagnant-d-eleves ».
  */
 export function slugMetier(nom) {
-  return sansAccents(String(nom ?? "").replace(/\s*\/\s*[^\s/]+/g, "").replace(/\([^)]*\)/g, " "))
+  return sansAccents(String(nom ?? "").replace(/\s*\/\s*[^\s/-]+/g, "").replace(/\([^)]*\)/g, " "))
     .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 }
 

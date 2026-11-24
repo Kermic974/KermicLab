@@ -33,6 +33,9 @@ test("vagues : nom affiché (fin commune écrite une fois), famille par domaine 
   assert.equal(nomAffiche({ nom: "boulanger/ère", slug: "boulanger", synonymes: ["mitron", "boulanger", "boulangère"] }), "Boulanger, boulangère");
   assert.equal(nomAffiche({ nom: "ostéopathe", slug: "osteopathe", synonymes: ["ostéopathe", "ostéopathe"] }), "Ostéopathe", "forme épicène");
   assert.equal(nomAffiche({ nom: "médiateur/trice familial/e", slug: "mediateur-familial", synonymes: [] }), "Médiateur familial", "sans formes : intitulé sans écriture inclusive");
+  assert.equal(nomAffiche({ nom: "moniteur/trice-éducateur/trice", slug: "moniteur-educateur", synonymes: ["moniteur-éducateur", "monitrice-éducatrice"] }), "Moniteur-éducateur, monitrice-éducatrice");
+  assert.equal(nomAffiche({ nom: "x", slug: "accompagnateur-de-moyenne-montagne", synonymes: ["accompagnateur de moyenne montagne", "accompagnatrice en moyenne montagne"] }),
+    "Accompagnateur de moyenne montagne, accompagnatrice en moyenne montagne", "plusieurs mots diffèrent : formes entières");
   assert.equal(familleDe({ domaines: ["santé, social, sport/sport"] }), "services");
   assert.equal(familleDe({ domaines: ["santé, social, sport/soins"] }), "health");
   assert.equal(familleDe({ domaines: [] }), "disc");
