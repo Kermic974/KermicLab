@@ -6481,6 +6481,10 @@ async function ouvrirMetiers() {
     }
     rendreCategoriesMetiers();
     rendreNiveauxMetiers();
+    // Attribution exigée par la licence des données sources (ODbL pour l'ONISEP, chantier Métiers).
+    const sources = espaceMetiers.carte.donnees.sources ?? [];
+    $("#metiers-sources").hidden = !sources.length;
+    $("#metiers-sources").textContent = t("metiersSources", { sources: sources.map((x) => `${x.producteur}, « ${x.nom} » (${x.date}), licence ${x.licence}`).join(" ; ") });
   }
   rendreMetiers();
 }

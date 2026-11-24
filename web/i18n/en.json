@@ -1655,8 +1655,15 @@
   "metiersNiveau_bac+3": "3 years after the bac",
   "metiersNiveau_bac+5": "5 years after the bac",
   "metiersNiveau_bac+8": "8 years after the bac",
+  "metiersNiveau_sans-diplome": "No diploma required",
+  "metiersNiveau_bac+1": "1 year after the bac",
+  "metiersNiveau_bac+4": "4 years after the bac",
+  "metiersNiveau_bac+6": "6 years after the bac",
+  "metiersNiveau_bac+7": "7 years after the bac",
+  "metiersNiveau_bac+9": "9+ years after the bac",
   "metiersNiveauMetier": "Minimum entry level: {niveau}",
   "metiersMetierProposition": "Proposed entry, under review.",
   "metiersPlus": "Show {n} more job(s)",
-  "metiersAnneauxLimites": "The rings show {n} jobs: pick a family, a level or a search to see the others."
+  "metiersAnneauxLimites": "The rings show {n} jobs: pick a family, a level or a search to see the others.",
+  "metiersSources": "Sources: {sources}."
 }

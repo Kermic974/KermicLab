@@ -8,8 +8,9 @@ export const TYPES_SELECTION = Object.freeze(["metier", "discipline", "notion", 
 // agent ou un import, ou validée par une relecture humaine (date `relue`, que seul un humain renseigne). Plan : chantier
 // docs/chantiers/metiers.md, ADR 0042.
 export const STATUTS_CORRESPONDANCE = Object.freeze(["v5", "proposition", "validee"]);
-// Niveau d'accès minimum au métier, aligné sur les niveaux de diplôme utilisés par l'ONISEP.
-export const NIVEAUX_ACCES = Object.freeze(["cap", "bac", "bac+2", "bac+3", "bac+5", "bac+8"]);
+// Niveau d'accès minimum au métier, aligné sur les niveaux de l'ONISEP (Idéo-Fiches métiers) : « sans-diplome »
+// regroupe « sans diplôme », « 3e » et le brevet ; « bac+9 » vaut « bac + 9 et plus ».
+export const NIVEAUX_ACCES = Object.freeze(["sans-diplome", "cap", "bac", "bac+1", "bac+2", "bac+3", "bac+4", "bac+5", "bac+6", "bac+7", "bac+8", "bac+9"]);
 const MOTIF_ONISEP = /^MET\.\d+$/;
 const MOTIF_ROME = /^[A-N]\d{4}$/;
 const MOTIF_DATE = /^\d{4}-\d{2}-\d{2}$/;

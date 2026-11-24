@@ -12,12 +12,17 @@
    `verifierMetiers` (`web/metiers.js`).
    - Chaque métier porte, comme chaque discipline, le statut de sa correspondance : `v5` (maquette), `proposition`
      (agent ou import) ou `validee`. Une correspondance `validee` exige une date `relue`, renseignée par un humain.
-   - Champs facultatifs d'un métier : `onisep` (`MET.<n>`, unique), `rome` (codes `A0000`), `niveauAcces` (`cap`,
-     `bac`, `bac+2`, `bac+3`, `bac+5`, `bac+8`), `domaines`.
+   - Champs facultatifs d'un métier : `onisep` (`MET.<n>`, unique), `rome` (codes `A0000`), `niveauAcces` (niveaux de
+     l'ONISEP : `sans-diplome`, `cap`, `bac`, `bac+1` à `bac+9`), `domaines`, `synonymes`. À la racine, `sources`
+     cite les bases dont dérivent ces champs (producteur, licence, date).
    - Le nom du fichier est conservé pour ne pas casser les liens (build, tests, ADR 0041).
-2. **Source ONISEP par instantané** : le jeu ouvert « Idéo – Fiches métiers » est déposé, daté, dans le dépôt ; un
-   script d'import déterministe en tire des candidats. La CI ne fait aucun appel réseau. La licence est confirmée
-   avant le premier import et la source citée dans les données publiées.
+2. **Source ONISEP par extrait daté** : les jeux « Idéo-Fiches métiers » (XML) et « Idéo-Métiers Onisep » (CSV),
+   publiés par l'ONISEP sur data.gouv.fr **sous licence ODbL 1.0**, sont réduits à un extrait compact versionné
+   (`referentiel/sources/onisep/ideo-metiers-AAAA-MM-JJ.json` : identifiants, intitulés, synonymes, ROME, niveau,
+   domaines, lien) ; un script d'import déterministe en tire rattachements et candidats. La CI ne fait aucun appel
+   réseau. L'attribution figure dans les données (`sources`, extrait) et sous l'écran Métiers. L'ODbL impose le partage
+   à l'identique d'une base dérivée publiée : `referentiel/metiers-v0.json` et `dist/metiers.json` sont publiés sous
+   ODbL pour leurs champs issus de l'ONISEP (décision du propriétaire à confirmer).
 3. **Pas de recopie des textes** des fiches ONISEP : les gestes métier sont des formulations courtes propres à
    KermicLab ; seuls les identifiants et classifications sont repris.
 4. **Validation humaine** : tout rattachement produit par un import ou par l'IA entre en `proposition` et reste
@@ -31,8 +36,10 @@
 ## Conséquences
 
 - Les 38 métiers existants passent en `correspondance: "v5"` ; aucun n'est encore validé. La vague pilote ajoute 41
-  métiers, 14 disciplines et 3 familles en `proposition`, sans code ROME (l'import les apporte ; les écarts de niveau
-  d'accès sont signalés comme conflits et jamais écrasés).
+  métiers, 14 disciplines et 3 familles en `proposition`. L'import du 2026-11-24 rattache 74 des 79 métiers à l'ONISEP
+  (53 par l'intitulé, 21 par une correspondance choisie par l'agent) et leur apporte niveaux, codes ROME, domaines et
+  synonymes ; pour les fiches `proposition`, les valeurs de l'ONISEP remplacent les estimations de l'agent, ailleurs
+  les écarts sont signalés comme conflits et jamais écrasés.
 - L'écran filtre par niveau d'accès, cherche dans les synonymes, domaines et codes ROME, signale les fiches en
   `proposition` et limite les anneaux aux métiers du filtre au-delà de 120 métiers (lot 5).
 - Preuves : `tests/unit/metiers.test.mjs` (validation, statuts, identifiants, couverture, schéma),

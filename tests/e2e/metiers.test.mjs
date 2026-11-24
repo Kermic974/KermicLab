@@ -75,6 +75,7 @@ test("métiers : anneaux, filtres, chaîne d'un métier, notions KermicLab et gr
   await page.locator("#metiers-liste [data-metier=boulanger]").click();
   const texteBoulanger = await detail.textContent();
   for (const attendu of ["Niveau d'accès minimum : CAP", "Fiche proposée, en cours de relecture."]) assert.ok(texteBoulanger.includes(attendu), attendu);
+  assert.match(await page.locator("#metiers-sources").textContent(), /Onisep, « Idéo-Fiches métiers » .*licence ODbL/, "attribution exigée par la licence");
   await page.selectOption("#metiers-niveau", "");
   assert.equal(await detail.isHidden(), true, "changer de filtre referme le détail");
   if (nbMetiers > 50) {

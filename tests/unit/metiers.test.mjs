@@ -44,11 +44,11 @@ test("métiers : statut des correspondances, identifiants ONISEP et ROME, niveau
   fautif.disciplines[0].correspondance = "devinee";
   fautif.metiers[1].relue = undefined;
   fautif.metiers[0].rome = ["M14"];
-  fautif.metiers[0].niveauAcces = "bac+4";
+  fautif.metiers[0].niveauAcces = "bac+10";
   fautif.metiers.push({ ...structuredClone(source.metiers[0]), id: "autre", onisep: "MET.123" });
   fautif.metiers.push({ ...structuredClone(source.metiers[0]), id: "mal-forme", onisep: "123", rome: [] });
   const erreurs = verifierMetiers(fautif, connues).join(" | ");
-  for (const motif of [/stats : correspondance inconnue/, /ebeniste : correspondance validée sans relecture/, /code ROME invalide M14/, /niveau d'accès inconnu bac\+4/, /autre : identifiant ONISEP déjà utilisé par analyste/, /mal-forme : identifiant ONISEP invalide 123/, /mal-forme : codes ROME attendus/]) assert.match(erreurs, motif);
+  for (const motif of [/stats : correspondance inconnue/, /ebeniste : correspondance validée sans relecture/, /code ROME invalide M14/, /niveau d'accès inconnu bac\+10/, /autre : identifiant ONISEP déjà utilisé par analyste/, /mal-forme : identifiant ONISEP invalide 123/, /mal-forme : codes ROME attendus/]) assert.match(erreurs, motif);
   const sansStatut = structuredClone(source);
   delete sansStatut.metiers[0].correspondance;
   assert.match(verifierMetiers(sansStatut, connues).join(), /analyste : correspondance inconnue/, "le statut d'un métier est obligatoire");

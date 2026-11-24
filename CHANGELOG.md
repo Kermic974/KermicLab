@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Référentiel des métiers relié à l'ONISEP** (chantier Métiers, ADR 0042) : extrait daté des données ouvertes de l'ONISEP (1 138 fiches, licence ODbL), import XML et CSV, 74 des 79 métiers rattachés avec leurs codes ROME, niveaux d'accès (désormais de « sans diplôme » à « bac + 9 »), domaines et synonymes ; la source est citée sous l'écran Métiers. 1 064 candidats préparés pour les prochaines vagues. / Careers linked to ONISEP open data (ODbL): ROME codes, entry levels, domains, synonyms.
+
 - **Espace Métiers à l'échelle** (chantier Métiers, lot 5) : filtre par niveau d'accès (CAP à bac + 8), recherche dans les synonymes, domaines et codes ROME, liste par pages de 50, niveau d'accès et mention « Fiche proposée, en cours de relecture » dans le détail ; au-delà de 120 métiers, les anneaux ne montrent que ceux du filtre. / Careers space: entry-level filter, wider search, paged list, ready for the ONISEP import.
 
 - **Graphe du référentiel : couche métiers** (chantier Métiers, lot 4) : le back-office peut afficher les métiers dans le graphe 3D, reliés aux notions de leurs disciplines (case « Métiers »), avec le nombre de notions reliées à un métier, les notions sans métier par discipline et le classement des notions les plus demandées. L'Espace Métiers compte 79 métiers (vague pilote de 41 métiers et 14 disciplines, à relire) et relie 114 notions sur 477. / Curriculum graph: optional careers layer and demand indicators in the back-office; 79 careers.
