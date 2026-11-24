@@ -72,8 +72,8 @@ export function creerLecteurSources(cwd, revision = null, adaptateurs = {}) {
   async function document(ref) {
     const contenu = await lire(ref.path);
     const titres = [...contenu.matchAll(/^#{1,6}\s+(.+)$/gm)].map(m => m[1]);
-    const correspond = titres.some(t => slug(t) === slug(ref.anchor) || t.split(/\s/)[0] === ref.anchor);
-    if (!correspond) throw new Error("Section documentaire absente.");
+    const correspondances = titres.filter(t => slug(t) === slug(ref.anchor) || t.split(/\s/)[0] === ref.anchor);
+    if (correspondances.length !== 1) throw new Error("Section documentaire absente ou ambiguë.");
     return contenu;
   }
   return { source, document, lire };

@@ -96,6 +96,13 @@ test("F-PROVENANCE-ERROR", async t => {
   const { rapport } = await espace(t, { ...base, provenance: { ...base.provenance, references: [document("Section-absente")] } });
   contient(await rapport(), "S6-PROVENANCE");
 });
+test("une section documentaire ambiguë ne prouve pas la revue humaine", async t => {
+  const { rapport, ecrire } = await espace(t);
+  await ecrire("docs/fixture.md", "# Source\nFixture.\n# Revue\nPremière preuve fictive.\n# Revue\nAutre preuve fictive.\n# Accessibilite\nFixture.\n");
+  const r = await rapport();
+  contient(r, "S6-PROVENANCE");
+  contient(r, "S6-EVIDENCE-REVIEW");
+});
 test("F-HISTORY-ERROR", async t => {
   const { rapport } = await espace(t);
   contient(await rapport({ historiqueDe: async () => { throw new Error("Fixture sans historique"); } }), "S6-HISTORY");
