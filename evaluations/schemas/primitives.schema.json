@@ -1,0 +1,352 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kermiclab.online/s7/primitives.schema.json",
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*(?![\\s\\S])"
+    },
+    "evaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "maxLength": 160,
+          "pattern": "^evaluation\\.[a-z][a-z0-9-]*\\.[a-z0-9]+(?:-[a-z0-9]+)*(?![\\s\\S])"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000000
+        }
+      }
+    },
+    "experience": {
+      "$ref": "https://schemas.kermiclab.online/s6/primitives.schema.json#/$defs/reference"
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "https://schemas.kermiclab.online/s4/primitives.schema.json#/$defs/objet"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000000
+        }
+      }
+    },
+    "method": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "mode"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*(?![\\s\\S])"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000000
+        },
+        "mode": {
+          "enum": [
+            "deterministic",
+            "assisted",
+            "human"
+          ]
+        }
+      }
+    },
+    "day": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}(?![\\s\\S])"
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1000000
+    },
+    "attemptId": {
+      "type": "string",
+      "pattern": "^attempt\\.[a-f0-9]{32}(?![\\s\\S])"
+    },
+    "observationId": {
+      "type": "string",
+      "pattern": "^observation\\.[a-f0-9]{32}(?![\\s\\S])"
+    },
+    "submissionId": {
+      "type": "string",
+      "pattern": "^submission\\.[a-f0-9]{32}(?![\\s\\S])"
+    },
+    "decisionId": {
+      "type": "string",
+      "pattern": "^decision\\.[a-f0-9]{32}(?![\\s\\S])"
+    },
+    "closureId": {
+      "type": "string",
+      "pattern": "^closure\\.[a-f0-9]{32}(?![\\s\\S])"
+    },
+    "outcome": {
+      "enum": [
+        "success",
+        "failure",
+        "partial",
+        "absent",
+        "indeterminate"
+      ]
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target",
+        "relation"
+      ],
+      "properties": {
+        "target": {
+          "$ref": "primitives.schema.json#/$defs/target"
+        },
+        "relation": {
+          "enum": [
+            "direct",
+            "contributive"
+          ]
+        },
+        "via": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "version"
+          ],
+          "properties": {
+            "id": {
+              "$ref": "https://schemas.kermiclab.online/s4/primitives.schema.json#/$defs/relation"
+            },
+            "version": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000000000
+            }
+          }
+        },
+        "justification": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000,
+          "pattern": "\\S"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "relation": {
+                "const": "contributive"
+              }
+            },
+            "required": [
+              "relation"
+            ]
+          },
+          "then": {
+            "required": [
+              "via"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "via"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "scoring": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "min",
+            "max",
+            "rounding",
+            "thresholds",
+            "values"
+          ],
+          "properties": {
+            "kind": {
+              "const": "outcome-values"
+            },
+            "min": {
+              "type": "number",
+              "minimum": -1000000000,
+              "maximum": 1000000000
+            },
+            "max": {
+              "type": "number",
+              "minimum": -1000000000,
+              "maximum": 1000000000
+            },
+            "rounding": {
+              "const": "none"
+            },
+            "thresholds": {
+              "type": "array",
+              "minItems": 0,
+              "maxItems": 20,
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "value"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 80,
+                    "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*(?![\\s\\S])"
+                  },
+                  "value": {
+                    "type": "number",
+                    "minimum": -1000000000,
+                    "maximum": 1000000000
+                  }
+                }
+              }
+            },
+            "values": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "success",
+                "failure"
+              ],
+              "properties": {
+                "success": {
+                  "type": "number",
+                  "minimum": -1000000000,
+                  "maximum": 1000000000
+                },
+                "failure": {
+                  "type": "number",
+                  "minimum": -1000000000,
+                  "maximum": 1000000000
+                },
+                "partial": {
+                  "type": "number",
+                  "minimum": -1000000000,
+                  "maximum": 1000000000
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "kind",
+            "min",
+            "max",
+            "rounding",
+            "thresholds"
+          ],
+          "properties": {
+            "kind": {
+              "const": "human"
+            },
+            "min": {
+              "type": "number",
+              "minimum": -1000000000,
+              "maximum": 1000000000
+            },
+            "max": {
+              "type": "number",
+              "minimum": -1000000000,
+              "maximum": 1000000000
+            },
+            "rounding": {
+              "const": "none"
+            },
+            "thresholds": {
+              "type": "array",
+              "minItems": 0,
+              "maxItems": 20,
+              "uniqueItems": true,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "value"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 80,
+                    "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*(?![\\s\\S])"
+                  },
+                  "value": {
+                    "type": "number",
+                    "minimum": -1000000000,
+                    "maximum": 1000000000
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "recordBase": {
+      "type": "object",
+      "required": [
+        "id",
+        "recordType",
+        "attemptId",
+        "sequence",
+        "day"
+      ],
+      "properties": {
+        "attemptId": {
+          "$ref": "primitives.schema.json#/$defs/attemptId"
+        },
+        "sequence": {
+          "$ref": "primitives.schema.json#/$defs/sequence"
+        },
+        "day": {
+          "$ref": "primitives.schema.json#/$defs/day"
+        }
+      }
+    }
+  }
+}
