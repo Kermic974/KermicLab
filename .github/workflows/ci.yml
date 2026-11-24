@@ -77,6 +77,15 @@ jobs:
         with:
           name: validation-referentiel
           path: validation-referentiel.json
+      - name: Valider les expériences pédagogiques
+        shell: bash
+        run: npm run --silent check:experiences -- --json | tee validation-experiences.json
+      - name: Conserver le rapport des expériences
+        if: ${{ always() && hashFiles('validation-experiences.json') != '' }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: validation-experiences
+          path: validation-experiences.json
       - name: Valider les artefacts normatifs
         shell: bash
         run: npm run --silent check:artefacts -- --json | tee validation-artefacts.json
