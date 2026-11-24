@@ -132,14 +132,18 @@ export function preparerCarte(donnees) {
   return { donnees, disciplines, metiers, categories, notions, disciplinesDeNotion };
 }
 
-/** Métiers retenus par la catégorie et la recherche (métier, discipline, geste, savoir-faire ou notion). */
-export function filtrerMetiers(carte, { categorie = "", recherche = "" } = {}) {
+/**
+ * Métiers retenus par la catégorie, le niveau d'accès et la recherche (métier, synonyme, domaine, code ROME,
+ * discipline, geste, savoir-faire ou notion). Un métier sans niveau connu n'est retenu que sans filtre de niveau.
+ */
+export function filtrerMetiers(carte, { categorie = "", niveau = "", recherche = "" } = {}) {
   const q = sansAccents(recherche.trim());
   return carte.donnees.metiers.filter((m) => {
     if (categorie && m.categorie !== categorie) return false;
+    if (niveau && m.niveauAcces !== niveau) return false;
     if (!q) return true;
     const ds = m.disciplines.map((id) => carte.disciplines.get(id));
-    const textes = [m.nom, m.contexte, ...m.gestes, ...ds.flatMap((d) => [d.nom, ...d.savoirFaire]),
+    const textes = [m.nom, m.contexte, ...(m.synonymes ?? []), ...(m.domaines ?? []), ...(m.rome ?? []), ...m.gestes, ...ds.flatMap((d) => [d.nom, ...d.savoirFaire]),
       ...ds.flatMap((d) => d.notions.map((n) => carte.notions.get(n)?.titre ?? n))];
     return textes.some((t) => sansAccents(t).includes(q));
   });
@@ -186,17 +190,17 @@ export function chaine(carte, selection, metiersVisibles = carte.donnees.metiers
 /**
  * Disposition en quatre anneaux concentriques (centre cx, cy) : notions, disciplines, métiers, gestes. Les métiers sont
  * groupés par catégorie ; chaque notion se place près de la première discipline qui la cite, chaque geste près de son
- * métier, pour limiter les croisements.
+ * métier, pour limiter les croisements. `metiers` : métiers placés sur l'anneau (tous par défaut, voir `metiersDesAnneaux`).
  */
-export function disposerAnneaux(carte, { cx = 500, cy = 500, rayons = [120, 230, 340, 430] } = {}) {
+export function disposerAnneaux(carte, { cx = 500, cy = 500, rayons = [120, 230, 340, 430], metiers: places = carte.donnees.metiers } = {}) {
   const pos = (r, angle) => ({ x: cx + Math.cos(angle) * r, y: cy + Math.sin(angle) * r, angle });
   const ordreCategories = carte.donnees.categories.map((c) => c.id);
-  const metiers = [...carte.donnees.metiers].sort((a, b) => ordreCategories.indexOf(a.categorie) - ordreCategories.indexOf(b.categorie));
+  const metiers = [...places].sort((a, b) => ordreCategories.indexOf(a.categorie) - ordreCategories.indexOf(b.categorie));
   const angleMetier = new Map(metiers.map((m, i) => [m.id, (i / metiers.length) * 2 * Math.PI - Math.PI / 2]));
   // Disciplines : à l'angle moyen des métiers qui les mobilisent, puis réparties régulièrement dans cet ordre.
   const moyenne = (angles) => Math.atan2(angles.reduce((s, a) => s + Math.sin(a), 0), angles.reduce((s, a) => s + Math.cos(a), 0));
   const disciplines = carte.donnees.disciplines
-    .map((d) => ({ d, a: moyenne(carte.donnees.metiers.filter((m) => m.disciplines.includes(d.id)).map((m) => angleMetier.get(m.id))) }))
+    .map((d) => ({ d, a: moyenne(metiers.filter((m) => m.disciplines.includes(d.id)).map((m) => angleMetier.get(m.id))) }))
     .sort((x, y) => x.a - y.a);
   const positions = { metier: new Map(), discipline: new Map(), notion: new Map(), geste: new Map() };
   disciplines.forEach(({ d }, i) => positions.discipline.set(d.id, pos(rayons[1], (i / disciplines.length) * 2 * Math.PI - Math.PI / 2)));
@@ -211,4 +215,16 @@ export function disposerAnneaux(carte, { cx = 500, cy = 500, rayons = [120, 230,
   for (const { d } of disciplines) for (const n of d.notions) if (!vues.has(n)) { vues.add(n); notionsOrdonnees.push(n); }
   notionsOrdonnees.forEach((n, i) => positions.notion.set(n, pos(rayons[0], (i / notionsOrdonnees.length) * 2 * Math.PI - Math.PI / 2)));
   return positions;
+}
+
+/** Au-delà de ce nombre de métiers, l'anneau des métiers ne montre que ceux du filtre (chantier Métiers, lot 5). */
+export const SEUIL_ANNEAUX = 120;
+
+/**
+ * Métiers placés sur les anneaux : tous tant que le référentiel reste sous le seuil (la chaîne estompe le reste),
+ * sinon ceux du filtre, limités au seuil. `limites` signale qu'une partie des métiers filtrés n'est pas dessinée.
+ */
+export function metiersDesAnneaux(carte, visibles, seuil = SEUIL_ANNEAUX) {
+  if (carte.donnees.metiers.length <= seuil) return { metiers: carte.donnees.metiers, limites: false };
+  return { metiers: visibles.slice(0, seuil), limites: visibles.length > seuil };
 }

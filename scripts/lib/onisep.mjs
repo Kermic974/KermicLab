@@ -126,7 +126,7 @@ export function rapprocher(fiches, metiers) {
 const numero = (id) => Number(String(id ?? "").replace(/\D/g, "")) || 0;
 
 /**
- * Applique les rattachements au référentiel : ajoute onisep, rome, niveauAcces et domaines sans écraser l'existant.
+ * Applique les rattachements au référentiel : ajoute onisep, rome, niveauAcces, domaines et synonymes sans écraser l'existant.
  * Les valeurs existantes qui diffèrent de la fiche ONISEP sont listées dans `conflits` (à trancher par une relecture).
  */
 export function appliquerRattachements(donnees, rattachements) {
@@ -145,6 +145,8 @@ export function appliquerRattachements(donnees, rattachements) {
       if (!m.rome?.length && r.rome.length) ajout.rome = r.rome;
       if (!m.niveauAcces && r.niveauAcces) ajout.niveauAcces = r.niveauAcces;
       if (!m.domaines?.length && r.domaines.length) ajout.domaines = r.domaines;
+      const synonymes = r.synonymes.filter((x) => x !== m.nom);
+      if (!m.synonymes?.length && synonymes.length) ajout.synonymes = [...new Set(synonymes)];
       return { ...m, ...ajout };
     })
   };

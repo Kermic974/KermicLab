@@ -1646,5 +1646,17 @@
   "metiersSansNotion": "No KermicLab topic linked to this subject yet.",
   "metiersProposition": "Suggested link, under review: {disciplines}.",
   "metiersGrapheAria": "3D graph of {notions} topic(s), their direct prerequisites and MicroSkills ({noeuds} items). Arrow keys: rotate; plus and minus: zoom.",
-  "metiersGrapheAide": "{notions} circled topic(s), with their direct prerequisites and MicroSkills ({noeuds} items). Drag to rotate, tap a point to name it."
+  "metiersGrapheAide": "{notions} circled topic(s), with their direct prerequisites and MicroSkills ({noeuds} items). Drag to rotate, tap a point to name it.",
+  "metiersNiveau": "Entry level",
+  "metiersTousNiveaux": "All levels",
+  "metiersNiveau_cap": "Vocational certificate (CAP)",
+  "metiersNiveau_bac": "Baccalauréat",
+  "metiersNiveau_bac+2": "2 years after the bac",
+  "metiersNiveau_bac+3": "3 years after the bac",
+  "metiersNiveau_bac+5": "5 years after the bac",
+  "metiersNiveau_bac+8": "8 years after the bac",
+  "metiersNiveauMetier": "Minimum entry level: {niveau}",
+  "metiersMetierProposition": "Proposed entry, under review.",
+  "metiersPlus": "Show {n} more job(s)",
+  "metiersAnneauxLimites": "The rings show {n} jobs: pick a family, a level or a search to see the others."
 }

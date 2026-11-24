@@ -33,6 +33,7 @@
 - Les 38 métiers existants passent en `correspondance: "v5"` ; aucun n'est encore validé. La vague pilote ajoute 41
   métiers, 14 disciplines et 3 familles en `proposition`, sans code ROME (l'import les apporte ; les écarts de niveau
   d'accès sont signalés comme conflits et jamais écrasés).
-- L'écran n'affiche pas encore les nouveaux champs (lot 5 du chantier).
+- L'écran filtre par niveau d'accès, cherche dans les synonymes, domaines et codes ROME, signale les fiches en
+  `proposition` et limite les anneaux aux métiers du filtre au-delà de 120 métiers (lot 5).
 - Preuves : `tests/unit/metiers.test.mjs` (validation, statuts, identifiants, couverture, schéma),
   `tests/unit/onisep.test.mjs` (import, rapprochement, conflits, règles ROME), `tests/e2e/metiers.test.mjs`.

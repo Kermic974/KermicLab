@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import Ajv2020 from "ajv/dist/2020.js";
-import { chaine, couvertureMetiers, disposerAnneaux, enrichirMetiers, filtrerMetiers, preparerCarte, verifierMetiers } from "../../web/metiers.js";
+import { chaine, couvertureMetiers, disposerAnneaux, enrichirMetiers, filtrerMetiers, metiersDesAnneaux, preparerCarte, verifierMetiers } from "../../web/metiers.js";
 
 // Espace Métiers (ADR 0041) : validation, enrichissement, filtres, chaîne d'une sélection, disposition en anneaux.
 const source = {
@@ -113,4 +113,23 @@ test("métiers : le fichier du référentiel est cohérent avec la projection r�
   assert.ok(valider(metiers), JSON.stringify(valider.errors));
   assert.ok(valider(source), JSON.stringify(valider.errors));
   assert.equal(valider({ ...source, metiers: [{ ...source.metiers[0], inconnu: 1 }] }), false, "propriété inattendue refusée");
+});
+
+test("métiers (lot 5) : filtre par niveau d'accès, recherche par synonyme, domaine et code ROME", () => {
+  assert.deepEqual(filtrerMetiers(carte, { niveau: "bac+5" }).map((m) => m.id), ["analyste"]);
+  assert.deepEqual(filtrerMetiers(carte, { niveau: "cap" }), [], "un métier sans niveau n'est retenu que sans filtre");
+  assert.deepEqual(filtrerMetiers(carte, { recherche: "m1403" }).map((m) => m.id), ["analyste"]);
+  const avecSynonymes = preparerCarte({ ...donnees, metiers: [{ ...donnees.metiers[1], synonymes: ["Menuisier en meubles"], domaines: ["Bois"] }] });
+  assert.equal(filtrerMetiers(avecSynonymes, { recherche: "menuisier en meubles" }).length, 1);
+  assert.equal(filtrerMetiers(avecSynonymes, { recherche: "bois" }).length, 1);
+});
+
+test("métiers (lot 5) : anneaux limités au filtre au-delà du seuil, disposition des seuls métiers placés", () => {
+  assert.deepEqual(metiersDesAnneaux(carte, [donnees.metiers[0]], 10), { metiers: donnees.metiers, limites: false }, "sous le seuil : tous les métiers");
+  assert.deepEqual(metiersDesAnneaux(carte, donnees.metiers, 1), { metiers: [donnees.metiers[0]], limites: true });
+  assert.deepEqual(metiersDesAnneaux(carte, [donnees.metiers[1]], 1), { metiers: [donnees.metiers[1]], limites: false });
+  const p = disposerAnneaux(carte, { metiers: [donnees.metiers[1]] });
+  assert.deepEqual([...p.metier.keys()], ["ebeniste"]);
+  assert.deepEqual([...p.geste.keys()], ["ebeniste::Lecture de plan"]);
+  assert.equal(p.discipline.size, 2, "toutes les disciplines restent placées");
 });

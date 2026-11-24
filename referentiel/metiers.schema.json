@@ -57,7 +57,8 @@
           "onisep": { "type": "string", "pattern": "^MET\\.\\d+$" },
           "rome": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "pattern": "^[A-N]\\d{4}$" } },
           "niveauAcces": { "enum": ["cap", "bac", "bac+2", "bac+3", "bac+5", "bac+8"] },
-          "domaines": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+          "domaines": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+          "synonymes": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
         }
       }
     }

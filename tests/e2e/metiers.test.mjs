@@ -69,6 +69,20 @@ test("métiers : anneaux, filtres, chaîne d'un métier, notions KermicLab et gr
   assert.equal(await detail.locator(".sur-titre").textContent(), "Notion KermicLab");
   assert.ok(await detail.locator(".metiers-bloc .metiers-pastille.metier").count() > 5, "les métiers qui mobilisent les statistiques");
 
+  // Lot 5 du chantier Métiers : filtre par niveau d'accès, niveau et statut de relecture dans le détail, liste par pages.
+  await page.selectOption("#metiers-niveau", "cap");
+  assert.equal(await page.locator("#metiers-liste .metiers-item").count(), donnees.metiers.filter((m) => m.niveauAcces === "cap").length);
+  await page.locator("#metiers-liste [data-metier=boulanger]").click();
+  const texteBoulanger = await detail.textContent();
+  for (const attendu of ["Niveau d'accès minimum : CAP", "Fiche proposée, en cours de relecture."]) assert.ok(texteBoulanger.includes(attendu), attendu);
+  await page.selectOption("#metiers-niveau", "");
+  assert.equal(await detail.isHidden(), true, "changer de filtre referme le détail");
+  if (nbMetiers > 50) {
+    assert.equal(await page.locator("#metiers-liste .metiers-item").count(), 50, "première page");
+    await page.click("#metiers-plus");
+    assert.equal(await page.locator("#metiers-liste .metiers-item").count(), Math.min(100, nbMetiers));
+  }
+
   // Ouvrir la notion : la bulle du catalogue s'ouvre (même mécanisme que l'espace Éducation). L'API simulée ne connaît
   // que quelques notions, dont « electricite » (physique) : seules les notions du catalogue chargé ont ce bouton.
   await page.locator("#metiers-liste [data-metier=ing-biomedical]").click();

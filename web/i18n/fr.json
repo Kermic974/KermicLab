@@ -1646,5 +1646,17 @@
   "metiersSansNotion": "Pas encore de notion KermicLab reliée à cette discipline.",
   "metiersProposition": "Correspondance proposée, en cours de relecture : {disciplines}.",
   "metiersGrapheAria": "Graphe 3D de {notions} notion(s), de leurs prérequis directs et de leurs MicroSkills ({noeuds} éléments). Flèches : tourner ; plus et moins : zoomer.",
-  "metiersGrapheAide": "{notions} notion(s) entourées, avec leurs prérequis directs et leurs MicroSkills ({noeuds} éléments). Glisse pour tourner, touche un point pour le nommer."
+  "metiersGrapheAide": "{notions} notion(s) entourées, avec leurs prérequis directs et leurs MicroSkills ({noeuds} éléments). Glisse pour tourner, touche un point pour le nommer.",
+  "metiersNiveau": "Niveau d'accès",
+  "metiersTousNiveaux": "Tous les niveaux",
+  "metiersNiveau_cap": "CAP",
+  "metiersNiveau_bac": "Bac",
+  "metiersNiveau_bac+2": "Bac + 2",
+  "metiersNiveau_bac+3": "Bac + 3",
+  "metiersNiveau_bac+5": "Bac + 5",
+  "metiersNiveau_bac+8": "Bac + 8",
+  "metiersNiveauMetier": "Niveau d'accès minimum : {niveau}",
+  "metiersMetierProposition": "Fiche proposée, en cours de relecture.",
+  "metiersPlus": "Afficher {n} métier(s) de plus",
+  "metiersAnneauxLimites": "Les anneaux montrent {n} métiers : choisis une famille, un niveau ou une recherche pour voir les autres."
 }

@@ -46,6 +46,7 @@ test("onisep : rapprochement, candidats, anomalies et application sans écraseme
   assert.deepEqual(r.anomalies, [{ type: "incomplete", fiche: "Sans identifiant" }, { type: "doublon", fiche: "MET.1003" }]);
   const applique = appliquerRattachements({ version: 2, metiers: referentiel }, r.rattachements);
   assert.deepEqual(applique.metiers[0].rome, ["J1506"]);
+  assert.deepEqual(applique.metiers[0].synonymes, ["IDE"], "synonymes repris pour la recherche");
   assert.equal(applique.metiers[1].niveauAcces, "bac+3", "valeur existante conservée");
   assert.equal(applique.metiers[1].onisep, "MET.1002");
   const rapport = rapportImport(r, colonnes);
