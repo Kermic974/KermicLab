@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès. Lot 3 et vague pilote du lot 6 (2026-11-24) : 14 disciplines et 41 métiers ajoutés par un agent, en correspondance « proposition », sans code ROME (apporté par l’import ONISEP). Import ONISEP du 2026-11-24 (extrait referentiel/sources/onisep/ideo-metiers-2026-11-24.json, licence ODbL) : identifiants, codes ROME, niveaux d’accès, domaines et synonymes de 74 métiers.",
+  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès. Lot 3 et vague pilote du lot 6 (2026-11-24) : 14 disciplines et 41 métiers ajoutés par un agent, en correspondance « proposition », sans code ROME (apporté par l’import ONISEP). Import ONISEP du 2026-11-24 (extrait referentiel/sources/onisep/ideo-metiers-2026-11-24.json, licence ODbL) : identifiants, codes ROME, niveaux d’accès, domaines et synonymes de 74 métiers. Vague 1 du lot 6 (2026-11-24) : 32 métiers issus des fiches ONISEP (identifiant, niveau et ROME de l’ONISEP), 11 disciplines et notions ajoutées aux disciplines « proposition », préparés par un agent.",
   "sources": [
     {
       "nom": "Idéo-Fiches métiers",
@@ -99,7 +99,64 @@
         "notion.svt.photosynthese",
         "notion.svt.photosynthese-et-productivite-l",
         "notion.svt.developpement-vegetaux-cm",
-        "notion.svt.domestication-et-selection-l"
+        "notion.svt.domestication-et-selection-l",
+        "notion.svt.animaux-et-plantes-c2",
+        "notion.svt.milieux-et-saisons-c2",
+        "notion.svt.biodiversite-et-chaines-cm",
+        "notion.svt.biodiversite-et-ecosystemes-l"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "amenagement-du-territoire",
+      "nom": "Aménagement du territoire",
+      "savoirFaire": [
+        "Lecture et réalisation de cartes",
+        "Analyse des territoires"
+      ],
+      "notions": [
+        "notion.geographie.metropolisation",
+        "notion.geographie.mobilites",
+        "notion.geographie.france-territoires",
+        "notion.geographie.france-regions",
+        "notion.geographie.espaces-ruraux",
+        "notion.geographie.territoires-urbains-et-ruraux-l",
+        "notion.geographie.habiter-une-metropole-6e",
+        "notion.geographie.mers-oceans",
+        "notion.geographie.tourisme",
+        "notion.geographie.union-europeenne",
+        "notion.geographie.mondialisation",
+        "notion.geographie.migrations",
+        "notion.geographie.croquis-et-cartes-c4",
+        "notion.geographie.lire-une-carte-cm",
+        "notion.geographie.se-deplacer-transports-cm",
+        "notion.geographie.habiter-6e",
+        "notion.geographie.habiter-le-littoral-6e",
+        "notion.geographie.se-reperer-dans-l-espace-c2",
+        "notion.geographie.planete-terre-et-cartes-c2",
+        "notion.geographie.question-demographique-c4",
+        "notion.geographie.france-et-europe-dans-la-mondialisation-l",
+        "notion.geographie.dynamiques-regionales-et-developpement-l",
+        "notion.geographie.societes-et-environnement-l"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "analyse-statistique",
+      "nom": "Probabilités et statistique",
+      "savoirFaire": [
+        "Modélisation de l’aléatoire",
+        "Échantillonnage et estimation"
+      ],
+      "notions": [
+        "notion.mathematiques.probabilites-conditionnelles",
+        "notion.mathematiques.loi-binomiale",
+        "notion.mathematiques.variables-aleatoires-l",
+        "notion.mathematiques.statistiques-et-echantillonnage-l",
+        "notion.mathematiques.denombrement",
+        "notion.mathematiques.reperage-et-donnees-6e",
+        "notion.mathematiques.ensembles-et-logique-l",
+        "notion.svt.science-donnees-et-decision-l"
       ],
       "correspondance": "proposition"
     },
@@ -113,7 +170,9 @@
       "notions": [
         "notion.arts-plastiques.arts-formes-et-composition-cm",
         "notion.arts-plastiques.arts-image-et-representation-c4",
-        "notion.arts-plastiques.arts-plastiques-creation-et-engagement-l"
+        "notion.arts-plastiques.arts-plastiques-creation-et-engagement-l",
+        "notion.arts-plastiques.arts-couleurs-et-formes-c2",
+        "notion.arts-plastiques.arts-representation-et-espace-6e"
       ],
       "correspondance": "proposition"
     },
@@ -132,6 +191,26 @@
       "correspondance": "v5"
     },
     {
+      "id": "biologie-cellulaire-genetique",
+      "nom": "Biologie cellulaire et génétique",
+      "savoirFaire": [
+        "Analyse de l’ADN",
+        "Lecture de résultats de laboratoire"
+      ],
+      "notions": [
+        "notion.svt.adn-et-division-cellulaire",
+        "notion.svt.genetique-et-heredite",
+        "notion.svt.expression-genetique",
+        "notion.svt.mutations-et-variabilite",
+        "notion.svt.meiose-et-brassage-genetique",
+        "notion.svt.evolution",
+        "notion.svt.classification-du-vivant-6e",
+        "notion.svt.evolution-et-selection-naturelle",
+        "notion.svt.reproduction-et-cycles-de-vie-6e"
+      ],
+      "correspondance": "proposition"
+    },
+    {
       "id": "calcul-professionnel",
       "nom": "Calcul professionnel",
       "savoirFaire": [
@@ -144,7 +223,23 @@
         "notion.mathematiques.perimetres-aires",
         "notion.mathematiques.volumes",
         "notion.mathematiques.echelle-et-plans-cm",
-        "notion.mathematiques.durees-et-horaires-cm"
+        "notion.mathematiques.durees-et-horaires-cm",
+        "notion.mathematiques.fractions",
+        "notion.mathematiques.nombres-decimaux",
+        "notion.mathematiques.calcul-mental-cm",
+        "notion.mathematiques.problemes-a-etapes-cm",
+        "notion.mathematiques.longueurs-masses-contenances-cm",
+        "notion.mathematiques.perimetre-aire-cm",
+        "notion.mathematiques.volumes-contenances-cm",
+        "notion.mathematiques.monnaie-et-euro-c2",
+        "notion.mathematiques.division-euclidienne-cm",
+        "notion.mathematiques.multiplication-posee-cm",
+        "notion.mathematiques.calcul-avec-decimaux-cm",
+        "notion.mathematiques.grandeurs-et-mesures-6e",
+        "notion.mathematiques.moyenne-et-proportions-cm",
+        "notion.mathematiques.priorites-operatoires",
+        "notion.mathematiques.nombres-relatifs",
+        "notion.mathematiques.tableaux-graphiques-cm"
       ],
       "correspondance": "proposition"
     },
@@ -159,7 +254,14 @@
         "notion.physique-chimie.absorbance-et-dosages",
         "notion.physique-chimie.acides-bases-et-ph-l",
         "notion.physique-chimie.solutions-et-concentration-l",
-        "notion.physique-chimie.quantite-de-matiere"
+        "notion.physique-chimie.quantite-de-matiere",
+        "notion.physique-chimie.tableau-periodique",
+        "notion.physique-chimie.atomes-et-molecules",
+        "notion.physique-chimie.structure-electronique-et-liaisons-l",
+        "notion.physique-chimie.acides-et-bases",
+        "notion.physique-chimie.melanges-et-solutions-cm",
+        "notion.physique-chimie.etats-matiere-et-melanges-6e",
+        "notion.physique-chimie.transformations-chimiques-c4"
       ],
       "correspondance": "proposition"
     },
@@ -226,7 +328,11 @@
       ],
       "notions": [
         "notion.technologie.conception-et-prototypage-c4",
-        "notion.technologie.si-conception-et-modelisation-l"
+        "notion.technologie.si-conception-et-modelisation-l",
+        "notion.technologie.energie-et-materiaux-c4",
+        "notion.technologie.materiaux-et-environnement-6e",
+        "notion.technologie.objets-techniques-cm",
+        "notion.technologie.materiaux-et-recyclage-cm"
       ],
       "correspondance": "proposition"
     },
@@ -255,7 +361,24 @@
         "notion.emc.justice",
         "notion.emc.emc-justice-et-securite-l",
         "notion.emc.emc-libertes-et-droits-l",
-        "notion.emc.democratie"
+        "notion.emc.democratie",
+        "notion.emc.citoyennete",
+        "notion.emc.laicite",
+        "notion.emc.liberte",
+        "notion.emc.egalite",
+        "notion.emc.droits-de-lhomme",
+        "notion.emc.discrimination",
+        "notion.emc.emc-democratie-et-institutions-l",
+        "notion.emc.emc-egalite-et-lutte-discriminations-l",
+        "notion.emc.emc-engagement-et-defense-l",
+        "notion.emc.defense-et-paix-c4",
+        "notion.emc.interet-general",
+        "notion.emc.engagement-civique",
+        "notion.emc.regles-et-justice-cm",
+        "notion.emc.droit-et-regle-6e",
+        "notion.emc.droits-de-l-enfant-cm",
+        "notion.emc.emc-numerique-et-citoyennete-l",
+        "notion.emc.numerique-et-donnees-c4"
       ],
       "correspondance": "proposition"
     },
@@ -274,6 +397,25 @@
       "correspondance": "v5"
     },
     {
+      "id": "economie-et-societe",
+      "nom": "Économie et société",
+      "savoirFaire": [
+        "Lecture de données économiques",
+        "Analyse des politiques sociales"
+      ],
+      "notions": [
+        "notion.ses.chomage",
+        "notion.ses.mobilite-sociale",
+        "notion.ses.monnaie",
+        "notion.ses.justice-sociale",
+        "notion.ses.ses-economie-et-croissance-l",
+        "notion.ses.ses-marches-et-prix-l",
+        "notion.ses.ses-structure-sociale-et-sociologie-l",
+        "notion.ses.ses-travail-chomage-et-protection-l"
+      ],
+      "correspondance": "proposition"
+    },
+    {
       "id": "education-physique",
       "nom": "Sciences du sport",
       "savoirFaire": [
@@ -285,7 +427,11 @@
         "notion.eps.eps-endurance-et-sante-c4",
         "notion.eps.eps-sports-collectifs-et-arbitrage-c4",
         "notion.svt.contraction-musculaire",
-        "notion.svt.organisme-et-effort-6e"
+        "notion.svt.organisme-et-effort-6e",
+        "notion.eps.eps-jeux-collectifs-et-athletisme-cm",
+        "notion.eps.eps-sante-et-echauffement-cm",
+        "notion.eps.eps-endurance-et-sports-collectifs-6e",
+        "notion.eps.eps-bouger-et-jouer-c2"
       ],
       "correspondance": "proposition"
     },
@@ -300,7 +446,27 @@
         "notion.physique-chimie.lois-de-l-electricite-l",
         "notion.physique-chimie.electricite",
         "notion.physique-chimie.condensateur-et-circuit-rc",
-        "notion.technologie.objets-connectes-et-programmation-c4"
+        "notion.technologie.objets-connectes-et-programmation-c4",
+        "notion.technologie.objets-electriques-et-materiaux-c2",
+        "notion.physique-chimie.electricite-circuits-cm",
+        "notion.physique-chimie.signaux-et-information-c4"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "energetique",
+      "nom": "Énergétique",
+      "savoirFaire": [
+        "Bilan énergétique",
+        "Choix des sources d’énergie"
+      ],
+      "notions": [
+        "notion.physique-chimie.conversions-d-energie-l",
+        "notion.physique-chimie.energie-et-sources-cm",
+        "notion.physique-chimie.soleil-et-energie-terrestre-l",
+        "notion.physique-chimie.radioactivite",
+        "notion.physique-chimie.energie-et-signaux-6e",
+        "notion.physique-chimie.etats-et-changements-cm"
       ],
       "correspondance": "proposition"
     },
@@ -330,7 +496,25 @@
         "notion.francais.argumentation",
         "notion.francais.ecrire-et-reecrire-c4",
         "notion.francais.langue-et-style-l",
-        "notion.francais.vocabulaire-et-orthographe-c4"
+        "notion.francais.vocabulaire-et-orthographe-c4",
+        "notion.francais.orthographe-grammaticale-6e",
+        "notion.francais.accords",
+        "notion.francais.conjugaison-temps",
+        "notion.francais.figures-de-style",
+        "notion.francais.ponctuation-et-dialogue-cm",
+        "notion.francais.resumer-et-expliquer-cm",
+        "notion.francais.types-de-textes-cm",
+        "notion.francais.vocabulaire-et-etymologie-6e",
+        "notion.francais.ecrire-pour-raconter-et-decrire-6e",
+        "notion.francais.oral-et-eaf-l",
+        "notion.francais.argumentation-et-litterature-d-idees-l",
+        "notion.francais.grammaire-de-la-phrase-5e-c4",
+        "notion.francais.sujet-verbe-complements-6e",
+        "notion.francais.homophones-cm",
+        "notion.francais.conjugaison-cm",
+        "notion.francais.formation-des-mots-cm",
+        "notion.francais.pronoms-et-reprises-cm",
+        "notion.francais.lecture-comprehension-cm"
       ],
       "correspondance": "proposition"
     },
@@ -406,6 +590,40 @@
       "correspondance": "v5"
     },
     {
+      "id": "histoire-contemporaine",
+      "nom": "Histoire contemporaine",
+      "savoirFaire": [
+        "Analyse de documents historiques",
+        "Contextualisation des événements"
+      ],
+      "notions": [
+        "notion.histoire.premiere-guerre-mondiale",
+        "notion.histoire.seconde-guerre-mondiale",
+        "notion.histoire.totalitarismes",
+        "notion.histoire.guerre-froide",
+        "notion.histoire.decolonisation",
+        "notion.histoire.construction-europeenne",
+        "notion.histoire.ve-republique",
+        "notion.histoire.revolution-francaise",
+        "notion.histoire.napoleon",
+        "notion.histoire.lumieres",
+        "notion.histoire.guerres-mondiales-et-memoires-l",
+        "notion.histoire.revolutions-et-nations-xix-l",
+        "notion.histoire.colonisations-c4",
+        "notion.histoire.traites-et-esclavage-c4",
+        "notion.histoire.guerre-froide-et-decolonisation-l",
+        "notion.histoire.societe-et-culture-au-xixe-c4",
+        "notion.histoire.hggsp-savoirs-et-memoires-l",
+        "notion.histoire.se-reperer-dans-le-temps-c2",
+        "notion.histoire.age-industriel-cm",
+        "notion.histoire.france-europe-depuis-1945-cm",
+        "notion.histoire.guerres-mondiales-cm",
+        "notion.histoire.revolution-empire-cm",
+        "notion.histoire.republique-ecole-cm"
+      ],
+      "correspondance": "proposition"
+    },
+    {
       "id": "histoire-de-l-art",
       "nom": "Histoire de l’art et patrimoine",
       "savoirFaire": [
@@ -417,7 +635,21 @@
         "notion.histoire.moyen-age",
         "notion.histoire.renaissance",
         "notion.arts-plastiques.arts-oeuvre-et-engagement-c4",
-        "notion.philosophie.art"
+        "notion.philosophie.art",
+        "notion.histoire.temps-modernes",
+        "notion.histoire.renaissance-reforme-et-etat-l",
+        "notion.histoire.antiquite-democratie-et-empire-l",
+        "notion.histoire.mediterranee-medievale-l",
+        "notion.histoire.premieres-civilisations-6e",
+        "notion.histoire.grece-et-citoyennete-6e",
+        "notion.histoire.rome-republique-empire-6e",
+        "notion.histoire.empire-romain-christianisme-6e",
+        "notion.histoire.feodalite-eglise-et-pouvoirs-c4",
+        "notion.histoire.chretientes-et-islam-c4",
+        "notion.histoire.prehistoire-cm",
+        "notion.histoire.gaulois-gallo-romains-cm",
+        "notion.histoire.louis-xiv-cm",
+        "notion.histoire.francois-ier-cm"
       ],
       "correspondance": "proposition"
     },
@@ -431,7 +663,13 @@
       "notions": [
         "notion.mathematiques.algorithmique-python-l",
         "notion.technologie.nsi-algorithmes-et-donnees-l",
-        "notion.technologie.nsi-bases-de-donnees-et-systemes-l"
+        "notion.technologie.nsi-bases-de-donnees-et-systemes-l",
+        "notion.technologie.programmation-et-robots-6e",
+        "notion.technologie.objets-techniques-6e",
+        "notion.mathematiques.algorithmique-6e",
+        "notion.mathematiques.algorithmique-et-scratch-c4",
+        "notion.mathematiques.algorithmes-programmation-cm",
+        "notion.mathematiques.tableaux-et-algorithmes-c2"
       ],
       "correspondance": "proposition"
     },
@@ -446,7 +684,17 @@
         "notion.anglais.anglais-expression-orale-et-ecrite-l",
         "notion.anglais.anglais-culture-et-civilisation-l",
         "notion.anglais.anglais-grammaire-et-temps-l",
-        "notion.anglais.anglais-3e-c4"
+        "notion.anglais.anglais-3e-c4",
+        "notion.anglais.anglais-se-presenter-6e",
+        "notion.anglais.anglais-routine-et-habiletes-6e",
+        "notion.anglais.anglais-4e-c4",
+        "notion.anglais.anglais-5e-c4",
+        "notion.anglais.anglais-lieux-et-pays-cm",
+        "notion.anglais.anglais-vocabulaire-quotidien-cm",
+        "notion.anglais.anglais-gouts-et-actions-cm",
+        "notion.anglais.anglais-se-presenter-cm",
+        "notion.anglais.anglais-famille-et-animaux-c2",
+        "notion.anglais.anglais-bonjour-c2"
       ],
       "correspondance": "proposition"
     },
@@ -463,6 +711,32 @@
         "notion.philosophie.langage"
       ],
       "correspondance": "v5"
+    },
+    {
+      "id": "litterature-et-culture",
+      "nom": "Littérature et culture",
+      "savoirFaire": [
+        "Analyse de textes",
+        "Culture littéraire"
+      ],
+      "notions": [
+        "notion.francais.roman",
+        "notion.francais.theatre",
+        "notion.francais.poesie",
+        "notion.francais.roman-et-recit-l",
+        "notion.francais.theatre-et-representation-l",
+        "notion.francais.poesie-et-lyrisme-l",
+        "notion.francais.litterature-didees",
+        "notion.francais.contes-fables-mythes-6e",
+        "notion.francais.recits-d-aventures-et-voyages-c4",
+        "notion.francais.denoncer-les-travers-de-la-societe-c4",
+        "notion.francais.recit-d-aventures-6e",
+        "notion.francais.poesie-6e",
+        "notion.francais.temps-du-recit-6e",
+        "notion.philosophie.hlp-humanites-litterature-et-philosophie-l",
+        "notion.histoire.voyages-d-ulysse-6e"
+      ],
+      "correspondance": "proposition"
     },
     {
       "id": "logique-mathematique",
@@ -492,6 +766,38 @@
       "correspondance": "proposition"
     },
     {
+      "id": "mathematiques-appliquees",
+      "nom": "Mathématiques appliquées",
+      "savoirFaire": [
+        "Modélisation par des fonctions",
+        "Calcul vectoriel et trigonométrique"
+      ],
+      "notions": [
+        "notion.mathematiques.derivation",
+        "notion.mathematiques.integrales",
+        "notion.mathematiques.suites",
+        "notion.mathematiques.exponentielle",
+        "notion.mathematiques.logarithme",
+        "notion.mathematiques.fonctions-affines",
+        "notion.mathematiques.fonctions-de-reference",
+        "notion.mathematiques.second-degre",
+        "notion.mathematiques.produit-scalaire",
+        "notion.mathematiques.trigonometrie-triangle-rectangle-c4",
+        "notion.mathematiques.trigo-cercle",
+        "notion.mathematiques.trigonometrie-radian-l",
+        "notion.mathematiques.nombres-complexes-l",
+        "notion.mathematiques.primitives-et-equations-differentielles-l",
+        "notion.mathematiques.limites-et-continuite",
+        "notion.mathematiques.geometrie-dans-l-espace",
+        "notion.mathematiques.thales",
+        "notion.mathematiques.puissances",
+        "notion.mathematiques.notion-de-fonction-c4",
+        "notion.mathematiques.limites-de-suites-l",
+        "notion.mathematiques.racines-carrees-c4"
+      ],
+      "correspondance": "proposition"
+    },
+    {
       "id": "mecanique",
       "nom": "Mécanique",
       "savoirFaire": [
@@ -502,7 +808,12 @@
         "notion.physique-chimie.lois-de-newton",
         "notion.physique-chimie.energie-mecanique",
         "notion.physique-chimie.mouvement-et-interactions-l",
-        "notion.mathematiques.vecteurs"
+        "notion.mathematiques.vecteurs",
+        "notion.physique-chimie.mouvements",
+        "notion.physique-chimie.mouvement-et-vitesse-6e",
+        "notion.physique-chimie.gravitation-et-satellites",
+        "notion.physique-chimie.mouvement-et-vitesse-cm",
+        "notion.mathematiques.vitesse"
       ],
       "correspondance": "proposition"
     },
@@ -517,7 +828,10 @@
         "notion.musique.musique-ecoute-creation-et-histoire-l",
         "notion.musique.musique-genres-et-formes-c4",
         "notion.musique.musique-creation-et-engagement-c4",
-        "notion.musique.musique-notes-et-rythme-cm"
+        "notion.musique.musique-notes-et-rythme-cm",
+        "notion.musique.musique-lire-et-chanter-6e",
+        "notion.musique.musique-voix-et-ecoute-cm",
+        "notion.musique.musique-sons-et-chansons-c2"
       ],
       "correspondance": "proposition"
     },
@@ -537,6 +851,52 @@
       "correspondance": "proposition"
     },
     {
+      "id": "optique",
+      "nom": "Optique",
+      "savoirFaire": [
+        "Tracé de rayons lumineux",
+        "Réglage d’instruments optiques"
+      ],
+      "notions": [
+        "notion.physique-chimie.refraction-et-lentilles",
+        "notion.physique-chimie.lumiere-et-ombres-cm",
+        "notion.physique-chimie.diffraction-et-interferences",
+        "notion.physique-chimie.lumiere-et-son-6e"
+      ],
+      "correspondance": "proposition"
+    },
+    {
+      "id": "philosophie-ethique",
+      "nom": "Philosophie et éthique",
+      "savoirFaire": [
+        "Argumentation rationnelle",
+        "Questionnement éthique"
+      ],
+      "notions": [
+        "notion.philosophie.devoir",
+        "notion.philosophie.justice-philosophie",
+        "notion.philosophie.liberte-philosophie",
+        "notion.philosophie.verite",
+        "notion.philosophie.raison",
+        "notion.philosophie.conscience",
+        "notion.philosophie.inconscient",
+        "notion.philosophie.bonheur",
+        "notion.philosophie.travail",
+        "notion.philosophie.technique",
+        "notion.philosophie.science",
+        "notion.philosophie.etat",
+        "notion.philosophie.religion",
+        "notion.philosophie.nature",
+        "notion.philosophie.temps",
+        "notion.philosophie.art",
+        "notion.philosophie.philosophie-liberte-et-justice-l",
+        "notion.emc.fraternite",
+        "notion.emc.vivre-ensemble-c2",
+        "notion.emc.respect-et-egalite-cm"
+      ],
+      "correspondance": "proposition"
+    },
+    {
       "id": "physiologie-humaine",
       "nom": "Physiologie humaine",
       "savoirFaire": [
@@ -549,7 +909,14 @@
         "notion.svt.immunite-adaptative",
         "notion.svt.glycemie-et-diabete",
         "notion.svt.reproduction-humaine",
-        "notion.svt.microbes-et-sante-c4"
+        "notion.svt.microbes-et-sante-c4",
+        "notion.svt.reproduction-et-puberte-cm",
+        "notion.svt.respiration-circulation-cm",
+        "notion.svt.alimentation-digestion-cm",
+        "notion.svt.sante-et-prevention-c4",
+        "notion.svt.corps-et-sante-c2",
+        "notion.svt.contraction-musculaire",
+        "notion.svt.organisme-et-effort-6e"
       ],
       "correspondance": "proposition"
     },
@@ -618,6 +985,22 @@
         "notion.physique-chimie.thermodynamique"
       ],
       "correspondance": "v5"
+    },
+    {
+      "id": "sciences-de-la-terre",
+      "nom": "Sciences de la Terre et de l’Univers",
+      "savoirFaire": [
+        "Observation du ciel et de la Terre",
+        "Modélisation des phénomènes naturels"
+      ],
+      "notions": [
+        "notion.svt.terre-dans-le-systeme-solaire-6e",
+        "notion.svt.terre-et-systeme-solaire-cm",
+        "notion.svt.meteo-et-climat-c4",
+        "notion.svt.volcans-et-seismes-cm",
+        "notion.physique-chimie.univers-et-atome-l"
+      ],
+      "correspondance": "proposition"
     },
     {
       "id": "sociologie",
@@ -1971,7 +2354,8 @@
       "disciplines": [
         "calcul-professionnel",
         "physique",
-        "geometrie"
+        "geometrie",
+        "energetique"
       ],
       "gestes": [
         "Façonnage de tuyauteries",
@@ -2161,7 +2545,8 @@
       "disciplines": [
         "mecanique",
         "logique-mathematique",
-        "physique"
+        "physique",
+        "mathematiques-appliquees"
       ],
       "gestes": [
         "Calcul de structures",
@@ -2191,7 +2576,8 @@
       "disciplines": [
         "mecanique",
         "langues-vivantes",
-        "geographie"
+        "geographie",
+        "sciences-de-la-terre"
       ],
       "gestes": [
         "Préparation du plan de vol",
@@ -2239,7 +2625,8 @@
       "disciplines": [
         "langues-vivantes",
         "linguistique",
-        "expression-ecrite"
+        "expression-ecrite",
+        "litterature-et-culture"
       ],
       "gestes": [
         "Traduction de documents",
@@ -2272,7 +2659,8 @@
       "disciplines": [
         "expression-ecrite",
         "histoire",
-        "communication"
+        "communication",
+        "histoire-contemporaine"
       ],
       "gestes": [
         "Enquête et vérification des sources",
@@ -2398,7 +2786,8 @@
       "disciplines": [
         "expression-ecrite",
         "psychologie-cognitive",
-        "logique-mathematique"
+        "logique-mathematique",
+        "litterature-et-culture"
       ],
       "gestes": [
         "Préparation de séquences",
@@ -2463,7 +2852,8 @@
       "disciplines": [
         "histoire",
         "expression-ecrite",
-        "informatique"
+        "informatique",
+        "litterature-et-culture"
       ],
       "gestes": [
         "Catalogage",
@@ -2498,7 +2888,8 @@
       "disciplines": [
         "histoire-de-l-art",
         "langues-vivantes",
-        "histoire"
+        "histoire",
+        "histoire-contemporaine"
       ],
       "gestes": [
         "Préparation d’un parcours de visite",
@@ -2530,7 +2921,8 @@
       "disciplines": [
         "droit-et-institutions",
         "expression-ecrite",
-        "droit-des-contrats"
+        "droit-des-contrats",
+        "philosophie-ethique"
       ],
       "gestes": [
         "Analyse d’un dossier",
@@ -2711,7 +3103,8 @@
       "disciplines": [
         "physique",
         "statistiques",
-        "environnement"
+        "environnement",
+        "analyse-statistique"
       ],
       "gestes": [
         "Analyse des données d’observation",
@@ -2805,7 +3198,8 @@
       "disciplines": [
         "biologie",
         "chimie-analytique",
-        "physiologie-humaine"
+        "physiologie-humaine",
+        "biologie-cellulaire-genetique"
       ],
       "gestes": [
         "Examen clinique",
@@ -2862,7 +3256,8 @@
       "disciplines": [
         "physique",
         "physiologie-humaine",
-        "communication"
+        "communication",
+        "optique"
       ],
       "gestes": [
         "Contrôle de la vue",
@@ -2981,7 +3376,8 @@
       "disciplines": [
         "economie",
         "calcul-professionnel",
-        "communication"
+        "communication",
+        "economie-et-societe"
       ],
       "gestes": [
         "Analyse de la situation du client",
@@ -3027,6 +3423,1016 @@
         "employé/e de libre-service",
         "vendeur en magasin",
         "vendeuse en magasin"
+      ]
+    },
+    {
+      "id": "maitre-nageur-sauveteur",
+      "nom": "Maître-nageur sauveteur",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "physiologie-humaine"
+      ],
+      "gestes": [
+        "Surveillance des bassins",
+        "Sauvetage aquatique",
+        "Apprentissage de la nage"
+      ],
+      "contexte": "Surveillance des baignades et enseignement de la natation.",
+      "correspondance": "proposition",
+      "onisep": "MET.569",
+      "rome": [
+        "G1204"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "santé, social, sport/sport"
+      ],
+      "synonymes": [
+        "animateur/trice d'activités aquatiques",
+        "éducateur/trice d'activités aquatiques",
+        "éducateur/trice des activités de la natation",
+        "éducateur/trice sportif/ve des activités aquatiques et de la natation",
+        "moniteur/trice de natation",
+        "maître-nageur sauveteur",
+        "maîtresse-nageuse sauveteuse"
+      ]
+    },
+    {
+      "id": "professeur-d-eps",
+      "nom": "Professeur d’EPS",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "physiologie-humaine",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Conception de cycles sportifs",
+        "Évaluation des performances",
+        "Sécurité et arbitrage"
+      ],
+      "contexte": "Enseignement de l’éducation physique et sportive au collège et au lycée.",
+      "correspondance": "proposition",
+      "onisep": "MET.43",
+      "rome": [
+        "K2107"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "lettres, langues, enseignement/enseignement",
+        "santé, social, sport/sport"
+      ],
+      "synonymes": [
+        "professeur/e d'EPS",
+        "professeur d'EPS (éducation physique et sportive)",
+        "professeure d'EPS (éducation physique et sportive)"
+      ]
+    },
+    {
+      "id": "moniteur-de-ski",
+      "nom": "Moniteur de ski",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "sciences-de-la-terre",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Démonstration technique",
+        "Lecture de la neige et de la météo",
+        "Encadrement de groupes"
+      ],
+      "contexte": "Enseignement du ski en station.",
+      "correspondance": "proposition",
+      "onisep": "MET.312",
+      "rome": [
+        "G1204"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "santé, social, sport/sport"
+      ],
+      "synonymes": [
+        "moniteur/rice national/e de ski de fond",
+        "moniteur/trice national/e de ski alpin",
+        "moniteur de ski",
+        "monitrice de ski"
+      ]
+    },
+    {
+      "id": "entraineur-sportif",
+      "nom": "Entraîneur sportif",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "physiologie-humaine",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Planification des entraînements",
+        "Analyse de la performance",
+        "Motivation des sportifs"
+      ],
+      "contexte": "Préparation d’athlètes ou d’équipes à la compétition.",
+      "correspondance": "proposition",
+      "onisep": "MET.481",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "santé, social, sport/sport"
+      ],
+      "synonymes": [
+        "coach (entraîneur/e) sportif/ve",
+        "entraîneur sportif",
+        "entraîneure sportive"
+      ]
+    },
+    {
+      "id": "guide-de-haute-montagne",
+      "nom": "Guide de haute montagne",
+      "categorie": "nature",
+      "disciplines": [
+        "education-physique",
+        "geologie",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Choix d’itinéraire",
+        "Évaluation du risque d’avalanche",
+        "Encordement et assurage"
+      ],
+      "contexte": "Accompagnement de clients en montagne.",
+      "correspondance": "proposition",
+      "onisep": "MET.918",
+      "rome": [
+        "G1201"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "santé, social, sport/sport",
+        "hôtellerie-restauration, tourisme/tourisme"
+      ],
+      "synonymes": [
+        "guide de haute montagne"
+      ]
+    },
+    {
+      "id": "luthier",
+      "nom": "Luthier",
+      "categorie": "craft",
+      "disciplines": [
+        "musique",
+        "acoustique",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Choix et travail du bois",
+        "Réglage du son de l’instrument",
+        "Restauration d’instruments"
+      ],
+      "contexte": "Fabrication et réparation d’instruments à cordes.",
+      "correspondance": "proposition",
+      "onisep": "MET.966",
+      "rome": [
+        "B1501"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "arts, culture, artisanat/arts du spectacle",
+        "matières premières, fabrication, industries/bois",
+        "arts, culture, artisanat/restauration d'art"
+      ],
+      "synonymes": [
+        "luthier",
+        "luthière"
+      ]
+    },
+    {
+      "id": "accordeur-de-piano",
+      "nom": "Accordeur de piano",
+      "categorie": "craft",
+      "disciplines": [
+        "musique",
+        "acoustique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Écoute des intervalles",
+        "Réglage de la mécanique",
+        "Accord des cordes"
+      ],
+      "contexte": "Accord et entretien des pianos.",
+      "correspondance": "proposition",
+      "onisep": "MET.7935",
+      "rome": [
+        "B1501"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "arts, culture, artisanat/arts du spectacle"
+      ],
+      "synonymes": [
+        "accordeur de piano",
+        "accordeuse de piano"
+      ]
+    },
+    {
+      "id": "chanteur",
+      "nom": "Chanteur",
+      "categorie": "craft",
+      "disciplines": [
+        "musique",
+        "langues-vivantes",
+        "litterature-et-culture"
+      ],
+      "gestes": [
+        "Échauffement vocal",
+        "Interprétation d’un répertoire",
+        "Travail de la diction"
+      ],
+      "contexte": "Interprétation de chansons ou d’œuvres lyriques.",
+      "correspondance": "proposition",
+      "onisep": "MET.7",
+      "rome": [
+        "L1202"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle"
+      ],
+      "synonymes": [
+        "chanteur/euse de variétés",
+        "chanteur/euse lyrique",
+        "choriste",
+        "interprète",
+        "soliste",
+        "chanteur",
+        "chanteuse"
+      ]
+    },
+    {
+      "id": "danseur",
+      "nom": "Danseur",
+      "categorie": "craft",
+      "disciplines": [
+        "education-physique",
+        "musique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Entraînement quotidien",
+        "Mémorisation de chorégraphies",
+        "Expression scénique"
+      ],
+      "contexte": "Interprétation de chorégraphies sur scène.",
+      "correspondance": "proposition",
+      "onisep": "MET.42",
+      "rome": [
+        "L1201"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle",
+        "santé, social, sport/sport"
+      ],
+      "synonymes": [
+        "artiste chorégraphique",
+        "danseur",
+        "danseuse"
+      ]
+    },
+    {
+      "id": "comedien",
+      "nom": "Comédien",
+      "categorie": "craft",
+      "disciplines": [
+        "litterature-et-culture",
+        "expression-ecrite",
+        "education-physique"
+      ],
+      "gestes": [
+        "Apprentissage du texte",
+        "Travail de la voix et du corps",
+        "Jeu en répétition"
+      ],
+      "contexte": "Interprétation de rôles au théâtre, au cinéma ou à la télévision.",
+      "correspondance": "proposition",
+      "onisep": "MET.146",
+      "rome": [
+        "L1203"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle",
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "acteur/trice de cinéma",
+        "comédien",
+        "comédienne"
+      ]
+    },
+    {
+      "id": "steward-hotesse-de-l-air",
+      "nom": "Hôtesse de l’air, steward",
+      "categorie": "btp",
+      "disciplines": [
+        "langues-vivantes",
+        "physiologie-humaine",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Démonstration des consignes de sécurité",
+        "Accueil des passagers en plusieurs langues",
+        "Gestes de premiers secours"
+      ],
+      "contexte": "Sécurité et confort des passagers en vol.",
+      "correspondance": "proposition",
+      "onisep": "MET.772",
+      "rome": [
+        "N2101"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "agent/e de bord",
+        "membre d'équipage de cabine",
+        "personnel navigant commercial (PNC)",
+        "steward",
+        "hôtesse de l'air"
+      ]
+    },
+    {
+      "id": "conseiller-en-voyages",
+      "nom": "Conseiller en voyages",
+      "categorie": "trade",
+      "disciplines": [
+        "langues-vivantes",
+        "amenagement-du-territoire",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Conception d’itinéraires",
+        "Calcul de devis",
+        "Conseil sur les destinations"
+      ],
+      "contexte": "Organisation et vente de voyages.",
+      "correspondance": "proposition",
+      "onisep": "MET.604",
+      "rome": [
+        "G1303"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/tourisme"
+      ],
+      "synonymes": [
+        "agent/e de comptoir",
+        "agent/e de voyage",
+        "billettiste",
+        "billettiste d'affaires",
+        "conseiller en voyages",
+        "conseillère en voyages"
+      ]
+    },
+    {
+      "id": "archiviste",
+      "nom": "Archiviste",
+      "categorie": "services",
+      "disciplines": [
+        "histoire-contemporaine",
+        "expression-ecrite",
+        "informatique"
+      ],
+      "gestes": [
+        "Classement et cotation",
+        "Conservation des documents",
+        "Recherche pour le public"
+      ],
+      "contexte": "Collecte, conservation et communication des archives.",
+      "correspondance": "proposition",
+      "onisep": "MET.563",
+      "rome": [
+        "K1601"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "information-communication, audiovisuel/bibliothèque, documentation"
+      ],
+      "synonymes": [
+        "assistant/e de conservation des archives",
+        "conservateur/trice des archives",
+        "archiviste"
+      ]
+    },
+    {
+      "id": "conservateur-du-patrimoine",
+      "nom": "Conservateur du patrimoine",
+      "categorie": "services",
+      "disciplines": [
+        "histoire-de-l-art",
+        "histoire-contemporaine",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Inventaire des collections",
+        "Conception d’expositions",
+        "Conservation préventive"
+      ],
+      "contexte": "Gestion et valorisation des collections d’un musée ou d’un patrimoine.",
+      "correspondance": "proposition",
+      "onisep": "MET.692",
+      "rome": [
+        "K1602"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "arts, culture, artisanat/activités culturelles",
+        "information-communication, audiovisuel/bibliothèque, documentation",
+        "histoire-géographie, psychologie, sociologie/histoire",
+        "arts, culture, artisanat/histoire de l'art"
+      ],
+      "synonymes": [
+        "archéologue",
+        "archiviste",
+        "directeur/trice de collection",
+        "directeur/trice de musée",
+        "conservateur du patrimoine",
+        "conservatrice du patrimoine"
+      ]
+    },
+    {
+      "id": "libraire",
+      "nom": "Libraire",
+      "categorie": "trade",
+      "disciplines": [
+        "litterature-et-culture",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Sélection des ouvrages",
+        "Conseil de lecture",
+        "Gestion des stocks"
+      ],
+      "contexte": "Vente et conseil de livres en librairie.",
+      "correspondance": "proposition",
+      "onisep": "MET.269",
+      "rome": [
+        "D1211"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "employé/e en librairie",
+        "vendeur/euse en librairie",
+        "libraire"
+      ]
+    },
+    {
+      "id": "ecrivain",
+      "nom": "Écrivain",
+      "categorie": "mkt",
+      "disciplines": [
+        "litterature-et-culture",
+        "expression-ecrite",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Recherche documentaire",
+        "Rédaction et réécriture",
+        "Travail avec l’éditeur"
+      ],
+      "contexte": "Écriture de romans, d’essais ou de récits.",
+      "correspondance": "proposition",
+      "onisep": "MET.463",
+      "rome": [
+        "E1102"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "lettres, langues, enseignement/lettres, linguistique"
+      ],
+      "synonymes": [
+        "auteur/trice",
+        "biographe",
+        "essayiste",
+        "poète/esse",
+        "romancier/ère",
+        "écrivain",
+        "écrivaine"
+      ]
+    },
+    {
+      "id": "correcteur",
+      "nom": "Correcteur",
+      "categorie": "mkt",
+      "disciplines": [
+        "expression-ecrite",
+        "linguistique"
+      ],
+      "gestes": [
+        "Correction orthographique et grammaticale",
+        "Vérification typographique",
+        "Harmonisation d’un texte"
+      ],
+      "contexte": "Relecture de textes avant publication.",
+      "correspondance": "proposition",
+      "onisep": "MET.331",
+      "rome": [
+        "E1305"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "information-communication, audiovisuel/industries graphiques",
+        "information-communication, audiovisuel/journalisme, édition, publicité"
+      ],
+      "synonymes": [
+        "lecteur/trice-correcteur/trice",
+        "relecteur/trice",
+        "réviseur/euse",
+        "rewriter",
+        "correcteur",
+        "correctrice"
+      ]
+    },
+    {
+      "id": "geomaticien",
+      "nom": "Géomaticien",
+      "categorie": "app",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "informatique",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Collecte de données géographiques",
+        "Cartographie numérique",
+        "Analyse spatiale"
+      ],
+      "contexte": "Gestion et analyse de données géographiques sur ordinateur.",
+      "correspondance": "proposition",
+      "onisep": "MET.192",
+      "rome": [
+        "M1808"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/aménagement du territoire",
+        "histoire-géographie, psychologie, sociologie/géographie",
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "administrateur/trice des systèmes d'information géographique",
+        "responsable des systèmes d'information géographique",
+        "responsable SIG (systèmes d'information géographique)",
+        "technicien/ne des systèmes d'information géographique",
+        "technicien/ne SIG (systèmes d'information géographique)",
+        "géomaticien",
+        "géomaticienne"
+      ]
+    },
+    {
+      "id": "cartographe",
+      "nom": "Cartographe",
+      "categorie": "app",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "geometrie",
+        "design-graphique"
+      ],
+      "gestes": [
+        "Choix des projections et des échelles",
+        "Sémiologie graphique",
+        "Mise à jour des cartes"
+      ],
+      "contexte": "Conception de cartes papier et numériques.",
+      "correspondance": "proposition",
+      "onisep": "MET.31",
+      "rome": [
+        "M1808"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "histoire-géographie, psychologie, sociologie/géographie",
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "cartographe géomaticien/ne",
+        "cartographe SIG",
+        "concepteur/trice de cartes",
+        "dessinateur/trice cartographe",
+        "ingénieur/e cartographe",
+        "cartographe"
+      ]
+    },
+    {
+      "id": "statisticien",
+      "nom": "Statisticien",
+      "categorie": "disc",
+      "disciplines": [
+        "analyse-statistique",
+        "informatique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Conception d’enquêtes",
+        "Traitement de données",
+        "Interprétation des résultats"
+      ],
+      "contexte": "Analyse de données chiffrées pour éclairer les décisions.",
+      "correspondance": "proposition",
+      "onisep": "MET.461",
+      "rome": [
+        "M1403"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "sciences/mathématiques"
+      ],
+      "synonymes": [
+        "chargé/e d'études statistiques",
+        "statisticien",
+        "statisticienne"
+      ]
+    },
+    {
+      "id": "actuaire",
+      "nom": "Actuaire",
+      "categorie": "trade",
+      "disciplines": [
+        "analyse-statistique",
+        "mathematiques-appliquees",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Modélisation des risques",
+        "Calcul de tarifs",
+        "Projections financières"
+      ],
+      "contexte": "Évaluation des risques pour l’assurance et la banque.",
+      "correspondance": "proposition",
+      "onisep": "MET.861",
+      "rome": [
+        "C1105"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "banque, assurances, immobilier/assurances",
+        "sciences/mathématiques"
+      ],
+      "synonymes": [
+        "chargé/e d'études actuarielles",
+        "ingénieur/e en assurances",
+        "actuaire"
+      ]
+    },
+    {
+      "id": "analyste-financier",
+      "nom": "Analyste financier",
+      "categorie": "trade",
+      "disciplines": [
+        "economie-et-societe",
+        "analyse-statistique",
+        "comptabilite"
+      ],
+      "gestes": [
+        "Analyse des comptes",
+        "Modélisation financière",
+        "Rédaction de notes d’investissement"
+      ],
+      "contexte": "Évaluation de la santé financière des entreprises.",
+      "correspondance": "proposition",
+      "onisep": "MET.397",
+      "rome": [
+        "M1201"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "banque, assurances, immobilier/finances"
+      ],
+      "synonymes": [
+        "chargé/e d'études financières et ESG",
+        "économiste financier/ère et ESG",
+        "ingénieur/e financier/ère et ESG",
+        "analyste financier et ESG",
+        "analyste financière et ESG"
+      ]
+    },
+    {
+      "id": "notaire",
+      "nom": "Notaire",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "droit-des-contrats",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Rédaction d’actes",
+        "Conseil juridique",
+        "Calcul des droits"
+      ],
+      "contexte": "Officier public qui rédige et authentifie les actes.",
+      "correspondance": "proposition",
+      "onisep": "MET.558",
+      "rome": [
+        "K1901"
+      ],
+      "niveauAcces": "bac+7",
+      "domaines": [
+        "économie, droit, politique/droit privé"
+      ],
+      "synonymes": [
+        "notaire"
+      ]
+    },
+    {
+      "id": "sapeur-pompier",
+      "nom": "Sapeur-pompier",
+      "categorie": "services",
+      "disciplines": [
+        "physiologie-humaine",
+        "education-physique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Secours à personne",
+        "Lutte contre l’incendie",
+        "Entraînement physique"
+      ],
+      "contexte": "Secours aux personnes et protection contre les incendies.",
+      "correspondance": "proposition",
+      "onisep": "MET.572",
+      "rome": [
+        "K1705"
+      ],
+      "niveauAcces": "sans-diplome",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "pompière",
+        "sapeur-pompier",
+        "sapeuse-pompière"
+      ]
+    },
+    {
+      "id": "educateur-specialise",
+      "nom": "Éducateur spécialisé",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "philosophie-ethique",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Accompagnement éducatif",
+        "Travail en équipe pluridisciplinaire",
+        "Médiation avec les familles"
+      ],
+      "contexte": "Accompagnement de personnes en difficulté ou en situation de handicap.",
+      "correspondance": "proposition",
+      "onisep": "MET.311",
+      "rome": [
+        "K1207"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "santé, social, sport/travail social"
+      ],
+      "synonymes": [
+        "éducateur spécialisé",
+        "éducatrice spécialisée"
+      ]
+    },
+    {
+      "id": "assistant-de-service-social",
+      "nom": "Assistant de service social",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "economie-et-societe",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Accueil et écoute",
+        "Montage de dossiers d’aide",
+        "Orientation vers les dispositifs"
+      ],
+      "contexte": "Aide aux personnes face à leurs difficultés sociales.",
+      "correspondance": "proposition",
+      "onisep": "MET.64",
+      "rome": [
+        "K1201"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "santé, social, sport/travail social"
+      ],
+      "synonymes": [
+        "assistant/e social/e",
+        "assistant de service social",
+        "assistante de service social"
+      ]
+    },
+    {
+      "id": "conseiller-principal-d-education",
+      "nom": "Conseiller principal d’éducation",
+      "categorie": "services",
+      "disciplines": [
+        "philosophie-ethique",
+        "psychologie-sociale",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Suivi de la vie scolaire",
+        "Médiation des conflits",
+        "Animation de la vie lycéenne"
+      ],
+      "contexte": "Organisation de la vie scolaire dans un collège ou un lycée.",
+      "correspondance": "proposition",
+      "onisep": "MET.278",
+      "rome": [
+        "K2104"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "lettres, langues, enseignement/enseignement"
+      ],
+      "synonymes": [
+        "conseiller principal d'éducation",
+        "conseillère principale d'éducation"
+      ]
+    },
+    {
+      "id": "geneticien",
+      "nom": "Généticien",
+      "categorie": "disc",
+      "disciplines": [
+        "biologie-cellulaire-genetique",
+        "analyse-statistique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Séquençage et analyse d’ADN",
+        "Interprétation de résultats",
+        "Conseil aux patients ou aux chercheurs"
+      ],
+      "contexte": "Étude des gènes et de leur transmission.",
+      "correspondance": "proposition",
+      "onisep": "MET.465",
+      "rome": [
+        "J1201"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/biologie",
+        "santé, social, sport/médical"
+      ],
+      "synonymes": [
+        "chercheur / euse en génétique",
+        "généticien",
+        "généticienne"
+      ]
+    },
+    {
+      "id": "ingenieur-opticien",
+      "nom": "Ingénieur opticien",
+      "categorie": "disc",
+      "disciplines": [
+        "optique",
+        "mathematiques-appliquees",
+        "physique"
+      ],
+      "gestes": [
+        "Conception de systèmes optiques",
+        "Simulation numérique",
+        "Essais en laboratoire"
+      ],
+      "contexte": "Conception d’instruments optiques et de lasers.",
+      "correspondance": "proposition",
+      "onisep": "MET.32",
+      "rome": [
+        "K2402"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "électricité, électronique, robotique/électronique",
+        "mécanique/mécanique (généralités)",
+        "sciences/physique"
+      ],
+      "synonymes": [
+        "ingénieur/e en optique",
+        "ingénieur opticien",
+        "ingénieure opticienne"
+      ]
+    },
+    {
+      "id": "astrophysicien",
+      "nom": "Astrophysicien",
+      "categorie": "disc",
+      "disciplines": [
+        "sciences-de-la-terre",
+        "mathematiques-appliquees",
+        "optique"
+      ],
+      "gestes": [
+        "Observation au télescope",
+        "Modélisation numérique",
+        "Publication de résultats"
+      ],
+      "contexte": "Étude des astres et de l’univers.",
+      "correspondance": "proposition",
+      "onisep": "MET.24",
+      "rome": [
+        "K2402"
+      ],
+      "niveauAcces": "bac+8",
+      "domaines": [
+        "sciences/physique",
+        "sciences/sciences de l'univers"
+      ],
+      "synonymes": [
+        "astronome",
+        "astrophysicien",
+        "astrophysicienne"
+      ]
+    },
+    {
+      "id": "ingenieur-chimiste",
+      "nom": "Ingénieur chimiste",
+      "categorie": "disc",
+      "disciplines": [
+        "chimie-analytique",
+        "chimie-des-materiaux",
+        "energetique"
+      ],
+      "gestes": [
+        "Mise au point de procédés",
+        "Contrôle de la qualité",
+        "Sécurité des installations"
+      ],
+      "contexte": "Conception et amélioration de procédés de fabrication chimique.",
+      "correspondance": "proposition",
+      "onisep": "MET.170",
+      "rome": [
+        "H2502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "sciences/chimie",
+        "matières premières, fabrication, industries/matériaux",
+        "santé, social, sport/médical",
+        "matières premières, fabrication, industries/méthodes industrialisation"
+      ],
+      "synonymes": [
+        "chimiste",
+        "ingénieur chimiste",
+        "ingénieure chimiste"
+      ]
+    },
+    {
+      "id": "animateur-nature",
+      "nom": "Animateur nature",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "environnement",
+        "communication"
+      ],
+      "gestes": [
+        "Préparation de sorties",
+        "Observation de la faune et de la flore",
+        "Sensibilisation à l’environnement"
+      ],
+      "contexte": "Faire découvrir la nature au public.",
+      "correspondance": "proposition",
+      "onisep": "MET.77",
+      "rome": [
+        "G1202"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/environnement (généralités)",
+        "hôtellerie-restauration, tourisme/tourisme"
+      ],
+      "synonymes": [
+        "animateur/trice biodiversité",
+        "animateur/trice environnement",
+        "éco-interprète",
+        "éducateur/trice environnement",
+        "éducateur/trice nature",
+        "guide animateur/trice",
+        "animateur nature",
+        "animatrice nature"
       ]
     }
   ]
