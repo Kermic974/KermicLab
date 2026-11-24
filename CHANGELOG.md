@@ -8,6 +8,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 - **Build Windows** : lecture des objets S4 par lots bornés, pour éviter `EMFILE` avec le corpus étendu de 8 250 objets ; mêmes fichiers et même ordre de projection. / Bound S4 file reads to prevent Windows file-handle exhaustion.
 
+- **Correctif de traduction** : libellés français et anglais du menu « Mes espaces » et de son bouton mobile, manquants après la synchronisation de main ; contrôle i18n rétabli. / Restore the missing desktop and mobile My spaces labels in both languages.
+
 ## [0.2.0] — 2026-11-23
 
 - **Correctif : « Se connecter » sans effet au chargement** : les boutons de navigation (dont « Se connecter » et les onglets) ne répondaient qu'une fois le catalogue chargé, soit plusieurs secondes sur une connexion lente ; les clics faits avant étaient perdus. La navigation est désormais branchée dès le démarrage. Tests : catalogue lent, et compte en ligne retrouvé sur un nouvel appareil. / Fix: navigation buttons, including "Log in", were inert until the catalogue had loaded.
