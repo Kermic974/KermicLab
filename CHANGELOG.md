@@ -4,7 +4,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
-- **S7 — contrats et moteur d'évaluation** : adoption de #428 enregistrée ; schémas fermés, correcteur/journal purs, méthodes figées par version/empreinte, validateur de définitions/historique et rapport CI S5. Les entrées de réponse restent éphémères ; aucune page, persistance ou maîtrise S8 n'est branchée à ce stade. / S7 closed contracts, pure correction/journal kernel and read-only CI validation; public integration remains pending.
+- **Vagues complémentaires de métiers** (chantier Métiers) : outil `npm run vague:metiers` pour faire entrer les 1 032 fiches ONISEP restantes par vagues (squelette par domaine avec nom affiché, famille et disciplines proposées, vérification, garde anti-recopie, fusion en « proposition ») ; repli des disciplines par domaine ONISEP pour les fiches sans code ROME ; le test de l'écran Métiers suit la limite des anneaux au-delà de 120 métiers. / Tooling for further ONISEP career waves.
 
 - **Tests Windows** : conversion des URL de fichier des tests CLI ONISEP et libellés MicroSkills avec `fileURLToPath`, pour éviter le lecteur Windows doublé ; assertions inchangées. / Fix Windows file URL paths in ONISEP CLI and MicroSkill label tests.
 
