@@ -1521,3 +1521,71 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   .metiers-espace { grid-template-columns: 1fr; }
   .metiers-liste { max-height: 50vh; }
 }
+
+/* ---------- Lot 9 (ADR 0039) : menu « Mes espaces » et espaces Famille / Professeur ----------
+   Les espaces liés au rôle s'ouvrent par un seul bouton de la barre (accès rapides) ; leurs écrans passent en pleine
+   largeur, en deux colonnes sur grand écran (contenu à gauche, indicateurs à droite). */
+.nav-espaces-chevron { margin-left: auto; transform: rotate(90deg); transition: transform .15s ease; }
+.nav-espaces[aria-expanded="true"] .nav-espaces-chevron { transform: rotate(-90deg); }
+.nav-espaces[aria-expanded="true"] { background: var(--accent-doux); color: var(--accent-doux-texte); }
+@media (max-width: 1023px) { .nav-espaces-chevron { display: none; } .barre-laterale > .nav-espaces { width: 100%; } }
+@media (min-width: 1024px) {
+  .barre-laterale > .nav-espaces {
+    width: auto; flex: none; min-height: 44px; padding: 0 14px; gap: 8px; border-radius: 999px; white-space: nowrap;
+    border: 1px solid var(--bord); background: var(--surface-2);
+  }
+}
+.menu-espaces {
+  position: fixed; z-index: 75; display: grid; gap: 16px; padding: 16px; overflow-y: auto; overscroll-behavior: contain;
+  border: 1px solid var(--bord); border-radius: 18px; background: var(--surface); box-shadow: var(--ombre-forte);
+}
+.menu-espaces[hidden] { display: none; }
+/* Menu ouvert : le bouton flottant de la boîte à idées ne le recouvre pas. */
+:root[data-menu-espaces] .boite-idees-flottante { visibility: hidden; }
+.menu-espaces-sections { display: grid; gap: 16px; }
+.menu-espaces-groupe { padding-left: 12px; border-left: 4px solid var(--espace); }
+.menu-espaces-groupe[data-espace-carte="famille"] { --espace-fort: #134e4a; --espace: #0f766e; --espace-texte: #ffffff; }
+.menu-espaces-groupe[data-espace-carte="professeur"] { --espace-fort: #312e81; --espace: #4338ca; --espace-texte: #ffffff; }
+.menu-espaces-groupe[data-espace-carte="contributions"] { --espace-fort: #7c2d12; --espace: #c2410c; --espace-texte: #ffffff; }
+.menu-espaces-titre { margin: 0 0 6px; font-size: 11.5px; font-weight: 750; text-transform: uppercase; letter-spacing: .05em; color: var(--doux); }
+.menu-espaces-liens { display: grid; gap: 2px; }
+.menu-espaces-lien {
+  display: flex; align-items: center; gap: 10px; width: 100%; min-height: 44px; padding: 8px 10px; border: 0; border-radius: 10px;
+  background: none; color: var(--texte); font: inherit; font-weight: 650; text-align: left; cursor: pointer;
+}
+.menu-espaces-lien .ico { color: var(--espace); }
+.menu-espaces-lien:hover { background: var(--surface-2); }
+.menu-espaces-lien[aria-current="page"] { background: var(--accent-doux); color: var(--accent-doux-texte); }
+.menu-espaces-sous { margin: 10px 0 6px; font-size: 13px; color: var(--doux); }
+.menu-espaces-puces { display: flex; flex-wrap: wrap; gap: 6px; }
+.menu-espaces-puce {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 4px 14px 4px 4px; border-radius: 999px;
+  border: 1px solid var(--bord); background: var(--surface-2); color: var(--texte); font: inherit; font-weight: 650; cursor: pointer;
+}
+.menu-espaces-puce:hover { border-color: var(--espace); }
+.menu-espaces-puce .pastille-initiale { width: 34px; height: 34px; border-radius: 999px; font-size: 14px; }
+.menu-espaces-puce .pastille-initiale .ico { width: 18px; height: 18px; }
+.menu-espaces-actions { margin-top: 10px; }
+
+/* Sous-navigation : seules les vues de l'espace affiché (les autres sont dans « Mes espaces »). */
+#navigation-personnelle [data-autre-espace], #navigation-personnelle[data-une-vue] { display: none; }
+
+/* Écrans des espaces Famille et Professeur. */
+.espace-entete { display: flex; justify-content: flex-end; margin: 0 0 14px; }
+.espace-actions { justify-content: flex-end; }
+.espace-colonnes { display: grid; gap: 4px 28px; }
+.espace-principal, .espace-cote { min-width: 0; }
+@media (min-width: 1100px) {
+  .espace-colonnes { grid-template-columns: minmax(0, 1fr) minmax(300px, 360px); align-items: start; }
+  .espace-cote { padding-left: 24px; border-left: 1px solid var(--bord); }
+  .espace-cote .chiffres { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 900px) {
+  .grille-cartes { grid-template-columns: repeat(auto-fill, minmax(min(100%, 400px), 1fr)); align-items: start; }
+}
+.ef-vue { border: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.ef-vue legend { float: left; margin-right: 4px; font-weight: 700; }
+.ef-vue > p.doux { flex-basis: 100%; order: 3; margin: 0; }
+.ef-vue #ef-selection-enfants { gap: 6px; }
+.ef-vue .prof-case { min-height: 40px; padding: 4px 14px 4px 10px; border-radius: 999px; border: 1px solid var(--bord); background: var(--surface-2); cursor: pointer; }
+.ef-vue .prof-case:has(input:checked) { border-color: var(--espace); background: color-mix(in srgb, var(--espace) 10%, var(--surface)); }

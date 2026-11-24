@@ -1637,5 +1637,14 @@
   "metiersGrapheAria": "3D graph of {notions} topic(s), their direct prerequisites and MicroSkills ({noeuds} items). Arrow keys: rotate; plus and minus: zoom.",
   "metiersGrapheAide": "{notions} circled topic(s), with their direct prerequisites and MicroSkills ({noeuds} items). Drag to rotate, tap a point to name it.",
   "navEspaces": "My spaces",
-  "navEspacesCourt": "Spaces"
+  "navEspacesCourt": "Spaces",
+  "efIndicateurs": "Indicators",
+  "espacesGroupe_famille": "Family",
+  "espacesGroupe_professeur": "Teacher",
+  "espacesGroupe_contributions": "Contributions",
+  "espacesEnfants": "My children",
+  "espacesClasses": "My classes",
+  "espacesEnfantAria": "{nom}'s progress",
+  "espacesClasseAria": "Students in class {nom}",
+  "espacesChargement": "Loading…"
 }
