@@ -4,6 +4,7 @@ import { execFileSync } from "node:child_process";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { verifierDepot } from "./verifier-versions.mjs";
+import { clesDupliquees } from "./cles-dupliquees.mjs";
 
 const racine = fileURLToPath(new URL("..", import.meta.url));
 const ignores = new Set(["node_modules", ".git", "dist", ".wrangler", "generated", "catalogue-prive"]);
@@ -37,7 +38,14 @@ for (const f of fichiers) {
 const dossierI18n = path.join(racine, "web/i18n");
 const langues = (await readdir(dossierI18n)).filter((f) => f.endsWith(".json"));
 const cles = {};
-for (const l of langues) cles[l] = Object.keys(JSON.parse(await readFile(path.join(dossierI18n, l), "utf8"))).sort();
+for (const l of langues) {
+  const texte = await readFile(path.join(dossierI18n, l), "utf8");
+  cles[l] = Object.keys(JSON.parse(texte)).sort();
+  // JSON.parse garde la dernière valeur d'une clé répétée sans rien signaler : contrôle sur le texte brut.
+  for (const { chemin, cle, lignes } of clesDupliquees(texte)) {
+    erreurs.push(`web/i18n/${l}: clé en double « ${chemin ? `${chemin}.` : ""}${cle} » (lignes ${lignes.join(", ")})`);
+  }
+}
 const reference = cles["fr.json"];
 for (const [l, c] of Object.entries(cles)) {
   const manquantes = reference.filter((k) => !c.includes(k));

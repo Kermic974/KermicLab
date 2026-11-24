@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Lint i18n : clés en double détectées** : `npm run lint` relit le texte brut des fichiers `web/i18n/*.json` et échoue sur une clé répétée (JSON.parse gardait silencieusement la dernière valeur ; onze clés du menu « Mes espaces » l'avaient été après des fusions). Le libellé accessible `espacesClasseAria` retrouve sa valeur effective d'avant le dédoublonnage (« Élèves de la classe {nom} »). / i18n lint now fails on duplicate keys; restored the effective `espacesClasseAria` label.
+
 - **Tests Windows** : conversion des URL de fichier des tests CLI ONISEP et libellés MicroSkills avec `fileURLToPath`, pour éviter le lecteur Windows doublé ; assertions inchangées. / Fix Windows file URL paths in ONISEP CLI and MicroSkill label tests.
 
 - **S7 → S10, préparation des livraisons** : audit des 36 pages Notion et du runtime réel, proposition S7 v1.0.0 / ADR 0043, matrice de vérification et chaîne de livraisons successives. Les propositions restent soumises à adoption humaine ; aucune série n'est déclarée implémentée ou déployée. / Prepare the S7–S10 delivery chain and proposed S7 contract; no implementation or deployment is claimed.
