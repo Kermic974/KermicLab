@@ -1635,5 +1635,16 @@
   "metiersSansNotion": "Pas encore de notion KermicLab reliée à cette discipline.",
   "metiersProposition": "Correspondance proposée, en cours de relecture : {disciplines}.",
   "metiersGrapheAria": "Graphe 3D de {notions} notion(s), de leurs prérequis directs et de leurs MicroSkills ({noeuds} éléments). Flèches : tourner ; plus et moins : zoomer.",
-  "metiersGrapheAide": "{notions} notion(s) entourées, avec leurs prérequis directs et leurs MicroSkills ({noeuds} éléments). Glisse pour tourner, touche un point pour le nommer."
+  "metiersGrapheAide": "{notions} notion(s) entourées, avec leurs prérequis directs et leurs MicroSkills ({noeuds} éléments). Glisse pour tourner, touche un point pour le nommer.",
+  "navEspaces": "Mes espaces",
+  "navEspacesCourt": "Espaces",
+  "efIndicateurs": "Indicateurs",
+  "espacesGroupe_famille": "Famille",
+  "espacesGroupe_professeur": "Professeur",
+  "espacesGroupe_contributions": "Contributions",
+  "espacesEnfants": "Mes enfants",
+  "espacesClasses": "Mes classes",
+  "espacesEnfantAria": "Progression de {nom}",
+  "espacesClasseAria": "Élèves de la classe {nom}",
+  "espacesChargement": "Chargement…"
 }
