@@ -1568,8 +1568,6 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 .menu-espaces-puce .pastille-initiale .ico { width: 18px; height: 18px; }
 .menu-espaces-actions { margin-top: 10px; }
 
-/* Sous-navigation : seules les vues de l'espace affiché (les autres sont dans « Mes espaces »). */
-#navigation-personnelle [data-autre-espace], #navigation-personnelle[data-une-vue] { display: none; }
 
 /* Écrans des espaces Famille et Professeur. */
 .espace-entete { display: flex; justify-content: flex-end; margin: 0 0 14px; }
