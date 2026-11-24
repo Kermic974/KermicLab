@@ -1461,6 +1461,25 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
   .barre-pied .profil-carte { padding: 2px; }
   .barre-laterale .marque-textes { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 }
+/* Barre du haut trop pleine (destinations configurées, Métiers, « Mes espaces », langue) : compactage progressif posé
+   par web/app.js (compacterBarre) d'après la place mesurée, sans masquer d'entrée ; chaque palier garde le nom accessible. */
+@media (min-width: 1024px) {
+  .barre-laterale[data-compact] .nav .nav-bouton .ico { display: none; }
+  .barre-laterale[data-compact="2"] .profil-textes, .barre-laterale[data-compact="3"] .profil-textes,
+  .barre-laterale[data-compact="4"] .profil-textes, .barre-laterale[data-compact="5"] .profil-textes,
+  .barre-laterale[data-compact="3"] .marque-textes, .barre-laterale[data-compact="4"] .marque-textes,
+  .barre-laterale[data-compact="5"] .marque-textes,
+  .barre-laterale[data-compact="4"] > .nav-espaces .nav-texte, .barre-laterale[data-compact="5"] > .nav-espaces .nav-texte {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+  }
+  .barre-laterale[data-compact="2"] .profil-carte, .barre-laterale[data-compact="3"] .profil-carte,
+  .barre-laterale[data-compact="4"] .profil-carte, .barre-laterale[data-compact="5"] .profil-carte { padding: 2px; }
+  .barre-laterale[data-compact="4"] > .nav-espaces, .barre-laterale[data-compact="5"] > .nav-espaces { padding: 0 12px; }
+  .barre-laterale[data-compact="4"] > .nav-espaces .nav-espaces-chevron, .barre-laterale[data-compact="5"] > .nav-espaces .nav-espaces-chevron { display: none; }
+  .barre-laterale[data-compact="5"] { gap: 8px; }
+  .barre-laterale[data-compact="5"] .nav .nav-bouton { padding: 0 10px; }
+  .barre-laterale[data-compact="5"] .barre-pied { gap: 0; }
+}
 /* ---------- Espace Métiers (ADR 0041) : notions → disciplines → métiers → gestes ---------- */
 #ecran-metiers { display: flex; flex-direction: column; gap: 14px; }
 #ecran-metiers[hidden] { display: none; }
