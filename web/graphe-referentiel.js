@@ -266,3 +266,41 @@ export function cheminLePlusCourt(graphe, depart, arrivee) {
   }
   return [];
 }
+
+/**
+ * Sous-graphe centré sur des notions (identifiants canoniques) : ces notions, leurs MicroSkills et leurs prérequis
+ * directs (Espace Métiers, ADR 0041). Même forme que `filtrer` : { noeuds: Set d'indices, liens: indices de liens }.
+ */
+export function sousEnsemble(graphe, ids, { prerequis = true, microskills = true } = {}) {
+  const index = new Map(graphe.noeuds.map((n) => [n.id, n.i]));
+  const centres = new Set([...ids].map((id) => index.get(id)).filter((i) => i !== undefined));
+  const visibles = new Set(centres);
+  for (const i of centres) for (const k of graphe.voisins[i]) {
+    const l = graphe.liens[k];
+    if (l.type === "microskill" && microskills && l.a === i) visibles.add(l.b);
+    if (l.type === "prerequis" && prerequis && l.b === i) visibles.add(l.a);
+  }
+  const liens = [];
+  graphe.liens.forEach((l, k) => {
+    if (!visibles.has(l.a) || !visibles.has(l.b)) return;
+    if (l.type === "microskill" && !centres.has(l.a)) return;
+    liens.push(k);
+  });
+  return { noeuds: visibles, liens, centres };
+}
+
+/**
+ * Graphe autonome du sous-ensemble centré sur des notions, avec sa propre disposition (déterministe) : les notions
+ * d'une même sélection restent lisibles ensemble au lieu de garder leurs places, éloignées, dans le graphe complet.
+ * Renvoie { graphe (forme de `decompacter`), centres : Set d'indices dans ce graphe }.
+ */
+export function sousGraphe(graphe, ids, options = {}) {
+  const { noeuds, liens, centres } = sousEnsemble(graphe, ids, options);
+  const local = {
+    noeuds: [...noeuds].sort((a, b) => a - b).map((i) => ({ id: graphe.noeuds[i].id, type: graphe.noeuds[i].type, disciplines: graphe.noeuds[i].disciplines })),
+    liens: liens.map((k) => ({ source: graphe.noeuds[graphe.liens[k].a].id, cible: graphe.noeuds[graphe.liens[k].b].id, type: graphe.liens[k].type }))
+  };
+  const resultat = decompacter(compacter(local, disposer(local, { iterations: 120 })));
+  const index = new Map(resultat.noeuds.map((n) => [n.id, n.i]));
+  return { graphe: resultat, centres: new Set([...centres].map((i) => index.get(graphe.noeuds[i].id))) };
+}

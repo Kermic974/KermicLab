@@ -15,11 +15,11 @@
    résultats de recherche cliquables (accès au clavier), flèches du clavier et +/− sur le canvas.
 2. **Aucune dépendance ajoutée.** La CSP du site n'autorise que les scripts de même origine (`script-src 'self'`) et le
    projet limite les dépendances (AGENTS.md §4). Le rendu est un `<canvas>` 2D avec projection en perspective
-   (`web/admin/graphe-vue.js`, ~200 lignes) au lieu de three.js + 3d-force-graph (~1,3 Mo).
+   (`web/graphe-vue.js`, ~200 lignes) au lieu de three.js + 3d-force-graph (~1,3 Mo).
 3. **Disposition calculée au build**, pas dans le navigateur : `npm run build` construit le graphe à partir de
    `referentiel/projection-v0.json` et calcule une disposition 3D par forces, déterministe (graine fixe), écrite dans
-   `dist/admin/referentiel-graphe.json` (~220 Ko, forme compacte). Le navigateur ne fait que tourner, filtrer et
-   dessiner. Les fonctions sont pures et partagées (`web/admin/graphe-referentiel.js`).
+   `dist/referentiel-graphe.json` (~220 Ko, forme compacte). Le navigateur ne fait que tourner, filtrer et
+   dessiner. Les fonctions sont pures et partagées (`web/graphe-referentiel.js`).
 4. **Données** : uniquement le référentiel, déjà public dans le dépôt ; aucune donnée personnelle, aucun appel à l'API.
    Le fichier est servi sous `/admin/` (non indexé), comme le reste du back-office.
 

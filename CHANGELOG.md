@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Espace Métiers** (ADR 0041) : nouvel espace du site, « Des notions aux métiers ». Quatre anneaux relient les notions KermicLab, 26 disciplines, 38 métiers et leurs gestes ; choisir un élément allume toute sa chaîne. Le détail liste les notions à travailler (ouvrables comme dans Éducation) et montre leur graphe 3D (prérequis directs, MicroSkills). Données : `referentiel/metiers-v0.json`, validé au build contre le référentiel. / New Careers space linking KermicLab topics to subjects, jobs and job skills, with a 3D topic graph in the details.
+
 ## [0.2.0] — 2026-11-23
 
 - **Correctif : « Se connecter » sans effet au chargement** : les boutons de navigation (dont « Se connecter » et les onglets) ne répondaient qu'une fois le catalogue chargé, soit plusieurs secondes sur une connexion lente ; les clics faits avant étaient perdus. La navigation est désormais branchée dès le démarrage. Tests : catalogue lent, et compte en ligne retrouvé sur un nouvel appareil. / Fix: navigation buttons, including "Log in", were inert until the catalogue had loaded.

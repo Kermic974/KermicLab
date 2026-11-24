@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { cheminLePlusCourt, compacter, construireGraphe, decompacter, disciplineDe, disposer, filtrer, indicateurs, libelleDe } from "../../web/admin/graphe-referentiel.js";
+import { cheminLePlusCourt, compacter, construireGraphe, decompacter, disciplineDe, disposer, filtrer, indicateurs, libelleDe } from "../../web/graphe-referentiel.js";
 
 // Graphe du référentiel (ADR 0040) : construction, disposition déterministe, filtres et plus court chemin.
 const projection = {
@@ -70,4 +70,23 @@ test("graphe : le référentiel réel se construit sans référence inconnue", a
   const reel = construireGraphe(JSON.parse(await readFile(new URL("../../referentiel/projection-v0.json", import.meta.url), "utf8")));
   assert.equal(reel.ignores, 0);
   assert.equal(reel.noeuds.filter((n) => n.type === "notion").length, Object.keys(JSON.parse(await readFile(new URL("../../referentiel/projection-v0.json", import.meta.url), "utf8")).notions).length);
+});
+
+test("graphe : sous-ensemble centré sur des notions (prérequis directs et MicroSkills)", async () => {
+  const { sousEnsemble } = await import("../../web/graphe-referentiel.js");
+  const s = sousEnsemble(lu, ["notion.maths.b"]);
+  assert.deepEqual([...s.noeuds].sort(), [i("notion.maths.a"), i("notion.maths.b"), i("microskill.maths.calculer")].sort());
+  assert.deepEqual([...s.centres], [i("notion.maths.b")]);
+  assert.equal(s.liens.length, 2, "prérequis a→b et b→calculer ; pas a→calculer (a n'est pas un centre)");
+  assert.equal(sousEnsemble(lu, ["notion.maths.b"], { microskills: false }).noeuds.size, 2);
+  assert.equal(sousEnsemble(lu, ["notion.inconnue.x"]).noeuds.size, 0);
+});
+
+test("graphe : sous-graphe autonome, disposition propre et déterministe", async () => {
+  const { sousGraphe } = await import("../../web/graphe-referentiel.js");
+  const a = sousGraphe(lu, ["notion.maths.b"]);
+  assert.deepEqual(a.graphe.noeuds.map((n) => n.id).sort(), ["microskill.maths.calculer", "notion.maths.a", "notion.maths.b"]);
+  assert.equal(a.graphe.liens.length, 2);
+  assert.deepEqual([...a.centres].map((i) => a.graphe.noeuds[i].id), ["notion.maths.b"]);
+  assert.deepEqual(sousGraphe(lu, ["notion.maths.b"]).graphe.noeuds, a.graphe.noeuds, "même entrée, même disposition");
 });
