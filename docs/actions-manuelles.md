@@ -2,6 +2,12 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Correctif de qualification — chat et navigation
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Relire et fusionner le correctif du chevauchement chat/navigation après CI verte | Branche `fix/chat-navigation-hauteur`, suivi [#427](https://github.com/Kermic974/KermicLab/issues/427) | Blocage reproduit à 1 280 × 720 pendant la qualification du pilote S6 ; revue du CODEOWNER requise par AGENTS.md | CI au SHA final, revue/fusion humaines constatées ; pilote resynchronisé et test du parcours rejoué | à faire |
+
 ## Adoption S7 et livraisons S7 → S10
 
 Suivi : [#427](https://github.com/Kermic974/KermicLab/issues/427). [Chaîne de livraison](evaluation/livraison-s7-s10.md).
