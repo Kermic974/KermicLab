@@ -30,7 +30,7 @@ export const normaliserEntete = (s) => sansAccents(s).replace(/[^a-z0-9]+/g, " "
  * « chef-de-rayon », « accompagnant / accompagnante d'élèves » → « accompagnant-d-eleves ».
  */
 export function slugMetier(nom) {
-  return sansAccents(String(nom ?? "").replace(/\s*\/\s*[^\s/]+/g, "").replace(/\([^)]*\)/g, " "))
+  return sansAccents(String(nom ?? "").replace(/\s*\/\s*[^\s/-]+/g, "").replace(/\([^)]*\)/g, " "))
     .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 }
 
@@ -276,7 +276,7 @@ export function proposerDisciplines(rome, { regles = [], maxDisciplines = 3 } = 
   return disciplines.slice(0, maxDisciplines);
 }
 
-/** Erreurs des règles : préfixe ROME bien formé et unique, disciplines connues du référentiel. */
+/** Erreurs des règles : préfixe ROME bien formé et unique, disciplines connues ; table de repli par domaine. */
 export function verifierRegles(regles, disciplinesConnues) {
   const erreurs = [];
   const vus = new Set();
@@ -286,6 +286,14 @@ export function verifierRegles(regles, disciplinesConnues) {
     vus.add(r.prefixe);
     if (!r.disciplines?.length) erreurs.push(`${r.prefixe} : aucune discipline`);
     for (const d of r.disciplines ?? []) if (!disciplinesConnues.has(d)) erreurs.push(`${r.prefixe} : discipline inconnue ${d}`);
+  }
+  // Repli par domaine ONISEP (vagues complémentaires) : domaine unique, disciplines connues.
+  const domaines = new Set();
+  for (const r of regles?.domaines ?? []) {
+    if (!r.domaine || domaines.has(r.domaine)) erreurs.push(`domaine en double ou vide : ${r.domaine}`);
+    domaines.add(r.domaine);
+    if (!r.disciplines?.length) erreurs.push(`${r.domaine} : aucune discipline`);
+    for (const d of r.disciplines ?? []) if (!disciplinesConnues.has(d)) erreurs.push(`${r.domaine} : discipline inconnue ${d}`);
   }
   return erreurs;
 }
