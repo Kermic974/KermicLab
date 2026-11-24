@@ -11,6 +11,10 @@ export const STATUTS_CORRESPONDANCE = Object.freeze(["v5", "proposition", "valid
 // Niveau d'accès minimum au métier, aligné sur les niveaux de l'ONISEP (Idéo-Fiches métiers) : « sans-diplome »
 // regroupe « sans diplôme », « 3e » et le brevet ; « bac+9 » vaut « bac + 9 et plus ».
 export const NIVEAUX_ACCES = Object.freeze(["sans-diplome", "cap", "bac", "bac+1", "bac+2", "bac+3", "bac+4", "bac+5", "bac+6", "bac+7", "bac+8", "bac+9"]);
+// Transitions repérées par le ROME 4.0 de France Travail (ADR 0043) : emploi vert ou stratégique pour la transition
+// écologique, métier transformé par le numérique.
+export const TRANSITIONS = Object.freeze(["ecologique", "numerique"]);
+export const MAX_PROCHES = 5;
 const MOTIF_ONISEP = /^MET\.\d+$/;
 const MOTIF_ROME = /^[A-N]\d{4}$/;
 const MOTIF_DATE = /^\d{4}-\d{2}-\d{2}$/;
@@ -25,7 +29,8 @@ function verifierCorrespondance(element, erreurs) {
 /**
  * Erreurs de cohérence de `referentiel/metiers-v0.json` (liste vide si tout va bien) : identifiants uniques, catégorie
  * et disciplines connues, notions présentes dans le référentiel (`notionsConnues` : ensemble d'identifiants), statut
- * des correspondances, identifiants externes (ONISEP, ROME) et niveau d'accès bien formés.
+ * des correspondances, identifiants externes (ONISEP, ROME) et niveau d'accès bien formés, champs dérivés du ROME 4.0
+ * (contextes de travail présents dans `contextesTravail`, transitions connues, métiers proches existants).
  */
 export function verifierMetiers(donnees, notionsConnues) {
   const erreurs = [];
@@ -38,7 +43,13 @@ export function verifierMetiers(donnees, notionsConnues) {
     verifierCorrespondance(d, erreurs);
     for (const n of d.notions ?? []) if (!notionsConnues.has(n)) erreurs.push(`${d.id} : notion inconnue ${n}`);
   }
+  const contextes = new Set();
+  for (const c of donnees?.contextesTravail ?? []) {
+    if (!c.id || contextes.has(c.id)) erreurs.push(`contexte de travail en double ou sans identifiant : ${c.id}`);
+    contextes.add(c.id);
+  }
   const metiers = new Set();
+  const tousLesMetiers = new Set((donnees?.metiers ?? []).map((m) => m.id));
   const onisep = new Map();
   for (const m of donnees?.metiers ?? []) {
     if (!m.id || metiers.has(m.id)) erreurs.push(`métier en double ou sans identifiant : ${m.id}`);
@@ -57,6 +68,10 @@ export function verifierMetiers(donnees, notionsConnues) {
       else for (const code of m.rome) if (!MOTIF_ROME.test(String(code))) erreurs.push(`${m.id} : code ROME invalide ${code}`);
     }
     if (m.niveauAcces !== undefined && !NIVEAUX_ACCES.includes(m.niveauAcces)) erreurs.push(`${m.id} : niveau d'accès inconnu ${m.niveauAcces}`);
+    for (const c of m.contextes ?? []) if (!contextes.has(c)) erreurs.push(`${m.id} : contexte de travail inconnu ${c}`);
+    for (const t of m.transitions ?? []) if (!TRANSITIONS.includes(t)) erreurs.push(`${m.id} : transition inconnue ${t}`);
+    if ((m.proches ?? []).length > MAX_PROCHES) erreurs.push(`${m.id} : plus de ${MAX_PROCHES} métiers proches`);
+    for (const p of m.proches ?? []) if (p === m.id || !tousLesMetiers.has(p)) erreurs.push(`${m.id} : métier proche inconnu ${p}`);
   }
   return erreurs;
 }
@@ -87,6 +102,8 @@ export function couvertureMetiers(donnees, notionsDuReferentiel) {
     avecOnisep: donnees.metiers.filter((m) => m.onisep).length,
     avecRome: donnees.metiers.filter((m) => m.rome?.length).length,
     avecNiveau: donnees.metiers.filter((m) => m.niveauAcces).length,
+    avecContextes: donnees.metiers.filter((m) => m.contextes?.length).length,
+    avecProches: donnees.metiers.filter((m) => m.proches?.length).length,
     correspondances: { metiers: compter(donnees.metiers), disciplines: compter(donnees.disciplines) },
     notions: { reliees: Object.values(parMatiere).reduce((s, m) => s + m.reliees, 0), total, parMatiere }
   };
@@ -125,12 +142,28 @@ export function preparerCarte(donnees) {
   const metiers = new Map(donnees.metiers.map((m) => [m.id, m]));
   const categories = new Map(donnees.categories.map((c) => [c.id, c]));
   const notions = new Map(Object.entries(donnees.notions ?? {}));
+  const contextes = new Map((donnees.contextesTravail ?? []).map((c) => [c.id, c]));
   const disciplinesDeNotion = new Map();
   for (const d of donnees.disciplines) for (const n of d.notions) {
     if (!disciplinesDeNotion.has(n)) disciplinesDeNotion.set(n, []);
     disciplinesDeNotion.get(n).push(d.id);
   }
-  return { donnees, disciplines, metiers, categories, notions, disciplinesDeNotion };
+  return { donnees, disciplines, metiers, categories, notions, contextes, disciplinesDeNotion };
+}
+
+/**
+ * Contextes de travail d'un métier (ROME 4.0, ADR 0043) groupés par type, dans l'ordre de première apparition :
+ * `[{ type, libelles }]`. Les identifiants absents du dictionnaire sont ignorés.
+ */
+export function contextesParType(carte, metier) {
+  const groupes = new Map();
+  for (const id of metier?.contextes ?? []) {
+    const c = carte.contextes.get(id);
+    if (!c) continue;
+    if (!groupes.has(c.type)) groupes.set(c.type, []);
+    groupes.get(c.type).push(c.libelle);
+  }
+  return [...groupes].map(([type, libelles]) => ({ type, libelles }));
 }
 
 /**

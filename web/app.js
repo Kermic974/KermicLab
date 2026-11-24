@@ -6672,6 +6672,7 @@ function rendreDetailMetiers(actifs) {
   const enfants = [genre, tete];
   if (metier) enfants.push(element("p", { classe: "doux", texte: metier.contexte }));
   if (metier?.niveauAcces) enfants.push(element("p", { classe: "petit metiers-niveau-acces", texte: t("metiersNiveauMetier", { niveau: t(`metiersNiveau_${metier.niveauAcces}`) }) }));
+  for (const transition of metier?.transitions ?? []) enfants.push(element("p", { classe: `petit metiers-transition ${transition}`, cle: `metiersTransition_${transition}` }));
   if (metier?.correspondance === "proposition") enfants.push(element("p", { classe: "doux petit metiers-proposition", cle: "metiersMetierProposition" }));
   const disciplines = [...actifs.disciplines];
   enfants.push(element("div", { classe: "metiers-blocs" }));
@@ -6679,6 +6680,19 @@ function rendreDetailMetiers(actifs) {
   if (selection.type !== "metier" && selection.type !== "geste") blocs.append(bloc("metiersBlocMetiers", pastilles([...actifs.metiers], "metier", (id) => carte.metiers.get(id).nom)));
   blocs.append(bloc("metiersBlocDisciplines", pastilles(disciplines, "discipline", (id) => carte.disciplines.get(id).nom)));
   if (metier) blocs.append(bloc("metiersBlocGestes", pastilles(metier.gestes.map((g) => `${metier.id}::${g}`), "geste", (id) => id.split("::")[1])));
+  // ROME 4.0 de France Travail (ADR 0043) : conditions de travail et métiers proches (mobilités).
+  const conditions = metier ? metiers.contextesParType(carte, metier) : [];
+  if (conditions.length) {
+    const liste = element("ul", { classe: "metiers-conditions" });
+    for (const { type, libelles } of conditions) {
+      const li = element("li");
+      li.append(element("strong", { texte: `${type} : ` }), document.createTextNode(libelles.join(" · ")));
+      liste.append(li);
+    }
+    blocs.append(bloc("metiersBlocConditions", liste));
+  }
+  const proches = (metier?.proches ?? []).filter((id) => carte.metiers.has(id));
+  if (proches.length) blocs.append(bloc("metiersBlocProches", pastilles(proches, "metier", (id) => carte.metiers.get(id).nom)));
   const savoirFaire = disciplines.flatMap((d) => carte.disciplines.get(d).savoirFaire);
   if (savoirFaire.length) {
     const liste = element("ul", { classe: "metiers-savoir-faire" });

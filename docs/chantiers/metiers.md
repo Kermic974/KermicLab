@@ -1,9 +1,10 @@
 # Chantier : Espace Métiers, compléter le référentiel et alimenter le graphe
 
-**Niveau actuel : 6 (lots 0 à 5 et vague pilote livrés ; vagues de nouveaux métiers ONISEP à venir, une PR par domaine)**
+**Niveau actuel : 7 (lots 0 à 5, vague pilote et ROME 4.0 livrés ; marché du travail, BMO et vagues de nouveaux métiers à venir)**
 
-Décisions : [ADR 0041](../decisions/0041-espace-metiers.md) (Espace Métiers) et
-[ADR 0042](../decisions/0042-referentiel-metiers-onisep.md) (format v2, import ONISEP, proposé). Données :
+Décisions : [ADR 0041](../decisions/0041-espace-metiers.md) (Espace Métiers),
+[ADR 0042](../decisions/0042-referentiel-metiers-onisep.md) (format v2, import ONISEP, proposé) et
+[ADR 0043](../decisions/0043-donnees-france-travail-metiers.md) (données de France Travail, proposé). Données :
 `referentiel/metiers-v0.json`, forme décrite par `referentiel/metiers.schema.json`, cohérence vérifiée par
 `verifierMetiers` (`web/metiers.js`) au build.
 
@@ -15,7 +16,8 @@ Le build affiche la ligne « Couverture métiers » (`couvertureMetiers`, inform
 |---|---|
 | Métiers | 79 en 9 familles : 38 de la maquette V5 (`v5`), 41 de la vague pilote (`proposition`) |
 | Disciplines | 40 : 14 issues de la maquette V5, 26 « proposition » à relire |
-| Métiers rattachés à l'ONISEP / au ROME / avec niveau d'accès | 74 / 72 / 76 (sur 79) |
+| Métiers rattachés à l'ONISEP / au ROME / avec niveau d'accès | 74 / 79 / 76 (sur 79) |
+| Métiers avec contextes de travail / transition / métiers proches (ROME 4.0) | 79 / 39 / 48 (sur 79) |
 | Notions du référentiel reliées à un métier | 114 sur 477 (au départ : 60) |
 
 Notions reliées par matière :
@@ -66,6 +68,20 @@ Règles :
 - Public mineur : seuls des contenus publics sur les métiers sont traités, aucune donnée personnelle ; l'onglet
   « Mon positionnement » reste exclu (ADR 0041 §6).
 
+## Source : France Travail (analyse du 2026-11-24, ADR 0043)
+
+Le catalogue `francetravail.io` est inaccessible depuis l'environnement cloud ; les fiches des API sont lues sur
+data.gouv.fr (organisation France Travail). Toutes les données utiles sont indexées par **code ROME**, déjà présent dans
+le référentiel.
+
+| Source | Apport | Accès | Lot |
+|---|---|---|---|
+| ROME 4.0, « Toutes les données du ROME » (JSON) | Contextes de travail (horaires, lieux, conditions, statuts), transitions écologique et numérique, mobilités, compétences, savoirs ; 1 923 fiches (version 62, 2026-10-19) | Libre, Licence Ouverte 2.0 (`api.francetravail.fr`) | 7, fait |
+| API Marché du travail | Tension de recrutement, offres, embauches, demandeurs d'emploi, salaire proposé, dynamique ; par ROME et territoire, trimestriel (France Travail, ACOSS, CCMSA, DARES) | Compte francetravail.io (OAuth2) | 8 |
+| Enquête BMO (2016 à 2026) | Projets de recrutement, part difficile, part saisonnière, par bassin d'emploi | Libre, Licence Ouverte (`www.francetravail.org`) ; codée en FAP 2021 | 9 |
+| Nomenclature FAP 2021 (DARES) | Libellés des 341 FAP ; **sans** passage vers le ROME | Libre (`data.dares.travail-emploi.gouv.fr`) | 9 |
+| Sortants de formation, La Bonne Boîte, Offres d'emploi | Hors périmètre élève (adultes, entreprises nommées, offres) | — | non retenues |
+
 ## Plan
 
 | Lot | Contenu | Statut |
@@ -77,6 +93,11 @@ Règles :
 | 4 | Alimenter le graphe : couche « métiers » dans `dist/referentiel-graphe.json` (nœuds `metier.<id>`, reliés aux notions de leurs disciplines, libellés publiés), indicateurs (`metiers`, `notionsAvecMetier`, « notions sans métier » par discipline, `notionsDemandees`), plus court chemin notion ↔ métier ; back-office : case « Métiers » (masquée par défaut), légende, détails d'un métier, tuiles, classement des notions les plus demandées | Fait (`tests/unit/graphe-referentiel.test.mjs`, `tests/e2e/backoffice.test.mjs`) |
 | 5 | Passage à l'échelle de l'écran : filtre par niveau d'accès (niveaux présents seulement), recherche étendue aux synonymes, domaines et codes ROME (synonymes repris de l'ONISEP), anneaux limités aux métiers du filtre au-delà de 120 métiers (`metiersDesAnneaux`, disposition recalculée), liste par pages de 50 (« Afficher plus »), niveau d'accès et statut « Fiche proposée, en cours de relecture » dans le détail | Fait (`tests/unit/metiers.test.mjs`, `tests/e2e/metiers.test.mjs`) |
 | 6 | Montée en charge par vagues. **Pilote livré** : 41 métiers et 3 familles en `proposition`, corrigés par l'ONISEP (niveaux, codes ROME). **Vagues suivantes** : 1 064 candidats de l'import, avec disciplines proposées par les règles ROME ; un domaine ONISEP par PR, chaque métier avec ses gestes (formulés par KermicLab) et sa relecture. Cible : au moins 5 métiers par matière, 50 % des notions reliées | Pilote fait ; vagues à planifier (une PR par domaine) |
+
+| 7 | **ROME 4.0** : `npm run import:rome` (`scripts/importer-rome.mjs`, `scripts/lib/rome.mjs`), extrait `referentiel/sources/france-travail/rome-4.0-v62.json` ; champs dérivés `contextes` (dictionnaire `contextesTravail`), `transitions`, `proches` ; `--preciser` (codes v3 → fiche ROME 4.0 de même intitulé, 13 métiers) ; 7 codes ROME choisis par l'agent pour les métiers sans code (`designer-ux-ui` E1206, `charge-daffaires` D1407, `eco-concepteur` H1206, `journaliste-scientifique` E1106, `mediateur-scientifique` G1242, `technicien-reseaux` M1816, `conseiller-bancaire` C1206) ; détail d'un métier : transitions, conditions de travail, métiers proches ; `--candidats` complète les candidats des vagues par compétences et savoirs | Fait (`tests/unit/rome.test.mjs`) ; codes choisis par l'agent à relire |
+| 8 | **Marché du travail** : script `import:marche` (identifiants francetravail.io hors du dépôt), extrait trimestriel `referentiel/sources/france-travail/marche-AAAA-TN.json` réduit aux codes ROME du référentiel ; champ `perspectives` (palier « recrute beaucoup / moyennement / peu » tiré de l'indicateur de tension, période, portée France puis région, source) ; bloc « Perspectives » dans le détail, phrase de prudence, filtre éventuel « métiers qui recrutent » | À faire après les actions manuelles (compte, conditions d'utilisation, hôtes réseau) |
+| 9 | **BMO** : import du fichier annuel (`Base-open-data-BMO-AAAA.xlsx`), agrégé par FAP au niveau France et région ; passage FAP ↔ ROME de la DARES (table à récupérer à la main : le site de la DARES bloque les téléchargements automatisés) ; complète `perspectives` (projets de recrutement, part difficile, part saisonnière) | À faire (table FAP ↔ ROME) |
+| 10 | Vagues du lot 6 outillées par le ROME : compétences et savoirs du ROME proposés pour formuler disciplines et gestes ; règles ROME → disciplines revues à partir des savoirs | À planifier avec les vagues |
 
 Chaque lot : `npm run ci` vert, cette fiche et `docs/actions-manuelles.md` à jour, validation du CODEOWNER.
 
@@ -108,6 +129,7 @@ Chaque lot : `npm run ci` vert, cette fiche et `docs/actions-manuelles.md` à jo
 }
 ```
 
-Les champs `onisep`, `rome`, `niveauAcces` (de `sans-diplome` à `bac+9`), `domaines`, `synonymes` et `relue` sont
+Les champs `onisep`, `rome`, `niveauAcces` (de `sans-diplome` à `bac+9`), `domaines`, `synonymes`, `relue` et les
+champs dérivés du ROME 4.0 (`contextes`, `transitions`, `proches`, recalculés par `npm run import:rome`) sont
 facultatifs ; `sources` (racine) porte l'attribution des bases dont dérivent ces champs. `relue` n'est renseigné que par
 un humain, comme dans les fiches du catalogue. L'exemple illustre la forme ; ses domaines sont indicatifs.

@@ -24,6 +24,18 @@
       "champs": [
         "domaines"
       ]
+    },
+    {
+      "nom": "ROME 4.0 (version 62)",
+      "producteur": "France Travail",
+      "licence": "Licence Ouverte 2.0",
+      "url": "https://www.data.gouv.fr/datasets/repertoire-operationnel-des-metiers-et-des-emplois-rome",
+      "date": "2026-10-19",
+      "champs": [
+        "contextes",
+        "transitions",
+        "proches"
+      ]
     }
   ],
   "categories": [
@@ -662,7 +674,23 @@
         "Architecture info"
       ],
       "contexte": "Conception d’interfaces numériques centrées sur l’humain.",
-      "correspondance": "v5"
+      "correspondance": "v5",
+      "rome": [
+        "E1206"
+      ],
+      "contextes": [
+        "300779",
+        "300799",
+        "403103",
+        "403104",
+        "403106"
+      ],
+      "transitions": [
+        "numerique"
+      ],
+      "proches": [
+        "content-strategist"
+      ]
     },
     {
       "id": "data-analyst",
@@ -681,7 +709,7 @@
       "correspondance": "v5",
       "onisep": "MET.7930",
       "rome": [
-        "M1403"
+        "M1419"
       ],
       "niveauAcces": "bac+3",
       "domaines": [
@@ -691,6 +719,21 @@
       ],
       "synonymes": [
         "data analyst (analyste de données)"
+      ],
+      "contextes": [
+        "300799",
+        "300806",
+        "300821",
+        "403025",
+        "403103",
+        "403106",
+        "403107",
+        "405286",
+        "405348",
+        "405349"
+      ],
+      "transitions": [
+        "numerique"
       ]
     },
     {
@@ -710,7 +753,7 @@
       "correspondance": "v5",
       "onisep": "MET.12",
       "rome": [
-        "M1805"
+        "M1855"
       ],
       "niveauAcces": "bac+2",
       "domaines": [
@@ -723,6 +766,21 @@
         "ingénieur/euse en études et développement informatiques",
         "développeur informatique",
         "développeuse informatique"
+      ],
+      "contextes": [
+        "300806",
+        "300809",
+        "300849",
+        "403025",
+        "403103",
+        "403106",
+        "403107"
+      ],
+      "transitions": [
+        "numerique"
+      ],
+      "proches": [
+        "designer-ux-ui"
       ]
     },
     {
@@ -742,7 +800,7 @@
       "correspondance": "v5",
       "onisep": "MET.228",
       "rome": [
-        "M1802"
+        "M1860"
       ],
       "niveauAcces": "bac+5",
       "domaines": [
@@ -752,6 +810,24 @@
         "chef/fe de projet cloud et virtualisation",
         "ingénieur cloud computing (informatique en nuage)",
         "ingénieure cloud computing (informatique en nuage)"
+      ],
+      "contextes": [
+        "300799",
+        "300809",
+        "300816",
+        "403095",
+        "403103",
+        "403106",
+        "403107",
+        "405286"
+      ],
+      "transitions": [
+        "ecologique",
+        "numerique"
+      ],
+      "proches": [
+        "developpeur-web",
+        "designer-ux-ui"
       ]
     },
     {
@@ -784,6 +860,24 @@
       "synonymes": [
         "restaurateur/trice de meubles anciens",
         "ébéniste"
+      ],
+      "contextes": [
+        "38055",
+        "300778",
+        "300779",
+        "300781",
+        "300794",
+        "300800",
+        "403092",
+        "403095",
+        "403106"
+      ],
+      "transitions": [
+        "ecologique"
+      ],
+      "proches": [
+        "restaurateur-d-oeuvres-d-art",
+        "menuisier-agenceur"
       ]
     },
     {
@@ -813,6 +907,22 @@
       "synonymes": [
         "potier/ère",
         "céramiste"
+      ],
+      "contextes": [
+        "300789",
+        "300794",
+        "300805",
+        "300806",
+        "403019",
+        "403092",
+        "403103",
+        "403106",
+        "405348",
+        "405349",
+        "511685"
+      ],
+      "proches": [
+        "restaurateur-d-oeuvres-d-art"
       ]
     },
     {
@@ -841,6 +951,20 @@
       "synonymes": [
         "maroquinier",
         "maroquinière"
+      ],
+      "contextes": [
+        "38055",
+        "300794",
+        "300806",
+        "403019",
+        "403020",
+        "403092",
+        "403103",
+        "403106",
+        "405307",
+        "405348",
+        "490503",
+        "490504"
       ]
     },
     {
@@ -873,6 +997,27 @@
       "synonymes": [
         "menuisier",
         "menuisière"
+      ],
+      "contextes": [
+        "38055",
+        "300778",
+        "300779",
+        "300795",
+        "300800",
+        "300806",
+        "403092",
+        "403095",
+        "403103",
+        "403106",
+        "403962"
+      ],
+      "transitions": [
+        "ecologique"
+      ],
+      "proches": [
+        "charge-daffaires",
+        "charpentier",
+        "ebeniste"
       ]
     },
     {
@@ -904,6 +1049,29 @@
         "ingénieur/e achat",
         "acheteur",
         "acheteuse"
+      ],
+      "contextes": [
+        "300799",
+        "300816",
+        "300819",
+        "300821",
+        "403095",
+        "403102",
+        "403103",
+        "403104",
+        "403107",
+        "405348",
+        "512382",
+        "522308"
+      ],
+      "transitions": [
+        "ecologique"
+      ],
+      "proches": [
+        "brand-manager",
+        "comptable",
+        "charge-daffaires",
+        "resp-logistique"
       ]
     },
     {
@@ -920,7 +1088,21 @@
         "Suivi de marge"
       ],
       "contexte": "Développement commercial et pilotage de contrats.",
-      "correspondance": "v5"
+      "correspondance": "v5",
+      "rome": [
+        "D1407"
+      ],
+      "contextes": [
+        "300779",
+        "300817",
+        "300819",
+        "300821",
+        "402011",
+        "403020",
+        "403095",
+        "403103",
+        "403107"
+      ]
     },
     {
       "id": "resp-logistique",
@@ -951,6 +1133,23 @@
         "supply chain manager (directeur/trice de la chaîne logistique)",
         "ingénieur logistique",
         "ingénieure logistique"
+      ],
+      "contextes": [
+        "23376",
+        "23378",
+        "38055",
+        "300779",
+        "300803",
+        "300805",
+        "300806",
+        "300808",
+        "300834",
+        "403092",
+        "403103",
+        "405348"
+      ],
+      "transitions": [
+        "ecologique"
       ]
     },
     {
@@ -982,6 +1181,12 @@
         "responsable planification et gestion",
         "contrôleur de gestion",
         "contrôleuse de gestion"
+      ],
+      "contextes": [
+        "403095",
+        "403103",
+        "403104",
+        "403107"
       ]
     },
     {
@@ -1010,6 +1215,26 @@
       "synonymes": [
         "concepteur-rédacteur",
         "conceptrice-rédactrice"
+      ],
+      "contextes": [
+        "300779",
+        "300799",
+        "300805",
+        "300821",
+        "403025",
+        "403095",
+        "403103",
+        "403106",
+        "403107",
+        "405348",
+        "490504",
+        "510973"
+      ],
+      "transitions": [
+        "numerique"
+      ],
+      "proches": [
+        "designer-ux-ui"
       ]
     },
     {
@@ -1029,7 +1254,7 @@
       "correspondance": "v5",
       "onisep": "MET.489",
       "rome": [
-        "E1402"
+        "E1407"
       ],
       "niveauAcces": "bac+2",
       "domaines": [
@@ -1039,6 +1264,23 @@
       "synonymes": [
         "responsable gestion de trafic web",
         "traffic manager (responsable de la promotion en ligne)"
+      ],
+      "contextes": [
+        "300779",
+        "403020",
+        "403024",
+        "403025",
+        "403095",
+        "403103",
+        "403107",
+        "405348",
+        "510973"
+      ],
+      "transitions": [
+        "numerique"
+      ],
+      "proches": [
+        "designer-ux-ui"
       ]
     },
     {
@@ -1069,6 +1311,21 @@
         "responsable ou spécialiste produit",
         "chef de produit marketing (mercatique)",
         "cheffe de produit marketing (mercatique)"
+      ],
+      "contextes": [
+        "300779",
+        "300806",
+        "403095",
+        "403103",
+        "403104",
+        "403107",
+        "405348"
+      ],
+      "transitions": [
+        "numerique"
+      ],
+      "proches": [
+        "traffic-manager"
       ]
     },
     {
@@ -1102,6 +1359,22 @@
         "animateur/trice de site web",
         "community manager (animateur de communauté en ligne)",
         "community manager (animatrice de communauté en ligne)"
+      ],
+      "contextes": [
+        "300799",
+        "300805",
+        "403025",
+        "403095",
+        "403103",
+        "403106",
+        "405348",
+        "510973"
+      ],
+      "transitions": [
+        "numerique"
+      ],
+      "proches": [
+        "content-strategist"
       ]
     },
     {
@@ -1132,6 +1405,24 @@
         "responsable du service biomédical",
         "ingénieur biomédical",
         "ingénieure biomédicale"
+      ],
+      "contextes": [
+        "38055",
+        "300779",
+        "300784",
+        "300785",
+        "403095",
+        "405348",
+        "511069",
+        "511477"
+      ],
+      "transitions": [
+        "ecologique",
+        "numerique"
+      ],
+      "proches": [
+        "ingenieur-mecanique",
+        "biologiste-de-lenvironnement"
       ]
     },
     {
@@ -1150,6 +1441,9 @@
       "contexte": "Réduction de l’empreinte environnementale des produits.",
       "correspondance": "v5",
       "onisep": "MET.633",
+      "rome": [
+        "H1206"
+      ],
       "niveauAcces": "bac+5",
       "domaines": [
         "environnement, énergies, propreté/environnement (généralités)",
@@ -1164,6 +1458,24 @@
         "ingénieur/e produits éco-conception",
         "ingénieur éco-concepteur",
         "ingénieure éco-conceptrice"
+      ],
+      "contextes": [
+        "38055",
+        "300779",
+        "300784",
+        "300785",
+        "403095",
+        "405348",
+        "511069",
+        "511477"
+      ],
+      "transitions": [
+        "ecologique",
+        "numerique"
+      ],
+      "proches": [
+        "ingenieur-mecanique",
+        "biologiste-de-lenvironnement"
       ]
     },
     {
@@ -1193,6 +1505,15 @@
       ],
       "synonymes": [
         "géomètre-topographe"
+      ],
+      "contextes": [
+        "38055",
+        "300779",
+        "300783",
+        "403103"
+      ],
+      "proches": [
+        "geologue"
       ]
     },
     {
@@ -1213,7 +1534,7 @@
       "correspondance": "v5",
       "onisep": "MET.182",
       "rome": [
-        "F1106"
+        "F1111"
       ],
       "niveauAcces": "bac+5",
       "domaines": [
@@ -1224,6 +1545,22 @@
         "ingénieur/e génie civil",
         "ingénieur du BTP",
         "ingénieure du BTP"
+      ],
+      "contextes": [
+        "38055",
+        "300779",
+        "300783",
+        "403093",
+        "511668"
+      ],
+      "transitions": [
+        "ecologique"
+      ],
+      "proches": [
+        "ing-biomedical",
+        "eco-concepteur",
+        "ingenieur-mecanique",
+        "biologiste-de-lenvironnement"
       ]
     },
     {
@@ -1260,6 +1597,36 @@
         "technicien/ne de laboratoire",
         "technicien chimiste",
         "technicienne chimiste"
+      ],
+      "contextes": [
+        "23380",
+        "38055",
+        "126450",
+        "300779",
+        "300784",
+        "300785",
+        "300791",
+        "300804",
+        "300806",
+        "403092",
+        "403093",
+        "403095",
+        "403103",
+        "403104",
+        "405348",
+        "405349",
+        "489576",
+        "489918",
+        "490147",
+        "511069"
+      ],
+      "transitions": [
+        "ecologique",
+        "numerique"
+      ],
+      "proches": [
+        "charge-daffaires",
+        "technicien-de-laboratoire-medical"
       ]
     },
     {
@@ -1291,6 +1658,25 @@
         "chercheur/euse en biologie de l'environnement",
         "écologue",
         "biologiste en environnement"
+      ],
+      "contextes": [
+        "23380",
+        "38055",
+        "300779",
+        "300784",
+        "300785",
+        "300791",
+        "300799"
+      ],
+      "transitions": [
+        "ecologique"
+      ],
+      "proches": [
+        "ing-biomedical",
+        "eco-concepteur",
+        "ingenieur-mecanique",
+        "journaliste-scientifique",
+        "journaliste"
       ]
     },
     {
@@ -1321,6 +1707,30 @@
       "synonymes": [
         "ingénieur/e agronome",
         "agronome"
+      ],
+      "contextes": [
+        "300779",
+        "300783",
+        "300806",
+        "300821",
+        "300846",
+        "403093",
+        "403103",
+        "403104",
+        "403107",
+        "403960",
+        "405285",
+        "405349",
+        "511668"
+      ],
+      "transitions": [
+        "ecologique"
+      ],
+      "proches": [
+        "ing-biomedical",
+        "eco-concepteur",
+        "ingenieur-mecanique",
+        "biologiste-de-lenvironnement"
       ]
     },
     {
@@ -1341,7 +1751,7 @@
       "correspondance": "v5",
       "onisep": "MET.407",
       "rome": [
-        "K1802"
+        "K1807"
       ],
       "niveauAcces": "bac+5",
       "domaines": [
@@ -1355,6 +1765,24 @@
         "urbaniste concepteur/trice",
         "urbaniste conseil",
         "urbaniste"
+      ],
+      "contextes": [
+        "300779",
+        "300806",
+        "300821",
+        "403093",
+        "403103",
+        "403104",
+        "403106",
+        "403107",
+        "403962",
+        "405285",
+        "405348",
+        "405349",
+        "511668"
+      ],
+      "transitions": [
+        "ecologique"
       ]
     },
     {
@@ -1387,6 +1815,16 @@
         "professeur/e de lycée général et technologique",
         "professeur de collège et de lycée",
         "professeure de collège et de lycée"
+      ],
+      "contextes": [
+        "23376",
+        "300800",
+        "300835",
+        "403020",
+        "403100",
+        "403104",
+        "403826",
+        "405244"
       ]
     },
     {
@@ -1404,7 +1842,26 @@
         "Structurer un article"
       ],
       "contexte": "Médiation fiable de connaissances scientifiques auprès du public.",
-      "correspondance": "v5"
+      "correspondance": "v5",
+      "rome": [
+        "E1106"
+      ],
+      "contextes": [
+        "300779",
+        "300799",
+        "300806",
+        "300849",
+        "403020",
+        "403095",
+        "403103",
+        "403106",
+        "403107",
+        "405349",
+        "510973"
+      ],
+      "transitions": [
+        "numerique"
+      ]
     },
     {
       "id": "analyste-des-risques",
@@ -1438,6 +1895,14 @@
         "manager/euse des risques et des assurances",
         "manager de risques (risk manager)",
         "manageuse de risques (risk manager)"
+      ],
+      "contextes": [
+        "300806",
+        "403103",
+        "405348"
+      ],
+      "proches": [
+        "data-analyst"
       ]
     },
     {
@@ -1457,6 +1922,9 @@
       "contexte": "Création de passerelles entre science, culture et publics.",
       "correspondance": "v5",
       "onisep": "MET.108",
+      "rome": [
+        "G1242"
+      ],
       "niveauAcces": "bac+3",
       "domaines": [
         "sciences/biologie",
@@ -1472,6 +1940,24 @@
         "responsable de la médiation scientifique",
         "médiateur scientifique",
         "médiatrice scientifique"
+      ],
+      "contextes": [
+        "23376",
+        "300830",
+        "300847",
+        "300849",
+        "300878",
+        "403020",
+        "403095",
+        "403107"
+      ],
+      "transitions": [
+        "ecologique"
+      ],
+      "proches": [
+        "guide-conferencier",
+        "journaliste-scientifique",
+        "journaliste"
       ]
     },
     {
@@ -1501,6 +1987,17 @@
       "synonymes": [
         "docteur en médecine",
         "médecin généraliste"
+      ],
+      "contextes": [
+        "38126",
+        "300778",
+        "300779",
+        "300802",
+        "300803",
+        "300804",
+        "300806",
+        "300809",
+        "403102"
       ]
     },
     {
@@ -1530,6 +2027,27 @@
       "synonymes": [
         "infirmier",
         "infirmière"
+      ],
+      "contextes": [
+        "23376",
+        "38055",
+        "38126",
+        "300778",
+        "300779",
+        "300791",
+        "300795",
+        "300803",
+        "300804",
+        "300806",
+        "300838",
+        "400007",
+        "400010",
+        "403100",
+        "403103",
+        "403104"
+      ],
+      "proches": [
+        "manipulateur-en-electroradiologie-medicale"
       ]
     },
     {
@@ -1561,6 +2079,30 @@
         "assistant/e en soins",
         "aide-soignant",
         "aide-soignante"
+      ],
+      "contextes": [
+        "23376",
+        "38055",
+        "38126",
+        "300795",
+        "300803",
+        "300804",
+        "300806",
+        "300838",
+        "300839",
+        "300840",
+        "300849",
+        "400010",
+        "403020",
+        "403100",
+        "403103",
+        "403104",
+        "489936"
+      ],
+      "proches": [
+        "auxiliaire-de-puericulture",
+        "infirmier",
+        "ambulancier"
       ]
     },
     {
@@ -1592,6 +2134,26 @@
         "pharmacien/ne titulaire d'officine",
         "pharmacien d'officine",
         "pharmacienne d'officine"
+      ],
+      "contextes": [
+        "23376",
+        "23380",
+        "38126",
+        "300791",
+        "300800",
+        "300802",
+        "300803",
+        "300804",
+        "300806",
+        "300838",
+        "403100",
+        "403102",
+        "403103",
+        "405329",
+        "490147",
+        "513694",
+        "513695",
+        "513696"
       ]
     },
     {
@@ -1622,6 +2184,24 @@
         "accoucheur/euse",
         "maïeuticien",
         "sage-femme"
+      ],
+      "contextes": [
+        "23376",
+        "38126",
+        "300778",
+        "300804",
+        "300805",
+        "300809",
+        "300838",
+        "400007",
+        "403103",
+        "403104",
+        "405328"
+      ],
+      "proches": [
+        "infirmier",
+        "auxiliaire-de-puericulture",
+        "aide-soignant"
       ]
     },
     {
@@ -1652,6 +2232,18 @@
         "kinésithérapeute",
         "physiothérapeute",
         "masseur-kinésithérapeute"
+      ],
+      "contextes": [
+        "38126",
+        "300779",
+        "300806",
+        "300809",
+        "300838",
+        "403020",
+        "403091",
+        "403102",
+        "403103",
+        "403104"
       ]
     },
     {
@@ -1682,6 +2274,19 @@
         "dentiste",
         "chirurgien-dentiste",
         "chirurgienne-dentiste"
+      ],
+      "contextes": [
+        "23376",
+        "38126",
+        "300802",
+        "300804",
+        "300805",
+        "300809",
+        "300838",
+        "400007",
+        "403019",
+        "403102",
+        "403103"
       ]
     },
     {
@@ -1716,6 +2321,23 @@
         "technicien/ne de laboratoire médical",
         "technicien d'analyses biomédicales",
         "technicienne d'analyses biomédicales"
+      ],
+      "contextes": [
+        "23376",
+        "23380",
+        "38126",
+        "300791",
+        "300802",
+        "300804",
+        "300805",
+        "300838",
+        "403103",
+        "403104",
+        "513694"
+      ],
+      "proches": [
+        "ambulancier",
+        "technicien-de-laboratoire"
       ]
     },
     {
@@ -1747,6 +2369,25 @@
         "manipulateur/trice-radio",
         "manipulateur d'électroradiologie médicale",
         "manipulatrice d'électroradiologie médicale"
+      ],
+      "contextes": [
+        "23376",
+        "38055",
+        "38126",
+        "300779",
+        "300802",
+        "300803",
+        "300804",
+        "300805",
+        "300808",
+        "300809",
+        "300838",
+        "402011",
+        "403103",
+        "403104"
+      ],
+      "proches": [
+        "kinesitherapeute"
       ]
     },
     {
@@ -1775,6 +2416,22 @@
       ],
       "synonymes": [
         "psychologue"
+      ],
+      "contextes": [
+        "23376",
+        "38126",
+        "300779",
+        "300806",
+        "300809",
+        "400010",
+        "403020",
+        "403025",
+        "403095",
+        "403102",
+        "403103",
+        "403104",
+        "405285",
+        "405349"
       ]
     },
     {
@@ -1806,6 +2463,20 @@
         "ouvrier/ère boulanger/ère",
         "boulanger",
         "boulangère"
+      ],
+      "contextes": [
+        "23376",
+        "300795",
+        "300800",
+        "300803",
+        "300811",
+        "403095",
+        "403103",
+        "405307"
+      ],
+      "proches": [
+        "vendeur-conseil",
+        "patissier"
       ]
     },
     {
@@ -1840,6 +2511,20 @@
         "pâtissier/ère de restaurant",
         "pâtissier",
         "pâtissière"
+      ],
+      "contextes": [
+        "23376",
+        "23380",
+        "300800",
+        "300811",
+        "402011",
+        "403095",
+        "403103",
+        "405307",
+        "489575"
+      ],
+      "proches": [
+        "boulanger"
       ]
     },
     {
@@ -1869,6 +2554,21 @@
         "cuisinier/ère",
         "chef de cuisine",
         "cheffe de cuisine"
+      ],
+      "contextes": [
+        "23376",
+        "38055",
+        "300800",
+        "400005",
+        "402011",
+        "489572",
+        "489575"
+      ],
+      "transitions": [
+        "ecologique"
+      ],
+      "proches": [
+        "patissier"
       ]
     },
     {
@@ -1898,6 +2598,24 @@
       "synonymes": [
         "animateur/trice commercial/e de point de vente horticole",
         "fleuriste"
+      ],
+      "contextes": [
+        "23376",
+        "300791",
+        "300795",
+        "300800",
+        "300806",
+        "403020",
+        "403092",
+        "403103",
+        "403106",
+        "405307"
+      ],
+      "transitions": [
+        "ecologique"
+      ],
+      "proches": [
+        "acheteur-industriel"
       ]
     },
     {
@@ -1927,6 +2645,17 @@
       "synonymes": [
         "coiffeur",
         "coiffeuse"
+      ],
+      "contextes": [
+        "23376",
+        "300778",
+        "300806",
+        "402011",
+        "403019",
+        "403020",
+        "403103",
+        "403106",
+        "405307"
       ]
     },
     {
@@ -1962,6 +2691,21 @@
         "monteur/euse électricien/ne",
         "électricien installateur",
         "électricienne installatrice"
+      ],
+      "contextes": [
+        "38055",
+        "300778",
+        "300779",
+        "300783",
+        "300806",
+        "403101",
+        "403103",
+        "403962",
+        "405348",
+        "489576"
+      ],
+      "transitions": [
+        "ecologique"
       ]
     },
     {
@@ -1994,6 +2738,23 @@
         "monteur/euse sanitaire",
         "plombier",
         "plombière"
+      ],
+      "contextes": [
+        "23374",
+        "23376",
+        "38055",
+        "300778",
+        "300779",
+        "300795",
+        "300806",
+        "403023",
+        "403094",
+        "403103",
+        "403106",
+        "403962"
+      ],
+      "transitions": [
+        "ecologique"
       ]
     },
     {
@@ -2024,6 +2785,19 @@
         "constructeur/trice en maçonnerie et béton armé du bâtiment",
         "maçon",
         "maçonne"
+      ],
+      "contextes": [
+        "38055",
+        "300782",
+        "300783",
+        "300795",
+        "403101",
+        "403103",
+        "403106",
+        "403962"
+      ],
+      "transitions": [
+        "ecologique"
       ]
     },
     {
@@ -2055,6 +2829,19 @@
         "constructeur/trice bois",
         "charpentier bois",
         "charpentière bois"
+      ],
+      "contextes": [
+        "38055",
+        "300782",
+        "300795",
+        "300800",
+        "300806",
+        "403092",
+        "403103",
+        "403962"
+      ],
+      "transitions": [
+        "ecologique"
       ]
     },
     {
@@ -2086,6 +2873,20 @@
         "mécanicien/ne automobile",
         "technicien automobile",
         "technicienne automobile"
+      ],
+      "contextes": [
+        "23374",
+        "38055",
+        "300806",
+        "300821",
+        "403092",
+        "403103",
+        "403104",
+        "403106",
+        "490503"
+      ],
+      "transitions": [
+        "ecologique"
       ]
     },
     {
@@ -2116,6 +2917,26 @@
         "opérateur/trice en techniques de soudage",
         "soudeur",
         "soudeuse"
+      ],
+      "contextes": [
+        "38055",
+        "126450",
+        "300789",
+        "300794",
+        "300795",
+        "300804",
+        "300806",
+        "300846",
+        "403096",
+        "403101",
+        "403103",
+        "512382"
+      ],
+      "transitions": [
+        "ecologique"
+      ],
+      "proches": [
+        "technicien-de-maintenance-industrielle"
       ]
     },
     {
@@ -2152,6 +2973,26 @@
         "responsable de maintenance",
         "technicien de maintenance industrielle",
         "technicienne de maintenance industrielle"
+      ],
+      "contextes": [
+        "38055",
+        "126450",
+        "300800",
+        "300804",
+        "300806",
+        "300808",
+        "403022",
+        "403096",
+        "403101",
+        "403103",
+        "489918",
+        "512382"
+      ],
+      "transitions": [
+        "ecologique"
+      ],
+      "proches": [
+        "charge-daffaires"
       ]
     },
     {
@@ -2182,6 +3023,35 @@
       "synonymes": [
         "ingénieur en mécanique",
         "ingénieure en mécanique"
+      ],
+      "contextes": [
+        "23381",
+        "23382",
+        "38055",
+        "126450",
+        "300779",
+        "300784",
+        "300785",
+        "300804",
+        "300806",
+        "403095",
+        "403103",
+        "403106",
+        "405348",
+        "489918",
+        "511069",
+        "511477",
+        "512382"
+      ],
+      "transitions": [
+        "ecologique",
+        "numerique"
+      ],
+      "proches": [
+        "biologiste-de-lenvironnement",
+        "ing-biomedical",
+        "eco-concepteur",
+        "acheteur-industriel"
       ]
     },
     {
@@ -2212,6 +3082,16 @@
         "commandant/e de bord (Captain)",
         "officier/ère pilote de ligne-copilote (First officer)",
         "pilote de ligne"
+      ],
+      "contextes": [
+        "23377",
+        "300779",
+        "300788",
+        "300803",
+        "300805",
+        "300816",
+        "403103",
+        "511474"
       ]
     },
     {
@@ -2230,7 +3110,21 @@
       ],
       "contexte": "Installation et maintenance des réseaux informatiques.",
       "correspondance": "proposition",
-      "niveauAcces": "bac+2"
+      "rome": [
+        "M1816"
+      ],
+      "niveauAcces": "bac+2",
+      "contextes": [
+        "23376",
+        "126450",
+        "300779",
+        "300784",
+        "300803",
+        "300804"
+      ],
+      "transitions": [
+        "numerique"
+      ]
     },
     {
       "id": "traducteur-interprete",
@@ -2263,6 +3157,21 @@
         "traducteur/trice-rédacteur/trice",
         "traducteur-interprète",
         "traductrice-interprète"
+      ],
+      "contextes": [
+        "300799",
+        "300806",
+        "403025",
+        "403095",
+        "403103",
+        "403106",
+        "403107",
+        "405348",
+        "405349",
+        "510973"
+      ],
+      "proches": [
+        "professeur-de-sciences"
       ]
     },
     {
@@ -2293,6 +3202,22 @@
         "flash-man",
         "journaliste scientifique",
         "journaliste"
+      ],
+      "contextes": [
+        "300779",
+        "300799",
+        "300806",
+        "300849",
+        "403020",
+        "403095",
+        "403103",
+        "403106",
+        "403107",
+        "405349",
+        "510973"
+      ],
+      "transitions": [
+        "numerique"
       ]
     },
     {
@@ -2328,6 +3253,18 @@
         "technicien/ne du son",
         "ingénieur du son",
         "ingénieure du son"
+      ],
+      "contextes": [
+        "300779",
+        "300783",
+        "300795",
+        "300824",
+        "300849",
+        "300878",
+        "403103",
+        "403106",
+        "512375",
+        "512383"
       ]
     },
     {
@@ -2358,6 +3295,21 @@
         "instrumentiste",
         "musicien",
         "musicienne"
+      ],
+      "contextes": [
+        "23376",
+        "300779",
+        "300805",
+        "300849",
+        "300878",
+        "403020",
+        "403097",
+        "403106",
+        "512375"
+      ],
+      "proches": [
+        "professeur-de-musique",
+        "professeur-de-sciences"
       ]
     },
     {
@@ -2389,6 +3341,20 @@
         "conservateur/trice-restaurateur/trice",
         "restaurateur d'oeuvres d'art",
         "restauratrice d'oeuvres d'art"
+      ],
+      "contextes": [
+        "23376",
+        "38055",
+        "300777",
+        "300779",
+        "300782",
+        "300783",
+        "300806",
+        "403019",
+        "403106"
+      ],
+      "proches": [
+        "ceramiste"
       ]
     },
     {
@@ -2421,6 +3387,17 @@
         "maître/esse d'école",
         "professeur des écoles",
         "professeure des écoles"
+      ],
+      "contextes": [
+        "23376",
+        "300800",
+        "300824",
+        "300835",
+        "403020",
+        "403100",
+        "403104",
+        "403826",
+        "405244"
       ]
     },
     {
@@ -2454,6 +3431,26 @@
         "professeur/e d'enseignement artistique",
         "professeur de musique ou de danse",
         "professeure de musique ou de danse"
+      ],
+      "contextes": [
+        "23376",
+        "300778",
+        "300824",
+        "300829",
+        "300847",
+        "300849",
+        "300878",
+        "403020",
+        "403100",
+        "403103",
+        "403106",
+        "403826",
+        "405244",
+        "489413"
+      ],
+      "proches": [
+        "ingenieur-du-son",
+        "musicien"
       ]
     },
     {
@@ -2475,7 +3472,7 @@
       "niveauAcces": "bac",
       "onisep": "MET.44",
       "rome": [
-        "K1601"
+        "K1603"
       ],
       "domaines": [
         "information-communication, audiovisuel/bibliothèque, documentation"
@@ -2489,6 +3486,20 @@
         "responsable d'une mission transversale en bibliothèque-médiathèque",
         "responsable d'un pôle d'activité de la bibliothèque",
         "responsable d'équipe ou de projet en bibliothèque-médiathèque"
+      ],
+      "contextes": [
+        "300806",
+        "300849",
+        "403020",
+        "403103",
+        "403104",
+        "405349"
+      ],
+      "proches": [
+        "journaliste-scientifique",
+        "journaliste",
+        "community-builder",
+        "brand-manager"
       ]
     },
     {
@@ -2510,7 +3521,7 @@
       "niveauAcces": "bac+3",
       "onisep": "MET.941",
       "rome": [
-        "G1201"
+        "G1222"
       ],
       "domaines": [
         "arts, culture, artisanat/activités culturelles",
@@ -2521,6 +3532,22 @@
       "synonymes": [
         "guide-conférencier",
         "guide-conférencière"
+      ],
+      "contextes": [
+        "23376",
+        "300779",
+        "300783",
+        "300800",
+        "300806",
+        "403020",
+        "403098",
+        "403103",
+        "403106"
+      ],
+      "proches": [
+        "journaliste-scientifique",
+        "journaliste",
+        "professeur-de-sciences"
       ]
     },
     {
@@ -2542,7 +3569,7 @@
       "niveauAcces": "bac+7",
       "onisep": "MET.33",
       "rome": [
-        "K1903"
+        "K1915"
       ],
       "domaines": [
         "économie, droit, politique/activité judiciaire"
@@ -2553,6 +3580,18 @@
         "avocat/e pénaliste",
         "avocat",
         "avocate"
+      ],
+      "contextes": [
+        "300779",
+        "300799",
+        "300806",
+        "300809",
+        "403020",
+        "403025",
+        "403102",
+        "403103",
+        "405348",
+        "405349"
       ]
     },
     {
@@ -2573,7 +3612,7 @@
       "niveauAcces": "bac+2",
       "onisep": "MET.72",
       "rome": [
-        "K1902"
+        "K1909"
       ],
       "domaines": [
         "économie, droit, politique/activité judiciaire"
@@ -2582,6 +3621,14 @@
         "greffier/ère des services judiciaires",
         "greffier",
         "greffière"
+      ],
+      "contextes": [
+        "23378",
+        "300806",
+        "403020",
+        "403100",
+        "403104",
+        "405349"
       ]
     },
     {
@@ -2603,7 +3650,7 @@
       "niveauAcces": "bac",
       "onisep": "MET.336",
       "rome": [
-        "K1706"
+        "K1708"
       ],
       "domaines": [
         "armée, sécurité/sécurité, prévention"
@@ -2612,6 +3659,18 @@
         "policier/ère",
         "gardien de la paix",
         "gardienne de la paix"
+      ],
+      "contextes": [
+        "300783",
+        "300792",
+        "300800",
+        "300803",
+        "300808",
+        "300817",
+        "402011",
+        "403020",
+        "403100",
+        "511474"
       ]
     },
     {
@@ -2643,6 +3702,21 @@
         "moniteur/euse sportif/ive",
         "éducateur sportif",
         "éducatrice sportive"
+      ],
+      "contextes": [
+        "23376",
+        "300779",
+        "300783",
+        "300805",
+        "300820",
+        "300835",
+        "300839",
+        "300849",
+        "403024",
+        "403091"
+      ],
+      "proches": [
+        "professeur-de-sciences"
       ]
     },
     {
@@ -2664,13 +3738,31 @@
       "niveauAcces": "bac+5",
       "onisep": "MET.166",
       "rome": [
-        "K2401"
+        "K2125"
       ],
       "domaines": [
         "histoire-géographie, psychologie, sociologie/histoire"
       ],
       "synonymes": [
         "archéologue"
+      ],
+      "contextes": [
+        "23380",
+        "38055",
+        "300779",
+        "300783",
+        "300816",
+        "300817",
+        "403103",
+        "403104",
+        "405349",
+        "489413",
+        "511477"
+      ],
+      "proches": [
+        "guide-conferencier",
+        "journaliste-scientifique",
+        "journaliste"
       ]
     },
     {
@@ -2702,6 +3794,26 @@
       "synonymes": [
         "ingénieur/e géologue",
         "géologue"
+      ],
+      "contextes": [
+        "23380",
+        "38055",
+        "300779",
+        "300783",
+        "300806",
+        "300816",
+        "300817",
+        "403103",
+        "403104",
+        "403107"
+      ],
+      "transitions": [
+        "ecologique"
+      ],
+      "proches": [
+        "journaliste-scientifique",
+        "journaliste",
+        "biologiste-de-lenvironnement"
       ]
     },
     {
@@ -2731,6 +3843,24 @@
       "synonymes": [
         "météorologue",
         "météorologiste"
+      ],
+      "contextes": [
+        "23376",
+        "23380",
+        "300790",
+        "300805",
+        "300816",
+        "300817",
+        "403103",
+        "403104",
+        "405348",
+        "405349"
+      ],
+      "transitions": [
+        "ecologique"
+      ],
+      "proches": [
+        "biologiste-de-lenvironnement"
       ]
     },
     {
@@ -2764,6 +3894,21 @@
         "exploitant/e agricole",
         "agriculteur",
         "agricultrice"
+      ],
+      "contextes": [
+        "300779",
+        "300783",
+        "300794",
+        "300800",
+        "400040",
+        "403095",
+        "403103",
+        "403106",
+        "403960",
+        "403963"
+      ],
+      "transitions": [
+        "ecologique"
       ]
     },
     {
@@ -2784,7 +3929,7 @@
       "niveauAcces": "cap",
       "onisep": "MET.120",
       "rome": [
-        "A1203"
+        "A1208"
       ],
       "domaines": [
         "environnement, énergies, propreté/aménagement paysager"
@@ -2796,6 +3941,24 @@
         "jardinier/ère paysagiste en entretien",
         "ouvrier paysagiste",
         "ouvrière paysagiste"
+      ],
+      "contextes": [
+        "23374",
+        "38055",
+        "300778",
+        "300783",
+        "300795",
+        "300800",
+        "300806",
+        "300821",
+        "300837",
+        "403103",
+        "403104",
+        "403962",
+        "513553"
+      ],
+      "transitions": [
+        "ecologique"
       ]
     },
     {
@@ -2824,6 +3987,26 @@
       ],
       "synonymes": [
         "vétérinaire"
+      ],
+      "contextes": [
+        "23376",
+        "38126",
+        "300779",
+        "300783",
+        "300802",
+        "300804",
+        "300806",
+        "300809",
+        "400007",
+        "403019",
+        "403102",
+        "403103",
+        "403104",
+        "403106",
+        "403963"
+      ],
+      "proches": [
+        "biologiste-de-lenvironnement"
       ]
     },
     {
@@ -2853,6 +4036,20 @@
       "synonymes": [
         "diététicien",
         "diététicienne"
+      ],
+      "contextes": [
+        "38126",
+        "300806",
+        "300809",
+        "403020",
+        "403102",
+        "403103",
+        "403104",
+        "490503"
+      ],
+      "proches": [
+        "journaliste-scientifique",
+        "journaliste"
       ]
     },
     {
@@ -2882,6 +4079,19 @@
       "synonymes": [
         "opticien-lunetier",
         "opticienne-lunetière"
+      ],
+      "contextes": [
+        "23374",
+        "300806",
+        "403019",
+        "403020",
+        "403092",
+        "403103",
+        "405307",
+        "490503"
+      ],
+      "proches": [
+        "ingenieur-mecanique"
       ]
     },
     {
@@ -2913,6 +4123,28 @@
         "transporteur/euse sanitaire",
         "ambulancier",
         "ambulancière"
+      ],
+      "contextes": [
+        "23376",
+        "38126",
+        "300779",
+        "300803",
+        "300804",
+        "300805",
+        "300806",
+        "300838",
+        "300841",
+        "400010",
+        "402011",
+        "403020",
+        "403100",
+        "403103",
+        "403104",
+        "403106",
+        "512377"
+      ],
+      "proches": [
+        "aide-soignant"
       ]
     },
     {
@@ -2941,6 +4173,25 @@
       "synonymes": [
         "auxiliaire-puériculteur/trice",
         "auxiliaire de puériculture"
+      ],
+      "contextes": [
+        "23376",
+        "38126",
+        "300800",
+        "300803",
+        "300804",
+        "300805",
+        "300808",
+        "300810",
+        "300825",
+        "300830"
+      ],
+      "transitions": [
+        "ecologique"
+      ],
+      "proches": [
+        "aide-soignant",
+        "sage-femme"
       ]
     },
     {
@@ -2972,6 +4223,22 @@
         "comptable général/e",
         "comptable unique",
         "comptable"
+      ],
+      "contextes": [
+        "300799",
+        "300806",
+        "403025",
+        "403103",
+        "403104",
+        "405285",
+        "405348",
+        "405349"
+      ],
+      "transitions": [
+        "numerique"
+      ],
+      "proches": [
+        "analyste-des-risques"
       ]
     },
     {
@@ -2990,7 +4257,22 @@
       ],
       "contexte": "Accompagnement des clients dans leurs projets financiers.",
       "correspondance": "proposition",
-      "niveauAcces": "bac+2"
+      "rome": [
+        "C1206"
+      ],
+      "niveauAcces": "bac+2",
+      "contextes": [
+        "23374",
+        "300779",
+        "300806",
+        "300817",
+        "300819",
+        "300821",
+        "300837",
+        "403020",
+        "403103",
+        "405348"
+      ]
     },
     {
       "id": "vendeur-conseil",
@@ -3027,7 +4309,612 @@
         "employé/e de libre-service",
         "vendeur en magasin",
         "vendeuse en magasin"
+      ],
+      "contextes": [
+        "23376",
+        "300783",
+        "300795",
+        "300800",
+        "300805",
+        "300806",
+        "402011",
+        "403020",
+        "403103",
+        "405307",
+        "490503"
       ]
+    }
+  ],
+  "contextesTravail": [
+    {
+      "id": "23374",
+      "libelle": "Travail le samedi",
+      "type": "Horaires et durée du travail"
+    },
+    {
+      "id": "23376",
+      "libelle": "Travail les week-ends et jours fériés",
+      "type": "Horaires et durée du travail"
+    },
+    {
+      "id": "23377",
+      "libelle": "En altitude",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "23378",
+      "libelle": "Zone départementale",
+      "type": "Lieux et déplacements"
+    },
+    {
+      "id": "23380",
+      "libelle": "En laboratoire",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "23381",
+      "libelle": "Zone régionale",
+      "type": "Lieux et déplacements"
+    },
+    {
+      "id": "23382",
+      "libelle": "En ligne ou ilot de production",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "38055",
+      "libelle": "Port d'équipement de protection individuelle (EPI) : gants, chaussures, casque, protections auditives",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "38126",
+      "libelle": "Etablissement de santé",
+      "type": "Types de structures"
+    },
+    {
+      "id": "126450",
+      "libelle": "Travail posté (2x8, 3x8, 5x8, etc.)",
+      "type": "Horaires et durée du travail"
+    },
+    {
+      "id": "300777",
+      "libelle": "Au domicile de l'intervenant",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "300778",
+      "libelle": "Au domicile d'un particulier",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "300779",
+      "libelle": "Déplacements professionnels",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "300781",
+      "libelle": "En environnement allergène",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "300782",
+      "libelle": "En grande hauteur",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "300783",
+      "libelle": "En extérieur",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "300784",
+      "libelle": "En zone à atmosphère contrôlée",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "300785",
+      "libelle": "En salle blanche",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "300788",
+      "libelle": "En zone aéroportuaire",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "300789",
+      "libelle": "Exposition à de hautes températures",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "300790",
+      "libelle": "En environnement climatique difficile",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "300791",
+      "libelle": "Manipulation de produits à risques",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "300792",
+      "libelle": "Port de gilet pare-balles",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "300794",
+      "libelle": "Manipulation d'un engin, équipement ou outil dangereux",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "300795",
+      "libelle": "Port et manipulation de charges lourdes ou encombrantes",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "300799",
+      "libelle": "Possibilité de télétravail",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "300800",
+      "libelle": "Station debout prolongée",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "300802",
+      "libelle": "Port d'équipement d'hygiène",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "300803",
+      "libelle": "Travail de nuit",
+      "type": "Horaires et durée du travail"
+    },
+    {
+      "id": "300804",
+      "libelle": "Travail en astreinte",
+      "type": "Horaires et durée du travail"
+    },
+    {
+      "id": "300805",
+      "libelle": "Travail en horaires décalés",
+      "type": "Horaires et durée du travail"
+    },
+    {
+      "id": "300806",
+      "libelle": "Travail en journée",
+      "type": "Horaires et durée du travail"
+    },
+    {
+      "id": "300808",
+      "libelle": "Travail par roulement",
+      "type": "Horaires et durée du travail"
+    },
+    {
+      "id": "300809",
+      "libelle": "Cabinet libéral",
+      "type": "Types de structures"
+    },
+    {
+      "id": "300810",
+      "libelle": "Crèche, halte-garderie",
+      "type": "Types de structures"
+    },
+    {
+      "id": "300811",
+      "libelle": "Etablissement de restauration collective",
+      "type": "Types de structures"
+    },
+    {
+      "id": "300816",
+      "libelle": "Zone internationale",
+      "type": "Lieux et déplacements"
+    },
+    {
+      "id": "300817",
+      "libelle": "Zone nationale",
+      "type": "Lieux et déplacements"
+    },
+    {
+      "id": "300819",
+      "libelle": "Clientèle d'affaires",
+      "type": "Publics spécifiques"
+    },
+    {
+      "id": "300820",
+      "libelle": "Adultes",
+      "type": "Publics spécifiques"
+    },
+    {
+      "id": "300821",
+      "libelle": "Clientèle d'entreprises",
+      "type": "Publics spécifiques"
+    },
+    {
+      "id": "300824",
+      "libelle": "En environnement bruyant",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "300825",
+      "libelle": "Enfants",
+      "type": "Publics spécifiques"
+    },
+    {
+      "id": "300829",
+      "libelle": "Etudiants",
+      "type": "Publics spécifiques"
+    },
+    {
+      "id": "300830",
+      "libelle": "Familles",
+      "type": "Publics spécifiques"
+    },
+    {
+      "id": "300834",
+      "libelle": "En flux tendu",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "300835",
+      "libelle": "Mineurs (- 18 ans)",
+      "type": "Publics spécifiques"
+    },
+    {
+      "id": "300837",
+      "libelle": "Particuliers",
+      "type": "Publics spécifiques"
+    },
+    {
+      "id": "300838",
+      "libelle": "Patients",
+      "type": "Publics spécifiques"
+    },
+    {
+      "id": "300839",
+      "libelle": "Personnes âgées",
+      "type": "Publics spécifiques"
+    },
+    {
+      "id": "300840",
+      "libelle": "Personnes en situation de handicap",
+      "type": "Publics spécifiques"
+    },
+    {
+      "id": "300841",
+      "libelle": "Personnes médicalisées",
+      "type": "Publics spécifiques"
+    },
+    {
+      "id": "300846",
+      "libelle": "Salariés",
+      "type": "Publics spécifiques"
+    },
+    {
+      "id": "300847",
+      "libelle": "Public scolaire",
+      "type": "Publics spécifiques"
+    },
+    {
+      "id": "300849",
+      "libelle": "Association",
+      "type": "Types de structures"
+    },
+    {
+      "id": "300878",
+      "libelle": "Structure de loisirs, culturelle ou touristique",
+      "type": "Types de structures"
+    },
+    {
+      "id": "400005",
+      "libelle": "Travail en horaires fractionnés",
+      "type": "Horaires et durée du travail"
+    },
+    {
+      "id": "400007",
+      "libelle": "En bloc opératoire",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "400010",
+      "libelle": "Etablissement social ou médico-social (EHPAD, résidence senior, ...)",
+      "type": "Types de structures"
+    },
+    {
+      "id": "400040",
+      "libelle": "Travail saisonnier",
+      "type": "Horaires et durée du travail"
+    },
+    {
+      "id": "402011",
+      "libelle": "Port de tenue professionnelle ou d'uniforme",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "403019",
+      "libelle": "Activités de motricité fine (dextérité...)",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "403020",
+      "libelle": "En contact avec du public",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "403022",
+      "libelle": "Exposition possible à gaz, aérosol, fumées ...",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "403023",
+      "libelle": "Utilisation d'escaliers",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "403024",
+      "libelle": "Polyactivité",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "403025",
+      "libelle": "Station assise prolongée",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "403091",
+      "libelle": "En club sportif",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "403092",
+      "libelle": "En atelier",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "403093",
+      "libelle": "En bureau d'études",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "403094",
+      "libelle": "En milieu occupé",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "403095",
+      "libelle": "Travail selon un rythme irrégulier et des pics d'activité",
+      "type": "Horaires et durée du travail"
+    },
+    {
+      "id": "403096",
+      "libelle": "Alternance",
+      "type": "Statut d'emploi"
+    },
+    {
+      "id": "403097",
+      "libelle": "Contrat intermittent",
+      "type": "Statut d'emploi"
+    },
+    {
+      "id": "403098",
+      "libelle": "Contrat travail saisonnier",
+      "type": "Statut d'emploi"
+    },
+    {
+      "id": "403100",
+      "libelle": "Fonctionnaire",
+      "type": "Statut d'emploi"
+    },
+    {
+      "id": "403101",
+      "libelle": "Intérim",
+      "type": "Statut d'emploi"
+    },
+    {
+      "id": "403102",
+      "libelle": "Profession libérale",
+      "type": "Statut d'emploi"
+    },
+    {
+      "id": "403103",
+      "libelle": "Salarié secteur privé (CDI, CDD)",
+      "type": "Statut d'emploi"
+    },
+    {
+      "id": "403104",
+      "libelle": "Salarié secteur public",
+      "type": "Statut d'emploi"
+    },
+    {
+      "id": "403106",
+      "libelle": "Travailleur indépendant",
+      "type": "Statut d'emploi"
+    },
+    {
+      "id": "403107",
+      "libelle": "Travail en mode projet",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "403826",
+      "libelle": "Travail durant les vacances scolaires",
+      "type": "Horaires et durée du travail"
+    },
+    {
+      "id": "403960",
+      "libelle": "Exploitation agricole",
+      "type": "Types de structures"
+    },
+    {
+      "id": "403962",
+      "libelle": "Sur chantier",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "403963",
+      "libelle": "Travail avec des animaux",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "405244",
+      "libelle": "Etablissement scolaire",
+      "type": "Types de structures"
+    },
+    {
+      "id": "405285",
+      "libelle": "Collectivités territoriales",
+      "type": "Types de structures"
+    },
+    {
+      "id": "405286",
+      "libelle": "Organisme de formation",
+      "type": "Types de structures"
+    },
+    {
+      "id": "405307",
+      "libelle": "Commerce de proximité",
+      "type": "Types de structures"
+    },
+    {
+      "id": "405328",
+      "libelle": "En salle d'accouchement",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "405329",
+      "libelle": "Officine",
+      "type": "Types de structures"
+    },
+    {
+      "id": "405348",
+      "libelle": "Entreprises et milieux professionnels",
+      "type": "Types de structures"
+    },
+    {
+      "id": "405349",
+      "libelle": "Organisme public",
+      "type": "Types de structures"
+    },
+    {
+      "id": "489413",
+      "libelle": "Institution culturelle",
+      "type": "Types de structures"
+    },
+    {
+      "id": "489572",
+      "libelle": "Etablissement de restauration traditionnelle",
+      "type": "Types de structures"
+    },
+    {
+      "id": "489575",
+      "libelle": "Hôtellerie / Restauration",
+      "type": "Types de structures"
+    },
+    {
+      "id": "489576",
+      "libelle": "Utilisation d'équipements de protection collective (EPC)",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "489918",
+      "libelle": "En milieu industriel",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "489936",
+      "libelle": "Résidents",
+      "type": "Publics spécifiques"
+    },
+    {
+      "id": "490147",
+      "libelle": "Industries de santé",
+      "type": "Types de structures"
+    },
+    {
+      "id": "490503",
+      "libelle": "Clientèle de particuliers",
+      "type": "Publics spécifiques"
+    },
+    {
+      "id": "490504",
+      "libelle": "Clientèle de professionnels",
+      "type": "Publics spécifiques"
+    },
+    {
+      "id": "510973",
+      "libelle": "Entreprises de médias",
+      "type": "Types de structures"
+    },
+    {
+      "id": "511069",
+      "libelle": "Laboratoire de recherche et développement",
+      "type": "Types de structures"
+    },
+    {
+      "id": "511474",
+      "libelle": "Mobilisable en urgence",
+      "type": "Horaires et durée du travail"
+    },
+    {
+      "id": "511477",
+      "libelle": "Travail avec des organisations ou partenaires internationaux",
+      "type": "Publics spécifiques"
+    },
+    {
+      "id": "511668",
+      "libelle": "Partenaires Publics et Privés",
+      "type": "Publics spécifiques"
+    },
+    {
+      "id": "511685",
+      "libelle": "Artiste-auteur",
+      "type": "Statut d'emploi"
+    },
+    {
+      "id": "512375",
+      "libelle": "En studio",
+      "type": "Conditions de travail et risques professionnels"
+    },
+    {
+      "id": "512377",
+      "libelle": "Entreprises privées de transport sanitaire",
+      "type": "Types de structures"
+    },
+    {
+      "id": "512382",
+      "libelle": "Entreprise industrielle",
+      "type": "Types de structures"
+    },
+    {
+      "id": "512383",
+      "libelle": "Société de production audiovisuelle",
+      "type": "Types de structures"
+    },
+    {
+      "id": "513553",
+      "libelle": "Clientèle d'organismes publics",
+      "type": "Publics spécifiques"
+    },
+    {
+      "id": "513694",
+      "libelle": "Laboratoire de biologie médicale",
+      "type": "Types de structures"
+    },
+    {
+      "id": "513695",
+      "libelle": "Instances de santé",
+      "type": "Types de structures"
+    },
+    {
+      "id": "513696",
+      "libelle": "Etablissement de distribution en gros",
+      "type": "Types de structures"
+    },
+    {
+      "id": "522308",
+      "libelle": "Industrie pharmaceutique",
+      "type": "Types de structures"
     }
   ]
 }

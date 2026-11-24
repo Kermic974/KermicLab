@@ -60,6 +60,10 @@ test("métiers : anneaux, filtres, chaîne d'un métier, notions KermicLab et gr
   const texte = await detail.textContent();
   for (const attendu of ["Statistiques", "Informatique", "Requêtage SQL", "Tests d’hypothèses", "Notions KermicLab à travailler", "Correspondance proposée"]) assert.ok(texte.includes(attendu), attendu);
   assert.ok(await detail.locator(".metiers-notion").count() >= 4, "notions des statistiques et de l'informatique");
+  // ROME 4.0 de France Travail (ADR 0043) : transitions et conditions de travail du métier.
+  const dataAnalyst = donnees.metiers.find((m) => m.id === "data-analyst");
+  if (dataAnalyst.transitions?.includes("numerique")) assert.ok(texte.includes("Métier transformé par le numérique"));
+  if (dataAnalyst.contextes?.length) assert.equal(await detail.locator(".metiers-conditions li").count() > 0, true, "conditions de travail");
   assert.equal(await page.locator("#metiers-anneaux .metiers-noeud.metier:not(.estompe)").count(), 1, "seul ce métier reste allumé");
   assert.equal(await pixelsDessines(page, "#metiers-detail .metiers-canvas") > 500, true, "le graphe 3D des notions est dessiné");
   await capturer(page, "metiers-data-analyst", { pleinePage: true });
@@ -76,6 +80,12 @@ test("métiers : anneaux, filtres, chaîne d'un métier, notions KermicLab et gr
   const texteBoulanger = await detail.textContent();
   for (const attendu of ["Niveau d'accès minimum : CAP", "Fiche proposée, en cours de relecture."]) assert.ok(texteBoulanger.includes(attendu), attendu);
   assert.match(await page.locator("#metiers-sources").textContent(), /Onisep, « Idéo-Fiches métiers » .*licence ODbL/, "attribution exigée par la licence");
+  assert.match(await page.locator("#metiers-sources").textContent(), /France Travail, « ROME 4\.0 \(version \d+\) » .*Licence Ouverte/, "attribution du ROME");
+  const boulanger = donnees.metiers.find((m) => m.id === "boulanger");
+  if (boulanger.proches?.length) {
+    await detail.locator(".metiers-bloc", { hasText: "Métiers proches" }).locator(".metiers-pastille.metier").first().click();
+    assert.equal(await detail.locator("h3").textContent(), donnees.metiers.find((m) => m.id === boulanger.proches[0]).nom, "un métier proche s'ouvre");
+  }
   await page.selectOption("#metiers-niveau", "");
   assert.equal(await detail.isHidden(), true, "changer de filtre referme le détail");
   if (nbMetiers > 50) {

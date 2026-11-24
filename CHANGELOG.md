@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Espace Métiers : données du ROME 4.0 de France Travail** (ADR 0043) : les 79 métiers sont rattachés au ROME 4.0 (version 62) par un extrait daté et versionné (`npm run import:rome`, Licence Ouverte). Le détail d'un métier montre s'il relève de la transition écologique ou numérique, ses conditions de travail (horaires, lieux, statuts) et des métiers proches cliquables. 13 codes ROME sont précisés, 7 ajoutés (à relire). Plan des lots suivants : tension de recrutement (API Marché du travail) et enquête BMO. / Careers space: France Travail ROME 4.0 data (working conditions, green and digital transitions, related jobs).
+
 - **Barre du haut sur ordinateur : tout tient sur une ligne** : avec six destinations (Métiers compris) et « Mes espaces », les onglets débordaient de 1 024 à 1 366 px (Jeux et Progression masqués, onglet courant coupé). La barre se compacte désormais par paliers, selon la place mesurée : icônes des onglets, pseudo de l'avatar, nom du site, libellé de « Mes espaces », marges ; chaque élément garde son nom accessible. / Top bar: entries no longer overflow on desktop; the bar compacts progressively.
 
 - **Correctif : menu « Mes espaces » sans styles** : la résolution d'un conflit de fusion (lot 9 face à l'Espace Métiers) avait retiré de `main` les styles du menu, des pastilles et des écrans Famille et Professeur en deux colonnes, ainsi que des textes du menu. La PR #421 a rétabli dix textes ; celle-ci rétablit les styles et le dernier texte (`efIndicateurs`). / Fix: restored the "My spaces" menu and two-column screen styles lost in a merge.

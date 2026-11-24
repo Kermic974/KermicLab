@@ -4,7 +4,7 @@ Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : 
 
 ## Espace Métiers (chantier Métiers)
 
-Plan : [chantier Métiers](chantiers/metiers.md), [ADR 0042](decisions/0042-referentiel-metiers-onisep.md).
+Plan : [chantier Métiers](chantiers/metiers.md), [ADR 0042](decisions/0042-referentiel-metiers-onisep.md), [ADR 0043](decisions/0043-donnees-france-travail-metiers.md).
 
 | Action | Où | Pourquoi | Comment confirmer | Statut |
 |---|---|---|---|---|
@@ -12,6 +12,12 @@ Plan : [chantier Métiers](chantiers/metiers.md), [ADR 0042](decisions/0042-refe
 | Accepter la licence ODbL des données ONISEP | [ADR 0042 §2](decisions/0042-referentiel-metiers-onisep.md), `referentiel/sources/onisep/README.md` | La licence est l'ODbL (et non Etalab) : attribution obligatoire (en place) et partage à l'identique des bases dérivées publiées (`metiers-v0.json`, `dist/metiers.json`) | Décision notée dans l'ADR 0042 ; sinon retirer les champs ONISEP avant publication | à faire |
 | Vérifier les 21 correspondances métier ↔ fiche ONISEP choisies par l'agent | `referentiel/metiers-v0.json` (champ `onisep`), liste dans le chantier Métiers | Rapprochements non exacts (ex. « Resp. logistique » → ingénieur logistique, « Content Strategist » → concepteur-rédacteur) | Correspondances confirmées ou corrigées par une PR | à faire |
 | Valider l'ADR 0042 (format v2, import ONISEP) | [ADR 0042](decisions/0042-referentiel-metiers-onisep.md) | Décision de structure des données et de source externe | ADR passée au statut accepté | à faire |
+| Récupérer le ROME 4.0 et la BMO en données ouvertes | data.gouv.fr ; hôtes `api.francetravail.fr`, `www.francetravail.org`, `data.dares.travail-emploi.gouv.fr` ajoutés au réseau de l'environnement cloud KermicLab | Lot 7 (et 9) du chantier | Extrait `referentiel/sources/france-travail/rome-4.0-v62.json` versionné | fait |
+| Valider l'ADR 0043 (données de France Travail) | [ADR 0043](decisions/0043-donnees-france-travail-metiers.md) | Choix des sources, affichage des débouchés à un public mineur | ADR passée au statut accepté | à faire |
+| Vérifier les 7 codes ROME choisis par l'agent et les 13 codes précisés | `referentiel/metiers-v0.json` (champ `rome`), liste dans le chantier Métiers (lot 7) | Métiers sans code ONISEP (ex. « Chargé d'affaires » → D1407 technico-commercial) ; les métiers proches et conditions de travail en découlent | Codes confirmés ou corrigés par une PR, puis `npm run import:rome -- <extrait> --appliquer` | à faire |
+| Créer une application sur francetravail.io et s'abonner à l'API Marché du travail | [francetravail.io](https://francetravail.io/produits-partages/catalogue) | Lot 8 : tension de recrutement, salaires proposés, par métier | Identifiant et secret enregistrés hors du dépôt (secret d'environnement), hôtes `francetravail.io`, `api.francetravail.io` et `entreprise.francetravail.fr` autorisés | à faire |
+| Lire les conditions d'utilisation de francetravail.io | [francetravail.io](https://francetravail.io) | Réutilisation publique d'indicateurs dérivés dans un service en partie payant ; attribution exigée | Décision notée dans l'ADR 0043 | à faire |
+| Télécharger la table de passage FAP 2021 ↔ ROME | [DARES, nomenclature des FAP 2021](https://dares.travail-emploi.gouv.fr/donnees/la-nomenclature-des-familles-professionnelles-2021) | Lot 9 : la BMO est codée en FAP ; le site de la DARES bloque les téléchargements automatisés | Fichier déposé dans le chat ou dans `referentiel/sources/france-travail/` | à faire |
 | Relire les 79 associations métier → disciplines (38 de la V5, 41 de la vague pilote), les 26 disciplines « proposition » et les règles ROME | `referentiel/metiers-v0.json`, `referentiel/regles-metiers.json` | Associations reprises de la maquette V5 ou proposées par un agent (gestes, niveaux d'accès, notions) ; public mineur | Champs `correspondance: "validee"` et `relue` renseignés par un humain | à faire |
 
 ## Relecture humaine vérifiable (ADR 0039)
