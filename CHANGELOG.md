@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **S6 — cibles et périmètre proposés** : 2 473 Notions, MicroSkills et Skills présentées comme candidates review, 13 Notions éditoriales des jeux, réutilisation des cibles du lab solaire et annexe à empreintes pour les 486 fiches et le lab. Extension soumise à adoption (ADR 0042, S6 v1.0.1) ; aucun contenu, relation ou placement pédagogique existant modifié, aucune expérience S6 publiée à cette étape. / Proposed candidate targets and fingerprinted migration scope; human adoption remains required.
+
 - **Espace Métiers** (ADR 0041) : nouvel espace du site, « Des notions aux métiers ». Quatre anneaux relient les notions KermicLab, 26 disciplines, 38 métiers et leurs gestes ; choisir un élément allume toute sa chaîne. Le détail liste les notions à travailler (ouvrables comme dans Éducation) et montre leur graphe 3D (prérequis directs, MicroSkills). Données : `referentiel/metiers-v0.json`, validé au build contre le référentiel. / New Careers space linking KermicLab topics to subjects, jobs and job skills, with a 3D topic graph in the details.
 
 - **Build Windows** : lecture des objets S4 par lots bornés, pour éviter `EMFILE` avec le corpus étendu de 8 250 objets ; mêmes fichiers et même ordre de projection. / Bound S4 file reads to prevent Windows file-handle exhaustion.

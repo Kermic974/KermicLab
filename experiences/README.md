@@ -51,4 +51,6 @@ L’historique requiert un clone complet et `origin/main`. Les objets sont ident
 
 ## Étapes encore à livrer
 
+La PR 04 propose l’[annexe fermée de migration](perimetre-migration-v1.json), son schéma et les [cibles S4 candidates](../docs/experiences/cibles-et-extension-s6.md). Les empreintes désignent une révision Git publique figée, pas le contenu courant après ajout d’ancres. L’[ADR 0042](../docs/decisions/0042-extension-migration-s6.md) et la [consolidation S6 v1.0.1](../docs/referentiel/normes/S6-v1.0.1.md) restent à adopter avant usage par le pilote. Cette annexe s’ajoute aux treize documents du contrat d’expérience ; elle n’est pas une nouvelle famille d’expérience.
+
 Les étapes suivantes ajoutent les cibles manquantes, adaptateurs des sources actuelles, identifiants persistants, correspondances des événements, corpus, manifeste de compatibilité historique et export public, puis qualification. Le manifeste vérifiera en particulier les statuts autorisés à la publication : le contrôle de cohérence d’une définition ne suffit pas à l’autoriser. Aucun manifeste, index public S6 ou route d’apprenant n’est créé par la PR 03. La fermeture devra intégrer les arrivées sur main depuis l’inventaire initial, qui reste un relevé historique.
