@@ -4,6 +4,7 @@ import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer } from "./outils.mjs";
+import { SEUIL_ANNEAUX } from "../../web/metiers.js";
 
 let serveur, nav, api, htmlMaquette, donnees;
 before(async () => {
@@ -40,13 +41,18 @@ test("métiers : anneaux, filtres, chaîne d'un métier, notions KermicLab et gr
   await page.locator("#metiers-liste .metiers-item").first().waitFor();
   const [nbMetiers, nbDisciplines, nbNotions] = [donnees.metiers.length, donnees.disciplines.length, Object.keys(donnees.notions).length];
   assert.ok(nbMetiers >= 38 && nbNotions >= 60, "au moins le référentiel de la maquette V5");
-  assert.equal(await page.locator("#metiers-etat").textContent(), `${nbMetiers} métier(s) affiché(s) · ${nbDisciplines} disciplines · ${nbNotions} notions KermicLab reliées`);
-  assert.equal(await page.locator("#metiers-anneaux .metiers-noeud.metier").count(), nbMetiers);
+  // Au-delà de SEUIL_ANNEAUX métiers, les anneaux n'en dessinent que SEUIL_ANNEAUX et l'état le signale.
+  const limites = nbMetiers > SEUIL_ANNEAUX;
+  const etat = await page.locator("#metiers-etat").textContent();
+  assert.ok(etat.startsWith(`${nbMetiers} métier(s) affiché(s) · ${nbDisciplines} disciplines · ${nbNotions} notions KermicLab reliées`), etat);
+  assert.equal(etat.includes(`Les anneaux montrent ${SEUIL_ANNEAUX} métiers`), limites);
+  assert.equal(await page.locator("#metiers-anneaux .metiers-noeud.metier").count(), Math.min(nbMetiers, SEUIL_ANNEAUX));
   assert.equal(await page.locator("#metiers-anneaux .metiers-noeud.notion").count(), nbNotions);
 
   // Filtres : famille de métiers puis recherche sans accents.
   await page.locator("#metiers-categories [data-categorie=health]").click();
-  assert.equal(await page.locator("#metiers-liste .metiers-item").count(), donnees.metiers.filter((m) => m.categorie === "health").length);
+  // La liste est paginée par 50 (lot 5).
+  assert.equal(await page.locator("#metiers-liste .metiers-item").count(), Math.min(50, donnees.metiers.filter((m) => m.categorie === "health").length));
   await page.locator("#metiers-categories [data-categorie=\"\"]").click();
   await page.fill("#metiers-recherche", "ebeniste");
   assert.deepEqual(await page.locator("#metiers-liste .metiers-item strong").allTextContents(), ["Ébéniste"]);
@@ -71,7 +77,7 @@ test("métiers : anneaux, filtres, chaîne d'un métier, notions KermicLab et gr
 
   // Lot 5 du chantier Métiers : filtre par niveau d'accès, niveau et statut de relecture dans le détail, liste par pages.
   await page.selectOption("#metiers-niveau", "cap");
-  assert.equal(await page.locator("#metiers-liste .metiers-item").count(), donnees.metiers.filter((m) => m.niveauAcces === "cap").length);
+  assert.equal(await page.locator("#metiers-liste .metiers-item").count(), Math.min(50, donnees.metiers.filter((m) => m.niveauAcces === "cap").length));
   await page.locator("#metiers-liste [data-metier=boulanger]").click();
   const texteBoulanger = await detail.textContent();
   for (const attendu of ["Niveau d'accès minimum : CAP", "Fiche proposée, en cours de relecture."]) assert.ok(texteBoulanger.includes(attendu), attendu);

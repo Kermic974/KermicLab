@@ -14,3 +14,5 @@ dérivées : ils restent sous ODbL, quelle que soit la licence du reste du dép�
 - Les textes descriptifs des fiches (compétences, nature du travail, salaires…) ne sont pas repris.
 - Les fichiers téléchargés ne sont pas versionnés : seul l'extrait fait foi pour l'import, et la CI ne télécharge rien.
 - `candidats.json` est produit par l'import comme liste de travail ; il n'est pas versionné.
+- Les vagues complémentaires (`npm run vague:metiers`, `referentiel/vagues/`) partent de cet extrait : voir la section
+  « Vagues complémentaires » de `docs/chantiers/metiers.md`.

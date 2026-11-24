@@ -80,7 +80,7 @@ test("onisep : la commande produit le rapport et les candidats, codes de sortie"
   assert.equal(rapport.rattachements.length + rapport.candidats, 5, "chaque fiche est rattachée ou candidate");
   const candidats = JSON.parse(await readFile(join(dossier, "c.json"), "utf8")).candidats;
   assert.ok(candidats.every((c) => c.onisep && c.slug));
-  assert.deepEqual(candidats.find((c) => c.slug === "chef-de-rayon").disciplinesProposees, ["calcul-professionnel", "communication", "gestion"], "règles ROME appliquées aux candidats");
+  assert.deepEqual(candidats.find((c) => c.onisep === "MET.1004").disciplinesProposees, ["calcul-professionnel", "communication", "gestion"], "règles ROME appliquées aux candidats");
   await assert.rejects(exec(process.execPath, [script]), (e) => e.code === 2);
 });
 

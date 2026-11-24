@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Vagues complémentaires de métiers** (chantier Métiers) : outil `npm run vague:metiers` pour faire entrer les 1 032 fiches ONISEP restantes par vagues (squelette par domaine avec nom affiché, famille et disciplines proposées, vérification, garde anti-recopie, fusion en « proposition ») ; repli des disciplines par domaine ONISEP pour les fiches sans code ROME ; le test de l'écran Métiers suit la limite des anneaux au-delà de 120 métiers. / Tooling for further ONISEP career waves.
+
 - **Tests Windows** : conversion des URL de fichier des tests CLI ONISEP et libellés MicroSkills avec `fileURLToPath`, pour éviter le lecteur Windows doublé ; assertions inchangées. / Fix Windows file URL paths in ONISEP CLI and MicroSkill label tests.
 
 - **S7 → S10, préparation des livraisons** : audit des 36 pages Notion et du runtime réel, proposition S7 v1.0.0 / ADR 0043, matrice de vérification et chaîne de livraisons successives. Les propositions restent soumises à adoption humaine ; aucune série n'est déclarée implémentée ou déployée. / Prepare the S7–S10 delivery chain and proposed S7 contract; no implementation or deployment is claimed.

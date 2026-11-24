@@ -88,6 +88,42 @@ Chaque lot : `npm run ci` vert, cette fiche et `docs/actions-manuelles.md` à jo
 4. Les candidats alimentent les vagues du lot 6 : un métier n'entre dans le référentiel qu'avec ses disciplines et
    ses gestes, en `correspondance: "proposition"`.
 
+## Vagues complémentaires
+
+Après le lot 6, les fiches ONISEP encore candidates (1 032 au 2026-11-24) entrent par vagues, une PR par vague.
+Outil : `npm run vague:metiers` (`scripts/vague-metiers.mjs`, `scripts/lib/vagues.mjs`, sans réseau).
+
+1. `npm run vague:metiers -- --restants` : domaines ONISEP encore candidats et leur nombre.
+2. `npm run vague:metiers -- --numero NN --domaines "domaine 1 ; domaine 2"` : squelette
+   `referentiel/vagues/vague-NN.json` (un métier par fiche candidate : identifiant ONISEP, slug, nom affiché
+   « Moniteur, monitrice d'escalade », famille déduite du domaine, disciplines proposées : règle ROME précise, sinon
+   domaine ONISEP de `referentiel/regles-metiers.json`, sinon règle ROME générale).
+3. Rédiger pour chaque métier **3 gestes** courts et **une phrase de contexte** (mots de KermicLab, compréhensibles dès
+   7 ans), vérifier famille et disciplines ; écarter un métier inadapté par `"exclu": "<raison>"` (listé dans la PR).
+4. `npm run vague:metiers -- --verifier referentiel/vagues/vague-NN.json`, puis `--appliquer` : métiers ajoutés en
+   `proposition`, avec niveau, codes ROME, domaines et synonymes de l'extrait. Une reprise de 8 mots d'un texte de
+   l'extrait est refusée (garde anti-recopie ; la relecture humaine reste la garde principale).
+5. `npm run ci`, PR, relecture humaine.
+
+Au-delà de 120 métiers, les anneaux ne dessinent que les métiers du filtre (lot 5). Essai à pleine échelle (toutes
+les fiches fusionnées avec des gestes provisoires, non publié) : 1 143 métiers, `dist/referentiel-graphe.json` 740 Ko
+(32 039 relations), `dist/metiers.json` 880 Ko, build complet en 7 s ; les tests e2e Métiers et back-office passent.
+Le seuil d'alerte (graphe > 2 Mo ou build > 10 s, alors relier les métiers aux disciplines plutôt qu'aux notions) n'est
+pas atteint ; la mesure est refaite à chaque vague.
+
+| Vague | Domaines ONISEP | Candidats | Statut |
+|---|---|---|---|
+| 0 | Outillage (`vague:metiers`, repli par domaine, tests, essai à pleine échelle) | — | Fait |
+| 2 | santé, social, sport | 100 | À faire |
+| 3 | arts, culture, artisanat | 99 | À faire |
+| 4 | environnement, énergies ; agriculture, animaux | 123 | À faire |
+| 5 | matières premières, industries ; électricité, électronique | 112 | À faire |
+| 6 | mécanique ; construction, travaux publics | 102 | À faire |
+| 7 | armée, sécurité ; logistique, transport | 112 | À faire |
+| 8 | sciences ; informatique, Internet | 115 | À faire |
+| 9 | information-communication ; lettres, langues, enseignement ; histoire-géographie, psychologie | 95 | À faire |
+| 10 | économie, droit ; gestion ; banque, assurance ; commerce ; hôtellerie, tourisme | 174 | À faire (à scinder si besoin) |
+
 ## Format v2 en bref
 
 ```json
