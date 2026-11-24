@@ -1412,6 +1412,16 @@
   "efErreur_quota-activites": "Tu as déjà 60 activités en cours : archive-en avant d'en donner d'autres.",
   "efDetailParEnfant": "Détail par enfant",
   "navFamille": "Ma famille",
+  "navEspaces": "Mes espaces",
+  "navEspacesCourt": "Espaces",
+  "espacesGroupe_famille": "Famille",
+  "espacesGroupe_professeur": "Professeur",
+  "espacesGroupe_contributions": "Contributions",
+  "espacesEnfants": "Mes enfants",
+  "espacesClasses": "Mes classes",
+  "espacesEnfantAria": "Progression de {nom}",
+  "espacesClasseAria": "Élèves de {nom}",
+  "espacesChargement": "Chargement…",
   "navFamilleCourt": "Famille",
   "navPlus": "Plus",
   "navPlusTitre": "Autres destinations",
@@ -1665,5 +1675,6 @@
   "metiersMetierProposition": "Fiche proposée, en cours de relecture.",
   "metiersPlus": "Afficher {n} métier(s) de plus",
   "metiersAnneauxLimites": "Les anneaux montrent {n} métiers : choisis une famille, un niveau ou une recherche pour voir les autres.",
-  "metiersSources": "Sources : {sources}."
+  "metiersSources": "Sources : {sources}.",
+  "efIndicateurs": "Indicateurs"
 }

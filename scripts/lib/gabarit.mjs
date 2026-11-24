@@ -51,7 +51,7 @@ export function compterIndices(contenu) {
   };
 }
 
-function validerExercice(ex, ou) {
+export function validerExercice(ex, ou) {
   exiger(ex && typeof ex === "object", `${ou} : exercice invalide`);
   exiger(TYPES_EXERCICE.includes(ex.type), `${ou} : type « ${ex.type} » inconnu (attendu : ${TYPES_EXERCICE.join(", ")})`);
   exiger(texteNonVide(ex.question), `${ou} : « question » manquante`);
