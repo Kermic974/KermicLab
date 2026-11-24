@@ -4,7 +4,7 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
-- **S6 — validateur et historique** : commande `check:experiences`, diagnostics structurels et métier, références, variantes, tâches préparées, cycle de vie et révision des sources liées ; 22 règles S6 traçables dans les artefacts S5, rapport JSON conservé en CI. Lecture Git par lots pour S4/S6, sans supprimer de révision publiée. Aucun objet ni index S6 public n’est encore livré. / Experience validation and source-aware history, deterministic reports and CI evidence; public corpus migration follows.
+- **Espace Métiers** (ADR 0041) : nouvel espace du site, « Des notions aux métiers ». Quatre anneaux relient les notions KermicLab, 26 disciplines, 38 métiers et leurs gestes ; choisir un élément allume toute sa chaîne. Le détail liste les notions à travailler (ouvrables comme dans Éducation) et montre leur graphe 3D (prérequis directs, MicroSkills). Données : `referentiel/metiers-v0.json`, validé au build contre le référentiel. / New Careers space linking KermicLab topics to subjects, jobs and job skills, with a 3D topic graph in the details.
 
 - **Build Windows** : lecture des objets S4 par lots bornés, pour éviter `EMFILE` avec le corpus étendu de 8 250 objets ; mêmes fichiers et même ordre de projection. / Bound S4 file reads to prevent Windows file-handle exhaustion.
 

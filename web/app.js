@@ -25,6 +25,9 @@ import { creerMoteurTemps } from "./temps-actif.js";
 import * as charte from "./theme.js";
 import * as parcours from "./parcours.js";
 import * as navigation from "./navigation.js";
+import * as metiers from "./metiers.js";
+import * as grapheRef from "./graphe-referentiel.js";
+import { couleurs as couleursGraphe, creerVue as creerVueGraphe } from "./graphe-vue.js";
 
 const $ = (s) => document.querySelector(s);
 const etat = {
@@ -1462,6 +1465,7 @@ function rafraichirFamilleCompte() {
     navFamille.dataset.nav = m?.parent ? "espace-famille" : "compte";
   }
   marquerNavigation(sectionDe(etat.ecran));
+  rendreMenuEspaces();
   $("#famille-compte-solo").hidden = !m || !!m.parent || !!m.enfant;
   $("#famille-compte-statut").textContent = !lie ? t("fcNonLie")
     : !m ? t("fcIndisponible")
@@ -1696,6 +1700,7 @@ function chiffre(dt, dd) {
 }
 
 function rendreEspaceFamille() {
+  rendreMenuEspaces();
   const complet = familleEtat.tableau;
   const tableau = complet && { ...complet, enfants: complet.enfants.filter((e) => !familleEtat.enfantsMasques.has(e.id)) };
   const m = familleEtat.moi;
@@ -2241,6 +2246,7 @@ function ligneInvitation(i) {
 }
 
 function rendreClasses() {
+  rendreMenuEspaces();
   const donnees = profEtat.classes;
   if (!donnees) {
     $("#classes-contenu").hidden = true;
@@ -2414,6 +2420,7 @@ async function ouvrirEleves() {
 const nomClasse = (id) => profEtat.eleves?.classes.find((c) => c.id === id)?.nom ?? t("profParticulier");
 
 function rendreEleves() {
+  rendreMenuEspaces();
   const donnees = profEtat.eleves;
   if (!donnees) {
     $("#eleves-contenu").hidden = true;
@@ -5505,6 +5512,7 @@ async function demarrer() {
   brancherCompte();
   brancherFamilleLocale();
   brancherNavMobile();
+  brancherMenuEspaces();
   $("#ouvrir-chat").addEventListener("click", () => {
     if ($("#panneau-chat").hidden) ouvrirChat();
     else fermerChat({ rendreFocus: true });
@@ -5526,6 +5534,7 @@ async function demarrer() {
 
   ajouterBienvenue();
   brancherTemps();
+  brancherMetiers();
   brancherNavigation();
   await chargerCatalogue();
   void chargerParcours();
@@ -5924,7 +5933,7 @@ function rafraichirTheme() {
 /* ---------- Navigation ---------- */
 
 /** Les destinations de la navigation, puis les sous-écrans (rattachés à une destination). */
-const DESTINATIONS = ["accueil", "education", "labs", "jeux", "progression", "profil"];
+const DESTINATIONS = ["accueil", "education", "labs", "metiers", "jeux", "progression", "profil"];
 /** « tableau-de-bord » n'est pas un écran : il ouvre l'une de ses vues (web/navigation.js, vueTableauDeBord). */
 const ECRANS = [...DESTINATIONS, "tableau-de-bord", "defi", "compte", "apropos", "connexion-en-cours"];
 const PARENTS = {
@@ -5944,7 +5953,7 @@ function rafraichirEntete() {
   document.documentElement.dataset.espace = navigation.espaceDe(etat.ecran);
   $("#salut").textContent = accueil
     ? etat.pseudo ? t("salut", { pseudo: etat.pseudo }) : t("salutAnonyme")
-    : t({ education: "navEducation", labs: "navLabs", jeux: "navJeux", progression: "navProgression", defi: "navDefi", profil: "navProfil", famille: "familleTitre", "espace-famille": "efTitre", "connexion-en-cours": "connexionEnCours", compte: "compteTitre", contributions: "contribTitre", suivi: "navSuivi", classes: "navClasses", eleves: "navEleves", apropos: "navAPropos" }[etat.ecran]);
+    : t({ education: "navEducation", labs: "navLabs", metiers: "navMetiers", jeux: "navJeux", progression: "navProgression", defi: "navDefi", profil: "navProfil", famille: "familleTitre", "espace-famille": "efTitre", "connexion-en-cours": "connexionEnCours", compte: "compteTitre", contributions: "contribTitre", suivi: "navSuivi", classes: "navClasses", eleves: "navEleves", apropos: "navAPropos" }[etat.ecran]);
   $("#accroche").textContent = t(accueil ? "accroche" : etat.ecran === "connexion-en-cours" ? "connexionEnCoursAide" : `${etat.ecran}Intro`);
   const suivi = etat.ecran === "progression" ? compteSuiviCourant() : null;
   if (suivi) {
@@ -5972,14 +5981,25 @@ function afficherEcran(cle, { focus = true } = {}) {
   });
   marquerNavigation(sectionDe(etat.ecran));
   $("#ouvrir-connexion").hidden = !$("#navigation-personnelle").hidden;
+  // Sous-navigation allégée (lot 9, ADR 0039) : seules les vues de l'espace affiché ; les autres sont dans « Mes espaces ».
+  const groupe = navigation.groupeVue(ecran);
+  let vuesDuGroupe = 0;
   for (const bouton of document.querySelectorAll("#navigation-personnelle [data-nav]")) {
     if (bouton.dataset.nav === ecran) bouton.setAttribute("aria-current", "page");
     else bouton.removeAttribute("aria-current");
+    const autre = !!groupe && navigation.groupeVue(bouton.dataset.nav) !== groupe;
+    bouton.toggleAttribute("data-autre-espace", autre);
+    if (!autre && !bouton.hidden) vuesDuGroupe += 1;
   }
+  $("#navigation-personnelle").toggleAttribute("data-une-vue", vuesDuGroupe < 2);
+  if (changement) fermerMenuEspaces({ focus: false });
+  if (!$("#menu-espaces").hidden) rendreMenuEspaces();
   rafraichirEntete();
   etat.moteur?.contexte({ section: sectionDe(etat.ecran) });
   decouvrirEnSilence("section", sectionDe(etat.ecran));
   if (etat.ecran === "defi" && changement) ouvrirDefi();
+  if (etat.ecran === "metiers" && changement) void ouvrirMetiers();
+  if (etat.ecran !== "metiers") fermerVueMetiers();
   if (etat.ecran === "progression") { rendreProgression(); if (changement) void preparerComptesSuivis(); }
   if (etat.ecran === "contributions" && changement) void ouvrirContributions();
   if (etat.ecran === "compte") rafraichirCompte();
@@ -6061,6 +6081,7 @@ function agencerNavMobile() {
   for (const b of extras) (regrouper ? panneau : barre).insertBefore(b, regrouper ? null : plus);
   plus.hidden = !regrouper;
   if (!regrouper) fermerNavMobilePlus({ focus: false });
+  ajusterEspacesMobile();
   marquerNavigation(sectionDe(etat.ecran));
 }
 
@@ -6092,6 +6113,254 @@ function brancherNavMobile() {
   const observateur = new MutationObserver(agencerNavMobile);
   for (const id of NAV_MOBILE_EXTRAS) observateur.observe($(id), { attributes: true, attributeFilter: ["hidden"] });
   agencerNavMobile();
+}
+
+/* ---------- Menu « Mes espaces » : accès rapides de la barre de navigation (lot 9, ADR 0039) ----------
+   Les espaces liés au compte et au rôle (famille, professeur, contributions) ne sont pas des destinations de la barre :
+   un seul bouton les regroupe, avec un raccourci par enfant et par classe et les actions principales. Le même panneau
+   s'ouvre depuis la barre latérale (ou du haut) et depuis la barre du bas sur mobile. */
+const BOUTONS_ESPACES = ["#nav-espaces", "#nav-mobile-espaces"];
+let boutonMenuEspaces = null;
+
+function sectionsEspacesCourantes() {
+  const m = familleEtat.moi;
+  return navigation.sectionsEspaces({
+    famille: m?.parent ? "parent" : m && !$("#nav-famille").hidden ? "membre" : null,
+    enfants: m?.parent ? familleEtat.tableau?.enfants ?? [] : [],
+    prof: profActif(),
+    classes: profEtat.eleves?.classes ?? profEtat.classes?.classes ?? [],
+    contributions: !$("#nav-contributions").hidden,
+  });
+}
+
+const LIBELLE_ECRAN_ESPACE = { "espace-famille": "efTitre", compte: "navFamille", suivi: "navSuivi", classes: "navClasses", eleves: "navEleves", contributions: "navContributions" };
+const ICONE_ECRAN_ESPACE = { "espace-famille": "i-famille", compte: "i-famille", suivi: "i-boussole", classes: "i-equipe", eleves: "i-utilisateur", contributions: "i-crayon" };
+const ACTION_ESPACE = { "activite-famille": "actDonner", "ajouter-enfant": "efAjouter", "activite-prof": "actDonner", "nouvelle-classe": "profNouvelleClasse" };
+
+function lienEspace(l) {
+  if (l.type === "ecran") {
+    const b = element("button", { classe: "menu-espaces-lien", attributs: { type: "button", "data-nav": l.cle } });
+    b.append(icone(ICONE_ECRAN_ESPACE[l.cle] ?? "i-fleche"), element("span", { texte: t(LIBELLE_ECRAN_ESPACE[l.cle]) }));
+    if (etat.ecran === l.cle) b.setAttribute("aria-current", "page");
+    return b;
+  }
+  if (l.type === "compte" || l.type === "classe") {
+    const compte = l.type === "compte";
+    const b = element("button", { classe: "menu-espaces-puce", attributs: {
+      type: "button", [compte ? "data-espace-compte" : "data-espace-classe"]: compte ? l.cle : l.id,
+      "aria-label": t(compte ? "espacesEnfantAria" : "espacesClasseAria", { nom: l.texte }),
+    } });
+    b.append(element("span", { classe: "pastille-initiale", texte: compte ? (l.texte.trim()[0] ?? "?").toUpperCase() : "" }), element("span", { texte: l.texte }));
+    if (!compte) b.firstChild.replaceChildren(icone("i-equipe"));
+    return b;
+  }
+  return element("button", { classe: "secondaire petit-bouton", texte: t(ACTION_ESPACE[l.action]), attributs: { type: "button", "data-espace-action": l.action } });
+}
+
+/**
+ * Barre du bas : au plus 7 entrées tactiles de 44 px à 320 px de large. Quand la configuration y met déjà les entrées de
+ * rôle (sous « Plus »), le bouton « Espaces » ne s'ajoute pas : ces écrans y sont déjà.
+ */
+function ajusterEspacesMobile(disponible = sectionsEspacesCourantes().length > 0) {
+  const bouton = $("#nav-mobile-espaces");
+  const autres = document.querySelectorAll(".nav-mobile .nav-mobile-bouton:not([hidden]):not(#nav-mobile-espaces)").length;
+  bouton.hidden = !disponible || autres >= 7;
+  if (bouton.hidden && boutonMenuEspaces === bouton) fermerMenuEspaces({ focus: false });
+}
+
+function icone(id) {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("class", "ico");
+  svg.setAttribute("aria-hidden", "true");
+  const use = document.createElementNS("http://www.w3.org/2000/svg", "use");
+  use.setAttribute("href", `#${id}`);
+  svg.append(use);
+  return svg;
+}
+
+function rendreMenuEspaces() {
+  const sections = sectionsEspacesCourantes();
+  $("#nav-espaces").hidden = !sections.length;
+  ajusterEspacesMobile(sections.length > 0);
+  if (!sections.length) { fermerMenuEspaces({ focus: false }); $("#menu-espaces-sections").replaceChildren(); return; }
+  if ($("#menu-espaces").hidden) return;
+  $("#menu-espaces-sections").replaceChildren(...sections.map((section) => {
+    const bloc = element("section", { classe: "menu-espaces-groupe", attributs: { "data-espace-carte": section.id, "aria-labelledby": `menu-espaces-${section.id}` } });
+    bloc.append(element("h2", { classe: "menu-espaces-titre", texte: t(`espacesGroupe_${section.id}`), attributs: { id: `menu-espaces-${section.id}` } }));
+    const parType = (types) => section.liens.filter((l) => types.includes(l.type));
+    const liens = element("div", { classe: "menu-espaces-liens" });
+    liens.append(...parType(["ecran"]).map(lienEspace));
+    bloc.append(liens);
+    const puces = parType(["compte", "classe"]);
+    if (puces.length) {
+      bloc.append(element("p", { classe: "menu-espaces-sous", texte: t(section.id === "famille" ? "espacesEnfants" : "espacesClasses") }));
+      const liste = element("div", { classe: "menu-espaces-puces" });
+      liste.append(...puces.map(lienEspace));
+      bloc.append(liste);
+    } else if (section.id === "famille" && familleEtat.moi?.parent && !familleEtat.tableau) {
+      bloc.append(element("p", { classe: "doux petit", texte: t("espacesChargement") }));
+    }
+    const actions = parType(["action"]);
+    if (actions.length) {
+      const zone = element("div", { classe: "actions menu-espaces-actions" });
+      zone.append(...actions.map(lienEspace));
+      bloc.append(zone);
+    }
+    return bloc;
+  }));
+}
+
+/** Famille du parent et élèves du professeur : chargés à l'ouverture du menu s'ils ne le sont pas encore. */
+async function chargerDonneesEspaces() {
+  const attentes = [];
+  if (familleEtat.moi?.parent && !familleEtat.tableau) attentes.push(chargerTableauFamille());
+  if (profActif() && !profEtat.eleves) attentes.push(ouvrirEleves());
+  await Promise.allSettled(attentes);
+}
+
+function placerMenuEspaces() {
+  const panneau = $("#menu-espaces");
+  if (panneau.hidden || !boutonMenuEspaces) return;
+  const r = boutonMenuEspaces.getBoundingClientRect();
+  const marge = 12;
+  const largeur = Math.min(380, innerWidth - 2 * marge);
+  Object.assign(panneau.style, { width: `${largeur}px`, top: "", bottom: "", left: "", maxHeight: "" });
+  const borne = (x) => Math.round(Math.min(Math.max(marge, x), innerWidth - largeur - marge));
+  const lateral = getComputedStyle($(".barre-laterale")).flexDirection === "column" && boutonMenuEspaces.id === "nav-espaces";
+  if (boutonMenuEspaces.id === "nav-mobile-espaces") {
+    // Barre du bas : au-dessus de la barre.
+    panneau.style.left = `${borne(r.right - largeur)}px`;
+    panneau.style.bottom = `${Math.round(innerHeight - r.top + 8)}px`;
+    panneau.style.maxHeight = `${Math.round(r.top - 8 - marge)}px`;
+  } else if (lateral) {
+    // Barre latérale ou rail : à droite du bouton.
+    panneau.style.left = `${Math.round(Math.min(r.right + 8, innerWidth - largeur - marge))}px`;
+    const haut = Math.max(marge, Math.min(r.top, innerHeight - panneau.offsetHeight - marge));
+    panneau.style.top = `${Math.round(haut)}px`;
+    panneau.style.maxHeight = `${Math.round(innerHeight - haut - marge)}px`;
+  } else {
+    // Barre du haut : sous le bouton.
+    panneau.style.left = `${borne(r.left)}px`;
+    panneau.style.top = `${Math.round(r.bottom + 8)}px`;
+    panneau.style.maxHeight = `${Math.round(innerHeight - r.bottom - 8 - marge)}px`;
+  }
+}
+
+function ouvrirMenuEspaces(bouton) {
+  const panneau = $("#menu-espaces");
+  boutonMenuEspaces = bouton;
+  panneau.hidden = false;
+  for (const id of BOUTONS_ESPACES) $(id).setAttribute("aria-expanded", String($(id) === bouton));
+  document.documentElement.toggleAttribute("data-menu-espaces", true);
+  rendreMenuEspaces();
+  placerMenuEspaces();
+  panneau.querySelector("button")?.focus({ preventScroll: true });
+  void chargerDonneesEspaces().then(() => {
+    if (panneau.hidden) return;
+    // Le rendu remplace les boutons : le focus revient au premier s'il était dans le menu.
+    const focusDedans = panneau.contains(document.activeElement);
+    rendreMenuEspaces();
+    placerMenuEspaces();
+    if (focusDedans) panneau.querySelector("button")?.focus({ preventScroll: true });
+  });
+}
+
+function fermerMenuEspaces({ focus = true } = {}) {
+  const panneau = $("#menu-espaces");
+  if (panneau.hidden) return;
+  panneau.hidden = true;
+  for (const id of BOUTONS_ESPACES) $(id).setAttribute("aria-expanded", "false");
+  document.documentElement.toggleAttribute("data-menu-espaces", false);
+  if (focus) boutonMenuEspaces?.focus({ preventScroll: true });
+}
+
+/** Exécute `action` quand l'élément est affiché (contenu chargé après la navigation), au plus 5 s après. */
+function quandVisible(el, action) {
+  const debut = Date.now();
+  const essai = () => {
+    if (el.offsetParent || el.getClientRects().length) action();
+    else if (Date.now() - debut < 5000) setTimeout(essai, 100);
+  };
+  essai();
+}
+
+function defilerVers(el) {
+  el.scrollIntoView({ block: "start", behavior: mouvementReduit() ? "auto" : "smooth" });
+}
+
+function ouvrirAjoutEnfant() {
+  if (etat.ecran !== "espace-famille") naviguer("espace-famille");
+  const ajout = $("#ef-ajout");
+  ajout.open = true;
+  quandVisible(ajout, () => { defilerVers(ajout); ajout.querySelector("input:not([type=radio]), input")?.focus({ preventScroll: true }); });
+}
+
+function ouvrirNouvelleClasse() {
+  if (etat.ecran !== "classes") naviguer("classes");
+  const ajout = $("#classes-ajout");
+  ajout.open = true;
+  quandVisible(ajout, () => { defilerVers(ajout); $("#classe-nom").focus({ preventScroll: true }); });
+}
+
+function ouvrirCompteSuiviDepuisMenu(cle) {
+  etat.compteSuivi = cle;
+  if (etat.ecran === "progression") choisirCompteSuivi(cle);
+  else naviguer("progression");
+}
+
+function ouvrirClasseDepuisMenu(classeId) {
+  profEtat.filtre = classeId;
+  if (etat.ecran === "eleves" && profEtat.eleves) rendreEleves();
+  else naviguer("eleves");
+}
+
+async function actionEspace(action) {
+  if (action === "ajouter-enfant") ouvrirAjoutEnfant();
+  else if (action === "nouvelle-classe") ouvrirNouvelleClasse();
+  else if (action === "activite-famille") {
+    if (etat.ecran !== "espace-famille") naviguer("espace-famille");
+    await chargerDonneesEspaces();
+    ouvrirDialogueActiviteFamille();
+  } else if (action === "activite-prof") {
+    if (etat.ecran !== "suivi") naviguer("suivi");
+    await chargerDonneesEspaces();
+    ouvrirDialogueActivite();
+  }
+}
+
+function brancherMenuEspaces() {
+  const panneau = $("#menu-espaces");
+  for (const id of BOUTONS_ESPACES) {
+    $(id).addEventListener("click", (e) => {
+      if (!panneau.hidden && boutonMenuEspaces === e.currentTarget) fermerMenuEspaces();
+      else ouvrirMenuEspaces(e.currentTarget);
+    });
+  }
+  panneau.addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    // Les entrées `data-nav` sont suivies par le gestionnaire global de la navigation.
+    fermerMenuEspaces({ focus: false });
+    if (b.dataset.espaceCompte) ouvrirCompteSuiviDepuisMenu(b.dataset.espaceCompte);
+    else if (b.dataset.espaceClasse) ouvrirClasseDepuisMenu(b.dataset.espaceClasse);
+    else if (b.dataset.espaceAction) void actionEspace(b.dataset.espaceAction);
+  });
+  document.addEventListener("click", (e) => {
+    if (panneau.hidden || panneau.contains(e.target) || BOUTONS_ESPACES.some((id) => $(id).contains(e.target))) return;
+    fermerMenuEspaces({ focus: false });
+  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !panneau.hidden) fermerMenuEspaces(); });
+  addEventListener("resize", () => fermerMenuEspaces({ focus: false }));
+  // Les droits (famille, professeur, contributions) sont posés par plusieurs modules sur les entrées de navigation.
+  const observateur = new MutationObserver(() => rendreMenuEspaces());
+  for (const id of ["#nav-famille", "#nav-suivi", "#nav-contributions"]) observateur.observe($(id), { attributes: true, attributeFilter: ["hidden"] });
+  $("#ef-ajouter-enfant").addEventListener("click", ouvrirAjoutEnfant);
+  $("#classes-nouvelle").addEventListener("click", ouvrirNouvelleClasse);
+  $("#eleves-activite").addEventListener("click", () => {
+    const classes = profEtat.eleves?.classes ?? [];
+    ouvrirDialogueActivite({ classeId: classes.some((c) => c.id === profEtat.filtre) ? profEtat.filtre : null });
+  });
+  rendreMenuEspaces();
 }
 
 /** Accordéons écrits dans la page (mini-lab, cahiers) : même comportement que ceux de l'arbre Éducation. */
@@ -6177,6 +6446,231 @@ function brancherNavigation() {
     else if (cle === "aide") ouvrirSignalement();
     else if (cle === "question") ouvrirChat();
   });
+}
+
+/* ---------- Espace Métiers (ADR 0041) : des notions KermicLab aux gestes professionnels ---------- */
+
+const SVG_NS = "http://www.w3.org/2000/svg";
+const espaceMetiers = { carte: null, graphe: null, positions: null, couleurs3d: null, categorie: "", recherche: "", selection: null, vue: null, chargement: null };
+
+function svgElement(balise, attributs = {}) {
+  const n = document.createElementNS(SVG_NS, balise);
+  for (const [k, v] of Object.entries(attributs)) n.setAttribute(k, v);
+  return n;
+}
+
+/** Première visite : charge les métiers et le graphe du référentiel (fichiers statiques produits par le build). */
+async function ouvrirMetiers() {
+  if (!espaceMetiers.carte) {
+    espaceMetiers.chargement ??= (async () => {
+      const [donnees, graphe] = await Promise.all([fetch("metiers.json"), fetch("referentiel-graphe.json")].map(async (r) => {
+        const reponse = await r;
+        if (!reponse.ok) throw new Error(String(reponse.status));
+        return reponse.json();
+      }));
+      espaceMetiers.carte = metiers.preparerCarte(donnees);
+      espaceMetiers.positions = metiers.disposerAnneaux(espaceMetiers.carte);
+      espaceMetiers.graphe = grapheRef.decompacter(graphe);
+      espaceMetiers.couleurs3d = couleursGraphe(grapheRef.indicateurs(espaceMetiers.graphe).disciplines.map((d) => d.discipline));
+    })();
+    try { await espaceMetiers.chargement; } catch {
+      espaceMetiers.chargement = null;
+      $("#metiers-etat").textContent = t("metiersErreur");
+      return;
+    }
+    rendreCategoriesMetiers();
+  }
+  rendreMetiers();
+}
+
+function fermerVueMetiers() {
+  espaceMetiers.vue?.detruire();
+  espaceMetiers.vue = null;
+}
+
+function rendreCategoriesMetiers() {
+  const zone = $("#metiers-categories");
+  const puce = (id, libelle) => {
+    const b = element("button", { classe: "puce-niveau", texte: libelle, attributs: { type: "button", "aria-pressed": String(espaceMetiers.categorie === id), "data-categorie": id } });
+    b.addEventListener("click", () => { espaceMetiers.categorie = id; espaceMetiers.selection = null; rendreCategoriesMetiers(); rendreMetiers(); });
+    return b;
+  };
+  zone.replaceChildren(puce("", t("metiersToutes")), ...espaceMetiers.carte.donnees.categories.map((c) => puce(c.id, c.libelle)));
+}
+
+function choisirMetiers(selection, { defiler = true } = {}) {
+  const meme = espaceMetiers.selection && selection && espaceMetiers.selection.type === selection.type && espaceMetiers.selection.id === selection.id;
+  espaceMetiers.selection = meme ? null : selection;
+  rendreMetiers();
+  if (defiler && espaceMetiers.selection) $("#metiers-detail").scrollIntoView({ block: "nearest", behavior: mouvementReduit() ? "auto" : "smooth" });
+}
+
+function rendreMetiers() {
+  const { carte } = espaceMetiers;
+  if (!carte) return;
+  const visibles = metiers.filtrerMetiers(carte, { categorie: espaceMetiers.categorie, recherche: espaceMetiers.recherche });
+  const actifs = metiers.chaine(carte, espaceMetiers.selection, visibles);
+  const filtre = Boolean(espaceMetiers.selection || espaceMetiers.categorie || espaceMetiers.recherche.trim());
+  $("#metiers-etat").textContent = t("metiersEtat", { metiers: visibles.length, disciplines: carte.donnees.disciplines.length, notions: carte.notions.size });
+  rendreAnneauxMetiers(actifs, filtre);
+  rendreListeMetiers(visibles);
+  rendreDetailMetiers(actifs);
+}
+
+/** Quatre anneaux reliés : notions → disciplines → métiers → gestes. Tout ce qui sort de la chaîne active s'estompe. */
+function rendreAnneauxMetiers(actifs, filtre) {
+  const { carte, positions, selection } = espaceMetiers;
+  const svg = $("#metiers-anneaux");
+  const liens = svgElement("g", { class: "metiers-liens" });
+  const noeuds = svgElement("g", { class: "metiers-noeuds" });
+  const guides = [120, 230, 340, 430].map((r) => svgElement("circle", { cx: 500, cy: 500, r, class: "metiers-guide" }));
+  const ligne = (a, b, classe, actif) => liens.append(svgElement("line", { x1: a.x, y1: a.y, x2: b.x, y2: b.y, class: `metiers-lien ${classe}${actif ? " actif" : filtre ? " estompe" : ""}` }));
+  for (const d of carte.donnees.disciplines) for (const n of d.notions) {
+    ligne(positions.notion.get(n), positions.discipline.get(d.id), "notion", filtre && actifs.notions.has(n) && actifs.disciplines.has(d.id));
+  }
+  for (const m of carte.donnees.metiers) {
+    for (const d of m.disciplines) ligne(positions.discipline.get(d), positions.metier.get(m.id), "discipline", filtre && actifs.metiers.has(m.id) && actifs.disciplines.has(d));
+    for (const g of m.gestes) ligne(positions.metier.get(m.id), positions.geste.get(`${m.id}::${g}`), "geste", filtre && actifs.gestes.has(`${m.id}::${g}`));
+  }
+  const choisi = (type, id) => selection?.type === type && selection.id === id;
+  const noeud = (type, id, p, rayon, libelle, { etiquette = false, titre = libelle } = {}) => {
+    const actif = !filtre || (type === "metier" ? actifs.metiers : type === "discipline" ? actifs.disciplines : type === "notion" ? actifs.notions : actifs.gestes).has(id);
+    const g = svgElement("g", { class: `metiers-noeud ${type}${actif ? "" : " estompe"}${choisi(type, id) ? " choisi" : ""}`, "data-type": type, "data-id": id });
+    g.append(svgElement("circle", { cx: p.x, cy: p.y, r: choisi(type, id) ? rayon * 1.5 : rayon }));
+    const info = svgElement("title");
+    info.textContent = titre;
+    g.append(info);
+    if (etiquette) {
+      const exterieur = type === "geste" || type === "metier";
+      const dx = exterieur ? Math.cos(p.angle) * (rayon + 6) : 0, dy = exterieur ? Math.sin(p.angle) * (rayon + 6) : rayon + 13;
+      const texte = svgElement("text", { x: p.x + dx, y: p.y + dy + (exterieur ? 4 : 0), "text-anchor": exterieur ? (Math.cos(p.angle) < 0 ? "end" : "start") : "middle" });
+      texte.textContent = libelle.length > 26 ? `${libelle.slice(0, 24)}…` : libelle;
+      g.append(texte);
+    }
+    g.addEventListener("click", () => choisirMetiers({ type, id }, { defiler: false }));
+    noeuds.append(g);
+  };
+  const montrer = (ensemble, id) => Boolean(selection) && ensemble.has(id);
+  for (const [id, p] of positions.notion) noeud("notion", id, p, 5, carte.notions.get(id)?.titre ?? id, { etiquette: montrer(actifs.notions, id) && actifs.notions.size <= 12 });
+  for (const d of carte.donnees.disciplines) noeud("discipline", d.id, positions.discipline.get(d.id), 8, d.nom, { etiquette: !filtre || actifs.disciplines.has(d.id) });
+  for (const m of carte.donnees.metiers) noeud("metier", m.id, positions.metier.get(m.id), 9, m.nom, { etiquette: !selection || actifs.metiers.has(m.id) });
+  for (const m of carte.donnees.metiers) for (const g of m.gestes) {
+    const id = `${m.id}::${g}`;
+    noeud("geste", id, positions.geste.get(id), 4, g, { etiquette: montrer(actifs.gestes, id) && actifs.gestes.size <= 12, titre: `${g} · ${m.nom}` });
+  }
+  svg.replaceChildren(...guides, liens, noeuds);
+}
+
+function rendreListeMetiers(visibles) {
+  const { carte, selection } = espaceMetiers;
+  $("#metiers-liste").replaceChildren(...visibles.map((m) => {
+    const b = element("button", { classe: "metiers-item", attributs: { type: "button", "aria-pressed": String(selection?.type === "metier" && selection.id === m.id), "data-metier": m.id } });
+    const categorie = carte.categories.get(m.categorie);
+    const pastille = element("span", { classe: "metiers-categorie", texte: categorie.libelle });
+    pastille.style.setProperty("--categorie", categorie.couleur);
+    b.append(element("strong", { texte: m.nom }), pastille, element("span", { classe: "doux petit", texte: m.disciplines.map((d) => carte.disciplines.get(d).nom).join(" · ") }));
+    b.addEventListener("click", () => choisirMetiers({ type: "metier", id: m.id }));
+    const li = element("li");
+    li.append(b);
+    return li;
+  }));
+  if (!visibles.length) $("#metiers-liste").replaceChildren(element("li", { classe: "doux", cle: "metiersAucun" }));
+}
+
+/** Détail de la sélection : la chaîne lue dans les deux sens, les notions KermicLab et leur graphe 3D. */
+function rendreDetailMetiers(actifs) {
+  const { carte, selection } = espaceMetiers;
+  const zone = $("#metiers-detail");
+  fermerVueMetiers();
+  zone.hidden = !selection;
+  if (!selection) { zone.replaceChildren(); return; }
+  const pastilles = (ids, type, libelle) => {
+    const div = element("div", { classe: "metiers-pastilles" });
+    for (const id of ids) {
+      const b = element("button", { classe: `metiers-pastille ${type}`, texte: libelle(id), attributs: { type: "button", "aria-pressed": String(selection.type === type && selection.id === id) } });
+      b.addEventListener("click", () => choisirMetiers({ type, id }));
+      div.append(b);
+    }
+    return div;
+  };
+  const bloc = (cle, ...enfants) => { const s = element("section", { classe: "metiers-bloc" }); s.append(element("h4", { cle }), ...enfants); return s; };
+  const metier = selection.type === "metier" || selection.type === "geste" ? carte.metiers.get(selection.id.split("::")[0]) : null;
+  const titre = selection.type === "metier" ? metier.nom
+    : selection.type === "geste" ? selection.id.split("::")[1]
+    : selection.type === "discipline" ? carte.disciplines.get(selection.id).nom
+    : carte.notions.get(selection.id)?.titre ?? selection.id;
+  const genre = element("p", { classe: "sur-titre", texte: t(`metiersType_${selection.type}`) + (metier && selection.type === "geste" ? ` · ${metier.nom}` : "") });
+  const tete = element("div", { classe: "metiers-detail-tete" });
+  const fermer = element("button", { classe: "secondaire petit-bouton", texte: "×", attributs: { type: "button", "aria-label": t("metiersFermer") } });
+  fermer.addEventListener("click", () => choisirMetiers(null));
+  tete.append(element("h3", { texte: titre, attributs: { id: "metiers-detail-titre" } }), fermer);
+  const enfants = [genre, tete];
+  if (metier) enfants.push(element("p", { classe: "doux", texte: metier.contexte }));
+  const disciplines = [...actifs.disciplines];
+  enfants.push(element("div", { classe: "metiers-blocs" }));
+  const blocs = enfants.at(-1);
+  if (selection.type !== "metier" && selection.type !== "geste") blocs.append(bloc("metiersBlocMetiers", pastilles([...actifs.metiers], "metier", (id) => carte.metiers.get(id).nom)));
+  blocs.append(bloc("metiersBlocDisciplines", pastilles(disciplines, "discipline", (id) => carte.disciplines.get(id).nom)));
+  if (metier) blocs.append(bloc("metiersBlocGestes", pastilles(metier.gestes.map((g) => `${metier.id}::${g}`), "geste", (id) => id.split("::")[1])));
+  const savoirFaire = disciplines.flatMap((d) => carte.disciplines.get(d).savoirFaire);
+  if (savoirFaire.length) {
+    const liste = element("ul", { classe: "metiers-savoir-faire" });
+    liste.append(...savoirFaire.map((s) => element("li", { texte: s })));
+    blocs.append(bloc("metiersBlocSavoirFaire", liste));
+  }
+  // Notions KermicLab : ouvrables dans la bulle, et vues dans le graphe du référentiel (prérequis directs, MicroSkills).
+  const notions = [...actifs.notions].filter((id) => carte.notions.has(id));
+  const listeNotions = element("ul", { classe: "metiers-notions" });
+  for (const id of notions) {
+    const n = carte.notions.get(id);
+    const entree = etat.registre?.trouver(n.slug);
+    const li = element("li", { classe: "metiers-notion" });
+    const choisir = element("button", { classe: "metiers-pastille notion", texte: entree?.titre ?? n.titre, attributs: { type: "button", "aria-pressed": String(selection.type === "notion" && selection.id === id) } });
+    choisir.addEventListener("click", () => choisirMetiers({ type: "notion", id }));
+    li.append(choisir, element("span", { classe: "doux petit", texte: t("metiersMicroskills", { n: n.microskills.length }) }));
+    if (entree) {
+      const ouvrir = element("button", { classe: "lien-fleche", texte: t("metiersOuvrirNotion"), attributs: { type: "button", "data-ouvrir-notion": n.slug } });
+      ouvrir.addEventListener("click", () => ouvrirNotion(entree));
+      li.append(ouvrir);
+    }
+    listeNotions.append(li);
+  }
+  const propositions = disciplines.filter((d) => carte.disciplines.get(d).correspondance === "proposition").map((d) => carte.disciplines.get(d).nom);
+  const blocNotions = bloc("metiersBlocNotions", notions.length ? listeNotions : element("p", { classe: "doux", cle: "metiersSansNotion" }));
+  if (propositions.length) blocNotions.append(element("p", { classe: "doux petit metiers-proposition", texte: t("metiersProposition", { disciplines: propositions.join(", ") }) }));
+  enfants.push(blocNotions);
+  if (notions.length && espaceMetiers.graphe) {
+    const { graphe: local, centres } = grapheRef.sousGraphe(espaceMetiers.graphe, notions);
+    // Titres du catalogue à la place des identifiants (« NSI : structures de données… » plutôt que « Nsi algorithmes… »).
+    for (const n of local.noeuds) {
+      if (n.type !== "notion") continue;
+      const slug = n.id.split(".").slice(2).join(".");
+      n.libelle = etat.registre?.trouver(slug)?.titre ?? carte.notions.get(n.id)?.titre ?? n.libelle;
+    }
+    const ensemble = { noeuds: new Set(local.noeuds.map((n) => n.i)), liens: local.liens.map((_, k) => k), centres };
+    const canvas = element("canvas", { classe: "metiers-canvas", attributs: { tabindex: "0", role: "img", "aria-label": t("metiersGrapheAria", { notions: ensemble.centres.size, noeuds: ensemble.noeuds.size }) } });
+    const scene = element("div", { classe: "metiers-graphe" });
+    scene.append(canvas);
+    const legende = element("p", { classe: "doux petit", texte: t("metiersGrapheAide", { notions: ensemble.centres.size, noeuds: ensemble.noeuds.size }) });
+    enfants.push(bloc("metiersBlocGraphe", legende, scene));
+    let pointe = null;
+    const vue = creerVueGraphe(canvas, local, {
+      etat: () => ({ visibles: ensemble.noeuds, liens: ensemble.liens, chemin: new Set(), selection: pointe, couleurs: espaceMetiers.couleurs3d, entoures: centres, nommerNotions: true }),
+      onSelection: (i) => {
+        pointe = i;
+        const noeudChoisi = i === null ? null : local.noeuds[i];
+        legende.textContent = noeudChoisi ? `${noeudChoisi.libelle} · ${noeudChoisi.type === "notion" ? t("metiersType_notion") : "MicroSkill"}` : t("metiersGrapheAide", { notions: ensemble.centres.size, noeuds: ensemble.noeuds.size });
+        vue.dessiner();
+      }
+    });
+    espaceMetiers.vue = vue;
+    requestAnimationFrame(() => { if (espaceMetiers.vue === vue) vue.centrer(); });
+  }
+  zone.replaceChildren(...enfants);
+}
+
+function brancherMetiers() {
+  $("#metiers-recherche").addEventListener("input", (e) => { espaceMetiers.recherche = e.target.value; espaceMetiers.selection = null; rendreMetiers(); });
 }
 
 /* ---------- Mes cahiers : constructeur, enrichissement IA et lecture ---------- */

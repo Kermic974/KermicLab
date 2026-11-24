@@ -19,6 +19,7 @@ const definitions = {
       ["accueil", "#accueil", "Accueil : la question, une prochaine action, À la une et parcours, deux entrées, aperçu compact"],
       ["catalogue", "#education", "Éducation : Ma classe, Niveau › Matière › Notions et outils (défi, renvoi vers les Labs, cahiers)"],
       ["labs", "#labs", "Labs : Lab du cercle (trois modes, mini-lab) et Lab du système solaire (/labs/systeme-solaire/)"],
+      ["metiers", "#metiers", "Métiers : notions KermicLab → disciplines → métiers → gestes, détail avec les notions et leur graphe 3D (ADR 0041)"],
       ["jeux", "#jeux", "Jeux : cartes, résumé et recherche"],
       ["progression", "#progression", "Progression : tableau de bord personnel et Mes badges"],
       ["cahiers", "#cahiers", "Mes cahiers : outil d'Éducation, ouvert directement par #cahiers"],

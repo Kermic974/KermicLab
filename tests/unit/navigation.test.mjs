@@ -3,8 +3,8 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import * as navigation from "../../web/navigation.js";
 
-test("navigation : cinq destinations par défaut, « Mon tableau de bord » fusionné avec l'Accueil (ADR 0039)", () => {
-  assert.deepEqual(navigation.ORDRE_NAVIGATION_DEFAUT, ["accueil", "education", "labs", "jeux", "progression"]);
+test("navigation : six destinations par défaut dont Métiers (ADR 0041), « Mon tableau de bord » fusionné avec l'Accueil (ADR 0039)", () => {
+  assert.deepEqual(navigation.ORDRE_NAVIGATION_DEFAUT, ["accueil", "education", "labs", "metiers", "jeux", "progression"]);
   assert.ok(navigation.ENTREES_NAVIGATION.includes("tableau-de-bord"), "l'entrée reste configurable");
   assert.deepEqual(navigation.ordreNavigation(undefined), [...navigation.ORDRE_NAVIGATION_DEFAUT]);
   assert.deepEqual(navigation.ordreNavigation([]), [...navigation.ORDRE_NAVIGATION_DEFAUT]);
@@ -49,6 +49,33 @@ test("espaces colorés : chaque écran a son espace, les vues du tableau de bord
   for (const vue of ["suivi", "classes", "eleves"]) assert.equal(navigation.espaceDe(vue), "professeur");
   assert.equal(navigation.espaceDe("contributions"), "contributions");
   for (const ecran of ["accueil", "profil", "compte", "apropos", "inconnu", undefined]) assert.equal(navigation.espaceDe(ecran), "accueil");
-  const ecrans = ["accueil", "education", "defi", "labs", "jeux", "progression", "famille", "espace-famille", "suivi", "classes", "eleves", "contributions", "profil"];
+  const ecrans = ["accueil", "education", "defi", "labs", "metiers", "jeux", "progression", "famille", "espace-famille", "suivi", "classes", "eleves", "contributions", "profil"];
   assert.deepEqual([...new Set(ecrans.map(navigation.espaceDe))].sort(), [...navigation.ESPACES].sort(), "tous les espaces sont atteints");
+});
+
+test("menu « Mes espaces » : sections selon la famille, le rôle de professeur et les contributions", async () => {
+  const { sectionsEspaces } = await import("../../web/navigation.js");
+  assert.deepEqual(sectionsEspaces({}), [], "aucun espace : pas de menu");
+  const parent = sectionsEspaces({ famille: "parent", enfants: [{ id: "e1", prenom: "Noé" }, { id: 3 }, null] });
+  assert.deepEqual(parent.map((s) => s.id), ["famille"]);
+  assert.deepEqual(parent[0].liens, [
+    { type: "ecran", cle: "espace-famille" },
+    { type: "compte", cle: "famille:e1", texte: "Noé" },
+    { type: "action", action: "activite-famille" },
+    { type: "action", action: "ajouter-enfant" },
+  ], "un raccourci par enfant valide, puis les actions");
+  assert.deepEqual(sectionsEspaces({ famille: "membre" })[0].liens, [{ type: "ecran", cle: "compte", texte: "famille" }]);
+  const tout = sectionsEspaces({ famille: "parent", prof: true, classes: [{ id: "c1", nom: "4e B" }], contributions: true });
+  assert.deepEqual(tout.map((s) => s.id), ["famille", "professeur", "contributions"]);
+  assert.deepEqual(tout[1].liens.filter((l) => l.type === "ecran").map((l) => l.cle), ["suivi", "classes", "eleves"]);
+  assert.deepEqual(tout[1].liens.find((l) => l.type === "classe"), { type: "classe", id: "c1", texte: "4e B" });
+});
+
+test("sous-navigation : vues regroupées par espace", async () => {
+  const { groupeVue } = await import("../../web/navigation.js");
+  assert.equal(groupeVue("profil"), groupeVue("compte"));
+  assert.equal(groupeVue("suivi"), "professeur");
+  assert.equal(groupeVue("classes"), groupeVue("eleves"));
+  assert.notEqual(groupeVue("espace-famille"), groupeVue("compte"));
+  assert.equal(groupeVue("inconnu"), null);
 });
