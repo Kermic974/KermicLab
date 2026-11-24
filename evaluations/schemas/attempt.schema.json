@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kermiclab.online/s7/attempt.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "recordType",
+    "definition",
+    "experience",
+    "openedOn",
+    "origin"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "primitives.schema.json#/$defs/attemptId"
+    },
+    "recordType": {
+      "const": "attempt"
+    },
+    "definition": {
+      "$ref": "primitives.schema.json#/$defs/evaluation"
+    },
+    "experience": {
+      "$ref": "primitives.schema.json#/$defs/experience"
+    },
+    "openedOn": {
+      "$ref": "primitives.schema.json#/$defs/day"
+    },
+    "origin": {
+      "enum": [
+        "local-session",
+        "synthetic",
+        "legacy-import"
+      ]
+    }
+  }
+}

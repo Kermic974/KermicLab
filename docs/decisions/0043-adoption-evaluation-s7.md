@@ -1,7 +1,7 @@
 # ADR 0043 — Proposition d'adoption du contrat d'évaluation S7
 
 - Date : 2026-11-24.
-- Statut : **proposé** ; aucune validation pédagogique ou humaine n'est attestée par sa rédaction.
+- Statut : **adopté** par la fusion humaine de [#428](https://github.com/Kermic974/KermicLab/pull/428), le 24 novembre 2026 à `3e5042462ac5fdf6a8e0c6337f51c42583a22694`, CI verte. Cette adoption n'atteste pas l'implémentation ni une relecture pédagogique des expériences.
 - Contrat : [S7 v1.0.0](../referentiel/normes/S7-v1.0.0.md).
 - Sources : [Notion S7](https://app.notion.com/p/41a0c40cec288152964dd5ab41c7c0de), [relevé](../evaluation/sources-notion-s7-s10.json), [audit](../evaluation/audit-s7-s10.md).
 

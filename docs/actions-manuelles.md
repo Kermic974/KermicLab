@@ -14,8 +14,9 @@ Suivi : [#427](https://github.com/Kermic974/KermicLab/issues/427). [Chaîne de l
 
 | Action | Où | Pourquoi | Comment confirmer | Statut |
 |---|---|---|---|---|
-| Examiner les décisions D7-1 à D7-8 et adopter le contrat S7 par revue/fusion après CI verte | [ADR 0043](decisions/0043-adoption-evaluation-s7.md), [S7 v1.0.0 proposé](referentiel/normes/S7-v1.0.0.md), PR S7-A liée à #427 | Les pages Notion sont préparatoires ; AGENTS.md exige la validation humaine. Aucun résultat V0 complet ou rejeu de réponse non conservée ne peut être inventé | Adoption explicite sur la révision de PR, fusion constatée ; statut normatif actualisé avec preuve dans la PR suivante | à faire |
+| Examiner les décisions D7-1 à D7-8 et adopter le contrat S7 par revue/fusion après CI verte | [ADR 0043](decisions/0043-adoption-evaluation-s7.md), [S7 v1.0.0](referentiel/normes/S7-v1.0.0.md), [PR #428](https://github.com/Kermic974/KermicLab/pull/428) | Validation humaine requise par AGENTS.md ; aucune reconstruction fictive de faits V0 | Fusion humaine constatée à `3e504246`, CI GitHub verte ; Windows : 1 034 tests unitaires et 1 207 tests navigateur réussis, un ignoré | fait |
 | Relire les critères, cibles, diagnostics et limites du pilote S7 avant qualification publique | [Matrice S7-01 à S7-20](referentiel/normes/S7-v1.0.0.md), dépendance [S6 #384](https://github.com/Kermic974/KermicLab/issues/384) | Un PASS structurel ne valide ni la justesse pédagogique ni les affirmations clientes | Revue humaine consignée avec version/périmètre ; aucun champ relue rempli par l'agent | à faire |
+| Revoir et fusionner le lot S7-B après CI verte | PR liée au [suivi #427](https://github.com/Kermic974/KermicLab/issues/427), [contrats et limites](evaluation/contrats-s7.md) | CODEOWNER requis par AGENTS.md ; les schémas, correcteur et rapports ne sont pas encore branchés sur les pages | Fusion humaine constatée sur main, puis lot d'intégration et qualification publics | à faire |
 
 ## Espace Métiers (chantier Métiers)
 

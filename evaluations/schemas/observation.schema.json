@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kermiclab.online/s7/observation.schema.json",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "primitives.schema.json#/$defs/recordBase"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "primitives.schema.json#/$defs/observationId"
+        },
+        "recordType": {
+          "const": "observation"
+        },
+        "criterionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*(?![\\s\\S])"
+        },
+        "kind": {
+          "enum": [
+            "answer",
+            "help",
+            "completion",
+            "abandon"
+          ]
+        },
+        "responseState": {
+          "enum": [
+            "provided",
+            "empty",
+            "partial",
+            "absent"
+          ]
+        },
+        "helpRank": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        },
+        "origin": {
+          "enum": [
+            "local-evaluator",
+            "client-assertion",
+            "human"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "recordType",
+        "criterionId",
+        "kind",
+        "origin"
+      ]
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "answer"
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "then": {
+        "required": [
+          "responseState"
+        ]
+      },
+      "else": {
+        "not": {
+          "required": [
+            "responseState"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "help"
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "then": {
+        "required": [
+          "helpRank"
+        ]
+      },
+      "else": {
+        "not": {
+          "required": [
+            "helpRank"
+          ]
+        }
+      }
+    }
+  ],
+  "unevaluatedProperties": false
+}

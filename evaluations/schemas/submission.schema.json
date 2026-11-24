@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kermiclab.online/s7/submission.schema.json",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "primitives.schema.json#/$defs/recordBase"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "primitives.schema.json#/$defs/submissionId"
+        },
+        "recordType": {
+          "const": "submission"
+        },
+        "observations": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 1000,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "primitives.schema.json#/$defs/observationId"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "recordType",
+        "observations"
+      ]
+    }
+  ],
+  "unevaluatedProperties": false
+}
