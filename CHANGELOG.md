@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Espace Métiers, vague 1** (chantier Métiers, lot 6) : 32 nouveaux métiers issus des fiches ONISEP (maître-nageur, professeur d'EPS, luthier, chanteur, archiviste, libraire, géomaticien, statisticien, notaire, généticien…), 11 disciplines (mathématiques appliquées, probabilités et statistique, littérature, histoire contemporaine, aménagement du territoire, philosophie et éthique, économie et société, optique, énergétique, génétique, sciences de la Terre) et des notions ajoutées aux disciplines à relire. 111 métiers, 370 notions sur 477 reliées à un métier ; chaque matière est mobilisée par au moins 7 métiers. / Careers wave 1: 111 careers, 78% of topics linked.
+
 - **Barre du haut sur ordinateur : tout tient sur une ligne** : avec six destinations (Métiers compris) et « Mes espaces », les onglets débordaient de 1 024 à 1 366 px (Jeux et Progression masqués, onglet courant coupé). La barre se compacte désormais par paliers, selon la place mesurée : icônes des onglets, pseudo de l'avatar, nom du site, libellé de « Mes espaces », marges ; chaque élément garde son nom accessible. / Top bar: entries no longer overflow on desktop; the bar compacts progressively.
 
 - **Correctif : menu « Mes espaces » sans styles** : la résolution d'un conflit de fusion (lot 9 face à l'Espace Métiers) avait retiré de `main` les styles du menu, des pastilles et des écrans Famille et Professeur en deux colonnes, ainsi que des textes du menu. La PR #421 a rétabli dix textes ; celle-ci rétablit les styles et le dernier texte (`efIndicateurs`). / Fix: restored the "My spaces" menu and two-column screen styles lost in a merge.

@@ -1,41 +1,39 @@
 # Chantier : Espace Métiers, compléter le référentiel et alimenter le graphe
 
-**Niveau actuel : 6 (lots 0 à 5 et vague pilote livrés ; vagues de nouveaux métiers ONISEP à venir, une PR par domaine)**
+**Niveau actuel : 7 (lots 0 à 6 livrés, cible de couverture atteinte ; relectures humaines en cours)**
 
 Décisions : [ADR 0041](../decisions/0041-espace-metiers.md) (Espace Métiers) et
 [ADR 0042](../decisions/0042-referentiel-metiers-onisep.md) (format v2, import ONISEP, proposé). Données :
 `referentiel/metiers-v0.json`, forme décrite par `referentiel/metiers.schema.json`, cohérence vérifiée par
 `verifierMetiers` (`web/metiers.js`) au build.
 
-## État au 2026-11-24 (après la vague pilote et l'import ONISEP)
+## État au 2026-11-24 (après la vague 1 du lot 6)
 
 Le build affiche la ligne « Couverture métiers » (`couvertureMetiers`, information non bloquante).
 
 | Indicateur | Valeur |
 |---|---|
-| Métiers | 79 en 9 familles : 38 de la maquette V5 (`v5`), 41 de la vague pilote (`proposition`) |
-| Disciplines | 40 : 14 issues de la maquette V5, 26 « proposition » à relire |
-| Métiers rattachés à l'ONISEP / au ROME / avec niveau d'accès | 74 / 72 / 76 (sur 79) |
-| Notions du référentiel reliées à un métier | 114 sur 477 (au départ : 60) |
+| Métiers | 111 en 9 familles : 38 de la maquette V5 (`v5`), 41 de la vague pilote et 32 de la vague 1 (`proposition`) |
+| Disciplines | 51 : 14 issues de la maquette V5, 37 « proposition » à relire |
+| Métiers rattachés à l'ONISEP / au ROME / avec niveau d'accès | 106 / 103 / 108 (sur 111) |
+| Notions du référentiel reliées à un métier | **370 sur 477** (78 % ; 60 au départ, cible 50 %) |
 
-Notions reliées par matière :
-
-| Matière | Reliées / total |
-|---|---|
-| Mathématiques | 16 / 114 |
-| Français | 6 / 58 |
-| SVT | 24 / 51 |
-| Histoire | 5 / 50 |
-| Physique-chimie | 20 / 46 |
-| Géographie | 6 / 40 |
-| EMC | 6 / 36 |
-| Philosophie | 2 / 19 |
-| SES | 6 / 14 |
-| Technologie | 7 / 14 |
-| Anglais | 4 / 14 |
-| Arts plastiques | 5 / 7 |
-| Musique | 4 / 7 |
-| EPS | 3 / 7 |
+| Matière | Notions reliées / total | Métiers qui la mobilisent (cible : 5) |
+|---|---|---|
+| Mathématiques | 63 / 114 | 56 |
+| Français | 37 / 58 | 31 |
+| SVT | 47 / 51 | 51 |
+| Histoire | 43 / 50 | 14 |
+| Physique-chimie | 43 / 46 | 45 |
+| Géographie | 29 / 40 | 18 |
+| EMC | 26 / 36 | 11 |
+| Philosophie | 19 / 19 | 16 |
+| SES | 14 / 14 | 30 |
+| Technologie | 14 / 14 | 16 |
+| Anglais | 14 / 14 | 8 |
+| Arts plastiques | 7 / 7 | 10 |
+| Musique | 7 / 7 | 7 |
+| EPS | 7 / 7 | 10 |
 
 ## Source : l'ONISEP (analyse du 2026-11-24)
 
@@ -76,7 +74,7 @@ Règles :
 | 3 | Rattachement métier → disciplines → notions : règles ROME → disciplines (`referentiel/regles-metiers.json`, préfixe le plus long, trois disciplines au plus), appliquées aux candidats de l'import (`disciplinesProposees`) ; 14 nouvelles disciplines (langues vivantes, sciences du sport, musique, mécanique, électricité, nutrition, expression écrite, calcul professionnel, droit, histoire de l'art, agronomie, physiologie, chimie analytique, géologie). Les propositions sont préparées par un agent dans la PR (aucun appel de modèle à l'exécution) et restent en `proposition` jusqu'à la relecture humaine | Fait (règles et disciplines à relire) |
 | 4 | Alimenter le graphe : couche « métiers » dans `dist/referentiel-graphe.json` (nœuds `metier.<id>`, reliés aux notions de leurs disciplines, libellés publiés), indicateurs (`metiers`, `notionsAvecMetier`, « notions sans métier » par discipline, `notionsDemandees`), plus court chemin notion ↔ métier ; back-office : case « Métiers » (masquée par défaut), légende, détails d'un métier, tuiles, classement des notions les plus demandées | Fait (`tests/unit/graphe-referentiel.test.mjs`, `tests/e2e/backoffice.test.mjs`) |
 | 5 | Passage à l'échelle de l'écran : filtre par niveau d'accès (niveaux présents seulement), recherche étendue aux synonymes, domaines et codes ROME (synonymes repris de l'ONISEP), anneaux limités aux métiers du filtre au-delà de 120 métiers (`metiersDesAnneaux`, disposition recalculée), liste par pages de 50 (« Afficher plus »), niveau d'accès et statut « Fiche proposée, en cours de relecture » dans le détail | Fait (`tests/unit/metiers.test.mjs`, `tests/e2e/metiers.test.mjs`) |
-| 6 | Montée en charge par vagues. **Pilote livré** : 41 métiers et 3 familles en `proposition`, corrigés par l'ONISEP (niveaux, codes ROME). **Vagues suivantes** : 1 064 candidats de l'import, avec disciplines proposées par les règles ROME ; un domaine ONISEP par PR, chaque métier avec ses gestes (formulés par KermicLab) et sa relecture. Cible : au moins 5 métiers par matière, 50 % des notions reliées | Pilote fait ; vagues à planifier (une PR par domaine) |
+| 6 | Montée en charge par vagues. **Pilote** : 41 métiers et 3 familles. **Vague 1** : 32 métiers issus des fiches ONISEP (sport, musique, langues, lettres, histoire, géographie, statistiques, droit, social, sciences), 11 nouvelles disciplines et notions ajoutées aux disciplines « proposition » (calcul professionnel, expression écrite, langues, droit, physiologie…). **Cible atteinte** : chaque matière mobilisée par au moins 7 métiers, 78 % des notions reliées. Les 1 032 autres fiches ONISEP restent des candidats pour enrichir l'offre de métiers, une PR par domaine | Fait (cible atteinte) ; vagues complémentaires facultatives |
 
 Chaque lot : `npm run ci` vert, cette fiche et `docs/actions-manuelles.md` à jour, validation du CODEOWNER.
 
