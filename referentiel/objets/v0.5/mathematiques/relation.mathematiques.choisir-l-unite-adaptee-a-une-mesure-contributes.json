@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.choisir-l-unite-adaptee-a-une-mesure-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grandeurs-et-mesures-6e/contenu.json"
+  },
+  "source": "microskill.mathematiques.choisir-l-unite-adaptee-a-une-mesure",
+  "target": "skill.mathematiques.grandeurs-et-mesures-6e"
+}

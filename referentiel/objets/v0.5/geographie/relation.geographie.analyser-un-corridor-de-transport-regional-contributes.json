@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.analyser-un-corridor-de-transport-regional-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/afrique-australe/contenu.json"
+  },
+  "source": "microskill.geographie.analyser-un-corridor-de-transport-regional",
+  "target": "skill.geographie.afrique-australe"
+}

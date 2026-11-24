@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.agrandir-une-figure-par-un-coefficient-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reproduire-et-agrandir-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.agrandir-une-figure-par-un-coefficient",
+  "target": "skill.mathematiques.reproduire-et-agrandir-cm"
+}

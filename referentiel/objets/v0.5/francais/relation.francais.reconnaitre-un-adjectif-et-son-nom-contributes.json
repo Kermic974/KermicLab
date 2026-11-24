@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.reconnaitre-un-adjectif-et-son-nom-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/verbe-sujet-adjectif-c2/contenu.json"
+  },
+  "source": "microskill.francais.reconnaitre-un-adjectif-et-son-nom",
+  "target": "skill.francais.verbe-sujet-adjectif-c2"
+}

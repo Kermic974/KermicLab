@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.figures-de-style-teaches-identifier-une-comparaison-et-une-metaphore",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/figures-de-style/contenu.json"
+  },
+  "source": "notion.francais.figures-de-style",
+  "target": "microskill.francais.identifier-une-comparaison-et-une-metaphore"
+}

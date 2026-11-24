@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.energie-teaches-calculer-une-energie-cinetique",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie/contenu.json"
+  },
+  "source": "notion.physique-chimie.energie",
+  "target": "microskill.physique-chimie.calculer-une-energie-cinetique"
+}

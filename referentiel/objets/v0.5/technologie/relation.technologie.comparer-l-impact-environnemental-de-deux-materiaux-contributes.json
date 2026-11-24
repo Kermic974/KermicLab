@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.comparer-l-impact-environnemental-de-deux-materiaux-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/materiaux-et-environnement-6e/contenu.json"
+  },
+  "source": "microskill.technologie.comparer-l-impact-environnemental-de-deux-materiaux",
+  "target": "skill.technologie.materiaux-et-environnement-6e"
+}

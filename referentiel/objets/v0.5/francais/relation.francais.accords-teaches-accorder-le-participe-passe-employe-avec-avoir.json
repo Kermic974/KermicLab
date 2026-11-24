@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.accords-teaches-accorder-le-participe-passe-employe-avec-avoir",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/accords/contenu.json"
+  },
+  "source": "notion.francais.accords",
+  "target": "microskill.francais.accorder-le-participe-passe-employe-avec-avoir"
+}

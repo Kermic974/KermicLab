@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.expliquer-l-erosion-littorale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-le-littoral-6e/contenu.json"
+  },
+  "source": "microskill.geographie.expliquer-l-erosion-littorale",
+  "target": "skill.geographie.habiter-le-littoral-6e"
+}

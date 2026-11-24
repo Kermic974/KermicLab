@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Pour éviter les répétitions, on remplace un nom par un pronom ou un synonyme.",
+  "niveaux": [
+    {
+      "titre": "Intuition : ne pas se répéter",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "« Léa aime la lecture. Léa lit chaque soir. » On préfère : « Léa aime la lecture. Elle lit chaque soir. » Le pronom « elle » reprend « Léa ». On peut aussi dire « la fillette » ou « la jeune lectrice »."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Pronom : elle.",
+          "Groupe nominal : la jeune lectrice.",
+          "Synonyme : la lectrice."
+        ]
+      },
+      "aRetenir": "On évite la répétition sans perdre le sens."
+    },
+    {
+      "titre": "Pronoms et connecteurs",
+      "niveau": "CM2",
+      "paragraphes": [
+        "Les **pronoms personnels** (je, tu, il, elle, nous, vous, ils, elles) et les pronoms **le, la, les, lui, leur, y, en** remplacent un groupe. Il faut que le lecteur sache toujours **qui** est repris.",
+        "Les **connecteurs** (d'abord, puis, enfin ; mais, car, donc, parce que) relient les phrases et marquent le temps, la cause, l'opposition."
+      ],
+      "exemple": {
+        "titre": "Exemple : « Max a perdu son livre, donc il le cherche. »",
+        "etapes": [
+          "« il » reprend Max.",
+          "« le » reprend son livre.",
+          "« donc » exprime la conséquence."
+        ]
+      },
+      "aRetenir": "Chaque pronom doit avoir un référent clair."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel mot reprend « Léa » ?",
+        "choix": [
+          "Il",
+          "Ils",
+          "Nous",
+          "Elle"
+        ],
+        "bonne": 3,
+        "explication": "Féminin singulier."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel connecteur exprime la cause ?",
+        "choix": [
+          "puis",
+          "mais",
+          "enfin",
+          "parce que"
+        ],
+        "bonne": 3,
+        "explication": "Parce que introduit une cause."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« Il le cherche » : « le » reprend…",
+        "choix": [
+          "son livre",
+          "Max",
+          "la maison",
+          "le lecteur"
+        ],
+        "bonne": 0,
+        "explication": "COD pronominal."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le texte à réécrire",
+    "histoire": [
+      "Tu réécris un texte plein de répétitions."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle version évite les répétitions ?",
+        "choix": [
+          "Tom a un chien. Tom adore le chien.",
+          "Tom Tom chien Tom",
+          "Chien chien Tom",
+          "Tom a un chien. Il l'adore."
+        ],
+        "bonne": 3,
+        "explication": "Pronoms il et l'."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel connecteur marque l'opposition ?",
+        "choix": [
+          "donc",
+          "ensuite",
+          "enfin",
+          "mais"
+        ],
+        "bonne": 3,
+        "explication": "Contraste."
+      }
+    ],
+    "conclusion": "Texte fluide !"
+  }
+}

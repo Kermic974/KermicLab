@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.analyse-texte-requires-recit-d-aventures-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/analyse-texte/contenu.json"
+  },
+  "source": "notion.francais.analyse-texte",
+  "target": "notion.francais.recit-d-aventures-6e",
+  "rationale": "« Lire un récit d'aventures » : Le narrateur et le point de vue étudiés dans les récits d’aventures de 6e sont réinvestis dans l’analyse de texte."
+}

@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.longueurs-masses-contenances-cm-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/longueurs-masses-contenances-cm/contenu.json"
+  },
+  "object": "notion.mathematiques.longueurs-masses-contenances-cm",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced"
+}

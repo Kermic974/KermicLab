@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.emc.numerique-responsable-cm-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/numerique-responsable-cm/contenu.json"
+  },
+  "object": "notion.emc.numerique-responsable-cm",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced"
+}

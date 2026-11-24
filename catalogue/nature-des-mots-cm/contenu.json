@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La nature d'un mot dit quelle sorte de mot c'est : nom, verbe, adjectif…",
+  "niveaux": [
+    {
+      "titre": "Intuition : les mots ont des métiers",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dans « Le petit chat dort sur le canapé », « chat » et « canapé » sont des **noms**, « le » est un **déterminant**, « petit » un **adjectif**, « dort » un **verbe**, « sur » une **préposition**.",
+        "Le **verbe** change avec le temps et la personne (dort, dormait). Le **nom** désigne une personne, un animal, une chose. L'**adjectif** précise le nom."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« la » : déterminant (avant un nom).",
+          "« rapidement » : adverbe (invariable, modifie le verbe).",
+          "« elle » : pronom (remplace un nom)."
+        ]
+      },
+      "aRetenir": "Pour la nature, on regarde ce que le mot fait dans la phrase."
+    },
+    {
+      "titre": "Les classes de mots",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Les mots **variables** : nom, déterminant, adjectif, pronom, verbe. Les mots **invariables** : adverbe (très, hier), préposition (à, de, dans, avec), conjonction de coordination (mais, ou, et, donc, or, ni, car).",
+        "Pour reconnaître un nom, on essaie de mettre un déterminant devant. Pour un adjectif, on teste « un nom + adjectif » (un livre **passionnant**). Pour un verbe, on essaie de changer le temps."
+      ],
+      "exemple": {
+        "titre": "Exemple : « Il lit très vite. »",
+        "etapes": [
+          "« il » : pronom personnel.",
+          "« lit » : verbe lire (je lis).",
+          "« très » et « vite » : adverbes."
+        ]
+      },
+      "aRetenir": "Un mot invariable ne s'accorde jamais."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans « Le petit chat dort », « petit » est…",
+        "choix": [
+          "un nom",
+          "un verbe",
+          "un adverbe",
+          "un adjectif"
+        ],
+        "bonne": 3,
+        "explication": "« petit » précise le nom « chat » : adjectif."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "« Mais » est…",
+        "choix": [
+          "un adverbe de manière",
+          "un pronom personnel",
+          "un nom commun",
+          "une conjonction de coordination"
+        ],
+        "bonne": 3,
+        "explication": "Mais, ou, et, donc, or, ni, car."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Dans « Les enfants mangent vite », quel mot est le verbe ?",
+        "choix": [
+          "Les",
+          "mangent",
+          "enfants",
+          "vite"
+        ],
+        "bonne": 1,
+        "explication": "« mangent » est le verbe : on peut changer le temps (ils mangeaient)."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le détective des mots",
+    "histoire": [
+      "Tu enquêtes sur la phrase « Elle mange doucement une pomme rouge »."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle est la nature de « doucement » ?",
+        "choix": [
+          "verbe",
+          "adverbe",
+          "adjectif",
+          "nom"
+        ],
+        "bonne": 1,
+        "explication": "Il est invariable et précise comment elle mange."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle est la nature de « rouge » ?",
+        "choix": [
+          "pronom",
+          "adjectif",
+          "adverbe",
+          "verbe"
+        ],
+        "bonne": 1,
+        "explication": "Il précise le nom « pomme »."
+      }
+    ],
+    "conclusion": "Tu as identifié tous les mots !"
+  }
+}

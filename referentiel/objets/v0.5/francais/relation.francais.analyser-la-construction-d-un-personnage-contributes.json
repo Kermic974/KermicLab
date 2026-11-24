@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.analyser-la-construction-d-un-personnage-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/roman/contenu.json"
+  },
+  "source": "microskill.francais.analyser-la-construction-d-un-personnage",
+  "target": "skill.francais.roman"
+}

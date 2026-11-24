@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.distinguer-un-materiau-conducteur-d-un-materiau-isolant-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/objets-electriques-et-materiaux-c2/contenu.json"
+  },
+  "source": "microskill.technologie.distinguer-un-materiau-conducteur-d-un-materiau-isolant",
+  "target": "skill.technologie.objets-electriques-et-materiaux-c2"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.syllabes-et-mots-c2-requires-lettres-et-sons-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/syllabes-et-mots-c2/contenu.json"
+  },
+  "source": "notion.francais.syllabes-et-mots-c2",
+  "target": "notion.francais.lettres-et-sons-c2",
+  "rationale": "« Les lettres et les sons » : Découper en syllabes s’appuie sur la connaissance des lettres et des sons."
+}

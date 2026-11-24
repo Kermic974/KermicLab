@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.engagement-et-solidarite-6e-requires-citoyen-et-engagement-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/engagement-et-solidarite-6e/contenu.json"
+  },
+  "source": "notion.emc.engagement-et-solidarite-6e",
+  "target": "notion.emc.citoyen-et-engagement-cm",
+  "rationale": "« Être citoyen : voter, s'engager, participer » : La solidarité de 6e prolonge l’engagement du CM."
+}

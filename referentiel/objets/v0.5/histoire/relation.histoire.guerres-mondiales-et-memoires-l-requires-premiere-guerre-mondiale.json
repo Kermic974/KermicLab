@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.guerres-mondiales-et-memoires-l-requires-premiere-guerre-mondiale",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerres-mondiales-et-memoires-l/contenu.json"
+  },
+  "source": "notion.histoire.guerres-mondiales-et-memoires-l",
+  "target": "notion.histoire.premiere-guerre-mondiale",
+  "rationale": "« La Première Guerre mondiale » : Les mémoires s’appuient sur la connaissance des deux guerres mondiales."
+}

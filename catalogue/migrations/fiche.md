@@ -16,10 +16,10 @@ questions:
   - C'est quoi les migrations ?
   - Quelle différence entre migration interne et internationale ?
   - Pourquoi étudier les migrations internationales ?
-prerequis:
-niveaux: cycle-4
 classes: 4e
-competences: geographie-migrations-action-1, geographie-migrations-action-2
+prerequis: mobilites, question-demographique-c4
+niveaux: cycle-4
+competences: distinguer-migration-interne-internationale-et-mobilite-de-loisirs, identifier-les-droits-des-migrants-et-l-instance-d-asile, analyser-un-reseau-migratoire, discuter-une-politique-migratoire-et-ses-representations
 ---
 
 # Les migrations

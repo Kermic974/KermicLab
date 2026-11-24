@@ -1,0 +1,135 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un artiste choisit des lignes, des formes, des couleurs et une composition pour exprimer une idée.",
+  "niveaux": [
+    {
+      "titre": "Intuition : regarder une œuvre",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour regarder un tableau, on observe : le sujet, les couleurs, les formes, la composition (ce qui est au premier plan, au second plan, à l'arrière-plan), la technique (peinture, dessin, collage, sculpture). Une **composition** peut être symétrique, en diagonale, centrée.",
+        "Les **lignes** structurent l'image : droites, courbes, brisées. Une ligne horizontale donne une impression de calme, une ligne verticale de stabilité, une ligne oblique de mouvement. Les **formes** sont **géométriques** (carré, cercle, triangle) ou **organiques** (feuille, nuage, flamme)."
+      ],
+      "exemple": {
+        "titre": "Exemple : lire un tableau",
+        "etapes": [
+          "Premier plan : un bateau.",
+          "Arrière-plan : la montagne.",
+          "Couleurs : bleus et gris."
+        ]
+      },
+      "aRetenir": "Une œuvre se lit par plans, lignes et formes."
+    },
+    {
+      "titre": "Perspective et grands artistes",
+      "niveau": "CM2",
+      "paragraphes": [
+        "La **perspective** donne une impression de profondeur : les objets plus loin sont plus petits et les lignes se rejoignent en un **point de fuite**. **Léonard de Vinci** (Renaissance) a peint la Joconde ; **Claude Monet** (impressionnisme) a peint la lumière et les nymphéas ; **Pablo Picasso** (cubisme) a montré des objets sous plusieurs faces ; **Vincent van Gogh** a peint avec des touches épaisses."
+      ],
+      "exemple": {
+        "titre": "Exemple : une route en perspective",
+        "etapes": [
+          "Deux lignes de fuite se rejoignent à l'horizon.",
+          "Les arbres lointains sont petits.",
+          "On sent la profondeur."
+        ]
+      },
+      "aRetenir": "Perspective : point de fuite."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "question": "Une ligne oblique donne plutôt une impression de…",
+        "choix": [
+          "calme",
+          "mouvement",
+          "stabilité",
+          "silence"
+        ],
+        "bonne": 1,
+        "explication": "L'oblique suggère le mouvement.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Dans une perspective, les objets lointains sont…",
+        "choix": [
+          "invisibles",
+          "plus petits",
+          "plus grands",
+          "identiques"
+        ],
+        "bonne": 1,
+        "explication": "Effet de profondeur."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Les nymphéas sont peints par…",
+        "choix": [
+          "Monet",
+          "Picasso",
+          "Dali",
+          "Rembrandt"
+        ],
+        "bonne": 0,
+        "explication": "Impressionnisme."
+      },
+      {
+        "type": "qcm",
+        "question": "Quelle forme est géométrique ?",
+        "choix": [
+          "un nuage",
+          "une feuille",
+          "un cercle",
+          "une flamme"
+        ],
+        "bonne": 2,
+        "explication": "Le cercle est une forme géométrique ; les autres sont organiques.",
+        "titre": "Exercice 4"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La visite du musée",
+    "histoire": [
+      "Tu visites un musée avec ta classe."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que regardes-tu d'abord dans un tableau ?",
+        "choix": [
+          "Le sujet, les couleurs et la composition",
+          "Le prix et la signature seulement",
+          "Le cadre et les murs autour",
+          "Le nom du musée et l'étiquette"
+        ],
+        "bonne": 0,
+        "explication": "Observation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un tableau où les objets semblent s'enfoncer au loin utilise…",
+        "choix": [
+          "la perspective",
+          "le collage",
+          "la sculpture",
+          "le pochoir"
+        ],
+        "bonne": 0,
+        "explication": "Profondeur."
+      }
+    ],
+    "conclusion": "Bon œil d'artiste !"
+  }
+}

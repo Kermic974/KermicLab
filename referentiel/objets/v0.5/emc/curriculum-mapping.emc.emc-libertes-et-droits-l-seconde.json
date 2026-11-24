@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.emc.emc-libertes-et-droits-l-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-libertes-et-droits-l/contenu.json"
+  },
+  "object": "notion.emc.emc-libertes-et-droits-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "introduced"
+}

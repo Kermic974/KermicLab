@@ -10,6 +10,7 @@ import { articlesPublies, chargerArticles, construireBlog, jourDePublication } f
 import { genererSeoStatique } from "./lib/seo.mjs";
 
 import { synchroniserProjectionV0 } from "./lib/referentiel-projection.mjs";
+import { compacter, construireGraphe, disposer } from "../web/admin/graphe-referentiel.js";
 
 const racine = fileURLToPath(new URL("..", import.meta.url));
 const { version } = JSON.parse(await readFile(`${racine}package.json`, "utf8"));
@@ -52,9 +53,27 @@ const blog = await construireBlog(`${racine}blog`, `${racine}dist/blog`, { jour:
 await writeFile(`${racine}dist/blog/index.json`, `${JSON.stringify({
   articles: articlesPublies(await chargerArticles(`${racine}blog`), { jour: jourBlog }).map(({ slug, titre, auteur, date }) => ({ slug, titre, auteur, date }))
 })}\n`);
-// Back-office : même empreinte de contenu que le site pour ses propres fichiers (cache du navigateur).
+// Back-office : graphe du référentiel (ADR 0040), disposition 3D calculée ici une fois pour toutes (déterministe).
+{
+  const graphe = construireGraphe(JSON.parse(await readFile(`${racine}referentiel/projection-v0.json`, "utf8")));
+  await writeFile(`${racine}dist/admin/referentiel-graphe.json`, `${JSON.stringify(compacter(graphe, disposer(graphe)))}\n`);
+  console.log(`Graphe du référentiel : ${graphe.noeuds.length} nœuds, ${graphe.liens.length} relations${graphe.ignores ? `, ${graphe.ignores} référence(s) inconnue(s) ignorée(s)` : ""}.`);
+}
+// Back-office : même empreinte de contenu que le site pour ses propres fichiers (cache du navigateur). Les modules
+// importés par admin.js passent d'abord, pour que l'empreinte d'admin.js change aussi quand seul un module change.
 {
   const empreinte = async (fichier) => createHash("sha256").update(await readFile(`${racine}dist/${fichier}`)).digest("hex").slice(0, 10);
+  let adminJs = await readFile(`${racine}dist/admin/admin.js`, "utf8");
+  for (const module of ["financier.js", "graphe-referentiel.js", "graphe-vue.js"]) {
+    const avant = adminJs;
+    adminJs = adminJs.replaceAll(`from "./${module}"`, `from "./${module}?v=${await empreinte(`admin/${module}`)}"`);
+    if (adminJs === avant) throw new Error(`Back-office : import de ${module} introuvable dans admin.js`);
+  }
+  // Le graphe du référentiel (ADR 0040) suit la même règle : son URL porte l'empreinte de son contenu.
+  const avantGraphe = adminJs;
+  adminJs = adminJs.replace('fetch("referentiel-graphe.json")', `fetch("referentiel-graphe.json?v=${await empreinte("admin/referentiel-graphe.json")}")`);
+  if (adminJs === avantGraphe) throw new Error("Back-office : chargement de referentiel-graphe.json introuvable dans admin.js");
+  await writeFile(`${racine}dist/admin/admin.js`, adminJs);
   const versions = { "admin.css": await empreinte("admin/admin.css"), "admin.js": await empreinte("admin/admin.js"), "../style.css": await empreinte("style.css") };
   const page = `${racine}dist/admin/index.html`;
   await writeFile(page, (await readFile(page, "utf8")).replace(/(href|src)="(admin\.css|admin\.js|\.\.\/style\.css)"/g, (tout, attribut, fichier) => `${attribut}="${fichier}?v=${versions[fichier]}"`));

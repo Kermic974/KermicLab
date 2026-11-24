@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.nommer-les-membres-de-la-famille-et-les-objets-de-la-classe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-vocabulaire-quotidien-cm/contenu.json"
+  },
+  "source": "microskill.anglais.nommer-les-membres-de-la-famille-et-les-objets-de-la-classe",
+  "target": "skill.anglais.anglais-vocabulaire-quotidien-cm"
+}

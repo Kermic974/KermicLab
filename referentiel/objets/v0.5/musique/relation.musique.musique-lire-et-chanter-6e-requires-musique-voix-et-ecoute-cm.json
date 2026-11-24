@@ -1,0 +1,13 @@
+{
+  "id": "relation.musique.musique-lire-et-chanter-6e-requires-musique-voix-et-ecoute-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-lire-et-chanter-6e/contenu.json"
+  },
+  "source": "notion.musique.musique-lire-et-chanter-6e",
+  "target": "notion.musique.musique-voix-et-ecoute-cm",
+  "rationale": "L’écoute et le chant du CM2 préparent l’écoute analytique."
+}

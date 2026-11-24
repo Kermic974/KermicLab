@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Louis IX, roi pieux et juste, est devenu un modèle de roi chrétien au XIIIe siècle.",
+  "niveaux": [
+    {
+      "titre": "Intuition : un roi juste",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "**Louis IX** (1226-1270) est un roi de France du Moyen Âge. Il est resté célèbre pour sa piété et son sens de la justice : on raconte qu'il rendait la justice sous un chêne à Vincennes.",
+        "Il fait construire la **Sainte-Chapelle** à Paris pour conserver des reliques. Après sa mort, l'Église le proclame saint : **Saint Louis**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Louis IX est roi à 12 ans, sa mère Blanche de Castille gouverne d'abord.",
+          "Il part en croisade (7e et 8e croisades).",
+          "Il meurt à Tunis en 1270."
+        ]
+      },
+      "aRetenir": "Louis IX : roi de 1226 à 1270, canonisé en 1297."
+    },
+    {
+      "titre": "La société du XIIIe siècle",
+      "niveau": "CM1",
+      "paragraphes": [
+        "La société médiévale est organisée en trois groupes : ceux qui prient (le clergé), ceux qui combattent (les nobles, chevaliers), ceux qui travaillent (les paysans, majoritaires). Les **seigneurs** protègent leurs paysans et reçoivent des redevances : c'est la **féodalité**.",
+        "Les villes se développent, on construit de grandes **cathédrales gothiques** (Notre-Dame de Paris, Chartres). Le roi renforce son pouvoir par des **baillis** et une justice royale."
+      ],
+      "exemple": {
+        "titre": "Exemple : le château fort",
+        "etapes": [
+          "Il sert à défendre et à surveiller.",
+          "Les paysans y trouvent refuge.",
+          "Les murs sont en pierre, entourés de fossés."
+        ]
+      },
+      "aRetenir": "Moyen Âge : clergé, noblesse, paysans."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel monument Louis IX a-t-il fait construire ?",
+        "choix": [
+          "Le Louvre moderne",
+          "La Sainte-Chapelle",
+          "Le château de Versailles",
+          "La tour Eiffel"
+        ],
+        "bonne": 1,
+        "explication": "Elle abrite des reliques de la Passion."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qui travaille dans la société médiévale ?",
+        "choix": [
+          "Les évêques",
+          "Les rois",
+          "Les paysans",
+          "Les chevaliers"
+        ],
+        "bonne": 2,
+        "explication": "Ceux qui travaillent sont les paysans."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Que sont les cathédrales gothiques ?",
+        "choix": [
+          "Des châteaux forts avec des remparts",
+          "Des marchés couverts de la ville",
+          "De grandes églises aux vitraux et aux voûtes hautes",
+          "De petites chapelles de village en bois"
+        ],
+        "bonne": 2,
+        "explication": "Style gothique : Notre-Dame, Chartres."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Un jour au Moyen Âge",
+    "histoire": [
+      "Tu voyages en 1250, au temps de Saint Louis."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Tu rencontres un paysan. Que fait-il ?",
+        "choix": [
+          "Il dirige l'armée du roi",
+          "Il construit une cathédrale",
+          "Il cultive la terre du seigneur",
+          "Il rédige les lois du royaume"
+        ],
+        "bonne": 2,
+        "explication": "Il travaille et verse des redevances."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel roi gouverne alors la France ?",
+        "choix": [
+          "Clovis",
+          "Louis IX",
+          "Louis XIV",
+          "Napoléon"
+        ],
+        "bonne": 1,
+        "explication": "Louis IX règne de 1226 à 1270."
+      }
+    ],
+    "conclusion": "Tu connais le Moyen Âge !"
+  }
+}

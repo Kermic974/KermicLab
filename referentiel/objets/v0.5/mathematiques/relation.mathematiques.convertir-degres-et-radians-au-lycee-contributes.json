@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.convertir-degres-et-radians-au-lycee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/trigonometrie-radian-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.convertir-degres-et-radians-au-lycee",
+  "target": "skill.mathematiques.trigonometrie-radian-l"
+}

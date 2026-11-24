@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.urbanisation-requires-habiter-une-metropole-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/urbanisation/contenu.json"
+  },
+  "source": "notion.geographie.urbanisation",
+  "target": "notion.geographie.habiter-une-metropole-6e",
+  "rationale": "« Habiter une métropole » : La métropole étudiée en 6e précède l’urbanisation, les centres et les couronnes."
+}

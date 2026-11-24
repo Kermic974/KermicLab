@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.discours-rapporte-cm-requires-ponctuation-et-dialogue-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/discours-rapporte-cm/contenu.json"
+  },
+  "source": "notion.francais.discours-rapporte-cm",
+  "target": "notion.francais.ponctuation-et-dialogue-cm",
+  "rationale": "« La ponctuation et le dialogue » : Le discours rapporté s’appuie sur la ponctuation du dialogue."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.conscience-teaches-discuter-la-transparence-du-moi-a-lui-meme",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conscience/contenu.json"
+  },
+  "source": "notion.philosophie.conscience",
+  "target": "microskill.philosophie.discuter-la-transparence-du-moi-a-lui-meme"
+}

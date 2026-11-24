@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.temps-des-verbes-c2-requires-verbe-sujet-adjectif-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps-des-verbes-c2/contenu.json"
+  },
+  "source": "notion.francais.temps-des-verbes-c2",
+  "target": "notion.francais.verbe-sujet-adjectif-c2",
+  "rationale": "« Le verbe, le sujet et l'adjectif » : Conjuguer exige de reconnaître le verbe et son sujet."
+}

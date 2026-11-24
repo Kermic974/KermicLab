@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.liberte-teaches-distinguer-liberte-et-absence-de-limites",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/liberte/contenu.json"
+  },
+  "source": "notion.emc.liberte",
+  "target": "microskill.emc.distinguer-liberte-et-absence-de-limites"
+}

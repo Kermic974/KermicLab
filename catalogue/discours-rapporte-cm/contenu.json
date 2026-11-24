@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "On rapporte une parole telle qu'elle est dite (direct) ou en la racontant (indirect).",
+  "niveaux": [
+    {
+      "titre": "Intuition : redire ce qui a été dit",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Discours **direct** : « Je viens demain », dit Léa. Discours **indirect** : Léa dit qu'elle vient le lendemain. Au direct, on utilise des guillemets ou des tirets ; à l'indirect, on les supprime et on introduit avec « que »."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Direct : Paul dit : « J'ai faim. »",
+          "Indirect : Paul dit qu'il a faim.",
+          "Les pronoms changent (j' → il)."
+        ]
+      },
+      "aRetenir": "Direct : guillemets. Indirect : « que »."
+    },
+    {
+      "titre": "Théâtre et mise en voix",
+      "niveau": "CM2",
+      "paragraphes": [
+        "Un texte de **théâtre** se compose de **répliques** (paroles des personnages, après le nom) et de **didascalies** (indications de jeu, de décor, souvent en italique, entre parenthèses). Il est divisé en actes et en scènes.",
+        "Pour **lire à voix haute** : respecter la ponctuation, ajuster le rythme et le volume, marquer les pauses, mettre le ton qui convient au personnage."
+      ],
+      "exemple": {
+        "titre": "Exemple : une didascalie",
+        "etapes": [
+          "« (Elle entre en courant.) »",
+          "Elle n'est pas dite, elle guide l'acteur.",
+          "On l'écrit entre parenthèses."
+        ]
+      },
+      "aRetenir": "Didascalie : indication scénique."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Transforme : Paul dit : « J'ai faim. »",
+        "choix": [
+          "Paul dit : il a faim.",
+          "Paul dit qu'il a faim.",
+          "Paul dit j'ai faim.",
+          "Paul dit que j'ai faim."
+        ],
+        "bonne": 1,
+        "explication": "Pronoms adaptés."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Une didascalie est…",
+        "choix": [
+          "une indication pour les acteurs",
+          "une réplique prononcée par un personnage",
+          "le titre d'une pièce de théâtre",
+          "un vers qui rime avec le suivant"
+        ],
+        "bonne": 0,
+        "explication": "Elle n'est pas dite."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Pour bien lire à voix haute, on…",
+        "choix": [
+          "ignore les virgules",
+          "respecte la ponctuation",
+          "lit très vite",
+          "chuchote"
+        ],
+        "bonne": 1,
+        "explication": "Le rythme."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La pièce de la classe",
+    "histoire": [
+      "Ta classe prépare une courte pièce de théâtre."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Où note-t-on « (Il sort.) » ?",
+        "choix": [
+          "Dans la morale",
+          "Dans une didascalie",
+          "Dans une réplique",
+          "Dans le titre"
+        ],
+        "bonne": 1,
+        "explication": "Indication de jeu."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Discours indirect : Léa dit : « Je pars ».",
+        "choix": [
+          "Léa dit : elle part.",
+          "Léa dit je pars.",
+          "Léa que part.",
+          "Léa dit qu'elle part."
+        ],
+        "bonne": 3,
+        "explication": "Introduit par « que »."
+      }
+    ],
+    "conclusion": "Bravo, les comédiens !"
+  }
+}

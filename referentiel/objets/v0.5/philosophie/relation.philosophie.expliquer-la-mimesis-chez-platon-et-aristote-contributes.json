@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.expliquer-la-mimesis-chez-platon-et-aristote-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/art/contenu.json"
+  },
+  "source": "microskill.philosophie.expliquer-la-mimesis-chez-platon-et-aristote",
+  "target": "skill.philosophie.art"
+}

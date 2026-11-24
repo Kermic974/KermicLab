@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.emc-libertes-et-droits-l-requires-droits-de-lhomme",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-libertes-et-droits-l/contenu.json"
+  },
+  "source": "notion.emc.emc-libertes-et-droits-l",
+  "target": "notion.emc.droits-de-lhomme",
+  "rationale": "« Les droits de l'homme » : Le lycée reprend la liberté et les droits de l’homme du collège."
+}

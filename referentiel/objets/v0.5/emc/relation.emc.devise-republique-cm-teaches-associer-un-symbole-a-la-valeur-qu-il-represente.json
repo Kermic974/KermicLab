@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.devise-republique-cm-teaches-associer-un-symbole-a-la-valeur-qu-il-represente",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/devise-republique-cm/contenu.json"
+  },
+  "source": "notion.emc.devise-republique-cm",
+  "target": "microskill.emc.associer-un-symbole-a-la-valeur-qu-il-represente"
+}

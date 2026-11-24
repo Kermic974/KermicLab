@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.caracteriser-les-blocs-et-leurs-acteurs-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerre-froide/contenu.json"
+  },
+  "source": "microskill.histoire.caracteriser-les-blocs-et-leurs-acteurs",
+  "target": "skill.histoire.guerre-froide"
+}

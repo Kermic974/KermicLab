@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.reproduction-humaine-teaches-identifier-les-gametes-et-leur-origine",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reproduction-humaine/contenu.json"
+  },
+  "source": "notion.svt.reproduction-humaine",
+  "target": "microskill.svt.identifier-les-gametes-et-leur-origine"
+}

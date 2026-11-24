@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les fossiles racontent l'histoire des êtres vivants disparus.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des traces de très longtemps",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un **fossile** est une trace d'un être vivant conservée dans la roche : un os, une coquille, une empreinte. Il a été recouvert de sédiments, puis la roche s'est formée autour.",
+        "Grâce aux fossiles, on sait que des animaux très différents des nôtres ont vécu : les **dinosaures**, par exemple, ont disparu il y a environ 66 millions d'années."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un ammonite dans la roche.",
+          "Une empreinte de dinosaure.",
+          "Un os de mammouth."
+        ]
+      },
+      "aRetenir": "Les fossiles sont des archives du passé."
+    },
+    {
+      "titre": "Espèces qui apparaissent et disparaissent",
+      "niveau": "CM2",
+      "paragraphes": [
+        "Au cours de l'histoire de la Terre, de nouvelles espèces sont apparues et d'autres ont disparu. Plusieurs **grandes extinctions** ont eu lieu ; la dernière en date marque la fin des dinosaures non aviens.",
+        "Les espèces évoluent : les êtres vivants d'aujourd'hui sont les descendants d'espèces plus anciennes. Aujourd'hui, l'activité humaine accélère la disparition de certaines espèces."
+      ],
+      "exemple": {
+        "titre": "Exemple : les oiseaux",
+        "etapes": [
+          "Les oiseaux descendent de dinosaures.",
+          "Ils ont gardé des plumes et des os légers.",
+          "Les fossiles de dinosaures à plumes le montrent."
+        ]
+      },
+      "aRetenir": "Les espèces actuelles viennent d'espèces plus anciennes."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Un fossile est…",
+        "choix": [
+          "un animal vivant très ancien",
+          "une plante cultivée en pot",
+          "un objet fabriqué récemment",
+          "la trace d'un être vivant dans la roche"
+        ],
+        "bonne": 3,
+        "explication": "Il est conservé dans les roches."
+      },
+      {
+        "type": "nombre",
+        "question": "Il y a combien de millions d'années les dinosaures non aviens ont-ils disparu ?",
+        "reponse": 66,
+        "unite": "millions d'années",
+        "indices": [
+          "Pas plus de 100 millions."
+        ],
+        "solution": "Environ 66 millions d'années.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Qui étudie les fossiles ?",
+        "choix": [
+          "Les boulangers",
+          "Les pilotes",
+          "Les pompiers",
+          "Les paléontologues"
+        ],
+        "bonne": 3,
+        "explication": "Les paléontologues."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La fouille paléontologique",
+    "histoire": [
+      "Tu découvres un os fossile dans une falaise."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que dois-tu faire ?",
+        "choix": [
+          "Le ramasser vite et le rapporter chez toi",
+          "Le casser pour voir l'intérieur",
+          "Le laisser sur place sans rien noter",
+          "Le dégager doucement et noter où tu l'as trouvé"
+        ],
+        "bonne": 3,
+        "explication": "On note la position pour comprendre."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que peut-on déduire d'un os de très grande taille ?",
+        "choix": [
+          "Qu'il vivait au ciel",
+          "Qu'il n'a jamais existé",
+          "Qu'il vivait dans l'espace",
+          "Que l'animal était très grand"
+        ],
+        "bonne": 3,
+        "explication": "La taille de l'os renseigne sur l'animal."
+      }
+    ],
+    "conclusion": "Trouvaille extraordinaire !"
+  }
+}

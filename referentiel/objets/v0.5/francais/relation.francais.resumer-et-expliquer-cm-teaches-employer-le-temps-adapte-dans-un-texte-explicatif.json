@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.resumer-et-expliquer-cm-teaches-employer-le-temps-adapte-dans-un-texte-explicatif",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/resumer-et-expliquer-cm/contenu.json"
+  },
+  "source": "notion.francais.resumer-et-expliquer-cm",
+  "target": "microskill.francais.employer-le-temps-adapte-dans-un-texte-explicatif"
+}

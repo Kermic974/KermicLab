@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.revolution-empire-cm-teaches-distinguer-republique-et-empire",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-empire-cm/contenu.json"
+  },
+  "source": "notion.histoire.revolution-empire-cm",
+  "target": "microskill.histoire.distinguer-republique-et-empire"
+}

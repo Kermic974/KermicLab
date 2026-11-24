@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.ecrire-un-recit-cm-requires-lecture-comprehension-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecrire-un-recit-cm/contenu.json"
+  },
+  "source": "notion.francais.ecrire-un-recit-cm",
+  "target": "notion.francais.lecture-comprehension-cm",
+  "rationale": "« Comprendre un texte » : Écrire un récit mobilise l’écriture de textes du cycle 2, la compréhension de texte et les temps du récit."
+}

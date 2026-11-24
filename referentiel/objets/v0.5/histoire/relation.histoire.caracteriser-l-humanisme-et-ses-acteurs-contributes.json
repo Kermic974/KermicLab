@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.caracteriser-l-humanisme-et-ses-acteurs-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/renaissance/contenu.json"
+  },
+  "source": "microskill.histoire.caracteriser-l-humanisme-et-ses-acteurs",
+  "target": "skill.histoire.renaissance"
+}

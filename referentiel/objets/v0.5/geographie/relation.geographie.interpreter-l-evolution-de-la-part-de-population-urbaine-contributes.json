@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.interpreter-l-evolution-de-la-part-de-population-urbaine-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/urbanisation/contenu.json"
+  },
+  "source": "microskill.geographie.interpreter-l-evolution-de-la-part-de-population-urbaine",
+  "target": "skill.geographie.urbanisation"
+}

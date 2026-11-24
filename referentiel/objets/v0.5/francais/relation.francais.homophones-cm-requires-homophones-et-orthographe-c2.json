@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.homophones-cm-requires-homophones-et-orthographe-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/homophones-cm/contenu.json"
+  },
+  "source": "notion.francais.homophones-cm",
+  "target": "notion.francais.homophones-et-orthographe-c2",
+  "rationale": "« Homophones et mots à connaître » : Les homophones reprennent le test de remplacement du cycle 2 et exigent de reconnaître nature des mots et verbe conjugué."
+}

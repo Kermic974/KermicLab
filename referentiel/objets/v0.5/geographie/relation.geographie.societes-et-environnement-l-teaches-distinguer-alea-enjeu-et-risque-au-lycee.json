@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.societes-et-environnement-l-teaches-distinguer-alea-enjeu-et-risque-au-lycee",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/societes-et-environnement-l/contenu.json"
+  },
+  "source": "notion.geographie.societes-et-environnement-l",
+  "target": "microskill.geographie.distinguer-alea-enjeu-et-risque-au-lycee"
+}

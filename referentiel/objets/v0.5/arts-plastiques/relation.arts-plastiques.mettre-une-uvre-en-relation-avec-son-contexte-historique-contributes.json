@@ -1,0 +1,12 @@
+{
+  "id": "relation.arts-plastiques.mettre-une-uvre-en-relation-avec-son-contexte-historique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/arts-oeuvre-et-engagement-c4/contenu.json"
+  },
+  "source": "microskill.arts-plastiques.mettre-une-uvre-en-relation-avec-son-contexte-historique",
+  "target": "skill.arts-plastiques.arts-oeuvre-et-engagement-c4"
+}

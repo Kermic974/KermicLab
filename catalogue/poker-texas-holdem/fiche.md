@@ -3,6 +3,7 @@ id: poker-texas-holdem
 titre: Poker Texas Hold'em
 resume: Une table de Texas Hold'em contre l'ordinateur, avec des jetons fictifs et sans argent réel.
 sujet: jeux/poker-texas-holdem
+categorie: strategie
 notions-liees:
   - probabilites
   - denombrement

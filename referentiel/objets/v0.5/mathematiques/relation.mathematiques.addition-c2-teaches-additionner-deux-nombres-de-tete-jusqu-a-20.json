@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.addition-c2-teaches-additionner-deux-nombres-de-tete-jusqu-a-20",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/addition-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.addition-c2",
+  "target": "microskill.mathematiques.additionner-deux-nombres-de-tete-jusqu-a-20"
+}

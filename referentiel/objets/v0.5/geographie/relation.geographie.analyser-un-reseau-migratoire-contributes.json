@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.analyser-un-reseau-migratoire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/migrations/contenu.json"
+  },
+  "source": "microskill.geographie.analyser-un-reseau-migratoire",
+  "target": "skill.geographie.migrations"
+}

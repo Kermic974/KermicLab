@@ -1,0 +1,13 @@
+{
+  "id": "relation.anglais.anglais-culture-et-civilisation-l-requires-anglais-grammaire-et-temps-l",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-culture-et-civilisation-l/contenu.json"
+  },
+  "source": "notion.anglais.anglais-culture-et-civilisation-l",
+  "target": "notion.anglais.anglais-grammaire-et-temps-l",
+  "rationale": "La compréhension et la production de documents s’appuient sur la maîtrise des temps et des structures."
+}

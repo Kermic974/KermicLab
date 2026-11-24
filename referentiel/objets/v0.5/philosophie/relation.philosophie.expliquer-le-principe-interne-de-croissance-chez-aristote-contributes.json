@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.expliquer-le-principe-interne-de-croissance-chez-aristote-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nature/contenu.json"
+  },
+  "source": "microskill.philosophie.expliquer-le-principe-interne-de-croissance-chez-aristote",
+  "target": "skill.philosophie.nature"
+}

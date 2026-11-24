@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-benevolat-et-travail-remunere-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/engagement-et-solidarite-6e/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-benevolat-et-travail-remunere",
+  "target": "skill.emc.engagement-et-solidarite-6e"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.emc-engagement-et-defense-l-teaches-choisir-une-forme-d-engagement-adaptee-a-une-cause",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-engagement-et-defense-l/contenu.json"
+  },
+  "source": "notion.emc.emc-engagement-et-defense-l",
+  "target": "microskill.emc.choisir-une-forme-d-engagement-adaptee-a-une-cause"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.identifier-la-decouverte-de-l-agriculture-au-neolithique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/prehistoire-cm/contenu.json"
+  },
+  "source": "microskill.histoire.identifier-la-decouverte-de-l-agriculture-au-neolithique",
+  "target": "skill.histoire.prehistoire-cm"
+}

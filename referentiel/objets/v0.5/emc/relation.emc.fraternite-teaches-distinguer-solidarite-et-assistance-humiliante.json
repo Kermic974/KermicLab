@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.fraternite-teaches-distinguer-solidarite-et-assistance-humiliante",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fraternite/contenu.json"
+  },
+  "source": "notion.emc.fraternite",
+  "target": "microskill.emc.distinguer-solidarite-et-assistance-humiliante"
+}

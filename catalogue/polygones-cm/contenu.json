@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Pour reconnaître une figure, on regarde ses côtés (longueurs, parallèles) et ses angles.",
+  "niveaux": [
+    {
+      "titre": "Intuition : les formes autour de nous",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un **polygone** est une figure fermée dont les côtés sont des segments. Le triangle en a 3, le quadrilatère 4, le pentagone 5, l'hexagone 6.",
+        "Un triangle peut être **isocèle** (2 côtés égaux), **équilatéral** (3 côtés égaux) ou **rectangle** (un angle droit)."
+      ],
+      "exemple": {
+        "titre": "Exemple : une pyramide vue de face",
+        "etapes": [
+          "Un triangle isocèle a deux côtés de même longueur.",
+          "Le troisième côté est la base.",
+          "Un triangle équilatéral est aussi isocèle."
+        ]
+      },
+      "aRetenir": "Un polygone a autant de sommets que de côtés."
+    },
+    {
+      "titre": "Les quadrilatères particuliers",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Le **rectangle** a 4 angles droits et ses côtés opposés sont égaux. Le **carré** a 4 angles droits et 4 côtés égaux. Le **losange** a 4 côtés égaux. Le **parallélogramme** a ses côtés opposés parallèles et égaux.",
+        "Un carré est à la fois un rectangle et un losange. Les diagonales d'un rectangle ont la même longueur ; celles d'un losange sont perpendiculaires."
+      ],
+      "exemple": {
+        "titre": "Exemple : reconnaître un losange",
+        "etapes": [
+          "On mesure les 4 côtés : ils sont égaux.",
+          "Les angles ne sont pas droits.",
+          "C'est un losange (pas un carré)."
+        ]
+      },
+      "aRetenir": "Carré = rectangle + losange."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Un quadrilatère a 4 côtés égaux et 4 angles droits. C'est un…",
+        "choix": [
+          "trapèze",
+          "carré",
+          "rectangle seulement",
+          "losange seulement"
+        ],
+        "bonne": 1,
+        "explication": "4 côtés égaux et 4 angles droits : un carré."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un triangle a trois côtés égaux. Il est…",
+        "choix": [
+          "équilatéral",
+          "rectangle",
+          "scalène",
+          "isocèle uniquement"
+        ],
+        "bonne": 0,
+        "explication": "Trois côtés égaux : équilatéral (et donc aussi isocèle)."
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de côtés a un hexagone ?",
+        "reponse": 6,
+        "indices": [
+          "Pense à « hexagone », la forme de la France."
+        ],
+        "solution": "Hexa = six.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le puzzle des formes",
+    "histoire": [
+      "Tu reconnais des figures dans un puzzle de formes en bois."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Une pièce a 4 côtés égaux mais pas d'angle droit. C'est un…",
+        "choix": [
+          "carré",
+          "rectangle",
+          "triangle",
+          "losange"
+        ],
+        "bonne": 3,
+        "explication": "4 côtés égaux sans angle droit : un losange."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Une pièce a 4 angles droits et des côtés de longueurs 8 cm et 3 cm. C'est un…",
+        "choix": [
+          "losange",
+          "triangle",
+          "rectangle",
+          "carré"
+        ],
+        "bonne": 2,
+        "explication": "4 angles droits, côtés inégaux : un rectangle."
+      }
+    ],
+    "conclusion": "Bravo, tu reconnais les figures !"
+  }
+}

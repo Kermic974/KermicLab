@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.identifier-le-numero-d-alerte-en-cas-de-danger-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droits-de-l-enfant-cm/contenu.json"
+  },
+  "source": "microskill.emc.identifier-le-numero-d-alerte-en-cas-de-danger",
+  "target": "skill.emc.droits-de-l-enfant-cm"
+}

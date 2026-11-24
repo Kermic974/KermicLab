@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.respiration-et-circulation-teaches-decrire-le-trajet-du-sang-dans-le-c-ur-et-les-vaisseaux",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/respiration-et-circulation/contenu.json"
+  },
+  "source": "notion.svt.respiration-et-circulation",
+  "target": "microskill.svt.decrire-le-trajet-du-sang-dans-le-c-ur-et-les-vaisseaux"
+}

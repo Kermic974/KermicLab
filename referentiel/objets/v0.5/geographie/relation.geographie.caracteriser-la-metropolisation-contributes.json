@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.caracteriser-la-metropolisation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/territoires-urbains-et-ruraux-l/contenu.json"
+  },
+  "source": "microskill.geographie.caracteriser-la-metropolisation",
+  "target": "skill.geographie.territoires-urbains-et-ruraux-l"
+}

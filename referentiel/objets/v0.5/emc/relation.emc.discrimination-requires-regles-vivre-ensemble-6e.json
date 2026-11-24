@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.discrimination-requires-regles-vivre-ensemble-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/discrimination/contenu.json"
+  },
+  "source": "notion.emc.discrimination",
+  "target": "notion.emc.regles-vivre-ensemble-6e",
+  "rationale": "« Vivre ensemble : règles, égalité et lutte contre les discriminations » : La discrimination et le harcèlement abordés en 6e sont repris avec stéréotypes, préjugés et recours."
+}

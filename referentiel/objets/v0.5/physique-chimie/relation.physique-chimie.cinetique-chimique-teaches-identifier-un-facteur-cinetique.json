@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.cinetique-chimique-teaches-identifier-un-facteur-cinetique",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/cinetique-chimique/contenu.json"
+  },
+  "source": "notion.physique-chimie.cinetique-chimique",
+  "target": "microskill.physique-chimie.identifier-un-facteur-cinetique"
+}

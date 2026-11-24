@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.localiser-transcription-et-traduction-dans-la-cellule-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/expression-genetique/contenu.json"
+  },
+  "source": "microskill.svt.localiser-transcription-et-traduction-dans-la-cellule",
+  "target": "skill.svt.expression-genetique"
+}

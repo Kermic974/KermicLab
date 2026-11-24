@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.croquis-et-cartes-c4-requires-lire-une-carte-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/croquis-et-cartes-c4/contenu.json"
+  },
+  "source": "notion.geographie.croquis-et-cartes-c4",
+  "target": "notion.geographie.lire-une-carte-cm",
+  "rationale": "« Lire une carte et se repérer » : Le croquis du collège reprend la lecture de carte du cycle 3."
+}

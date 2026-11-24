@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.francais.ponctuation-et-dialogue-cm-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ponctuation-et-dialogue-cm/contenu.json"
+  },
+  "object": "notion.francais.ponctuation-et-dialogue-cm",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.evaluer-l-heritage-napoleonien-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/napoleon/contenu.json"
+  },
+  "source": "microskill.histoire.evaluer-l-heritage-napoleonien",
+  "target": "skill.histoire.napoleon"
+}

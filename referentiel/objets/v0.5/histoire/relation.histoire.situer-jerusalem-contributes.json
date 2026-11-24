@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-jerusalem-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monotheisme-juif-6e/contenu.json"
+  },
+  "source": "microskill.histoire.situer-jerusalem",
+  "target": "skill.histoire.monotheisme-juif-6e"
+}

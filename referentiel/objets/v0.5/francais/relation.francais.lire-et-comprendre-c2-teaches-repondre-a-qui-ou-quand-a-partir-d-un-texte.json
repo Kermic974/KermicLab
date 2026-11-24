@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.lire-et-comprendre-c2-teaches-repondre-a-qui-ou-quand-a-partir-d-un-texte",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lire-et-comprendre-c2/contenu.json"
+  },
+  "source": "notion.francais.lire-et-comprendre-c2",
+  "target": "microskill.francais.repondre-a-qui-ou-quand-a-partir-d-un-texte"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.accords-requires-conjugaison-temps",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/accords/contenu.json"
+  },
+  "source": "notion.francais.accords",
+  "target": "notion.francais.conjugaison-temps",
+  "rationale": "L’accord du participe passé suppose de former et reconnaître les temps composés."
+}

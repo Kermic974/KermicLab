@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.predire-l-effet-de-la-taille-d-une-population-sur-la-derive-genetique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/evolution-et-selection-naturelle/contenu.json"
+  },
+  "source": "microskill.svt.predire-l-effet-de-la-taille-d-une-population-sur-la-derive-genetique",
+  "target": "skill.svt.evolution-et-selection-naturelle"
+}

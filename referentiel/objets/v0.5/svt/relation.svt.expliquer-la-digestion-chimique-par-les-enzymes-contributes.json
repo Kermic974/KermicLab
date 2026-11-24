@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-la-digestion-chimique-par-les-enzymes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nutrition-et-digestion/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-la-digestion-chimique-par-les-enzymes",
+  "target": "skill.svt.nutrition-et-digestion"
+}

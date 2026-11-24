@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Pour rester en bonne santé : bien dormir, bouger, bien manger et éviter les substances dangereuses.",
+  "niveaux": [
+    {
+      "titre": "Habitudes de vie",
+      "niveau": "3e",
+      "paragraphes": [
+        "Un adolescent a besoin de **8 à 10 heures de sommeil**, d'une **alimentation équilibrée** et d'au moins **60 minutes d'activité physique** par jour. Le manque de sommeil perturbe l'attention, la mémoire et l'humeur. Les **écrans** avant le coucher retardent l'endormissement ; trop de sédentarité nuit à la santé."
+      ],
+      "exemple": {
+        "titre": "Exemple : une soirée",
+        "etapes": [
+          "Éteindre les écrans 1 heure avant de dormir.",
+          "Se coucher à heure régulière.",
+          "Dormir 9 heures."
+        ]
+      },
+      "aRetenir": "8 à 10 h de sommeil."
+    },
+    {
+      "titre": "Addictions et prévention",
+      "niveau": "3e",
+      "paragraphes": [
+        "Le **tabac**, l'**alcool**, le **cannabis** et d'autres substances agissent sur le cerveau et créent une **dépendance**. Ils sont dangereux surtout à l'adolescence (cerveau en développement) : cancers, maladies du cœur, troubles de l'attention. Leur vente aux mineurs est interdite. Les **addictions** peuvent aussi concerner les jeux ou les écrans.",
+        "Pour se protéger : s'informer, savoir dire non, demander de l'aide (infirmière scolaire, médecin, numéros d'aide)."
+      ],
+      "exemple": {
+        "titre": "Exemple : résister à la pression",
+        "etapes": [
+          "Un camarade propose une cigarette.",
+          "Je refuse.",
+          "Je peux en parler à un adulte."
+        ]
+      },
+      "aRetenir": "Dépendance : difficile d'arrêter."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Combien d'heures de sommeil recommande-t-on à un adolescent ?",
+        "choix": [
+          "8 à 10",
+          "4 à 5",
+          "11 à 14",
+          "2 à 3"
+        ],
+        "bonne": 0,
+        "explication": "Besoin élevé."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le tabac provoque…",
+        "choix": [
+          "une énergie durable toute la journée",
+          "aucun risque pour la santé",
+          "une dépendance et des maladies graves",
+          "une meilleure mémoire à long terme"
+        ],
+        "bonne": 2,
+        "explication": "Nicotine."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Que faire si on se sent dépendant d'un jeu ?",
+        "choix": [
+          "en parler à un adulte ou à un professionnel",
+          "cacher le problème à tout le monde",
+          "jouer plus longtemps pour oublier",
+          "changer de pseudo et continuer"
+        ],
+        "bonne": 0,
+        "explication": "Demander de l'aide."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le défi sans écran",
+    "histoire": [
+      "Ta classe organise un défi sans écran le soir."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel bénéfice attends-tu ?",
+        "choix": [
+          "une fatigue accrue",
+          "moins de lecture",
+          "aucun",
+          "un meilleur sommeil"
+        ],
+        "bonne": 3,
+        "explication": "Sommeil."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel autre geste aide la santé ?",
+        "choix": [
+          "dormir tard",
+          "sauter le petit-déjeuner",
+          "boire des boissons énergisantes",
+          "une activité physique quotidienne"
+        ],
+        "bonne": 3,
+        "explication": "60 minutes par jour."
+      }
+    ],
+    "conclusion": "Bien joué pour ta santé !"
+  }
+}

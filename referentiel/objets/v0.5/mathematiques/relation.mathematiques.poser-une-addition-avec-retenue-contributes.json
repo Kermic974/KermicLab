@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.poser-une-addition-avec-retenue-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/addition-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.poser-une-addition-avec-retenue",
+  "target": "skill.mathematiques.addition-c2"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.objets-techniques-6e-teaches-choisir-un-materiau-selon-ses-proprietes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/objets-techniques-6e/contenu.json"
+  },
+  "source": "notion.technologie.objets-techniques-6e",
+  "target": "microskill.technologie.choisir-un-materiau-selon-ses-proprietes"
+}

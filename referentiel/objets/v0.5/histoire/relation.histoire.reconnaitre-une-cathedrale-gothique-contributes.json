@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.reconnaitre-une-cathedrale-gothique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/louis-ix-cm/contenu.json"
+  },
+  "source": "microskill.histoire.reconnaitre-une-cathedrale-gothique",
+  "target": "skill.histoire.louis-ix-cm"
+}

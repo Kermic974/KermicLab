@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.decrire-le-role-des-chloroplastes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/photosynthese/contenu.json"
+  },
+  "source": "microskill.svt.decrire-le-role-des-chloroplastes",
+  "target": "skill.svt.photosynthese"
+}

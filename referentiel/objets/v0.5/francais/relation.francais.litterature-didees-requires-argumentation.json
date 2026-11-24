@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.litterature-didees-requires-argumentation",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/litterature-didees/contenu.json"
+  },
+  "source": "notion.francais.litterature-didees",
+  "target": "notion.francais.argumentation",
+  "rationale": "Lire une idée dans sa forme suppose de repérer thèse, arguments et exemples."
+}

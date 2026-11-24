@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.montrer-que-l-air-existe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eau-air-et-matiere-c2/contenu.json"
+  },
+  "source": "microskill.physique-chimie.montrer-que-l-air-existe",
+  "target": "skill.physique-chimie.eau-air-et-matiere-c2"
+}

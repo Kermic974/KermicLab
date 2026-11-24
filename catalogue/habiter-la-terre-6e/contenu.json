@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les hommes ne sont pas répartis également sur la Terre, et tous ne vivent pas dans les mêmes conditions.",
+  "niveaux": [
+    {
+      "titre": "Intuition : où vivent les hommes ?",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Plus de 8 milliards d'humains vivent sur Terre. Ils se concentrent dans l'hémisphère nord, au bord des mers, des fleuves, dans les plaines, et en Asie (Chine, Inde). Les déserts, les montagnes et les zones polaires sont peu peuplés."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Le delta du Nil est très peuplé.",
+          "Le Sahara est presque vide.",
+          "L'Inde et la Chine : plus d'un milliard d'habitants chacune."
+        ]
+      },
+      "aRetenir": "Eau et terres fertiles attirent la population."
+    },
+    {
+      "titre": "Des conditions de vie inégales",
+      "niveau": "6e",
+      "paragraphes": [
+        "Le niveau de vie varie beaucoup : accès à l'eau potable, à la nourriture, à l'éducation, à la santé. Dans certains pays, des millions de personnes manquent d'eau potable.",
+        "L'**indice de développement humain** compare les pays. Des organisations (ONU, ONG) cherchent à réduire les inégalités."
+      ],
+      "exemple": {
+        "titre": "Exemple : l'eau",
+        "etapes": [
+          "Dans un pays riche, l'eau coule au robinet.",
+          "Ailleurs, il faut marcher des kilomètres jusqu'à un puits.",
+          "L'accès à l'eau est un droit humain."
+        ]
+      },
+      "aRetenir": "L'eau potable est vitale."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel continent est le plus peuplé ?",
+        "choix": [
+          "L'Europe",
+          "L'Afrique",
+          "L'Océanie",
+          "L'Asie"
+        ],
+        "bonne": 3,
+        "explication": "Plus de la moitié de la population."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Une région très peuplée se situe souvent…",
+        "choix": [
+          "au sommet de hautes montagnes",
+          "dans une zone polaire glacée",
+          "près de l'eau et de terres fertiles",
+          "au milieu d'un grand désert"
+        ],
+        "bonne": 2,
+        "explication": "Ressources."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "L'accès à l'eau potable est…",
+        "choix": [
+          "réservé aux riches",
+          "un besoin vital",
+          "un luxe",
+          "inutile"
+        ],
+        "bonne": 1,
+        "explication": "Droit fondamental."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le tour du monde de l'eau",
+    "histoire": [
+      "Tu compares l'accès à l'eau dans deux villages."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle conséquence si le puits est à 5 km ?",
+        "choix": [
+          "Une eau toujours très propre garantie",
+          "Plus de temps pour aller à l'école",
+          "Beaucoup de temps perdu pour aller chercher l'eau",
+          "Plus de temps libre pour aller jouer"
+        ],
+        "bonne": 2,
+        "explication": "Corvée d'eau."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle solution aide ?",
+        "choix": [
+          "Brûler les champs voisins",
+          "Déplacer le village dans le désert",
+          "Creuser un puits ou installer un réseau",
+          "Fermer l'école du village"
+        ],
+        "bonne": 2,
+        "explication": "Accès à l'eau."
+      }
+    ],
+    "conclusion": "Tu comprends les inégalités !"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.expliquer-le-role-du-conseil-constitutionnel-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-libertes-et-droits-l/contenu.json"
+  },
+  "source": "microskill.emc.expliquer-le-role-du-conseil-constitutionnel",
+  "target": "skill.emc.emc-libertes-et-droits-l"
+}

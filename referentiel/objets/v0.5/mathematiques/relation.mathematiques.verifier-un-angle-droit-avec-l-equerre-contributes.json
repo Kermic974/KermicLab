@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.verifier-un-angle-droit-avec-l-equerre-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/angles-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.verifier-un-angle-droit-avec-l-equerre",
+  "target": "skill.mathematiques.angles-cm"
+}

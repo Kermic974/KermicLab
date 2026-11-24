@@ -1,0 +1,13 @@
+{
+  "id": "relation.philosophie.philosophie-liberte-et-justice-l-requires-liberte-philosophie",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/philosophie-liberte-et-justice-l/contenu.json"
+  },
+  "source": "notion.philosophie.philosophie-liberte-et-justice-l",
+  "target": "notion.philosophie.liberte-philosophie",
+  "rationale": "« La liberté en philosophie » : La dissertation reprend les notions de liberté et de justice en philosophie."
+}

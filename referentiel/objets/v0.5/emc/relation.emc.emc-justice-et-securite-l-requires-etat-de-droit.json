@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.emc-justice-et-securite-l-requires-etat-de-droit",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-justice-et-securite-l/contenu.json"
+  },
+  "source": "notion.emc.emc-justice-et-securite-l",
+  "target": "notion.emc.etat-de-droit",
+  "rationale": "« L'État de droit » : Le lycée reprend la justice et l’État de droit du collège."
+}

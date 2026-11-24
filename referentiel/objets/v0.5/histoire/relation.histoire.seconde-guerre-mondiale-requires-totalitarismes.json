@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.seconde-guerre-mondiale-requires-totalitarismes",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/seconde-guerre-mondiale/contenu.json"
+  },
+  "source": "notion.histoire.seconde-guerre-mondiale",
+  "target": "notion.histoire.totalitarismes",
+  "rationale": "Les régimes fasciste et nazi expliquent l’expansion et les violences de masse."
+}

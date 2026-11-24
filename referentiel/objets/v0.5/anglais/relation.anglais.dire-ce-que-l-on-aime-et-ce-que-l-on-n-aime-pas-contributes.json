@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.dire-ce-que-l-on-aime-et-ce-que-l-on-n-aime-pas-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-gouts-et-actions-cm/contenu.json"
+  },
+  "source": "microskill.anglais.dire-ce-que-l-on-aime-et-ce-que-l-on-n-aime-pas",
+  "target": "skill.anglais.anglais-gouts-et-actions-cm"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.anglais.anglais-famille-et-animaux-c2-requires-anglais-bonjour-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-famille-et-animaux-c2/contenu.json"
+  },
+  "source": "notion.anglais.anglais-famille-et-animaux-c2",
+  "target": "notion.anglais.anglais-bonjour-c2",
+  "rationale": "Les salutations et le vocabulaire de base servent de point de départ pour parler de la famille et des objets."
+}

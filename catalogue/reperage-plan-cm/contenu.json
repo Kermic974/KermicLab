@@ -1,0 +1,114 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Pour situer un point, on donne deux informations : où il est horizontalement et verticalement.",
+  "niveaux": [
+    {
+      "titre": "Intuition : la bataille navale",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dans la bataille navale, une case est repérée par une lettre (colonne) et un nombre (ligne) : B4. Sur un plan de ville, l'index donne aussi la case où trouver une rue.",
+        "Une **légende** explique les symboles du plan."
+      ],
+      "exemple": {
+        "titre": "Exemple : B4",
+        "etapes": [
+          "La lettre B donne la colonne.",
+          "Le nombre 4 donne la ligne.",
+          "On cherche à l'intersection."
+        ]
+      },
+      "aRetenir": "Deux informations sont nécessaires pour repérer un point."
+    },
+    {
+      "titre": "Coordonnées",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Dans un repère, on note un point (x ; y) : on lit d'abord le déplacement horizontal (axe des abscisses), puis le vertical (axe des ordonnées). Le point (3 ; 2) est à 3 vers la droite et 2 vers le haut de l'origine.",
+        "On peut se déplacer sur un quadrillage avec un **programme de déplacement** : « 2 carreaux à droite, 1 en haut »."
+      ],
+      "exemple": {
+        "titre": "Exemple : (4 ; 1)",
+        "etapes": [
+          "On part de l'origine (0 ; 0).",
+          "4 pas vers la droite.",
+          "1 pas vers le haut."
+        ]
+      },
+      "aRetenir": "On donne d'abord l'abscisse, puis l'ordonnée."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans (3 ; 2), le 3 indique…",
+        "choix": [
+          "la distance à l'origine",
+          "le déplacement horizontal",
+          "le déplacement vertical",
+          "l'altitude"
+        ],
+        "bonne": 1,
+        "explication": "La première coordonnée est horizontale (abscisse)."
+      },
+      {
+        "type": "nombre",
+        "question": "Un trésor est en (5 ; 4). Combien de pas vers la droite faut-il faire ?",
+        "reponse": 5,
+        "indices": [
+          "La première coordonnée donne le horizontal."
+        ],
+        "solution": "L'abscisse 5 : 5 pas vers la droite.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "nombre",
+        "question": "On part de (2 ; 1) et on monte de 3 carreaux. Quelle est la nouvelle ordonnée ?",
+        "reponse": 4,
+        "indices": [
+          "Monter augmente l'ordonnée."
+        ],
+        "solution": "1 + 3 = 4.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La chasse au trésor",
+    "histoire": [
+      "La carte indique : « Pars de l'origine, 4 pas à droite, 3 pas en haut »."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelles sont les coordonnées du trésor ?",
+        "choix": [
+          "(7 ; 0)",
+          "(0 ; 7)",
+          "(4 ; 3)",
+          "(3 ; 4)"
+        ],
+        "bonne": 2,
+        "explication": "4 vers la droite (abscisse), 3 vers le haut (ordonnée)."
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de pas en tout ?",
+        "reponse": 7,
+        "indices": [
+          "Additionne les deux déplacements."
+        ],
+        "solution": "4 + 3 = 7.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Trésor trouvé !"
+  }
+}

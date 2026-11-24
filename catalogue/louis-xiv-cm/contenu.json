@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Louis XIV règne soixante-douze ans et concentre tous les pouvoirs : c'est la monarchie absolue.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le roi et son soleil",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "**Louis XIV** devient roi à 4 ans (1643) ; il gouverne lui-même à partir de 1661 et règne jusqu'en 1715. Il choisit le **soleil** comme emblème : comme le soleil éclaire tout, il veut tout éclairer.",
+        "Il fait de **Versailles**, un ancien pavillon de chasse, un château immense où il s'installe avec la Cour en 1682."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "La galerie des Glaces.",
+          "Les jardins dessinés par Le Nôtre.",
+          "La chambre du roi, au centre du château."
+        ]
+      },
+      "aRetenir": "1661 : Louis XIV gouverne seul."
+    },
+    {
+      "titre": "Un roi qui décide de tout",
+      "niveau": "CM1",
+      "paragraphes": [
+        "C'est la **monarchie absolue** : le roi détient tous les pouvoirs. Il décide des lois, de la justice, de la guerre ; il choisit ses ministres (Colbert pour l'économie). Il est considéré comme le représentant de Dieu sur Terre (monarchie « de droit divin »).",
+        "À Versailles, les nobles vivent près du roi, sous son contrôle, au prix d'une étiquette stricte. Le peuple, lui, paie de lourds impôts."
+      ],
+      "exemple": {
+        "titre": "Exemple : le lever du roi",
+        "etapes": [
+          "Les courtisans assistent au réveil du roi.",
+          "Chacun a un rôle précis.",
+          "Plus on est proche, plus on a d'honneurs."
+        ]
+      },
+      "aRetenir": "Monarchie absolue : tous les pouvoirs au roi."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "En quelle année Louis XIV commence-t-il à gouverner seul ?",
+        "reponse": 1661,
+        "indices": [
+          "Milieu du XVIIe siècle."
+        ],
+        "solution": "Après la mort de Mazarin.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel château Louis XIV fait-il agrandir ?",
+        "choix": [
+          "Versailles",
+          "Chambord",
+          "Carcassonne",
+          "Fontainebleau seulement"
+        ],
+        "bonne": 0,
+        "explication": "Versailles devient le siège du pouvoir."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Que signifie « monarchie absolue » ?",
+        "choix": [
+          "Les juges gouvernent le pays",
+          "Un président est élu pour cinq ans",
+          "Le roi détient tous les pouvoirs",
+          "Le peuple vote toutes les lois"
+        ],
+        "bonne": 2,
+        "explication": "Le roi décide de tout."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Une journée à Versailles",
+    "histoire": [
+      "Tu es courtisan à Versailles, en 1700."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pourquoi les nobles vivent-ils à Versailles ?",
+        "choix": [
+          "Le roi veut les surveiller près de lui",
+          "Ils n'ont plus de maison à Paris",
+          "Ils doivent y cultiver les jardins",
+          "Ils y préparent la prochaine guerre"
+        ],
+        "bonne": 0,
+        "explication": "Le roi contrôle la noblesse."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel emblème Louis XIV a-t-il choisi ?",
+        "choix": [
+          "L'aigle",
+          "Le soleil",
+          "La lune",
+          "Le coq"
+        ],
+        "bonne": 1,
+        "explication": "D'où « Roi-Soleil »."
+      }
+    ],
+    "conclusion": "Vive le Roi-Soleil !"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.roman-teaches-comparer-deux-incipits",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/roman/contenu.json"
+  },
+  "source": "notion.francais.roman",
+  "target": "microskill.francais.comparer-deux-incipits"
+}

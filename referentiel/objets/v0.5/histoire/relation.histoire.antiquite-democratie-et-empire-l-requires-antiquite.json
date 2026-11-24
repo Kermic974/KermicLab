@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.antiquite-democratie-et-empire-l-requires-antiquite",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/antiquite-democratie-et-empire-l/contenu.json"
+  },
+  "source": "notion.histoire.antiquite-democratie-et-empire-l",
+  "target": "notion.histoire.antiquite",
+  "rationale": "« L'Antiquité : Grèce et Rome » : Le lycée reprend et approfondit l’Antiquité vue au collège."
+}

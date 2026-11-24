@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.interpreter-la-double-enonciation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/theatre/contenu.json"
+  },
+  "source": "microskill.francais.interpreter-la-double-enonciation",
+  "target": "skill.francais.theatre"
+}

@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La Terre tourne sur elle-même et autour du Soleil : cela explique les jours, les nuits et les saisons.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le Soleil et la Terre",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La Terre est une **planète** qui tourne autour du **Soleil**, une étoile. Elle tourne aussi sur elle-même en **24 heures** : c'est la rotation, qui crée le jour (face éclairée) et la nuit (face dans l'ombre).",
+        "La Terre met **un an** (365 jours et un quart) pour faire le tour du Soleil : c'est la révolution."
+      ],
+      "exemple": {
+        "titre": "Exemple : la lampe et le globe",
+        "etapes": [
+          "Une lampe représente le Soleil.",
+          "Le globe tourne : une face est éclairée, l'autre dans l'ombre.",
+          "En un tour, c'est un jour complet."
+        ]
+      },
+      "aRetenir": "Rotation : 24 h. Révolution : 1 an."
+    },
+    {
+      "titre": "Saisons, Lune et planètes",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "L'axe de la Terre est **incliné**. Selon sa position autour du Soleil, un hémisphère reçoit plus ou moins de lumière : cela crée les **saisons**. Quand c'est l'été dans l'hémisphère nord, c'est l'hiver dans l'hémisphère sud.",
+        "La **Lune** est le satellite naturel de la Terre. Elle ne produit pas de lumière : elle reflète celle du Soleil. Ses **phases** viennent de sa position par rapport à la Terre et au Soleil, en environ 29,5 jours. Le système solaire compte huit planètes : Mercure, Vénus, Terre, Mars, Jupiter, Saturne, Uranus, Neptune."
+      ],
+      "exemple": {
+        "titre": "Exemple : la Lune",
+        "etapes": [
+          "Pleine Lune : face entièrement éclairée visible.",
+          "Nouvelle Lune : face éclairée tournée vers l'espace.",
+          "Croissant : une partie seulement est visible."
+        ]
+      },
+      "aRetenir": "La Lune reflète la lumière du Soleil."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "En combien d'heures la Terre tourne-t-elle sur elle-même ?",
+        "reponse": 24,
+        "unite": "h",
+        "indices": [
+          "C'est la durée d'un jour."
+        ],
+        "solution": "Environ 24 heures.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qu'est-ce qui cause les saisons ?",
+        "choix": [
+          "L'inclinaison de l'axe de la Terre",
+          "La distance entre la Terre et la Lune",
+          "La présence de nuages épais",
+          "L'activité des volcans"
+        ],
+        "bonne": 0,
+        "explication": "L'axe de rotation est incliné."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Combien de planètes dans le système solaire ?",
+        "choix": [
+          "7",
+          "12",
+          "8",
+          "9"
+        ],
+        "bonne": 2,
+        "explication": "Huit planètes."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La classe observe le ciel",
+    "histoire": [
+      "Tu observes le ciel pendant un mois."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pourquoi la Lune semble-t-elle changer de forme ?",
+        "choix": [
+          "Elle tourne autour du Soleil seulement",
+          "On voit des parties différentes de sa face éclairée",
+          "Elle grossit et rétrécit",
+          "Elle s'éteint"
+        ],
+        "bonne": 1,
+        "explication": "Ce sont les phases."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quand c'est l'été en France, quelle saison dans l'hémisphère sud ?",
+        "choix": [
+          "L'été",
+          "Le printemps",
+          "L'automne",
+          "L'hiver"
+        ],
+        "bonne": 3,
+        "explication": "Les saisons sont inversées."
+      }
+    ],
+    "conclusion": "Astronome en herbe !"
+  }
+}

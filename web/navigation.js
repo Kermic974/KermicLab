@@ -16,10 +16,11 @@ export const ENTREES_NAVIGATION = Object.freeze([
 ]);
 
 /**
- * Ordre par défaut : « Mon tableau de bord » juste sous l'Accueil. Les entrées liées au rôle (Ma famille,
- * Contributions, Professeur) sont regroupées dans le tableau de bord, comme vues filtrables, et non dans la barre.
+ * Ordre par défaut (ADR 0039 § 3) : cinq destinations. « Mon tableau de bord » a fusionné avec l'Accueil ; ses vues
+ * (Profil, Mon compte, Famille, Contributions, Professeur) s'ouvrent par l'avatar (« Mon espace ») et par leur barre de
+ * filtres. L'entrée reste configurable : il suffit de l'ajouter à la clé `navigation` de `web/config.json`.
  */
-export const ORDRE_NAVIGATION_DEFAUT = Object.freeze(["accueil", "tableau-de-bord", "education", "labs", "jeux", "progression"]);
+export const ORDRE_NAVIGATION_DEFAUT = Object.freeze(["accueil", "education", "labs", "jeux", "progression"]);
 
 /** Vues du tableau de bord, dans l'ordre de la barre de filtres. */
 export const VUES_TABLEAU_DE_BORD = Object.freeze([
@@ -63,3 +64,15 @@ export function vueTableauDeBord({ derniere = null, disponibles = [], prof = fal
   if (prof && disponibles.includes("suivi")) return "suivi";
   return "profil";
 }
+
+/**
+ * Espaces colorés (ADR 0039 § 4) : chaque écran appartient à un espace dont la couleur habille le bandeau d'en-tête.
+ * Les vues de « Mon tableau de bord » prennent la couleur de leur rôle ; un écran inconnu reste dans l'espace Accueil.
+ */
+export const ESPACES = Object.freeze(["accueil", "education", "labs", "jeux", "progression", "famille", "professeur", "contributions"]);
+const ESPACE_DES_ECRANS = Object.freeze({
+  education: "education", defi: "education", labs: "labs", jeux: "jeux", progression: "progression",
+  famille: "famille", "espace-famille": "famille", suivi: "professeur", classes: "professeur", eleves: "professeur",
+  contributions: "contributions",
+});
+export const espaceDe = (ecran) => ESPACE_DES_ECRANS[ecran] ?? "accueil";

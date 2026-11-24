@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-une-proposition-subordonnee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grammaire-phrase-complexe/contenu.json"
+  },
+  "source": "microskill.francais.identifier-une-proposition-subordonnee",
+  "target": "skill.francais.grammaire-phrase-complexe"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.respect-et-egalite-cm-teaches-accepter-les-differences-de-chacun",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/respect-et-egalite-cm/contenu.json"
+  },
+  "source": "notion.emc.respect-et-egalite-cm",
+  "target": "microskill.emc.accepter-les-differences-de-chacun"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.comparer-une-plante-cultivee-et-son-ancetre-sauvage-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/domestication-et-selection-l/contenu.json"
+  },
+  "source": "microskill.svt.comparer-une-plante-cultivee-et-son-ancetre-sauvage",
+  "target": "skill.svt.domestication-et-selection-l"
+}

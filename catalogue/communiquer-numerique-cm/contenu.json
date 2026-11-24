@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Grâce à Internet, un message traverse la planète en quelques secondes.",
+  "niveaux": [
+    {
+      "titre": "Intuition : un monde connecté",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Autrefois, une lettre mettait des jours ou des semaines. Aujourd'hui, un courriel arrive en quelques secondes. Cette révolution passe par **Internet**, qui relie des milliards d'appareils.",
+        "Les messages circulent par des câbles (fibre optique), y compris au fond des océans, et par des satellites."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Lettre → télégraphe → téléphone → courriel → visioconférence.",
+          "Un appel vidéo avec un ami à l'étranger.",
+          "Un article consulté depuis un autre pays."
+        ]
+      },
+      "aRetenir": "Internet relie les personnes et les lieux."
+    },
+    {
+      "titre": "Inégalités et bon usage",
+      "niveau": "CM2",
+      "paragraphes": [
+        "La majorité des **câbles sous-marins** relient les continents. Les grandes villes mondiales sont des points de connexion. Mais tout le monde n'est pas connecté : c'est la **fracture numérique** (manque d'accès ou de compétences).",
+        "Il faut aussi apprendre à utiliser Internet avec prudence : protéger ses données, vérifier les informations, respecter les autres."
+      ],
+      "exemple": {
+        "titre": "Exemple : trois règles",
+        "etapes": [
+          "Ne jamais donner son mot de passe.",
+          "Vérifier une information avec plusieurs sources.",
+          "Parler à un adulte en cas de problème."
+        ]
+      },
+      "aRetenir": "Internet : utile, mais il faut rester prudent."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Par où passent la plupart des communications entre continents ?",
+        "choix": [
+          "Par des câbles sous-marins",
+          "Par des ballons",
+          "Par des pigeons",
+          "Par des bateaux postaux"
+        ],
+        "bonne": 0,
+        "explication": "Ce sont des câbles en fibre optique."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que désigne la « fracture numérique » ?",
+        "choix": [
+          "Les inégalités d'accès au numérique",
+          "Une panne générale d'Internet",
+          "Un écran brisé après une chute",
+          "Un virus qui efface les données"
+        ],
+        "bonne": 0,
+        "explication": "Tous n'ont pas accès à Internet ou ne savent pas l'utiliser."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quelle précaution prendre sur Internet ?",
+        "choix": [
+          "Publier son adresse",
+          "Accepter tous les inconnus",
+          "Cliquer partout",
+          "Ne pas donner son mot de passe"
+        ],
+        "bonne": 3,
+        "explication": "Les mots de passe sont personnels."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le message du bout du monde",
+    "histoire": [
+      "Ta classe correspond avec une école du Canada."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment le message arrive-t-il rapidement ?",
+        "choix": [
+          "Par Internet",
+          "Par bateau",
+          "Par ballon",
+          "À pied"
+        ],
+        "bonne": 0,
+        "explication": "Par câbles et satellites."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que dois-tu protéger dans ce message ?",
+        "choix": [
+          "La date d'envoi du courriel",
+          "Tes informations personnelles",
+          "Le titre de ton message",
+          "La couleur de ton texte"
+        ],
+        "bonne": 1,
+        "explication": "Ne pas communiquer d'adresse ni de numéro."
+      }
+    ],
+    "conclusion": "Message envoyé !"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.identifier-les-gametes-et-leur-origine-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reproduction-humaine/contenu.json"
+  },
+  "source": "microskill.svt.identifier-les-gametes-et-leur-origine",
+  "target": "skill.svt.reproduction-humaine"
+}

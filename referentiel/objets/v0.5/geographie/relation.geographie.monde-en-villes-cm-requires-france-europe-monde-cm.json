@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.monde-en-villes-cm-requires-france-europe-monde-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monde-en-villes-cm/contenu.json"
+  },
+  "source": "notion.geographie.monde-en-villes-cm",
+  "target": "notion.geographie.france-europe-monde-cm",
+  "rationale": "« La France, l'Europe et le monde » : Les villes du monde s’appuient sur la planète Terre du cycle 2 et la France dans le monde."
+}

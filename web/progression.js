@@ -24,7 +24,7 @@ export const XP_APPRENTISSAGE = Object.freeze({
 export const XP_PAR_NIVEAU = 100;
 /** Défi express : XP par bonne réponse, une seule fois par jour. */
 export const XP_DEFI_BONNE = 5;
-const MAX_NOTIONS = 200;
+const MAX_NOTIONS = 600;
 export const VERSION = 2;
 /** Limites de taille : la progression reste petite, même manipulée à la main. */
 const MAX_PAR_TYPE = 500;

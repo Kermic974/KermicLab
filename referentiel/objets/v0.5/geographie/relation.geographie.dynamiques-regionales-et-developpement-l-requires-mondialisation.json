@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.dynamiques-regionales-et-developpement-l-requires-mondialisation",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/dynamiques-regionales-et-developpement-l/contenu.json"
+  },
+  "source": "notion.geographie.dynamiques-regionales-et-developpement-l",
+  "target": "notion.geographie.mondialisation",
+  "rationale": "« La mondialisation » : Les inégalités de développement s’appuient sur la mondialisation et les dynamiques territoriales."
+}

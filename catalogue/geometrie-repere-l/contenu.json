@@ -1,0 +1,109 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Dans un repère, la géométrie devient du calcul : distances, milieux et droites s'expriment avec des coordonnées.",
+  "niveaux": [
+    {
+      "titre": "Distance et milieu",
+      "niveau": "2de",
+      "paragraphes": [
+        "Dans un repère orthonormé, la distance entre A(x_A ; y_A) et B(x_B ; y_B) est **AB = √((x_B − x_A)² + (y_B − y_A)²)** (théorème de Pythagore). Le milieu de [AB] a pour coordonnées **((x_A + x_B)/2 ; (y_A + y_B)/2)**.",
+        "On peut ainsi démontrer qu'un triangle est isocèle (deux côtés égaux) ou rectangle (réciproque de Pythagore)."
+      ],
+      "exemple": {
+        "titre": "Exemple : A(1 ; 2) et B(5 ; 5)",
+        "etapes": [
+          "AB = √(4² + 3²) = √25 = 5.",
+          "Milieu : ((1 + 5)/2 ; (2 + 5)/2) = (3 ; 3,5).",
+          "Le segment mesure 5 unités."
+        ]
+      },
+      "aRetenir": "AB² = (Δx)² + (Δy)²."
+    },
+    {
+      "titre": "Droites et alignement",
+      "niveau": "2de",
+      "paragraphes": [
+        "Une droite non verticale a une **équation réduite** y = mx + p : m est le **coefficient directeur** (pente), p l'**ordonnée à l'origine**. Pour deux points A et B : m = (y_B − y_A)/(x_B − x_A). Deux droites sont **parallèles** si elles ont le même coefficient directeur.",
+        "Trois points sont **alignés** si les coefficients directeurs (AB) et (AC) sont égaux."
+      ],
+      "exemple": {
+        "titre": "Exemple : droite (AB) avec A(1 ; 2) et B(5 ; 5)",
+        "etapes": [
+          "m = (5 − 2)/(5 − 1) = 3/4.",
+          "y = 3/4 x + p ; en A : 2 = 3/4 + p donc p = 5/4.",
+          "y = 0,75x + 1,25."
+        ]
+      },
+      "aRetenir": "Droites parallèles : même coefficient directeur."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Distance entre A(1 ; 2) et B(5 ; 5) ?",
+        "reponse": 5,
+        "indices": [
+          "Pythagore sur les écarts 4 et 3."
+        ],
+        "solution": "√(16 + 9) = 5.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Abscisse du milieu de [AB] pour A(2 ; 1) et B(8 ; 5) ?",
+        "reponse": 5,
+        "indices": [
+          "Moyenne des abscisses."
+        ],
+        "solution": "(2 + 8)/2 = 5.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "nombre",
+        "question": "Coefficient directeur de la droite passant par A(1 ; 2) et B(5 ; 5) (en décimal) ?",
+        "reponse": 0.75,
+        "indices": [
+          "Δy/Δx."
+        ],
+        "solution": "3/4 = 0,75.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La piste de ski",
+    "histoire": [
+      "Dans un repère (en mètres), le départ est A(0 ; 100) et l'arrivée B(300 ; 40)."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quelle est la pente de la piste (valeur du coefficient directeur) ?",
+        "reponse": -0.2,
+        "indices": [
+          "Δy/Δx."
+        ],
+        "solution": "(40 − 100)/(300 − 0) = −60/300 = −0,2.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Quelle est la longueur de la piste (arrondie au mètre) ?",
+        "reponse": 306,
+        "unite": "m",
+        "indices": [
+          "Distance AB."
+        ],
+        "solution": "√(300² + 60²) = √93 600 ≈ 305,9.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Géométrie maîtrisée !"
+  }
+}

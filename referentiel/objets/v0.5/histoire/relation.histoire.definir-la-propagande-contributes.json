@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.definir-la-propagande-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/hggsp-savoirs-et-memoires-l/contenu.json"
+  },
+  "source": "microskill.histoire.definir-la-propagande",
+  "target": "skill.histoire.hggsp-savoirs-et-memoires-l"
+}

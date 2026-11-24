@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.interpreter-un-jeu-equitable-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/variables-aleatoires-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.interpreter-un-jeu-equitable",
+  "target": "skill.mathematiques.variables-aleatoires-l"
+}

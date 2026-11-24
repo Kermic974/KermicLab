@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.svt.domestication-et-selection-l-terminale",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/domestication-et-selection-l/contenu.json"
+  },
+  "object": "notion.svt.domestication-et-selection-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.terminale",
+  "role": "introduced"
+}

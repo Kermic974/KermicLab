@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decrire-la-vie-sous-la-colonisation-et-ses-resistances-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/colonisations-c4/contenu.json"
+  },
+  "source": "microskill.histoire.decrire-la-vie-sous-la-colonisation-et-ses-resistances",
+  "target": "skill.histoire.colonisations-c4"
+}

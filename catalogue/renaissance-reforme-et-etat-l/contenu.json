@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Aux XVe–XVIIe siècles, l'humanisme, l'imprimerie et la Réforme transforment l'Europe et renforcent les États.",
+  "niveaux": [
+    {
+      "titre": "Humanisme et imprimerie",
+      "niveau": "2de",
+      "paragraphes": [
+        "L'**humanisme** place l'être humain et la connaissance au centre : retour aux textes antiques, esprit critique (Érasme). **Gutenberg** invente l'imprimerie à caractères mobiles (vers 1450), qui diffuse les livres, la Bible et les idées. Les grandes **découvertes** (Colomb 1492) ouvrent de nouveaux espaces."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un livre imprimé coûte moins cher.",
+          "Les idées circulent plus vite.",
+          "Lecteurs plus nombreux."
+        ]
+      },
+      "aRetenir": "Humanisme + imprimerie = diffusion du savoir."
+    },
+    {
+      "titre": "Réforme et État",
+      "niveau": "2de",
+      "paragraphes": [
+        "En 1517, **Luther** critique la vente des indulgences : c'est la **Réforme** (Calvin à Genève). L'Europe se divise entre catholiques et protestants ; en France, les **guerres de religion** (1562–1598) s'achèvent par l'**édit de Nantes** (1598, Henri IV) qui accorde la tolérance. Les rois renforcent leur autorité : c'est l'**absolutisme** (Louis XIV)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "1572 : massacre de la Saint-Barthélemy.",
+          "1598 : édit de Nantes.",
+          "1685 : Louis XIV le révoque."
+        ]
+      },
+      "aRetenir": "Réforme : 1517 ; édit de Nantes : 1598."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "L'imprimerie à caractères mobiles est inventée vers 1450 par…",
+        "choix": [
+          "Colomb",
+          "Gutenberg",
+          "Luther",
+          "Calvin"
+        ],
+        "bonne": 1,
+        "explication": "Mayence."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "L'édit de Nantes (1598) accorde…",
+        "choix": [
+          "la fin de l'imprimerie",
+          "une tolérance aux protestants",
+          "l'abolition du roi",
+          "la guerre aux protestants"
+        ],
+        "bonne": 1,
+        "explication": "Paix religieuse."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La Réforme est lancée en 1517 par…",
+        "choix": [
+          "Gutenberg",
+          "Henri IV",
+          "Luther",
+          "Louis XIV"
+        ],
+        "bonne": 2,
+        "explication": "Indulgences."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'atelier d'imprimerie",
+    "histoire": [
+      "Tu entres dans un atelier de 1500."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Qu'est-ce qu'un humaniste ?",
+        "choix": [
+          "un savant qui étudie les textes antiques",
+          "un soldat au service du roi",
+          "un roi qui détient le pouvoir absolu",
+          "un marchand de grains du marché"
+        ],
+        "bonne": 0,
+        "explication": "Érasme."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "L'imprimerie facilite…",
+        "choix": [
+          "la diffusion des idées",
+          "l'interdiction de lire",
+          "la fin des livres imprimés",
+          "les guerres uniquement"
+        ],
+        "bonne": 0,
+        "explication": "Diffusion."
+      }
+    ],
+    "conclusion": "Bon lecteur !"
+  }
+}

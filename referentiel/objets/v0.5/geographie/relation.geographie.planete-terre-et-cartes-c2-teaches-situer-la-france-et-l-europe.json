@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.planete-terre-et-cartes-c2-teaches-situer-la-france-et-l-europe",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/planete-terre-et-cartes-c2/contenu.json"
+  },
+  "source": "notion.geographie.planete-terre-et-cartes-c2",
+  "target": "microskill.geographie.situer-la-france-et-l-europe"
+}

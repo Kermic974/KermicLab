@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.mathematiques.statistiques-et-echantillonnage-l-seconde",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/statistiques-et-echantillonnage-l/contenu.json"
+  },
+  "object": "notion.mathematiques.statistiques-et-echantillonnage-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.seconde",
+  "role": "introduced"
+}

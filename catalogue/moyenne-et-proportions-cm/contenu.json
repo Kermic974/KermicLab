@@ -1,0 +1,108 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Résumer des données : la moyenne donne une valeur « au milieu ».",
+  "niveaux": [
+    {
+      "titre": "Intuition : égaliser",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Quatre élèves ont mangé 2, 4, 6 et 8 bonbons. Pour partager à égalité, on additionne tout (20) et on divise par 4 : chacun aurait 5 bonbons. 5 est la **moyenne**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "2 + 4 + 6 + 8 = 20.",
+          "20 ÷ 4 = 5.",
+          "La moyenne est 5."
+        ]
+      },
+      "aRetenir": "Moyenne = total ÷ nombre de valeurs."
+    },
+    {
+      "titre": "Pourcentages",
+      "niveau": "CM2",
+      "paragraphes": [
+        "Un **pourcentage** exprime une proportion sur 100 : 3 élèves sur 4 = 75 %. Pour calculer 20 % de 60 : 60 ÷ 5 = 12 (20 % = 1/5). Pour passer d'une fraction à un pourcentage, on cherche une fraction de dénominateur 100 : 1/4 = 25/100 = 25 %.",
+        "Pour comparer deux séries, on compare leurs moyennes et leurs extrêmes (étendue = plus grande valeur − plus petite)."
+      ],
+      "exemple": {
+        "titre": "Exemple : une moyenne de notes",
+        "etapes": [
+          "12, 14 et 16.",
+          "Somme : 42.",
+          "42 ÷ 3 = 14."
+        ]
+      },
+      "aRetenir": "Pourcentage = proportion sur 100."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Moyenne de 2, 4, 6 et 8 ?",
+        "reponse": 5,
+        "indices": [
+          "Additionne, puis divise par 4."
+        ],
+        "solution": "20 ÷ 4 = 5.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien font 20 % de 60 ?",
+        "reponse": 12,
+        "indices": [
+          "20 % = 1/5."
+        ],
+        "solution": "60 ÷ 5 = 12.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "nombre",
+        "question": "3 élèves sur 4 : quel pourcentage ?",
+        "reponse": 75,
+        "unite": "%",
+        "indices": [
+          "Un quart = 25 %."
+        ],
+        "solution": "3/4 = 75/100.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Les notes de l'équipe",
+    "histoire": [
+      "Une équipe a obtenu les notes 12, 14 et 16."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quelle est la moyenne ?",
+        "reponse": 14,
+        "indices": [
+          "Additionne les trois notes."
+        ],
+        "solution": "(12 + 14 + 16) ÷ 3 = 14.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Quelle est l'étendue ?",
+        "reponse": 4,
+        "indices": [
+          "Plus grande − plus petite."
+        ],
+        "solution": "16 − 12 = 4.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Tu maîtrises la moyenne !"
+  }
+}

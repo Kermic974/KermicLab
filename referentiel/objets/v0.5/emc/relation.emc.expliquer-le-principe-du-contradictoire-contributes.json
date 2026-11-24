@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.expliquer-le-principe-du-contradictoire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice/contenu.json"
+  },
+  "source": "microskill.emc.expliquer-le-principe-du-contradictoire",
+  "target": "skill.emc.justice"
+}

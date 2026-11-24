@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.comparer-une-fraction-a-1-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fractions-operations-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.comparer-une-fraction-a-1",
+  "target": "skill.mathematiques.fractions-operations-cm"
+}

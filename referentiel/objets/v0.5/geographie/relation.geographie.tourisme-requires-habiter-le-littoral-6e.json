@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.tourisme-requires-habiter-le-littoral-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tourisme/contenu.json"
+  },
+  "source": "notion.geographie.tourisme",
+  "target": "notion.geographie.habiter-le-littoral-6e",
+  "rationale": "« Habiter le littoral » : Le littoral, espace attractif étudié en 6e, est un support de l’étude du tourisme."
+}

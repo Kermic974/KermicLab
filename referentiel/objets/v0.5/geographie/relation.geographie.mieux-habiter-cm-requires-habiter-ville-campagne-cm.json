@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.mieux-habiter-cm-requires-habiter-ville-campagne-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mieux-habiter-cm/contenu.json"
+  },
+  "source": "notion.geographie.mieux-habiter-cm",
+  "target": "notion.geographie.habiter-ville-campagne-cm",
+  "rationale": "« Habiter en ville ou à la campagne » : L’aménagement durable s’appuie sur ville et campagne."
+}

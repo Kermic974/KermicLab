@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.decrire-un-mouvement-dans-un-referentiel-au-lycee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mouvement-et-interactions-l/contenu.json"
+  },
+  "source": "microskill.physique-chimie.decrire-un-mouvement-dans-un-referentiel-au-lycee",
+  "target": "skill.physique-chimie.mouvement-et-interactions-l"
+}

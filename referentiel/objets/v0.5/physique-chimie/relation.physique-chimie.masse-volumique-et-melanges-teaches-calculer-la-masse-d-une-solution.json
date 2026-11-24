@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.masse-volumique-et-melanges-teaches-calculer-la-masse-d-une-solution",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/masse-volumique-et-melanges/contenu.json"
+  },
+  "source": "notion.physique-chimie.masse-volumique-et-melanges",
+  "target": "microskill.physique-chimie.calculer-la-masse-d-une-solution"
+}

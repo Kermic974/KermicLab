@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.resoudre-un-probleme-de-multiplication-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tables-de-multiplication-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.resoudre-un-probleme-de-multiplication",
+  "target": "skill.mathematiques.tables-de-multiplication-c2"
+}

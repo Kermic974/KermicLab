@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.air-et-matiere-cm-teaches-distinguer-gaz-liquide-et-solide-par-leurs-proprietes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/air-et-matiere-cm/contenu.json"
+  },
+  "source": "notion.physique-chimie.air-et-matiere-cm",
+  "target": "microskill.physique-chimie.distinguer-gaz-liquide-et-solide-par-leurs-proprietes"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.anglais-se-presenter-cm-teaches-dire-son-age-en-anglais",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-se-presenter-cm/contenu.json"
+  },
+  "source": "notion.anglais.anglais-se-presenter-cm",
+  "target": "microskill.anglais.dire-son-age-en-anglais"
+}

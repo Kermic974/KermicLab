@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.raconter-un-evenement-passe-simple-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-5e-c4/contenu.json"
+  },
+  "source": "microskill.anglais.raconter-un-evenement-passe-simple",
+  "target": "skill.anglais.anglais-5e-c4"
+}

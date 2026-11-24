@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.developpement-vegetaux-cm-requires-classification-du-vivant-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/developpement-vegetaux-cm/contenu.json"
+  },
+  "source": "notion.svt.developpement-vegetaux-cm",
+  "target": "notion.svt.classification-du-vivant-cm",
+  "rationale": "« Classer les êtres vivants » : Le développement d’une graine s’appuie sur les besoins des êtres vivants et le classement des végétaux."
+}

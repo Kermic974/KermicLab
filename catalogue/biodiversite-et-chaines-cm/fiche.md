@@ -1,0 +1,33 @@
+---
+id: biodiversite-et-chaines-cm
+titre: Biodiversité et chaînes alimentaires
+sujet: svt/biodiversite-et-chaines-cm
+version: 1.0.1
+date: 2026-11-21
+niveau: primaire
+classes: CM1, CM2
+duree: 20
+langues: fr
+onglets: explication, application, mise-en-situation
+mots-cles:
+  - chaine alimentaire
+  - biodiversite cm
+  - milieu de vie et ecosysteme cm
+  - producteur consommateur decomposeur
+  - proie et predateur
+  - especes en danger cm
+  - protection de l'environnement cm
+  - reseau alimentaire cm
+questions:
+  - C'est quoi une chaîne alimentaire en CM1 ?
+  - Qu'est-ce que la biodiversité ?
+  - Pourquoi protéger les espèces en danger ?
+  - Quel est le rôle des décomposeurs ?
+prerequis: milieux-et-saisons-c2, classification-du-vivant-cm
+niveaux: cycle-3
+competences: construire-une-chaine-alimentaire, interpreter-le-sens-de-la-fleche-qui-mange-qui, distinguer-producteur-consommateur-et-decomposeur, proposer-un-geste-de-protection-de-la-biodiversite
+---
+
+# Biodiversité et chaînes alimentaires
+
+Page générée depuis `contenu.json` avec le gabarit commun (`gabarit/`). Notion du cycle 3 (CM1 / CM2).

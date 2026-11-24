@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-le-point-de-vue-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/recit-d-aventures-6e/contenu.json"
+  },
+  "source": "microskill.francais.identifier-le-point-de-vue",
+  "target": "skill.francais.recit-d-aventures-6e"
+}

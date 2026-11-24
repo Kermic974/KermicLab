@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.identifier-les-droits-des-migrants-et-l-instance-d-asile-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/migrations/contenu.json"
+  },
+  "source": "microskill.geographie.identifier-les-droits-des-migrants-et-l-instance-d-asile",
+  "target": "skill.geographie.migrations"
+}

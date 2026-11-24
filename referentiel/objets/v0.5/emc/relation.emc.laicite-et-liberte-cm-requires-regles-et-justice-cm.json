@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.laicite-et-liberte-cm-requires-regles-et-justice-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/laicite-et-liberte-cm/contenu.json"
+  },
+  "source": "notion.emc.laicite-et-liberte-cm",
+  "target": "notion.emc.regles-et-justice-cm",
+  "rationale": "« Règles, lois et justice » : La laïcité s’appuie sur les règles de justice et sur les symboles de la République."
+}

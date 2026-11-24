@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.situer-un-objet-par-rapport-a-un-autre-gauche-droite-devant-derriere-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/se-reperer-dans-l-espace-c2/contenu.json"
+  },
+  "source": "microskill.geographie.situer-un-objet-par-rapport-a-un-autre-gauche-droite-devant-derriere",
+  "target": "skill.geographie.se-reperer-dans-l-espace-c2"
+}

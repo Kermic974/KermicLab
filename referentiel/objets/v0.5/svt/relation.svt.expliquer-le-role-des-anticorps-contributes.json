@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-le-role-des-anticorps-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/systeme-immunitaire/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-le-role-des-anticorps",
+  "target": "skill.svt.systeme-immunitaire"
+}

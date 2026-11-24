@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.theatre-et-representation-l-requires-figures-de-style",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/theatre-et-representation-l/contenu.json"
+  },
+  "source": "notion.francais.theatre-et-representation-l",
+  "target": "notion.francais.figures-de-style",
+  "rationale": "« Les figures de style » : Le théâtre du lycée reprend l’étude du théâtre au collège et les figures de style."
+}

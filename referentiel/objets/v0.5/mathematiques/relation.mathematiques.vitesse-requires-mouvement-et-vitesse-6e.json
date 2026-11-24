@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.vitesse-requires-mouvement-et-vitesse-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vitesse/contenu.json"
+  },
+  "source": "notion.mathematiques.vitesse",
+  "target": "notion.physique-chimie.mouvement-et-vitesse-6e",
+  "rationale": "« Mouvement, vitesse et référentiel en 6e » : La vitesse est une grandeur composée qui s’appuie sur la proportionnalité et la vitesse moyenne de 6e."
+}

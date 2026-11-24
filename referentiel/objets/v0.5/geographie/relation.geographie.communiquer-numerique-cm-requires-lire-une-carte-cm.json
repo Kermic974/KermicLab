@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.communiquer-numerique-cm-requires-lire-une-carte-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/communiquer-numerique-cm/contenu.json"
+  },
+  "source": "notion.geographie.communiquer-numerique-cm",
+  "target": "notion.geographie.lire-une-carte-cm",
+  "rationale": "« Lire une carte et se repérer » : Communiquer d’un bout à l’autre du monde suppose de lire une carte."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.discours-rapporte-cm-teaches-distinguer-didascalie-et-replique",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/discours-rapporte-cm/contenu.json"
+  },
+  "source": "notion.francais.discours-rapporte-cm",
+  "target": "microskill.francais.distinguer-didascalie-et-replique"
+}

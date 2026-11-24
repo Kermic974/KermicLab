@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expression-genetique-teaches-decrire-la-traduction-de-l-arn-messager-en-proteine",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/expression-genetique/contenu.json"
+  },
+  "source": "notion.svt.expression-genetique",
+  "target": "microskill.svt.decrire-la-traduction-de-l-arn-messager-en-proteine"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.reperer-le-sujet-et-le-verbe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fonctions-dans-la-phrase-cm/contenu.json"
+  },
+  "source": "microskill.francais.reperer-le-sujet-et-le-verbe",
+  "target": "skill.francais.fonctions-dans-la-phrase-cm"
+}

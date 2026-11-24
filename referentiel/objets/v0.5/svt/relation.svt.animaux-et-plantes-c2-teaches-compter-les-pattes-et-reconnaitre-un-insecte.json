@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.animaux-et-plantes-c2-teaches-compter-les-pattes-et-reconnaitre-un-insecte",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/animaux-et-plantes-c2/contenu.json"
+  },
+  "source": "notion.svt.animaux-et-plantes-c2",
+  "target": "microskill.svt.compter-les-pattes-et-reconnaitre-un-insecte"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.anglais-grammaire-et-temps-l-teaches-employer-les-modaux-de-probabilite-et-d-obligation",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-grammaire-et-temps-l/contenu.json"
+  },
+  "source": "notion.anglais.anglais-grammaire-et-temps-l",
+  "target": "microskill.anglais.employer-les-modaux-de-probabilite-et-d-obligation"
+}

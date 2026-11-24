@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.republique-et-citoyens-c2-requires-vivre-ensemble-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/republique-et-citoyens-c2/contenu.json"
+  },
+  "source": "notion.emc.republique-et-citoyens-c2",
+  "target": "notion.emc.vivre-ensemble-c2",
+  "rationale": "« Vivre ensemble : respect, règles et émotions » : Les symboles de la République s’appuient sur le vivre-ensemble."
+}

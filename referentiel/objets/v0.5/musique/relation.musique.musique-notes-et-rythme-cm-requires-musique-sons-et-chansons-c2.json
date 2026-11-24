@@ -1,0 +1,13 @@
+{
+  "id": "relation.musique.musique-notes-et-rythme-cm-requires-musique-sons-et-chansons-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-notes-et-rythme-cm/contenu.json"
+  },
+  "source": "notion.musique.musique-notes-et-rythme-cm",
+  "target": "notion.musique.musique-sons-et-chansons-c2",
+  "rationale": "Pulsation et rythme du cycle 2 sont formalisés avec les durées des notes."
+}

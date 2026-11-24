@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "S'informer demande de comparer les sources, de repérer les biais et de garder une distance critique.",
+  "niveaux": [
+    {
+      "titre": "Vérifier l'information",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "Pour vérifier une information : **qui** la publie (source identifiable) ? **quand** (date) ? **comment** (sources citées) ? **d'autres sources sérieuses** disent-elles la même chose ? Une **image** peut être truquée ou générée par IA (**deepfake**). Les **rumeurs** circulent vite sur les réseaux sociaux.",
+        "La **liberté de la presse** garantit des médias indépendants, mais la loi punit la diffamation et la haine."
+      ],
+      "exemple": {
+        "titre": "Exemple : une photo virale",
+        "etapes": [
+          "Recherche d'image inversée.",
+          "Qui l'a publiée en premier ?",
+          "Quelle est la date réelle ?"
+        ]
+      },
+      "aRetenir": "Croiser les sources."
+    },
+    {
+      "titre": "Biais et complotisme",
+      "niveau": "4e",
+      "paragraphes": [
+        "Un **biais** est une manière de voir qui oriente l'information (choix des mots, des images, des sources). Les **théories du complot** prétendent qu'un groupe cache la vérité ; elles résistent à toute preuve et sont souvent dangereuses (haine, désinformation). L'**esprit critique** consiste à douter, tester, argumenter et accepter de changer d'avis devant les preuves."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Une vidéo affirme qu'un événement est truqué.",
+          "Aucune preuve n'est donnée.",
+          "Les sources officielles et indépendantes la démentent."
+        ]
+      },
+      "aRetenir": "Douter sans tout rejeter : chercher des preuves."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Avant de partager une information, il faut…",
+        "choix": [
+          "la partager vite",
+          "la supprimer",
+          "l'imprimer",
+          "vérifier la source"
+        ],
+        "bonne": 3,
+        "explication": "Croiser les sources."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un deepfake est…",
+        "choix": [
+          "un journal papier très ancien",
+          "une émission de radio en direct",
+          "un reportage tourné sur le terrain",
+          "une image ou vidéo truquée par ordinateur"
+        ],
+        "bonne": 3,
+        "explication": "Manipulation numérique."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La liberté de la presse permet…",
+        "choix": [
+          "d'inventer des faits",
+          "de cacher l'information",
+          "à des médias indépendants d'informer",
+          "de diffamer sans conséquence"
+        ],
+        "bonne": 2,
+        "explication": "Avec des limites légales."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La vidéo qui circule",
+    "histoire": [
+      "Une vidéo affirme qu'un collège est fermé demain."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fais-tu ?",
+        "choix": [
+          "Je l'ignore sans rien vérifier",
+          "Je partage tout de suite à mes amis",
+          "Je vérifie auprès de l'établissement",
+          "Je réponds à l'auteur du message"
+        ],
+        "bonne": 2,
+        "explication": "Source officielle."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel indice est suspect ?",
+        "choix": [
+          "Elle est écrite en français courant",
+          "Elle est courte et directe",
+          "Aucune source n'est indiquée",
+          "Elle est très colorée visuellement"
+        ],
+        "bonne": 2,
+        "explication": "Pas de source."
+      }
+    ],
+    "conclusion": "Esprit critique activé !"
+  }
+}

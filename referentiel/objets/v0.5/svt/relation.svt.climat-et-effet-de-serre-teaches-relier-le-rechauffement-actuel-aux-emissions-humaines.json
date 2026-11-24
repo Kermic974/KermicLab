@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.climat-et-effet-de-serre-teaches-relier-le-rechauffement-actuel-aux-emissions-humaines",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/climat-et-effet-de-serre/contenu.json"
+  },
+  "source": "notion.svt.climat-et-effet-de-serre",
+  "target": "microskill.svt.relier-le-rechauffement-actuel-aux-emissions-humaines"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.regles-et-justice-cm-requires-respect-et-egalite-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/regles-et-justice-cm/contenu.json"
+  },
+  "source": "notion.emc.regles-et-justice-cm",
+  "target": "notion.emc.respect-et-egalite-cm",
+  "rationale": "« Respect, égalité et lutte contre le harcèlement » : Les règles et la justice s’appuient sur le respect et l’égalité."
+}

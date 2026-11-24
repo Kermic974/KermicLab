@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.distinguer-sources-et-traces-d-un-recit-fondateur-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monotheisme-juif-6e/contenu.json"
+  },
+  "source": "microskill.histoire.distinguer-sources-et-traces-d-un-recit-fondateur",
+  "target": "skill.histoire.monotheisme-juif-6e"
+}

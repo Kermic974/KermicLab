@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.definir-une-discrimination-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/regles-vivre-ensemble-6e/contenu.json"
+  },
+  "source": "microskill.emc.definir-une-discrimination",
+  "target": "skill.emc.regles-vivre-ensemble-6e"
+}

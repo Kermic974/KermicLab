@@ -1,0 +1,30 @@
+---
+id: terre-dans-le-systeme-solaire-6e
+titre: La Terre dans le système solaire en 6e
+sujet: svt/terre-dans-le-systeme-solaire-6e
+version: 1.0.1
+date: 2026-11-21
+niveau: college
+classes: 6e
+duree: 15
+langues: fr
+onglets: explication, application, mise-en-situation
+mots-cles:
+  - terre dans le systeme solaire 6e
+  - mouvements de la terre 6e
+  - alternance jour nuit 6e
+  - saisons et inclinaison 6e
+  - lune et eclipse 6e
+  - gravitation 6e
+questions:
+  - Comment la Terre se déplace-t-elle dans l'espace ?
+  - Qu'est-ce qu'une éclipse ?
+  - Quelle est la taille de la Terre ?
+prerequis: terre-et-systeme-solaire-cm
+niveaux: cycle-3
+competences: expliquer-une-eclipse-de-soleil, situer-les-planetes-du-systeme-solaire, definir-la-gravitation, decrire-les-mouvements-de-la-terre
+---
+
+# La Terre dans le système solaire en 6e
+
+Page générée depuis `contenu.json` avec le gabarit commun (`gabarit/`). Notion du cycle 3 (6e).

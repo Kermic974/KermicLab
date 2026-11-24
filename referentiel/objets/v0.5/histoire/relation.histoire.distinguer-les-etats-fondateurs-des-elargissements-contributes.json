@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.distinguer-les-etats-fondateurs-des-elargissements-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/construction-europeenne/contenu.json"
+  },
+  "source": "microskill.histoire.distinguer-les-etats-fondateurs-des-elargissements",
+  "target": "skill.histoire.construction-europeenne"
+}

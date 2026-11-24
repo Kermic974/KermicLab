@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.francois-ier-cm-requires-louis-ix-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/francois-ier-cm/contenu.json"
+  },
+  "source": "notion.histoire.francois-ier-cm",
+  "target": "notion.histoire.louis-ix-cm",
+  "rationale": "« Louis IX (Saint Louis) et le Moyen Âge chrétien » : Progression chronologique du programme (lien de continuité du parcours, pas un prérequis conceptuel strict) : la Renaissance suit le Moyen Âge chrétien de Louis IX."
+}

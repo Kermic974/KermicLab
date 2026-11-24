@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un objet connecté mesure, décide et communique grâce à des capteurs, un programme et un réseau.",
+  "niveaux": [
+    {
+      "titre": "Capteurs, programme, actionneurs",
+      "niveau": "4e",
+      "paragraphes": [
+        "Un objet connecté (montre, thermostat, enceinte) possède des **capteurs** (température, mouvement, lumière), une **unité de traitement** qui exécute un **programme**, des **actionneurs** (moteur, écran, haut-parleur) et un moyen de **communiquer** (wifi, Bluetooth). Une **carte programmable** (micro:bit, Arduino) permet d'écrire ce programme."
+      ],
+      "exemple": {
+        "titre": "Exemple : une serre",
+        "etapes": [
+          "Capteur d'humidité.",
+          "Programme : si sec, alors arroser.",
+          "Actionneur : pompe."
+        ]
+      },
+      "aRetenir": "Capteur → programme → actionneur."
+    },
+    {
+      "titre": "Réseaux et responsabilités",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "Un **réseau informatique** relie des appareils par des câbles ou des ondes. Chaque appareil a une **adresse** ; les données voyagent par **paquets**. **Internet** est le réseau de réseaux. L'**Internet des objets** relie des millions d'objets. Il faut se protéger : mots de passe solides, mises à jour, respect de la vie privée, consommation d'énergie raisonnable."
+      ],
+      "exemple": {
+        "titre": "Exemple : sécuriser",
+        "etapes": [
+          "Changer le mot de passe par défaut.",
+          "Mettre à jour le logiciel.",
+          "Limiter les données collectées."
+        ]
+      },
+      "aRetenir": "Sécurité : mots de passe et mises à jour."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Un capteur…",
+        "choix": [
+          "stocke l'énergie",
+          "efface le programme",
+          "recueille une information",
+          "agit sur l'objet"
+        ],
+        "bonne": 2,
+        "explication": "Mesure."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Dans un programme « si humidité faible alors arroser », arroser est…",
+        "choix": [
+          "la boucle",
+          "l'action",
+          "le capteur",
+          "la variable"
+        ],
+        "bonne": 1,
+        "explication": "Actionneur déclenché."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Pour protéger un objet connecté, il faut…",
+        "choix": [
+          "l'enterrer dans le jardin",
+          "le laisser tel quel sans rien changer",
+          "changer le mot de passe par défaut",
+          "le débrancher complètement du secteur"
+        ],
+        "bonne": 2,
+        "explication": "Sécurité."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La serre automatique",
+    "histoire": [
+      "Ta classe programme l'arrosage d'une serre."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel capteur utilises-tu ?",
+        "choix": [
+          "une pile de rechange seule",
+          "un capteur d'humidité du sol",
+          "une règle graduée en bois",
+          "un haut-parleur de table"
+        ],
+        "bonne": 1,
+        "explication": "Humidité."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle instruction écris-tu ?",
+        "choix": [
+          "Arroser seulement pendant la nuit",
+          "Toujours arroser sans condition",
+          "Si le sol est sec alors lancer la pompe",
+          "Ne jamais arroser les plantes"
+        ],
+        "bonne": 2,
+        "explication": "Condition."
+      }
+    ],
+    "conclusion": "Serre intelligente !"
+  }
+}

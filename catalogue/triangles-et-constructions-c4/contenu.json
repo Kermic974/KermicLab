@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les triangles obéissent à des règles précises sur leurs côtés et leurs angles, qu'on utilise pour construire et démontrer.",
+  "niveaux": [
+    {
+      "titre": "Angles et côtés",
+      "niveau": "5e",
+      "paragraphes": [
+        "La somme des angles d'un triangle vaut **180°**. Un triangle isocèle a deux côtés égaux et deux angles égaux ; un triangle équilatéral a trois côtés égaux et trois angles de 60°. **Inégalité triangulaire** : un côté est toujours plus court que la somme des deux autres (on ne peut pas construire un triangle de côtés 2, 3 et 6).",
+        "Pour construire un triangle de côtés connus, on trace un côté puis on utilise le compas pour trouver le troisième sommet."
+      ],
+      "exemple": {
+        "titre": "Exemple : angle manquant",
+        "etapes": [
+          "Angles de 52° et 68°.",
+          "52 + 68 = 120.",
+          "Troisième angle : 180 − 120 = 60°."
+        ]
+      },
+      "aRetenir": "Somme des angles d'un triangle : 180°."
+    },
+    {
+      "titre": "Droites remarquables",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "La **médiatrice** d'un segment est la droite perpendiculaire passant par son milieu : tous ses points sont à égale distance des extrémités. La **bissectrice** d'un angle le partage en deux angles égaux. La **hauteur** issue d'un sommet est perpendiculaire au côté opposé ; la **médiane** joint un sommet au milieu du côté opposé.",
+        "Les trois médiatrices d'un triangle se coupent en un point : le centre du **cercle circonscrit**, qui passe par les trois sommets. Les trois médianes se coupent au centre de gravité."
+      ],
+      "exemple": {
+        "titre": "Exemple : cercle circonscrit",
+        "etapes": [
+          "On trace deux médiatrices.",
+          "Elles se coupent en O.",
+          "Le cercle de centre O passant par A passe aussi par B et C."
+        ]
+      },
+      "aRetenir": "Médiatrices → cercle circonscrit ; médianes → centre de gravité."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Un triangle a deux angles de 52° et 68°. Combien mesure le troisième ?",
+        "reponse": 60,
+        "unite": "°",
+        "indices": [
+          "La somme vaut 180°."
+        ],
+        "solution": "180 − (52 + 68) = 60.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Peut-on construire un triangle de côtés 4 cm, 5 cm et 10 cm ?",
+        "choix": [
+          "Non, car 4 + 5 < 10",
+          "Oui, toujours",
+          "Oui si l'angle est droit",
+          "Seulement avec une équerre"
+        ],
+        "bonne": 0,
+        "explication": "Inégalité triangulaire non respectée."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Les trois médiatrices d'un triangle se coupent…",
+        "choix": [
+          "au centre du cercle circonscrit",
+          "au centre de gravité du triangle",
+          "sur un des trois côtés",
+          "toujours à l'extérieur du triangle"
+        ],
+        "bonne": 0,
+        "explication": "Propriété du cercle circonscrit."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le terrain triangulaire",
+    "histoire": [
+      "Un jardinier veut planter un arbre à égale distance des trois coins d'un terrain triangulaire."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel point doit-il choisir ?",
+        "choix": [
+          "Le centre du cercle circonscrit",
+          "Le milieu d'un des côtés",
+          "Le centre de gravité du triangle",
+          "Un des trois sommets"
+        ],
+        "bonne": 0,
+        "explication": "Il est équidistant des trois sommets."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelles droites doit-il tracer ?",
+        "choix": [
+          "Deux médiatrices",
+          "Deux hauteurs",
+          "Deux médianes",
+          "Deux bissectrices"
+        ],
+        "bonne": 0,
+        "explication": "Leur intersection est le centre."
+      }
+    ],
+    "conclusion": "Arbre bien placé !"
+  }
+}

@@ -8,7 +8,7 @@ const ID = /^[a-z0-9][a-z0-9-]{0,79}$/;
 const ID_EXERCICE = /^[a-z0-9][a-z0-9-]{0,39}$/;
 const SEMVER = /^\d+\.\d+\.\d+$/;
 const JOUR = /^\d{4}-\d{2}-\d{2}$/;
-const MAX_NOTIONS = 300;
+const MAX_NOTIONS = 600;
 const MAX_EXERCICES = 60;
 const objet = (v) => v !== null && typeof v === "object" && !Array.isArray(v);
 const entier = (v, min, max) => Number.isInteger(v) && v >= min && v <= max;

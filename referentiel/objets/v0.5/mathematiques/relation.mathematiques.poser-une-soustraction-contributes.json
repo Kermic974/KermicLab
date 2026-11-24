@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.poser-une-soustraction-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/soustraction-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.poser-une-soustraction",
+  "target": "skill.mathematiques.soustraction-c2"
+}

@@ -1,0 +1,119 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La symétrie axiale conserve les longueurs, les angles et les aires.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le miroir",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Devant un miroir, ton reflet est le symétrique de ton visage : l'axe de symétrie est le miroir. Chaque point et son symétrique sont de part et d'autre, à la même distance.",
+        "On peut aussi plier la feuille le long de l'axe : la figure et son symétrique se superposent."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Le point A est à 3 cm de l'axe.",
+          "A' est de l'autre côté, à 3 cm.",
+          "(AA') est perpendiculaire à l'axe."
+        ]
+      },
+      "aRetenir": "L'axe est la médiatrice de [AA']."
+    },
+    {
+      "titre": "Propriétés",
+      "niveau": "6e",
+      "paragraphes": [
+        "La symétrie axiale **conserve** les longueurs, les angles, les aires et le parallélisme. Un segment et son symétrique ont la même longueur ; un angle et son symétrique ont la même mesure.",
+        "Pour construire le symétrique d'un point à l'équerre et au compas : trace la perpendiculaire à l'axe passant par le point, puis reporte la distance de l'autre côté."
+      ],
+      "exemple": {
+        "titre": "Exemple : un triangle",
+        "etapes": [
+          "Je construis les symétriques A', B', C'.",
+          "Je relie A'B'C'.",
+          "Le triangle A'B'C' a les mêmes longueurs et angles que ABC."
+        ]
+      },
+      "aRetenir": "La symétrie conserve les longueurs et les angles."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La symétrie axiale conserve…",
+        "choix": [
+          "rien",
+          "les longueurs et les angles",
+          "seulement les angles",
+          "seulement les longueurs"
+        ],
+        "bonne": 1,
+        "explication": "C'est une isométrie."
+      },
+      {
+        "type": "nombre",
+        "question": "Un angle de 50° a pour symétrique un angle de combien de degrés ?",
+        "reponse": 50,
+        "unite": "°",
+        "indices": [
+          "Conservation des angles."
+        ],
+        "solution": "Les angles sont conservés.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "L'axe de symétrie est…",
+        "choix": [
+          "toujours horizontal",
+          "la médiatrice de [AA']",
+          "parallèle à [AA']",
+          "confondu avec A"
+        ],
+        "bonne": 1,
+        "explication": "Perpendiculaire en son milieu."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le motif du carreleur",
+    "histoire": [
+      "Un carreleur dessine un motif symétrique."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Un sommet est à 4 cm de l'axe. Distance entre lui et son symétrique ?",
+        "reponse": 8,
+        "unite": "cm",
+        "indices": [
+          "De part et d'autre."
+        ],
+        "solution": "4 + 4 = 8.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un côté de 6 cm a pour symétrique un côté de…",
+        "choix": [
+          "6 cm",
+          "3 cm",
+          "12 cm",
+          "0 cm"
+        ],
+        "bonne": 0,
+        "explication": "Longueurs conservées."
+      }
+    ],
+    "conclusion": "Motif parfait !"
+  }
+}

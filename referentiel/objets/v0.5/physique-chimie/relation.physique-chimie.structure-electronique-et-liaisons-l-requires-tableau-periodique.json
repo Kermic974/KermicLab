@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.structure-electronique-et-liaisons-l-requires-tableau-periodique",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/structure-electronique-et-liaisons-l/contenu.json"
+  },
+  "source": "notion.physique-chimie.structure-electronique-et-liaisons-l",
+  "target": "notion.physique-chimie.tableau-periodique",
+  "rationale": "« L'atome et le tableau périodique » : La structure électronique s’appuie sur les atomes et le tableau périodique."
+}

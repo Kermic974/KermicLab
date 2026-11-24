@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.delimiter-une-zone-economique-exclusive-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/espaces-et-puissances-mondiales-l/contenu.json"
+  },
+  "source": "microskill.geographie.delimiter-une-zone-economique-exclusive",
+  "target": "skill.geographie.espaces-et-puissances-mondiales-l"
+}

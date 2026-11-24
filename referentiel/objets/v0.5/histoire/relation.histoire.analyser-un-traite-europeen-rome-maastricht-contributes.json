@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.analyser-un-traite-europeen-rome-maastricht-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/construction-europeenne/contenu.json"
+  },
+  "source": "microskill.histoire.analyser-un-traite-europeen-rome-maastricht",
+  "target": "skill.histoire.construction-europeenne"
+}

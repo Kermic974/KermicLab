@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.decolonisation-relatedto-guerre-froide",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/decolonisation/contenu.json"
+  },
+  "source": "notion.histoire.decolonisation",
+  "target": "notion.histoire.guerre-froide",
+  "rationale": "La décolonisation se déroule dans le cadre de la rivalité entre blocs ; chaque notion éclaire l’autre."
+}

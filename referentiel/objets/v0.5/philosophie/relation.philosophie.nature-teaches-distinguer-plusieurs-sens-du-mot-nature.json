@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.nature-teaches-distinguer-plusieurs-sens-du-mot-nature",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nature/contenu.json"
+  },
+  "source": "notion.philosophie.nature",
+  "target": "microskill.philosophie.distinguer-plusieurs-sens-du-mot-nature"
+}

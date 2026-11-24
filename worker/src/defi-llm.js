@@ -62,7 +62,7 @@ export const SCHEMA_DEFI = {
 const entierAleatoire = (n, aleatoire) => Math.floor(aleatoire() * n);
 const aleatoireCrypto = () => crypto.getRandomValues(new Uint32Array(1))[0] / 2 ** 32;
 
-export const NIVEAUX_DEFI = Object.freeze(["college", "seconde", "premiere", "terminale", "autres"]);
+export const NIVEAUX_DEFI = Object.freeze(["primaire", "college", "seconde", "premiere", "terminale", "autres"]);
 const matiereDeMaquette = (m) => String(m.sujet ?? "").split("/")[0] || "autres";
 const niveauDeMaquette = (m) => (NIVEAUX_DEFI.includes(m.niveau) ? m.niveau : "autres");
 

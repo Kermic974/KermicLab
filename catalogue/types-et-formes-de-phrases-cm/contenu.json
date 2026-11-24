@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Chaque phrase a un type (déclaratif, interrogatif, impératif, exclamatif) et une forme (affirmative ou négative).",
+  "niveaux": [
+    {
+      "titre": "Intuition : dire, demander, ordonner",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour **informer**, on fait une phrase déclarative : « Il pleut. ». Pour **demander**, une phrase interrogative : « Pleut-il ? ». Pour **ordonner** ou conseiller, une phrase impérative : « Prends ton parapluie. ». Pour exprimer un sentiment, une phrase exclamative : « Quel orage ! »."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« Où vas-tu ? » : interrogative (point d'interrogation).",
+          "« Viens ici ! » : impérative.",
+          "« Comme il fait chaud ! » : exclamative."
+        ]
+      },
+      "aRetenir": "Le type se repère à l'intention et à la ponctuation."
+    },
+    {
+      "titre": "Forme négative et transformations",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "La forme **négative** s'écrit avec deux mots autour du verbe : **ne … pas**, ne … jamais, ne … plus, ne … rien. « Je mange » → « Je **ne** mange **pas** ».",
+        "À l'oral, on oublie souvent « ne », mais à l'écrit il est obligatoire. Pour une question, on peut utiliser l'inversion (« Viens-tu ? »), « est-ce que » ou l'intonation."
+      ],
+      "exemple": {
+        "titre": "Exemple : transformer",
+        "etapes": [
+          "« Tu viens. » → « Tu ne viens pas. » (négative).",
+          "« Tu viens. » → « Viens ! » (impérative).",
+          "« Tu viens. » → « Est-ce que tu viens ? » (interrogative)."
+        ]
+      },
+      "aRetenir": "Négation = ne … pas autour du verbe."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« Ferme la porte. » est une phrase…",
+        "choix": [
+          "exclamative",
+          "déclarative",
+          "impérative",
+          "interrogative"
+        ],
+        "bonne": 2,
+        "explication": "Elle exprime un ordre."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle phrase est à la forme négative ?",
+        "choix": [
+          "Joue-t-il ?",
+          "Quel joueur !",
+          "Il ne joue plus.",
+          "Il joue encore."
+        ],
+        "bonne": 2,
+        "explication": "« ne … plus » encadre le verbe."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« Quel beau paysage ! » est une phrase…",
+        "choix": [
+          "impérative",
+          "déclarative",
+          "interrogative",
+          "exclamative"
+        ],
+        "bonne": 3,
+        "explication": "Elle exprime un sentiment."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le message à la classe",
+    "histoire": [
+      "Tu écris des messages pour ta classe : annonce, question, consigne."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle phrase est interrogative ?",
+        "choix": [
+          "Je viens demain.",
+          "Quelle surprise !",
+          "Veux-tu venir ?",
+          "Viens vite."
+        ],
+        "bonne": 2,
+        "explication": "Elle pose une question."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Mets à la forme négative : « Je comprends. »",
+        "choix": [
+          "Je pas comprends.",
+          "Je ne comprends pas.",
+          "Je comprends pas.",
+          "Ne je comprends."
+        ],
+        "bonne": 1,
+        "explication": "ne … pas encadre le verbe."
+      }
+    ],
+    "conclusion": "Messages réussis !"
+  }
+}

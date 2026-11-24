@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.interpreter-une-evolution-du-taux-de-chomage-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/chomage/contenu.json"
+  },
+  "source": "microskill.ses.interpreter-une-evolution-du-taux-de-chomage",
+  "target": "skill.ses.chomage"
+}

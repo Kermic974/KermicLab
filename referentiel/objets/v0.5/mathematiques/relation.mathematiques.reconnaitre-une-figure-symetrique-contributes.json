@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.reconnaitre-une-figure-symetrique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/symetrie-et-reperage-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.reconnaitre-une-figure-symetrique",
+  "target": "skill.mathematiques.symetrie-et-reperage-c2"
+}

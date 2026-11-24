@@ -1,0 +1,13 @@
+{
+  "id": "relation.ses.justice-sociale-requires-mobilite-sociale",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice-sociale/contenu.json"
+  },
+  "source": "notion.ses.justice-sociale",
+  "target": "notion.ses.mobilite-sociale",
+  "rationale": "L’égalité des chances s’évalue à l’aide de la mobilité sociale."
+}

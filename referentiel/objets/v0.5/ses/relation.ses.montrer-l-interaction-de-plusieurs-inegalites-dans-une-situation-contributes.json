@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.montrer-l-interaction-de-plusieurs-inegalites-dans-une-situation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/inegalites/contenu.json"
+  },
+  "source": "microskill.ses.montrer-l-interaction-de-plusieurs-inegalites-dans-une-situation",
+  "target": "skill.ses.inegalites"
+}

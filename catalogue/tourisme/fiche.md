@@ -20,10 +20,10 @@ questions:
   - Comment le tourisme transforme-t-il les territoires ?
   - Quelle différence entre un touriste et un excursionniste ?
   - C'est quoi le surtourisme ?
-prerequis:
-niveaux: cycle-4, seconde, premiere, terminale
 classes: 4e
-competences: geographie-tourisme-action-1, geographie-tourisme-action-2
+prerequis: mobilites, habiter-le-littoral-6e
+niveaux: cycle-4, seconde, premiere, terminale
+competences: distinguer-touriste-et-excursionniste, calculer-un-nombre-de-nuitees, analyser-les-flux-et-les-acteurs-touristiques, evaluer-les-effets-du-tourisme-sur-un-territoire, proposer-une-transformation-touristique-durable
 ---
 
 # Le tourisme et les territoires

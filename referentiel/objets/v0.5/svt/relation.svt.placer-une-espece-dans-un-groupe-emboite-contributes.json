@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.placer-une-espece-dans-un-groupe-emboite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/classification-du-vivant-6e/contenu.json"
+  },
+  "source": "microskill.svt.placer-une-espece-dans-un-groupe-emboite",
+  "target": "skill.svt.classification-du-vivant-6e"
+}

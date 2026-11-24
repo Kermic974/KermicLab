@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Savoir prévenir un danger et alerter les secours peut sauver des vies.",
+  "niveaux": [
+    {
+      "titre": "Intuition : savoir réagir",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "En cas d'accident, il faut **protéger** (éviter un sur-accident), **alerter** (appeler les secours) et **secourir** si on sait faire. Les numéros d'urgence : **15** (SAMU), **17** (police), **18** (pompiers), **112** (numéro européen)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Tu vois un camarade tomber et ne plus bouger.",
+          "Tu appelles un adulte ou le 15.",
+          "Tu donnes le lieu, ce qui s'est passé."
+        ]
+      },
+      "aRetenir": "Protéger, alerter, secourir."
+    },
+    {
+      "titre": "Sur la route et à la maison",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Piéton : regarder des deux côtés, traverser sur les passages protégés. Cycliste : casque, éclairage, respect des feux. Passager : ceinture, siège adapté. À la maison : médicaments et produits ménagers hors de portée.",
+        "Au CM2, on peut passer l'**APER** (attestation de première éducation à la route) et apprendre les gestes de premiers secours (position latérale de sécurité, appel au 15)."
+      ],
+      "exemple": {
+        "titre": "Exemple : alerter",
+        "etapes": [
+          "Je compose le 15 ou le 18.",
+          "Je donne l'adresse précise.",
+          "Je réponds aux questions et je ne raccroche pas le premier."
+        ]
+      },
+      "aRetenir": "Rester calme et donner des informations précises."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel numéro appeler pour un incendie ?",
+        "choix": [
+          "18",
+          "17",
+          "15",
+          "119"
+        ],
+        "bonne": 0,
+        "explication": "Pompiers."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel numéro européen d'urgence existe ?",
+        "choix": [
+          "911",
+          "999",
+          "112",
+          "100"
+        ],
+        "bonne": 2,
+        "explication": "Valable en Europe."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "À vélo, que faut-il porter ?",
+        "choix": [
+          "Des écouteurs",
+          "Un sac lourd",
+          "Des lunettes de piscine",
+          "Un casque"
+        ],
+        "bonne": 3,
+        "explication": "Protection."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'accident de la cour",
+    "histoire": [
+      "Un camarade tombe et se plaint de la jambe."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fais-tu d'abord ?",
+        "choix": [
+          "Je déplace le camarade blessé",
+          "Je retourne jouer avec les autres",
+          "Je filme la scène pour la montrer",
+          "Je préviens un adulte immédiatement"
+        ],
+        "bonne": 3,
+        "explication": "Alerter."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que dire au téléphone ?",
+        "choix": [
+          "Rien, j'attends qu'on me demande",
+          "Où je suis et ce qui s'est passé",
+          "Mon score à un jeu vidéo",
+          "Un secret de famille"
+        ],
+        "bonne": 1,
+        "explication": "Lieu et situation."
+      }
+    ],
+    "conclusion": "Tu as bien réagi !"
+  }
+}

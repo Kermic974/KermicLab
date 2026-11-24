@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-une-somme-de-deux-nombres-de-deux-chiffres-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/addition-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-une-somme-de-deux-nombres-de-deux-chiffres",
+  "target": "skill.mathematiques.addition-c2"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.technologie.snt-donnees-et-web-l-requires-numerique-et-donnees-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/snt-donnees-et-web-l/contenu.json"
+  },
+  "source": "notion.technologie.snt-donnees-et-web-l",
+  "target": "notion.emc.numerique-et-donnees-c4",
+  "rationale": "Données personnelles et droits (CNIL, cyberharcèlement) sont repris avec le RGPD."
+}

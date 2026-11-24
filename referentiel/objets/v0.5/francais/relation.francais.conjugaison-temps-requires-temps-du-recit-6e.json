@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.conjugaison-temps-requires-temps-du-recit-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conjugaison-temps/contenu.json"
+  },
+  "source": "notion.francais.conjugaison-temps",
+  "target": "notion.francais.temps-du-recit-6e",
+  "rationale": "« Les temps du récit : passé simple et imparfait » : Les temps simples et composés du cycle 3 et les temps du récit de 6e sont repris et systématisés."
+}

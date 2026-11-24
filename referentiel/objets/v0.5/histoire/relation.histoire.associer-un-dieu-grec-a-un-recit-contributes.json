@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.associer-un-dieu-grec-a-un-recit-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/voyages-d-ulysse-6e/contenu.json"
+  },
+  "source": "microskill.histoire.associer-un-dieu-grec-a-un-recit",
+  "target": "skill.histoire.voyages-d-ulysse-6e"
+}

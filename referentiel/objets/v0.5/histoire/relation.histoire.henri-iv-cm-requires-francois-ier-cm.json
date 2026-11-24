@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.henri-iv-cm-requires-francois-ier-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/henri-iv-cm/contenu.json"
+  },
+  "source": "notion.histoire.henri-iv-cm",
+  "target": "notion.histoire.francois-ier-cm",
+  "rationale": "« François Ier et la Renaissance » : Progression chronologique du programme (lien de continuité du parcours, pas un prérequis conceptuel strict) : Henri IV succède à François Ier."
+}

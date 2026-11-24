@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.temps-teaches-expliquer-la-duree-chez-bergson",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps/contenu.json"
+  },
+  "source": "notion.philosophie.temps",
+  "target": "microskill.philosophie.expliquer-la-duree-chez-bergson"
+}

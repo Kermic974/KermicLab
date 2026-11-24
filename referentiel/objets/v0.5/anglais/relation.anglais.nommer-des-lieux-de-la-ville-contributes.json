@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.nommer-des-lieux-de-la-ville-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-lieux-et-pays-cm/contenu.json"
+  },
+  "source": "microskill.anglais.nommer-des-lieux-de-la-ville",
+  "target": "skill.anglais.anglais-lieux-et-pays-cm"
+}

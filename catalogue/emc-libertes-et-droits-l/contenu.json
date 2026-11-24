@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les libertés sont garanties par des textes, mais elles ont des limites fixées par la loi pour protéger les droits des autres.",
+  "niveaux": [
+    {
+      "titre": "Textes et libertés",
+      "niveau": "2de",
+      "paragraphes": [
+        "La **Déclaration des droits de l'homme et du citoyen** (1789) et le **préambule de 1946** proclament les libertés (expression, opinion, conscience, réunion) et l'égalité. La **Convention européenne des droits de l'homme** (1950) est contrôlée par la **Cour européenne des droits de l'homme** (Strasbourg). En France, le **Conseil constitutionnel** vérifie que les lois respectent la Constitution."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Liberté d'expression : art. 11 de la DDHC.",
+          "Elle s'exerce « dans les cas déterminés par la loi ».",
+          "Injures, diffamation, incitation à la haine : interdites."
+        ]
+      },
+      "aRetenir": "Liberté : permise sauf ce que la loi interdit."
+    },
+    {
+      "titre": "Concilier liberté et responsabilité",
+      "niveau": "2de",
+      "paragraphes": [
+        "Les libertés s'exercent **dans le respect de la loi et des droits d'autrui**. La **liberté d'expression** ne couvre pas la diffamation, l'injure, l'incitation à la haine ou à la violence, le négationnisme. La **vie privée** est protégée (droit à l'image). La **liberté de conscience** inclut celle de croire ou ne pas croire : c'est le cœur de la **laïcité**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Critiquer une idée : permis.",
+          "Insulter une personne en raison de son origine : interdit.",
+          "La loi fixe la limite."
+        ]
+      },
+      "aRetenir": "Liberté d'expression ≠ droit d'insulter."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La CEDH siège à…",
+        "choix": [
+          "Strasbourg",
+          "Paris",
+          "Bruxelles",
+          "Rome"
+        ],
+        "bonne": 0,
+        "explication": "Cour européenne."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle expression est interdite ?",
+        "choix": [
+          "l'incitation à la haine",
+          "la critique d'une idée",
+          "un avis personnel",
+          "une caricature légale d'une idée"
+        ],
+        "bonne": 0,
+        "explication": "Limites légales."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Le Conseil constitutionnel vérifie…",
+        "choix": [
+          "les élections municipales seulement",
+          "la conformité des lois à la Constitution",
+          "les notes des élèves",
+          "les impôts"
+        ],
+        "bonne": 1,
+        "explication": "Contrôle de constitutionnalité."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le débat en classe",
+    "histoire": [
+      "Un élève poste un message insultant."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Cela relève de…",
+        "choix": [
+          "une opinion protégée sans limite",
+          "l'injure, qui peut être sanctionnée",
+          "la liberté d'expression absolue",
+          "la laïcité"
+        ],
+        "bonne": 1,
+        "explication": "Loi."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La liberté se limite…",
+        "choix": [
+          "jamais, sous aucun prétexte",
+          "pour les élèves seulement",
+          "après la majorité",
+          "quand elle nuit aux droits d'autrui"
+        ],
+        "bonne": 3,
+        "explication": "Droits d'autrui."
+      }
+    ],
+    "conclusion": "Bon citoyen !"
+  }
+}

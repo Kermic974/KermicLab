@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "L'énergie permet de chauffer, d'éclairer, de se déplacer, de faire fonctionner les machines.",
+  "niveaux": [
+    {
+      "titre": "Intuition : tout a besoin d'énergie",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour qu'une voiture roule, une lampe s'allume ou qu'un corps bouge, il faut de l'**énergie**. Elle existe sous plusieurs formes : mouvement, chaleur, lumière, électricité.",
+        "On l'obtient à partir de **sources d'énergie** : le Soleil, le vent, l'eau, le pétrole, le charbon, le gaz, l'uranium, le bois."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un panneau solaire transforme la lumière en électricité.",
+          "Une éolienne transforme le vent en électricité.",
+          "Une voiture transforme l'essence en mouvement."
+        ]
+      },
+      "aRetenir": "L'énergie se transforme d'une forme à une autre."
+    },
+    {
+      "titre": "Renouvelables ou non ?",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Les énergies **renouvelables** se reconstituent vite (soleil, vent, eau, bois bien géré). Les énergies **fossiles** (pétrole, charbon, gaz) mettent des millions d'années à se former : on les consomme plus vite qu'elles ne se renouvellent, et leur combustion émet du CO₂, gaz à effet de serre.",
+        "Pour **économiser l'énergie** : éteindre les lumières, isoler les maisons, marcher ou utiliser le vélo, baisser le chauffage d'un degré."
+      ],
+      "exemple": {
+        "titre": "Exemple : trier les sources",
+        "etapes": [
+          "Renouvelables : soleil, vent, eau.",
+          "Fossiles : pétrole, charbon, gaz.",
+          "Nucléaire : uranium (non renouvelable)."
+        ]
+      },
+      "aRetenir": "Économiser l'énergie préserve la planète et les factures."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle énergie est renouvelable ?",
+        "choix": [
+          "Le charbon",
+          "Le pétrole",
+          "Le gaz",
+          "L'énergie solaire"
+        ],
+        "bonne": 3,
+        "explication": "Le soleil se renouvelle."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que produit une éolienne ?",
+        "choix": [
+          "De l'eau",
+          "Du pétrole",
+          "De la chaleur uniquement",
+          "De l'électricité grâce au vent"
+        ],
+        "bonne": 3,
+        "explication": "Elle transforme le vent."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel geste économise l'énergie ?",
+        "choix": [
+          "Laisser couler l'eau chaude",
+          "Éteindre la lumière en quittant une pièce",
+          "Laisser la télé allumée",
+          "Ouvrir les fenêtres en hiver chauffé"
+        ],
+        "bonne": 1,
+        "explication": "Gaspillage évité."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le projet énergie de l'école",
+    "histoire": [
+      "Ta classe cherche comment économiser l'énergie à l'école."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle action économise de l'énergie ?",
+        "choix": [
+          "Laisser les radiateurs à fond fenêtres ouvertes",
+          "Laisser les lumières allumées",
+          "Garder les écrans allumés",
+          "Éteindre les ordinateurs le soir"
+        ],
+        "bonne": 3,
+        "explication": "Éteindre les appareils."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle source d'énergie ne pollue pas à l'utilisation ?",
+        "choix": [
+          "Le gaz",
+          "Le vent",
+          "Le charbon",
+          "Le pétrole"
+        ],
+        "bonne": 1,
+        "explication": "Pas d'émission de CO₂."
+      }
+    ],
+    "conclusion": "Écologiste en herbe !"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.langue-et-style-l-requires-accords",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/langue-et-style-l/contenu.json"
+  },
+  "source": "notion.francais.langue-et-style-l",
+  "target": "notion.francais.accords",
+  "rationale": "« Les accords dans la phrase » : L’étude du style reprend la phrase complexe et les accords du collège."
+}

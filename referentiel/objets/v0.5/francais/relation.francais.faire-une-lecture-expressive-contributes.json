@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.faire-une-lecture-expressive-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/oral-et-eaf-l/contenu.json"
+  },
+  "source": "microskill.francais.faire-une-lecture-expressive",
+  "target": "skill.francais.oral-et-eaf-l"
+}

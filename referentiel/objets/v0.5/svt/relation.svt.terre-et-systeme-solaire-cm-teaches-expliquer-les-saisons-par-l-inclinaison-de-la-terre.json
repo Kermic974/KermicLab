@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.terre-et-systeme-solaire-cm-teaches-expliquer-les-saisons-par-l-inclinaison-de-la-terre",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/terre-et-systeme-solaire-cm/contenu.json"
+  },
+  "source": "notion.svt.terre-et-systeme-solaire-cm",
+  "target": "microskill.svt.expliquer-les-saisons-par-l-inclinaison-de-la-terre"
+}

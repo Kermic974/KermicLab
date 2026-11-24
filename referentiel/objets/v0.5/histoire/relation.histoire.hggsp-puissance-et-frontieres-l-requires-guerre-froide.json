@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.hggsp-puissance-et-frontieres-l-requires-guerre-froide",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/hggsp-puissance-et-frontieres-l/contenu.json"
+  },
+  "source": "notion.histoire.hggsp-puissance-et-frontieres-l",
+  "target": "notion.histoire.guerre-froide",
+  "rationale": "« La guerre froide » : Les rapports de puissance contemporains se lisent à partir de la guerre froide."
+}

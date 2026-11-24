@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.distinguer-croisement-et-organisme-genetiquement-modifie-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/domestication-et-selection-l/contenu.json"
+  },
+  "source": "microskill.svt.distinguer-croisement-et-organisme-genetiquement-modifie",
+  "target": "skill.svt.domestication-et-selection-l"
+}

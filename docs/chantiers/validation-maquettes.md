@@ -1,6 +1,6 @@
 # Chantier : Validation des maquettes
 
-**Niveau actuel : 1 (relecture humaine tracée dans chaque fiche)**
+**Niveau actuel : 1 (relecture humaine tracée dans chaque fiche, et journal vérifiable dans le Worker — ADR 0039)**
 
 Processus (voir AGENTS.md §6) : issue `maquette-manquante` → branche → maquette candidate (agent, Sonnet 5.5) → `npm run ci` (routage des questions d'exemple, contrôle de sécurité des pages, contrat navigateur de chaque page servie : onglets au clavier, CSP sans violation, rendu mobile) → PR → revue IA → **validation du CODEOWNER** → fusion → déploiement.
 
@@ -35,7 +35,10 @@ relue-grille: v1         # grille utilisée
 ```
 
 Aucun nom de relecteur n'est stocké dans le dépôt : la PR de relecture et sa validation par le CODEOWNER tracent qui a relu.
-Quand une notion change de `version` sans nouvelle relecture, elle compte « à revoir ». Le build affiche l'indicateur de
+Le journal vérifiable (ADR 0039) est ailleurs : un adulte dont le rôle de relecteur a été attribué à la main confirme la grille
+depuis la notion ouverte dans l'application. Le Worker enregistre l'identifiant anonymisé du compte, pas un nom, et calcule
+lui-même la version et l'empreinte du contenu. Ce journal ne remplit pas les champs `relue*` : ils restent la trace de
+publication dans le dépôt, renseignés par un humain. Quand une notion change de `version` sans nouvelle relecture, elle compte « à revoir ». Le build affiche l'indicateur de
 la feuille de route : « Relecture : N notion(s) relue(s) sur M, K à revoir ». Une nouvelle grille (`v2`) s'ajoute dans
 `GRILLES_RELECTURE` (`scripts/lib/catalogue.mjs`) et dans cette page ; les relectures `v1` restent valides.
 

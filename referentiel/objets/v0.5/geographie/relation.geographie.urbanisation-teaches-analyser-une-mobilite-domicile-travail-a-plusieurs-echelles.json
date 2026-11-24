@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.urbanisation-teaches-analyser-une-mobilite-domicile-travail-a-plusieurs-echelles",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/urbanisation/contenu.json"
+  },
+  "source": "notion.geographie.urbanisation",
+  "target": "microskill.geographie.analyser-une-mobilite-domicile-travail-a-plusieurs-echelles"
+}

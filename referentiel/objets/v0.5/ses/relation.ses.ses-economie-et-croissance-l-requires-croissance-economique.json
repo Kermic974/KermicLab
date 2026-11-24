@@ -1,0 +1,13 @@
+{
+  "id": "relation.ses.ses-economie-et-croissance-l-requires-croissance-economique",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ses-economie-et-croissance-l/contenu.json"
+  },
+  "source": "notion.ses.ses-economie-et-croissance-l",
+  "target": "notion.ses.croissance-economique",
+  "rationale": "« La croissance économique » : Le lycée reprend la croissance économique."
+}

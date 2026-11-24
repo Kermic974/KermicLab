@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.prevoir-l-effet-d-une-substitution-ou-d-un-decalage-du-cadre-de-lecture-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mutations-et-variabilite/contenu.json"
+  },
+  "source": "microskill.svt.prevoir-l-effet-d-une-substitution-ou-d-un-decalage-du-cadre-de-lecture",
+  "target": "skill.svt.mutations-et-variabilite"
+}

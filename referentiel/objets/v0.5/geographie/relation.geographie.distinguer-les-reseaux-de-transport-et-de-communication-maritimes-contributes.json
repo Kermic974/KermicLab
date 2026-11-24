@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.distinguer-les-reseaux-de-transport-et-de-communication-maritimes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mers-oceans/contenu.json"
+  },
+  "source": "microskill.geographie.distinguer-les-reseaux-de-transport-et-de-communication-maritimes",
+  "target": "skill.geographie.mers-oceans"
+}

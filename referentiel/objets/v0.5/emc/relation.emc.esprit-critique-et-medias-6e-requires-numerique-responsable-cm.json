@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.esprit-critique-et-medias-6e-requires-numerique-responsable-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/esprit-critique-et-medias-6e/contenu.json"
+  },
+  "source": "notion.emc.esprit-critique-et-medias-6e",
+  "target": "notion.emc.numerique-responsable-cm",
+  "rationale": "« Un usage responsable d'Internet et des écrans » : Vérifier une information prolonge l’usage responsable d’Internet."
+}

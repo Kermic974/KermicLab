@@ -10,6 +10,7 @@ import * as demoFamille from "./demo-famille.js";
 import * as professeur from "./professeur.js";
 import * as demoProf from "./demo-professeur.js";
 import * as contributions from "./contributions.js";
+import * as relectures from "./relectures.js";
 import * as demoContrib from "./demo-contributions.js";
 import { monterCercle } from "./cercle.js";
 import * as trophees from "./trophees.js";
@@ -31,13 +32,19 @@ const etat = {
   notionCourante: null, compte: null, enfants: [], familleChargee: false, familleErreur: false,
   memoire: false, pseudo: null, reprise: false, cercle: null, trophees: {},
   ecran: "accueil", registre: experiences.creerRegistre([]), ouverts: new Set(), moteur: null, llmActif: false, llmDisponible: false,
+  // Progression consultée : null pour la sienne, sinon la clé d'un compte suivi (« famille:<id> » ou « eleve:<id> »).
+  compteSuivi: null,
+  // Filtre de la progression par matière : "tous" ou un groupe de niveaux (primaire, collège, lycée).
+  niveauMatieres: "tous",
+  // Filtre de l'écran Jeux : "tous" ou une catégorie (ADR 0039, D7).
+  categorieJeux: "tous",
   defiIa: { ia: false, generationsParJour: 0, restantesServeur: null },
   cahiersIa: { ia: false, generationsParJour: 0, restantesServeur: null, modele: "" },
   // Configuration centralisée exposée par le Worker (/api/llm/status, ADR 0019) et skills actifs.
   configurationServeur: null, skills: {}
 };
-const NIVEAUX = ["college", "seconde", "premiere", "terminale", "autres"];
-const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "francais", "ses", "jeux"];
+const NIVEAUX = ["primaire", "college", "seconde", "premiere", "terminale", "autres"];
+const MATIERES = ["mathematiques", "physique-chimie", "svt", "histoire", "geographie", "emc", "philosophie", "francais", "ses", "technologie", "anglais", "arts-plastiques", "musique", "eps", "jeux"];
 const CLE_MATIERE = "kermiclab:matiere";
 const CLE_CLASSE = "kermiclab:classe";
 const CLE_THEME = "kermiclab:theme";
@@ -114,6 +121,9 @@ async function appliquerLangue(langue) {
   rafraichirTheme();
   rafraichirControleLlm();
   etat.cercle?.rafraichir();
+  // Choix du compte suivi (ADR 0039, D8) : libellés calculés hors data-i18n (les chiffres de l'Accueil suivent déjà
+  // par rafraichirPastille → rafraichirTableau → rendreApercu).
+  rendreChoixCompte();
   if (etat.ecran === "progression") rendreProgression();
   rafraichirDefiTextes();
   rafraichirFamille();
@@ -239,6 +249,7 @@ async function verifierConnexion() {
   }
   etat.familleChargee = true;
   rafraichirFamille();
+  rafraichirRelectureOuverte();
   const actif = comptes.enfantActif(etat.enfants, lireCle(stockage(), comptes.CLE_ENFANT_ACTIF));
   if (actif) await chargerProgressionDistante(actif.id);
 }
@@ -1443,6 +1454,7 @@ function rafraichirFamilleCompte() {
   const m = familleEtat.moi;
   const lie = !!jetonFamille();
   $("#entree-espace-famille").hidden = !m?.parent;
+  $("#accueil-famille").hidden = !m?.parent;
   $("#famille-ouvrir-espace").hidden = !m?.parent;
   // Lien rapide de la navigation : l'Espace famille pour un parent, le bloc Famille de « Mon compte » sinon.
   for (const navFamille of [$("#nav-famille"), $("#nav-mobile-famille")]) {
@@ -1766,12 +1778,15 @@ function barresSemaine(bilan, jour) {
   return conteneur;
 }
 
+/** Pastille décorative à l'initiale d'un enfant ou d'un élève (lot 6, ADR 0039), aux couleurs de l'espace. */
+const pastilleInitiale = (nom) => element("span", { classe: "pastille-initiale", texte: profil.initiale(String(nom ?? "")), attributs: { "aria-hidden": "true" } });
+
 function carteEnfant(e) {
   const carte = element("article", { classe: "carte ef-enfant", attributs: { "data-enfant": e.id } });
   const tete = element("div", { classe: "ef-enfant-tete" });
   const nom = element("div", { classe: "famille-enfant-nom" });
   nom.append(element("h4", { texte: e.prenom }), element("span", { classe: "doux petit", texte: `${t(`tranche_${e.trancheAge}`)} · ${t(e.origine === "invitation" ? "efOrigineInvitation" : "efOrigineCreation")}` }));
-  tete.append(nom);
+  tete.append(pastilleInitiale(e.prenom), nom);
   const b = e.bilan;
   const jour = progression.jourLocal();
   if (!b) tete.append(element("span", { classe: "pastille neutre", cle: "efJamaisVu" }));
@@ -2134,11 +2149,13 @@ function actualiserContributionsLocales() {
   rafraichirContributions();
   if (location.hash === "#contributions" && etat.ecran !== "contributions" && contributionsActives()) afficherEcran("contributions", { focus: false });
   else if (etat.ecran === "contributions" && contributionsActives() && !contrib.chargee) void chargerContributions();
+  rafraichirRelectureOuverte();
 }
 
 function rafraichirProfNav() {
   const actif = profActif();
   for (const id of ["#nav-suivi", "#nav-classes", "#nav-eleves", "#nav-mobile-suivi"]) $(id).hidden = !actif;
+  $("#accueil-prof").hidden = !actif;
   $("#profil-prof").hidden = !actif;
   // Filtres de « Mon tableau de bord » : mêmes droits que les entrées de navigation, même si la configuration les retire.
   const contribVisible = !$("#nav-contributions").hidden;
@@ -2428,7 +2445,7 @@ function carteEleve(e) {
   const tete = element("div", { classe: "ef-enfant-tete" });
   const nom = element("div", { classe: "famille-enfant-nom" });
   nom.append(element("h4", { texte: e.pseudo }), element("span", { classe: "doux petit", texte: `${nomClasse(e.classeId)} · ${t("profDepuis", { date: dateCourte(e.rejointLe) })}` }));
-  tete.append(nom);
+  tete.append(pastilleInitiale(e.pseudo), nom);
   const b = e.bilan;
   const jour = progression.jourLocal();
   if (!b) tete.append(element("span", { classe: "pastille neutre", cle: "efJamaisVu" }));
@@ -3293,7 +3310,7 @@ const roleContribLocal = () => {
   const role = profEtat.moi?.contribution;
   return contributions.peutContribuer(role) && typeof profEtat.moi?.id === "string" ? role : null;
 };
-const contributionsActives = () => demoContribActive() || etat.config?.connexionActive === true || roleContribLocal() !== null;
+const contributionsActives = () => demoContribActive() || etat.config?.connexionActive === true || roleContribLocal() !== null || relecteurConnecte() !== null;
 
 function sauverDemoContrib(suivant) {
   contrib.etatDemo = suivant;
@@ -3389,8 +3406,9 @@ const nomMatiere = (m) => (etat.textes[`matiere_${m}`] ? t(`matiere_${m}`) : t("
 const libelleChamp = (chemin) => contributions.libelleChemin(chemin, (cle) => t(cle));
 
 async function ouvrirContributions() {
-  if (!contributionsActives()) return;
+  if (!contributionsActives() && !relecteurConnecte()) return;
   await chargerContributions();
+  await chargerMesRelectures();
 }
 
 async function chargerContributions() {
@@ -3421,10 +3439,13 @@ function rafraichirContributions() {
   const actif = contributionsActives();
   const compte = actif ? apiContrib.compte() : null;
   const role = compte?.role;
-  $("#entree-contributions").hidden = !actif || !(demoContribActive() || contributions.peutContribuer(role));
-  // Menu « Contributions » de la navigation : seulement pour un rôle contributeur, prof ou admin.
-  for (const id of ["#nav-contributions", "#nav-mobile-contributions"]) $(id).hidden = !actif || !contributions.peutContribuer(role);
+  const relecteur = relecteurConnecte();
+  const peut = demoContribActive() || contributions.peutContribuer(role) || !!relecteur;
+  $("#entree-contributions").hidden = !actif || !peut;
+  // Menu « Contributions » : contributeur, prof, admin, ou relecteur humain.
+  for (const id of ["#nav-contributions", "#nav-mobile-contributions"]) $(id).hidden = !actif || !(contributions.peutContribuer(role) || relecteur);
   rafraichirProfNav(); // Expérience Professeur (ADR 0030) : le rôle simulé ou réel change aussi ces menus.
+  rendreSuiviRelectures();
   if (!actif) return;
   const autorise = contributions.peutContribuer(role);
   $("#contrib-etat").textContent = !contrib.chargee ? t("familleChargement") : contrib.erreur ? t("familleErreur") : "";
@@ -3731,6 +3752,21 @@ function afficherTexteActuel() {
   $("#contrib-nature-ajout").disabled = !ajout;
   if (!ajout) document.querySelector("input[name=contrib-nature][value=modification]").checked = true;
   if (typeof valeur === "string" && !$("#contrib-texte").value) $("#contrib-texte").value = valeur;
+  rendreAvantApres();
+}
+
+/**
+ * Aperçu Avant / Après (lot 6, ADR 0039) : le passage actuel et le texte proposé, côte à côte. Pour un ajout, le texte
+ * proposé suit le passage visé. Masqué tant que la proposition ne change rien.
+ */
+function rendreAvantApres() {
+  const avant = $("#contrib-actuel-bloc").hidden ? "" : $("#contrib-actuel").textContent;
+  const texte = $("#contrib-texte").value.trim();
+  const ajout = document.querySelector("input[name=contrib-nature][value=ajout]")?.checked;
+  const apres = ajout ? [avant, texte].filter(Boolean).join("\n\n") : texte;
+  $("#contrib-avant-apres").hidden = !texte || apres === avant;
+  $("#contrib-apercu-avant").textContent = avant || t("contribAvantVide");
+  $("#contrib-apercu-apres").textContent = apres;
 }
 
 function erreursContrib(erreurs = {}) {
@@ -3874,6 +3910,10 @@ function basculerEdition(ouverte, { memoriser = true, focus = true } = {}) {
   bouton.setAttribute("aria-expanded", String(ouverte));
   $("#bulle-edition").hidden = !ouverte;
   $("#bulle-lab").classList.toggle("en-edition", ouverte);
+  if (ouverte) {
+    $("#bulle-relecture").hidden = true;
+    $("#bulle-relecture-ouvrir").setAttribute("aria-expanded", "false");
+  }
   if (memoriser) ecrireCle(sessionPreferences(), CLE_EDITION_OUVERTE, ouverte ? "1" : "0");
   if (!focus) return;
   if (ouverte) $("#edition-fermer").focus({ preventScroll: true });
@@ -3886,6 +3926,250 @@ function fermerEdition() {
   $("#bulle-edition").hidden = true;
   $("#bulle-lab").classList.remove("en-edition");
   $("#edition-formulaire").hidden = true;
+}
+
+/* ---------- Relecture humaine (ADR 0039) ---------- */
+
+const relectureEtat = { statut: null, miennes: [], filtre: "", chargee: false, erreur: false, formulaireNotion: null };
+
+/** Compte dont le rôle de relecteur a été attribué à la main. La démonstration ne confirme rien. */
+function relecteurConnecte() {
+  if (demoContribActive() || demoActive()) return null;
+  if (jetonFamille()) {
+    return profEtat.moi?.relectureHumaine === true && typeof profEtat.moi.id === "string"
+      ? { id: profEtat.moi.id, role: profEtat.moi.roleRelecture, local: true }
+      : null;
+  }
+  // Le serveur dit si le compte OAuth peut relire (`/auth/me`), rôle personnalisé compris.
+  if (etat.compte?.relectureHumaine === true && typeof etat.compte.id === "string") {
+    return { id: etat.compte.id, role: etat.compte.roleRelecture };
+  }
+  return null;
+}
+
+function dateRelecture(valeur) {
+  const m = String(valeur ?? "").match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!m) return "";
+  return etat.langue === "en" ? `${m[2]}/${m[3]}` : `${m[3]}/${m[2]}`;
+}
+
+function afficherBadgeRelecture(statut) {
+  const badge = $("#bulle-relecture-badge");
+  if (!badge) return;
+  badge.hidden = false;
+  if (!statut) {
+    badge.dataset.statut = "indisponible";
+    badge.textContent = t("relectureBadgeIndisponible");
+    return;
+  }
+  badge.dataset.statut = statut.statut;
+  badge.textContent = t(`relectureBadge_${statut.statut}`, { date: dateRelecture(statut.date), code: statut.code ?? "" });
+}
+
+function rendreCriteresRelecture(grille) {
+  const hote = $("#relecture-criteres");
+  const ids = relectures.GRILLES[grille] ?? relectures.GRILLES.v1;
+  if (hote.dataset.grille === (relectures.GRILLES[grille] ? grille : "v1") && hote.childElementCount === ids.length) return;
+  const retenue = grille in relectures.GRILLES ? grille : "v1";
+  hote.dataset.grille = retenue;
+  hote.replaceChildren(...relectures.GRILLES[retenue].map((id) => {
+    const label = element("label");
+    label.append(
+      element("input", { attributs: { type: "checkbox", name: "relecture-critere", value: id } }),
+      element("span", { cle: `relectureCritere_${id}` })
+    );
+    return label;
+  }));
+  $("#relecture-grille").textContent = t(`relectureGrille_${retenue}`);
+}
+
+function initRelecture(method, body) {
+  const headers = body === undefined ? {} : { "content-type": "application/json" };
+  if (relecteurConnecte()?.local) return { method, headers: { ...headers, authorization: `Bearer ${jetonFamille()}` }, body };
+  return { method, headers, body, credentials: "include" };
+}
+
+function viderFormulaireRelecture() {
+  $("#relecture-formulaire")?.reset();
+  const erreur = $("#relecture-erreur");
+  if (erreur) erreur.textContent = "";
+}
+
+async function preparerRelecture(notion) {
+  const bouton = $("#bulle-relecture-ouvrir");
+  const compte = relecteurConnecte();
+  bouton.hidden = !compte;
+  if (!compte) basculerRelecture(false, { focus: false });
+  if (relectureEtat.formulaireNotion !== notion.id) {
+    relectureEtat.formulaireNotion = notion.id;
+    viderFormulaireRelecture();
+  }
+  try {
+    const r = await fetch(`${etat.config.apiUrl}/api/relectures/statut?notion=${encodeURIComponent(notion.id)}`);
+    if (!r.ok) throw new Error("statut");
+    const statut = await r.json();
+    if ($("#bulle-lab").dataset.notion !== notion.id) return;
+    relectureEtat.statut = statut;
+    afficherBadgeRelecture(statut);
+    if (compte) rendreCriteresRelecture(statut.grille);
+  } catch {
+    if ($("#bulle-lab").dataset.notion !== notion.id) return;
+    relectureEtat.statut = null;
+    afficherBadgeRelecture(null);
+    if (compte) rendreCriteresRelecture(notion.matiere === "jeux" ? "jeux-v1" : "v1");
+  }
+}
+
+function rafraichirRelectureOuverte() {
+  const id = $("#bulle-lab")?.dataset.notion;
+  if (!id || !$("#bulle-lab").open) return;
+  const notion = etat.notions.find((n) => n.id === id) ?? { id, titre: $("#bulle-titre").textContent, matiere: "" };
+  void preparerRelecture(notion);
+}
+
+function basculerRelecture(ouverte, { focus = true } = {}) {
+  const bouton = $("#bulle-relecture-ouvrir");
+  $("#bulle-relecture").hidden = !ouverte;
+  bouton.setAttribute("aria-expanded", String(ouverte));
+  if (ouverte) basculerEdition(false, { memoriser: false, focus: false });
+  if (!focus) return;
+  if (ouverte) $("#relecture-fermer").focus({ preventScroll: true });
+  else if (!bouton.hidden) bouton.focus({ preventScroll: true });
+}
+
+function fermerRelecture() {
+  $("#bulle-relecture-ouvrir").hidden = true;
+  $("#bulle-relecture-ouvrir").setAttribute("aria-expanded", "false");
+  $("#bulle-relecture").hidden = true;
+  $("#bulle-relecture-badge").hidden = true;
+  relectureEtat.statut = null;
+}
+
+async function chargerMesRelectures() {
+  if (!relecteurConnecte()) {
+    relectureEtat.miennes = [];
+    relectureEtat.chargee = true;
+    relectureEtat.erreur = false;
+    rendreSuiviRelectures();
+    return;
+  }
+  try {
+    const r = await fetch(urlApi("/api/relectures?vue=miennes"), initRelecture("GET"));
+    if (!r.ok) throw new Error("liste");
+    const liste = await r.json();
+    relectureEtat.miennes = Array.isArray(liste) ? liste : [];
+    relectureEtat.erreur = false;
+  } catch {
+    relectureEtat.erreur = true;
+  }
+  relectureEtat.chargee = true;
+  rendreSuiviRelectures();
+}
+
+function rendreSuiviRelectures() {
+  const section = $("#relecture-suivi");
+  if (!section) return;
+  const compte = relecteurConnecte();
+  section.hidden = !compte;
+  if (!compte) return;
+  const lignes = relectures.ordreSuivi(relectureEtat.miennes);
+  const synthese = relectures.syntheseRelectures(lignes);
+  const tuiles = [
+    ["relectureSuiviTotal", String(synthese.total)],
+    ["relectureSuiviRelues", String(synthese.relues)],
+    ["relectureSuiviARevoir", String(synthese.aRevoir)],
+    ["relectureSuiviACorriger", String(synthese.aCorriger)]
+  ];
+  $("#relecture-synthese").replaceChildren(...tuiles.map(([cle, valeur]) => {
+    const bloc = element("div", { classe: "contrib-suivi-tuile" });
+    bloc.append(element("dt", { cle }), element("dd", { texte: valeur }));
+    return bloc;
+  }));
+  const notions = [...new Set(lignes.map((l) => l.notion_id))];
+  const select = $("#relecture-filtre-notion");
+  const toutes = element("option", { cle: "contribFiltreToutes" });
+  toutes.value = "";
+  select.replaceChildren(toutes, ...notions.map((id) => {
+    const option = element("option", { texte: titreNotion(id) });
+    option.value = id;
+    return option;
+  }));
+  if (!notions.includes(relectureEtat.filtre)) relectureEtat.filtre = "";
+  select.value = relectureEtat.filtre;
+  const visibles = lignes.filter((l) => !relectureEtat.filtre || l.notion_id === relectureEtat.filtre);
+  $("#relecture-vide").hidden = lignes.length !== 0;
+  $("#relecture-etat").textContent = relectureEtat.erreur ? t("relectureErreur") : (!relectureEtat.chargee ? t("familleChargement") : "");
+  $("#relecture-liste").replaceChildren(...visibles.map((l) => {
+    const li = element("li", { classe: "edition-suivi-item" });
+    li.append(
+      element("strong", { texte: titreNotion(l.notion_id) }),
+      element("span", { classe: "edition-pastille", texte: t(`relectureStatut_${l.statut}`) })
+    );
+    const meta = element("p", { classe: "doux petit" });
+    meta.textContent = `${t(`relectureDecisionCourte_${l.decision}`)} · ${dateRelecture(l.created_at)} · ${l.code ?? ""} · ${t(`relectureGrille_${l.grille}`)}`;
+    li.append(meta);
+    if (l.commentaire) li.append(element("p", { texte: l.commentaire }));
+    const voir = element("button", { classe: "lien-bouton", attributs: { type: "button" } });
+    voir.textContent = t("relectureVoirNotion");
+    voir.addEventListener("click", () => {
+      const n = etat.notions.find((x) => x.id === l.notion_id) ?? { id: l.notion_id, titre: titreNotion(l.notion_id) };
+      ouvrirNotion(n);
+    });
+    li.append(voir);
+    return li;
+  }));
+}
+
+async function envoyerRelecture(e) {
+  e.preventDefault();
+  const notionId = $("#bulle-lab").dataset.notion;
+  const grille = $("#relecture-criteres").dataset.grille;
+  const ids = relectures.GRILLES[grille] ?? [];
+  const criteres = Object.fromEntries(ids.map((id) => [id, !!document.querySelector(`#relecture-criteres input[value="${CSS.escape(id)}"]`)?.checked]));
+  const decision = document.querySelector("input[name=relecture-decision]:checked")?.value;
+  const commentaire = $("#relecture-commentaire").value;
+  const v = relectures.validerSaisie({ criteres, decision, commentaire }, grille);
+  const erreur = $("#relecture-erreur");
+  if (!v.ok) {
+    erreur.textContent = t("relectureErreur_relecture-invalide");
+    return;
+  }
+  erreur.textContent = "";
+  try {
+    const r = await fetch(urlApi("/api/relectures"), initRelecture("POST", JSON.stringify({ notion_id: notionId, criteres, decision, commentaire })));
+    const donnees = await r.json().catch(() => ({}));
+    if (!r.ok) {
+      const code = donnees.erreur;
+      erreur.textContent = etat.textes[`relectureErreur_${code}`] ? t(`relectureErreur_${code}`) : t("relectureErreur");
+      return;
+    }
+    if (donnees.statut) afficherBadgeRelecture(donnees.statut);
+    viderFormulaireRelecture();
+    notifier(t("relectureFaite"), "✅");
+    await chargerMesRelectures();
+  } catch {
+    erreur.textContent = t("relectureErreur");
+  }
+}
+
+function brancherRelecture() {
+  $("#bulle-relecture-ouvrir").addEventListener("click", () => basculerRelecture($("#bulle-relecture").hidden));
+  $("#relecture-fermer").addEventListener("click", () => basculerRelecture(false));
+  $("#bulle-relecture").addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    e.preventDefault();
+    e.stopPropagation();
+    basculerRelecture(false);
+  });
+  $("#relecture-formulaire").addEventListener("submit", envoyerRelecture);
+  $("#relecture-filtre-notion").addEventListener("change", (e) => {
+    relectureEtat.filtre = e.currentTarget.value;
+    rendreSuiviRelectures();
+  });
+  $("#relecture-vers-suivi").addEventListener("click", () => {
+    $("#bulle-lab").addEventListener("close", () => naviguer("contributions"), { once: true });
+    $("#bulle-lab").close();
+  });
 }
 
 /** Ouvre une notion dans la bulle, volet d'édition ouvert sur un texte (depuis le suivi des contributions). */
@@ -4101,6 +4385,8 @@ function brancherContributions() {
   $("#contrib-notion").addEventListener("change", () => { $("#contrib-texte").value = ""; void choisirNotion(); });
   $("#contrib-champ").addEventListener("change", () => { $("#contrib-texte").value = ""; afficherTexteActuel(); });
   $("#formulaire-contribution").addEventListener("submit", envoyerContribution);
+  $("#contrib-texte").addEventListener("input", rendreAvantApres);
+  document.querySelectorAll("input[name=contrib-nature]").forEach((r) => r.addEventListener("change", rendreAvantApres));
   $("#contrib-annuler-edition").addEventListener("click", finirEdition);
   $("#contrib-filtre-statut").addEventListener("change", (e) => { contrib.filtre.statut = e.currentTarget.value; rafraichirContributions(); });
   $("#contrib-filtre-notion").addEventListener("change", (e) => { contrib.filtre.notion = e.currentTarget.value; rafraichirContributions(); });
@@ -4112,6 +4398,7 @@ function brancherContributions() {
   });
   $("#contrib-filtre-matiere").addEventListener("change", (e) => { contrib.filtre.matiere = e.currentTarget.value; contrib.filtre.notion = ""; rafraichirContributions(); });
   brancherEdition();
+  brancherRelecture();
   if (demoContribActive()) void indexContenus().then(rafraichirContributions);
   rafraichirContributions();
 }
@@ -4517,6 +4804,8 @@ function remplirProgres() {
   const p = etat.progres;
   const { niveau, xpDansNiveau, xpParNiveau } = progression.niveau(p);
   $("#progres-niveau-num").textContent = String(niveau);
+  // Anneau d'XP (ADR 0039, lot 3) : la part du niveau en cours colore le pourtour ; le texte et <progress> restent.
+  $("#progres-niveau-num").style.setProperty("--part", String(xpDansNiveau / xpParNiveau));
   $("#progres-niveau").textContent = t("niveauLong", { n: niveau });
   $("#progres-xp").max = xpParNiveau; $("#progres-xp").value = xpDansNiveau;
   $("#progres-xp-texte").textContent = t("xpAvantNiveau", { n: xpParNiveau - xpDansNiveau, m: niveau + 1 });
@@ -4999,6 +5288,7 @@ function ouvrirBulle(n, url) {
   if (!bulle.open) bulle.showModal();
   $("#fermer-bulle").focus();
   void preparerEdition(n.id);
+  void preparerRelecture(n);
 }
 
 function brancherBulle() {
@@ -5009,6 +5299,7 @@ function brancherBulle() {
     const id = bulle.dataset.notion;
     $("#bulle-cadre").removeAttribute("src");
     fermerEdition();
+    fermerRelecture();
     delete $("#bulle-cadre").dataset.module;
     delete bulle.dataset.notion;
     etat.moteur?.contexte({ section: sectionDe(etat.ecran) });
@@ -5229,11 +5520,13 @@ async function demarrer() {
   brancherFamille();
   brancherContributions();
   brancherProfesseur();
+  brancherComptesSuivis();
   brancherTestRoles();
   void verifierConnexion().then(rafraichirContributions);
 
   ajouterBienvenue();
   brancherTemps();
+  brancherNavigation();
   await chargerCatalogue();
   void chargerParcours();
   $("#recherche-notion").addEventListener("input", rendreCatalogue);
@@ -5301,7 +5594,7 @@ async function demarrer() {
     }
   });
 
-  brancherNavigation();
+  afficherEcran(location.hash.slice(1), { focus: false });
   brancherAccordeonsFixes();
   brancherCahiers();
   brancherBulle();
@@ -5647,10 +5940,17 @@ const sectionDe = (ecran) => { const parent = PARENTS[ecran] ?? ecran; return PA
 
 function rafraichirEntete() {
   const accueil = etat.ecran === "accueil";
+  // Bandeau coloré de l'espace courant (ADR 0039 § 4).
+  document.documentElement.dataset.espace = navigation.espaceDe(etat.ecran);
   $("#salut").textContent = accueil
     ? etat.pseudo ? t("salut", { pseudo: etat.pseudo }) : t("salutAnonyme")
     : t({ education: "navEducation", labs: "navLabs", jeux: "navJeux", progression: "navProgression", defi: "navDefi", profil: "navProfil", famille: "familleTitre", "espace-famille": "efTitre", "connexion-en-cours": "connexionEnCours", compte: "compteTitre", contributions: "contribTitre", suivi: "navSuivi", classes: "navClasses", eleves: "navEleves", apropos: "navAPropos" }[etat.ecran]);
   $("#accroche").textContent = t(accueil ? "accroche" : etat.ecran === "connexion-en-cours" ? "connexionEnCoursAide" : `${etat.ecran}Intro`);
+  const suivi = etat.ecran === "progression" ? compteSuiviCourant() : null;
+  if (suivi) {
+    $("#salut").textContent = t("progressionTitreSuivi", { nom: suivi.nom });
+    $("#accroche").textContent = suivi.bilan ? t("progressionAccrocheSuivi", { date: dateCourte(suivi.bilan.jour) }) : t("progressionAccrocheSansBilan");
+  }
 }
 
 /** Vue ouverte par « Mon tableau de bord » : la dernière consultée si elle est encore proposée dans ses filtres. */
@@ -5680,7 +5980,7 @@ function afficherEcran(cle, { focus = true } = {}) {
   etat.moteur?.contexte({ section: sectionDe(etat.ecran) });
   decouvrirEnSilence("section", sectionDe(etat.ecran));
   if (etat.ecran === "defi" && changement) ouvrirDefi();
-  if (etat.ecran === "progression") rendreProgression();
+  if (etat.ecran === "progression") { rendreProgression(); if (changement) void preparerComptesSuivis(); }
   if (etat.ecran === "contributions" && changement) void ouvrirContributions();
   if (etat.ecran === "compte") rafraichirCompte();
   if (etat.ecran === "espace-famille" && changement) void ouvrirEspaceFamille();
@@ -5713,16 +6013,21 @@ function marquerNavigation(cle) {
   // « Ma famille » mène à l'Espace famille : il est la page courante quand cet écran est affiché.
   const familles = [$("#nav-famille"), $("#nav-mobile-famille")];
   const groupes = [
+    // L'avatar est l'entrée « Mon espace » (ADR 0039 § 3) : page courante quand une vue personnelle est affichée.
     [...document.querySelectorAll(".barre-laterale .nav-bouton[data-nav], .barre-pied .profil-carte[data-action=\"profil\"]")],
-    [...document.querySelectorAll(".nav-mobile .nav-mobile-bouton[data-nav], #nav-mobile-autres .nav-mobile-bouton[data-nav]")],
+    [...document.querySelectorAll(".nav-mobile .nav-mobile-bouton[data-nav], #nav-mobile-autres .nav-mobile-bouton[data-nav], .profil-mobile[data-action=\"profil\"]")],
   ];
   for (const boutons of groupes) {
     const famille = boutons.find((b) => familles.includes(b));
     const surFamille = !!famille && !famille.hidden && etat.ecran === "espace-famille" && famille.dataset.nav === "espace-famille";
-    const direct = etat.ecran !== cle && boutons.some((b) => !familles.includes(b) && !b.hidden && (b.dataset.nav ?? b.dataset.action) === etat.ecran);
+    // L'avatar ouvre le Profil, mais représente toutes les vues personnelles (« Mon espace », ADR 0039 § 3), sauf si la
+    // configuration remet l'entrée « Mon tableau de bord » dans cette barre : elle seule est alors la page courante.
+    const entreeTdb = boutons.some((b) => !b.classList.contains("profil-carte") && b.dataset.nav === "tableau-de-bord" && !b.hidden && !("navRetire" in b.dataset));
+    const cleDe = (b) => (b.classList.contains("profil-carte") ? (entreeTdb ? "profil" : "tableau-de-bord") : b.dataset.nav ?? b.dataset.action);
+    const direct = etat.ecran !== cle && boutons.some((b) => !familles.includes(b) && !b.hidden && cleDe(b) === etat.ecran);
     const cible = direct ? etat.ecran : cle;
     for (const b of boutons) {
-      const courant = familles.includes(b) ? surFamille : !surFamille && (b.dataset.nav ?? b.dataset.action) === cible;
+      const courant = familles.includes(b) ? surFamille : !surFamille && cleDe(b) === cible;
       if (courant) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current");
     }
   }
@@ -5798,7 +6103,17 @@ function basculerAccordeonFixe(bouton, visible = bouton.getAttribute("aria-expan
 
 function brancherAccordeonsFixes() {
   document.querySelectorAll("button[data-accordeon-fixe][aria-controls]").forEach((bouton) => {
-    bouton.addEventListener("click", () => basculerAccordeonFixe(bouton));
+    bouton.addEventListener("click", () => {
+      basculerAccordeonFixe(bouton);
+      // Lot 4 (ADR 0039) : sur grand écran, « Mes cahiers » est dans la colonne de droite mais son panneau s'ouvre sous
+      // la liste des notions ; un panneau ouvert hors de l'écran y est amené.
+      const panneau = $(`#${bouton.getAttribute("aria-controls")}`);
+      if (bouton.getAttribute("aria-expanded") !== "true" || !panneau) return;
+      const r = panneau.getBoundingClientRect();
+      if (r.top < 0 || r.top > window.innerHeight - 80) {
+        panneau.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+      }
+    });
   });
 }
 
@@ -5843,6 +6158,10 @@ function formaterDuree(ms) {
   return minutes ? t("dureeMinutes", { m: minutes }) : t("dureeMoinsMinute");
 }
 
+/**
+ * Écouteurs de la navigation, branchés avant le chargement du catalogue : sur une connexion lente, « Se connecter »
+ * et les onglets répondent tout de suite. L'écran de l'adresse est (ré)affiché une fois le démarrage terminé.
+ */
 function brancherNavigation() {
   const suivreAdresse = () => {
     const cle = location.hash.slice(1);
@@ -5850,7 +6169,6 @@ function brancherNavigation() {
   };
   window.addEventListener("popstate", suivreAdresse);
   window.addEventListener("hashchange", suivreAdresse);
-  afficherEcran(location.hash.slice(1), { focus: false });
   document.addEventListener("click", (e) => {
     const bouton = e.target.closest("[data-nav], [data-action]");
     if (!bouton || bouton.closest("dialog")) return;
@@ -6599,7 +6917,16 @@ function rendreJeux() {
   if (!etat.progres || !etat.textes.titre) return;
   const jeux = etat.registre.deType("jeu");
   const filtre = sansAccents($("#recherche-jeu").value.trim());
-  const selection = jeux.filter((n) => sansAccents(n.titre).includes(filtre));
+  const categories = experiences.categoriesDesJeux(etat.registre);
+  if (!categories.includes(etat.categorieJeux)) etat.categorieJeux = "tous";
+  const puces = $("#filtre-categorie-jeux");
+  puces.hidden = categories.length < 2;
+  puces.replaceChildren(...(categories.length < 2 ? [] : ["tous", ...categories]).map((c) => {
+    const b = element("button", { classe: "puce-niveau", cle: `categorieJeu_${c}`, attributs: { type: "button", "data-categorie-jeu": c, "aria-pressed": String(etat.categorieJeux === c) } });
+    b.addEventListener("click", () => { etat.categorieJeux = c; rendreJeux(); $(`[data-categorie-jeu="${c}"]`)?.focus(); });
+    return b;
+  }));
+  const selection = jeux.filter((n) => sansAccents(n.titre).includes(filtre) && (etat.categorieJeux === "tous" || n.categorie === etat.categorieJeux));
   const grille = $("#grille-jeux");
   grille.replaceChildren();
   $("#jeux-compteur").textContent = jeux.length ? t("jeuxCompteur", { n: selection.length, m: jeux.length }) : "";
@@ -6607,6 +6934,7 @@ function rendreJeux() {
   $("#jeux-vide").textContent = t(!etat.notions.length ? "catalogueIndisponible" : jeux.length ? "aucunJeu" : "jeuxIndisponibles");
   for (const jeu of selection) {
     const carte = element("article", { classe: "carte jeu-carte" });
+    if (jeu.categorie) carte.append(element("span", { classe: "etiquette-categorie", cle: `categorieJeu_${jeu.categorie}` }));
     carte.append(element("h3", { texte: jeu.titre }));
     if (jeu.resume) carte.append(element("p", { classe: "doux", texte: jeu.resume }));
     // Lien Jeux ↔ Éducation : les notions que ce jeu fait travailler, ouvrables d'un geste.
@@ -6745,6 +7073,93 @@ function rendreEntrees() {
   $("#entree-jeux").textContent = jeux ? t("entreeJeux", { n: jeux }) : "";
 }
 
+/* ---------- Progression des comptes suivis (ADR 0039, lot 3) ----------
+   Un parent ou un professeur passe de sa progression à celle d'un enfant ou d'un élève, en lecture seule, à partir des
+   bilans bornés déjà reçus par l'Espace famille et le suivi de classe : aucune donnée nouvelle n'est demandée. */
+function groupesComptesSuivis() {
+  return familleModule.comptesSuivis({
+    enfants: familleEtat.moi?.parent ? familleEtat.tableau?.enfants ?? [] : [],
+    eleves: profActif() ? profEtat.eleves : null,
+    libelles: { famille: t("progressionGroupeFamille"), particuliers: t("profParticuliers") },
+  });
+}
+
+function compteSuiviCourant() {
+  if (!etat.compteSuivi) return null;
+  return groupesComptesSuivis().flatMap((g) => g.comptes).find((c) => c.cle === etat.compteSuivi) ?? null;
+}
+
+/** Charge, si besoin, la famille du parent et les élèves du professeur, puis propose le choix du compte. */
+async function preparerComptesSuivis() {
+  const attentes = [];
+  if (familleEtat.moi?.parent && !familleEtat.tableau) attentes.push(chargerTableauFamille());
+  if (profActif() && !profEtat.eleves) attentes.push(ouvrirEleves());
+  if (attentes.length) await Promise.allSettled(attentes);
+  rendreChoixCompte();
+  if (etat.ecran === "progression") { rendreProgressionSuivie(); rafraichirEntete(); }
+}
+
+function rendreChoixCompte() {
+  const groupes = groupesComptesSuivis();
+  $("#progression-compte").hidden = !groupes.length;
+  if (etat.compteSuivi && !compteSuiviCourant()) etat.compteSuivi = null;
+  const choix = $("#progression-compte-choix");
+  choix.replaceChildren(option("moi", t("progressionMoi")), ...groupes.map((g) => {
+    const groupe = element("optgroup", { attributs: { label: g.groupe } });
+    groupe.append(...g.comptes.map((c) => option(c.cle, c.nom)));
+    return groupe;
+  }));
+  choix.value = etat.compteSuivi ?? "moi";
+}
+
+function rendreProgressionSuivie() {
+  const c = compteSuiviCourant();
+  document.documentElement.toggleAttribute("data-progression-suivie", !!c);
+  $("#progression-suivie").hidden = !c;
+  if (!c) return;
+  const b = c.bilan;
+  $("#progression-suivie-titre").textContent = t("progressionTitreSuivi", { nom: c.nom });
+  $("#progression-suivie-cadre").textContent = t(c.origine === "famille" ? "progressionCadreFamille" : "progressionCadreProf");
+  $("#progression-suivie-vide").hidden = !!b;
+  $("#progression-suivie-chiffres").hidden = !b;
+  $("#progression-suivie-grille").hidden = !b;
+  const ouvrir = $("#progression-ouvrir-suivi");
+  ouvrir.textContent = t(c.origine === "famille" ? "progressionOuvrirFamille" : "progressionOuvrirEleves");
+  ouvrir.dataset.nav = c.origine === "famille" ? "espace-famille" : "eleves";
+  if (!b) return;
+  const tuile = (cle, valeur, aide) => {
+    const d = element("div", { classe: "compteur" });
+    d.append(element("dt", { cle }), element("dd", { texte: String(valeur) }));
+    if (aide) d.append(element("span", { classe: "doux petit", texte: aide }));
+    return d;
+  };
+  $("#progression-suivie-chiffres").replaceChildren(
+    tuile("accueilXp", b.xp, t("progressionSuiviXpAide", { n: b.niveau })),
+    tuile("accueilSerie", t("accueilSerieValeur", { n: b.serie }), t("accueilSerieAide", { n: b.serieMax })),
+    tuile("progressionSuiviTemps", formatMinutes(b.tempsMin)),
+    tuile("progressionSuiviQuestions", b.questions),
+    ...(c.origine === "famille" ? [tuile("progressionSuiviBadges", b.badges.length)] : [])
+  );
+  $("#progression-suivie-jours").replaceChildren(barresSemaine(b, progression.jourLocal()));
+  const rep = familleModule.repartitionNotions(b);
+  $("#progression-suivie-repartition").textContent = t("efNotionsResume", { maitrisees: rep.maitrisee, encours: rep["en-cours"], arevoir: rep["a-revoir"], decouvertes: rep.decouverte });
+  const aRevoir = Object.entries(b.notions).filter(([, n]) => n.etat === "a-revoir").map(([id]) => notionParId(id)?.titre ?? id);
+  $("#progression-suivie-a-revoir-titre").hidden = !aRevoir.length;
+  $("#progression-suivie-a-revoir").replaceChildren(...aRevoir.map((titre) => element("li", { texte: titre })));
+}
+
+function choisirCompteSuivi(cle) {
+  etat.compteSuivi = cle && cle !== "moi" ? cle : null;
+  $("#progression-compte-choix").value = etat.compteSuivi ?? "moi";
+  rendreProgression();
+  rafraichirEntete();
+}
+
+function brancherComptesSuivis() {
+  $("#progression-compte-choix").addEventListener("change", (e) => choisirCompteSuivi(e.target.value));
+  $("#progression-revenir").addEventListener("click", () => { choisirCompteSuivi(null); $("#progression-compte-choix").focus(); });
+}
+
 /** Aperçu compact : n'apparaît qu'une fois qu'il y a quelque chose de réel à montrer. */
 function rendreApercu() {
   if (!etat.progres || !etat.textes.titre) return;
@@ -6756,6 +7171,50 @@ function rendreApercu() {
   ].filter(Boolean);
   $("#apercu-progression").hidden = !morceaux.length;
   $("#apercu-progression-texte").textContent = morceaux.join(" · ");
+  rendreSyntheseAccueil(c);
+}
+
+/**
+ * Écran d'arrivée unifié (ADR 0039 § 3) : trois chiffres clés et le journal des découvertes récentes. Comme l'aperçu,
+ * rien n'apparaît avant une activité réelle (aucun zéro affiché à la première visite).
+ */
+function rendreSyntheseAccueil(c = experiences.compteurs(etat.progres, etat.registre)) {
+  const p = etat.progres;
+  const actif = p.xp > 0 || c.notions > 0 || c.jeux > 0;
+  $("#chiffres-accueil").hidden = !actif;
+  if (actif) {
+    const { niveau, xpDansNiveau, xpParNiveau } = progression.niveau(p);
+    $("#accueil-xp").textContent = String(p.xp);
+    $("#accueil-xp-aide").textContent = t("accueilXpAide", { n: niveau, reste: xpParNiveau - xpDansNiveau });
+    $("#accueil-notions").textContent = String(c.notions);
+    $("#accueil-notions-aide").textContent = t("accueilNotionsAide", { total: etat.registre.deType("notion").length });
+    $("#accueil-serie").textContent = t("accueilSerieValeur", { n: progression.serieCourante(p) });
+    $("#accueil-serie-aide").textContent = t("accueilSerieAide", { n: p.serieMax });
+  }
+  const recents = experiences.journalRecent(p, etat.registre, { max: 5 });
+  $("#journal-accueil").hidden = !recents.length;
+  $("#journal-liste").replaceChildren(...recents.map((x) => {
+    const li = element("li", { attributs: { "data-type": x.type } });
+    const b = element("button", { classe: "journal-entree", attributs: { type: "button" } });
+    b.append(
+      element("span", { classe: "journal-quand", texte: jourRelatif(x.premiere) }),
+      element("strong", { texte: x.titre }),
+      element("span", { classe: "doux petit", texte: x.type === "jeu" ? t("navJeux") : t(`matiere_${x.matiere ?? "autres"}`) })
+    );
+    b.addEventListener("click", () => ouvrirNotion(etat.registre.trouver(x.id)));
+    li.append(b);
+    return li;
+  }));
+}
+
+/** « aujourd'hui », « hier », sinon le jour et la date dans la langue de l'interface. */
+function jourRelatif(jour) {
+  const maintenant = new Date();
+  const aujourdhui = progression.jourLocal(maintenant);
+  const hier = progression.jourLocal(new Date(maintenant.getFullYear(), maintenant.getMonth(), maintenant.getDate() - 1));
+  if (jour === aujourdhui) return t("journalAujourdhui");
+  if (jour === hier) return t("journalHier");
+  return new Date(`${jour}T12:00:00`).toLocaleDateString(etat.langue, { weekday: "short", day: "numeric", month: "short" });
 }
 
 /* ---------- Progression : tableau de bord personnel, qui grandit avec l'usage ---------- */
@@ -6763,6 +7222,7 @@ function rendreApercu() {
 function rendreProgression() {
   const p = etat.progres;
   if (!p || !etat.textes.titre) return;
+  rendreProgressionSuivie();
   const c = experiences.compteurs(p, etat.registre);
   const serie = progression.serieCourante(p);
   const tuiles = [
@@ -6780,8 +7240,22 @@ function rendreProgression() {
     return d;
   }));
 
-  const matieres = experiences.progressionParMatiere(p, etat.registre, MATIERES);
-  $("#bloc-matieres").hidden = !matieres.length;
+  const groupes = experiences.groupesExplores(p, etat.registre);
+  if (!groupes.includes(etat.niveauMatieres)) etat.niveauMatieres = "tous";
+  const filtre = $("#filtre-niveau-matieres");
+  filtre.hidden = groupes.length < 2;
+  filtre.replaceChildren(...(groupes.length < 2 ? [] : ["tous", ...groupes]).map((g) => {
+    const b = element("button", { classe: "puce-niveau", cle: `groupeNiveau_${g}`, attributs: { type: "button", "data-groupe-niveau": g, "aria-pressed": String(etat.niveauMatieres === g) } });
+    b.addEventListener("click", () => {
+      etat.niveauMatieres = g;
+      rendreProgression();
+      $(`[data-groupe-niveau="${g}"]`)?.focus();
+    });
+    return b;
+  }));
+  const matieres = experiences.progressionParMatiere(p, etat.registre, MATIERES, { groupe: etat.niveauMatieres === "tous" ? null : etat.niveauMatieres });
+  // Le bloc suit les matières explorées, quel que soit leur niveau (« autres » compris) ; le filtre ne fait que choisir.
+  $("#bloc-matieres").hidden = !experiences.progressionParMatiere(p, etat.registre, MATIERES).length;
   $("#progression-matieres").replaceChildren(...matieres.map(({ matiere, explorees, total }) => {
     const li = element("li", { classe: "progression-matiere" });
     const nom = t(`matiere_${matiere}`);

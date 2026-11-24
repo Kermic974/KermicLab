@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.corriger-les-homophones-d-un-texte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vocabulaire-et-orthographe-c4/contenu.json"
+  },
+  "source": "microskill.francais.corriger-les-homophones-d-un-texte",
+  "target": "skill.francais.vocabulaire-et-orthographe-c4"
+}

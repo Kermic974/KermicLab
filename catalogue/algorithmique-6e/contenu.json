@@ -1,0 +1,117 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Programmer, c'est donner à une machine des instructions précises, dans le bon ordre.",
+  "niveaux": [
+    {
+      "titre": "Intuition : un programme, c'est une recette",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un programme est une suite d'instructions. Dans un logiciel à blocs comme Scratch, on assemble des blocs : « avancer de 10 », « tourner de 90 degrés », « répéter 4 fois ».",
+        "Pour tracer un carré de côté 50 : répéter 4 fois (avancer de 50, tourner de 90°)."
+      ],
+      "exemple": {
+        "titre": "Exemple : le carré",
+        "etapes": [
+          "Répéter 4 fois.",
+          "Avancer de 50 puis tourner de 90°.",
+          "Le lutin dessine un carré."
+        ]
+      },
+      "aRetenir": "Une boucle répète une suite d'instructions."
+    },
+    {
+      "titre": "Conditions, variables, événements",
+      "niveau": "6e",
+      "paragraphes": [
+        "Une **condition** exécute des instructions si quelque chose est vrai : « si touche la bordure, alors rebondir ». Une **variable** mémorise une valeur (un score) qu'on peut modifier. Un **événement** déclenche un script : « quand le drapeau est cliqué ».",
+        "**Déboguer**, c'est trouver et corriger une erreur en exécutant pas à pas."
+      ],
+      "exemple": {
+        "titre": "Exemple : un compteur",
+        "etapes": [
+          "Variable score = 0 au début.",
+          "À chaque pomme attrapée : score + 1.",
+          "Si score = 10 alors afficher « Gagné ! »."
+        ]
+      },
+      "aRetenir": "Variable : une valeur qui change."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "« Répéter 3 fois : avancer de 10 ». Quelle distance parcourue ?",
+        "reponse": 30,
+        "indices": [
+          "Multiplie."
+        ],
+        "solution": "3 × 10 = 30.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Une variable sert à…",
+        "choix": [
+          "arrêter l'ordinateur",
+          "mémoriser une valeur",
+          "effacer le programme",
+          "changer la couleur"
+        ],
+        "bonne": 1,
+        "explication": "Ex : le score."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« Si le lutin touche le mur alors rebondir » est…",
+        "choix": [
+          "une boucle",
+          "une variable",
+          "un événement",
+          "une condition"
+        ],
+        "bonne": 3,
+        "explication": "Instruction conditionnelle."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le jeu de la souris",
+    "histoire": [
+      "Tu crées un jeu où une souris attrape du fromage."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "La souris gagne 2 points par fromage. Après 7 fromages, quel score ?",
+        "reponse": 14,
+        "indices": [
+          "Multiplie."
+        ],
+        "solution": "7 × 2 = 14.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour commencer le jeu quand on clique sur le drapeau, on utilise…",
+        "choix": [
+          "une boucle",
+          "une variable",
+          "un commentaire",
+          "un événement"
+        ],
+        "bonne": 3,
+        "explication": "« Quand le drapeau est cliqué »."
+      }
+    ],
+    "conclusion": "Jeu prêt !"
+  }
+}

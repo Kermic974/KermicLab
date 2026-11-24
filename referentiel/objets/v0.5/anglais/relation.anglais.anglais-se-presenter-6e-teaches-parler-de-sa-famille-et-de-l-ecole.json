@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.anglais-se-presenter-6e-teaches-parler-de-sa-famille-et-de-l-ecole",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-se-presenter-6e/contenu.json"
+  },
+  "source": "notion.anglais.anglais-se-presenter-6e",
+  "target": "microskill.anglais.parler-de-sa-famille-et-de-l-ecole"
+}

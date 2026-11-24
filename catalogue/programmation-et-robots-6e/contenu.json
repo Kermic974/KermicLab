@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un objet programmé reçoit des informations, décide et agit.",
+  "niveaux": [
+    {
+      "titre": "Capteurs et actionneurs",
+      "niveau": "6e",
+      "paragraphes": [
+        "Un objet technique programmé est composé d'un **capteur** (il recueille une information : lumière, distance, température), d'une **unité de traitement** (le programme) et d'un **actionneur** (il agit : moteur, lampe, haut-parleur). C'est la **chaîne d'information**.",
+        "Exemple : un éclairage automatique : capteur de présence → programme (« si présence alors allumer ») → lampe."
+      ],
+      "exemple": {
+        "titre": "Exemple : le robot aspirateur",
+        "etapes": [
+          "Capteur : détecte un obstacle.",
+          "Programme : tourner si obstacle.",
+          "Actionneur : moteurs des roues."
+        ]
+      },
+      "aRetenir": "Capteur → traitement → action."
+    },
+    {
+      "titre": "Écrire le programme",
+      "niveau": "6e",
+      "paragraphes": [
+        "Un **algorithme** décrit les étapes ; on le traduit en **programme** avec des blocs (Scratch, Blockly) ou un langage. Il utilise des **boucles** (répéter), des **tests** (si… alors… sinon), des **variables** (compteur, score).",
+        "On **teste** puis on **déboguer** : observer le comportement, trouver l'erreur, corriger."
+      ],
+      "exemple": {
+        "titre": "Exemple : la barrière",
+        "etapes": [
+          "Si une voiture est détectée…",
+          "alors lever la barrière…",
+          "attendre 5 s puis baisser."
+        ]
+      },
+      "aRetenir": "Tester et corriger fait partie du métier."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans une chaîne d'information, l'actionneur…",
+        "choix": [
+          "agit sur l'objet",
+          "détecte",
+          "stocke l'énergie",
+          "écrit le programme"
+        ],
+        "bonne": 0,
+        "explication": "Moteur, lampe, haut-parleur."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un capteur de distance sert à…",
+        "choix": [
+          "afficher un texte",
+          "recharger la pile",
+          "détecter un obstacle",
+          "faire tourner un moteur"
+        ],
+        "bonne": 2,
+        "explication": "Il mesure une distance."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« Si obstacle alors tourner » est…",
+        "choix": [
+          "un test",
+          "une boucle",
+          "une variable",
+          "un capteur"
+        ],
+        "bonne": 0,
+        "explication": "Condition."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le portail automatique",
+    "histoire": [
+      "Tu programmes un portail qui s'ouvre quand une voiture approche."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel capteur utilises-tu ?",
+        "choix": [
+          "Une pile électrique de 9 volts",
+          "Un capteur de présence",
+          "Un haut-parleur très puissant",
+          "Un moteur à courant continu"
+        ],
+        "bonne": 1,
+        "explication": "Détecter la voiture."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle instruction ajoutes-tu pour la sécurité ?",
+        "choix": [
+          "Ne pas fermer tant qu'un obstacle est détecté",
+          "Fermer toujours à la même heure, à 10 h",
+          "Ouvrir sans arrêt, de jour comme de nuit",
+          "Ne jamais s'arrêter, quoi qu'il arrive"
+        ],
+        "bonne": 0,
+        "explication": "Sécurité."
+      }
+    ],
+    "conclusion": "Portail programmé !"
+  }
+}

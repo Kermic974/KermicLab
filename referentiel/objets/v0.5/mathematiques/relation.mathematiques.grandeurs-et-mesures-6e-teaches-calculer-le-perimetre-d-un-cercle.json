@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.grandeurs-et-mesures-6e-teaches-calculer-le-perimetre-d-un-cercle",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grandeurs-et-mesures-6e/contenu.json"
+  },
+  "source": "notion.mathematiques.grandeurs-et-mesures-6e",
+  "target": "microskill.mathematiques.calculer-le-perimetre-d-un-cercle"
+}

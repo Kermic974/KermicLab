@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.laicite-et-liberte-cm-teaches-expliquer-ce-que-garantit-la-laicite",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/laicite-et-liberte-cm/contenu.json"
+  },
+  "source": "notion.emc.laicite-et-liberte-cm",
+  "target": "microskill.emc.expliquer-ce-que-garantit-la-laicite"
+}

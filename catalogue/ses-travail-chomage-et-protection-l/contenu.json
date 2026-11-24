@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Le marché du travail met en relation offre et demande de travail ; la protection sociale amortit les risques.",
+  "niveaux": [
+    {
+      "titre": "Emploi et chômage",
+      "niveau": "1re",
+      "paragraphes": [
+        "Le **taux de chômage** est la part des chômeurs dans la population active. On distingue le chômage **conjoncturel** (lié à la baisse de l'activité), **structurel** (inadéquation des qualifications, coût du travail, rigidités) et **frictionnel** (temps de recherche). Les emplois **précaires** (CDD, intérim) augmentent la **flexibilité** mais aussi l'insécurité."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Récession : baisse de l'activité.",
+          "Hausse du chômage conjoncturel.",
+          "Politiques de relance possibles."
+        ]
+      },
+      "aRetenir": "Chômage : conjoncturel, structurel, frictionnel."
+    },
+    {
+      "titre": "Protection sociale",
+      "niveau": "Tle",
+      "paragraphes": [
+        "La **protection sociale** (assurance maladie, retraites, famille, chômage) repose sur la **solidarité** : cotisations sociales (logique assurantielle) et impôts (logique universelle). Elle réduit les **inégalités** et sécurise les parcours, mais pose la question de son **financement** (vieillissement, déficit) et de ses incitations."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un salarié perd son emploi.",
+          "Allocation chômage temporaire.",
+          "Formation pour retrouver un poste."
+        ]
+      },
+      "aRetenir": "Protection : solidarité et assurance."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le taux de chômage est…",
+        "choix": [
+          "la part des salariés dans la population",
+          "le nombre de lycéens inscrits",
+          "la part des chômeurs parmi les actifs",
+          "le nombre de retraités du pays"
+        ],
+        "bonne": 2,
+        "explication": "Définition."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un chômage dû à une récession est…",
+        "choix": [
+          "structurel",
+          "frictionnel",
+          "volontaire",
+          "conjoncturel"
+        ],
+        "bonne": 3,
+        "explication": "Cycle."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La protection sociale est financée surtout par…",
+        "choix": [
+          "les amendes routières",
+          "les dons seulement",
+          "les jeux de hasard",
+          "les cotisations et les impôts"
+        ],
+        "bonne": 3,
+        "explication": "Financement."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le licenciement",
+    "histoire": [
+      "Une usine ferme."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle aide existe pour le salarié ?",
+        "choix": [
+          "aucune aide d'aucune sorte",
+          "la retraite immédiate",
+          "un impôt supplémentaire",
+          "l'allocation chômage et la formation"
+        ],
+        "bonne": 3,
+        "explication": "Protection."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle est la logique de l'assurance chômage ?",
+        "choix": [
+          "punir les personnes au chômage",
+          "remplacer définitivement l'emploi",
+          "supprimer la recherche d'emploi",
+          "assurer un revenu temporaire contre le risque"
+        ],
+        "bonne": 3,
+        "explication": "Solidarité."
+      }
+    ],
+    "conclusion": "Bon économiste !"
+  }
+}

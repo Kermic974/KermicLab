@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.identifier-les-fonctions-de-la-monnaie-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monnaie/contenu.json"
+  },
+  "source": "microskill.ses.identifier-les-fonctions-de-la-monnaie",
+  "target": "skill.ses.monnaie"
+}

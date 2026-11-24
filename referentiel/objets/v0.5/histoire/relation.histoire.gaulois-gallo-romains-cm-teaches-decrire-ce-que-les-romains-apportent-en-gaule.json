@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.gaulois-gallo-romains-cm-teaches-decrire-ce-que-les-romains-apportent-en-gaule",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/gaulois-gallo-romains-cm/contenu.json"
+  },
+  "source": "notion.histoire.gaulois-gallo-romains-cm",
+  "target": "microskill.histoire.decrire-ce-que-les-romains-apportent-en-gaule"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.polygones-cm-teaches-decrire-un-quadrilatere-par-ses-proprietes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/polygones-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.polygones-cm",
+  "target": "microskill.mathematiques.decrire-un-quadrilatere-par-ses-proprietes"
+}

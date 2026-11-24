@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-la-fixation-du-carbone-en-matiere-organique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/photosynthese-et-productivite-l/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-la-fixation-du-carbone-en-matiere-organique",
+  "target": "skill.svt.photosynthese-et-productivite-l"
+}

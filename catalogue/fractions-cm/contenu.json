@@ -1,0 +1,113 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une fraction partage une unité en parts égales : on compte combien de parts on prend.",
+  "niveaux": [
+    {
+      "titre": "Intuition : partager une pizza",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une pizza coupée en 4 parts égales : chaque part est **un quart**, noté 1/4. Si tu manges 3 parts, tu as mangé **3/4** de la pizza.",
+        "Dans 3/4, le **dénominateur** (4) dit en combien de parts égales on partage ; le **numérateur** (3) dit combien de parts on prend."
+      ],
+      "exemple": {
+        "titre": "Exemple : 2/3 d'un gâteau",
+        "etapes": [
+          "On partage en 3 parts égales (dénominateur 3).",
+          "On en prend 2 (numérateur 2).",
+          "Cela fait 2/3 du gâteau."
+        ]
+      },
+      "aRetenir": "Les parts doivent être égales."
+    },
+    {
+      "titre": "Fractions et droite graduée, fraction d'une quantité",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Sur une droite graduée, 1 est partagé en parts égales : 3/4 se place à trois quarts de la distance entre 0 et 1. Une fraction peut dépasser 1 : 5/4 = 1 + 1/4.",
+        "Pour calculer **les 3/4 de 20**, on divise par le dénominateur puis on multiplie par le numérateur : 20 ÷ 4 = 5, puis 5 × 3 = 15.",
+        "Quand deux fractions ont le même dénominateur, la plus grande est celle qui a le plus grand numérateur : 5/8 > 3/8."
+      ],
+      "exemple": {
+        "titre": "Exemple : les 2/5 de 30",
+        "etapes": [
+          "30 ÷ 5 = 6 (un cinquième).",
+          "6 × 2 = 12.",
+          "Les 2/5 de 30 valent 12."
+        ]
+      },
+      "aRetenir": "Pour prendre une fraction d'une quantité : diviser par le dénominateur, multiplier par le numérateur."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien valent les 3/4 de 20 ?",
+        "reponse": 15,
+        "indices": [
+          "Cherche d'abord 1/4 de 20.",
+          "Multiplie ensuite par 3."
+        ],
+        "solution": "20 ÷ 4 = 5 ; 5 × 3 = 15.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle fraction est la plus grande ?",
+        "choix": [
+          "1/8",
+          "2/8",
+          "5/8",
+          "3/8"
+        ],
+        "bonne": 2,
+        "explication": "Même dénominateur : la plus grande est celle qui a le plus grand numérateur."
+      },
+      {
+        "type": "nombre",
+        "question": "Combien valent les 2/5 de 30 ?",
+        "reponse": 12,
+        "indices": [
+          "1/5 de 30 = 6."
+        ],
+        "solution": "30 ÷ 5 = 6 puis 6 × 2 = 12.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le partage du gâteau",
+    "histoire": [
+      "Un gâteau de 24 parts est partagé pour l'anniversaire de la classe."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Les enfants mangent les 3/4 du gâteau. Combien de parts ont-ils mangées ?",
+        "reponse": 18,
+        "indices": [
+          "Un quart du gâteau = 6 parts."
+        ],
+        "solution": "24 ÷ 4 = 6 ; 6 × 3 = 18.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de parts restent-elles ?",
+        "reponse": 6,
+        "indices": [
+          "Reste = tout − ce qui a été mangé."
+        ],
+        "solution": "24 − 18 = 6 : c'est 1/4.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Tu manies bien les fractions !"
+  }
+}

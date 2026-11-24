@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Au XIXe siècle, les machines transforment le travail, les villes et la vie des Français.",
+  "niveaux": [
+    {
+      "titre": "Intuition : les machines changent tout",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Au XIXe siècle, la **machine à vapeur** fait fonctionner usines, bateaux et trains. Le **charbon** est la grande source d'énergie. Les **chemins de fer** rapprochent les villes.",
+        "Les usines remplacent peu à peu l'artisanat. Les paysans quittent les campagnes pour travailler à la ville : c'est l'**exode rural**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un train relie Paris à Lyon.",
+          "Un tisserand devient ouvrier d'usine.",
+          "Les villes s'agrandissent."
+        ]
+      },
+      "aRetenir": "Industrialisation : machines, usines, charbon."
+    },
+    {
+      "titre": "Ouvriers, enfants et progrès",
+      "niveau": "CM2",
+      "paragraphes": [
+        "Les **ouvriers** travaillent 12 à 14 heures par jour, pour de faibles salaires, dans de mauvaises conditions. Des **enfants** travaillent aussi : une loi de 1841 limite le travail des plus jeunes ; les lois sur l'école et le travail de 1881 à 1892 le réduisent encore.",
+        "Les ouvriers s'organisent en **syndicats** (légaux depuis 1884) pour défendre leurs droits. Les progrès (électricité, acier, métro) s'affichent aux **expositions universelles** : celle de 1889 voit naître la **tour Eiffel**."
+      ],
+      "exemple": {
+        "titre": "Exemple : la tour Eiffel",
+        "etapes": [
+          "Elle est construite pour l'Exposition universelle de 1889.",
+          "Elle montre le savoir-faire des ingénieurs.",
+          "Elle devait être démontée après 20 ans."
+        ]
+      },
+      "aRetenir": "1889 : tour Eiffel, symbole de l'âge industriel."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle énergie fait fonctionner la machine à vapeur ?",
+        "choix": [
+          "Le soleil",
+          "Le vent",
+          "Le nucléaire",
+          "Le charbon"
+        ],
+        "bonne": 3,
+        "explication": "Le charbon chauffe l'eau."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qu'appelle-t-on l'exode rural ?",
+        "choix": [
+          "Le retour des citadins vers les villages",
+          "L'arrivée d'étrangers dans les campagnes",
+          "La fermeture des usines en ville",
+          "Le départ des campagnes vers les villes"
+        ],
+        "bonne": 3,
+        "explication": "Les paysans deviennent ouvriers."
+      },
+      {
+        "type": "nombre",
+        "question": "En quelle année l'Exposition universelle présente-t-elle la tour Eiffel ?",
+        "reponse": 1889,
+        "indices": [
+          "Fin du XIXe siècle."
+        ],
+        "solution": "1889, centenaire de la Révolution.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Dans une usine en 1880",
+    "histoire": [
+      "Tu visites une usine de textile avec une vieille machine à vapeur."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pourquoi les ouvriers créent-ils des syndicats ?",
+        "choix": [
+          "Pour construire des châteaux",
+          "Pour jouer",
+          "Pour aller à l'école",
+          "Pour défendre leurs droits"
+        ],
+        "bonne": 3,
+        "explication": "Les syndicats défendent les salaires et les conditions de travail."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel moyen de transport se développe ?",
+        "choix": [
+          "L'avion",
+          "Le métro autonome",
+          "La fusée",
+          "Le train"
+        ],
+        "bonne": 3,
+        "explication": "Le chemin de fer."
+      }
+    ],
+    "conclusion": "Tu comprends l'industrialisation !"
+  }
+}

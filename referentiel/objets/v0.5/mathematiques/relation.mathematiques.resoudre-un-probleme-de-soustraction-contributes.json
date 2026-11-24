@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.resoudre-un-probleme-de-soustraction-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/soustraction-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.resoudre-un-probleme-de-soustraction",
+  "target": "skill.mathematiques.soustraction-c2"
+}

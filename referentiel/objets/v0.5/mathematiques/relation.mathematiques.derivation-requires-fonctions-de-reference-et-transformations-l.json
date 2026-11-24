@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.derivation-requires-fonctions-de-reference-et-transformations-l",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/derivation/contenu.json"
+  },
+  "source": "notion.mathematiques.derivation",
+  "target": "notion.mathematiques.fonctions-de-reference-et-transformations-l",
+  "rationale": "« Fonctions : transformations de courbes et variations » : Variations et transformations de courbes préparent le nombre dérivé et la tangente."
+}

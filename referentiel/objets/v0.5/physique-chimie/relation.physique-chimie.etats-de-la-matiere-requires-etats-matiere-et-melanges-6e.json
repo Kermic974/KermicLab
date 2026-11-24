@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.etats-de-la-matiere-requires-etats-matiere-et-melanges-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etats-de-la-matiere/contenu.json"
+  },
+  "source": "notion.physique-chimie.etats-de-la-matiere",
+  "target": "notion.physique-chimie.etats-matiere-et-melanges-6e",
+  "rationale": "« États de la matière, mélanges et masse en 6e » : Les trois états et leurs changements du cycle 3 sont repris avec le modèle particulaire."
+}

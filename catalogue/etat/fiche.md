@@ -17,7 +17,7 @@ questions:
   - À quoi sert le contrat social ?
 prerequis:
 niveaux: terminale
-competences: philosophie-etat-action-1, philosophie-etat-action-2
+competences: distinguer-pouvoir-droit-et-legitimite, comparer-hobbes-et-rousseau-sur-l-origine-du-pouvoir-commun, expliquer-la-volonte-generale-chez-rousseau, discuter-si-une-decision-conforme-au-droit-est-necessairement-legitime
 ---
 
 # L'État

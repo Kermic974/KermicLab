@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les bases de données stockent et organisent l'information ; le langage SQL permet de l'interroger.",
+  "niveaux": [
+    {
+      "titre": "Bases de données et SQL",
+      "niveau": "1re / Tle",
+      "paragraphes": [
+        "Une **base de données relationnelle** est formée de **tables** (relations) : lignes (enregistrements), colonnes (attributs). Une **clé primaire** identifie chaque ligne ; une **clé étrangère** relie deux tables. Une requête SQL simple : `SELECT nom FROM eleves WHERE age > 16 ORDER BY nom;`. On peut **joindre** des tables (`JOIN`), insérer (`INSERT`), modifier (`UPDATE`), supprimer (`DELETE`). Un **SGBD** gère les accès concurrents et la cohérence."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Table eleves(id, nom, age).",
+          "SELECT nom FROM eleves WHERE age > 16.",
+          "Renvoie les noms des élèves de plus de 16 ans."
+        ]
+      },
+      "aRetenir": "Clé primaire : identifiant unique."
+    },
+    {
+      "titre": "Systèmes et architecture",
+      "niveau": "1re / Tle",
+      "paragraphes": [
+        "Un **système d'exploitation** (Linux, Windows, macOS) gère les **processus**, la **mémoire**, les **fichiers** et les périphériques. L'**ordonnancement** décide quel processus utilise le processeur. L'**architecture de von Neumann** : unité de commande, unité arithmétique et logique, mémoire (programme et données), entrées-sorties. En terminale : **sécurisation des communications** (chiffrement symétrique et asymétrique, signatures), **protocoles de routage**."
+      ],
+      "exemple": {
+        "titre": "Exemple : le terminal Linux",
+        "etapes": [
+          "`ls` liste les fichiers.",
+          "`cd` change de répertoire.",
+          "`chmod` modifie les droits."
+        ]
+      },
+      "aRetenir": "OS : processus, mémoire, fichiers."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Une clé primaire…",
+        "choix": [
+          "est un mot de passe d'accès",
+          "chiffre toutes les données",
+          "identifie de façon unique chaque ligne",
+          "relie deux bases entre elles"
+        ],
+        "bonne": 2,
+        "explication": "Identifiant unique."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle requête sélectionne les noms des élèves de plus de 16 ans ?",
+        "choix": [
+          "SELECT nom FROM eleves WHERE age > 16",
+          "DELETE FROM eleves WHERE age > 16",
+          "UPDATE eleves SET age = 16",
+          "INSERT INTO eleves VALUES (16)"
+        ],
+        "bonne": 0,
+        "explication": "SELECT … WHERE."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "L'ordonnancement décide…",
+        "choix": [
+          "quel mot de passe est valide",
+          "quel site est visité",
+          "quel fichier est effacé",
+          "quel processus utilise le processeur"
+        ],
+        "bonne": 3,
+        "explication": "Gestion des processus."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La bibliothèque du lycée",
+    "histoire": [
+      "Une base contient les tables livres et emprunts."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pour relier un emprunt à un livre, on utilise…",
+        "choix": [
+          "un cookie",
+          "une clé étrangère",
+          "un fichier texte",
+          "un mot de passe"
+        ],
+        "bonne": 1,
+        "explication": "Lien entre tables."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour compter les livres d'un auteur, on écrit…",
+        "choix": [
+          "DELETE FROM livres WHERE auteur = 'Hugo'",
+          "UPDATE livres SET auteur = 'Hugo'",
+          "SELECT COUNT(*) FROM livres WHERE auteur = 'Hugo'",
+          "SELECT * FROM auteur ORDER BY livres"
+        ],
+        "bonne": 2,
+        "explication": "Agrégat."
+      }
+    ],
+    "conclusion": "Base maîtrisée !"
+  }
+}

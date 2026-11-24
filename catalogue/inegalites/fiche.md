@@ -22,7 +22,7 @@ questions:
   - comment mesurer les inégalités ?
 prerequis:
 niveaux: seconde, premiere
-competences: ses-inegalites-action-1, ses-inegalites-action-2
+competences: distinguer-revenu-et-patrimoine, choisir-un-indicateur-adapte-a-une-inegalite-precise, comparer-des-inegalites-economiques-a-l-aide-d-indicateurs, montrer-l-interaction-de-plusieurs-inegalites-dans-une-situation
 ---
 
 # Les inégalités économiques et sociales

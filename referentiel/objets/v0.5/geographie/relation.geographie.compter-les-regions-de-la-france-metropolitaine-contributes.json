@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.compter-les-regions-de-la-france-metropolitaine-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-europe-monde-cm/contenu.json"
+  },
+  "source": "microskill.geographie.compter-les-regions-de-la-france-metropolitaine",
+  "target": "skill.geographie.france-europe-monde-cm"
+}

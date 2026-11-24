@@ -1,0 +1,12 @@
+{
+  "id": "relation.eps.expliquer-le-role-de-l-echauffement-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-sante-et-echauffement-cm/contenu.json"
+  },
+  "source": "microskill.eps.expliquer-le-role-de-l-echauffement",
+  "target": "skill.eps.eps-sante-et-echauffement-cm"
+}

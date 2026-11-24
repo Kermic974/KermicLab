@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.analyser-une-chaine-de-valeur-mondiale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mondialisation-commerce/contenu.json"
+  },
+  "source": "microskill.ses.analyser-une-chaine-de-valeur-mondiale",
+  "target": "skill.ses.mondialisation-commerce"
+}

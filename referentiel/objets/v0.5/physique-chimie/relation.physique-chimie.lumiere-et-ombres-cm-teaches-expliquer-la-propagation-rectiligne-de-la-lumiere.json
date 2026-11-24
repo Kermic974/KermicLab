@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.lumiere-et-ombres-cm-teaches-expliquer-la-propagation-rectiligne-de-la-lumiere",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lumiere-et-ombres-cm/contenu.json"
+  },
+  "source": "notion.physique-chimie.lumiere-et-ombres-cm",
+  "target": "microskill.physique-chimie.expliquer-la-propagation-rectiligne-de-la-lumiere"
+}

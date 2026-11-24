@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.expliquer-la-baisse-de-la-mortalite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/question-demographique-c4/contenu.json"
+  },
+  "source": "microskill.geographie.expliquer-la-baisse-de-la-mortalite",
+  "target": "skill.geographie.question-demographique-c4"
+}

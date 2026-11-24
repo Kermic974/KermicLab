@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un paysage, c'est ce qu'on voit quand on regarde autour de soi : ville, campagne, mer, montagne.",
+  "niveaux": [
+    {
+      "titre": "Observer un paysage",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un **paysage** a des éléments naturels (collines, rivière, forêt) et des éléments construits par l'homme (maisons, routes, ponts). On décrit : au **premier plan** (près de nous), au **second plan**, à l'**arrière-plan** (au loin).",
+        "Il y a des paysages de **ville**, de **campagne**, de **montagne**, de **mer**."
+      ],
+      "exemple": {
+        "titre": "Exemple : une photo",
+        "etapes": [
+          "Premier plan : un champ.",
+          "Second plan : un village.",
+          "Arrière-plan : des montagnes."
+        ]
+      },
+      "aRetenir": "Je décris du plus près au plus loin."
+    },
+    {
+      "titre": "Habiter",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "En **ville**, il y a beaucoup d'habitants, d'immeubles, de commerces, de transports. À la **campagne**, il y a des champs, des fermes, moins de monde. À la **montagne**, les maisons sont solides contre la neige. Au bord de la **mer**, on pêche et on accueille des touristes.",
+        "Chacun choisit où habiter selon son travail, sa famille, ses goûts."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "En ville : tramway et boulangerie.",
+          "À la campagne : tracteur et ferme.",
+          "À la montagne : ski en hiver."
+        ]
+      },
+      "aRetenir": "On s'adapte à l'endroit où l'on vit."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel paysage a des immeubles et beaucoup de voitures ?",
+        "choix": [
+          "la montagne",
+          "la forêt",
+          "la ville",
+          "la campagne"
+        ],
+        "bonne": 2,
+        "explication": "Ville."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un tracteur se voit plutôt…",
+        "choix": [
+          "au centre-ville",
+          "sur la mer",
+          "au sommet",
+          "à la campagne"
+        ],
+        "bonne": 3,
+        "explication": "Agriculture."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Le premier plan est…",
+        "choix": [
+          "ce qui est le plus loin",
+          "le ciel",
+          "le titre",
+          "ce qui est le plus près"
+        ],
+        "bonne": 3,
+        "explication": "Le plus proche."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La carte postale",
+    "histoire": [
+      "Tu décris une carte postale de la montagne."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Au premier plan, tu vois…",
+        "choix": [
+          "le ciel uniquement",
+          "la lune",
+          "des fleurs devant toi",
+          "les sommets au loin"
+        ],
+        "bonne": 2,
+        "explication": "Ce qui est près."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qu'est-ce qui est construit par l'homme ?",
+        "choix": [
+          "un chalet",
+          "un lac",
+          "la montagne",
+          "un arbre"
+        ],
+        "bonne": 0,
+        "explication": "Le chalet."
+      }
+    ],
+    "conclusion": "Belle description !"
+  }
+}

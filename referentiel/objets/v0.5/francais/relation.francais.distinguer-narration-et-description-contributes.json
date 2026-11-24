@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.distinguer-narration-et-description-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/recits-d-aventures-et-voyages-c4/contenu.json"
+  },
+  "source": "microskill.francais.distinguer-narration-et-description",
+  "target": "skill.francais.recits-d-aventures-et-voyages-c4"
+}

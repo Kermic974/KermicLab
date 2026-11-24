@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.nommer-les-lettres-et-distinguer-voyelles-et-consonnes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lettres-et-sons-c2/contenu.json"
+  },
+  "source": "microskill.francais.nommer-les-lettres-et-distinguer-voyelles-et-consonnes",
+  "target": "skill.francais.lettres-et-sons-c2"
+}

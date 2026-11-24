@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.calculer-une-energie-cinetique-et-une-energie-potentielle-de-pesanteur-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conversions-d-energie-l/contenu.json"
+  },
+  "source": "microskill.physique-chimie.calculer-une-energie-cinetique-et-une-energie-potentielle-de-pesanteur",
+  "target": "skill.physique-chimie.conversions-d-energie-l"
+}

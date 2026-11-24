@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.choisir-l-operation-adaptee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/problemes-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.choisir-l-operation-adaptee",
+  "target": "skill.mathematiques.problemes-c2"
+}

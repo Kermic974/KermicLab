@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.resoudre-un-conflit-sans-violence-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vivre-ensemble-c2/contenu.json"
+  },
+  "source": "microskill.emc.resoudre-un-conflit-sans-violence",
+  "target": "skill.emc.vivre-ensemble-c2"
+}

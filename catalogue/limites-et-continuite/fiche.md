@@ -5,15 +5,6 @@ sujet: mathematiques/limites-et-continuite
 version: 1.0.0
 date: 2026-11-01
 niveau: terminale
-niveaux: terminale
-prerequis:
-  - suites
-  - fonctions-de-reference
-competences:
-  - calculer-une-limite-en-l-infini
-  - lever-une-forme-indeterminee
-  - determiner-une-asymptote
-  - appliquer-le-theoreme-des-valeurs-intermediaires
 duree: 45
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -36,6 +27,9 @@ questions:
   - je ne comprends pas le théorème des valeurs intermédiaires
   - comment lever une forme indéterminée
   - what is a limit in maths?
+prerequis: suites, fonctions-de-reference, limites-de-suites-l
+niveaux: terminale
+competences: calculer-une-limite-en-l-infini, lever-une-forme-indeterminee, determiner-une-asymptote, appliquer-le-theoreme-des-valeurs-intermediaires
 ---
 
 # Limites et continuité

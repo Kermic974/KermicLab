@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.habiter-6e-requires-habiter-ville-campagne-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-6e/contenu.json"
+  },
+  "source": "notion.geographie.habiter-6e",
+  "target": "notion.geographie.habiter-ville-campagne-cm",
+  "rationale": "« Habiter en ville ou à la campagne » : Les manières d’habiter de 6e prolongent ville et campagne du cycle 3 et la lecture de carte."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-le-vote-des-femmes-en-france-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/republique-ecole-cm/contenu.json"
+  },
+  "source": "microskill.histoire.situer-le-vote-des-femmes-en-france",
+  "target": "skill.histoire.republique-ecole-cm"
+}

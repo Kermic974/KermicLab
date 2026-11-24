@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une phrase commence par une majuscule, finit par un point et a un sens.",
+  "niveaux": [
+    {
+      "titre": "Une phrase, c'est quoi ?",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une **phrase** dit quelque chose, avec des mots dans le bon ordre. Elle commence par une **majuscule** et se termine par un **point** (.), un point d'interrogation (?) ou un point d'exclamation (!).",
+        "« Le chat dort. » est une phrase. « chat le dort » n'est pas une phrase."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Le chien court dans le jardin.",
+          "Majuscule au début : Le.",
+          "Point à la fin."
+        ]
+      },
+      "aRetenir": "Majuscule au début, signe à la fin."
+    },
+    {
+      "titre": "Poser une question, dire, s'écrier",
+      "niveau": "CP / CE1",
+      "paragraphes": [
+        "Avec **?**, on pose une question : « Où est mon livre ? » Avec **!**, on montre une émotion ou on donne un ordre : « Quel beau dessin ! » Avec **.**, on dit quelque chose : « Il pleut. »",
+        "Pour reconstruire une phrase, je cherche qui fait l'action (le sujet), l'action (le verbe) et le reste."
+      ],
+      "exemple": {
+        "titre": "Exemple : remettre dans l'ordre",
+        "etapes": [
+          "chat / dort / le / sur le canapé.",
+          "Le chat dort sur le canapé.",
+          "Je mets la majuscule et le point."
+        ]
+      },
+      "aRetenir": "Une phrase a un sens."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel signe termine une question ?",
+        "choix": [
+          ".",
+          "!",
+          ",",
+          "?"
+        ],
+        "bonne": 3,
+        "explication": "Le point d'interrogation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle phrase est bien écrite ?",
+        "choix": [
+          "Le chat dort",
+          "Le chat dort.",
+          "le chat dort",
+          "chat le dort."
+        ],
+        "bonne": 1,
+        "explication": "Majuscule, mots dans l'ordre, point."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Avec quelle lettre commence une phrase ?",
+        "choix": [
+          "une minuscule",
+          "un chiffre",
+          "un point",
+          "une majuscule"
+        ],
+        "bonne": 3,
+        "explication": "Majuscule."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le message au maître",
+    "histoire": [
+      "Tu écris des messages courts pour ton maître ou ta maîtresse."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle phrase pose une question ?",
+        "choix": [
+          "Quel beau cahier !",
+          "Mon cahier est bleu.",
+          "Où est mon cahier ?",
+          "Voici mon cahier."
+        ],
+        "bonne": 2,
+        "explication": "Point d'interrogation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel message est le mieux écrit ?",
+        "choix": [
+          "J'ai fini mon travail.",
+          "j'ai fini mon travail",
+          "J'ai fini mon travail,",
+          "j'ai fini mon travail."
+        ],
+        "bonne": 0,
+        "explication": "Majuscule au début, point à la fin."
+      }
+    ],
+    "conclusion": "Tes phrases sont claires !"
+  }
+}

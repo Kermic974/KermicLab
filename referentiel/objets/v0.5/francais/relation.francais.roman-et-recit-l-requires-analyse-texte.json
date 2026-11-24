@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.roman-et-recit-l-requires-analyse-texte",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/roman-et-recit-l/contenu.json"
+  },
+  "source": "notion.francais.roman-et-recit-l",
+  "target": "notion.francais.analyse-texte",
+  "rationale": "« Analyser un texte » : Le roman du lycée reprend l’étude du roman du collège et l’analyse de texte."
+}

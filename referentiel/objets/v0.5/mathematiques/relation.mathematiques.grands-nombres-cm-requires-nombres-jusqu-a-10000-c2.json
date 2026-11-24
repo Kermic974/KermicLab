@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.grands-nombres-cm-requires-nombres-jusqu-a-10000-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grands-nombres-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.grands-nombres-cm",
+  "target": "notion.mathematiques.nombres-jusqu-a-10000-c2",
+  "rationale": "Prérequis déclaré dans la fiche : « Les nombres jusqu'à 10 000 » précède « Les grands nombres (jusqu'au milliard) » dans la progression du programme (lien à relire)."
+}

@@ -19,10 +19,10 @@ questions:
   - Une poésie doit-elle toujours rimer ?
   - Qu'est-ce qu'un enjambement en poésie ?
   - Comment comprendre le rythme d'un poème ?
-prerequis:
-niveaux: cycle-4
 classes: 5e, 4e, 3e
-competences: francais-poesie-action-1, francais-poesie-action-2
+prerequis: figures-de-style, poesie-6e
+niveaux: cycle-4
+competences: compter-les-syllabes-d-un-vers-et-identifier-une-strophe, identifier-les-rimes-et-leur-disposition, reperer-un-enjambement-ou-un-rejet, faire-entendre-une-image-par-la-lecture-a-voix-haute, commenter-l-effet-des-sonorites
 ---
 
 # La poésie

@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.relier-le-bonheur-a-la-vertu-chez-aristote-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/bonheur/contenu.json"
+  },
+  "source": "microskill.philosophie.relier-le-bonheur-a-la-vertu-chez-aristote",
+  "target": "skill.philosophie.bonheur"
+}

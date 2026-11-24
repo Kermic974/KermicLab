@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.croquis-et-cartes-c4-teaches-calculer-une-distance-reelle-avec-l-echelle",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/croquis-et-cartes-c4/contenu.json"
+  },
+  "source": "notion.geographie.croquis-et-cartes-c4",
+  "target": "microskill.geographie.calculer-une-distance-reelle-avec-l-echelle"
+}

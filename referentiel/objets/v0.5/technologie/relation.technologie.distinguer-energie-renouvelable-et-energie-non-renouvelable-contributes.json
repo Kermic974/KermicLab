@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.distinguer-energie-renouvelable-et-energie-non-renouvelable-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie-et-materiaux-c4/contenu.json"
+  },
+  "source": "microskill.technologie.distinguer-energie-renouvelable-et-energie-non-renouvelable",
+  "target": "skill.technologie.energie-et-materiaux-c4"
+}

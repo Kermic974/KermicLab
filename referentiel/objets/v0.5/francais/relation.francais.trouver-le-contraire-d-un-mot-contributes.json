@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.trouver-le-contraire-d-un-mot-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vocabulaire-et-dictionnaire-c2/contenu.json"
+  },
+  "source": "microskill.francais.trouver-le-contraire-d-un-mot",
+  "target": "skill.francais.vocabulaire-et-dictionnaire-c2"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.reproduction-humaine-requires-reproduction-et-puberte-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reproduction-humaine/contenu.json"
+  },
+  "source": "notion.svt.reproduction-humaine",
+  "target": "notion.svt.reproduction-et-puberte-cm",
+  "rationale": "« Naissance, croissance et puberté » : Les cycles de vie et la puberté des cycles précédents précèdent les gamètes et la fécondation."
+}

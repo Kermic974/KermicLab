@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.prehistoire-cm-requires-grandes-periodes-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/prehistoire-cm/contenu.json"
+  },
+  "source": "notion.histoire.prehistoire-cm",
+  "target": "notion.histoire.grandes-periodes-c2",
+  "rationale": "« Les grandes périodes de l'histoire » : Les premières traces préhistoriques se placent sur la frise des grandes périodes."
+}

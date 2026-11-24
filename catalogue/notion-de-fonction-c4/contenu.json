@@ -1,0 +1,112 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une fonction associe à chaque nombre x un unique nombre f(x).",
+  "niveaux": [
+    {
+      "titre": "Image et antécédent",
+      "niveau": "3e",
+      "paragraphes": [
+        "Une **fonction** f associe à tout nombre x un seul nombre noté **f(x)**. Exemple : f(x) = 3x + 2. L'**image** de 4 est f(4) = 14. On dit que 4 est un **antécédent** de 14. Un nombre peut avoir plusieurs antécédents, mais jamais deux images.",
+        "On peut donner une fonction par une formule, un tableau de valeurs ou un graphique."
+      ],
+      "exemple": {
+        "titre": "Exemple : tableau de valeurs",
+        "etapes": [
+          "x = 0 → f(x) = 2.",
+          "x = 1 → f(x) = 5.",
+          "x = 2 → f(x) = 8."
+        ]
+      },
+      "aRetenir": "f(x) : image de x par f."
+    },
+    {
+      "titre": "Représentation graphique",
+      "niveau": "3e",
+      "paragraphes": [
+        "La **courbe représentative** de f est l'ensemble des points (x ; f(x)). Pour lire l'image de 2, on part de 2 sur l'axe horizontal, on monte jusqu'à la courbe, puis on lit l'ordonnée. Pour un antécédent de 8, on part de 8 sur l'axe vertical et on lit l'abscisse.",
+        "Les fonctions affines f(x) = ax + b ont pour courbe une droite (voir fonctions affines)."
+      ],
+      "exemple": {
+        "titre": "Exemple : lecture graphique",
+        "etapes": [
+          "La courbe passe par (2 ; 8).",
+          "f(2) = 8.",
+          "2 est un antécédent de 8."
+        ]
+      },
+      "aRetenir": "Image : on lit l'ordonnée. Antécédent : on lit l'abscisse."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "f(x) = 3x + 2. Quelle est l'image de 4 ?",
+        "reponse": 14,
+        "indices": [
+          "Remplace x par 4."
+        ],
+        "solution": "3 × 4 + 2 = 14.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "f(x) = 3x + 2. Quel est l'antécédent de 11 ?",
+        "reponse": 3,
+        "indices": [
+          "Résous 3x + 2 = 11."
+        ],
+        "solution": "3x + 2 = 11 donc x = 3.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Peut-on avoir f(2) = 5 et f(2) = 7 pour la même fonction ?",
+        "choix": [
+          "Oui, si x est positif",
+          "Oui, toujours sans condition",
+          "Non, un nombre a une seule image",
+          "Oui, si la fonction est affine"
+        ],
+        "bonne": 2,
+        "explication": "Chaque x a une seule image."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le tarif de la salle de sport",
+    "histoire": [
+      "Une salle fait payer 10 € d'inscription plus 5 € par séance : f(x) = 5x + 10."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Combien coûtent 6 séances ?",
+        "reponse": 40,
+        "unite": "€",
+        "indices": [
+          "Image de 6."
+        ],
+        "solution": "f(6) = 5 × 6 + 10 = 40.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Avec 60 €, combien de séances peux-tu faire ?",
+        "reponse": 10,
+        "indices": [
+          "Cherche l'antécédent de 60."
+        ],
+        "solution": "5x + 10 = 60 donc x = 10.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Fonction maîtrisée !"
+  }
+}

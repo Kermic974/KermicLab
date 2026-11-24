@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.monde-depuis-1990-requires-guerre-froide",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monde-depuis-1990/contenu.json"
+  },
+  "source": "notion.histoire.monde-depuis-1990",
+  "target": "notion.histoire.guerre-froide",
+  "rationale": "Le monde depuis 1990 se lit comme l’après-guerre froide (fin de l’URSS, monde multipolaire)."
+}

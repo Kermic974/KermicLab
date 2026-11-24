@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.calculer-et-interpreter-un-taux-de-variation-de-population-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/dynamiques-territoriales/contenu.json"
+  },
+  "source": "microskill.geographie.calculer-et-interpreter-un-taux-de-variation-de-population",
+  "target": "skill.geographie.dynamiques-territoriales"
+}

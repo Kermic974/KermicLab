@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.analyser-un-inegal-acces-aux-ressources-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/question-demographique-c4/contenu.json"
+  },
+  "source": "microskill.geographie.analyser-un-inegal-acces-aux-ressources",
+  "target": "skill.geographie.question-demographique-c4"
+}

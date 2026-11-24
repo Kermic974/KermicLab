@@ -1,0 +1,12 @@
+{
+  "id": "relation.arts-plastiques.arts-couleurs-et-formes-c2-teaches-decrire-une-uvre-connue-avec-ses-mots",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/arts-couleurs-et-formes-c2/contenu.json"
+  },
+  "source": "notion.arts-plastiques.arts-couleurs-et-formes-c2",
+  "target": "microskill.arts-plastiques.decrire-une-uvre-connue-avec-ses-mots"
+}

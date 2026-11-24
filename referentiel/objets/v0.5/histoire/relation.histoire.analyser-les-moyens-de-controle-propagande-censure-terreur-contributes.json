@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.analyser-les-moyens-de-controle-propagande-censure-terreur-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/totalitarismes/contenu.json"
+  },
+  "source": "microskill.histoire.analyser-les-moyens-de-controle-propagande-censure-terreur",
+  "target": "skill.histoire.totalitarismes"
+}

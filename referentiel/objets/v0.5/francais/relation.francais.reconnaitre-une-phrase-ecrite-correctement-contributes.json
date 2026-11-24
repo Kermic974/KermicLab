@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.reconnaitre-une-phrase-ecrite-correctement-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/la-phrase-c2/contenu.json"
+  },
+  "source": "microskill.francais.reconnaitre-une-phrase-ecrite-correctement",
+  "target": "skill.francais.la-phrase-c2"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.guerres-mondiales-cm-teaches-nommer-les-soldats-de-14-18-poilus",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerres-mondiales-cm/contenu.json"
+  },
+  "source": "notion.histoire.guerres-mondiales-cm",
+  "target": "microskill.histoire.nommer-les-soldats-de-14-18-poilus"
+}

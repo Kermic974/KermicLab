@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.reconnaitre-une-proposition-relative-au-cycle-4-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grammaire-de-la-phrase-5e-c4/contenu.json"
+  },
+  "source": "microskill.francais.reconnaitre-une-proposition-relative-au-cycle-4",
+  "target": "skill.francais.grammaire-de-la-phrase-5e-c4"
+}

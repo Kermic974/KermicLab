@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.microbes-et-sante-c4-requires-nutrition-et-alimentation-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/microbes-et-sante-c4/contenu.json"
+  },
+  "source": "notion.svt.microbes-et-sante-c4",
+  "target": "notion.svt.nutrition-et-alimentation-6e",
+  "rationale": "« Nutrition et alimentation en 6e » : Les micro-organismes s’appuient sur la nutrition et sur l’hygiène du cycle 2."
+}

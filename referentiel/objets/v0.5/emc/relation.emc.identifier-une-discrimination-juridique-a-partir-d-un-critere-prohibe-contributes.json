@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.identifier-une-discrimination-juridique-a-partir-d-un-critere-prohibe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/discrimination/contenu.json"
+  },
+  "source": "microskill.emc.identifier-une-discrimination-juridique-a-partir-d-un-critere-prohibe",
+  "target": "skill.emc.discrimination"
+}

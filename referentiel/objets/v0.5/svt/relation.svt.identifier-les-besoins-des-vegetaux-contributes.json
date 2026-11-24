@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.identifier-les-besoins-des-vegetaux-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/photosynthese/contenu.json"
+  },
+  "source": "microskill.svt.identifier-les-besoins-des-vegetaux",
+  "target": "skill.svt.photosynthese"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.analyser-un-hymne-ou-une-chanson-engagee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-creation-et-engagement-c4/contenu.json"
+  },
+  "source": "microskill.musique.analyser-un-hymne-ou-une-chanson-engagee",
+  "target": "skill.musique.musique-creation-et-engagement-c4"
+}

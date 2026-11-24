@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.justice-teaches-distinguer-justice-et-vengeance",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice/contenu.json"
+  },
+  "source": "notion.emc.justice",
+  "target": "microskill.emc.distinguer-justice-et-vengeance"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.energie-teaches-convertir-une-energie-entre-joule-et-kilowattheure",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie/contenu.json"
+  },
+  "source": "notion.physique-chimie.energie",
+  "target": "microskill.physique-chimie.convertir-une-energie-entre-joule-et-kilowattheure"
+}

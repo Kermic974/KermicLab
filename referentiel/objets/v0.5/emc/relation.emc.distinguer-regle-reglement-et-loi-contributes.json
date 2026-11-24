@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-regle-reglement-et-loi-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droit-et-regle-6e/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-regle-reglement-et-loi",
+  "target": "skill.emc.droit-et-regle-6e"
+}

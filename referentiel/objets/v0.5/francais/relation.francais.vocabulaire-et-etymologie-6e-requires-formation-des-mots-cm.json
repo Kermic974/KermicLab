@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.vocabulaire-et-etymologie-6e-requires-formation-des-mots-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vocabulaire-et-etymologie-6e/contenu.json"
+  },
+  "source": "notion.francais.vocabulaire-et-etymologie-6e",
+  "target": "notion.francais.formation-des-mots-cm",
+  "rationale": "« La formation des mots » : L’étymologie prolonge le vocabulaire et la formation des mots du CM."
+}

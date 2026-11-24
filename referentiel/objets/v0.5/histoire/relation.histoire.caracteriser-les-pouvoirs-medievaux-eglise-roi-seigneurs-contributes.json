@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.caracteriser-les-pouvoirs-medievaux-eglise-roi-seigneurs-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/moyen-age/contenu.json"
+  },
+  "source": "microskill.histoire.caracteriser-les-pouvoirs-medievaux-eglise-roi-seigneurs",
+  "target": "skill.histoire.moyen-age"
+}

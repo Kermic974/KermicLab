@@ -26,10 +26,10 @@ questions:
   - je ne comprends pas le principe d'inertie
   - c'est quoi une chronophotographie ?
   - what is a frame of reference in motion?
-prerequis:
-niveaux: cycle-4, seconde
 classes: 4e
-competences: pc-mouvements-action-1, pc-mouvements-action-2
+prerequis: mouvement-et-vitesse-6e
+niveaux: cycle-4, seconde
+competences: identifier-la-trajectoire-dans-un-referentiel-donne, determiner-une-vitesse-depuis-la-distance-et-la-duree, caracteriser-un-mouvement-par-chronophotographie, convertir-une-vitesse-entre-m-s-et-km-h, appliquer-le-principe-d-inertie
 ---
 
 # Mouvements et référentiels

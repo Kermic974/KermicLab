@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.etat-teaches-discuter-si-une-decision-conforme-au-droit-est-necessairement-legitime",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etat/contenu.json"
+  },
+  "source": "notion.philosophie.etat",
+  "target": "microskill.philosophie.discuter-si-une-decision-conforme-au-droit-est-necessairement-legitime"
+}

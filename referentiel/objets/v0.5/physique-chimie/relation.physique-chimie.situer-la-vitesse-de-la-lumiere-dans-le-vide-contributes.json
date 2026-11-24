@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.situer-la-vitesse-de-la-lumiere-dans-le-vide-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/signaux-et-information-c4/contenu.json"
+  },
+  "source": "microskill.physique-chimie.situer-la-vitesse-de-la-lumiere-dans-le-vide",
+  "target": "skill.physique-chimie.signaux-et-information-c4"
+}

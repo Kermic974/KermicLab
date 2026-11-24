@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Dans un récit au passé, l'imparfait décrit le décor et le passé simple fait avancer l'action.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le décor et l'action",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "« Il pleuvait. Le voyageur frappa à la porte. » L'imparfait (« pleuvait ») décrit le décor, le passé simple (« frappa ») raconte l'action qui fait avancer l'histoire.",
+        "Le passé simple est surtout employé à l'écrit, dans les romans et les contes, à la 3e personne."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Imparfait : le décor, les habitudes.",
+          "Passé simple : les actions successives.",
+          "« Il ouvrit la porte et entra. »"
+        ]
+      },
+      "aRetenir": "Imparfait : arrière-plan. Passé simple : premier plan."
+    },
+    {
+      "titre": "Conjuguer au passé simple",
+      "niveau": "6e",
+      "paragraphes": [
+        "1er groupe : -a, -èrent (il chanta, ils chantèrent). 2e groupe : -it, -irent (il finit, ils finirent). Beaucoup de verbes du 3e groupe : -it/-irent (il prit, ils prirent) ou -ut/-urent (il fut, il eut, il vit, il vint).",
+        "Exemples à connaître : être (il fut), avoir (il eut), aller (il alla), faire (il fit), venir (il vint)."
+      ],
+      "exemple": {
+        "titre": "Exemple : « Elle (ouvrir) la porte »",
+        "etapes": [
+          "Ouvrir est du 3e groupe en -ir.",
+          "Passé simple : elle ouvrit.",
+          "Pluriel : elles ouvrirent."
+        ]
+      },
+      "aRetenir": "3e personne : -a, -it, -ut ; -èrent, -irent, -urent."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Complète : « Il ___ la porte. » (ouvrir, passé simple)",
+        "choix": [
+          "ouvrait",
+          "ouvre",
+          "ouvrit",
+          "ouvra"
+        ],
+        "bonne": 2,
+        "explication": "Ouvrir : il ouvrit."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel temps décrit le décor ?",
+        "choix": [
+          "Le passé simple",
+          "Le futur",
+          "L'impératif",
+          "L'imparfait"
+        ],
+        "bonne": 3,
+        "explication": "Arrière-plan."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Passé simple de « aller » à la 3e personne du singulier :",
+        "choix": [
+          "alla",
+          "allait",
+          "ira",
+          "va"
+        ],
+        "bonne": 0,
+        "explication": "Il alla."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le début du conte",
+    "histoire": [
+      "Tu écris le début d'un conte."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle phrase mêle bien les temps ?",
+        "choix": [
+          "Il faisait nuit quand le loup apparut.",
+          "Il fit nuit quand le loup apparaissait.",
+          "Il fera nuit quand le loup apparut.",
+          "Il fait nuit quand le loup apparaissait."
+        ],
+        "bonne": 0,
+        "explication": "Imparfait + passé simple."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Passé simple de « faire » (il) :",
+        "choix": [
+          "fera",
+          "fit",
+          "fait",
+          "faisait"
+        ],
+        "bonne": 1,
+        "explication": "Il fit."
+      }
+    ],
+    "conclusion": "Conte bien conjugué !"
+  }
+}

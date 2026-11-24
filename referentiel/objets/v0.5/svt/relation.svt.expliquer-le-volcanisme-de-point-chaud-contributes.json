@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-le-volcanisme-de-point-chaud-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/seismes-et-volcans/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-le-volcanisme-de-point-chaud",
+  "target": "skill.svt.seismes-et-volcans"
+}

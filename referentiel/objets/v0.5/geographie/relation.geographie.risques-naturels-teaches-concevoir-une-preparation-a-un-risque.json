@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.risques-naturels-teaches-concevoir-une-preparation-a-un-risque",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/risques-naturels/contenu.json"
+  },
+  "source": "notion.geographie.risques-naturels",
+  "target": "microskill.geographie.concevoir-une-preparation-a-un-risque"
+}

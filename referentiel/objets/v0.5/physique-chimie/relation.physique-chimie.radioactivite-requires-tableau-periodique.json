@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.radioactivite-requires-tableau-periodique",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/radioactivite/contenu.json"
+  },
+  "source": "notion.physique-chimie.radioactivite",
+  "target": "notion.physique-chimie.tableau-periodique",
+  "rationale": "L’écriture des désintégrations repose sur la composition du noyau (A, Z) et les isotopes."
+}

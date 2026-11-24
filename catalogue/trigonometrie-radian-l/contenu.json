@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Le radian mesure un angle par la longueur de l'arc intercepté sur le cercle de rayon 1 : cosinus et sinus deviennent des fonctions de la variable réelle.",
+  "niveaux": [
+    {
+      "titre": "Radian et cercle trigonométrique",
+      "niveau": "1re",
+      "paragraphes": [
+        "Un angle de **1 radian** intercepte sur le cercle unité un arc de longueur 1. Un tour complet vaut **2π rad** ; π rad = 180°. Conversion : α° = α × π/180 rad. Pour un réel x, le point M(x) du cercle a pour coordonnées **(cos x ; sin x)**.",
+        "Valeurs remarquables : cos(π/3) = 1/2, sin(π/3) = √3/2, cos(π/4) = sin(π/4) = √2/2, cos(π/6) = √3/2, sin(π/6) = 1/2."
+      ],
+      "exemple": {
+        "titre": "Exemple : 60° en radians",
+        "etapes": [
+          "60 × π/180 = π/3.",
+          "cos(π/3) = 0,5.",
+          "sin(π/3) = √3/2 ≈ 0,866."
+        ]
+      },
+      "aRetenir": "π rad = 180°."
+    },
+    {
+      "titre": "Propriétés et équations",
+      "niveau": "1re",
+      "paragraphes": [
+        "**cos² x + sin² x = 1**. Les fonctions cos et sin sont **2π-périodiques**, cos est **paire** (cos(−x) = cos x), sin est **impaire** (sin(−x) = −sin x). Angles associés : cos(π − x) = −cos x, sin(π − x) = sin x ; cos(π/2 − x) = sin x.",
+        "Pour résoudre cos x = 1/2 sur [0 ; 2π] : x = π/3 ou x = 5π/3."
+      ],
+      "exemple": {
+        "titre": "Exemple : sin x = √2/2 sur [0 ; 2π]",
+        "etapes": [
+          "sin(π/4) = √2/2.",
+          "Autre solution : π − π/4 = 3π/4.",
+          "Solutions : π/4 et 3π/4."
+        ]
+      },
+      "aRetenir": "cos² + sin² = 1."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "180° équivaut à…",
+        "choix": [
+          "π/2 radians",
+          "1 radian",
+          "π radians",
+          "2π radians"
+        ],
+        "bonne": 2,
+        "explication": "π rad = 180°."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "cos(π/3) =",
+        "choix": [
+          "√2/2",
+          "1",
+          "1/2",
+          "√3/2"
+        ],
+        "bonne": 2,
+        "explication": "Valeur remarquable."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Solutions de cos x = 1/2 sur [0 ; 2π] :",
+        "choix": [
+          "π/6 et 5π/6",
+          "π/3 et 2π/3",
+          "π/4 et 7π/4",
+          "π/3 et 5π/3"
+        ],
+        "bonne": 3,
+        "explication": "cos(5π/3) = cos(−π/3) = 1/2."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La grande roue",
+    "histoire": [
+      "Une grande roue de rayon 20 m tourne ; la hauteur d'une nacelle est h(x) = 20 + 20 sin x (x en radians)."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quelle est la hauteur maximale (m) ?",
+        "reponse": 40,
+        "unite": "m",
+        "indices": [
+          "sin x vaut au plus 1."
+        ],
+        "solution": "sin x ≤ 1 donc h ≤ 40.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour x = 0, la nacelle est…",
+        "choix": [
+          "au point le plus bas",
+          "au point le plus haut",
+          "à 40 m",
+          "à mi-hauteur (20 m)"
+        ],
+        "bonne": 3,
+        "explication": "sin 0 = 0 : h = 20."
+      }
+    ],
+    "conclusion": "Bien tourné !"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.napoleon-teaches-expliquer-les-reformes-de-l-etat-sous-napoleon-code-civil-administration",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/napoleon/contenu.json"
+  },
+  "source": "notion.histoire.napoleon",
+  "target": "microskill.histoire.expliquer-les-reformes-de-l-etat-sous-napoleon-code-civil-administration"
+}

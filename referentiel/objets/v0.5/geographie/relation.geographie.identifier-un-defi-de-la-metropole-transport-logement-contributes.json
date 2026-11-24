@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.identifier-un-defi-de-la-metropole-transport-logement-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-une-metropole-6e/contenu.json"
+  },
+  "source": "microskill.geographie.identifier-un-defi-de-la-metropole-transport-logement",
+  "target": "skill.geographie.habiter-une-metropole-6e"
+}

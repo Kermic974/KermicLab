@@ -29,7 +29,7 @@ questions:
   - what affects the rate of a reaction?
 prerequis: quantite-de-matiere
 niveaux: terminale
-competences: pc-cinetique-chimique-action-1, pc-cinetique-chimique-action-2
+competences: identifier-un-facteur-cinetique, determiner-le-temps-de-demi-reaction, exploiter-la-loi-de-vitesse-d-ordre-1, interpreter-le-role-d-un-catalyseur
 ---
 
 # La cinétique chimique

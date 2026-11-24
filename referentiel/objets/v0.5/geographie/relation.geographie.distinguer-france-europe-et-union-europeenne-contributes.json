@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.distinguer-france-europe-et-union-europeenne-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-europe-monde-cm/contenu.json"
+  },
+  "source": "microskill.geographie.distinguer-france-europe-et-union-europeenne",
+  "target": "skill.geographie.france-europe-monde-cm"
+}

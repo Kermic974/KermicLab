@@ -1,0 +1,119 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Chaque être vivant vit dans un milieu qui lui convient et qui change avec les saisons.",
+  "niveaux": [
+    {
+      "titre": "Les milieux",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un **milieu de vie** est l'endroit où vivent des animaux et des plantes : la forêt, la mare, la prairie, la mer, la montagne, le jardin. Chaque animal est adapté à son milieu : le poisson nage, la grenouille vit près de l'eau, l'écureuil grimpe aux arbres."
+      ],
+      "exemple": {
+        "titre": "Exemple : la mare",
+        "etapes": [
+          "On y trouve des grenouilles et des libellules.",
+          "Des plantes poussent dans l'eau.",
+          "Les animaux y trouvent à manger."
+        ]
+      },
+      "aRetenir": "Chaque être vivant a son milieu."
+    },
+    {
+      "titre": "Les saisons",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "Il y a quatre **saisons** : printemps, été, automne, hiver. Au printemps, les plantes fleurissent ; en été, il fait chaud ; en automne, les feuilles tombent ; en hiver, il fait froid et certains animaux hibernent (hérisson, marmotte).",
+        "Dans une **chaîne alimentaire**, on suit qui mange qui : herbe → lapin → renard."
+      ],
+      "exemple": {
+        "titre": "Exemple : une chaîne",
+        "etapes": [
+          "L'herbe pousse.",
+          "Le lapin mange l'herbe.",
+          "Le renard mange le lapin."
+        ]
+      },
+      "aRetenir": "4 saisons : printemps, été, automne, hiver."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien y a-t-il de saisons ?",
+        "reponse": 4,
+        "indices": [
+          "Nomme-les."
+        ],
+        "solution": "Printemps, été, automne, hiver.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "En automne, les feuilles des arbres…",
+        "choix": [
+          "restent toujours vertes",
+          "tombent",
+          "poussent",
+          "deviennent des fleurs"
+        ],
+        "bonne": 1,
+        "explication": "Elles tombent."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Dans « herbe → lapin → renard », qui mange le lapin ?",
+        "choix": [
+          "le lapin",
+          "personne",
+          "le renard",
+          "l'herbe"
+        ],
+        "bonne": 2,
+        "explication": "Le renard."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La promenade en forêt",
+    "histoire": [
+      "Tu te promènes en forêt à l'automne."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que vois-tu sur le sol ?",
+        "choix": [
+          "des fleurs de printemps",
+          "de la neige d'été",
+          "des fruits de printemps",
+          "des feuilles mortes"
+        ],
+        "bonne": 3,
+        "explication": "Automne."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel animal hiberne l'hiver ?",
+        "choix": [
+          "le moineau",
+          "le hérisson",
+          "le chat",
+          "le chien"
+        ],
+        "bonne": 1,
+        "explication": "Il dort tout l'hiver."
+      }
+    ],
+    "conclusion": "Belle promenade !"
+  }
+}

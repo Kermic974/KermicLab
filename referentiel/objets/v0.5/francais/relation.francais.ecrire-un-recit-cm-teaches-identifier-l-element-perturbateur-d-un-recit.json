@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.ecrire-un-recit-cm-teaches-identifier-l-element-perturbateur-d-un-recit",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecrire-un-recit-cm/contenu.json"
+  },
+  "source": "notion.francais.ecrire-un-recit-cm",
+  "target": "microskill.francais.identifier-l-element-perturbateur-d-un-recit"
+}

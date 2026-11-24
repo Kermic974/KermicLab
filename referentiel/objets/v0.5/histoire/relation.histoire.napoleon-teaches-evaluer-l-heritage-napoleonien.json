@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.napoleon-teaches-evaluer-l-heritage-napoleonien",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/napoleon/contenu.json"
+  },
+  "source": "notion.histoire.napoleon",
+  "target": "microskill.histoire.evaluer-l-heritage-napoleonien"
+}

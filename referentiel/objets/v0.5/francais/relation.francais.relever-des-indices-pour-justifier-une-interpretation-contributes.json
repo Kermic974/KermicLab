@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.relever-des-indices-pour-justifier-une-interpretation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/analyse-texte/contenu.json"
+  },
+  "source": "microskill.francais.relever-des-indices-pour-justifier-une-interpretation",
+  "target": "skill.francais.analyse-texte"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-la-selection-clonale-des-lymphocytes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/immunite-adaptative/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-la-selection-clonale-des-lymphocytes",
+  "target": "skill.svt.immunite-adaptative"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.localiser-routes-ports-et-passages-strategiques-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mers-oceans/contenu.json"
+  },
+  "source": "microskill.geographie.localiser-routes-ports-et-passages-strategiques",
+  "target": "skill.geographie.mers-oceans"
+}

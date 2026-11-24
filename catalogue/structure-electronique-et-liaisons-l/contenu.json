@@ -1,0 +1,119 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La structure électronique d'un atome explique sa place dans le tableau périodique et les liaisons qu'il forme.",
+  "niveaux": [
+    {
+      "titre": "Couches électroniques",
+      "niveau": "2de",
+      "paragraphes": [
+        "Les électrons se répartissent en **couches** (K, L, M…) et **sous-couches** (1s, 2s, 2p, 3s…) ; la couche K accueille 2 électrons, la couche L 8, la couche M 8 (pour les premiers éléments). Configuration du carbone (Z = 6) : 1s² 2s² 2p². La **couche externe** (électrons de valence) détermine la réactivité : un atome cherche à obtenir 8 électrons (**règle de l'octet**) ou 2 (règle du duet)."
+      ],
+      "exemple": {
+        "titre": "Exemple : sodium (Z = 11)",
+        "etapes": [
+          "1s² 2s² 2p⁶ 3s¹.",
+          "Un électron de valence.",
+          "Il perd cet électron : ion Na⁺."
+        ]
+      },
+      "aRetenir": "Octet : 8 électrons sur la couche externe."
+    },
+    {
+      "titre": "Liaisons et molécules",
+      "niveau": "1re",
+      "paragraphes": [
+        "Une **liaison covalente** est la mise en commun de deux électrons entre deux atomes (doublet liant). Dans le **schéma de Lewis**, on représente les doublets liants et les doublets non liants. Le nombre de liaisons d'un atome : H : 1, O : 2, N : 3, C : 4. **Exemples** : H₂O (O : 2 liaisons, 2 doublets non liants), CO₂ (O=C=O : liaisons doubles).",
+        "La **géométrie** d'une molécule vient de la répulsion des doublets (théorie VSEPR) : H₂O est coudée, CO₂ est linéaire."
+      ],
+      "exemple": {
+        "titre": "Exemple : l'eau",
+        "etapes": [
+          "O : 6 électrons de valence.",
+          "O fait 2 liaisons avec 2 H.",
+          "2 doublets non liants : molécule coudée."
+        ]
+      },
+      "aRetenir": "H : 1 liaison ; O : 2 ; N : 3 ; C : 4."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "La configuration du carbone (Z = 6) est…",
+        "choix": [
+          "2s² 2p⁴",
+          "1s² 2s² 2p²",
+          "1s² 2s⁴",
+          "1s⁶"
+        ],
+        "bonne": 1,
+        "explication": "6 électrons."
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de liaisons covalentes forme un atome d'azote (valeur usuelle) ?",
+        "reponse": 3,
+        "indices": [
+          "Octet."
+        ],
+        "solution": "N : 5 électrons de valence, 3 liaisons.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La molécule d'eau est…",
+        "choix": [
+          "coudée",
+          "linéaire",
+          "plane triangulaire",
+          "tétraédrique parfaite"
+        ],
+        "bonne": 0,
+        "explication": "Deux doublets non liants."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le sel de cuisine",
+    "histoire": [
+      "Le sodium (Z = 11) réagit avec le chlore (Z = 17)."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fait le sodium pour avoir l'octet ?",
+        "choix": [
+          "il perd 7 électrons",
+          "il garde ses 11 électrons",
+          "il perd 1 électron (Na⁺)",
+          "il gagne 1 électron"
+        ],
+        "bonne": 2,
+        "explication": "Une couche externe à 1 électron."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que fait le chlore ?",
+        "choix": [
+          "il reste neutre",
+          "il gagne 1 électron",
+          "il perd 1 électron",
+          "il perd 7 électrons"
+        ],
+        "bonne": 1,
+        "explication": "Il complète l'octet."
+      }
+    ],
+    "conclusion": "Structure comprise !"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.analyser-les-liens-d-une-metropole-avec-d-autres-echelles-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/metropolisation/contenu.json"
+  },
+  "source": "microskill.geographie.analyser-les-liens-d-une-metropole-avec-d-autres-echelles",
+  "target": "skill.geographie.metropolisation"
+}

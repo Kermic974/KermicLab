@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.oxydoreduction-requires-tableau-periodique",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/oxydoreduction/contenu.json"
+  },
+  "source": "notion.physique-chimie.oxydoreduction",
+  "target": "notion.physique-chimie.tableau-periodique",
+  "rationale": "Les demi-équations échangent des électrons : il faut savoir ce qu’est un ion et la charge qu’il porte."
+}

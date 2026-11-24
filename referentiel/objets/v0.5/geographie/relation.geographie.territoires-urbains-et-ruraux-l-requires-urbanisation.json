@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.territoires-urbains-et-ruraux-l-requires-urbanisation",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/territoires-urbains-et-ruraux-l/contenu.json"
+  },
+  "source": "notion.geographie.territoires-urbains-et-ruraux-l",
+  "target": "notion.geographie.urbanisation",
+  "rationale": "« L'urbanisation » : Le lycée reprend l’urbanisation et les espaces ruraux du collège."
+}

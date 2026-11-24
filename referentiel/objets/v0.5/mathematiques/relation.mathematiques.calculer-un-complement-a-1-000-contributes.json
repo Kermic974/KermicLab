@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-un-complement-a-1-000-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/calcul-mental-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-un-complement-a-1-000",
+  "target": "skill.mathematiques.calcul-mental-cm"
+}

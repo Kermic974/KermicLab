@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "À chaque effort, ton corps respire plus fort et ton cœur bat plus vite.",
+  "niveaux": [
+    {
+      "titre": "Intuition : essoufflé après la course",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Quand tu cours, tu respires plus vite et ton cœur bat plus fort. Ton corps a besoin de plus d'**oxygène** pour fournir de l'énergie aux muscles.",
+        "L'air entre par le nez ou la bouche, passe dans la trachée, puis les poumons, où l'oxygène passe dans le sang."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Au repos : environ 70 battements par minute.",
+          "À la course : plus de 150.",
+          "On respire plus vite."
+        ]
+      },
+      "aRetenir": "Effort → plus d'oxygène nécessaire."
+    },
+    {
+      "titre": "Le circuit du sang",
+      "niveau": "CM2",
+      "paragraphes": [
+        "Le **cœur** est une pompe musculaire qui fait circuler le **sang** dans les vaisseaux (artères et veines). Le sang transporte l'oxygène et les nutriments vers tous les organes et ramène le **dioxyde de carbone**, rejeté dans l'air expiré.",
+        "On peut mesurer sa **fréquence cardiaque** en comptant les battements du pouls pendant une minute."
+      ],
+      "exemple": {
+        "titre": "Exemple : le trajet du sang",
+        "etapes": [
+          "Le sang prend l'oxygène dans les poumons.",
+          "Le cœur le propulse dans les muscles.",
+          "Il revient chargé de dioxyde de carbone."
+        ]
+      },
+      "aRetenir": "Le cœur pompe, le sang transporte."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fait le cœur ?",
+        "choix": [
+          "Il digère les aliments",
+          "Il fabrique l'air",
+          "Il fait penser",
+          "Il fait circuler le sang"
+        ],
+        "bonne": 3,
+        "explication": "Le cœur est une pompe."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que prend le sang dans les poumons ?",
+        "choix": [
+          "Du sucre",
+          "De l'eau",
+          "Du fer",
+          "De l'oxygène"
+        ],
+        "bonne": 3,
+        "explication": "L'oxygène de l'air."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Pourquoi le cœur bat-il plus vite à l'effort ?",
+        "choix": [
+          "Le cœur est fatigué par l'effort",
+          "Le cœur s'ennuie quand on court",
+          "Les muscles ont besoin de plus d'oxygène",
+          "Il fait plus chaud dans la salle"
+        ],
+        "bonne": 2,
+        "explication": "Les muscles consomment plus."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La course de relais",
+    "histoire": [
+      "Tu mesures ton pouls avant et après la course."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que remarques-tu après la course ?",
+        "choix": [
+          "Il n'y a plus de pouls",
+          "Le pouls est identique",
+          "Le pouls est plus rapide",
+          "Le pouls est plus lent"
+        ],
+        "bonne": 2,
+        "explication": "Le cœur accélère."
+      },
+      {
+        "type": "nombre",
+        "question": "Au repos, 70 battements par minute. Combien en 2 minutes ?",
+        "reponse": 140,
+        "indices": [
+          "Multiplie par 2."
+        ],
+        "solution": "70 × 2 = 140.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bien mesuré !"
+  }
+}

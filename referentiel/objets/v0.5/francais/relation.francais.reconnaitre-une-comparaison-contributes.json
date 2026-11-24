@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.reconnaitre-une-comparaison-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie-cm/contenu.json"
+  },
+  "source": "microskill.francais.reconnaitre-une-comparaison",
+  "target": "skill.francais.poesie-cm"
+}

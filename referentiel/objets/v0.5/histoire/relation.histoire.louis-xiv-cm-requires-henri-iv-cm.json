@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.louis-xiv-cm-requires-henri-iv-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/louis-xiv-cm/contenu.json"
+  },
+  "source": "notion.histoire.louis-xiv-cm",
+  "target": "notion.histoire.henri-iv-cm",
+  "rationale": "« Henri IV et l'édit de Nantes » : Progression chronologique du programme (lien de continuité du parcours, pas un prérequis conceptuel strict) : Louis XIV suit Henri IV dans le programme."
+}

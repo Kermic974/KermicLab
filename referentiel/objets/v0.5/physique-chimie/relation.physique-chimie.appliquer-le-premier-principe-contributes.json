@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.appliquer-le-premier-principe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/thermodynamique/contenu.json"
+  },
+  "source": "microskill.physique-chimie.appliquer-le-premier-principe",
+  "target": "skill.physique-chimie.thermodynamique"
+}

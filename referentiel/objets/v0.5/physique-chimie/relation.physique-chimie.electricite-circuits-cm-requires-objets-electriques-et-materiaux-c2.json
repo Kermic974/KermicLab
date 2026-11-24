@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.electricite-circuits-cm-requires-objets-electriques-et-materiaux-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/electricite-circuits-cm/contenu.json"
+  },
+  "source": "notion.physique-chimie.electricite-circuits-cm",
+  "target": "notion.technologie.objets-electriques-et-materiaux-c2",
+  "rationale": "« Les objets : matériaux, électricité et mouvement » : Les circuits reprennent les objets électriques du cycle 2 et les sources d’énergie."
+}

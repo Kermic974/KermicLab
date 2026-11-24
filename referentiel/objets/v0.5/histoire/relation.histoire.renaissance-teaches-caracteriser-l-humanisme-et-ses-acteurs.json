@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.renaissance-teaches-caracteriser-l-humanisme-et-ses-acteurs",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/renaissance/contenu.json"
+  },
+  "source": "notion.histoire.renaissance",
+  "target": "microskill.histoire.caracteriser-l-humanisme-et-ses-acteurs"
+}

@@ -28,9 +28,9 @@ questions:
   - je ne comprends pas les électrons de valence
   - c'est quoi un isotope ?
   - how does the periodic table work?
-prerequis:
+prerequis: atomes-et-molecules
 niveaux: seconde
-competences: pc-tableau-periodique-action-1, pc-tableau-periodique-action-2
+competences: determiner-la-composition-du-noyau-depuis-son-symbole, utiliser-la-configuration-electronique-pour-situer-un-element, identifier-les-isotopes-d-un-element, prevoir-l-ion-forme-par-un-element, prevoir-le-nombre-de-liaisons-covalentes-d-un-atome
 ---
 
 # L'atome et le tableau périodique

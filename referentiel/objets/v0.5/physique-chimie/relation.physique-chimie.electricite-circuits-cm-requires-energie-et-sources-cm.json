@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.electricite-circuits-cm-requires-energie-et-sources-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/electricite-circuits-cm/contenu.json"
+  },
+  "source": "notion.physique-chimie.electricite-circuits-cm",
+  "target": "notion.physique-chimie.energie-et-sources-cm",
+  "rationale": "« L'énergie et ses sources » : Les circuits reprennent les objets électriques du cycle 2 et les sources d’énergie."
+}

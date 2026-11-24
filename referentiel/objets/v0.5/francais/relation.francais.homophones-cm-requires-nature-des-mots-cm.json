@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.homophones-cm-requires-nature-des-mots-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/homophones-cm/contenu.json"
+  },
+  "source": "notion.francais.homophones-cm",
+  "target": "notion.francais.nature-des-mots-cm",
+  "rationale": "« La nature des mots » : Les homophones reprennent le test de remplacement du cycle 2 et exigent de reconnaître nature des mots et verbe conjugué."
+}

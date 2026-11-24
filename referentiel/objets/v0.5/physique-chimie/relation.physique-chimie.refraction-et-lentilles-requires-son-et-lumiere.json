@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.refraction-et-lentilles-requires-son-et-lumiere",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/refraction-et-lentilles/contenu.json"
+  },
+  "source": "notion.physique-chimie.refraction-et-lentilles",
+  "target": "notion.physique-chimie.son-et-lumiere",
+  "rationale": "La réfraction suppose le modèle du rayon lumineux et la propagation de la lumière."
+}

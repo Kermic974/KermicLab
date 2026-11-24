@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.musique-notes-et-rythme-cm-teaches-lire-la-duree-de-la-ronde-de-la-blanche-et-de-la-noire",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-notes-et-rythme-cm/contenu.json"
+  },
+  "source": "notion.musique.musique-notes-et-rythme-cm",
+  "target": "microskill.musique.lire-la-duree-de-la-ronde-de-la-blanche-et-de-la-noire"
+}

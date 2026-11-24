@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.lire-une-carte-cm-teaches-situer-l-equateur-et-les-hemispheres",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lire-une-carte-cm/contenu.json"
+  },
+  "source": "notion.geographie.lire-une-carte-cm",
+  "target": "microskill.geographie.situer-l-equateur-et-les-hemispheres"
+}

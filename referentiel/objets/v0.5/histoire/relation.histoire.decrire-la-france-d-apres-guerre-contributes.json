@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decrire-la-france-d-apres-guerre-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-europe-depuis-1945-cm/contenu.json"
+  },
+  "source": "microskill.histoire.decrire-la-france-d-apres-guerre",
+  "target": "skill.histoire.france-europe-depuis-1945-cm"
+}

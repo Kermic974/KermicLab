@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.anglais-lieux-et-pays-cm-teaches-nommer-des-pays-des-capitales-et-des-langues",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-lieux-et-pays-cm/contenu.json"
+  },
+  "source": "notion.anglais.anglais-lieux-et-pays-cm",
+  "target": "microskill.anglais.nommer-des-pays-des-capitales-et-des-langues"
+}

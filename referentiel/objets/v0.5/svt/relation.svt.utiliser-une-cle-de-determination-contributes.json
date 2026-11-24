@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.utiliser-une-cle-de-determination-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/classification-du-vivant-cm/contenu.json"
+  },
+  "source": "microskill.svt.utiliser-une-cle-de-determination",
+  "target": "skill.svt.classification-du-vivant-cm"
+}

@@ -2,6 +2,14 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Relecture humaine vérifiable (ADR 0039)
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Valider la durée de conservation du journal (5 ans après la relecture, proposée) | [ADR 0039](decisions/0039-relecture-humaine.md), registre `relectures_humaines` | Le journal est append-only : la purge automatique n'est pas branchée tant que la durée n'est pas confirmée. Le lien vers le compte est déjà retiré à sa suppression | Durée acceptée, ou une autre durée écrite dans l'ADR et le registre | à faire |
+| Confirmer que les comptes locaux peuvent être relecteurs | ADR 0039 §2 | Les rôles sont aujourd'hui attribués aux comptes locaux (l'OAuth n'est pas ouvert). Le lien est l'identifiant aléatoire du compte, pas l'identifiant de connexion | Décision notée : comptes locaux acceptés, ou réservés aux futurs comptes OAuth | à faire |
+| Relire le paragraphe « Relecture humaine des notions » de la page Confidentialité | `web/confidentialite.html` | Nouveau traitement : données d'adultes relecteurs, pseudonymisées, public mineur sur le reste du site | Texte validé ou corrigé | à faire |
+
 ## Adoption S6 (ADR 0033)
 
 Suivi : [#384](https://github.com/Kermic974/KermicLab/issues/384).
@@ -61,6 +69,7 @@ Suivi : [issue #381](https://github.com/Kermic974/KermicLab/issues/381) (validat
 | Relire la page Confidentialité mise à jour | `web/confidentialite.html` | Deux traitements sont ajoutés : compteurs de sécurité par pseudonyme (30 jours) et télémétrie des modèles (90 jours). Validation juridique du texte et de la base légale pour un public mineur | Texte validé, ou corrections demandées | à faire |
 | Décider quand activer les garde-fous | `/admin/` → Harness → Sécurité et garde-fous | Ils sont en observation : les profils sont classés sans restriction, le temps de mesurer les faux positifs | `GARDE_FOUS_ACTIFS` activé, bandeau « Garde-fous appliqués » dans l'écran Sécurité | à faire |
 | Valider l'ADR 0031 (souscriptions et sous-module financier) et les offres pressenties | `docs/decisions/0031-souscriptions-financier.md`, `/admin/` → Souscriptions | Gratuit, Solo, Parent et Professeur sont proposés au statut « projet » avec des prix et des hypothèses d'usage à confirmer ; les prix des modèles (relevés le 2026-11-18) et les frais de paiement sont à vérifier | Statut de l'ADR à « accepté » ; chaque offre enregistrée au statut voulu dans `/admin/` → Souscriptions | à faire |
+| Valider l'ADR 0036 (coûts fixes répartis par abonnés visés, Finance simplifiée) et les abonnés visés de chaque offre | `docs/decisions/0036-finance-simplifiee.md`, `/admin/` → Souscriptions → Finance simplifiée | Les abonnés visés pressentis (Gratuit 150, Solo 25, Parent 20, Professeur 5) pilotent la répartition des coûts fixes et le prix calculé en mode marge | Statut de l'ADR à « accepté » ; abonnés visés enregistrés | à faire |
 | Décider quand activer le contrôle d'accès par rôle | `/admin/` → Harness → Rôles et accès | Préparé, non appliqué : il faut d'abord ouvrir les comptes et brancher la décision d'accès sur les routes (chantier back-office, étape 2) | Décision notée dans `docs/chantiers/back-office.md` | reporté |
 | Valider l'ADR 0034 (rôles cumulatifs, souscription choisie par le compte, coûts affinés) | `docs/decisions/0034-roles-cumulatifs-souscriptions.md`, `/admin/` → Utilisateurs et Souscriptions, « Mon compte » → Mon abonnement | Un compte cumule désormais plusieurs rôles et le rôle de sa souscription ; un compte en ligne change de niveau lui-même, **sans paiement** pendant la phase de développement (`SOUSCRIPTIONS_LIBRE_CHOIX` à `true`). La migration D1 `0009` s'applique au déploiement | Statut de l'ADR à « accepté » ; après déploiement, changer de niveau depuis « Mon compte » et voir le changement dans `/admin/` → Utilisateurs | à faire |
 | Créer `CLOUDFLARE_ACCOUNT_ID` et le secret `CLOUDFLARE_TARIFS_TOKEN` pour charger les tarifs des modèles | Cloudflare → Mon profil → Jetons d'API → créer un jeton personnalisé avec la seule permission **Account → Workers AI → Read** ; puis `cd worker && npx wrangler secret put CLOUDFLARE_TARIFS_TOKEN` et `npx wrangler secret put CLOUDFLARE_ACCOUNT_ID` (identifiant à 32 caractères, visible dans le tableau de bord) | Le bouton « Charger les tarifs Cloudflare (AI Gateway) » de `/admin/` → Souscriptions lit le catalogue de modèles (`ai/models/search`) ; sans ces deux valeurs, il reste désactivé et les prix se saisissent à la main | Le bouton est actif ; un clic remplit les prix d'entrée, de sortie et de cache des trois modules | à faire |
@@ -286,3 +295,56 @@ Si l'étape « Schéma D1 » échoue avec `Authentication error [code: 10000]`, 
 ## Vues Ma famille — 17 novembre 2026
 
 - À faire : revue du CODEOWNER et fusion de la PR après CI verte, puis déploiement automatique.
+
+## Catalogue du cycle 3 (CM1, CM2, 6e) — PR #398
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Faire relire les notions `*-cm` et `*-6e` selon la grille v1 (idéalement par un enseignant du premier degré), puis renseigner `relue`, `relue-version`, `relue-grille` dans chaque `fiche.md` | `catalogue/*-cm/`, `catalogue/*-6e/`, grille dans `docs/chantiers/validation-maquettes.md` | Public mineur : l'exactitude (dates, définitions, corrigés) n'a pas été relue par un humain | Cases de relecture cochées dans la PR #398 ; indicateur « Relecture » du build | à faire |
+| Contrôler la matrice de couverture avec le programme officiel de cycle 3 (BO 2020) et décider des écarts | `docs/chantiers/catalogue-primaire.md` | La matrice est un rapprochement interne, pas un contrôle officiel | Matrice validée ou corrigée dans la PR | à faire |
+| Décider du périmètre restant : autres langues vivantes que l'anglais, pratique motrice en EPS (hors page) | `docs/chantiers/catalogue-primaire.md` | Non couvert par les pages du gabarit | Décision notée dans la fiche chantier | à faire |
+| Revue du CODEOWNER et fusion de la PR #398 après CI verte | https://github.com/Kermic974/KermicLab/pull/398 | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |
+
+## Catalogue du lycée (seconde, première, terminale)
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Faire relire les notions `*-l` selon la grille de relecture (idéalement par un enseignant de la discipline), puis renseigner `relue`, `relue-version`, `relue-grille` dans chaque `fiche.md` | `catalogue/*-l/`, `docs/chantiers/guide-relecture-lycee.md` | Public mineur : exactitude des cours, exercices et corrigés à valider par un humain | Champs `relue*` renseignés | à faire |
+| Contrôler la couverture avec les programmes officiels du lycée (tronc commun et spécialités) et décider des écarts | `docs/chantiers/catalogue-lycee.md` | Les spécialités sont traitées par notions transversales ; rapprochement interne seulement | Décision notée dans le chantier | à faire |
+| Qualifier par le processus S4 les liens depuis les notions V0 projetées (section « Lycée » des propositions) | `docs/referentiel/propositions-liens-cycles-2-3-4.md` | Les prérequis des notions projetées sont générés depuis `referentiel/objets/` | Lot S4 relu et fusionné | à faire |
+| Ouvrir une PR dédiée au lycée après la fusion de la PR #401 (les commits du lycée sont sur la même branche) | GitHub | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |
+
+## Densification pédagogique du référentiel — PR #403
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Relire la pertinence des 584 MicroSkills et des 81 `requires` / 28 `relatedTo` (physique-chimie, SVT, histoire, géographie, français, EMC, SES, philosophie), puis passer les objets de `draft` à `review` puis `validated` | `referentiel/objets/v0.5/`, `docs/referentiel/densification-pedagogique.md` | Les liens sont des propositions pédagogiques, non attestées par des textes officiels | Statuts mis à jour, `npm run check:referentiel` vert | à faire |
+| Arbitrer les liens listés dans `relations-a-revoir.md` (créer, écarter ou traiter par le processus S4) | `docs/referentiel/relations-a-revoir.md` | Liens incertains ou bloqués par les garde-fous du build | Décision notée dans le fichier | à faire |
+| Qualifier par le processus S4 les liens des 312 notions ajoutées depuis la V0 (cycles 2 à 4, lycée) | `docs/referentiel/propositions-liens-cycles-2-3-4.md` | Ces notions n'ont pas d'objets canoniques | Lot S4 relu et fusionné | à faire |
+| Revue du CODEOWNER et fusion de la PR #403 | https://github.com/Kermic974/KermicLab/pull/403 | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |
+
+## Référentiel canonique : technologie
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Valider l'[ADR 0038](decisions/0038-etape-cycle-2-referentiel.md) (code d'étape `cycle-2`) : schéma, tests et projection des 51 notions de cycle 2 faits dans la PR dédiée | `docs/decisions/0038-etape-cycle-2-referentiel.md` | Le contrat `stage` est une décision normative | ADR accepté et PR fusionnée | à faire |
+| Relire les MicroSkills et les prérequis de la technologie, puis faire passer les objets de `draft` à `review` | `referentiel/objets/v0.5/technologie/` | Propositions pédagogiques non validées | Statuts mis à jour | à faire |
+| Relire les MicroSkills et les prérequis de l'anglais, des arts plastiques, de la musique et de l'EPS, puis faire passer les objets de `draft` à `review` | `referentiel/objets/v0.5/anglais/`, `arts-plastiques/`, `musique/`, `eps/` | Propositions pédagogiques non validées | Statuts mis à jour | à faire |
+| Revue du CODEOWNER et fusion de la PR du référentiel canonique (technologie, anglais, arts plastiques, musique, EPS) | GitHub | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |
+
+## Référentiel canonique : notions ajoutées depuis la V0
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Relire les 1 041 MicroSkills et les 365 `requires` (justifications générées à enrichir), puis passer les objets de `draft` à `review` | `referentiel/objets/v0.5/` | Propositions pédagogiques non validées ; justifications des liens génériques | Statuts mis à jour, justifications enrichies | à faire |
+| Relire les 102 `requires` créés depuis les notions de la V0 vers les cycles précédents (PR dédiée) et arbitrer les liens écartés | `docs/referentiel/propositions-liens-cycles-2-3-4.md`, `relations-a-revoir.md` | Propositions pédagogiques en `draft` ; la recommandation change pour 35 scénarios | Statuts mis à jour | à faire |
+| Revue du CODEOWNER et fusion de la PR de ce lot | GitHub | Fusion toujours soumise à validation humaine | PR fusionnée | à faire |
+
+## Référentiel : audit de qualité
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Décider du sort des liens de continuité chronologique de l'histoire (supprimer, convertir en `relatedTo` ou conserver) | `docs/referentiel/audit-competences.md` | La règle « chronologie ≠ prérequis » de la densification ; ces liens nourrissent la recommandation | Décision notée dans le rapport | à faire |
+| Décider de partager les MicroSkills identiques entre niveaux (une seule compétence enseignée par plusieurs notions) | `docs/referentiel/audit-competences.md` | 37 libellés en double qualifiés par niveau | Décision notée dans le rapport | à faire |
+| Faire relire par un enseignant les 78 QCM réécrits | `catalogue/*/contenu.json` | Les distracteurs et bonnes réponses ont été modifiés | Champs `relue*` renseignés | à faire |
+

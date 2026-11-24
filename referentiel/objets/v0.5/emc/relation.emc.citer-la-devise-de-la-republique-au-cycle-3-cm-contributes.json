@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.citer-la-devise-de-la-republique-au-cycle-3-cm-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/devise-republique-cm/contenu.json"
+  },
+  "source": "microskill.emc.citer-la-devise-de-la-republique-au-cycle-3-cm",
+  "target": "skill.emc.devise-republique-cm"
+}

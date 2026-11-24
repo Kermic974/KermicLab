@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.esprit-critique-et-medias-6e-teaches-reperer-une-rumeur-ou-une-photo-detournee",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/esprit-critique-et-medias-6e/contenu.json"
+  },
+  "source": "notion.emc.esprit-critique-et-medias-6e",
+  "target": "microskill.emc.reperer-une-rumeur-ou-une-photo-detournee"
+}

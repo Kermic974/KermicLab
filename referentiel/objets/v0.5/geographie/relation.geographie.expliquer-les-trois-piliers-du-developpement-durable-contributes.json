@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.expliquer-les-trois-piliers-du-developpement-durable-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/societes-et-environnement-l/contenu.json"
+  },
+  "source": "microskill.geographie.expliquer-les-trois-piliers-du-developpement-durable",
+  "target": "skill.geographie.societes-et-environnement-l"
+}

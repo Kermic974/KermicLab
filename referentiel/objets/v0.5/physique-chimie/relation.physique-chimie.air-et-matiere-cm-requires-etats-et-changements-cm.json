@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.air-et-matiere-cm-requires-etats-et-changements-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/air-et-matiere-cm/contenu.json"
+  },
+  "source": "notion.physique-chimie.air-et-matiere-cm",
+  "target": "notion.physique-chimie.etats-et-changements-cm",
+  "rationale": "« Les états de la matière et leurs changements » : L’air illustre les états de la matière et leurs changements."
+}

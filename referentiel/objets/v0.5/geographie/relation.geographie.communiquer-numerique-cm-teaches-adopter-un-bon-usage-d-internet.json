@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.communiquer-numerique-cm-teaches-adopter-un-bon-usage-d-internet",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/communiquer-numerique-cm/contenu.json"
+  },
+  "source": "notion.geographie.communiquer-numerique-cm",
+  "target": "microskill.geographie.adopter-un-bon-usage-d-internet"
+}

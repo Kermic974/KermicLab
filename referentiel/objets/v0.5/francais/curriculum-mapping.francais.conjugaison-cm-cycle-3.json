@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.francais.conjugaison-cm-cycle-3",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conjugaison-cm/contenu.json"
+  },
+  "object": "notion.francais.conjugaison-cm",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.cycle-3",
+  "role": "introduced"
+}

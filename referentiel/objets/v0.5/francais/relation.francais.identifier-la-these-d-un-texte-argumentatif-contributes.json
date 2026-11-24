@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-la-these-d-un-texte-argumentatif-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/argumentation/contenu.json"
+  },
+  "source": "microskill.francais.identifier-la-these-d-un-texte-argumentatif",
+  "target": "skill.francais.argumentation"
+}

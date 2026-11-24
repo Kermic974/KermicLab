@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.oral-et-eaf-l-requires-analyse-texte",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/oral-et-eaf-l/contenu.json"
+  },
+  "source": "notion.francais.oral-et-eaf-l",
+  "target": "notion.francais.analyse-texte",
+  "rationale": "« Analyser un texte » : L’oral s’appuie sur l’analyse de texte et sur les œuvres de roman et récit."
+}

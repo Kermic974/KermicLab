@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La poésie joue avec les sons, les images et les émotions.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le jeu des sons",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un poème est écrit en **vers** (une ligne), regroupés en **strophes**. Les vers riment quand leurs derniers sons sont identiques : « soleil / réveil ».",
+        "Le poète utilise des **images** : une comparaison (« blanc comme neige ») ou une métaphore (« Ce lac est un miroir »)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« rose » et « chose » riment.",
+          "« Il est blanc comme la neige » : comparaison (comme).",
+          "Un poème en forme d'arbre : un calligramme."
+        ]
+      },
+      "aRetenir": "Une comparaison utilise « comme »."
+    },
+    {
+      "titre": "Les rimes et les images",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "**Rimes plates** : AABB. **Rimes croisées** : ABAB. **Rimes embrassées** : ABBA. Le rythme dépend du nombre de syllabes : l'alexandrin a 12 syllabes.",
+        "La **métaphore** est une comparaison sans « comme » : « La nuit est un manteau noir ». La **personnification** donne vie à une chose : « le vent murmure »."
+      ],
+      "exemple": {
+        "titre": "Exemple : rimes",
+        "etapes": [
+          "Soleil / Réveil (A).",
+          "Nuit / Bruit (B).",
+          "Si on lit A B A B, ce sont des rimes croisées."
+        ]
+      },
+      "aRetenir": "Les rimes se repèrent avec les lettres A, B."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quels mots riment ?",
+        "choix": [
+          "soleil et réveil",
+          "chat et chien",
+          "lune et soleil",
+          "arbre et fleur"
+        ],
+        "bonne": 0,
+        "explication": "Même son final."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "« Elle est rapide comme l'éclair » est…",
+        "choix": [
+          "un calligramme",
+          "une strophe",
+          "une comparaison",
+          "une métaphore"
+        ],
+        "bonne": 2,
+        "explication": "Le mot « comme » compare."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un ensemble de vers regroupés s'appelle…",
+        "choix": [
+          "une rime",
+          "un chapitre",
+          "une scène",
+          "une strophe"
+        ],
+        "bonne": 3,
+        "explication": "Les vers forment une strophe."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le concours de poésie",
+    "histoire": [
+      "Tu écris un petit poème sur l'automne."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle phrase est une métaphore ?",
+        "choix": [
+          "La pluie est un rideau gris.",
+          "La pluie tombe comme un rideau.",
+          "Il pleut.",
+          "La pluie tombe fort."
+        ],
+        "bonne": 0,
+        "explication": "Sans « comme »."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quels mots riment avec « feuille » ?",
+        "choix": [
+          "vent",
+          "cueille",
+          "arbre",
+          "sol"
+        ],
+        "bonne": 1,
+        "explication": "Sons proches [œj]."
+      }
+    ],
+    "conclusion": "Poème terminé !"
+  }
+}

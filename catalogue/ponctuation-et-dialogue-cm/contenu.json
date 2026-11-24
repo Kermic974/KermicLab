@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La ponctuation organise le texte : elle dit où respirer et ce qu'on exprime.",
+  "niveaux": [
+    {
+      "titre": "Intuition : respirer",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une phrase commence par une **majuscule** et finit par un **point**, un point d'interrogation ou un point d'exclamation. La **virgule** sépare les éléments d'une liste ou isole un complément : « J'achète des pommes, des poires et des fraises. »"
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« Il pleut, donc nous restons à la maison. » : une virgule pour marquer une pause.",
+          "« Que fais-tu ? » : point d'interrogation.",
+          "« Quelle surprise ! » : point d'exclamation."
+        ]
+      },
+      "aRetenir": "Majuscule au début, signe de fin à la fin."
+    },
+    {
+      "titre": "Écrire un dialogue",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Les **deux-points** introduisent une parole ou une liste : « Il dit : « Viens ! » ». Les paroles sont entre **guillemets** ; on change de ligne et on met un **tiret** à chaque changement de personnage.",
+        "Les **points de suspension** marquent une hésitation ou une suite sous-entendue. Le **point-virgule** sépare deux idées proches."
+      ],
+      "exemple": {
+        "titre": "Exemple : un dialogue",
+        "etapes": [
+          "« Où vas-tu ? demanda Léa. »",
+          "— À la piscine, répondit Max.",
+          "On change de ligne à chaque réplique."
+        ]
+      },
+      "aRetenir": "Un tiret ou des guillemets annoncent la parole."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel signe termine une question ?",
+        "choix": [
+          ".",
+          "!",
+          ",",
+          "?"
+        ],
+        "bonne": 3,
+        "explication": "Le point d'interrogation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour une liste, on sépare les éléments avec…",
+        "choix": [
+          "des points",
+          "des guillemets",
+          "des tirets longs",
+          "des virgules"
+        ],
+        "bonne": 3,
+        "explication": "Virgule dans une liste."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel signe annonce une parole rapportée ?",
+        "choix": [
+          "les deux-points",
+          "le point",
+          "la virgule",
+          "l'apostrophe"
+        ],
+        "bonne": 0,
+        "explication": "Il dit : « … »."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le message mal ponctué",
+    "histoire": [
+      "Un message sans ponctuation est difficile à lire : tu dois le corriger."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle phrase est bien ponctuée ?",
+        "choix": [
+          "J'ai acheté du pain, du lait et des œufs.",
+          "J'ai acheté du pain du lait, et des œufs",
+          "J'ai acheté du pain. du lait et des œufs",
+          "J'ai acheté, du pain du lait et des œufs"
+        ],
+        "bonne": 0,
+        "explication": "Majuscule, virgules dans la liste, point final."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "« Où vas-tu ? » se termine par…",
+        "choix": [
+          "un point d'exclamation",
+          "un point d'interrogation",
+          "un point",
+          "une virgule"
+        ],
+        "bonne": 1,
+        "explication": "C'est une question."
+      }
+    ],
+    "conclusion": "Message clair !"
+  }
+}

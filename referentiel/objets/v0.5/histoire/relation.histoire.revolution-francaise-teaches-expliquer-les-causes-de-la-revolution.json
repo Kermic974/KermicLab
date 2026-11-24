@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.revolution-francaise-teaches-expliquer-les-causes-de-la-revolution",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-francaise/contenu.json"
+  },
+  "source": "notion.histoire.revolution-francaise",
+  "target": "microskill.histoire.expliquer-les-causes-de-la-revolution"
+}

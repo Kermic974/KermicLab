@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.monde-en-villes-cm-requires-planete-terre-et-cartes-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monde-en-villes-cm/contenu.json"
+  },
+  "source": "notion.geographie.monde-en-villes-cm",
+  "target": "notion.geographie.planete-terre-et-cartes-c2",
+  "rationale": "« La planète Terre : continents et océans » : Les villes du monde s’appuient sur la planète Terre du cycle 2 et la France dans le monde."
+}

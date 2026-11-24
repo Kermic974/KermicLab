@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La météo décrit le temps qu'il fait à un moment précis ; le climat décrit le temps moyen sur de longues années.",
+  "niveaux": [
+    {
+      "titre": "Atmosphère et vents",
+      "niveau": "4e",
+      "paragraphes": [
+        "L'**atmosphère** est l'enveloppe de gaz qui entoure la Terre. Le Soleil réchauffe inégalement la planète : l'air chaud monte, l'air froid descend, et l'air circule des zones de **haute pression** (**anticyclones**, beau temps) vers les zones de **basse pression** (**dépressions**, nuages et pluie) : c'est le **vent**. Les nuages se forment quand l'air humide monte et se refroidit : la vapeur d'eau se condense.",
+        "La température, la pression, l'humidité et le vent sont mesurés par des stations, des ballons et des satellites."
+      ],
+      "exemple": {
+        "titre": "Exemple : le cycle de l'eau",
+        "etapes": [
+          "L'eau de la mer s'évapore.",
+          "La vapeur monte et forme des nuages.",
+          "Elle retombe en pluie."
+        ]
+      },
+      "aRetenir": "Anticyclone : beau temps. Dépression : pluie."
+    },
+    {
+      "titre": "Météo et climat",
+      "niveau": "4e",
+      "paragraphes": [
+        "La **météo** prévoit le temps à quelques jours (modèles numériques alimentés par des mesures). Le **climat** est la moyenne des conditions sur au moins 30 ans : climat tempéré, tropical, polaire… L'activité humaine modifie le climat par les gaz à effet de serre (réchauffement climatique).",
+        "Une journée froide ne prouve pas que le climat ne se réchauffe pas : météo ≠ climat."
+      ],
+      "exemple": {
+        "titre": "Exemple : distinguer",
+        "etapes": [
+          "« Il pleut aujourd'hui » : météo.",
+          "« Il pleut souvent en Bretagne » : climat.",
+          "Le climat se décrit sur 30 ans."
+        ]
+      },
+      "aRetenir": "Météo : court terme. Climat : long terme."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Un anticyclone apporte…",
+        "choix": [
+          "du beau temps",
+          "de la pluie",
+          "des orages toujours",
+          "de la neige toujours"
+        ],
+        "bonne": 0,
+        "explication": "Hautes pressions."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le climat se mesure sur…",
+        "choix": [
+          "une journée",
+          "une semaine",
+          "un mois",
+          "au moins 30 ans"
+        ],
+        "bonne": 3,
+        "explication": "Moyenne longue."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Les nuages se forment par…",
+        "choix": [
+          "condensation de la vapeur d'eau",
+          "évaporation du sable du désert",
+          "fusion de la glace des pôles",
+          "chute de poussières volcaniques"
+        ],
+        "bonne": 0,
+        "explication": "Refroidissement."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La station météo du collège",
+    "histoire": [
+      "Ta classe installe une station météo."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel instrument mesure la pression ?",
+        "choix": [
+          "Le thermomètre",
+          "Le pluviomètre",
+          "L'anémomètre",
+          "Le baromètre"
+        ],
+        "bonne": 3,
+        "explication": "Baromètre."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un froid vif un jour d'hiver prouve-t-il que le climat ne se réchauffe pas ?",
+        "choix": [
+          "Non, météo et climat sont différents",
+          "Oui, puisqu'il fait froid aujourd'hui",
+          "Oui, définitivement pour tout le pays",
+          "Seulement si c'est en été"
+        ],
+        "bonne": 0,
+        "explication": "Échelles de temps."
+      }
+    ],
+    "conclusion": "Bon météorologue !"
+  }
+}

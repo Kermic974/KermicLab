@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.appliquer-la-dichotomie-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/algorithmique-python-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.appliquer-la-dichotomie",
+  "target": "skill.mathematiques.algorithmique-python-l"
+}

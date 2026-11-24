@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-stereotype-prejuge-et-discrimination-au-lycee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-egalite-et-lutte-discriminations-l/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-stereotype-prejuge-et-discrimination-au-lycee",
+  "target": "skill.emc.emc-egalite-et-lutte-discriminations-l"
+}

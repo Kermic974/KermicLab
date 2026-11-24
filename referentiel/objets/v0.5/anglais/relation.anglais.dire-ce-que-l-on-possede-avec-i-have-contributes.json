@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.dire-ce-que-l-on-possede-avec-i-have-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-famille-et-animaux-c2/contenu.json"
+  },
+  "source": "microskill.anglais.dire-ce-que-l-on-possede-avec-i-have",
+  "target": "skill.anglais.anglais-famille-et-animaux-c2"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.fonctions-dans-la-phrase-cm-requires-nature-des-mots-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fonctions-dans-la-phrase-cm/contenu.json"
+  },
+  "source": "notion.francais.fonctions-dans-la-phrase-cm",
+  "target": "notion.francais.nature-des-mots-cm",
+  "rationale": "« La nature des mots » : Identifier les fonctions suppose de reconnaître la nature des mots."
+}

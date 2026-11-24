@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.henri-iv-cm-teaches-expliquer-ce-qu-autorise-l-edit-de-nantes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/henri-iv-cm/contenu.json"
+  },
+  "source": "notion.histoire.henri-iv-cm",
+  "target": "microskill.histoire.expliquer-ce-qu-autorise-l-edit-de-nantes"
+}

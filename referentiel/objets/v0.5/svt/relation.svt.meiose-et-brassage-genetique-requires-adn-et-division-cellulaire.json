@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.meiose-et-brassage-genetique-requires-adn-et-division-cellulaire",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/meiose-et-brassage-genetique/contenu.json"
+  },
+  "source": "notion.svt.meiose-et-brassage-genetique",
+  "target": "notion.svt.adn-et-division-cellulaire",
+  "rationale": "La méiose se comprend par comparaison avec la mitose et le cycle cellulaire."
+}

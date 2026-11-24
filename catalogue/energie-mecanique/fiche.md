@@ -22,9 +22,9 @@ questions:
   - je ne comprends pas l'énergie potentielle de pesanteur
   - c'est quoi le théorème de l'énergie cinétique ?
   - what is potential energy?
-prerequis:
+prerequis: energie, forces-et-poids
 niveaux: premiere
-competences: pc-energie-mecanique-action-1, pc-energie-mecanique-action-2
+competences: calculer-le-travail-d-une-force, appliquer-le-theoreme-de-l-energie-cinetique, calculer-une-energie-potentielle-de-pesanteur, exploiter-la-conservation-de-l-energie-mecanique, interpreter-l-effet-des-frottements-sur-l-energie-mecanique
 ---
 
 # Travail et énergie mécanique

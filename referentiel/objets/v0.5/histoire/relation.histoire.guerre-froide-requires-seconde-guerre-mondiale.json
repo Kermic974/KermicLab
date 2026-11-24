@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.guerre-froide-requires-seconde-guerre-mondiale",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerre-froide/contenu.json"
+  },
+  "source": "notion.histoire.guerre-froide",
+  "target": "notion.histoire.seconde-guerre-mondiale",
+  "rationale": "La rivalité des deux superpuissances naît de la victoire commune et de l’occupation de l’Europe."
+}

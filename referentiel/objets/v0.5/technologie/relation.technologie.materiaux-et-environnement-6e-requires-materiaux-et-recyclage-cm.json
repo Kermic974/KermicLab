@@ -1,0 +1,13 @@
+{
+  "id": "relation.technologie.materiaux-et-environnement-6e-requires-materiaux-et-recyclage-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/materiaux-et-environnement-6e/contenu.json"
+  },
+  "source": "notion.technologie.materiaux-et-environnement-6e",
+  "target": "notion.technologie.materiaux-et-recyclage-cm",
+  "rationale": "Les 3 R et le cycle de vie sont repris pour comparer matériaux et justifier des actions."
+}

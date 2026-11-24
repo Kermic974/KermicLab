@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.analyser-des-socialisations-plurielles-dans-un-parcours-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/socialisation/contenu.json"
+  },
+  "source": "microskill.ses.analyser-des-socialisations-plurielles-dans-un-parcours",
+  "target": "skill.ses.socialisation"
+}

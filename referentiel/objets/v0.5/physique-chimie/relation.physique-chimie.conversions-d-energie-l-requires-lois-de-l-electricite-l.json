@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.conversions-d-energie-l-requires-lois-de-l-electricite-l",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conversions-d-energie-l/contenu.json"
+  },
+  "source": "notion.physique-chimie.conversions-d-energie-l",
+  "target": "notion.physique-chimie.lois-de-l-electricite-l",
+  "rationale": "« Circuits électriques : loi d'Ohm, puissance et énergie » : Le bilan d’énergie reprend l’énergie du collège et les lois de l’électricité."
+}

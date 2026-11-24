@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.identifier-les-acteurs-d-un-projet-d-acces-aux-services-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-territoires/contenu.json"
+  },
+  "source": "microskill.geographie.identifier-les-acteurs-d-un-projet-d-acces-aux-services",
+  "target": "skill.geographie.france-territoires"
+}

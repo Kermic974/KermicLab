@@ -1,0 +1,12 @@
+{
+  "id": "relation.eps.mettre-en-uvre-une-recuperation-apres-l-effort-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-endurance-et-sante-c4/contenu.json"
+  },
+  "source": "microskill.eps.mettre-en-uvre-une-recuperation-apres-l-effort",
+  "target": "skill.eps.eps-endurance-et-sante-c4"
+}

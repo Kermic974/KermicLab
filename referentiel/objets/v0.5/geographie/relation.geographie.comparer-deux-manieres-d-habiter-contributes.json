@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.comparer-deux-manieres-d-habiter-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/paysages-et-habiter-c2/contenu.json"
+  },
+  "source": "microskill.geographie.comparer-deux-manieres-d-habiter",
+  "target": "skill.geographie.paysages-et-habiter-c2"
+}

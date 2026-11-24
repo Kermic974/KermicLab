@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.droits-de-l-enfant-cm-teaches-associer-un-droit-de-l-enfant-a-une-situation-au-cycle-3-cm",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droits-de-l-enfant-cm/contenu.json"
+  },
+  "source": "notion.emc.droits-de-l-enfant-cm",
+  "target": "microskill.emc.associer-un-droit-de-l-enfant-a-une-situation-au-cycle-3-cm"
+}

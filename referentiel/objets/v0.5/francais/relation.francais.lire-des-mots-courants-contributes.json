@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.lire-des-mots-courants-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/syllabes-et-mots-c2/contenu.json"
+  },
+  "source": "microskill.francais.lire-des-mots-courants",
+  "target": "skill.francais.syllabes-et-mots-c2"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.determiner-un-point-d-inflexion-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/convexite-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.determiner-un-point-d-inflexion",
+  "target": "skill.mathematiques.convexite-l"
+}

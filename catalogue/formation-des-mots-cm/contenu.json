@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les mots se fabriquent : on peut ajouter un préfixe, un suffixe, ou assembler deux mots.",
+  "niveaux": [
+    {
+      "titre": "Intuition : les briques des mots",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dans « défaire », on a **dé-** + **faire** : le préfixe change le sens. Dans « chanteur », on a **chant** + **-eur** : le suffixe change la nature du mot.",
+        "Le **radical** est le cœur du mot, commun à toute la famille : chant, chanter, chanteur, chanson, chantonner."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "re- + faire = refaire (de nouveau).",
+          "joue + -eur = joueur.",
+          "in- + visible = invisible (contraire)."
+        ]
+      },
+      "aRetenir": "Préfixe avant le radical, suffixe après."
+    },
+    {
+      "titre": "Dérivés et composés",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Un **mot dérivé** est formé avec un préfixe ou un suffixe. Un **mot composé** réunit deux mots : un chou-fleur, un porte-monnaie, un tire-bouchon.",
+        "Les préfixes **in-/im-/il-/ir-/dé-** donnent le contraire (possible → impossible). Connaître la famille de mots aide pour l'orthographe : « grand » → « grandir », donc « grand » avec un d."
+      ],
+      "exemple": {
+        "titre": "Exemple : la famille de « terre »",
+        "etapes": [
+          "terrain, terrasse, terrier.",
+          "enterrer, atterrir, souterrain.",
+          "Le radical « terr- » est partout."
+        ]
+      },
+      "aRetenir": "On retrouve le radical dans toute la famille."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans « refaire », « re- » est…",
+        "choix": [
+          "un mot composé",
+          "un préfixe",
+          "un suffixe",
+          "un radical"
+        ],
+        "bonne": 1,
+        "explication": "Il est placé avant le radical."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Lequel est de la famille de « chant » ?",
+        "choix": [
+          "chaud",
+          "chanteur",
+          "champ",
+          "chat"
+        ],
+        "bonne": 1,
+        "explication": "chant → chanteur."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« Un tire-bouchon » est…",
+        "choix": [
+          "un préfixe",
+          "un suffixe",
+          "un verbe seul",
+          "un mot composé"
+        ],
+        "bonne": 3,
+        "explication": "Deux mots assemblés."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'atelier de mots",
+    "histoire": [
+      "Tu inventes de nouveaux mots avec des préfixes et des suffixes."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel est le contraire de « possible » avec un préfixe ?",
+        "choix": [
+          "impossible",
+          "dépossible",
+          "repossible",
+          "surpossible"
+        ],
+        "bonne": 0,
+        "explication": "Devant p : im-."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que signifie « relire » ?",
+        "choix": [
+          "lire avant",
+          "lire beaucoup",
+          "lire de nouveau",
+          "ne pas lire"
+        ],
+        "bonne": 2,
+        "explication": "re- signifie de nouveau."
+      }
+    ],
+    "conclusion": "Atelier réussi !"
+  }
+}

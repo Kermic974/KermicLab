@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les êtres vivants naissent, grandissent, se reproduisent puis meurent : c'est le cycle de la vie.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le cycle de vie",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Tous les êtres vivants ont un **cycle de vie** : naissance, croissance, reproduction, vieillissement, mort. Chez les animaux, certains pondent des **œufs** (poule, tortue), d'autres donnent naissance à des petits vivants (chat, vache, humain).",
+        "Chez les humains, un bébé se développe dans le ventre de sa mère pendant environ 9 mois."
+      ],
+      "exemple": {
+        "titre": "Exemple : la grenouille",
+        "etapes": [
+          "Œufs → têtards → grenouilles.",
+          "C'est une métamorphose.",
+          "Les adultes se reproduisent."
+        ]
+      },
+      "aRetenir": "Le cycle de vie recommence avec chaque génération."
+    },
+    {
+      "titre": "La puberté",
+      "niveau": "CM2",
+      "paragraphes": [
+        "La **puberté** est la période (vers 10-14 ans) où le corps de l'enfant change pour devenir adulte : croissance rapide, transformations du corps, modifications de la voix, de l'humeur. Elle prépare à la reproduction.",
+        "Chacun a son rythme : il est normal de changer plus tôt ou plus tard que ses camarades. En cas de questions ou de gêne, on peut en parler à un adulte de confiance (parent, infirmière scolaire)."
+      ],
+      "exemple": {
+        "titre": "Exemple : changements",
+        "etapes": [
+          "La taille augmente rapidement.",
+          "La voix change chez les garçons.",
+          "L'hygiène corporelle devient importante."
+        ]
+      },
+      "aRetenir": "La puberté est naturelle et progressive."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel animal pond des œufs ?",
+        "choix": [
+          "Le chien",
+          "La poule",
+          "Le chat",
+          "La vache"
+        ],
+        "bonne": 1,
+        "explication": "La poule est ovipare."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La puberté commence généralement…",
+        "choix": [
+          "à la naissance",
+          "à 5 ans",
+          "à 40 ans",
+          "entre 10 et 14 ans"
+        ],
+        "bonne": 3,
+        "explication": "C'est l'âge habituel du début des changements."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Combien de temps dure la grossesse humaine ?",
+        "choix": [
+          "Environ 3 jours",
+          "Environ 9 mois",
+          "Environ 1 mois",
+          "Environ 2 ans"
+        ],
+        "bonne": 1,
+        "explication": "À peu près neuf mois."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le carnet de croissance",
+    "histoire": [
+      "Tu mesures ta taille chaque année."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Est-il normal de ne pas grandir au même rythme que ses copains ?",
+        "choix": [
+          "Seulement pour les filles",
+          "Oui, chacun a son rythme",
+          "Non, il y a un problème",
+          "Seulement pour les garçons"
+        ],
+        "bonne": 1,
+        "explication": "Chacun a son propre rythme."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Avec qui parler si on a des questions ?",
+        "choix": [
+          "Seulement un copain",
+          "Un adulte de confiance",
+          "Personne",
+          "Un inconnu sur Internet"
+        ],
+        "bonne": 1,
+        "explication": "Parent, infirmière scolaire, médecin."
+      }
+    ],
+    "conclusion": "Tu comprends le cycle de la vie !"
+  }
+}

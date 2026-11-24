@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.passer-d-une-fraction-decimale-a-l-ecriture-decimale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fractions-operations-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.passer-d-une-fraction-decimale-a-l-ecriture-decimale",
+  "target": "skill.mathematiques.fractions-operations-cm"
+}

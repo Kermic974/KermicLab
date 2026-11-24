@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.objets-electriques-et-materiaux-c2-teaches-appliquer-les-regles-de-securite-avec-l-electricite",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/objets-electriques-et-materiaux-c2/contenu.json"
+  },
+  "source": "notion.technologie.objets-electriques-et-materiaux-c2",
+  "target": "microskill.technologie.appliquer-les-regles-de-securite-avec-l-electricite"
+}

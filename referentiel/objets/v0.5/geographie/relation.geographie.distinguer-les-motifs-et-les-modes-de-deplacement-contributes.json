@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.distinguer-les-motifs-et-les-modes-de-deplacement-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mobilites/contenu.json"
+  },
+  "source": "microskill.geographie.distinguer-les-motifs-et-les-modes-de-deplacement",
+  "target": "skill.geographie.mobilites"
+}

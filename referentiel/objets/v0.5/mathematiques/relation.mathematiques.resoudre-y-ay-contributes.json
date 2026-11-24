@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.resoudre-y-ay-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/primitives-et-equations-differentielles-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.resoudre-y-ay",
+  "target": "skill.mathematiques.primitives-et-equations-differentielles-l"
+}

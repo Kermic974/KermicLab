@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.identifier-un-mecanisme-de-redistribution-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice-sociale/contenu.json"
+  },
+  "source": "microskill.ses.identifier-un-mecanisme-de-redistribution",
+  "target": "skill.ses.justice-sociale"
+}

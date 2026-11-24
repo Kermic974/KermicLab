@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "L'air est invisible, mais c'est de la matière : il occupe de la place et pèse.",
+  "niveaux": [
+    {
+      "titre": "Intuition : l'air qu'on ne voit pas",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Quand tu gonfles un ballon, il grossit : l'air y occupe de la place. Quand tu sens le vent sur ton visage, c'est de l'air en mouvement. L'air est un **gaz** : il n'a pas de forme propre et occupe tout l'espace disponible."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Une bouteille « vide » est pleine d'air.",
+          "Enfonce-la à l'envers dans l'eau : l'eau n'entre pas complètement.",
+          "L'air occupe la place."
+        ]
+      },
+      "aRetenir": "L'air est de la matière."
+    },
+    {
+      "titre": "Masse et pression",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "L'air a une **masse** : un ballon gonflé pèse plus que le même ballon dégonflé. Un litre d'air pèse environ 1,2 g.",
+        "L'air peut être **comprimé** : dans une pompe à vélo, on réduit son volume. L'air comprimé **pousse** sur les parois : c'est la **pression**."
+      ],
+      "exemple": {
+        "titre": "Exemple : le ballon",
+        "etapes": [
+          "Ballon dégonflé : 5 g.",
+          "Ballon gonflé : 6 g.",
+          "La différence est la masse de l'air."
+        ]
+      },
+      "aRetenir": "Un gaz a une masse et un volume."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "L'air est…",
+        "choix": [
+          "un gaz",
+          "un solide",
+          "un liquide",
+          "du vide"
+        ],
+        "bonne": 0,
+        "explication": "Il occupe de la place."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un ballon gonflé pèse…",
+        "choix": [
+          "moins qu'un ballon dégonflé",
+          "exactement pareil qu'avant",
+          "aucune masse mesurable",
+          "plus qu'un ballon dégonflé"
+        ],
+        "bonne": 3,
+        "explication": "L'air a une masse."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Que fait une pompe à vélo ?",
+        "choix": [
+          "Elle chauffe l'air seulement",
+          "Elle supprime l'air",
+          "Elle comprime l'air",
+          "Elle fabrique de l'eau"
+        ],
+        "bonne": 2,
+        "explication": "Réduit son volume."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'expérience du ballon",
+    "histoire": [
+      "Tu pèses un ballon avant et après l'avoir gonflé."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que montre la balance ?",
+        "choix": [
+          "Rien ne change",
+          "Le ballon gonflé est plus léger",
+          "La balance est cassée",
+          "Le ballon gonflé est plus lourd"
+        ],
+        "bonne": 3,
+        "explication": "L'air a une masse."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pourquoi le ballon gonfle-t-il ?",
+        "choix": [
+          "Il pousse tout seul",
+          "L'air occupe de la place",
+          "Il se remplit de vide",
+          "Il chauffe"
+        ],
+        "bonne": 1,
+        "explication": "Gaz."
+      }
+    ],
+    "conclusion": "Expérience réussie !"
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La poésie joue avec les sons, le rythme et les images pour dire l'émotion et regarder le monde autrement.",
+  "niveaux": [
+    {
+      "titre": "Formes et mouvements",
+      "niveau": "2de",
+      "paragraphes": [
+        "La **versification** : **alexandrin** (12 syllabes), décasyllabe, octosyllabe ; **rimes** (plates, croisées, embrassées) ; **strophes** (quatrain, tercet) ; **sonnet** (2 quatrains + 2 tercets). Mouvements : **Pléiade** et Renaissance (Ronsard), **baroque**, **romantisme** (Hugo, Lamartine, Musset : le moi, la nature, la mélancolie), **Parnasse** (l'art pour l'art), **symbolisme** (Baudelaire, Verlaine, Rimbaud : suggérer), **surréalisme** (Breton, Éluard : l'écriture automatique et l'image)."
+      ],
+      "exemple": {
+        "titre": "Exemple : alexandrin",
+        "etapes": [
+          "« Demain, dès l'aube, à l'heure où blanchit la campagne » (Hugo).",
+          "12 syllabes avec la diérèse et l'e muet.",
+          "Rythme 6/6."
+        ]
+      },
+      "aRetenir": "Alexandrin : 12 syllabes."
+    },
+    {
+      "titre": "Lire un poème",
+      "niveau": "1re",
+      "paragraphes": [
+        "On observe le **titre**, la **forme**, le **rythme**, les **sonorités** (allitérations, assonances), les **figures** (métaphore, comparaison, personnification, anaphore, oxymore) et le **registre** (lyrique, élégiaque, épique, satirique). La **poésie engagée** (Hugo, Aragon, Éluard) dénonce ou célèbre. Dans le commentaire, on relie chaque procédé à l'**effet produit**."
+      ],
+      "exemple": {
+        "titre": "Exemple : une allitération",
+        "etapes": [
+          "« Pour qui sont ces serpents qui sifflent sur vos têtes ? » (Racine).",
+          "Le son [s] imite le sifflement.",
+          "Effet : angoisse, menace."
+        ]
+      },
+      "aRetenir": "Procédé + effet produit."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Nombre de syllabes d'un alexandrin ?",
+        "reponse": 12,
+        "indices": [
+          "Vers classique."
+        ],
+        "solution": "12 syllabes.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un sonnet comporte…",
+        "choix": [
+          "quatre tercets d'affilée",
+          "un seul quatrain isolé",
+          "deux quatrains et deux tercets",
+          "trois quatrains consécutifs"
+        ],
+        "bonne": 2,
+        "explication": "Forme fixe."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Le symbolisme cherche à…",
+        "choix": [
+          "démontrer par des arguments",
+          "faire rire",
+          "suggérer plutôt que décrire",
+          "raconter de façon réaliste"
+        ],
+        "bonne": 2,
+        "explication": "Correspondances."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le poème à étudier",
+    "histoire": [
+      "Tu prépares l'analyse d'un poème de Baudelaire."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fais-tu d'abord ?",
+        "choix": [
+          "je saute la lecture du poème",
+          "je résume sans avoir lu",
+          "je cherche l'auteur",
+          "je lis à voix haute et note les rimes"
+        ],
+        "bonne": 3,
+        "explication": "Observation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Une métaphore…",
+        "choix": [
+          "identifie deux réalités sans « comme »",
+          "utilise toujours le mot « comme »",
+          "est une rime riche",
+          "est un temps verbal"
+        ],
+        "bonne": 0,
+        "explication": "Pas de mot comparatif."
+      }
+    ],
+    "conclusion": "Bien lu !"
+  }
+}

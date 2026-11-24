@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.louis-xiv-cm-teaches-identifier-le-chateau-de-versailles",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/louis-xiv-cm/contenu.json"
+  },
+  "source": "notion.histoire.louis-xiv-cm",
+  "target": "microskill.histoire.identifier-le-chateau-de-versailles"
+}

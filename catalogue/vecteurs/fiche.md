@@ -5,13 +5,6 @@ sujet: mathematiques/vecteurs
 version: 1.0.0
 date: 2026-11-01
 niveau: seconde
-niveaux: seconde, premiere
-prerequis:
-competences:
-  - representer-un-vecteur
-  - utiliser-la-relation-de-chasles
-  - calculer-les-coordonnees-d-un-vecteur
-  - tester-la-colinearite
 duree: 35
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -32,6 +25,9 @@ questions:
   - je ne comprends pas la relation de Chasles
   - comment savoir si deux vecteurs sont colinéaires
   - what is a vector?
+prerequis: transformations
+niveaux: seconde, premiere
+competences: representer-un-vecteur, utiliser-la-relation-de-chasles, calculer-les-coordonnees-d-un-vecteur, tester-la-colinearite
 ---
 
 # Les vecteurs

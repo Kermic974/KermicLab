@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.appliquer-la-conduite-a-tenir-pendant-un-seisme-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/volcans-et-seismes-cm/contenu.json"
+  },
+  "source": "microskill.svt.appliquer-la-conduite-a-tenir-pendant-un-seisme",
+  "target": "skill.svt.volcans-et-seismes-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.former-l-imparfait-et-le-passe-compose-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conjugaison-temps/contenu.json"
+  },
+  "source": "microskill.francais.former-l-imparfait-et-le-passe-compose",
+  "target": "skill.francais.conjugaison-temps"
+}

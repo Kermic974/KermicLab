@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.emc-numerique-et-citoyennete-l-requires-citoyennete",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-numerique-et-citoyennete-l/contenu.json"
+  },
+  "source": "notion.emc.emc-numerique-et-citoyennete-l",
+  "target": "notion.emc.citoyennete",
+  "rationale": "« La citoyenneté » : La citoyenneté numérique s’appuie sur la citoyenneté et les données du web."
+}

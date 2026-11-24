@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.signaux-et-information-c4-requires-lumiere-et-son-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/signaux-et-information-c4/contenu.json"
+  },
+  "source": "notion.physique-chimie.signaux-et-information-c4",
+  "target": "notion.physique-chimie.lumiere-et-son-6e",
+  "rationale": "« Signaux lumineux et sonores en 6e » : Les signaux de 4e prolongent la lumière et le son de 6e."
+}

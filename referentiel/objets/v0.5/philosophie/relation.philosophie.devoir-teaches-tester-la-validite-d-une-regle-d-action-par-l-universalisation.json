@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.devoir-teaches-tester-la-validite-d-une-regle-d-action-par-l-universalisation",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/devoir/contenu.json"
+  },
+  "source": "notion.philosophie.devoir",
+  "target": "microskill.philosophie.tester-la-validite-d-une-regle-d-action-par-l-universalisation"
+}

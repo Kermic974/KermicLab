@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.liberte-philosophie-teaches-comparer-autonomie-morale-kant-et-determinisme-spinoza",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/liberte-philosophie/contenu.json"
+  },
+  "source": "notion.philosophie.liberte-philosophie",
+  "target": "microskill.philosophie.comparer-autonomie-morale-kant-et-determinisme-spinoza"
+}

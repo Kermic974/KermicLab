@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-stereotype-prejuge-et-discrimination-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/discrimination/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-stereotype-prejuge-et-discrimination",
+  "target": "skill.emc.discrimination"
+}

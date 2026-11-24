@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Comprendre un texte, c'est repérer ce qui est dit et deviner ce qui est sous-entendu.",
+  "niveaux": [
+    {
+      "titre": "Intuition : lire comme un détective",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour comprendre un texte, on se pose des questions : **qui** ? **où** ? **quand** ? **quoi** ? **pourquoi** ? On repère les personnages, le lieu et l'époque.",
+        "Parfois la réponse est écrite dans le texte : c'est une information **explicite**. Parfois il faut la deviner avec des indices : c'est une **inférence**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« Lisa claque la porte et monte l'escalier en pleurant. »",
+          "Explicite : Lisa pleure.",
+          "Inférence : elle est fâchée ou triste."
+        ]
+      },
+      "aRetenir": "On justifie toujours avec une phrase du texte."
+    },
+    {
+      "titre": "Résumer et justifier",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Pour **résumer** un texte, on garde l'essentiel (événements importants) et on supprime les détails. On répond aux questions par des phrases complètes, en reprenant les mots de la question.",
+        "Les mots de liaison (puis, alors, mais, parce que) montrent l'ordre et les causes. Les **substituts** (il, elle, le héros) évitent les répétitions : il faut savoir qui ils remplacent."
+      ],
+      "exemple": {
+        "titre": "Exemple : le pronom « il »",
+        "etapes": [
+          "« Léo ouvrit le coffre. Il y trouva une carte. »",
+          "« Il » remplace Léo.",
+          "« y » remplace le coffre."
+        ]
+      },
+      "aRetenir": "On relit pour retrouver ce que remplace un pronom."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« Elle claque la porte en pleurant. » Que peut-on déduire ?",
+        "choix": [
+          "Elle est joyeuse.",
+          "Elle est en vacances.",
+          "Elle a faim.",
+          "Elle est fâchée ou triste."
+        ],
+        "bonne": 3,
+        "explication": "Claquer et pleurer indiquent une émotion négative."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Dans « Léo ouvrit le coffre. Il y trouva une carte. », « Il » désigne…",
+        "choix": [
+          "Léo",
+          "le coffre",
+          "la carte",
+          "le lecteur"
+        ],
+        "bonne": 0,
+        "explication": "Le pronom reprend le sujet précédent."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un résumé doit…",
+        "choix": [
+          "changer l'histoire",
+          "garder l'essentiel",
+          "recopier tout le texte",
+          "ajouter des détails"
+        ],
+        "bonne": 1,
+        "explication": "Résumer, c'est condenser."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le petit mystère",
+    "histoire": [
+      "Texte : « Le matin, Hugo trouve ses chaussures mouillées et de la boue devant la porte. Dans le jardin, la barrière est ouverte. »"
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que peut-on penser ?",
+        "choix": [
+          "Quelqu'un est entré ou sorti pendant la nuit",
+          "Il a neigé abondamment pendant la nuit",
+          "Hugo est tombé malade en pleine nuit",
+          "C'est déjà le début de l'été chaud"
+        ],
+        "bonne": 0,
+        "explication": "Boue, barrière ouverte : quelqu'un est passé."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel indice appuie cette réponse ?",
+        "choix": [
+          "c'est le matin",
+          "ses chaussures sont rouges",
+          "la barrière est ouverte",
+          "Hugo est un garçon"
+        ],
+        "bonne": 2,
+        "explication": "Une barrière ouverte indique un passage."
+      }
+    ],
+    "conclusion": "Enquête résolue !"
+  }
+}

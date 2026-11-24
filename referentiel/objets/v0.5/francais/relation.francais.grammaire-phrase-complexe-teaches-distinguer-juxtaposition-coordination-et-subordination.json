@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.grammaire-phrase-complexe-teaches-distinguer-juxtaposition-coordination-et-subordination",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grammaire-phrase-complexe/contenu.json"
+  },
+  "source": "notion.francais.grammaire-phrase-complexe",
+  "target": "microskill.francais.distinguer-juxtaposition-coordination-et-subordination"
+}

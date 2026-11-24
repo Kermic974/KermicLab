@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "L'EPS apprend à gérer son effort, à jouer ensemble et à rester en bonne santé.",
+  "niveaux": [
+    {
+      "titre": "Gérer son effort",
+      "niveau": "6e",
+      "paragraphes": [
+        "En **endurance** (course longue), on court à une allure régulière, que l'on peut tenir longtemps, en respirant calmement. On peut **mesurer sa fréquence cardiaque** (battements par minute) : elle augmente avec l'effort et redescend pendant la récupération.",
+        "On s'échauffe avant, on s'étire doucement après, on s'hydrate, on s'habille selon la météo."
+      ],
+      "exemple": {
+        "titre": "Exemple : une course de 10 minutes",
+        "etapes": [
+          "Départ progressif.",
+          "Allure constante.",
+          "Retour au calme."
+        ]
+      },
+      "aRetenir": "Régularité et récupération."
+    },
+    {
+      "titre": "Jouer en équipe",
+      "niveau": "6e",
+      "paragraphes": [
+        "Dans un **sport collectif** (handball, basket, volley, football), chacun a un rôle (attaquant, défenseur, gardien) et un **projet de jeu** commun : passer, se démarquer, défendre en groupe. On respecte les règles, l'arbitre et les adversaires (**fair-play**).",
+        "L'**arbitrage** et le **coaching** font aussi partie de la pratique."
+      ],
+      "exemple": {
+        "titre": "Exemple : un match de handball",
+        "etapes": [
+          "Un joueur se démarque.",
+          "Le passeur lui donne le ballon.",
+          "L'équipe attaque ensemble."
+        ]
+      },
+      "aRetenir": "Équipe = coopération + règles."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pendant l'effort, la fréquence cardiaque…",
+        "choix": [
+          "s'arrête",
+          "reste nulle",
+          "augmente",
+          "diminue toujours"
+        ],
+        "bonne": 2,
+        "explication": "Le cœur accélère."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "En endurance, on cherche…",
+        "choix": [
+          "à s'arrêter souvent",
+          "à marcher à reculons",
+          "une allure régulière",
+          "un sprint permanent"
+        ],
+        "bonne": 2,
+        "explication": "Régularité."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Le fair-play, c'est…",
+        "choix": [
+          "tricher discrètement quand on peut",
+          "respecter les règles et les autres",
+          "gagner à tout prix sans limite",
+          "contester toutes les décisions de l'arbitre"
+        ],
+        "bonne": 1,
+        "explication": "Esprit sportif."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le cross du collège",
+    "histoire": [
+      "Ta classe participe au cross du collège."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment démarrer ?",
+        "choix": [
+          "En s'arrêtant dès les premiers mètres",
+          "À allure modérée et régulière",
+          "À fond dès le départ de la course",
+          "En marchant lentement tout le long"
+        ],
+        "bonne": 1,
+        "explication": "Gérer son effort."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Après la course ?",
+        "choix": [
+          "Boire et récupérer",
+          "Courir encore",
+          "Ne rien faire",
+          "Sauter"
+        ],
+        "bonne": 0,
+        "explication": "Récupération."
+      }
+    ],
+    "conclusion": "Bravo, sportifs !"
+  }
+}

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { FINANCES_PAR_DEFAUT, estimerSouscription, validerFinances } from "../../web/admin/financier.js";
+import { FINANCES_PAR_DEFAUT, bilanPortefeuille, estimerSouscription, repartitionFixes, validerFinances } from "../../web/admin/financier.js";
 import { SOUSCRIPTIONS_PAR_DEFAUT, validerListe, validerSouscription } from "../../worker/src/souscriptions.js";
 import { ROLES_SYSTEME } from "../../worker/src/roles.js";
 
@@ -84,8 +84,10 @@ test("offres pressenties : Gratuit, Solo, Parent, Professeur, toutes valides et 
 
 test("offres pressenties payantes : rentables avec les hypothèses par défaut, au mois comme à l'année", () => {
   const generation = { defi: 1500, cahiers: 100000 };
+  // Coûts fixes répartis sur tout le portefeuille, au prorata des abonnés visés (ADR 0036).
+  const repartition = repartitionFixes(SOUSCRIPTIONS_PAR_DEFAUT, FINANCES_PAR_DEFAUT);
   for (const s of SOUSCRIPTIONS_PAR_DEFAUT.filter((x) => x.id !== "gratuit")) {
-    const e = estimerSouscription(s, FINANCES_PAR_DEFAUT, generation);
+    const e = estimerSouscription(s, FINANCES_PAR_DEFAUT, generation, repartition);
     assert.ok(e.marge > 0, `${s.id} : marge mensuelle ${e.marge}`);
     assert.ok(e.margeAnnuelle > 0, `${s.id} : marge annuelle ${e.margeAnnuelle}`);
   }
@@ -129,4 +131,64 @@ test("prix annuel saisi : remplace la remise, remise effective calculée", () =>
   const offre = { limites: { tokensSession: 0, tokensAppel: 0, defisJour: 0, cahiersJour: 0, cahiersMois: 0 }, usage: { joursActifsMois: 0, tauxUtilisation: 0 }, prix: { mode: "prix", prixMensuelHT: 10, margeCible: 0, remiseAnnuelle: 50, prixAnnuelHT: 96 } };
   const e = estimerSouscription(offre, FINANCES_PAR_DEFAUT, { defi: 0, cahiers: 0 });
   assert.deepEqual([e.prixAnnuelHT, e.prixAnnuelSaisi, e.remiseEffective], [96, true, 20]);
+});
+
+// ---------- Répartition des coûts fixes et finance simplifiée (ADR 0036) ----------
+
+const offreCible = (id, prix, abonnes) => ({ ...offre({ prixMensuelHT: prix }), id, libelle: id, usage: { joursActifsMois: 10, tauxUtilisation: 50, utilisateursCibles: abonnes } });
+
+test("coûts fixes répartis au prorata des abonnés visés : même part par abonné, quelle que soit l'offre", () => {
+  const a = offreCible("a", 20, 30), b = offreCible("b", 0, 70);
+  const r = repartitionFixes([a, b], finances);
+  assert.deepEqual(r, { abonnesTotal: 100, partParAbonne: 1 });
+  const ea = estimerSouscription(a, finances, generation, r);
+  const eb = estimerSouscription(b, finances, generation, r);
+  assert.deepEqual([ea.partFixe, ea.fixesAlloues, eb.fixesAlloues], [1, 30, 70], "100 de coûts fixes : 30 pour A, 70 pour B");
+  assert.equal(ea.coutRevient, 16);
+  // Sans abonné visé nulle part : repli sur le nombre global d'utilisateurs estimés (hypothèses antérieures).
+  assert.deepEqual(repartitionFixes([offre()], finances), { abonnesTotal: 0, partParAbonne: 1 });
+  assert.equal(repartitionFixes([], { ...finances, utilisateursEstimes: undefined }).partParAbonne, 100, "jamais de division par zéro");
+});
+
+test("prix calculé en mode marge : dépend des abonnés visés de tout le portefeuille", () => {
+  const a = { ...offreCible("a", 0, 10), prix: { mode: "marge", prixMensuelHT: 0, margeCible: 20, remiseAnnuelle: 0 } };
+  const seul = estimerSouscription(a, finances, generation, repartitionFixes([a], finances));
+  const accompagne = estimerSouscription(a, finances, generation, repartitionFixes([a, offreCible("b", 0, 90)], finances));
+  assert.deepEqual([seul.partFixe, seul.prixMensuelHT], [10, 31.25], "seule, l'offre porte 100 / 10 : (15 + 10) / 0,8");
+  assert.deepEqual([accompagne.partFixe, accompagne.prixMensuelHT], [1, 20], "à 100 abonnés visés : (15 + 1) / 0,8");
+});
+
+test("finance simplifiée : compte de résultat par offre, totaux, point mort et projection", () => {
+  const b = bilanPortefeuille([offreCible("a", 20, 30), offreCible("b", 0, 5)], finances, generation);
+  const [a, g] = b.offres;
+  assert.deepEqual([a.revenus, a.variables, a.fixes, a.frais, a.contribution], [600, 450, 85.71, 0, 150]);
+  assert.deepEqual([g.revenus, g.variables, g.fixes, g.contribution], [0, 75, 14.29, -75]);
+  assert.equal(a.resultat + g.resultat, b.total.resultat);
+  assert.deepEqual([b.total.abonnes, b.total.revenus, b.total.couts, b.total.contribution, b.total.resultat], [35, 600, 625, 75, -25]);
+  assert.equal(b.total.tauxMarge, -4.2);
+  assert.deepEqual(b.pointMort, { facteur: 1.3333, abonnes: 47 }, "35 × 100 / 75 = 46,7 abonnés");
+  assert.equal(b.projection.length, 21);
+  assert.deepEqual(b.projection[0], { abonnes: 0, resultat: -100 });
+  assert.deepEqual(b.projection.at(-1), { abonnes: 70, resultat: 50 });
+  // Contribution nulle ou négative : point mort hors d'atteinte.
+  assert.equal(bilanPortefeuille([offreCible("b", 0, 70)], finances, generation).pointMort, null);
+});
+
+test("offres pressenties : abonnés visés par défaut, et 0 si une offre enregistrée n'en a pas", () => {
+  assert.deepEqual(SOUSCRIPTIONS_PAR_DEFAUT.map((x) => x.usage.utilisateursCibles), [150, 25, 20, 5]);
+  const roles = Object.keys(ROLES_SYSTEME);
+  const { utilisateursCibles, ...ancienUsage } = SOUSCRIPTIONS_PAR_DEFAUT[1].usage;
+  assert.equal(validerSouscription("solo", { ...SOUSCRIPTIONS_PAR_DEFAUT[1], usage: ancienUsage }, { roles }).souscription.usage.utilisateursCibles, 25, "repris de l'offre pressentie");
+  assert.equal(validerSouscription("ecole", { ...SOUSCRIPTIONS_PAR_DEFAUT[1], usage: ancienUsage }, { roles }).souscription.usage.utilisateursCibles, 0);
+  assert.equal(validerSouscription("solo", { ...SOUSCRIPTIONS_PAR_DEFAUT[1], usage: { ...ancienUsage, utilisateursCibles: -1 } }, { roles }).code, "hors-bornes:utilisateursCibles");
+});
+
+test("un module IA n'est compté que si l'offre inclut sa fonctionnalité", () => {
+  const prix = { ...finances, coutsFixesMensuels: 0, modeles: { tuteur: { entree: 0, sortie: 1, ratio: 0 }, defi: { entree: 0, sortie: 1, ratio: 0 }, cahiers: { entree: 0, sortie: 1, ratio: 0 } } };
+  const base = { ...offre(), limites: { tokensSession: 1000, tokensAppel: 500, defisJour: 1, cahiersJour: 1 }, usage: { joursActifsMois: 10, tauxUtilisation: 100 } };
+  const tous = estimerSouscription(base, prix, generation).coutVariable.parModule;
+  assert.deepEqual([tous.tuteur.tokensMoisPlafond, tous.defi.tokensMoisPlafond, tous.cahiers.tokensMoisPlafond], [10000, 15000, 1000000]);
+  const sansIa = estimerSouscription({ ...base, fonctionnalites: ["chat", "ia.tuteur", "jeux"] }, prix, generation).coutVariable.parModule;
+  assert.deepEqual([sansIa.tuteur.tokensMoisPlafond, sansIa.defi.tokensMoisPlafond, sansIa.cahiers.tokensMoisPlafond], [10000, 0, 0]);
+  assert.deepEqual([sansIa.defi.inclus, sansIa.cahiers.inclus], [false, false]);
 });

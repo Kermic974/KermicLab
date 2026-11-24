@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-le-groupe-et-le-radical-d-un-verbe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conjugaison-temps/contenu.json"
+  },
+  "source": "microskill.francais.identifier-le-groupe-et-le-radical-d-un-verbe",
+  "target": "skill.francais.conjugaison-temps"
+}

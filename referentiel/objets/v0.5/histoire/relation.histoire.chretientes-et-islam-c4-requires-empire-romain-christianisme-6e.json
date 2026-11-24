@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.chretientes-et-islam-c4-requires-empire-romain-christianisme-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/chretientes-et-islam-c4/contenu.json"
+  },
+  "source": "notion.histoire.chretientes-et-islam-c4",
+  "target": "notion.histoire.empire-romain-christianisme-6e",
+  "rationale": "« L'Empire romain et la naissance du christianisme » : Progression chronologique du programme (lien de continuité du parcours, pas un prérequis conceptuel strict) : les chrétientés et l’islam suivent l’Empire romain et la naissance du christianisme."
+}

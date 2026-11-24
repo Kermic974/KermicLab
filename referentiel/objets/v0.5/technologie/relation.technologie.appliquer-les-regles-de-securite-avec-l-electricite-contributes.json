@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.appliquer-les-regles-de-securite-avec-l-electricite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/objets-electriques-et-materiaux-c2/contenu.json"
+  },
+  "source": "microskill.technologie.appliquer-les-regles-de-securite-avec-l-electricite",
+  "target": "skill.technologie.objets-electriques-et-materiaux-c2"
+}

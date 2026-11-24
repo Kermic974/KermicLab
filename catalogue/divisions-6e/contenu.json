@@ -1,0 +1,110 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "On peut continuer une division après la virgule pour obtenir un quotient décimal.",
+  "niveaux": [
+    {
+      "titre": "Intuition : partager une somme",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Tu partages 7 € entre 4 amis. 7 ÷ 4 donne 1 avec un reste de 3 euros. Mais on peut continuer : 3 euros = 300 centimes, 300 ÷ 4 = 75 centimes. Chacun reçoit 1,75 €."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "7 ÷ 4 = 1 reste 3.",
+          "On met une virgule et on abaisse un zéro : 30 ÷ 4 = 7 reste 2.",
+          "On abaisse un zéro : 20 ÷ 4 = 5 : quotient 1,75."
+        ]
+      },
+      "aRetenir": "On met la virgule au quotient quand on abaisse le premier zéro."
+    },
+    {
+      "titre": "Quotients exacts et critères",
+      "niveau": "6e",
+      "paragraphes": [
+        "Un **quotient décimal** est exact quand le reste devient nul (7 ÷ 4 = 1,75). Parfois il ne l'est jamais (10 ÷ 3 = 3,333…) : on **arrondit**.",
+        "Critères de divisibilité : par 2 (dernier chiffre pair), 3 (somme des chiffres multiple de 3), 4 (deux derniers chiffres multiples de 4), 5, 9, 10."
+      ],
+      "exemple": {
+        "titre": "Exemple : 132 est-il divisible par 4 ?",
+        "etapes": [
+          "Deux derniers chiffres : 32.",
+          "32 = 4 × 8.",
+          "Donc 132 est divisible par 4."
+        ]
+      },
+      "aRetenir": "4 divise un nombre si 4 divise ses deux derniers chiffres."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Calcule 7 ÷ 4.",
+        "reponse": 1.75,
+        "indices": [
+          "Continue après la virgule."
+        ],
+        "solution": "7 ÷ 4 = 1,75.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "132 est divisible par…",
+        "choix": [
+          "10",
+          "4",
+          "5",
+          "7"
+        ],
+        "bonne": 1,
+        "explication": "32 est multiple de 4. 132 = 4 × 33."
+      },
+      {
+        "type": "nombre",
+        "question": "Arrondis 10 ÷ 3 au centième.",
+        "reponse": 3.33,
+        "indices": [
+          "Regarde le chiffre des millièmes."
+        ],
+        "solution": "10 ÷ 3 = 3,333… ≈ 3,33.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le partage des pizzas",
+    "histoire": [
+      "Tu partages 3 pizzas entre 8 amis."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quelle part de pizza chacun reçoit-il (en décimal) ?",
+        "reponse": 0.375,
+        "indices": [
+          "3 ÷ 8, avec des zéros."
+        ],
+        "solution": "3 ÷ 8 = 0,375.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de parts de 1/8 de pizza chacun reçoit-il ?",
+        "reponse": 3,
+        "indices": [
+          "3 pizzas pour 8 : 3/8."
+        ],
+        "solution": "Chacun reçoit 3/8.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Partage juste !"
+  }
+}

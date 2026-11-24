@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.premieres-civilisations-6e-teaches-relier-ecriture-et-pouvoir",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/premieres-civilisations-6e/contenu.json"
+  },
+  "source": "notion.histoire.premieres-civilisations-6e",
+  "target": "microskill.histoire.relier-ecriture-et-pouvoir"
+}

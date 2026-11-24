@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Mieux habiter, c'est aménager pour que tous vivent bien sans abîmer la planète.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une ville agréable",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une ville agréable a des **espaces verts**, des transports collectifs, des pistes cyclables, de l'eau propre, des écoles proches. Une ville **durable** répond aux besoins d'aujourd'hui sans compromettre ceux des générations futures.",
+        "Chaque habitant peut aider : trier ses déchets, économiser l'eau et l'énergie, partager."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un parc rafraîchit la ville en été.",
+          "Des poubelles de tri pour le verre, le papier, le plastique.",
+          "Un tramway réduit les voitures."
+        ]
+      },
+      "aRetenir": "Développement durable : économie, société, environnement."
+    },
+    {
+      "titre": "Aménager et protéger",
+      "niveau": "CM2",
+      "paragraphes": [
+        "Les élus et les habitants **aménagent** : écoquartiers, bâtiments économes, panneaux solaires, jardins partagés. Le **recyclage** permet de transformer des déchets en nouvelles matières.",
+        "Il faut aussi se protéger des **risques** : inondations, tempêtes, canicules. Des plans d'urgence et des règles de construction limitent les dégâts."
+      ],
+      "exemple": {
+        "titre": "Exemple : les 3 R",
+        "etapes": [
+          "Réduire les déchets.",
+          "Réutiliser les objets.",
+          "Recycler ce qui ne peut être réutilisé."
+        ]
+      },
+      "aRetenir": "Réduire, réutiliser, recycler."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que signifie « durable » ?",
+        "choix": [
+          "Qui préserve les ressources pour l'avenir",
+          "Qui ne dure qu'une journée",
+          "Qui coûte plus cher à fabriquer",
+          "Qui existe depuis très longtemps"
+        ],
+        "bonne": 0,
+        "explication": "Développement durable."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel geste réduit les déchets ?",
+        "choix": [
+          "Acheter beaucoup d'emballages",
+          "Brûler les ordures",
+          "Utiliser une gourde réutilisable",
+          "Jeter les bouteilles"
+        ],
+        "bonne": 2,
+        "explication": "Réduire à la source."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Dans les 3 R, que signifie le dernier R ?",
+        "choix": [
+          "Rouler",
+          "Remplacer",
+          "Recycler",
+          "Réparer"
+        ],
+        "bonne": 2,
+        "explication": "Réduire, réutiliser, recycler."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le projet de quartier",
+    "histoire": [
+      "Ta classe propose des idées pour rendre le quartier de l'école plus agréable."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle idée est durable ?",
+        "choix": [
+          "Planter des arbres et créer un composteur",
+          "Bétonner la cour",
+          "Supprimer les poubelles de tri",
+          "Laisser les lumières allumées"
+        ],
+        "bonne": 0,
+        "explication": "Arbres et compost préservent l'environnement."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pourquoi trier les déchets ?",
+        "choix": [
+          "Pour les recycler",
+          "Pour les cacher",
+          "Pour polluer",
+          "Pour les brûler dehors"
+        ],
+        "bonne": 0,
+        "explication": "Le tri permet le recyclage."
+      }
+    ],
+    "conclusion": "Quartier amélioré !"
+  }
+}

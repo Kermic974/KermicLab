@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.geographie.france-et-europe-dans-la-mondialisation-l-premiere",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-et-europe-dans-la-mondialisation-l/contenu.json"
+  },
+  "object": "notion.geographie.france-et-europe-dans-la-mondialisation-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.premiere",
+  "role": "introduced"
+}

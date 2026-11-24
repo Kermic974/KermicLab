@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.emc-libertes-et-droits-l-requires-liberte",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-libertes-et-droits-l/contenu.json"
+  },
+  "source": "notion.emc.emc-libertes-et-droits-l",
+  "target": "notion.emc.liberte",
+  "rationale": "« La liberté » : Le lycée reprend la liberté et les droits de l’homme du collège."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.fonctions-dans-la-phrase-cm-teaches-reperer-le-sujet-et-le-verbe",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fonctions-dans-la-phrase-cm/contenu.json"
+  },
+  "source": "notion.francais.fonctions-dans-la-phrase-cm",
+  "target": "microskill.francais.reperer-le-sujet-et-le-verbe"
+}

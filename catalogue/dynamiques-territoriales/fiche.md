@@ -17,10 +17,10 @@ questions:
   - C'est quoi les dynamiques territoriales ?
   - Quelle différence entre métropolisation et périurbanisation ?
   - Comment l'aménagement du territoire peut-il réduire les inégalités ?
-prerequis:
-niveaux: cycle-4, seconde, premiere, terminale
 classes: 3e
-competences: geographie-dynamiques-territoriales-action-1, geographie-dynamiques-territoriales-action-2
+prerequis: urbanisation, mobilites
+niveaux: cycle-4, seconde, premiere, terminale
+competences: interpreter-l-evolution-d-un-territoire-entre-deux-dates, calculer-et-interpreter-un-taux-de-variation-de-population, identifier-un-processus-de-metropolisation-ou-de-periurbanisation, caracteriser-les-acteurs-d-un-territoire, discuter-un-arbitrage-d-amenagement
 ---
 
 # Les dynamiques territoriales

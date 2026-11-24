@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.reconnaitre-un-roman-d-apprentissage-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/roman-et-recit-l/contenu.json"
+  },
+  "source": "microskill.francais.reconnaitre-un-roman-d-apprentissage",
+  "target": "skill.francais.roman-et-recit-l"
+}

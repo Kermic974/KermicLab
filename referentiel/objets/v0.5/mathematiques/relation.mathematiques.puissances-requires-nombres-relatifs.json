@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.puissances-requires-nombres-relatifs",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/puissances/contenu.json"
+  },
+  "source": "notion.mathematiques.puissances",
+  "target": "notion.mathematiques.nombres-relatifs",
+  "rationale": "« Les nombres relatifs » : Les puissances à exposant négatif et les puissances de 10 supposent les relatifs."
+}

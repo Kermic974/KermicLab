@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.distinguer-plaisir-bonheur-et-satisfaction-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/bonheur/contenu.json"
+  },
+  "source": "microskill.philosophie.distinguer-plaisir-bonheur-et-satisfaction",
+  "target": "skill.philosophie.bonheur"
+}

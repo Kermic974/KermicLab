@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.decrire-un-paysage-urbain-ou-rural-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/paysages-et-habiter-c2/contenu.json"
+  },
+  "source": "microskill.geographie.decrire-un-paysage-urbain-ou-rural",
+  "target": "skill.geographie.paysages-et-habiter-c2"
+}

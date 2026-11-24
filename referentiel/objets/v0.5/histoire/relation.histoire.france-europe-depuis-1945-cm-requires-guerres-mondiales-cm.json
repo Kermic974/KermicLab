@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.france-europe-depuis-1945-cm-requires-guerres-mondiales-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-europe-depuis-1945-cm/contenu.json"
+  },
+  "source": "notion.histoire.france-europe-depuis-1945-cm",
+  "target": "notion.histoire.guerres-mondiales-cm",
+  "rationale": "« Les deux guerres mondiales » : La construction européenne répond aux guerres mondiales."
+}

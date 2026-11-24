@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.energie-requires-energie-et-signaux-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie/contenu.json"
+  },
+  "source": "notion.physique-chimie.energie",
+  "target": "notion.physique-chimie.energie-et-signaux-6e",
+  "rationale": "« Énergie, signaux lumineux et sonores en 6e » : Les sources et conversions d’énergie du cycle 3 sont reprises avec formes d’énergie et rendement."
+}

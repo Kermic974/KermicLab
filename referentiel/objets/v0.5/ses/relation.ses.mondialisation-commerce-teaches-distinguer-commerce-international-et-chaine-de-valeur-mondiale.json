@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.mondialisation-commerce-teaches-distinguer-commerce-international-et-chaine-de-valeur-mondiale",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mondialisation-commerce/contenu.json"
+  },
+  "source": "notion.ses.mondialisation-commerce",
+  "target": "microskill.ses.distinguer-commerce-international-et-chaine-de-valeur-mondiale"
+}

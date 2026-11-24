@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.tourisme-teaches-calculer-un-nombre-de-nuitees",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tourisme/contenu.json"
+  },
+  "source": "notion.geographie.tourisme",
+  "target": "microskill.geographie.calculer-un-nombre-de-nuitees"
+}

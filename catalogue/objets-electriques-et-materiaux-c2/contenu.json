@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les objets sont faits dans des matériaux choisis pour leur usage ; certains fonctionnent avec de l'électricité.",
+  "niveaux": [
+    {
+      "titre": "Les matériaux",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Les objets sont fabriqués dans des **matériaux** : le bois, le métal, le plastique, le verre, le tissu, le papier. On choisit selon l'usage : un verre est en verre (transparent), un marteau en métal (solide), un jouet souvent en plastique (léger)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Une fenêtre : en verre pour laisser passer la lumière.",
+          "Une poignée de casserole : en plastique pour ne pas brûler.",
+          "Un pull : en laine pour avoir chaud."
+        ]
+      },
+      "aRetenir": "On choisit le matériau selon l'usage."
+    },
+    {
+      "titre": "Un circuit électrique",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "Pour allumer une ampoule, il faut un **circuit fermé** : une pile, des fils et l'ampoule forment une boucle. Si un fil est débranché, le circuit est ouvert et l'ampoule reste éteinte. Un **interrupteur** ouvre ou ferme le circuit.",
+        "Les métaux **conduisent** l'électricité ; le plastique, le bois et le verre sont des **isolants**. L'électricité de la prise est **dangereuse** : on n'y touche jamais."
+      ],
+      "exemple": {
+        "titre": "Exemple : la lampe de poche",
+        "etapes": [
+          "Pile + fil + ampoule en boucle.",
+          "J'appuie sur l'interrupteur : circuit fermé.",
+          "L'ampoule s'allume."
+        ]
+      },
+      "aRetenir": "Circuit fermé : le courant passe."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Un circuit fermé permet…",
+        "choix": [
+          "d'éteindre toujours",
+          "de chauffer l'eau",
+          "de couper le fil",
+          "d'allumer l'ampoule"
+        ],
+        "bonne": 3,
+        "explication": "Le courant passe."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel matériau conduit l'électricité ?",
+        "choix": [
+          "le verre",
+          "le métal",
+          "le plastique",
+          "le bois"
+        ],
+        "bonne": 1,
+        "explication": "Les métaux."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Que faut-il faire avec une prise électrique ?",
+        "choix": [
+          "y mettre une épingle",
+          "la toucher avec de l'eau",
+          "la débrancher en tirant le fil",
+          "ne jamais y mettre les doigts"
+        ],
+        "bonne": 3,
+        "explication": "Danger."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La lampe de poche",
+    "histoire": [
+      "Tu fabriques une lampe avec une pile, des fils et une ampoule."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "L'ampoule ne s'allume pas. Que vérifier ?",
+        "choix": [
+          "le nom écrit sur la pile",
+          "la couleur des fils utilisés",
+          "que le circuit est bien fermé",
+          "l'heure qu'il est dans la classe"
+        ],
+        "bonne": 2,
+        "explication": "Contacts."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel objet sert d'interrupteur ?",
+        "choix": [
+          "une réglette de bois sec",
+          "un trombone métallique qui touche les fils",
+          "un morceau de plastique rigide",
+          "une bande de papier épais"
+        ],
+        "bonne": 1,
+        "explication": "Il doit conduire."
+      }
+    ],
+    "conclusion": "Lampe allumée !"
+  }
+}

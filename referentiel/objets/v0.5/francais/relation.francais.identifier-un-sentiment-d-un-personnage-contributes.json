@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-un-sentiment-d-un-personnage-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lire-et-comprendre-c2/contenu.json"
+  },
+  "source": "microskill.francais.identifier-un-sentiment-d-un-personnage",
+  "target": "skill.francais.lire-et-comprendre-c2"
+}

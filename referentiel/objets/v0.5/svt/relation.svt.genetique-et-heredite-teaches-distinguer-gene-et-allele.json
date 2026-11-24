@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.genetique-et-heredite-teaches-distinguer-gene-et-allele",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/genetique-et-heredite/contenu.json"
+  },
+  "source": "notion.svt.genetique-et-heredite",
+  "target": "microskill.svt.distinguer-gene-et-allele"
+}

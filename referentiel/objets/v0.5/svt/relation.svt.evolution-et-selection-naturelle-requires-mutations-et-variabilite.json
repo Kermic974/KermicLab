@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.evolution-et-selection-naturelle-requires-mutations-et-variabilite",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/evolution-et-selection-naturelle/contenu.json"
+  },
+  "source": "notion.svt.evolution-et-selection-naturelle",
+  "target": "notion.svt.mutations-et-variabilite",
+  "rationale": "La variation des allèles sur laquelle agit la sélection provient des mutations."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.equilibrer-une-equation-de-reaction-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/atomes-et-molecules/contenu.json"
+  },
+  "source": "microskill.physique-chimie.equilibrer-une-equation-de-reaction",
+  "target": "skill.physique-chimie.atomes-et-molecules"
+}

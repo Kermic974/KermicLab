@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.nutrition-et-alimentation-6e-requires-developpement-vegetaux-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nutrition-et-alimentation-6e/contenu.json"
+  },
+  "source": "notion.svt.nutrition-et-alimentation-6e",
+  "target": "notion.svt.developpement-vegetaux-cm",
+  "rationale": "« Le développement des végétaux » : La nutrition de 6e reprend la digestion du CM et le développement des végétaux."
+}

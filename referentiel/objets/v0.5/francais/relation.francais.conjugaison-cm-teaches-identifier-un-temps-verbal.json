@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.conjugaison-cm-teaches-identifier-un-temps-verbal",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conjugaison-cm/contenu.json"
+  },
+  "source": "notion.francais.conjugaison-cm",
+  "target": "microskill.francais.identifier-un-temps-verbal"
+}

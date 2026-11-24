@@ -1,0 +1,115 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La concentration indique la quantité de soluté dissous dans un volume de solution.",
+  "niveaux": [
+    {
+      "titre": "Concentrations",
+      "niveau": "2de",
+      "paragraphes": [
+        "Une **solution** est un mélange homogène d'un **soluté** dans un **solvant**. La **concentration massique** t = m/V (g·L⁻¹) ; la **concentration molaire** c = n/V (mol·L⁻¹), avec n = m/M (M : masse molaire). Exemple : 5,85 g de NaCl (M = 58,5 g/mol) dans 0,5 L : n = 0,1 mol, c = 0,2 mol/L."
+      ],
+      "exemple": {
+        "titre": "Exemple : NaCl",
+        "etapes": [
+          "m = 5,85 g ; M = 58,5 g/mol.",
+          "n = 5,85/58,5 = 0,1 mol.",
+          "c = 0,1/0,5 = 0,2 mol/L."
+        ]
+      },
+      "aRetenir": "c = n/V ; n = m/M."
+    },
+    {
+      "titre": "Diluer",
+      "niveau": "2de",
+      "paragraphes": [
+        "**Diluer** une solution, c'est y ajouter du solvant : la quantité de soluté ne change pas, donc **c_mère × V_mère = c_fille × V_fille**. Le **facteur de dilution** F = c_mère/c_fille = V_fille/V_mère. Pour obtenir 100 mL à 0,1 mol/L à partir d'une solution à 1 mol/L : V_mère = 0,1 × 100/1 = 10 mL, complétés à 100 mL avec de l'eau (fiole jaugée)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "F = 1/0,1 = 10.",
+          "V_mère = 100/10 = 10 mL.",
+          "On prélève 10 mL à la pipette jaugée."
+        ]
+      },
+      "aRetenir": "Soluté conservé : cV constant."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "On dissout 5,85 g de NaCl (M = 58,5 g/mol) dans 0,5 L. Concentration molaire (mol/L) ?",
+        "reponse": 0.2,
+        "unite": "mol/L",
+        "indices": [
+          "n = m/M puis c = n/V."
+        ],
+        "solution": "n = 0,1 mol ; c = 0,2 mol/L.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "On dilue 10 fois. Une solution à 1 mol/L devient à (mol/L) :",
+        "reponse": 0.1,
+        "unite": "mol/L",
+        "indices": [
+          "Divise par le facteur."
+        ],
+        "solution": "c/10.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Lors d'une dilution, la quantité de soluté…",
+        "choix": [
+          "diminue de moitié",
+          "ne change pas",
+          "double",
+          "disparaît"
+        ],
+        "bonne": 1,
+        "explication": "On ajoute seulement du solvant."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le sirop",
+    "histoire": [
+      "Un sirop contient 20 g de sucre dans 0,25 L de solution."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Concentration massique (g/L) ?",
+        "reponse": 80,
+        "unite": "g/L",
+        "indices": [
+          "m/V."
+        ],
+        "solution": "20/0,25 = 80.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "On veut la diviser par 4. On…",
+        "choix": [
+          "retire une partie de l'eau de la solution",
+          "ajoute du sucre pour compenser",
+          "chauffe la solution pour l'évaporer",
+          "ajoute de l'eau jusqu'à 4 fois le volume"
+        ],
+        "bonne": 3,
+        "explication": "Facteur 4."
+      }
+    ],
+    "conclusion": "Bien dilué !"
+  }
+}

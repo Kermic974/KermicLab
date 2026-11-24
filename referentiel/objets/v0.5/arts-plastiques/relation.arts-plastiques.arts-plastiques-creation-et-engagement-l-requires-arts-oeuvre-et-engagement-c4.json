@@ -1,0 +1,13 @@
+{
+  "id": "relation.arts-plastiques.arts-plastiques-creation-et-engagement-l-requires-arts-oeuvre-et-engagement-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/arts-plastiques-creation-et-engagement-l/contenu.json"
+  },
+  "source": "notion.arts-plastiques.arts-plastiques-creation-et-engagement-l",
+  "target": "notion.arts-plastiques.arts-oeuvre-et-engagement-c4",
+  "rationale": "L’analyse d’œuvres engagées et du contexte est reprise avec les pratiques contemporaines."
+}

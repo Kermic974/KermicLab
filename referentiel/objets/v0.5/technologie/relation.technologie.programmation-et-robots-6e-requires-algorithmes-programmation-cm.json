@@ -1,0 +1,13 @@
+{
+  "id": "relation.technologie.programmation-et-robots-6e-requires-algorithmes-programmation-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/programmation-et-robots-6e/contenu.json"
+  },
+  "source": "notion.technologie.programmation-et-robots-6e",
+  "target": "notion.mathematiques.algorithmes-programmation-cm",
+  "rationale": "Boucles et conditions du cycle 3 sont réinvesties pour commander un robot."
+}

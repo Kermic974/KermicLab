@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-le-sens-d-une-racine-latine-ou-grecque-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vocabulaire-et-etymologie-6e/contenu.json"
+  },
+  "source": "microskill.francais.identifier-le-sens-d-une-racine-latine-ou-grecque",
+  "target": "skill.francais.vocabulaire-et-etymologie-6e"
+}

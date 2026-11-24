@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.grandes-periodes-c2-teaches-placer-des-personnages-celebres-sur-une-frise",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grandes-periodes-c2/contenu.json"
+  },
+  "source": "notion.histoire.grandes-periodes-c2",
+  "target": "microskill.histoire.placer-des-personnages-celebres-sur-une-frise"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-le-double-d-un-nombre-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/doubles-et-moities-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-le-double-d-un-nombre",
+  "target": "skill.mathematiques.doubles-et-moities-c2"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.ondes-requires-son-et-lumiere",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ondes/contenu.json"
+  },
+  "source": "notion.physique-chimie.ondes",
+  "target": "notion.physique-chimie.son-et-lumiere",
+  "rationale": "La célérité, la période et la fréquence généralisent la mesure d’une distance par un signal et la période d’un son."
+}

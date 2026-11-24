@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.distinguer-producteurs-consommateurs-et-decomposeurs-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ecosystemes-et-biodiversite/contenu.json"
+  },
+  "source": "microskill.svt.distinguer-producteurs-consommateurs-et-decomposeurs",
+  "target": "skill.svt.ecosystemes-et-biodiversite"
+}

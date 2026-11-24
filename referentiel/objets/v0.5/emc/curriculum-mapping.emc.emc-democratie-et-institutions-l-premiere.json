@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.emc.emc-democratie-et-institutions-l-premiere",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-democratie-et-institutions-l/contenu.json"
+  },
+  "object": "notion.emc.emc-democratie-et-institutions-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.premiere",
+  "role": "reinforced"
+}

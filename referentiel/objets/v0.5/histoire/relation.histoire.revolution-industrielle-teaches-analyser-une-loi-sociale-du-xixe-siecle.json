@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.revolution-industrielle-teaches-analyser-une-loi-sociale-du-xixe-siecle",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-industrielle/contenu.json"
+  },
+  "source": "notion.histoire.revolution-industrielle",
+  "target": "microskill.histoire.analyser-une-loi-sociale-du-xixe-siecle"
+}

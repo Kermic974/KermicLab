@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.resoudre-un-probleme-a-plusieurs-etapes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/problemes-a-etapes-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.resoudre-un-probleme-a-plusieurs-etapes",
+  "target": "skill.mathematiques.problemes-a-etapes-cm"
+}

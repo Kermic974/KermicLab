@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.planete-terre-et-cartes-c2-teaches-lire-un-planisphere",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/planete-terre-et-cartes-c2/contenu.json"
+  },
+  "source": "notion.geographie.planete-terre-et-cartes-c2",
+  "target": "microskill.geographie.lire-un-planisphere"
+}

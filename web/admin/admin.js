@@ -1,7 +1,9 @@
 // Back-office KermicLab (ADR 0026). Interface en français seulement, comme le blog : outil interne de l'équipe.
 // Tout le contenu est construit par le DOM (jamais innerHTML) ; aucune donnée n'est gardée hors de l'onglet.
 import { THEME_PERSONNALISE, deriverVariables } from "../theme.js";
-import { estimerSouscription } from "./financier.js";
+import { bilanPortefeuille, estimerSouscription, repartitionFixes } from "./financier.js";
+import { cheminLePlusCourt, decompacter, filtrer, indicateurs } from "./graphe-referentiel.js";
+import { COULEUR_TRANS, couleurs, creerVue } from "./graphe-vue.js";
 
 const CLE_SESSION = "kermiclab:admin:cle";
 const $ = (s) => document.querySelector(s);
@@ -15,6 +17,8 @@ function h(balise, props = {}, ...enfants) {
     else if (k === "text") e.textContent = v;
     else if (k.startsWith("on")) e.addEventListener(k.slice(2), v);
     else if (k === "value") e.value = v;
+    // Styles par le CSSOM (permis par la CSP du site, qui interdit l'attribut `style` en ligne).
+    else if (k === "style" && typeof v === "object") Object.assign(e.style, v);
     else if (k === "checked" || k === "selected" || k === "disabled") e[k] = !!v;
     else e.setAttribute(k, v === true ? "" : v);
   }
@@ -26,7 +30,7 @@ const LIBELLES = {
   categories: { requete: "Requêtes", "donnees-personnelles": "Données personnelles", sexuel: "Contenu sexuel", "contenu-dangereux": "Contenu dangereux", detresse: "Détresse", "injection-directe": "Injection directe", "injection-indirecte": "Injection indirecte" },
   comportements: { "messages-personnels": "Messages à caractère personnel", "contenu-sexuel": "Contenu sexuel", "contenu-dangereux": "Contenu dangereux", detresse: "Détresse", "injection-directe": "Tentative d'injection directe", "injection-indirecte": "Tentative d'injection indirecte", "consommation-elevee": "Consommation élevée", surconsommation: "Surconsommation" },
   etats: { normal: "Normal", surveille: "Surveillé", restreint: "Restreint (IA coupée)", suspendu: "Suspendu" },
-  fonctionnalites: { chat: "Poser une question", "ia.tuteur": "Tuteur IA", "ia.defi": "Défi express généré par l'IA", "ia.cahiers": "Cahiers enrichis par l'IA", "ia.idees": "Cadrage d'idée par l'IA", jeux: "Jeux", cahiers: "Mes cahiers", defi: "Défi express", "contributions.proposer": "Proposer une contribution", "contributions.relire": "Relire les contributions", famille: "Espace famille", synchronisation: "Compte et synchronisation", professeur: "Expérience Professeur (classes et élèves)", "admin.utilisateurs": "Back-office : utilisateurs", "admin.roles": "Back-office : rôles et accès", "admin.securite": "Back-office : sécurité", "admin.donnees": "Back-office : données personnelles", "admin.telemetrie": "Back-office : télémétrie", "admin.theme": "Back-office : charte graphique", "admin.contenus": "Back-office : contenus", "admin.harness": "Back-office : harness" },
+  fonctionnalites: { chat: "Poser une question", "ia.tuteur": "Tuteur IA", "ia.defi": "Défi express généré par l'IA", "ia.cahiers": "Cahiers enrichis par l'IA", "ia.idees": "Cadrage d'idée par l'IA", jeux: "Jeux", cahiers: "Mes cahiers", defi: "Défi express", "contributions.proposer": "Proposer une contribution", "contributions.relire": "Relire les contributions", "relecture.humaine": "Confirmer une relecture humaine", famille: "Espace famille", synchronisation: "Compte et synchronisation", professeur: "Expérience Professeur (classes et élèves)", "admin.utilisateurs": "Back-office : utilisateurs", "admin.roles": "Back-office : rôles et accès", "admin.securite": "Back-office : sécurité", "admin.donnees": "Back-office : données personnelles", "admin.telemetrie": "Back-office : télémétrie", "admin.theme": "Back-office : charte graphique", "admin.contenus": "Back-office : contenus", "admin.harness": "Back-office : harness" },
   modes: { tous: "Tous les utilisateurs", roles: "Rôles ou niveaux choisis", personne: "Fermée" },
   types: { cours: "Cours", jeu: "Jeu", blog: "Article de blog", parcours: "Parcours", lab: "Lab" },
   statuts: { brouillon: "Brouillon", propose: "Proposé en revue", publie: "Publié", archive: "Archivé" },
@@ -47,7 +51,8 @@ const LIBELLES = {
     "corps-trop-long": "Le texte dépasse 20 000 caractères.", "etapes-invalides": "Les étapes doivent être des contenus du catalogue, sans doublon (30 au plus).", "publication-par-pr": "Ce contenu se publie par une PR fusionnée par le propriétaire : propose-le en revue.",
     "parcours-sans-revue": "Un parcours se publie directement.", "github-non-configure": "GitHub n'est pas configuré sur ce serveur.", "github-indisponible": "GitHub n'a pas répondu. Réessaie plus tard.", "introuvable": "Élément introuvable.", "etat-invalide": "État invalide.", reseau: "Le serveur ne répond pas.",
     "assistant-desactive": "L'assistant IA est désactivé (Harness → Assistant IA des utilisateurs, ou IA coupée sur le site).", "assistant-indisponible": "L'assistant IA ne répond pas (AI Gateway indisponible). Réessaie plus tard.",
-    "assistant-refus": "Le modèle a refusé de traiter cette consigne.", "assistant-reponse-invalide": "La réponse du modèle est inexploitable. Reformule la consigne.", "consigne-invalide": "Écris une consigne de 1 à 500 caractères."
+    "assistant-refus": "Le modèle a refusé de traiter cette consigne.", "assistant-reponse-invalide": "La réponse du modèle est inexploitable. Reformule la consigne.", "consigne-invalide": "Écris une consigne de 1 à 500 caractères.",
+    "graphe-absent": "Le graphe du référentiel est absent de ce déploiement : lance npm run build."
   }
 };
 const lib = (famille, cle) => LIBELLES[famille]?.[cle] ?? cle;
@@ -757,6 +762,170 @@ const LIB_ERREURS_TARIFS = {
   "cloudflare-injoignable": "Cloudflare injoignable", "http-401": "jeton refusé", "http-403": "jeton sans la permission Workers AI Read"
 };
 
+// ---------- Graphiques (Finance simplifiée, ADR 0036) ----------
+// Construits par le DOM, sans bibliothèque (CSP du site). Barres en HTML (lisibles sur téléphone), courbe en SVG.
+// Chaque graphique a sa vue tableau ; l'infobulle (survol et focus clavier) n'est jamais le seul accès à une valeur.
+
+const SVG = "http://www.w3.org/2000/svg";
+const s = (balise, attributs = {}) => {
+  const e = document.createElementNS(SVG, balise);
+  for (const [k, v] of Object.entries(attributs)) e.setAttribute(k, v);
+  return e;
+};
+
+/** Figure : titre, sous-titre, légende, corps, infobulle partagée et vue tableau. */
+function figure({ titre, sousTitre, legende = [], corps, table }) {
+  const infobulle = h("div", { class: "viz-infobulle", role: "status", hidden: true });
+  const fig = h("figure", { class: "viz-figure" },
+    h("figcaption", {}, h("strong", { text: titre }), sousTitre ? h("span", { class: "doux petit", text: sousTitre }) : null),
+    legende.length ? h("ul", { class: "viz-legende" }, legende.map(([cle, texte]) => h("li", {}, h("span", { class: `viz-cle ${cle}`, "aria-hidden": "true" }), texte))) : null,
+    corps, infobulle,
+    h("details", { class: "viz-table" }, h("summary", { text: "Voir les données en tableau" }), table));
+  return { fig, infobulle };
+}
+
+/** Rend une marque interactive : survol et focus clavier affichent la même infobulle. */
+function interactive(marque, fig, infobulle, lignes) {
+  marque.tabIndex = 0;
+  marque.setAttribute("aria-label", lignes.join(", "));
+  const montrer = () => {
+    infobulle.replaceChildren(...lignes.map((l, i) => h(i === 0 ? "strong" : "span", { text: l })));
+    infobulle.hidden = false;
+    const cadre = fig.getBoundingClientRect();
+    const m = marque.getBoundingClientRect();
+    const gauche = Math.min(Math.max(0, m.left - cadre.left + m.width / 2 - infobulle.offsetWidth / 2), Math.max(0, cadre.width - infobulle.offsetWidth));
+    infobulle.style.left = `${gauche}px`;
+    infobulle.style.top = `${Math.max(0, m.top - cadre.top - infobulle.offsetHeight - 6)}px`;
+  };
+  const cacher = () => { infobulle.hidden = true; };
+  marque.addEventListener("pointerenter", montrer);
+  marque.addEventListener("focus", montrer);
+  marque.addEventListener("pointerleave", cacher);
+  marque.addEventListener("blur", cacher);
+  return marque;
+}
+
+/** Barres horizontales divergentes autour de zéro (résultat positif ou négatif). */
+function graphiqueDivergent({ titre, sousTitre, lignes, format, table }) {
+  const max = Math.max(1e-9, ...lignes.map((l) => Math.abs(l.valeur)));
+  const negatifs = lignes.some((l) => l.valeur < 0);
+  const positifs = lignes.some((l) => l.valeur > 0);
+  // Position du zéro : au milieu s'il y a des deux côtés, sinon au bord.
+  const zero = negatifs && positifs ? 50 : negatifs ? 100 : 0;
+  const echelle = negatifs && positifs ? 50 : 100;
+  const corps = h("div", { class: "viz-barres" });
+  const { fig, infobulle } = figure({ titre, sousTitre, legende: [["viz-positif", "Bénéfice"], ["viz-negatif", "Perte"]], corps, table });
+  for (const l of lignes) {
+    const largeur = Math.abs(l.valeur) / max * echelle;
+    const barre = h("div", { class: `viz-barre ${l.valeur < 0 ? "viz-negatif negatif" : "viz-positif"}`,
+      style: l.valeur < 0 ? { right: `${100 - zero}%`, width: `${largeur}%` } : { left: `${zero}%`, width: `${largeur}%` } });
+    interactive(barre, fig, infobulle, [format(l.valeur), l.libelle, ...(l.details ?? [])]);
+    corps.append(h("span", { class: "viz-libelle", text: l.libelle }),
+      h("div", { class: "viz-piste" }, h("span", { class: "viz-zero", style: { left: `${zero}%` } }), barre),
+      h("span", { class: "viz-valeur", text: format(l.valeur) }));
+  }
+  return fig;
+}
+
+/** Barres horizontales empilées (coûts), avec un repère pour le chiffre d'affaires. */
+function graphiqueEmpile({ titre, sousTitre, series, lignes, repere, format, table }) {
+  const max = Math.max(1e-9, ...lignes.map((l) => Math.max(series.reduce((t, sr) => t + l[sr.cle], 0), repere ? l[repere.cle] : 0)));
+  const corps = h("div", { class: "viz-barres" });
+  const legende = [...series.map((sr) => [sr.classe, sr.libelle]), ...(repere ? [["viz-cle-repere", repere.libelle]] : [])];
+  const { fig, infobulle } = figure({ titre, sousTitre, legende, corps, table });
+  for (const l of lignes) {
+    const total = series.reduce((t, sr) => t + l[sr.cle], 0);
+    const pile = h("div", { class: "viz-pile", style: { width: `${total / max * 100}%` } });
+    for (const sr of series) {
+      if (l[sr.cle] <= 0) continue;
+      pile.append(interactive(h("span", { class: `viz-seg ${sr.classe}`, style: { flex: `${l[sr.cle]} 1 0` } }), fig, infobulle, [format(l[sr.cle]), `${l.libelle} · ${sr.libelle}`]));
+    }
+    const piste = h("div", { class: "viz-piste" }, pile);
+    if (repere) piste.append(interactive(h("span", { class: "viz-repere", style: { left: `calc(${l[repere.cle] / max * 100}% - 1px)` } }), fig, infobulle, [format(l[repere.cle]), `${l.libelle} · ${repere.libelle}`]));
+    corps.append(h("span", { class: "viz-libelle", text: l.libelle }), piste, h("span", { class: "viz-valeur", text: format(total) }));
+  }
+  return fig;
+}
+
+/** Barres classées, une seule teinte (part d'un tout, à comparer). */
+function graphiqueClasse({ titre, sousTitre, lignes, format, table }) {
+  const max = Math.max(1e-9, ...lignes.map((l) => l.valeur));
+  const corps = h("div", { class: "viz-barres" });
+  const { fig, infobulle } = figure({ titre, sousTitre, corps, table });
+  for (const l of [...lignes].sort((a, b) => b.valeur - a.valeur)) {
+    const barre = h("div", { class: "viz-barre viz-1", style: { left: "0", width: `${l.valeur / max * 100}%` } });
+    interactive(barre, fig, infobulle, [format(l.valeur), l.libelle, ...(l.details ?? [])]);
+    corps.append(h("span", { class: "viz-libelle", text: l.libelle }), h("div", { class: "viz-piste" }, barre), h("span", { class: "viz-valeur", text: format(l.valeur) }));
+  }
+  return fig;
+}
+
+/** Courbe : résultat selon le nombre d'abonnés, ligne de zéro, point mort et réticule qui suit le pointeur. */
+function graphiqueCourbe({ titre, sousTitre, points, pointMort, formatX, formatY, table }) {
+  const L = 600, H = 200;
+  const xs = points.map((p) => p.x), ys = points.map((p) => p.y);
+  const xMax = Math.max(1, ...xs);
+  const yMin = Math.min(0, ...ys), yMax = Math.max(0, ...ys);
+  const marge = (yMax - yMin) * 0.08 || 1;
+  const bas = yMin - marge, haut = yMax + marge;
+  const X = (x) => x / xMax * L;
+  const Y = (y) => H - (y - bas) / (haut - bas) * H;
+  const pct = (x, y) => ({ gauche: X(x) / L * 100, hautPct: Y(y) / H * 100 });
+  // Graduations : zéro toujours, les extrêmes seulement s'ils ne touchent pas une graduation déjà placée (12 % de la hauteur).
+  const graduations = [0];
+  for (const v of [haut - marge, bas + marge]) if (graduations.every((w) => Math.abs(Y(w) - Y(v)) > H * 0.12)) graduations.push(v);
+  const trace = s("svg", { viewBox: `0 0 ${L} ${H}`, preserveAspectRatio: "none", class: "viz-svg", "aria-hidden": "true" });
+  for (const g of graduations) trace.append(s("line", { x1: 0, x2: L, y1: Y(g), y2: Y(g), class: g === 0 ? "viz-axe" : "viz-grille", "vector-effect": "non-scaling-stroke" }));
+  trace.append(s("path", { d: points.map((p, i) => `${i ? "L" : "M"}${X(p.x).toFixed(2)},${Y(p.y).toFixed(2)}`).join(""), class: "viz-ligne", "vector-effect": "non-scaling-stroke" }));
+  const zone = h("div", { class: "viz-zone" }, trace);
+  for (const g of graduations) zone.append(h("span", { class: "viz-graduation", style: { top: `${Y(g) / H * 100}%` }, text: formatY(g) }));
+  const reticule = h("span", { class: "viz-reticule", hidden: true });
+  const point = h("span", { class: "viz-point viz-1", hidden: true });
+  zone.append(reticule, point);
+  if (pointMort) {
+    const p = pct(pointMort.x, 0);
+    zone.append(h("span", { class: "viz-point viz-mort", style: { left: `${p.gauche}%`, top: `${p.hautPct}%` } }),
+      // Étiquette au-dessus du point quand il est dans le bas du graphique, pour ne pas toucher l'axe.
+      h("span", { class: `viz-etiquette${p.hautPct > 60 ? " dessus" : ""}`, style: { left: `${Math.min(85, Math.max(15, p.gauche))}%`, top: `${p.hautPct}%` }, text: `Point mort : ${formatX(pointMort.x)}` }));
+  }
+  const axeX = h("div", { class: "viz-axe-x" }, h("span", { text: formatX(0) }), h("span", { text: formatX(xMax) }));
+  const corps = h("div", { class: "viz-courbe" }, zone, axeX);
+  const { fig, infobulle } = figure({ titre, sousTitre, corps, table });
+  const montrer = (i) => {
+    const p = points[i];
+    const { gauche, hautPct } = pct(p.x, p.y);
+    reticule.hidden = point.hidden = false;
+    reticule.style.left = `${gauche}%`;
+    point.style.left = `${gauche}%`;
+    point.style.top = `${hautPct}%`;
+    infobulle.replaceChildren(h("strong", { text: formatY(p.y) }), h("span", { text: formatX(p.x) }));
+    infobulle.hidden = false;
+    const cadre = fig.getBoundingClientRect(), z = zone.getBoundingClientRect();
+    infobulle.style.left = `${Math.min(Math.max(0, z.left - cadre.left + z.width * gauche / 100 + 10), Math.max(0, cadre.width - infobulle.offsetWidth))}px`;
+    infobulle.style.top = `${z.top - cadre.top}px`;
+  };
+  const cacher = () => { reticule.hidden = point.hidden = infobulle.hidden = true; };
+  let courant = 0;
+  zone.tabIndex = 0;
+  zone.setAttribute("aria-label", `${titre}. Flèches gauche et droite pour parcourir les points.`);
+  zone.addEventListener("pointermove", (e) => {
+    const r = zone.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width * xMax;
+    courant = points.reduce((meilleur, p, i) => (Math.abs(p.x - x) < Math.abs(points[meilleur].x - x) ? i : meilleur), 0);
+    montrer(courant);
+  });
+  zone.addEventListener("pointerleave", cacher);
+  zone.addEventListener("focus", () => montrer(courant));
+  zone.addEventListener("blur", cacher);
+  zone.addEventListener("keydown", (e) => {
+    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+    e.preventDefault();
+    courant = Math.min(points.length - 1, Math.max(0, courant + (e.key === "ArrowRight" ? 1 : -1)));
+    montrer(courant);
+  });
+  return fig;
+}
+
 async function ecranSouscriptions() {
   const etat = await api("GET", "/souscriptions");
   const finances = copie(etat.finances);
@@ -764,8 +933,16 @@ async function ecranSouscriptions() {
   const consommation = ["tokensSession", "tokensAppel", "defisJour", "cahiersJour"];
   const mensuel = ["cahiersMois"];
   const structure = ["enfantsMax", "classesMax", "elevesMax"];
-  const estimer = (s) => estimerSouscription(s, finances, etat.tokensParGeneration);
   const nombreSaisi = (valeur) => (valeur === "" ? NaN : Number(valeur));
+  // Abonnés visés par offre (ADR 0036) : ils pondèrent la répartition des coûts fixes et alimentent la finance
+  // simplifiée. Modifiables dans l'éditeur comme dans la finance simplifiée ; les deux restent synchronisés.
+  const cibles = new Map(etat.souscriptions.map((x) => [x.id, x.usage.utilisateursCibles ?? 0]));
+  const portefeuille = (remplacee) => {
+    const liste = etat.souscriptions.map((x) => ({ ...x, usage: { ...x.usage, utilisateursCibles: cibles.get(x.id) ?? 0 } }));
+    if (!remplacee?.id) return remplacee ? [...liste, remplacee] : liste;
+    return liste.some((x) => x.id === remplacee.id) ? liste.map((x) => (x.id === remplacee.id ? remplacee : x)) : [...liste, remplacee];
+  };
+  const estimer = (x) => estimerSouscription(x, finances, etat.tokensParGeneration, repartitionFixes(portefeuille(x), finances));
 
   // Vue comparée : recalculée à chaque changement d'hypothèse.
   const comparaison = h("div", {});
@@ -773,13 +950,15 @@ async function ecranSouscriptions() {
     { titre: "Offre", cellule: (s) => h("div", { class: "admin-champ" }, h("div", { class: "admin-ligne" }, h("strong", { text: s.libelle }), pastille(STATUTS_SOUSCRIPTION[s.statut], s.statut === "active" ? "ok" : "")),
       h("span", { class: "doux petit", text: `Rôle ${etat.roles.find((r) => r.id === s.role)?.libelle ?? s.role} · ${s.fonctionnalites.length} fonctionnalité(s) sur ${etat.fonctionnalites.length}` })) },
     { titre: "Tokens · défis · cahiers / jour", nombre: true, cellule: (s) => `${nombre(s.limites.tokensSession)} · ${nombre(s.limites.defisJour)} · ${nombre(s.limites.cahiersJour)}${s.limites.cahiersMois > 0 ? ` (${nombre(s.limites.cahiersMois)} / mois)` : ""}` },
+    { titre: "Abonnés visés", nombre: true, cellule: (s) => nombre(s.usage.utilisateursCibles) },
+    { titre: "Part des coûts fixes / abonné", nombre: true, cellule: (s) => monnaie(estimer(s).partFixe, finances.devise) },
     { titre: "Coût de revient", nombre: true, cellule: (s) => monnaie(estimer(s).coutRevient, finances.devise) },
     { titre: "Prix HT", nombre: true, cellule: (s) => monnaie(estimer(s).prixMensuelHT, finances.devise) },
     { titre: "Marge", nombre: true, cellule: (s) => monnaie(estimer(s).marge, finances.devise) },
     { titre: "Taux de marge", cellule: (s) => { const e = estimer(s); return e.tauxMarge === null ? (e.marge < 0 ? pastille("Coût d'acquisition", "attention") : "—") : pastille(pourcentage(e.tauxMarge), tonMarge(e.tauxMarge)); } },
     { titre: "Comptes", nombre: true, cellule: (s) => nombre(s.comptes) },
     { titre: "", cellule: (s) => h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => { choix.value = s.id; remplir(); editeur.scrollIntoView({ block: "start" }); libelle.focus({ preventScroll: true }); } }, "Composer") }
-  ], etat.souscriptions));
+  ], portefeuille()));
 
   // Éditeur : une souscription en cours de composition.
   let courante;
@@ -795,6 +974,7 @@ async function ecranSouscriptions() {
   const noteLimites = h("p", { class: "doux petit", "aria-live": "polite" });
   const joursActifs = h("input", { type: "number", id: "souscription-jours", min: bornes.finances.joursActifsMois[0], max: bornes.finances.joursActifsMois[1], step: "1" });
   const tauxUtilisation = h("input", { type: "number", id: "souscription-taux", min: 0, max: 100, step: "1" });
+  const abonnesVises = h("input", { type: "number", id: "souscription-abonnes", min: 0, max: bornes.finances.utilisateursCibles[1], step: "1" });
   const modes = ["prix", "marge"].map((m) => h("input", { type: "radio", name: "souscription-mode", value: m, id: `souscription-mode-${m}` }));
   const prixHT = h("input", { type: "number", id: "souscription-prix", min: 0, max: bornes.finances.prixMensuelHT[1], step: "0.01" });
   const margeCible = h("input", { type: "number", id: "souscription-marge", min: bornes.finances.margeCible[0], max: bornes.finances.margeCible[1], step: "0.5" });
@@ -810,7 +990,7 @@ async function ecranSouscriptions() {
     id: identifiant.value.trim(), libelle: libelle.value, description: description.value, statut: statut.value, role: role.value,
     fonctionnalites: cases.filter((c) => c.checked).map((c) => c.value),
     limites: Object.fromEntries(Object.entries(champsLimites).map(([c, champ]) => [c, nombreSaisi(champ.value)])),
-    usage: { joursActifsMois: nombreSaisi(joursActifs.value), tauxUtilisation: nombreSaisi(tauxUtilisation.value) },
+    usage: { joursActifsMois: nombreSaisi(joursActifs.value), tauxUtilisation: nombreSaisi(tauxUtilisation.value), utilisateursCibles: nombreSaisi(abonnesVises.value) },
     prix: { mode: modes.find((m) => m.checked)?.value ?? "prix", prixMensuelHT: nombreSaisi(prixHT.value), margeCible: nombreSaisi(margeCible.value), remiseAnnuelle: nombreSaisi(remise.value), prixAnnuelHT: nombreSaisi(prixAnnuel.value || "0") }
   });
 
@@ -859,7 +1039,8 @@ async function ecranSouscriptions() {
         { titre: "Montant", nombre: true, cellule: (l) => l[1] }
       ], [
         ["Coût variable estimé", monnaie(e.coutVariable.estime, d, 4)],
-        ["Part des coûts fixes", monnaie(e.partFixe, d, 4)],
+        ["Part des coûts fixes (par abonné)", monnaie(e.partFixe, d, 4)],
+        [`Coûts fixes portés par l'offre (${nombre(e.abonnesVises)} abonné(s) visé(s))`, monnaie(e.fixesAlloues, d)],
         ["Frais de paiement", monnaie(e.fraisPaiement, d, 4)],
         ["Coefficient (prix / coût de revient)", e.coefficient === null ? "—" : `× ${new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 2 }).format(e.coefficient)}`],
         [`Prix TTC / mois (TVA ${finances.tauxTva} %)`, monnaie(e.prixMensuelTTC, d)],
@@ -888,6 +1069,7 @@ async function ecranSouscriptions() {
     for (const [c, champ] of Object.entries(champsLimites)) champ.value = String(modele.limites[c] ?? 0);
     joursActifs.value = String(s?.usage.joursActifsMois ?? 12);
     tauxUtilisation.value = String(s?.usage.tauxUtilisation ?? 50);
+    abonnesVises.value = String(s ? cibles.get(s.id) ?? 0 : 0);
     const prix = s?.prix ?? { mode: "marge", prixMensuelHT: 0, margeCible: 60, remiseAnnuelle: 0 };
     modes.forEach((m) => { m.checked = m.value === prix.mode; });
     prixHT.value = String(prix.prixMensuelHT);
@@ -899,7 +1081,16 @@ async function ecranSouscriptions() {
   };
 
   choix.addEventListener("change", remplir);
-  editeur.addEventListener("input", (e) => { if (e.target !== choix) recalculer(); });
+  editeur.addEventListener("input", (e) => {
+    if (e.target === choix) return;
+    // Abonnés visés d'une offre existante : la répartition des coûts fixes change pour toutes les offres.
+    if (e.target === abonnesVises && courante && Number.isInteger(nombreSaisi(abonnesVises.value))) {
+      cibles.set(courante.id, nombreSaisi(abonnesVises.value));
+      dessinerComparaison();
+      dessinerFinance();
+    }
+    recalculer();
+  });
   editeur.addEventListener("change", (e) => { if (e.target !== choix) recalculer(); });
   fixer.addEventListener("click", () => {
     modes.forEach((m) => { m.checked = m.value === "prix"; });
@@ -936,7 +1127,8 @@ async function ecranSouscriptions() {
     h("h3", { text: "Financier" }),
     h("div", { class: "admin-ligne" },
       h("label", { class: "admin-champ" }, h("span", { text: "Jours d'usage par mois" }), joursActifs),
-      h("label", { class: "admin-champ" }, h("span", { text: "Part du quota consommée (%)" }), tauxUtilisation)),
+      h("label", { class: "admin-champ" }, h("span", { text: "Part du quota consommée (%)" }), tauxUtilisation),
+      h("label", { class: "admin-champ" }, h("span", { text: "Abonnés visés (répartition des coûts fixes)" }), abonnesVises)),
     h("fieldset", { class: "admin-ligne" }, h("legend", { class: "visuellement-cache", text: "Mode de calcul du prix" }),
       h("label", { class: "admin-ligne" }, modes[0], "Je fixe le prix de vente : la marge est calculée"),
       h("label", { class: "admin-ligne" }, modes[1], "Je vise une marge : le prix est calculé")),
@@ -954,11 +1146,88 @@ async function ecranSouscriptions() {
       } }, "Enregistrer la souscription"),
       supprimer));
 
+  // Finance simplifiée (ADR 0036) : compte de résultat mensuel du portefeuille, à abonnés visés, en graphiques.
+  const champsCibles = new Map(etat.souscriptions.map((x) => [x.id, h("input", { type: "number", value: cibles.get(x.id), min: 0, max: bornes.finances.utilisateursCibles[1], step: "1", "data-cible": x.id, "aria-label": `Abonnés visés : ${x.libelle}` })]));
+  for (const [id, champ] of champsCibles) {
+    champ.addEventListener("input", () => {
+      const v = nombreSaisi(champ.value);
+      if (!Number.isInteger(v) || v < 0) return;
+      cibles.set(id, v);
+      if (courante?.id === id) abonnesVises.value = String(v);
+      dessinerComparaison();
+      dessinerFinance();
+      recalculer();
+    });
+  }
+  const finance = h("div", { class: "admin-champ" });
+  const enregistrerCibles = h("button", { type: "button", class: "bouton", onclick: () => agir(async () => {
+    const modifiees = etat.souscriptions.filter((x) => (x.usage.utilisateursCibles ?? 0) !== cibles.get(x.id));
+    if (!modifiees.length) throw Object.assign(new Error("rien"), { code: "Aucun nombre d'abonnés visés modifié." });
+    for (const x of modifiees) {
+      const { estimation, comptes, ...offre } = x;
+      await api("PUT", `/souscriptions/${encodeURIComponent(x.id)}`, { ...offre, usage: { ...offre.usage, utilisateursCibles: cibles.get(x.id) } });
+    }
+  }, "Abonnés visés enregistrés.") }, "Enregistrer les abonnés visés");
+  const tableBilan = (b, d) => tableau(`Compte de résultat mensuel, en ${d} hors taxes`, [
+    { titre: "Offre", cellule: (o) => o.libelle },
+    { titre: "Abonnés visés", nombre: true, cellule: (o) => nombre(o.abonnes) },
+    { titre: "Chiffre d'affaires", nombre: true, cellule: (o) => monnaie(o.revenus, d) },
+    { titre: "Coûts variables", nombre: true, cellule: (o) => monnaie(o.variables, d) },
+    { titre: "Coûts fixes alloués", nombre: true, cellule: (o) => monnaie(o.fixes, d) },
+    { titre: "Frais de paiement", nombre: true, cellule: (o) => monnaie(o.frais, d) },
+    { titre: "Résultat", nombre: true, cellule: (o) => monnaie(o.resultat, d) }
+  ], [...b.offres, { libelle: "Total", ...b.total }]);
+  const dessinerFinance = () => {
+    const b = bilanPortefeuille(portefeuille(), finances, etat.tokensParGeneration);
+    const d = b.devise;
+    const f = (n) => monnaie(n, d);
+    const t = b.total;
+    const graphiques = [];
+    if (!t.abonnes) {
+      graphiques.push(h("p", { class: "admin-bandeau", text: "Indique des abonnés visés pour au moins une offre : la finance simplifiée compte le portefeuille à ces volumes." }));
+    } else {
+      graphiques.push(
+        graphiqueDivergent({ titre: "Résultat mensuel par offre", sousTitre: "Chiffre d'affaires moins coûts variables, coûts fixes alloués et frais de paiement.",
+          lignes: b.offres.map((o) => ({ libelle: o.libelle, valeur: o.resultat, details: [`${nombre(o.abonnes)} abonné(s) visé(s)`, `Chiffre d'affaires ${f(o.revenus)}`] })), format: f, table: tableBilan(b, d) }),
+        graphiqueEmpile({ titre: "Coûts mensuels par offre, face au chiffre d'affaires", sousTitre: "Le trait marque le chiffre d'affaires : à sa droite, l'offre perd de l'argent.",
+          series: [{ cle: "variables", libelle: "Coûts variables (IA)", classe: "viz-1" }, { cle: "fixes", libelle: "Coûts fixes alloués", classe: "viz-2" }, { cle: "frais", libelle: "Frais de paiement", classe: "viz-3" }],
+          repere: { cle: "revenus", libelle: "Chiffre d'affaires" }, lignes: b.offres, format: f, table: tableBilan(b, d) }),
+        graphiqueClasse({ titre: "Répartition des coûts fixes", sousTitre: `${f(t.fixes)} par mois, au prorata des abonnés visés (${f(b.repartition.partParAbonne)} par abonné).`,
+          lignes: b.offres.map((o) => ({ libelle: o.libelle, valeur: o.fixes, details: [`${pourcentage(t.abonnes ? o.abonnes / t.abonnes * 100 : 0)} des abonnés visés`] })), format: f,
+          table: tableau("Coûts fixes alloués", [
+            { titre: "Offre", cellule: (o) => o.libelle },
+            { titre: "Abonnés visés", nombre: true, cellule: (o) => nombre(o.abonnes) },
+            { titre: "Part", nombre: true, cellule: (o) => pourcentage(t.abonnes ? o.abonnes / t.abonnes * 100 : 0) },
+            { titre: "Coûts fixes alloués", nombre: true, cellule: (o) => f(o.fixes) }
+          ], b.offres) }),
+        graphiqueCourbe({ titre: "Résultat mensuel selon le nombre d'abonnés", sousTitre: "Même répartition entre les offres qu'aux abonnés visés.",
+          points: b.projection.map((p) => ({ x: p.abonnes, y: p.resultat })), pointMort: b.pointMort ? { x: b.pointMort.abonnes } : null,
+          formatX: (x) => `${nombre(x)} abonnés`, formatY: f,
+          table: tableau("Projection", [
+            { titre: "Abonnés (toutes offres)", nombre: true, cellule: (p) => nombre(p.abonnes) },
+            { titre: "Résultat mensuel", nombre: true, cellule: (p) => f(p.resultat) }
+          ], b.projection) }));
+    }
+    finance.replaceChildren(
+      h("div", { class: "admin-grille" },
+        tuile(f(t.revenus), "chiffre d'affaires HT / mois"),
+        tuile(f(t.couts), "coûts totaux / mois"),
+        tuile(f(t.resultat), `résultat / mois${t.tauxMarge === null ? "" : ` (${pourcentage(t.tauxMarge)})`}`),
+        tuile(nombre(t.abonnes), "abonnés visés, toutes offres"),
+        tuile(b.pointMort ? nombre(b.pointMort.abonnes) : "—", b.pointMort ? "abonnés au point mort (même répartition)" : "point mort hors d'atteinte : les offres ne couvrent pas leurs coûts variables")),
+      h("div", { class: "viz-grille" }, graphiques));
+  };
+  const blocFinance = bloc("Finance simplifiée",
+    h("p", { class: "doux", text: "Le portefeuille d'offres compté à ses abonnés visés : chiffre d'affaires, coûts, résultat et point mort, par mois et hors taxes. Change un nombre d'abonnés : tout se recalcule." }),
+    h("div", { class: "admin-cases" }, [...champsCibles].map(([id, champ]) => h("label", { class: "admin-champ" }, h("span", { text: etat.souscriptions.find((x) => x.id === id).libelle }), champ))),
+    h("div", { class: "admin-ligne" }, enregistrerCibles),
+    finance);
+
   // Hypothèses financières communes à toutes les offres (ADR 0031, affinées par l'ADR 0034).
   const devise = selecteur(etat.devises.map((x) => [x, x]), finances.devise, { id: "finances-devise" });
   const champFinance = (cle, props = {}) => h("input", { type: "number", value: finances[cle], "data-finance": cle, min: bornes.finances[cle][0], max: bornes.finances[cle][1], step: "any", ...props });
   const hypotheses = [
-    ["tauxTva", "TVA (%)"], ["utilisateursEstimes", "Utilisateurs actifs estimés (répartition des coûts fixes)"],
+    ["tauxTva", "TVA (%)"],
     ["fraisPaiementPourcent", "Frais de paiement (% du montant)"], ["fraisPaiementFixe", "Frais de paiement fixes (par transaction)"]
   ].map(([cle, texte]) => ({ cle, texte, champ: champFinance(cle) }));
 
@@ -1000,8 +1269,8 @@ async function ecranSouscriptions() {
       finances.modeles[module].modele = modele.value.trim();
       for (const [cle] of CHAMPS_MODELE) finances.modeles[module][cle] = nombreSaisi(champs[cle].value);
     }
-    const valides = [...hypotheses.map((x) => finances[x.cle]), ...finances.coutsFixes.map((p) => p.montant), ...prixModeles.flatMap((m) => CHAMPS_MODELE.map(([c]) => finances.modeles[m.module][c]))].every(Number.isFinite) && finances.utilisateursEstimes >= 1;
-    if (valides) { dessinerComparaison(); recalculer(); }
+    const valides = [...hypotheses.map((x) => finances[x.cle]), ...finances.coutsFixes.map((p) => p.montant), ...prixModeles.flatMap((m) => CHAMPS_MODELE.map(([c]) => finances.modeles[m.module][c]))].every(Number.isFinite);
+    if (valides) { dessinerComparaison(); recalculer(); dessinerFinance(); }
   };
 
   // Tarifs exposés par Cloudflare (catalogue de modèles commun à AI Gateway et Workers AI).
@@ -1033,6 +1302,7 @@ async function ecranSouscriptions() {
     h("div", { class: "admin-ligne" }, h("label", { class: "admin-champ" }, h("span", { text: "Devise des montants" }), devise)),
     h("div", { class: "admin-cases" }, hypotheses.map(({ texte, champ }) => h("label", { class: "admin-champ" }, h("span", { text: texte }), champ))),
     h("h3", { text: "Coûts fixes mensuels" }),
+    h("p", { class: "doux petit", text: "Les coûts fixes sont répartis entre les souscriptions au prorata de leurs abonnés visés : chaque abonné en porte la même part, quelle que soit son offre." }),
     postes, h("div", { class: "admin-ligne" }, ajouterPoste), totalFixes,
     h("h3", { text: "Modèles et tarifs" }),
     h("div", { class: "admin-ligne" }, chargerTarifs),
@@ -1069,6 +1339,7 @@ async function ecranSouscriptions() {
       : "Contrôle d'accès inactif : pendant la bêta, aucune souscription ne limite le site et rien n'est facturé. Les offres sont composées et chiffrées ici, prêtes pour l'ouverture des comptes." }),
     etat.parDefaut ? h("p", { class: "admin-bandeau", text: "Offres pressenties (Gratuit, Solo, Parent, Professeur), pas encore enregistrées : ajuste-les puis enregistre chacune pour la valider." }) : null,
     bloc("Vue comparée", comparaison),
+    blocFinance,
     editeur,
     blocFinances
   ];
@@ -1085,6 +1356,167 @@ async function ecranJournal() {
     ], entrees, "Aucune action pour le moment."))];
 }
 
+// ---------- Graphe du référentiel (ADR 0040) ----------
+
+const NOMS_DISCIPLINES = { emc: "EMC", eps: "EPS", ses: "SES", svt: "SVT", francais: "Français", geographie: "Géographie", mathematiques: "Mathématiques", "physique-chimie": "Physique-chimie", "non-classe": "Non classé" };
+const nomDiscipline = (d) => NOMS_DISCIPLINES[d] ?? (d.charAt(0).toUpperCase() + d.slice(1).replace(/-/g, " "));
+let grapheCharge = null;
+let vueGraphe = null;
+const filtreGraphe = { discipline: "", recherche: "", microskills: true, prerequis: true, transSeules: false, masquees: new Set(), isole: null, selection: null, depart: null, arrivee: null, rotation: false };
+
+async function ecranGraphe() {
+  const generation = affichage;
+  if (!grapheCharge) {
+    let reponse;
+    try { reponse = await fetch("referentiel-graphe.json"); } catch { throw Object.assign(new Error("reseau"), { code: "reseau" }); }
+    if (!reponse.ok) throw Object.assign(new Error("graphe-absent"), { code: "graphe-absent" });
+    try { grapheCharge = decompacter(await reponse.json()); } catch { throw Object.assign(new Error("graphe-absent"), { code: "graphe-absent" }); }
+  }
+  // Un affichage plus récent a commencé pendant le chargement : ne pas remplacer sa vue par une vue hors de la page.
+  if (generation !== affichage) return [];
+  const g = grapheCharge;
+  const f = filtreGraphe;
+  const ind = indicateurs(g);
+  const disciplines = ind.disciplines.map((d) => d.discipline);
+  const teintes = couleurs(disciplines);
+  const nomNoeud = (i) => g.noeuds[i].libelle;
+  let vue = { noeuds: new Set(), liens: [] };
+  let chemin = [];
+
+  // Contrôles.
+  const choixDiscipline = selecteur([["", "Toutes les disciplines"], ...disciplines.map((d) => [d, nomDiscipline(d)])], f.discipline, { id: "graphe-discipline" });
+  const recherche = h("input", { type: "search", id: "graphe-recherche", value: f.recherche, placeholder: "Notion, MicroSkill ou identifiant", autocomplete: "off" });
+  const caseControle = (id, texte, cle) => {
+    const c = h("input", { type: "checkbox", id, checked: f[cle] });
+    c.addEventListener("change", () => { f[cle] = c.checked; if (cle === "transSeules" && c.checked) { f.microskills = true; $("#graphe-microskills").checked = true; } actualiser({ recadrer: true }); });
+    return h("label", {}, c, texte);
+  };
+  const rotation = h("input", { type: "checkbox", id: "graphe-rotation", checked: f.rotation });
+  rotation.addEventListener("change", () => { f.rotation = vueGraphe?.rotationAuto(rotation.checked) ?? false; rotation.checked = f.rotation; });
+  const etat = h("p", { class: "doux petit", id: "graphe-etat", role: "status", "aria-live": "polite" });
+  const resultats = h("div", { class: "admin-pastilles", id: "graphe-resultats" });
+  const legende = h("div", { class: "admin-pastilles graphe-legende", role: "group", "aria-label": "Afficher ou masquer une discipline" },
+    disciplines.map((d) => {
+      const b = h("button", { type: "button", class: "admin-pastille graphe-discipline", "aria-pressed": String(!f.masquees.has(d)), "data-discipline": d },
+        h("span", { class: "graphe-pastille", "aria-hidden": "true", style: { background: teintes.get(d) } }), nomDiscipline(d));
+      b.addEventListener("click", () => {
+        if (f.masquees.has(d)) f.masquees.delete(d); else f.masquees.add(d);
+        b.setAttribute("aria-pressed", String(!f.masquees.has(d)));
+        actualiser({ recadrer: true });
+      });
+      return b;
+    }),
+    h("span", { class: "admin-pastille graphe-trans" }, h("span", { class: "graphe-pastille", "aria-hidden": "true", style: { background: COULEUR_TRANS } }), "MicroSkill transdisciplinaire"));
+  const canvas = h("canvas", { class: "graphe-canvas", id: "graphe-canvas", tabindex: "0", role: "img",
+    "aria-label": "Graphe 3D du référentiel. Flèches : tourner ; plus et moins : zoomer. Les détails d'un nœud s'ouvrent au clic ou depuis la recherche." });
+  const details = h("aside", { class: "carte graphe-details", id: "graphe-details", "aria-live": "polite", hidden: true });
+  const cheminTexte = h("p", { class: "doux", id: "graphe-chemin" });
+
+  function choisir(i, { viser = false } = {}) {
+    f.selection = i;
+    renduDetails();
+    if (viser && i !== null) vueGraphe?.viser(i); else vueGraphe?.dessiner();
+  }
+  function voisinsDe(i) {
+    const groupes = { "Prérequis": [], "Ouvre vers": [], "MicroSkills": [], "Mobilisée par": [] };
+    for (const k of g.voisins[i]) {
+      const l = g.liens[k];
+      if (l.type === "prerequis") (l.b === i ? groupes["Prérequis"] : groupes["Ouvre vers"]).push(l.b === i ? l.a : l.b);
+      else (l.a === i ? groupes.MicroSkills : groupes["Mobilisée par"]).push(l.a === i ? l.b : l.a);
+    }
+    return Object.entries(groupes).filter(([, liste]) => liste.length);
+  }
+  function renduDetails() {
+    const i = f.selection;
+    details.hidden = i === null;
+    if (i === null) { details.replaceChildren(); return; }
+    const n = g.noeuds[i];
+    details.replaceChildren(
+      h("div", { class: "admin-ligne graphe-details-entete" }, h("h3", { text: n.libelle }),
+        h("button", { type: "button", class: "secondaire petit-bouton", "aria-label": "Fermer les détails", onclick: () => choisir(null) }, "×")),
+      h("div", { class: "admin-pastilles" },
+        pastille(n.type === "notion" ? "Notion" : "MicroSkill", "accent"),
+        ...n.disciplines.map((d) => pastille(nomDiscipline(d))),
+        n.transdisciplinaire ? pastille("Transdisciplinaire", "attention") : null,
+        pastille(`${g.voisins[i].length} relation(s)`)),
+      h("p", { class: "petit" }, h("code", { text: n.id })),
+      h("div", { class: "admin-ligne" },
+        h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => { f.isole = f.isole === i ? null : i; actualiser({ recadrer: true }); renduDetails(); } }, f.isole === i ? "Tout afficher" : "Isoler le voisinage"),
+        h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => { f.depart = i; calculerChemin(); } }, "Départ du chemin"),
+        h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => { f.arrivee = i; calculerChemin(); } }, "Arrivée du chemin"),
+        h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => vueGraphe?.viser(i) }, "Centrer ici")),
+      ...voisinsDe(i).map(([titre, liste]) => h("div", { class: "graphe-voisins" }, h("h4", { text: `${titre} (${liste.length})` }),
+        h("div", { class: "admin-pastilles" }, liste.slice(0, 40).map((j) => h("button", { type: "button", class: "admin-pastille graphe-lien", onclick: () => choisir(j, { viser: true }) }, nomNoeud(j))),
+          liste.length > 40 ? h("span", { class: "doux petit", text: `+ ${liste.length - 40}` }) : null))));
+  }
+  function calculerChemin() {
+    chemin = f.depart !== null && f.arrivee !== null ? cheminLePlusCourt(g, f.depart, f.arrivee) : [];
+    if (f.depart === null && f.arrivee === null) cheminTexte.textContent = "Choisis un départ et une arrivée dans les détails d'un nœud pour tracer le plus court chemin entre eux.";
+    else if (f.depart === null || f.arrivee === null) cheminTexte.textContent = `${f.depart === null ? "Arrivée" : "Départ"} : ${nomNoeud(f.depart ?? f.arrivee)}. Choisis maintenant ${f.depart === null ? "le départ" : "l'arrivée"}.`;
+    else cheminTexte.textContent = chemin.length ? `Chemin en ${chemin.length - 1} relation(s) : ${chemin.map(nomNoeud).join(" → ")}.` : `Aucun chemin entre « ${nomNoeud(f.depart)} » et « ${nomNoeud(f.arrivee)} » : ces notions ne sont pas reliées dans le référentiel.`;
+    vueGraphe?.dessiner();
+  }
+  function actualiser({ recadrer = false } = {}) {
+    vue = filtrer(g, f);
+    let n = 0, m = 0, t = 0;
+    for (const i of vue.noeuds) { if (g.noeuds[i].type === "notion") n++; else { m++; if (g.noeuds[i].transdisciplinaire) t++; } }
+    etat.textContent = `Affichés : ${nombre(n)} notion(s), ${nombre(m)} MicroSkill(s) dont ${nombre(t)} transdisciplinaire(s), ${nombre(vue.liens.length)} relation(s).`;
+    const q = f.recherche.trim().toLowerCase();
+    const trouves = q ? g.noeuds.filter((x) => vue.noeuds.has(x.i) && `${x.libelle} ${x.id}`.toLowerCase().includes(q)) : [];
+    resultats.replaceChildren(...trouves.slice(0, 12).map((x) => h("button", { type: "button", class: "admin-pastille graphe-lien", onclick: () => choisir(x.i, { viser: true }) }, x.libelle)),
+      ...(trouves.length > 12 ? [h("span", { class: "doux petit", text: `+ ${trouves.length - 12} autre(s)` })] : []));
+    if (recadrer) vueGraphe?.centrer(); else vueGraphe?.dessiner();
+  }
+
+  choixDiscipline.addEventListener("change", () => { f.discipline = choixDiscipline.value; actualiser({ recadrer: true }); });
+  recherche.addEventListener("input", () => { f.recherche = recherche.value; actualiser({ recadrer: true }); });
+  const reinitialiser = () => {
+    Object.assign(f, { discipline: "", recherche: "", microskills: true, prerequis: true, transSeules: false, isole: null, selection: null, depart: null, arrivee: null });
+    f.masquees.clear();
+    void afficher("graphe", { garderMessage: true });
+    annoncer("Vue du graphe réinitialisée.");
+  };
+
+  vueGraphe?.detruire();
+  vueGraphe = creerVue(canvas, g, {
+    etat: () => ({ visibles: vue.noeuds, liens: vue.liens, chemin: new Set(chemin), selection: f.selection, couleurs: teintes }),
+    onSelection: (i) => choisir(i)
+  });
+  actualiser();
+  calculerChemin();
+  renduDetails();
+  // Premier cadrage une fois le canvas dans la page (ses dimensions sont alors connues).
+  requestAnimationFrame(() => { vueGraphe?.centrer(); if (f.rotation) vueGraphe?.rotationAuto(true); });
+
+  return [
+    h("div", { class: "admin-grille" },
+      tuile(nombre(ind.notions), "notions"), tuile(nombre(ind.microskills), "MicroSkills"),
+      tuile(nombre(ind.prerequis), "relations de prérequis"), tuile(nombre(ind.transdisciplinaires), "MicroSkills transdisciplinaires")),
+    ind.transdisciplinaires ? null : h("p", { class: "admin-bandeau", text: "Aucune MicroSkill n'est partagée entre disciplines : chaque MicroSkill de la projection appartient à une seule discipline. Le filtre « transdisciplinaires seules » n'affiche donc que les notions." }),
+    bloc("Explorer le graphe",
+      h("p", { class: "doux", text: "Source : referentiel/projection-v0.json, disposition calculée au build. Glisser pour tourner, molette ou pincement pour zoomer, clic sur un nœud pour ses détails." }),
+      h("div", { class: "admin-ligne graphe-controles" },
+        h("label", { class: "admin-champ" }, h("span", { text: "Discipline" }), choixDiscipline),
+        h("label", { class: "admin-champ graphe-recherche" }, h("span", { text: "Rechercher" }), recherche)),
+      h("div", { class: "admin-ligne graphe-options" },
+        caseControle("graphe-microskills", "MicroSkills", "microskills"), caseControle("graphe-prerequis", "Prérequis", "prerequis"),
+        caseControle("graphe-trans", "Transdisciplinaires seules", "transSeules"), h("label", {}, rotation, "Rotation"),
+        h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => vueGraphe?.centrer() }, "Centrer"),
+        h("button", { type: "button", class: "secondaire petit-bouton", onclick: reinitialiser }, "Réinitialiser")),
+      resultats, legende, etat,
+      h("div", { class: "graphe-scene" }, canvas, details),
+      cheminTexte),
+    bloc("Par discipline", tableau("Notions, MicroSkills et prérequis de chaque discipline", [
+      { titre: "Discipline", cellule: (d) => h("span", { class: "admin-ligne graphe-nom" }, h("span", { class: "graphe-pastille", "aria-hidden": "true", style: { background: teintes.get(d.discipline) } }), nomDiscipline(d.discipline)) },
+      { titre: "Notions", nombre: true, cellule: (d) => nombre(d.notions) },
+      { titre: "MicroSkills", nombre: true, cellule: (d) => nombre(d.microskills) },
+      { titre: "Prérequis", nombre: true, cellule: (d) => nombre(d.prerequis) },
+      { titre: "Notions sans prérequis", nombre: true, cellule: (d) => nombre(d.sansPrerequis) },
+      { titre: "Notions sans MicroSkill", nombre: true, cellule: (d) => nombre(d.sansMicroskill) }
+    ], ind.disciplines))
+  ];
+}
+
 const ECRANS = {
   apercu: { titre: "Vue d'ensemble", intro: "L'état du site, de la sécurité et des données, d'un coup d'œil.", rendre: ecranApercu },
   utilisateurs: { titre: "Utilisateurs", intro: "Les comptes, leur rôle, leur niveau, leurs données.", rendre: ecranUtilisateurs },
@@ -1094,6 +1526,7 @@ const ECRANS = {
   telemetrie: { titre: "Télémétrie", intro: "Tokens, modèles et requêtes, en compteurs anonymes.", rendre: ecranTelemetrie },
   theme: { titre: "Charte graphique", intro: "Les couleurs du site.", rendre: ecranTheme },
   contenus: { titre: "Contenus", intro: "Blog, cours, parcours, labs et jeux.", rendre: ecranContenus },
+  graphe: { titre: "Graphe du référentiel", intro: "Les notions, leurs MicroSkills et leurs prérequis, en 3D : filtrer, isoler un voisinage, tracer un chemin.", rendre: ecranGraphe },
   souscriptions: { titre: "Souscriptions", intro: "Composer les offres à partir des rôles, des fonctionnalités et des limites, et en estimer le coût et la marge.", rendre: ecranSouscriptions },
   harness: { titre: "Harness", intro: "Modèles, budgets de tokens, quotas et instructions.", rendre: ecranHarness },
   journal: { titre: "Journal", intro: "La trace des actions du back-office.", rendre: ecranJournal }
@@ -1131,6 +1564,7 @@ async function afficher(cle, { garderMessage = false } = {}) {
   $("#intro-ecran").textContent = ecran.intro;
   document.title = `${ecran.titre} · Back-office · KermicLab`;
   if (!garderMessage) annoncer("");
+  if (ecranCourant !== "graphe") { vueGraphe?.detruire(); vueGraphe = null; }
   const zone = $("#ecran");
   zone.setAttribute("aria-busy", "true");
   try {

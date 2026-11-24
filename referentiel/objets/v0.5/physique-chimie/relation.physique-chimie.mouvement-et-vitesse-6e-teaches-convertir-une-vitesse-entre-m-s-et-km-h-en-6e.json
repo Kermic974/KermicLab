@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.mouvement-et-vitesse-6e-teaches-convertir-une-vitesse-entre-m-s-et-km-h-en-6e",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mouvement-et-vitesse-6e/contenu.json"
+  },
+  "source": "notion.physique-chimie.mouvement-et-vitesse-6e",
+  "target": "microskill.physique-chimie.convertir-une-vitesse-entre-m-s-et-km-h-en-6e"
+}

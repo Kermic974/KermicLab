@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.identifier-les-garanties-d-independance-de-la-justice-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice/contenu.json"
+  },
+  "source": "microskill.emc.identifier-les-garanties-d-independance-de-la-justice",
+  "target": "skill.emc.justice"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.decrire-un-pave-droit-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/solides-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.decrire-un-pave-droit",
+  "target": "skill.mathematiques.solides-cm"
+}

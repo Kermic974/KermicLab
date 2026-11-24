@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Au XIXe siècle, l'Europe hésite entre monarchies, empires et républiques ; les idées de nation et de liberté se diffusent.",
+  "niveaux": [
+    {
+      "titre": "Révolutions et nations",
+      "niveau": "1re",
+      "paragraphes": [
+        "Après 1815 se succèdent **révolutions** (1830, 1848) et mouvements **nationaux** (printemps des peuples de 1848, unité italienne et allemande). En France, 1848 instaure la **IIe République**, le **suffrage universel masculin** et l'**abolition de l'esclavage** (Schœlcher), avant le Second Empire (Napoléon III)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "1848 : le suffrage devient universel pour les hommes.",
+          "Abolition définitive de l'esclavage.",
+          "Un coup d'État en 1851 mène à l'Empire."
+        ]
+      },
+      "aRetenir": "1848 : suffrage universel masculin, abolition."
+    },
+    {
+      "titre": "La IIIe République",
+      "niveau": "1re",
+      "paragraphes": [
+        "Après la défaite de 1870 et la **Commune**, la **IIIe République** s'installe (lois constitutionnelles de 1875). Elle développe les libertés (presse, réunion, syndicats), l'**école gratuite, laïque et obligatoire** (Jules Ferry, 1881–1882) et la **laïcité** (loi de 1905). L'affaire **Dreyfus** (1894–1906) révèle l'affrontement entre républicains et antirépublicains."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "1881–82 : lois Ferry.",
+          "1884 : syndicats autorisés.",
+          "1905 : séparation des Églises et de l'État."
+        ]
+      },
+      "aRetenir": "IIIe République : libertés, école, laïcité."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "L'abolition définitive de l'esclavage en France est décidée en…",
+        "choix": [
+          "1958",
+          "1848",
+          "1789",
+          "1905"
+        ],
+        "bonne": 1,
+        "explication": "Schœlcher."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Les lois Ferry rendent l'école…",
+        "choix": [
+          "facultative pour tous les enfants",
+          "gratuite, laïque et obligatoire",
+          "payante et obligatoirement religieuse",
+          "réservée aux garçons des villes"
+        ],
+        "bonne": 1,
+        "explication": "1881–82."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La loi de 1905 organise…",
+        "choix": [
+          "le droit de vote des femmes françaises",
+          "l'abolition définitive de l'esclavage",
+          "la séparation des Églises et de l'État",
+          "l'élection du président au suffrage direct"
+        ],
+        "bonne": 2,
+        "explication": "Laïcité."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La République s'enracine",
+    "histoire": [
+      "Tu étudies les débuts de la IIIe République."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel événement divise la France de 1894 à 1906 ?",
+        "choix": [
+          "la Commune",
+          "la Terreur",
+          "la guerre de Trente Ans",
+          "l'affaire Dreyfus"
+        ],
+        "bonne": 3,
+        "explication": "Justice et antisémitisme."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le suffrage universel de 1848 concernait…",
+        "choix": [
+          "uniquement les nobles",
+          "les enfants",
+          "les hommes",
+          "tous les adultes"
+        ],
+        "bonne": 2,
+        "explication": "Les femmes votent en 1944."
+      }
+    ],
+    "conclusion": "Bien étudié !"
+  }
+}

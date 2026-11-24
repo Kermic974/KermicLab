@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.prehistoire-cm-teaches-situer-lascaux",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/prehistoire-cm/contenu.json"
+  },
+  "source": "notion.histoire.prehistoire-cm",
+  "target": "microskill.histoire.situer-lascaux"
+}

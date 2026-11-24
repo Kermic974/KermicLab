@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.emc-numerique-et-citoyennete-l-teaches-distinguer-e-reputation-et-identite-numerique",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-numerique-et-citoyennete-l/contenu.json"
+  },
+  "source": "notion.emc.emc-numerique-et-citoyennete-l",
+  "target": "microskill.emc.distinguer-e-reputation-et-identite-numerique"
+}

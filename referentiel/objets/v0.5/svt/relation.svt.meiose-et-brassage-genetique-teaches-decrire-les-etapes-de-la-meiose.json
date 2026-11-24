@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.meiose-et-brassage-genetique-teaches-decrire-les-etapes-de-la-meiose",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/meiose-et-brassage-genetique/contenu.json"
+  },
+  "source": "notion.svt.meiose-et-brassage-genetique",
+  "target": "microskill.svt.decrire-les-etapes-de-la-meiose"
+}

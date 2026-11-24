@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.reconnaitre-les-proprietes-conservees-par-la-symetrie-axiale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/symetrie-axiale-6e/contenu.json"
+  },
+  "source": "microskill.mathematiques.reconnaitre-les-proprietes-conservees-par-la-symetrie-axiale",
+  "target": "skill.mathematiques.symetrie-axiale-6e"
+}

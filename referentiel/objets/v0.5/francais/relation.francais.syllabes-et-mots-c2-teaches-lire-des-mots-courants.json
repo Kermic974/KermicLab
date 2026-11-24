@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.syllabes-et-mots-c2-teaches-lire-des-mots-courants",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/syllabes-et-mots-c2/contenu.json"
+  },
+  "source": "notion.francais.syllabes-et-mots-c2",
+  "target": "microskill.francais.lire-des-mots-courants"
+}

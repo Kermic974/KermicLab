@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.biodiversite-et-ecosystemes-l-requires-ecosystemes-et-biodiversite",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/biodiversite-et-ecosystemes-l/contenu.json"
+  },
+  "source": "notion.svt.biodiversite-et-ecosystemes-l",
+  "target": "notion.svt.ecosystemes-et-biodiversite",
+  "rationale": "« Écosystèmes et biodiversité » : Le lycée reprend les écosystèmes et l’évolution étudiés au collège."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.multiplier-un-nombre-par-10-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/multiplication-posee-ce2-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.multiplier-un-nombre-par-10",
+  "target": "skill.mathematiques.multiplication-posee-ce2-c2"
+}

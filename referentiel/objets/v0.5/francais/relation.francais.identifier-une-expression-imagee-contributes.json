@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-une-expression-imagee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vocabulaire-cm/contenu.json"
+  },
+  "source": "microskill.francais.identifier-une-expression-imagee",
+  "target": "skill.francais.vocabulaire-cm"
+}

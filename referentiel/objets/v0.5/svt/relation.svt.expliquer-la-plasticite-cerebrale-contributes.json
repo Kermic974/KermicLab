@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-la-plasticite-cerebrale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/cerveau-et-plasticite-l/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-la-plasticite-cerebrale",
+  "target": "skill.svt.cerveau-et-plasticite-l"
+}

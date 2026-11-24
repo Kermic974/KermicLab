@@ -2,7 +2,7 @@ const noeuds = new Set(["notion", "microskill", "skill"]);
 export const typesRelation = new Set(["teaches", "contributesTo", "requires", "supports", "extends", "relatedTo", "equivalentTo"]);
 const symetriques = new Set(["relatedTo", "equivalentTo"]);
 const transitions = new Set(["draft:review", "review:draft", "review:validated", "validated:deprecated"]);
-const rangs = new Map(["cycle-3", "cycle-4", "seconde", "premiere", "terminale"].map((code, i) => [code, i]));
+const rangs = new Map(["cycle-2", "cycle-3", "cycle-4", "seconde", "premiere", "terminale"].map((code, i) => [code, i]));
 const contrat = (o) => typesRelation.has(o.type) ? "relation" : o.type;
 const cle = (...valeurs) => JSON.stringify(valeurs);
 

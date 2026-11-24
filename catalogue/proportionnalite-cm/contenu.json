@@ -1,0 +1,113 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Quand une quantité double, triple… l'autre double, triple aussi : c'est la proportionnalité.",
+  "niveaux": [
+    {
+      "titre": "Intuition : la recette",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une recette de crêpes pour 4 personnes utilise 2 œufs. Pour 8 personnes : on double tout, donc 4 œufs. Pour 12 personnes : on triple, donc 6 œufs.",
+        "Les deux suites de nombres (personnes, œufs) évoluent ensemble : elles sont **proportionnelles**."
+      ],
+      "exemple": {
+        "titre": "Exemple : tableau",
+        "etapes": [
+          "Personnes : 4 → 8 → 12 ; œufs : 2 → 4 → 6.",
+          "On multiplie les deux lignes par le même nombre (2, puis 3)."
+        ]
+      },
+      "aRetenir": "Dans un tableau de proportionnalité, on passe d'une colonne à l'autre en multipliant par le même nombre."
+    },
+    {
+      "titre": "Retour à l'unité et pourcentages simples",
+      "niveau": "CM2",
+      "paragraphes": [
+        "Si 3 cahiers coûtent 4,50 €, **1 cahier** coûte 4,50 ÷ 3 = 1,50 €, donc 5 cahiers coûtent 5 × 1,50 = 7,50 €. C'est le **retour à l'unité**.",
+        "**50 %** = la moitié, **25 %** = le quart, **10 %** = le dixième. 25 % de 80 = 80 ÷ 4 = 20.",
+        "Attention : l'âge d'une personne n'est pas proportionnel à sa taille !"
+      ],
+      "exemple": {
+        "titre": "Exemple : 25 % de 60",
+        "etapes": [
+          "25 % = 1/4.",
+          "60 ÷ 4 = 15."
+        ]
+      },
+      "aRetenir": "50 % = 1/2, 25 % = 1/4, 10 % = 1/10, 100 % = tout."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "3 cahiers coûtent 4,50 €. Combien coûtent 5 cahiers ?",
+        "reponse": 7.5,
+        "unite": "€",
+        "indices": [
+          "Cherche le prix d'un cahier.",
+          "Multiplie par 5."
+        ],
+        "solution": "1 cahier = 1,50 €, donc 5 cahiers = 7,50 €.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien font 25 % de 80 ?",
+        "reponse": 20,
+        "indices": [
+          "25 % correspond au quart."
+        ],
+        "solution": "25 % = 1/4 et 80 ÷ 4 = 20.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Laquelle de ces situations est proportionnelle ?",
+        "choix": [
+          "Le prix de 4 baguettes de pain identiques",
+          "L'âge et la taille",
+          "Le numéro de maison et le nombre d'habitants",
+          "La température et l'heure"
+        ],
+        "bonne": 0,
+        "explication": "Avec un prix à l'unité constant, doubler le nombre d'objets double le prix."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La recette de crêpes",
+    "histoire": [
+      "Pour 4 personnes il faut 2 œufs, 200 g de farine et 50 cl de lait. Tu cuisines pour 12 personnes."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Combien d'œufs pour 12 personnes ?",
+        "reponse": 6,
+        "indices": [
+          "12 personnes = 3 fois 4 personnes."
+        ],
+        "solution": "12 = 4 × 3 donc 2 × 3 = 6.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de grammes de farine ?",
+        "reponse": 600,
+        "unite": "g",
+        "indices": [
+          "Multiplie par 3."
+        ],
+        "solution": "200 × 3 = 600.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Recette réussie !"
+  }
+}

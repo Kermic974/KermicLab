@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.relier-un-besoin-une-fonction-et-une-solution-technique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/objets-techniques-6e/contenu.json"
+  },
+  "source": "microskill.technologie.relier-un-besoin-une-fonction-et-une-solution-technique",
+  "target": "skill.technologie.objets-techniques-6e"
+}

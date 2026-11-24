@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les règles protègent chacun et permettent de vivre ensemble.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le jeu sans règles",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Imagine un jeu sans règles : chacun fait ce qu'il veut, on se dispute. Les **règles** servent à protéger, à organiser et à rendre les choses justes. Dans la classe, les règles de vie ont été décidées ensemble.",
+        "Toute règle a une raison d'être : on se met en rang pour la sécurité, on lève la main pour que chacun puisse parler."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Règle : on ne court pas dans les couloirs.",
+          "Raison : éviter les accidents.",
+          "Conséquence si on l'enfreint : un rappel, parfois une sanction."
+        ]
+      },
+      "aRetenir": "Les règles protègent et organisent."
+    },
+    {
+      "titre": "Lois, droits et devoirs",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Dans un pays, les règles s'appellent des **lois** : elles sont votées par le Parlement et valent pour tous. Chacun a des **droits** (apprendre, être protégé) et des **devoirs** (respecter autrui et la loi).",
+        "La **justice** est rendue par des juges indépendants, au nom du peuple. Une sanction vise à faire réparer le tort et à éviter qu'il se reproduise ; elle doit être juste et proportionnée."
+      ],
+      "exemple": {
+        "titre": "Exemple : droits et devoirs de l'élève",
+        "etapes": [
+          "Droit : être respecté, apprendre.",
+          "Devoir : respecter les autres, travailler.",
+          "Sanction : rappel, réparation, parfois exclusion."
+        ]
+      },
+      "aRetenir": "Droits et devoirs vont ensemble."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Une loi est…",
+        "choix": [
+          "une tradition de famille",
+          "une règle valable pour tous",
+          "un simple conseil donné aux enfants",
+          "une règle qui ne concerne que l'école"
+        ],
+        "bonne": 1,
+        "explication": "Elle s'applique à tous les citoyens."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qui rend la justice ?",
+        "choix": [
+          "Des juges indépendants",
+          "Le premier venu dans la rue",
+          "Le plus fort du quartier",
+          "Les élèves de la classe"
+        ],
+        "bonne": 0,
+        "explication": "Les juges."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Qu'est-ce qu'un devoir ?",
+        "choix": [
+          "Une activité de loisir",
+          "Ce qu'on doit faire pour respecter les autres",
+          "Une punition donnée par le maître",
+          "Un cadeau reçu à l'école"
+        ],
+        "bonne": 1,
+        "explication": "Exemple : respecter autrui."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le conseil de classe",
+    "histoire": [
+      "Ta classe élabore ses règles de vie."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle règle protège la sécurité ?",
+        "choix": [
+          "Jeter ses déchets partout",
+          "Prendre le cahier des autres",
+          "Ne pas courir dans les couloirs",
+          "Parler très fort"
+        ],
+        "bonne": 2,
+        "explication": "Éviter les accidents."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que faire quand quelqu'un casse un objet ?",
+        "choix": [
+          "Réparer ou remplacer, et s'excuser",
+          "Cacher l'objet cassé au fond d'un sac",
+          "Accuser un camarade qui n'était pas là",
+          "Ne rien dire à personne et partir"
+        ],
+        "bonne": 0,
+        "explication": "Réparer le tort."
+      }
+    ],
+    "conclusion": "Règles adoptées !"
+  }
+}

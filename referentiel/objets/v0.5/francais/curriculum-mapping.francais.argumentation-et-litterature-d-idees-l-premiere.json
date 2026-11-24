@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.francais.argumentation-et-litterature-d-idees-l-premiere",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/argumentation-et-litterature-d-idees-l/contenu.json"
+  },
+  "object": "notion.francais.argumentation-et-litterature-d-idees-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.premiere",
+  "role": "reinforced"
+}

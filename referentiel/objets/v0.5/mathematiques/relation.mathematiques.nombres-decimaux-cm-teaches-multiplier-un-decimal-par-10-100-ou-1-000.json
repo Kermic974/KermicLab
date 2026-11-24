@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.nombres-decimaux-cm-teaches-multiplier-un-decimal-par-10-100-ou-1-000",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nombres-decimaux-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.nombres-decimaux-cm",
+  "target": "microskill.mathematiques.multiplier-un-decimal-par-10-100-ou-1-000"
+}

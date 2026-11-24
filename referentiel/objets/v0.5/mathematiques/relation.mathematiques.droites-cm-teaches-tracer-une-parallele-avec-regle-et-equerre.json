@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.droites-cm-teaches-tracer-une-parallele-avec-regle-et-equerre",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droites-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.droites-cm",
+  "target": "microskill.mathematiques.tracer-une-parallele-avec-regle-et-equerre"
+}

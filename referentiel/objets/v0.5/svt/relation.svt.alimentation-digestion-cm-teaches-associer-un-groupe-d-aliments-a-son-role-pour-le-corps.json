@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.alimentation-digestion-cm-teaches-associer-un-groupe-d-aliments-a-son-role-pour-le-corps",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/alimentation-digestion-cm/contenu.json"
+  },
+  "source": "notion.svt.alimentation-digestion-cm",
+  "target": "microskill.svt.associer-un-groupe-d-aliments-a-son-role-pour-le-corps"
+}

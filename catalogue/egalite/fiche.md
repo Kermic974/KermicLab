@@ -14,10 +14,10 @@ questions:
   - c'est quoi l'égalité en EMC ?
   - Pourquoi l'égalité n'est-elle pas toujours un traitement identique ?
   - what is equality?
-prerequis:
-niveaux: cycle-4
 classes: 5e
-competences: emc-egalite-action-1, emc-egalite-action-2
+prerequis: regles-vivre-ensemble-6e
+niveaux: cycle-4
+competences: distinguer-egalite-de-droits-et-egalite-reelle, justifier-un-amenagement-adapte-a-une-situation-de-handicap, analyser-une-difference-de-traitement-legitime-ou-illegitime, expliquer-le-role-des-politiques-publiques-dans-l-egalite
 ---
 
 # L'égalité

@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.travail-teaches-expliquer-l-alienation-du-travail-chez-marx",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/travail/contenu.json"
+  },
+  "source": "notion.philosophie.travail",
+  "target": "microskill.philosophie.expliquer-l-alienation-du-travail-chez-marx"
+}

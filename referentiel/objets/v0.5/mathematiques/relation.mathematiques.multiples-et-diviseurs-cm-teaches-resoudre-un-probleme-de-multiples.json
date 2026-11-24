@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.multiples-et-diviseurs-cm-teaches-resoudre-un-probleme-de-multiples",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/multiples-et-diviseurs-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.multiples-et-diviseurs-cm",
+  "target": "microskill.mathematiques.resoudre-un-probleme-de-multiples"
+}

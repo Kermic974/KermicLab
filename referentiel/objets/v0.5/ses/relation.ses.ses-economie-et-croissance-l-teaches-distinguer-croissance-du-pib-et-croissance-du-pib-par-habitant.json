@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.ses-economie-et-croissance-l-teaches-distinguer-croissance-du-pib-et-croissance-du-pib-par-habitant",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ses-economie-et-croissance-l/contenu.json"
+  },
+  "source": "notion.ses.ses-economie-et-croissance-l",
+  "target": "microskill.ses.distinguer-croissance-du-pib-et-croissance-du-pib-par-habitant"
+}

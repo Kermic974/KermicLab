@@ -1,0 +1,13 @@
+{
+  "id": "relation.eps.eps-sante-et-performance-l-requires-eps-endurance-et-sante-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-sante-et-performance-l/contenu.json"
+  },
+  "source": "notion.eps.eps-sante-et-performance-l",
+  "target": "notion.eps.eps-endurance-et-sante-c4",
+  "rationale": "Le projet d’entraînement et les limites du collège sont approfondis au lycée."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.revolution-francaise-requires-lumieres",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-francaise/contenu.json"
+  },
+  "source": "notion.histoire.revolution-francaise",
+  "target": "notion.histoire.lumieres",
+  "rationale": "La Déclaration des droits et les idées de souveraineté et de séparation des pouvoirs viennent des Lumières."
+}

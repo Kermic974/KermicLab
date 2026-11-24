@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.distinguer-conscience-psychologique-et-conscience-morale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conscience/contenu.json"
+  },
+  "source": "microskill.philosophie.distinguer-conscience-psychologique-et-conscience-morale",
+  "target": "skill.philosophie.conscience"
+}

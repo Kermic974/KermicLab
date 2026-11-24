@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.materiaux-et-environnement-6e-teaches-classer-des-materiaux-par-famille",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/materiaux-et-environnement-6e/contenu.json"
+  },
+  "source": "notion.technologie.materiaux-et-environnement-6e",
+  "target": "microskill.technologie.classer-des-materiaux-par-famille"
+}

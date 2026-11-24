@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.former-un-mot-nouveau-par-derivation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/formation-des-mots-cm/contenu.json"
+  },
+  "source": "microskill.francais.former-un-mot-nouveau-par-derivation",
+  "target": "skill.francais.formation-des-mots-cm"
+}

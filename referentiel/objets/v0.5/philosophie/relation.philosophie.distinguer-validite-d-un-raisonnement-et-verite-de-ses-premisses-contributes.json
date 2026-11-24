@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.distinguer-validite-d-un-raisonnement-et-verite-de-ses-premisses-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/raison/contenu.json"
+  },
+  "source": "microskill.philosophie.distinguer-validite-d-un-raisonnement-et-verite-de-ses-premisses",
+  "target": "skill.philosophie.raison"
+}

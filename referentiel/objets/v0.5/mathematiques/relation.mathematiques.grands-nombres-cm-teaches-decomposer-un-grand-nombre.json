@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.grands-nombres-cm-teaches-decomposer-un-grand-nombre",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grands-nombres-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.grands-nombres-cm",
+  "target": "microskill.mathematiques.decomposer-un-grand-nombre"
+}

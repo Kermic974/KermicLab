@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.poesie-teaches-reperer-un-enjambement-ou-un-rejet",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie/contenu.json"
+  },
+  "source": "notion.francais.poesie",
+  "target": "microskill.francais.reperer-un-enjambement-ou-un-rejet"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.classification-du-vivant-6e-requires-classification-du-vivant-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/classification-du-vivant-6e/contenu.json"
+  },
+  "source": "notion.svt.classification-du-vivant-6e",
+  "target": "notion.svt.classification-du-vivant-cm",
+  "rationale": "« Classer les êtres vivants » : La classification de 6e approfondit le classement du cycle 3."
+}

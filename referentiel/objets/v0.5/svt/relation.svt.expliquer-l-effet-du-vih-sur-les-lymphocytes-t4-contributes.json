@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-l-effet-du-vih-sur-les-lymphocytes-t4-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/immunite-adaptative/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-l-effet-du-vih-sur-les-lymphocytes-t4",
+  "target": "skill.svt.immunite-adaptative"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.eps.respecter-les-regles-d-un-jeu-collectif-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-jeux-collectifs-et-athletisme-cm/contenu.json"
+  },
+  "source": "microskill.eps.respecter-les-regles-d-un-jeu-collectif",
+  "target": "skill.eps.eps-jeux-collectifs-et-athletisme-cm"
+}

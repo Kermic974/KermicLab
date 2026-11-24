@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.lire-un-repere-gradue-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/reperage-et-donnees-6e/contenu.json"
+  },
+  "source": "microskill.mathematiques.lire-un-repere-gradue",
+  "target": "skill.mathematiques.reperage-et-donnees-6e"
+}

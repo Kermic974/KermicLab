@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.musique-voix-et-ecoute-cm-teaches-chanter-en-canon",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-voix-et-ecoute-cm/contenu.json"
+  },
+  "source": "notion.musique.musique-voix-et-ecoute-cm",
+  "target": "microskill.musique.chanter-en-canon"
+}

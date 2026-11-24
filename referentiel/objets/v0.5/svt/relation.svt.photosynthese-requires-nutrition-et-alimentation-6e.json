@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.photosynthese-requires-nutrition-et-alimentation-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/photosynthese/contenu.json"
+  },
+  "source": "notion.svt.photosynthese",
+  "target": "notion.svt.nutrition-et-alimentation-6e",
+  "rationale": "« Nutrition et alimentation en 6e » : Les besoins des plantes et leur nutrition précèdent l’étude de la photosynthèse."
+}

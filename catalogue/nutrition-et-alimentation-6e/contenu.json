@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les êtres vivants se nourrissent de matière provenant d'autres êtres vivants : tout commence par les végétaux.",
+  "niveaux": [
+    {
+      "titre": "D'où viennent les aliments ?",
+      "niveau": "6e",
+      "paragraphes": [
+        "Les aliments viennent d'êtres vivants : végétaux (fruits, céréales, légumes) et animaux (viande, œufs, lait). Les végétaux fabriquent leur matière avec l'eau, les sels minéraux et la lumière (photosynthèse) ; les animaux mangent des végétaux ou d'autres animaux.",
+        "Les êtres humains ont des **besoins** : énergie (glucides, lipides), construction du corps (protéines), protection (vitamines, minéraux), eau."
+      ],
+      "exemple": {
+        "titre": "Exemple : une tartine de beurre",
+        "etapes": [
+          "Le blé donne la farine du pain.",
+          "Le lait donne le beurre.",
+          "Le blé a poussé grâce au soleil, à l'eau et aux minéraux."
+        ]
+      },
+      "aRetenir": "Toute chaîne alimentaire commence par un végétal."
+    },
+    {
+      "titre": "Équilibre et santé",
+      "niveau": "6e",
+      "paragraphes": [
+        "Une alimentation **équilibrée** combine féculents, légumes, fruits, protéines, produits laitiers, avec peu de sucre, de sel et de gras. Les besoins varient selon l'âge, l'activité et la taille. Le manque ou l'excès d'aliments peut causer des problèmes (carences, obésité).",
+        "Pour mieux manger : lire les étiquettes, manger à heures régulières, boire de l'eau, limiter les produits très transformés."
+      ],
+      "exemple": {
+        "titre": "Exemple : lire une étiquette",
+        "etapes": [
+          "La liste des ingrédients est classée par quantité.",
+          "On repère le sucre et le sel.",
+          "On compare avec un produit plus simple."
+        ]
+      },
+      "aRetenir": "Varier, équilibrer, limiter."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel être vivant fabrique sa matière à partir de lumière, d'eau et de sels minéraux ?",
+        "choix": [
+          "Un humain",
+          "Un champignon",
+          "Un végétal",
+          "Un chien"
+        ],
+        "bonne": 2,
+        "explication": "Photosynthèse."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Les protéines servent surtout à…",
+        "choix": [
+          "fournir de l'eau à toutes les cellules",
+          "remplacer le sommeil pendant la nuit",
+          "refroidir le corps après un effort",
+          "construire et réparer le corps"
+        ],
+        "bonne": 3,
+        "explication": "Rôle de construction."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un aliment d'origine animale est…",
+        "choix": [
+          "le blé",
+          "la carotte",
+          "la pomme",
+          "le lait"
+        ],
+        "bonne": 3,
+        "explication": "Produit par un animal."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La cantine équilibrée",
+    "histoire": [
+      "Tu composes un menu équilibré pour la cantine."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel menu est équilibré ?",
+        "choix": [
+          "Burger, chips et gâteau",
+          "Saucisson, biscuits et jus sucré",
+          "Poisson, riz, légumes verts, yaourt et fruit",
+          "Pizza, frites, soda et glace"
+        ],
+        "bonne": 2,
+        "explication": "Variété des groupes."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel groupe faut-il limiter ?",
+        "choix": [
+          "Les légumes frais de saison",
+          "Les produits très sucrés et salés",
+          "Les fruits crus et entiers",
+          "L'eau du robinet à volonté"
+        ],
+        "bonne": 1,
+        "explication": "Sucre et sel en excès."
+      }
+    ],
+    "conclusion": "Menu équilibré !"
+  }
+}

@@ -20,10 +20,10 @@ questions:
   - est-ce qu'un animal évolue parce qu'il en a besoin ?
   - qu'est-ce que la sélection naturelle ?
   - pourquoi les bactéries deviennent-elles résistantes aux antibiotiques ?
+classes: 3e
 prerequis:
 niveaux: cycle-4
-classes: 3e
-competences: svt-evolution-action-1, svt-evolution-action-2
+competences: definir-l-evolution-biologique-a-l-echelle-d-une-population, expliquer-la-selection-naturelle-sur-un-exemple, interpreter-un-ancetre-commun-entre-deux-especes
 ---
 
 # L'évolution des êtres vivants

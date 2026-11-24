@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.calculer-une-part-d-une-production-dans-un-dossier-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/espaces-productifs/contenu.json"
+  },
+  "source": "microskill.geographie.calculer-une-part-d-une-production-dans-un-dossier",
+  "target": "skill.geographie.espaces-productifs"
+}

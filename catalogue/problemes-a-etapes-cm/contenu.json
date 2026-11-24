@@ -1,0 +1,114 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un bon problème se résout en trois temps : comprendre, calculer, vérifier.",
+  "niveaux": [
+    {
+      "titre": "Intuition : lire et faire un schéma",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Lis l'énoncé en entier, puis souligne les **données** utiles et la **question**. Fais un petit schéma ou un dessin.",
+        "Certains problèmes demandent plusieurs calculs : on cherche d'abord ce qui manque pour répondre."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Question : combien dépenses-tu ?",
+          "Données : 3 cahiers à 2 € et 1 stylo à 1,50 €.",
+          "Étape 1 : 3 × 2 = 6 €. Étape 2 : 6 + 1,50 = 7,50 €."
+        ]
+      },
+      "aRetenir": "Trouver l'inconnue intermédiaire, puis répondre à la question posée."
+    },
+    {
+      "titre": "Choisir l'opération",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "On additionne pour **réunir** ou **ajouter**, on soustrait pour **enlever** ou **comparer**, on multiplie pour des **paquets égaux**, on divise pour **partager** ou **grouper**.",
+        "Rédige une phrase-réponse avec l'unité, puis **vérifie** : le résultat est-il plausible ?"
+      ],
+      "exemple": {
+        "titre": "Exemple : partage",
+        "etapes": [
+          "45 billes réparties à égalité entre 6 enfants.",
+          "45 ÷ 6 = 7 reste 3.",
+          "Chacun a 7 billes ; il en reste 3."
+        ]
+      },
+      "aRetenir": "Vérifie avec un ordre de grandeur."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "3 cahiers à 2 € et un stylo à 1,50 €. Combien en tout ?",
+        "reponse": 7.5,
+        "unite": "€",
+        "indices": [
+          "Calcule d'abord le prix des cahiers."
+        ],
+        "solution": "3 × 2 = 6 ; 6 + 1,50 = 7,50.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour partager 45 billes entre 6 enfants à égalité, on…",
+        "choix": [
+          "multiplie",
+          "soustrait",
+          "divise",
+          "additionne"
+        ],
+        "bonne": 2,
+        "explication": "Partager à égalité : on divise."
+      },
+      {
+        "type": "nombre",
+        "question": "Un livre de 120 pages. Tu lis 15 pages par jour pendant 5 jours. Combien de pages restent ?",
+        "reponse": 45,
+        "indices": [
+          "Combien de pages lues en 5 jours ?"
+        ],
+        "solution": "15 × 5 = 75 ; 120 − 75 = 45.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le voyage scolaire",
+    "histoire": [
+      "12 élèves partent à la montagne. Le train coûte 28 € par élève, le logement 45 € par élève."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quel est le coût par élève (train + logement) ?",
+        "reponse": 73,
+        "unite": "€",
+        "indices": [
+          "Additionne les deux prix par élève."
+        ],
+        "solution": "28 + 45 = 73.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Quel est le coût pour 12 élèves ?",
+        "reponse": 876,
+        "unite": "€",
+        "indices": [
+          "73 × 10 puis 73 × 2."
+        ],
+        "solution": "73 × 12 = 730 + 146 = 876.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Problème résolu !"
+  }
+}

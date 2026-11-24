@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.appliquer-le-principe-d-inertie-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mouvements/contenu.json"
+  },
+  "source": "microskill.physique-chimie.appliquer-le-principe-d-inertie",
+  "target": "skill.physique-chimie.mouvements"
+}

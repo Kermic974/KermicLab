@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.reperer-rimes-et-sonorites-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/poesie-6e/contenu.json"
+  },
+  "source": "microskill.francais.reperer-rimes-et-sonorites",
+  "target": "skill.francais.poesie-6e"
+}

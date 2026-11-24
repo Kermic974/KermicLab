@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.justice-teaches-identifier-les-garanties-d-independance-de-la-justice",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice/contenu.json"
+  },
+  "source": "notion.emc.justice",
+  "target": "microskill.emc.identifier-les-garanties-d-independance-de-la-justice"
+}

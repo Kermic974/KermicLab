@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.analyser-une-interdependance-de-ressources-entre-territoires-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ressources/contenu.json"
+  },
+  "source": "microskill.geographie.analyser-une-interdependance-de-ressources-entre-territoires",
+  "target": "skill.geographie.ressources"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.situer-la-loi-de-1905-de-separation-des-eglises-et-de-l-etat-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/laicite-et-liberte-cm/contenu.json"
+  },
+  "source": "microskill.emc.situer-la-loi-de-1905-de-separation-des-eglises-et-de-l-etat",
+  "target": "skill.emc.laicite-et-liberte-cm"
+}

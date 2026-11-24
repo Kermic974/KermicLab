@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Autour des grands fleuves naissent les premières villes, les premiers États et l'écriture.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des civilisations de fleuves",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **Mésopotamie** (« entre les fleuves », le Tigre et l'Euphrate) et l'**Égypte** (le Nil) se développent grâce aux crues qui fertilisent les terres. Les agriculteurs produisent plus qu'ils ne consomment, des villes apparaissent.",
+        "Des **rois** organisent l'irrigation, les travaux, l'armée ; des **scribes** tiennent les comptes."
+      ],
+      "exemple": {
+        "titre": "Exemple : le Nil",
+        "etapes": [
+          "Chaque année, la crue dépose du limon fertile.",
+          "Les paysans sèment après la crue.",
+          "Le pharaon organise les greniers."
+        ]
+      },
+      "aRetenir": "Un fleuve apporte de l'eau et des terres fertiles."
+    },
+    {
+      "titre": "L'écriture et le pouvoir",
+      "niveau": "6e",
+      "paragraphes": [
+        "En Mésopotamie, l'écriture **cunéiforme** (en forme de clous, sur des tablettes d'argile) apparaît vers 3 300 av. J.-C. En Égypte, les **hiéroglyphes** servent aux textes sacrés. Elles servent à compter, à gouverner, à raconter.",
+        "Le **pharaon** est un roi considéré comme un dieu vivant. Il possède les terres, commande l'armée et fait construire des temples et des **pyramides**, tombeaux de pharaons (comme Khéops, à Gizeh)."
+      ],
+      "exemple": {
+        "titre": "Exemple : le scribe",
+        "etapes": [
+          "Il apprend à écrire pendant des années.",
+          "Il tient les comptes des récoltes.",
+          "Il est un personnage respecté."
+        ]
+      },
+      "aRetenir": "L'écriture marque le début de l'histoire."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel fleuve est essentiel à l'Égypte ?",
+        "choix": [
+          "Le Rhin",
+          "Le Nil",
+          "Le Tigre",
+          "La Seine"
+        ],
+        "bonne": 1,
+        "explication": "Le Nil."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "L'écriture cunéiforme est…",
+        "choix": [
+          "inventée par les Romains",
+          "écrite à l'encre sur du papier",
+          "en forme de clous, sur l'argile",
+          "faite d'images sur le papyrus uniquement"
+        ],
+        "bonne": 2,
+        "explication": "Mésopotamie."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Les pyramides servent de…",
+        "choix": [
+          "marchés de la ville",
+          "écoles pour les scribes",
+          "phares pour les bateaux",
+          "tombeaux de pharaons"
+        ],
+        "bonne": 3,
+        "explication": "Tombeaux."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'apprenti scribe",
+    "histoire": [
+      "Tu es élève scribe en Égypte, il y a 4 000 ans."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fait le scribe ?",
+        "choix": [
+          "Il écrit et tient les comptes",
+          "Il commande l'armée",
+          "Il construit les bateaux",
+          "Il pêche"
+        ],
+        "bonne": 0,
+        "explication": "Il est lettré."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pourquoi la crue du Nil est-elle attendue ?",
+        "choix": [
+          "Elle sèche les champs",
+          "Elle fertilise les terres",
+          "Elle détruit les villes",
+          "Elle apporte des pharaons"
+        ],
+        "bonne": 1,
+        "explication": "Limon fertile."
+      }
+    ],
+    "conclusion": "Tu connais ces civilisations !"
+  }
+}

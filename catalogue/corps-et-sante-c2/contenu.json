@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Pour rester en bonne santé : bien manger, bien dormir, bouger et se laver.",
+  "niveaux": [
+    {
+      "titre": "Mon corps",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Mon corps a une tête, un tronc, des bras, des jambes. J'ai **cinq sens** : la vue (les yeux), l'ouïe (les oreilles), l'odorat (le nez), le goût (la langue), le toucher (la peau).",
+        "Mes dents, mes os, mes muscles et mon cœur travaillent tous les jours."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Je sens une fleur : l'odorat.",
+          "J'écoute une chanson : l'ouïe.",
+          "Je touche de la laine : le toucher."
+        ]
+      },
+      "aRetenir": "5 sens : vue, ouïe, odorat, goût, toucher."
+    },
+    {
+      "titre": "Prendre soin de soi",
+      "niveau": "CP / CE1 / CE2",
+      "paragraphes": [
+        "Pour rester en bonne santé : je me **lave les mains** avant de manger, je me **brosse les dents** matin et soir, je **dors** assez (9 à 11 heures), je **bouge** chaque jour, je mange de tout.",
+        "Un repas **équilibré** contient un légume ou un fruit, un féculent (pain, pâtes), une protéine (viande, poisson, œuf) et un produit laitier. Je bois de l'eau."
+      ],
+      "exemple": {
+        "titre": "Exemple : un repas",
+        "etapes": [
+          "Salade et poisson.",
+          "Riz.",
+          "Yaourt et fruit."
+        ]
+      },
+      "aRetenir": "Varier les aliments, boire de l'eau."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien y a-t-il de sens ?",
+        "reponse": 5,
+        "indices": [
+          "Compte-les."
+        ],
+        "solution": "Vue, ouïe, odorat, goût, toucher.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quand faut-il se laver les mains ?",
+        "choix": [
+          "après avoir dormi",
+          "avant de manger",
+          "jamais",
+          "seulement le soir"
+        ],
+        "bonne": 1,
+        "explication": "Avant de manger."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel organe sert à sentir une fleur ?",
+        "choix": [
+          "les yeux",
+          "les mains",
+          "le nez",
+          "les oreilles"
+        ],
+        "bonne": 2,
+        "explication": "L'odorat."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La journée en forme",
+    "histoire": [
+      "Tu prépares une journée pour être en forme."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fais-tu après le repas ?",
+        "choix": [
+          "je mange des bonbons",
+          "je dors sans me laver",
+          "je me brosse les dents",
+          "je saute le brossage"
+        ],
+        "bonne": 2,
+        "explication": "Hygiène."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle boisson est la meilleure pour la santé ?",
+        "choix": [
+          "le sirop très sucré",
+          "le jus très sucré",
+          "l'eau",
+          "le soda"
+        ],
+        "bonne": 2,
+        "explication": "L'eau."
+      }
+    ],
+    "conclusion": "En pleine forme !"
+  }
+}

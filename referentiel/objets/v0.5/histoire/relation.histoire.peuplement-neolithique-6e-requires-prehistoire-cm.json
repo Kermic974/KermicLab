@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.peuplement-neolithique-6e-requires-prehistoire-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/peuplement-neolithique-6e/contenu.json"
+  },
+  "source": "notion.histoire.peuplement-neolithique-6e",
+  "target": "notion.histoire.prehistoire-cm",
+  "rationale": "« De la Préhistoire à l'Antiquité : les premières traces » : La révolution néolithique reprend la Préhistoire vue au cycle 3."
+}

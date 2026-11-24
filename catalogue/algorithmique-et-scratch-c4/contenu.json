@@ -1,0 +1,117 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un algorithme est une suite d'instructions pour résoudre un problème ; on l'écrit sous forme de programme.",
+  "niveaux": [
+    {
+      "titre": "Briques de base",
+      "niveau": "5e",
+      "paragraphes": [
+        "Un programme combine des **instructions** (séquence), des **boucles** (« répéter n fois », « tant que »), des **conditions** (« si… alors… sinon ») et des **variables** (une case mémoire qui contient une valeur). Exemple : un score qui augmente de 10 à chaque pomme attrapée.",
+        "Dans Scratch, on assemble des blocs ; dans Python, on écrit du texte : la logique est la même."
+      ],
+      "exemple": {
+        "titre": "Exemple : somme de 1 à 5",
+        "etapes": [
+          "somme = 0.",
+          "Pour i de 1 à 5 : somme = somme + i.",
+          "À la fin, somme = 15."
+        ]
+      },
+      "aRetenir": "Variable, boucle, condition."
+    },
+    {
+      "titre": "Programmes de calcul et fonctions",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "Un **programme de calcul** peut s'écrire avec une variable : choisir un nombre x, le multiplier par 3, ajouter 2. On le traduit par l'expression 3x + 2 (lien avec le calcul littéral et les fonctions). On peut définir une **fonction** (un bloc réutilisable) qui reçoit un nombre et renvoie le résultat.",
+        "Pour **déboguer** : tester sur des valeurs connues, afficher les variables, corriger pas à pas."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "x = 4.",
+          "3 × 4 + 2 = 14.",
+          "Test de la fonction : f(4) doit valoir 14."
+        ]
+      },
+      "aRetenir": "Tester avec des valeurs connues."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Que vaut la variable somme à la fin : somme = 0 ; pour i de 1 à 4, somme = somme + i ?",
+        "reponse": 10,
+        "indices": [
+          "Additionne les valeurs de i."
+        ],
+        "solution": "1 + 2 + 3 + 4 = 10.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Une boucle « tant que » s'arrête quand…",
+        "choix": [
+          "la variable vaut 0",
+          "on la supprime",
+          "la condition devient fausse",
+          "le programme est écrit"
+        ],
+        "bonne": 2,
+        "explication": "Condition fausse."
+      },
+      {
+        "type": "nombre",
+        "question": "Programme : choisir x, multiplier par 3, ajouter 2. Quel résultat pour x = 4 ?",
+        "reponse": 14,
+        "indices": [
+          "Applique les opérations dans l'ordre."
+        ],
+        "solution": "3 × 4 + 2 = 14.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le jeu du nombre mystère",
+    "histoire": [
+      "Tu programmes un jeu : l'ordinateur choisit un nombre entre 1 et 100, tu proposes des valeurs."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle structure répète les propositions jusqu'à la bonne réponse ?",
+        "choix": [
+          "Une boucle tant que",
+          "Une variable seule",
+          "Une séquence unique",
+          "Un commentaire"
+        ],
+        "bonne": 0,
+        "explication": "Répéter jusqu'à trouver."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour dire « trop grand », on utilise…",
+        "choix": [
+          "une condition si… alors",
+          "une boucle",
+          "une variable aléatoire",
+          "un événement"
+        ],
+        "bonne": 0,
+        "explication": "Test si proposition > nombre."
+      }
+    ],
+    "conclusion": "Programme prêt !"
+  }
+}

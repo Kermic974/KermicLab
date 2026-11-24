@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.espaces-et-puissances-mondiales-l-requires-mers-oceans",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/espaces-et-puissances-mondiales-l/contenu.json"
+  },
+  "source": "notion.geographie.espaces-et-puissances-mondiales-l",
+  "target": "notion.geographie.mers-oceans",
+  "rationale": "« Mers et océans dans la mondialisation » : La géopolitique s’appuie sur la mondialisation et les enjeux maritimes."
+}

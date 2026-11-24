@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.microbiote-et-sante-l-teaches-expliquer-l-effet-d-un-antibiotique-sur-le-microbiote",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/microbiote-et-sante-l/contenu.json"
+  },
+  "source": "notion.svt.microbiote-et-sante-l",
+  "target": "microskill.svt.expliquer-l-effet-d-un-antibiotique-sur-le-microbiote"
+}

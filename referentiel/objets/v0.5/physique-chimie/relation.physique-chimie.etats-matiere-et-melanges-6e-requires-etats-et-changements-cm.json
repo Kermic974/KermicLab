@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.etats-matiere-et-melanges-6e-requires-etats-et-changements-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etats-matiere-et-melanges-6e/contenu.json"
+  },
+  "source": "notion.physique-chimie.etats-matiere-et-melanges-6e",
+  "target": "notion.physique-chimie.etats-et-changements-cm",
+  "rationale": "« Les états de la matière et leurs changements » : Les mélanges de 6e prolongent les états de la matière et la dissolution du cycle 3."
+}

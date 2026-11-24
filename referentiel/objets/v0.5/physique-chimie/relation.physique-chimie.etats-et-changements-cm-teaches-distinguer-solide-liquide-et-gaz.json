@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.etats-et-changements-cm-teaches-distinguer-solide-liquide-et-gaz",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etats-et-changements-cm/contenu.json"
+  },
+  "source": "notion.physique-chimie.etats-et-changements-cm",
+  "target": "microskill.physique-chimie.distinguer-solide-liquide-et-gaz"
+}

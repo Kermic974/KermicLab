@@ -21,7 +21,7 @@ questions:
   - what is happiness?
 prerequis:
 niveaux: terminale
-competences: philosophie-bonheur-action-1, philosophie-bonheur-action-2
+competences: distinguer-plaisir-bonheur-et-satisfaction, expliquer-la-classification-des-desirs-chez-epicure, relier-le-bonheur-a-la-vertu-chez-aristote, discuter-si-la-satisfaction-d-un-desir-prouve-le-bonheur
 ---
 
 # Le bonheur

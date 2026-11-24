@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.decrire-les-mouvements-de-la-terre-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/terre-dans-le-systeme-solaire-6e/contenu.json"
+  },
+  "source": "microskill.svt.decrire-les-mouvements-de-la-terre",
+  "target": "skill.svt.terre-dans-le-systeme-solaire-6e"
+}

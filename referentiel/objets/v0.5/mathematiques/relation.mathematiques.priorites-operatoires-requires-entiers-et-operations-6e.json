@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.priorites-operatoires-requires-entiers-et-operations-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/priorites-operatoires/contenu.json"
+  },
+  "source": "notion.mathematiques.priorites-operatoires",
+  "target": "notion.mathematiques.entiers-et-operations-6e",
+  "rationale": "« Nombres entiers et opérations en 6e » : Les opérations sur les entiers de 6e précèdent les priorités opératoires."
+}

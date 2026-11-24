@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.alimentation-digestion-cm-requires-corps-et-sante-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/alimentation-digestion-cm/contenu.json"
+  },
+  "source": "notion.svt.alimentation-digestion-cm",
+  "target": "notion.svt.corps-et-sante-c2",
+  "rationale": "« Mon corps et ma santé » : La digestion s’appuie sur la connaissance du corps et de la santé du cycle 2."
+}

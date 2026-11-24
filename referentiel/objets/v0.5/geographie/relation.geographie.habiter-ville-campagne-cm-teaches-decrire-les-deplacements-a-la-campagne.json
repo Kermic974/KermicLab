@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.habiter-ville-campagne-cm-teaches-decrire-les-deplacements-a-la-campagne",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-ville-campagne-cm/contenu.json"
+  },
+  "source": "notion.geographie.habiter-ville-campagne-cm",
+  "target": "microskill.geographie.decrire-les-deplacements-a-la-campagne"
+}

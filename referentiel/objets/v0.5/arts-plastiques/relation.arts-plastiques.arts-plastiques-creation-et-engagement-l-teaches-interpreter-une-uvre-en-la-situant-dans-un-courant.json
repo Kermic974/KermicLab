@@ -1,0 +1,12 @@
+{
+  "id": "relation.arts-plastiques.arts-plastiques-creation-et-engagement-l-teaches-interpreter-une-uvre-en-la-situant-dans-un-courant",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/arts-plastiques-creation-et-engagement-l/contenu.json"
+  },
+  "source": "notion.arts-plastiques.arts-plastiques-creation-et-engagement-l",
+  "target": "microskill.arts-plastiques.interpreter-une-uvre-en-la-situant-dans-un-courant"
+}

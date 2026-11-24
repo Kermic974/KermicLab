@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.justifier-une-rotation-de-cultures-avec-legumineuses-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/agrosystemes-et-sols/contenu.json"
+  },
+  "source": "microskill.svt.justifier-une-rotation-de-cultures-avec-legumineuses",
+  "target": "skill.svt.agrosystemes-et-sols"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-le-role-du-roi-justicier-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/louis-ix-cm/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-le-role-du-roi-justicier",
+  "target": "skill.histoire.louis-ix-cm"
+}

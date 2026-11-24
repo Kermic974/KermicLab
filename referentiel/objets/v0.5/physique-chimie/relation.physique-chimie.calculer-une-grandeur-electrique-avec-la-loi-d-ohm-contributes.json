@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.calculer-une-grandeur-electrique-avec-la-loi-d-ohm-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/electricite/contenu.json"
+  },
+  "source": "microskill.physique-chimie.calculer-une-grandeur-electrique-avec-la-loi-d-ohm",
+  "target": "skill.physique-chimie.electricite"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.comparer-deux-nombres-avec-les-signes-et-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/comparer-et-ranger-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.comparer-deux-nombres-avec-les-signes-et",
+  "target": "skill.mathematiques.comparer-et-ranger-c2"
+}

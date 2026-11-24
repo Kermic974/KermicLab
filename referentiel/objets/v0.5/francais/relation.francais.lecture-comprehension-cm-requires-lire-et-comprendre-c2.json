@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.lecture-comprehension-cm-requires-lire-et-comprendre-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lecture-comprehension-cm/contenu.json"
+  },
+  "source": "notion.francais.lecture-comprehension-cm",
+  "target": "notion.francais.lire-et-comprendre-c2",
+  "rationale": "« Lire et comprendre un texte » : La compréhension de texte du cycle 3 prolonge la compréhension du cycle 2."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.appliquer-la-loi-des-grands-nombres-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lois-et-concentration-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.appliquer-la-loi-des-grands-nombres",
+  "target": "skill.mathematiques.lois-et-concentration-l"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.langue-et-style-l-requires-grammaire-phrase-complexe",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/langue-et-style-l/contenu.json"
+  },
+  "source": "notion.francais.langue-et-style-l",
+  "target": "notion.francais.grammaire-phrase-complexe",
+  "rationale": "« La phrase complexe » : L’étude du style reprend la phrase complexe et les accords du collège."
+}

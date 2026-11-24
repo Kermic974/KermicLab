@@ -20,10 +20,10 @@ questions:
   - Pourquoi la machine à vapeur transforme-t-elle la production ?
   - Que change le chemin de fer ?
   - Comment l'industrialisation transforme-t-elle les villes ?
-prerequis:
-niveaux: cycle-4, seconde
 classes: 4e
-competences: his-revolution-industrielle-action-1, his-revolution-industrielle-action-2
+prerequis: age-industriel-cm
+niveaux: cycle-4, seconde
+competences: situer-les-debuts-de-l-industrialisation, expliquer-le-role-des-innovations-techniques-vapeur-chemin-de-fer, analyser-les-effets-sur-les-villes-et-le-monde-du-travail, expliquer-l-exode-rural-et-l-urbanisation, analyser-une-loi-sociale-du-xixe-siecle
 ---
 
 # La révolution industrielle

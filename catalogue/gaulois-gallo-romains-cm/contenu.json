@@ -1,0 +1,124 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La Gaule, habitée par des peuples celtes, est conquise par Rome et devient gallo-romaine.",
+  "niveaux": [
+    {
+      "titre": "Intuition : Astérix et la vraie histoire",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Les **Gaulois** sont des peuples celtes qui vivent sur le territoire de la France actuelle il y a plus de 2 000 ans. Ils sont agriculteurs, artisans (forgerons, potiers), commerçants ; leurs chefs sont des guerriers ; les druides sont des prêtres.",
+        "Contrairement à la bande dessinée, ils ne vivaient pas dans un seul village : ils avaient de grandes places fortifiées, les **oppida**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Les Gaulois n'écrivent pas leurs récits : ce sont les Romains qui les décrivent.",
+          "Ils fabriquent des bijoux, des armes, des chars.",
+          "Ils vénèrent de nombreux dieux."
+        ]
+      },
+      "aRetenir": "Les Gaulois sont des peuples celtes divisés en tribus."
+    },
+    {
+      "titre": "La conquête et les Gallo-Romains",
+      "niveau": "CM1",
+      "paragraphes": [
+        "Entre 58 et 51 av. J.-C., **Jules César** conquiert la Gaule (guerre des Gaules). **Vercingétorix**, chef gaulois, est vaincu à **Alésia** en 52 av. J.-C.",
+        "La Gaule devient romaine : c'est la **romanisation**. Les Gaulois adoptent le latin, les routes, les villes (Lugdunum = Lyon), les thermes, les amphithéâtres, les aqueducs (pont du Gard). On parle de **Gallo-Romains**.",
+        "Peu à peu, le christianisme se diffuse dans l'Empire."
+      ],
+      "exemple": {
+        "titre": "Exemple : une ville gallo-romaine",
+        "etapes": [
+          "Un forum (place), un théâtre, des thermes.",
+          "Des rues droites en damier.",
+          "Un aqueduc pour amener l'eau."
+        ]
+      },
+      "aRetenir": "52 av. J.-C. : défaite de Vercingétorix à Alésia."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel chef gaulois est vaincu à Alésia ?",
+        "choix": [
+          "Vercingétorix",
+          "Clovis",
+          "Charlemagne",
+          "César"
+        ],
+        "bonne": 0,
+        "explication": "Vercingétorix, en 52 av. J.-C."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qu'apportent les Romains en Gaule ?",
+        "choix": [
+          "L'imprimerie et les livres",
+          "Le téléphone et l'électricité",
+          "Routes, aqueducs, villes et latin",
+          "Châteaux forts et chevaliers"
+        ],
+        "bonne": 2,
+        "explication": "C'est la romanisation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Lyon s'appelait à l'époque romaine…",
+        "choix": [
+          "Lugdunum",
+          "Lutèce",
+          "Massalia",
+          "Narbo"
+        ],
+        "bonne": 0,
+        "explication": "Lugdunum, capitale des Gaules."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Voyage dans la Gaule romaine",
+    "histoire": [
+      "Tu voyages en 150 apr. J.-C. dans une ville gallo-romaine."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que vois-tu dans la ville ?",
+        "choix": [
+          "Un château fort et ses douves",
+          "Des thermes, un théâtre et un forum",
+          "Une cathédrale gothique et un beffroi",
+          "Des gratte-ciel et un métro"
+        ],
+        "bonne": 1,
+        "explication": "Ce sont les bâtiments romains."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle langue parle-t-on dans les villes ?",
+        "choix": [
+          "Le latin",
+          "Le français moderne",
+          "L'anglais",
+          "L'arabe"
+        ],
+        "bonne": 0,
+        "explication": "Le latin se répand en Gaule."
+      }
+    ],
+    "conclusion": "Tu connais la Gaule romaine !"
+  }
+}

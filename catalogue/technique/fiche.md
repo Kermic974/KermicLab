@@ -17,7 +17,7 @@ questions:
   - Que signifie le principe responsabilité ?
 prerequis:
 niveaux: terminale
-competences: philosophie-technique-action-1, philosophie-technique-action-2
+competences: distinguer-technique-science-et-action, analyser-un-moyen-efficace-au-regard-de-sa-fin, expliquer-la-responsabilite-a-l-egard-de-la-technique-chez-jonas, discuter-la-technique-comme-devoilement-chez-heidegger
 ---
 
 # La technique

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.classification-du-vivant-6e-teaches-lire-un-arbre-de-parente",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/classification-du-vivant-6e/contenu.json"
+  },
+  "source": "notion.svt.classification-du-vivant-6e",
+  "target": "microskill.svt.lire-un-arbre-de-parente"
+}

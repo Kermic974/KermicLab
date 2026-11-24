@@ -5,16 +5,7 @@ sujet: mathematiques/proportionnalite
 version: 1.0.0
 date: 2026-11-01
 niveau: college
-niveaux: cycle-3, cycle-4, seconde
 classes: 6e, 5e, 4e
-prerequis:
-  - fractions
-  - nombres-decimaux
-competences:
-  - reconnaitre-une-situation-de-proportionnalite
-  - utiliser-un-coefficient-de-proportionnalite
-  - calculer-une-quatrieme-proportionnelle
-  - appliquer-un-pourcentage
 duree: 25
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -40,6 +31,9 @@ questions:
   - comment marche le produit en croix
   - je ne comprends pas la règle de trois
   - how do percentages work?
+prerequis: fractions, nombres-decimaux, proportionnalite-cm, moyenne-et-proportions-cm
+niveaux: cycle-3, cycle-4, seconde
+competences: reconnaitre-une-situation-de-proportionnalite, utiliser-un-coefficient-de-proportionnalite, calculer-une-quatrieme-proportionnelle, appliquer-un-pourcentage
 ---
 
 # Proportionnalité et pourcentages

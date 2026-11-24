@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.appliquer-la-loi-de-decroissance-radioactive-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/radioactivite/contenu.json"
+  },
+  "source": "microskill.physique-chimie.appliquer-la-loi-de-decroissance-radioactive",
+  "target": "skill.physique-chimie.radioactivite"
+}

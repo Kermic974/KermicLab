@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.changement-climatique-relatedto-risques-naturels",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/changement-climatique/contenu.json"
+  },
+  "source": "notion.geographie.changement-climatique",
+  "target": "notion.geographie.risques-naturels",
+  "rationale": "Le changement climatique modifie l’aléa de certains risques ; lien de contexte, pas un préalable."
+}

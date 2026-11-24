@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.distinguer-un-montage-en-serie-d-un-montage-en-derivation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/electricite/contenu.json"
+  },
+  "source": "microskill.physique-chimie.distinguer-un-montage-en-serie-d-un-montage-en-derivation",
+  "target": "skill.physique-chimie.electricite"
+}

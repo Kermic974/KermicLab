@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.analyser-les-effets-sur-les-villes-et-le-monde-du-travail-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-industrielle/contenu.json"
+  },
+  "source": "microskill.histoire.analyser-les-effets-sur-les-villes-et-le-monde-du-travail",
+  "target": "skill.histoire.revolution-industrielle"
+}

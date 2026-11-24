@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.definir-une-metropole-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-6e/contenu.json"
+  },
+  "source": "microskill.geographie.definir-une-metropole",
+  "target": "skill.geographie.habiter-6e"
+}

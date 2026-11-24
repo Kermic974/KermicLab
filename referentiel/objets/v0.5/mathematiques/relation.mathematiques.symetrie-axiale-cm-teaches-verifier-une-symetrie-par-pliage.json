@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.symetrie-axiale-cm-teaches-verifier-une-symetrie-par-pliage",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/symetrie-axiale-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.symetrie-axiale-cm",
+  "target": "microskill.mathematiques.verifier-une-symetrie-par-pliage"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.caracteriser-la-monarchie-absolue-de-louis-xiv-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps-modernes/contenu.json"
+  },
+  "source": "microskill.histoire.caracteriser-la-monarchie-absolue-de-louis-xiv",
+  "target": "skill.histoire.temps-modernes"
+}

@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Internet est utile, mais il faut apprendre à s'y protéger et à respecter les autres.",
+  "niveaux": [
+    {
+      "titre": "Intuition : internet, un espace public",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Ce qu'on publie sur Internet peut être vu par beaucoup de monde et rester longtemps. Il ne faut pas donner son nom complet, son adresse, son école ou des photos sans l'accord d'un adulte.",
+        "Un bon **mot de passe** est long et secret, avec des lettres, des chiffres et des signes ; on ne le partage avec personne (sauf ses parents)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« Chat123 » : trop facile à deviner.",
+          "Une phrase longue et mélangée est meilleure.",
+          "On ne l'écrit pas sur son cahier."
+        ]
+      },
+      "aRetenir": "Mot de passe : long, secret, unique."
+    },
+    {
+      "titre": "Informations, images et écrans",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Sur Internet, il y a aussi des **fausses informations**. On vérifie : qui écrit ? Quelle est la source ? D'autres sites disent-ils la même chose ? Une photo peut être modifiée.",
+        "Chacun a un **droit à l'image** : on ne publie pas la photo de quelqu'un sans son accord. Les **écrans** fatiguent : on limite leur durée, on fait des pauses, on dort sans écran. Si quelque chose choque, on en parle à un adulte."
+      ],
+      "exemple": {
+        "titre": "Exemple : vérifier une information",
+        "etapes": [
+          "Je lis la source de l'article.",
+          "Je cherche sur d'autres sites sérieux.",
+          "Je demande à un adulte en cas de doute."
+        ]
+      },
+      "aRetenir": "Vérifier avant de partager."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel mot de passe est le plus solide ?",
+        "choix": [
+          "La suite de chiffres 123456789",
+          "Un long mélange de lettres, chiffres et signes",
+          "Sa date de naissance et son prénom",
+          "Le prénom de son animal préféré"
+        ],
+        "bonne": 1,
+        "explication": "Long et imprévisible."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que faire avant de partager une information ?",
+        "choix": [
+          "L'effacer",
+          "La vérifier",
+          "La partager tout de suite",
+          "L'imprimer"
+        ],
+        "bonne": 1,
+        "explication": "Vérifier les sources."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Peut-on publier la photo d'un camarade ?",
+        "choix": [
+          "Seulement avec son accord",
+          "Toujours",
+          "Jamais même avec accord",
+          "Seulement la nuit"
+        ],
+        "bonne": 0,
+        "explication": "Droit à l'image."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le message suspect",
+    "histoire": [
+      "Tu reçois un message : « Tu as gagné un téléphone ! Donne ton adresse et ton mot de passe. »"
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fais-tu ?",
+        "choix": [
+          "Je clique sur le lien pour vérifier",
+          "Je transfère le message à mes amis",
+          "Je ne réponds pas et j'en parle à un adulte",
+          "Je réponds et je donne mon adresse"
+        ],
+        "bonne": 2,
+        "explication": "C'est probablement une arnaque."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle information ne faut-il jamais donner ?",
+        "choix": [
+          "Son mot de passe",
+          "Sa couleur préférée",
+          "Le nom de son animal",
+          "Son sport favori"
+        ],
+        "bonne": 0,
+        "explication": "Le mot de passe est secret."
+      }
+    ],
+    "conclusion": "Tu es un cybercitoyen avisé !"
+  }
+}

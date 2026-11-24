@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.expliquer-la-presomption-d-innocence-en-6e-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droit-et-regle-6e/contenu.json"
+  },
+  "source": "microskill.emc.expliquer-la-presomption-d-innocence-en-6e",
+  "target": "skill.emc.droit-et-regle-6e"
+}

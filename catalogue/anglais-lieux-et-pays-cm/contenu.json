@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Pour se repérer en anglais, on connaît quelques lieux et les directions.",
+  "niveaux": [
+    {
+      "titre": "Intuition : dans la ville",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Lieux : school, library, park, bakery, station, supermarket. Pour demander : **Where is the library ?** Réponses : **It's next to the park.** / **It's near the station.** Directions : **go straight on, turn left, turn right**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Where is the bakery ?",
+          "Go straight on, then turn left.",
+          "It's on the right."
+        ]
+      },
+      "aRetenir": "Left = gauche, right = droite."
+    },
+    {
+      "titre": "Pays et langues",
+      "niveau": "CM2",
+      "paragraphes": [
+        "Pays : **France**, **England**, **Scotland**, **the United States**, **Canada**, **Australia**. On dit **I'm French**, **he's English**, **she's American**. Le **Royaume-Uni** (the United Kingdom) comprend l'Angleterre, l'Écosse, le pays de Galles et l'Irlande du Nord ; sa capitale est **London**."
+      ],
+      "exemple": {
+        "titre": "Exemple : nationalités",
+        "etapes": [
+          "France → French.",
+          "England → English.",
+          "Canada → Canadian."
+        ]
+      },
+      "aRetenir": "Les nationalités prennent une majuscule."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« Turn left » signifie…",
+        "choix": [
+          "arrête-toi",
+          "tourne à gauche",
+          "tourne à droite",
+          "va tout droit"
+        ],
+        "bonne": 1,
+        "explication": "Left = gauche."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Capitale du Royaume-Uni :",
+        "choix": [
+          "Dublin",
+          "Washington",
+          "London",
+          "Paris"
+        ],
+        "bonne": 2,
+        "explication": "London."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« I'm French » veut dire…",
+        "choix": [
+          "J'habite à Paris",
+          "J'ai un ami français",
+          "Je suis français",
+          "Je parle anglais"
+        ],
+        "bonne": 2,
+        "explication": "Nationalité."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "À Londres",
+    "histoire": [
+      "Tu cherches la gare à Londres."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "On te répond : « Go straight on, then turn right. » Tu…",
+        "choix": [
+          "reviens sur tes pas puis tournes",
+          "avances puis tournes à droite",
+          "avances puis tournes à gauche",
+          "tournes à droite puis avances"
+        ],
+        "bonne": 1,
+        "explication": "Straight on = tout droit."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "« The station is near the park. » La gare est…",
+        "choix": [
+          "derrière l'école",
+          "près du parc",
+          "loin du parc",
+          "dans le parc"
+        ],
+        "bonne": 1,
+        "explication": "Near = près de."
+      }
+    ],
+    "conclusion": "Good luck in London!"
+  }
+}

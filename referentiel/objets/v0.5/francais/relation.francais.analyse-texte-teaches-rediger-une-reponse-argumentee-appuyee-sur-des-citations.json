@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.analyse-texte-teaches-rediger-une-reponse-argumentee-appuyee-sur-des-citations",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/analyse-texte/contenu.json"
+  },
+  "source": "notion.francais.analyse-texte",
+  "target": "microskill.francais.rediger-une-reponse-argumentee-appuyee-sur-des-citations"
+}

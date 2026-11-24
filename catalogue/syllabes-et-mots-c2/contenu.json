@@ -1,0 +1,114 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une syllabe, c'est un morceau de mot qu'on dit d'un seul coup de voix.",
+  "niveaux": [
+    {
+      "titre": "Découper en syllabes",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "On frappe dans ses mains pour compter les **syllabes** : cha-peau (2), ba-na-ne (3), é-lé-phant (3). Chaque syllabe a une voyelle qui se prononce.",
+        "Pour lire un mot, je le lis syllabe par syllabe, puis je le dis en entier."
+      ],
+      "exemple": {
+        "titre": "Exemple : « table »",
+        "etapes": [
+          "ta-ble : 2 syllabes.",
+          "Je lis « ta », puis « ble ».",
+          "Je lis « table »."
+        ]
+      },
+      "aRetenir": "Une syllabe = un coup de voix."
+    },
+    {
+      "titre": "Mots à retenir",
+      "niveau": "CP",
+      "paragraphes": [
+        "Certains petits mots sont très fréquents : **le, la, les, un, une, et, est, il, elle, dans, sur, avec**. Ce sont des **mots-outils** : on les lit sans les décoder.",
+        "Les mots-outils ne se lisent pas toujours comme on les écrit : « est » se dit [é]."
+      ],
+      "exemple": {
+        "titre": "Exemple : une phrase",
+        "etapes": [
+          "Le chat est sur la table.",
+          "Mots-outils : le, est, sur, la.",
+          "Mots à décoder : chat, table."
+        ]
+      },
+      "aRetenir": "Les mots-outils se retiennent par cœur."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien de syllabes dans « banane » ?",
+        "reponse": 3,
+        "indices": [
+          "Frappe dans tes mains."
+        ],
+        "solution": "ba-na-ne.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de syllabes dans « chapeau » ?",
+        "reponse": 2,
+        "indices": [
+          "Frappe dans tes mains."
+        ],
+        "solution": "cha-peau.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel mot est un mot-outil ?",
+        "choix": [
+          "dans",
+          "chocolat",
+          "maison",
+          "tigre"
+        ],
+        "bonne": 0,
+        "explication": "Dans est un petit mot très fréquent."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le jeu des mots coupés",
+    "histoire": [
+      "Tu recolles des syllabes pour former des mots."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Avec « ba » et « teau », quel mot obtiens-tu ?",
+        "choix": [
+          "cheval",
+          "pomme",
+          "poisson",
+          "bateau"
+        ],
+        "bonne": 3,
+        "explication": "ba-teau."
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de syllabes dans « éléphant » ?",
+        "reponse": 3,
+        "indices": [
+          "Compte les coups de voix."
+        ],
+        "solution": "é-lé-phant.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bravo, tu lis des mots !"
+  }
+}

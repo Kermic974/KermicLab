@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Henri IV ramène la paix religieuse en France avec l'édit de Nantes.",
+  "niveaux": [
+    {
+      "titre": "Intuition : des Français divisés",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Au XVIe siècle, des **catholiques** et des **protestants** (ou huguenots) s'opposent violemment : ce sont les **guerres de religion**. Les massacres sont nombreux (Saint-Barthélemy, 1572).",
+        "En 1589, **Henri IV**, protestant devenu catholique, devient roi. Il veut réconcilier les Français."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Les guerres de religion durent plusieurs décennies.",
+          "Henri IV est le premier roi Bourbon.",
+          "On lui attribue : « Paris vaut bien une messe »."
+        ]
+      },
+      "aRetenir": "Henri IV : roi de 1589 à 1610."
+    },
+    {
+      "titre": "L'édit de Nantes (1598)",
+      "niveau": "CM1",
+      "paragraphes": [
+        "L'**édit de Nantes** (1598) accorde aux protestants la **liberté de culte** dans certains lieux et les mêmes droits civils que les catholiques. Les deux religions doivent coexister.",
+        "Henri IV reconstruit le royaume : routes, ponts, agriculture (Sully). Il est assassiné en 1610 par Ravaillac, un fanatique catholique."
+      ],
+      "exemple": {
+        "titre": "Exemple : après l'édit",
+        "etapes": [
+          "Les protestants peuvent célébrer leur culte.",
+          "Ils ont des places de sûreté.",
+          "La paix revient, le pays se redresse."
+        ]
+      },
+      "aRetenir": "1598 : édit de Nantes, paix religieuse."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "En quelle année l'édit de Nantes est-il signé ?",
+        "reponse": 1598,
+        "indices": [
+          "Fin du XVIe siècle."
+        ],
+        "solution": "Henri IV signe l'édit en 1598.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que permet l'édit de Nantes ?",
+        "choix": [
+          "De supprimer le roi",
+          "Aux protestants de pratiquer leur culte",
+          "D'interdire le protestantisme",
+          "De chasser les catholiques"
+        ],
+        "bonne": 1,
+        "explication": "Il organise la coexistence."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Comment meurt Henri IV ?",
+        "choix": [
+          "Guillotiné",
+          "Assassiné en 1610",
+          "De maladie en 1589",
+          "Au combat"
+        ],
+        "bonne": 1,
+        "explication": "Par Ravaillac."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le conseil du roi",
+    "histoire": [
+      "Tu es conseiller d'Henri IV : le royaume est divisé."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle solution proposes-tu pour la paix ?",
+        "choix": [
+          "Interdire une religion",
+          "Déclarer la guerre à l'étranger",
+          "Supprimer la justice",
+          "Accorder des droits aux deux religions"
+        ],
+        "bonne": 3,
+        "explication": "C'est l'idée de l'édit de Nantes."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quels sont les deux camps ?",
+        "choix": [
+          "Francs et Wisigoths",
+          "Royalistes et révolutionnaires",
+          "Catholiques et protestants",
+          "Gaulois et Romains"
+        ],
+        "bonne": 2,
+        "explication": "Les guerres de religion."
+      }
+    ],
+    "conclusion": "Paix religieuse retrouvée !"
+  }
+}

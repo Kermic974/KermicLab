@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.biodiversite-et-chaines-cm-requires-milieux-et-saisons-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/biodiversite-et-chaines-cm/contenu.json"
+  },
+  "source": "notion.svt.biodiversite-et-chaines-cm",
+  "target": "notion.svt.milieux-et-saisons-c2",
+  "rationale": "« Les milieux de vie et les saisons » : Les chaînes alimentaires reprennent les milieux de vie et le classement des êtres vivants."
+}

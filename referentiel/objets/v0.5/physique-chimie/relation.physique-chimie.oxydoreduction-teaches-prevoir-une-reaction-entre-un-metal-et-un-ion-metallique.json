@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.oxydoreduction-teaches-prevoir-une-reaction-entre-un-metal-et-un-ion-metallique",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/oxydoreduction/contenu.json"
+  },
+  "source": "notion.physique-chimie.oxydoreduction",
+  "target": "microskill.physique-chimie.prevoir-une-reaction-entre-un-metal-et-un-ion-metallique"
+}

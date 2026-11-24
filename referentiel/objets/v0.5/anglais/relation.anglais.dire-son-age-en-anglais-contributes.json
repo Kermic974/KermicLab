@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.dire-son-age-en-anglais-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-se-presenter-cm/contenu.json"
+  },
+  "source": "microskill.anglais.dire-son-age-en-anglais",
+  "target": "skill.anglais.anglais-se-presenter-cm"
+}

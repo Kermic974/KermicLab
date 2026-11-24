@@ -1,0 +1,151 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Avec trois couleurs et du blanc, on peut presque tout peindre.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le mélange",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Les **couleurs primaires** sont le jaune, le rouge et le bleu : on ne peut pas les fabriquer en mélangeant d'autres couleurs. (En imprimerie, on utilise plutôt le jaune, le magenta et le cyan.) En les mélangeant deux à deux, on obtient les **couleurs secondaires** : jaune + bleu = vert, jaune + rouge = orange, rouge + bleu = violet."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Jaune + bleu → vert.",
+          "Rouge + jaune → orange.",
+          "Bleu + rouge → violet."
+        ]
+      },
+      "aRetenir": "Primaires : jaune, rouge, bleu."
+    },
+    {
+      "titre": "Chaud, froid et contrastes",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Les couleurs **chaudes** (rouge, orange, jaune) évoquent le feu, le soleil ; les couleurs **froides** (bleu, vert, violet) l'eau, la glace. Une couleur **claire** s'obtient en ajoutant du blanc, une couleur **foncée** en ajoutant du noir. Les **couleurs complémentaires** (rouge/vert, bleu/orange, jaune/violet) se renforcent l'une l'autre."
+      ],
+      "exemple": {
+        "titre": "Exemple : un coucher de soleil",
+        "etapes": [
+          "Ciel orange et rouge : couleurs chaudes.",
+          "Mer bleue : couleurs froides.",
+          "Le contraste donne de l'intensité."
+        ]
+      },
+      "aRetenir": "Blanc éclaircit, noir fonce."
+    },
+    {
+      "titre": "Matières, outils et gestes",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Un artiste choisit une **matière** (gouache, encre, craie, papier collé, argile) et un **outil** (pinceau fin, gros pinceau, éponge, rouleau, doigts). Chaque choix laisse une **trace** différente : fine ou épaisse, lisse ou rugueuse, transparente ou opaque.",
+        "Le **geste** compte aussi : tamponner, tirer un trait, étaler, gratter. Une même couleur n'a pas le même effet sur un papier lisse et sur un support rugueux."
+      ],
+      "exemple": {
+        "titre": "Exemple : trois traces",
+        "etapes": [
+          "Un pinceau fin : un trait précis.",
+          "Une éponge : une surface tamponnée, irrégulière.",
+          "Les doigts : une matière épaisse et rugueuse."
+        ]
+      },
+      "aRetenir": "Matière, outil et geste changent la trace."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "question": "Quelle est la couleur complémentaire du rouge ?",
+        "choix": [
+          "le bleu",
+          "le jaune",
+          "le vert",
+          "le violet"
+        ],
+        "bonne": 2,
+        "explication": "Rouge et vert se renforcent l'un l'autre.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle couleur est chaude ?",
+        "choix": [
+          "Le violet",
+          "Le rouge",
+          "Le bleu",
+          "Le vert"
+        ],
+        "bonne": 1,
+        "explication": "Évoque le feu."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Pour éclaircir une couleur, on ajoute…",
+        "choix": [
+          "du noir",
+          "du rouge",
+          "de l'eau seulement",
+          "du blanc"
+        ],
+        "bonne": 3,
+        "explication": "Blanc."
+      },
+      {
+        "type": "qcm",
+        "question": "Quel outil laisse la trace la plus fine et précise ?",
+        "choix": [
+          "une éponge",
+          "un pinceau fin",
+          "un rouleau",
+          "les doigts"
+        ],
+        "bonne": 1,
+        "explication": "Un pinceau fin trace un trait précis.",
+        "titre": "Exercice 4"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'atelier peinture",
+    "histoire": [
+      "Tu dois peindre un paysage avec trois tubes de peinture — jaune, rouge, bleu — et un tube de blanc."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment faire de l'herbe verte ?",
+        "choix": [
+          "Jaune + bleu",
+          "Rouge + bleu",
+          "Rouge + jaune",
+          "Blanc seul"
+        ],
+        "bonne": 0,
+        "explication": "Jaune + bleu."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Comment faire un ciel de soir orangé ?",
+        "choix": [
+          "Rouge + jaune",
+          "Bleu + jaune",
+          "Bleu + rouge",
+          "Noir"
+        ],
+        "bonne": 0,
+        "explication": "Orange."
+      }
+    ],
+    "conclusion": "Beau tableau !"
+  }
+}

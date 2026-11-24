@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.noms-et-determinants-c2-requires-la-phrase-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/noms-et-determinants-c2/contenu.json"
+  },
+  "source": "notion.francais.noms-et-determinants-c2",
+  "target": "notion.francais.la-phrase-c2",
+  "rationale": "« La phrase : majuscule, point et sens » : Le nom et le déterminant sont des mots de la phrase."
+}

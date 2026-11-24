@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.prevoir-le-resultat-d-un-programme-simple-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/algorithmes-programmation-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.prevoir-le-resultat-d-un-programme-simple",
+  "target": "skill.mathematiques.algorithmes-programmation-cm"
+}

@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "S'engager, c'est agir pour les autres et pour la vie du collège.",
+  "niveaux": [
+    {
+      "titre": "Agir pour les autres",
+      "niveau": "6e",
+      "paragraphes": [
+        "La **solidarité** consiste à aider ceux qui en ont besoin : camarades en difficulté, personnes âgées, personnes en situation de handicap. On peut s'engager dans une **association**, devenir **bénévole**, participer à une collecte ou à un projet de classe."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un élève aide un camarade à comprendre une leçon.",
+          "La classe organise une collecte de livres.",
+          "Une association récupère les dons."
+        ]
+      },
+      "aRetenir": "Solidarité : entraide et partage."
+    },
+    {
+      "titre": "Délégués et vie collégienne",
+      "niveau": "6e",
+      "paragraphes": [
+        "Au collège, deux **délégués** de classe sont élus par leurs camarades. Ils portent leur parole au conseil de classe, au conseil de vie collégienne (CVC), au conseil d'administration. Ils doivent écouter, rapporter, proposer.",
+        "Voter, c'est choisir librement dans le secret de l'isoloir ; c'est un apprentissage de la démocratie."
+      ],
+      "exemple": {
+        "titre": "Exemple : le conseil de classe",
+        "etapes": [
+          "Le délégué recueille les avis.",
+          "Il s'exprime au conseil.",
+          "Il rend compte à la classe."
+        ]
+      },
+      "aRetenir": "Un délégué représente, il ne décide pas seul."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Qui élit les délégués de classe ?",
+        "choix": [
+          "Le préfet du département",
+          "Le maire de la commune",
+          "Le ministre de l'Éducation",
+          "Les élèves de la classe"
+        ],
+        "bonne": 3,
+        "explication": "Élection par les camarades."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La solidarité consiste à…",
+        "choix": [
+          "aider ceux qui en ont besoin",
+          "ne penser qu'à ses propres besoins",
+          "être en compétition avec les autres",
+          "ignorer les personnes en difficulté"
+        ],
+        "bonne": 0,
+        "explication": "Entraide."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un bénévole…",
+        "choix": [
+          "travaille pour un salaire",
+          "est élu président",
+          "donne de son temps sans être payé",
+          "est payé très cher"
+        ],
+        "bonne": 2,
+        "explication": "Gratuit."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La collecte solidaire",
+    "histoire": [
+      "Ta classe organise une collecte de vêtements."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Qui peut participer ?",
+        "choix": [
+          "Seulement les professeurs",
+          "Personne",
+          "Tous les élèves volontaires",
+          "Seulement les délégués"
+        ],
+        "bonne": 2,
+        "explication": "Chacun peut s'engager."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que devient la collecte ?",
+        "choix": [
+          "Elle est vendue très cher",
+          "Elle est cachée",
+          "Elle est donnée à une association",
+          "Elle est jetée"
+        ],
+        "bonne": 2,
+        "explication": "Solidarité."
+      }
+    ],
+    "conclusion": "Engagement réussi !"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.lire-un-planisphere-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/planete-terre-et-cartes-c2/contenu.json"
+  },
+  "source": "microskill.geographie.lire-un-planisphere",
+  "target": "skill.geographie.planete-terre-et-cartes-c2"
+}

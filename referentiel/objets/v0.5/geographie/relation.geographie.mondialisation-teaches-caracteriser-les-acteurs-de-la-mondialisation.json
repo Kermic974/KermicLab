@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.mondialisation-teaches-caracteriser-les-acteurs-de-la-mondialisation",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mondialisation/contenu.json"
+  },
+  "source": "notion.geographie.mondialisation",
+  "target": "microskill.geographie.caracteriser-les-acteurs-de-la-mondialisation"
+}

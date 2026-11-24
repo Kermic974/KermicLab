@@ -1,0 +1,12 @@
+{
+  "id": "relation.arts-plastiques.identifier-et-decrire-une-uvre-auteur-technique-composition-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/arts-plastiques-creation-et-engagement-l/contenu.json"
+  },
+  "source": "microskill.arts-plastiques.identifier-et-decrire-une-uvre-auteur-technique-composition",
+  "target": "skill.arts-plastiques.arts-plastiques-creation-et-engagement-l"
+}

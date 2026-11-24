@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.identifier-les-moments-ou-se-laver-les-mains-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/corps-et-sante-c2/contenu.json"
+  },
+  "source": "microskill.svt.identifier-les-moments-ou-se-laver-les-mains",
+  "target": "skill.svt.corps-et-sante-c2"
+}

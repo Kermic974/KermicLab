@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.lire-un-texte-a-voix-haute-avec-expressivite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/discours-rapporte-cm/contenu.json"
+  },
+  "source": "microskill.francais.lire-un-texte-a-voix-haute-avec-expressivite",
+  "target": "skill.francais.discours-rapporte-cm"
+}

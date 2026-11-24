@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.guerre-froide-et-decolonisation-l-requires-decolonisation",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerre-froide-et-decolonisation-l/contenu.json"
+  },
+  "source": "notion.histoire.guerre-froide-et-decolonisation-l",
+  "target": "notion.histoire.decolonisation",
+  "rationale": "« La décolonisation » : Le chapitre reprend et approfondit la guerre froide et la décolonisation."
+}

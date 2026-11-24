@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.mouvements-teaches-determiner-une-vitesse-depuis-la-distance-et-la-duree",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mouvements/contenu.json"
+  },
+  "source": "notion.physique-chimie.mouvements",
+  "target": "microskill.physique-chimie.determiner-une-vitesse-depuis-la-distance-et-la-duree"
+}

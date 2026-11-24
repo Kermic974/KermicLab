@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.ordonner-les-grandes-periodes-de-l-histoire-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grandes-periodes-c2/contenu.json"
+  },
+  "source": "microskill.histoire.ordonner-les-grandes-periodes-de-l-histoire",
+  "target": "skill.histoire.grandes-periodes-c2"
+}

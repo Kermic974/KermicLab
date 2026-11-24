@@ -1,0 +1,12 @@
+{
+  "id": "relation.eps.realiser-un-echauffement-progressif-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-sante-et-echauffement-cm/contenu.json"
+  },
+  "source": "microskill.eps.realiser-un-echauffement-progressif",
+  "target": "skill.eps.eps-sante-et-echauffement-cm"
+}

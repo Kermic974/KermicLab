@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La Terre bouge : volcans, séismes et inondations sont des phénomènes naturels qu'il faut connaître.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une Terre vivante",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Sous nos pieds, la Terre est chaude. Un **volcan** laisse sortir du **magma** (roche fondue) : devenu **lave** une fois à l'air libre. Une éruption peut produire de la lave, des cendres, des gaz.",
+        "Un **séisme** (tremblement de terre) est une vibration du sol causée par le déplacement de grandes plaques de l'écorce terrestre."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Les volcans d'Auvergne sont éteints.",
+          "Le Piton de la Fournaise (La Réunion) est actif.",
+          "Les séismes sont fréquents au Japon."
+        ]
+      },
+      "aRetenir": "Magma sous terre, lave à la surface."
+    },
+    {
+      "titre": "Les risques et la prévention",
+      "niveau": "CM2",
+      "paragraphes": [
+        "Les **risques naturels** sont les phénomènes qui menacent les personnes : séisme, éruption, inondation, tempête, avalanche, canicule. On ne peut pas les empêcher, mais on peut s'y préparer.",
+        "En cas de séisme : se mettre à l'abri sous une table solide, s'éloigner des fenêtres ; après, sortir calmement. En cas d'inondation : monter à l'étage, ne pas aller dans l'eau. Respecter les consignes du PPMS à l'école."
+      ],
+      "exemple": {
+        "titre": "Exemple : au premier signe",
+        "etapes": [
+          "Je m'abrite sous un meuble solide.",
+          "Je m'éloigne des vitres.",
+          "Je suis les consignes de l'adulte."
+        ]
+      },
+      "aRetenir": "Connaître les consignes sauve des vies."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment s'appelle la roche fondue sous terre ?",
+        "choix": [
+          "La cendre",
+          "Le magma",
+          "La lave",
+          "Le sable"
+        ],
+        "bonne": 1,
+        "explication": "Le magma devient lave en surface."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que faire pendant un séisme à l'intérieur ?",
+        "choix": [
+          "Descendre en courant l'escalier",
+          "Prendre l'ascenseur pour sortir vite",
+          "Ouvrir toutes les fenêtres",
+          "S'abriter sous une table solide"
+        ],
+        "bonne": 3,
+        "explication": "Se protéger des chutes d'objets."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un volcan « éteint »…",
+        "choix": [
+          "est sous l'eau",
+          "est un séisme",
+          "n'entrera plus en éruption",
+          "est entré en éruption hier"
+        ],
+        "bonne": 2,
+        "explication": "Il n'est plus actif."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'exercice d'évacuation",
+    "histoire": [
+      "L'école fait un exercice de simulation de séisme."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Où te mets-tu ?",
+        "choix": [
+          "Dans le couloir en courant",
+          "Sur le bureau",
+          "Sous ma table, loin des vitres",
+          "Devant la fenêtre"
+        ],
+        "bonne": 2,
+        "explication": "Protection contre les chutes."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Après la secousse, que fais-tu ?",
+        "choix": [
+          "Je reste caché",
+          "J'évacue calmement avec la classe",
+          "Je crie",
+          "Je retourne chercher mes affaires"
+        ],
+        "bonne": 1,
+        "explication": "Calme et consignes."
+      }
+    ],
+    "conclusion": "Exercice réussi !"
+  }
+}

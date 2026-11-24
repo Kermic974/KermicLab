@@ -1,0 +1,13 @@
+{
+  "id": "relation.eps.eps-sante-et-echauffement-cm-requires-eps-bouger-et-jouer-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-sante-et-echauffement-cm/contenu.json"
+  },
+  "source": "notion.eps.eps-sante-et-echauffement-cm",
+  "target": "notion.eps.eps-bouger-et-jouer-c2",
+  "rationale": "Les règles de sécurité et le plaisir de bouger fondent l’échauffement et la gestion de l’effort."
+}

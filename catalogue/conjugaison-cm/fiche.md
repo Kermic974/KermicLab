@@ -1,0 +1,33 @@
+---
+id: conjugaison-cm
+titre: La conjugaison : temps simples et composés
+sujet: francais/conjugaison-cm
+version: 1.0.1
+date: 2026-11-21
+niveau: primaire
+classes: CM1, CM2
+duree: 25
+langues: fr
+onglets: explication, application, mise-en-situation
+mots-cles:
+  - conjugaison cm
+  - present imparfait futur
+  - passe compose cm
+  - plus que parfait cm
+  - passe simple cm2
+  - impératif présent cm
+  - conditionnel present cm
+  - groupes de verbes
+questions:
+  - Comment conjuguer un verbe du 1er groupe ?
+  - Quand utiliser l'imparfait et le passé composé ?
+  - Comment former le passé composé ?
+  - Comment conjuguer au futur ?
+prerequis: temps-des-verbes-c2, nature-des-mots-cm
+niveaux: cycle-3
+competences: conjuguer-un-verbe-au-futur-et-a-l-imparfait, identifier-un-temps-verbal, distinguer-temps-simples-et-temps-composes, former-le-passe-compose
+---
+
+# La conjugaison : temps simples et composés
+
+Page générée depuis `contenu.json` avec le gabarit commun (`gabarit/`). Notion du cycle 3 (CM1 / CM2).

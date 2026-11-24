@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.reconnaitre-et-former-le-passif-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-3e-c4/contenu.json"
+  },
+  "source": "microskill.anglais.reconnaitre-et-former-le-passif",
+  "target": "skill.anglais.anglais-3e-c4"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.utiliser-un-fossile-stratigraphique-pour-dater-une-couche-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/histoire-de-la-terre-et-datation/contenu.json"
+  },
+  "source": "microskill.svt.utiliser-un-fossile-stratigraphique-pour-dater-une-couche",
+  "target": "skill.svt.histoire-de-la-terre-et-datation"
+}

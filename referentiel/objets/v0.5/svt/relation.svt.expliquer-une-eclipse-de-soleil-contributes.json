@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-une-eclipse-de-soleil-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/terre-dans-le-systeme-solaire-6e/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-une-eclipse-de-soleil",
+  "target": "skill.svt.terre-dans-le-systeme-solaire-6e"
+}

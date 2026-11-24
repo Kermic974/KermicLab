@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-le-role-des-missi-dominici-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/clovis-charlemagne-cm/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-le-role-des-missi-dominici",
+  "target": "skill.histoire.clovis-charlemagne-cm"
+}

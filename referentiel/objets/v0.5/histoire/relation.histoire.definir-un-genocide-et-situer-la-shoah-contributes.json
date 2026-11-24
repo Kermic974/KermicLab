@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.definir-un-genocide-et-situer-la-shoah-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/guerres-mondiales-et-memoires-l/contenu.json"
+  },
+  "source": "microskill.histoire.definir-un-genocide-et-situer-la-shoah",
+  "target": "skill.histoire.guerres-mondiales-et-memoires-l"
+}

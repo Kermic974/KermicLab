@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.expliquer-le-role-du-reglement-interieur-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/regles-vivre-ensemble-6e/contenu.json"
+  },
+  "source": "microskill.emc.expliquer-le-role-du-reglement-interieur",
+  "target": "skill.emc.regles-vivre-ensemble-6e"
+}

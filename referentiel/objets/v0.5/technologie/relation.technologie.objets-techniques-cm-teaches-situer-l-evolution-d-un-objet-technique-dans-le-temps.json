@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.objets-techniques-cm-teaches-situer-l-evolution-d-un-objet-technique-dans-le-temps",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/objets-techniques-cm/contenu.json"
+  },
+  "source": "notion.technologie.objets-techniques-cm",
+  "target": "microskill.technologie.situer-l-evolution-d-un-objet-technique-dans-le-temps"
+}

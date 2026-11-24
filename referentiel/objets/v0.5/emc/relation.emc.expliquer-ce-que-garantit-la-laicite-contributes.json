@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.expliquer-ce-que-garantit-la-laicite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/laicite-et-liberte-cm/contenu.json"
+  },
+  "source": "microskill.emc.expliquer-ce-que-garantit-la-laicite",
+  "target": "skill.emc.laicite-et-liberte-cm"
+}

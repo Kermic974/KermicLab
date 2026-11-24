@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-l-alternance-du-jour-et-de-la-nuit-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/terre-et-systeme-solaire-cm/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-l-alternance-du-jour-et-de-la-nuit",
+  "target": "skill.svt.terre-et-systeme-solaire-cm"
+}

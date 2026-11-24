@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.rapporter-un-discours-en-adaptant-temps-et-pronoms-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-grammaire-et-temps-l/contenu.json"
+  },
+  "source": "microskill.anglais.rapporter-un-discours-en-adaptant-temps-et-pronoms",
+  "target": "skill.anglais.anglais-grammaire-et-temps-l"
+}

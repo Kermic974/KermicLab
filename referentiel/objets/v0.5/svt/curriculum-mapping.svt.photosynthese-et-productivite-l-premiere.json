@@ -1,0 +1,14 @@
+{
+  "id": "curriculum-mapping.svt.photosynthese-et-productivite-l-premiere",
+  "type": "curriculum-mapping",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/photosynthese-et-productivite-l/contenu.json"
+  },
+  "object": "notion.svt.photosynthese-et-productivite-l",
+  "curriculum": "curriculum.mathematiques.kermiclab-v0-fr",
+  "stage": "stage.mathematiques.premiere",
+  "role": "introduced"
+}

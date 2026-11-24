@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.reperer-les-indices-du-type-d-un-texte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/types-de-textes-cm/contenu.json"
+  },
+  "source": "microskill.francais.reperer-les-indices-du-type-d-un-texte",
+  "target": "skill.francais.types-de-textes-cm"
+}

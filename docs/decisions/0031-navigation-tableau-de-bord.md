@@ -7,6 +7,10 @@
   sous-navigation). Le propriétaire demande de **contrôler la position des entrées** et de placer **« Mon tableau de
   bord »** sous l'Accueil par défaut, avec des vues filtrables.
 
+> **Mise à jour (2026-11-23)** : l'ordre par défaut (§ 2) et l'entrée « Mon tableau de bord » sont remplacés par
+> l'[ADR 0039 § 3](0039-refonte-ux.md) : cinq destinations, l'avatar « Mon espace » ouvre les vues personnelles.
+> La clé `navigation`, les vues et leur barre de filtres (§ 1, 3 à 5) restent valables.
+
 ## Décision
 
 1. **Ordre configurable** : la clé `navigation` de `web/config.json` liste les entrées, du haut vers le bas de la barre

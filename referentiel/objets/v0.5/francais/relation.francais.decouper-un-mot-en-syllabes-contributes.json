@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.decouper-un-mot-en-syllabes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/syllabes-et-mots-c2/contenu.json"
+  },
+  "source": "microskill.francais.decouper-un-mot-en-syllabes",
+  "target": "skill.francais.syllabes-et-mots-c2"
+}

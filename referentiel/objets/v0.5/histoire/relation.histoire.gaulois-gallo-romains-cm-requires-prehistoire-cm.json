@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.gaulois-gallo-romains-cm-requires-prehistoire-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/gaulois-gallo-romains-cm/contenu.json"
+  },
+  "source": "notion.histoire.gaulois-gallo-romains-cm",
+  "target": "notion.histoire.prehistoire-cm",
+  "rationale": "« De la Préhistoire à l'Antiquité : les premières traces » : Progression chronologique du programme (lien de continuité du parcours, pas un prérequis conceptuel strict) : les Gaulois se situent après la Préhistoire."
+}

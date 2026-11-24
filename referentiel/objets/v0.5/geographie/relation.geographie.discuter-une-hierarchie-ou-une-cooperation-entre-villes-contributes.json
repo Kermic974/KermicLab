@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.discuter-une-hierarchie-ou-une-cooperation-entre-villes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/metropolisation/contenu.json"
+  },
+  "source": "microskill.geographie.discuter-une-hierarchie-ou-une-cooperation-entre-villes",
+  "target": "skill.geographie.metropolisation"
+}

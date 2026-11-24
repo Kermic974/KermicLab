@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.arithmetique-requires-divisions-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/arithmetique/contenu.json"
+  },
+  "source": "notion.mathematiques.arithmetique",
+  "target": "notion.mathematiques.divisions-6e",
+  "rationale": "« Divisions et multiples en 6e » : Les divisions et les critères de divisibilité de 6e préparent les diviseurs, les nombres premiers et le PGCD."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.colonisations-c4-requires-revolution-industrielle",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/colonisations-c4/contenu.json"
+  },
+  "source": "notion.histoire.colonisations-c4",
+  "target": "notion.histoire.revolution-industrielle",
+  "rationale": "« La révolution industrielle » : La colonisation s’explique en partie par l’industrialisation (matières premières, marchés, transports)."
+}

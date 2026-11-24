@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La température moyenne de la Terre résulte de l'équilibre entre l'énergie reçue du Soleil et l'énergie renvoyée vers l'espace.",
+  "niveaux": [
+    {
+      "titre": "L'énergie du Soleil",
+      "niveau": "1re",
+      "paragraphes": [
+        "Le Soleil émet un rayonnement surtout dans le visible. Au niveau de la Terre, la puissance reçue par unité de surface perpendiculaire aux rayons est d'environ **1 360 W/m²** (constante solaire). La Terre en **réfléchit** une partie : c'est l'**albédo** (en moyenne environ 0,3, les surfaces claires — glace, nuages — réfléchissent plus). Le reste est absorbé et réchauffe la surface."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "1 360 W/m² arrivent sur un disque de la Terre.",
+          "Répartis sur la sphère : environ 340 W/m².",
+          "30 % sont réfléchis (albédo 0,3)."
+        ]
+      },
+      "aRetenir": "Albédo : part de l'énergie réfléchie."
+    },
+    {
+      "titre": "Effet de serre et équilibre",
+      "niveau": "1re",
+      "paragraphes": [
+        "La Terre chauffée **émet** un rayonnement infrarouge. Les **gaz à effet de serre** (vapeur d'eau, CO₂, méthane) absorbent une partie de cet infrarouge et le réémettent, ce qui réchauffe la surface (sans effet de serre, la température moyenne serait d'environ −18 °C au lieu de +15 °C). À l'**équilibre**, l'énergie reçue = l'énergie émise. L'augmentation des gaz à effet de serre **rompt cet équilibre** : le climat se réchauffe jusqu'à un nouvel équilibre."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Plus de CO₂ dans l'atmosphère.",
+          "Plus d'infrarouge piégé.",
+          "Température moyenne en hausse."
+        ]
+      },
+      "aRetenir": "Équilibre : énergie reçue = énergie émise."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "L'albédo est…",
+        "choix": [
+          "la quantité de CO₂",
+          "la part de l'énergie réfléchie",
+          "la puissance du Soleil",
+          "la température de surface"
+        ],
+        "bonne": 1,
+        "explication": "Réflexion."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Sans effet de serre, la température moyenne de la Terre serait environ…",
+        "choix": [
+          "15 °C",
+          "50 °C",
+          "100 °C",
+          "−18 °C"
+        ],
+        "bonne": 3,
+        "explication": "Valeur de référence."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Une augmentation des gaz à effet de serre…",
+        "choix": [
+          "refroidit la surface",
+          "n'a aucun effet",
+          "supprime l'infrarouge",
+          "réchauffe la surface"
+        ],
+        "bonne": 3,
+        "explication": "Rupture d'équilibre."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le toit blanc",
+    "histoire": [
+      "Une ville peint ses toits en blanc."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "L'albédo local…",
+        "choix": [
+          "augmente",
+          "diminue",
+          "ne change pas",
+          "devient négatif"
+        ],
+        "bonne": 0,
+        "explication": "Surface plus claire."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Conséquence locale ?",
+        "choix": [
+          "plus de CO₂ émis",
+          "moins de chaleur absorbée",
+          "plus de chaleur absorbée",
+          "aucun effet notable"
+        ],
+        "bonne": 1,
+        "explication": "Refroidissement local."
+      }
+    ],
+    "conclusion": "Bilan compris !"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.revolution-empire-cm-requires-louis-xiv-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-empire-cm/contenu.json"
+  },
+  "source": "notion.histoire.revolution-empire-cm",
+  "target": "notion.histoire.louis-xiv-cm",
+  "rationale": "« Louis XIV, le Roi-Soleil » : Progression chronologique du programme (lien de continuité du parcours, pas un prérequis conceptuel strict) : la Révolution met fin à la monarchie de Louis XIV."
+}

@@ -1,7 +1,7 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer } from "./outils.mjs";
+import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer, surchargerConfig } from "./outils.mjs";
 
 let serveur, nav, htmlMaquette, api;
 before(async () => {
@@ -537,12 +537,12 @@ test("Éducation : Niveau > Matière > Notions en accordéons fermés, recherche
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
-test("navigation : 6 entrées latérales, « Mon tableau de bord » sous l'Accueil, jeux absents d'Éducation, retour arrière", async () => {
+test("navigation : 5 entrées latérales (tableau de bord fusionné avec l'Accueil), jeux absents d'Éducation, retour arrière", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
   const requetes = await simulerApi(page, { jeux: true });
   await page.goto(serveur.url);
   const destinations = page.locator(".barre-laterale nav [data-nav]:not([hidden])") // sans rôle : l'entrée Contributions reste masquée (ADR 0023);
-  assert.deepEqual(await destinations.evaluateAll((b) => b.map((n) => n.dataset.nav)), ["accueil", "tableau-de-bord", "education", "labs", "jeux", "progression"]);
+  assert.deepEqual(await destinations.evaluateAll((b) => b.map((n) => n.dataset.nav)), ["accueil", "education", "labs", "jeux", "progression"]);
   assert.equal(await page.locator(".barre-laterale [aria-current=page]").count(), 1);
   const education = page.locator(".barre-laterale [data-nav=education]");
   const jeux = page.locator(".barre-laterale [data-nav=jeux]");
@@ -703,7 +703,31 @@ test("Éducation mobile : depuis la navigation du bas, une colonne, sans débord
   assert.ok(debord <= 0, `déborde de ${debord}px`);
   await contexte.close();
 });
-test("navigation mobile : 6 destinations tactiles, libellés visibles, sans débordement (320 px)", async () => {
+test("navigation : « Mon tableau de bord » remis par la configuration, une seule page courante sur une vue personnelle (ADR 0039)", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 } });
+  await simulerApi(page);
+  await surchargerConfig(page, serveur.url, { navigation: ["accueil", "tableau-de-bord", "education", "labs", "jeux", "progression"] });
+  await page.goto(`${serveur.url}/#compte`);
+  await page.locator("#compte").waitFor({ state: "visible" });
+  const courants = page.locator(".barre-laterale [aria-current=page]");
+  assert.equal(await courants.count(), 1, "l'entrée et l'avatar ne sont pas marqués tous les deux");
+  assert.equal(await courants.getAttribute("data-nav"), "tableau-de-bord");
+  // Sur le Profil, l'avatar (qui l'ouvre) est la seule page courante, comme avant la refonte.
+  await page.click(".barre-pied .profil-carte");
+  await page.locator("#profil").waitFor({ state: "visible" });
+  assert.equal(await courants.count(), 1);
+  assert.equal(await courants.getAttribute("data-action"), "profil");
+  // Sans l'entrée (ordre par défaut), c'est l'avatar « Mon espace » qui porte la page courante.
+  await surchargerConfig(page, serveur.url, { navigation: ["accueil", "education", "labs", "jeux", "progression"] });
+  await page.reload();
+  await page.locator("#profil").waitFor({ state: "visible" });
+  assert.equal(await courants.count(), 1);
+  assert.equal(await courants.getAttribute("data-action"), "profil");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("navigation mobile : 5 destinations tactiles, libellés visibles, sans débordement (320 px)", async () => {
   const { page, contexte } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 320, height: 740 }, isMobile: true });
   await simulerApi(page, { jeux: true });
   await page.goto(serveur.url);
@@ -721,13 +745,13 @@ test("navigation mobile : 6 destinations tactiles, libellés visibles, sans déb
   assert.equal(await page.locator("#ecran-progression").isVisible(), true);
   await page.locator(".nav-mobile [data-nav=accueil]").click();
   assert.equal(await page.locator("#accueil").isVisible(), true);
-  assert.deepEqual(await page.locator(".nav-mobile .nav-mobile-bouton:not([hidden])").allTextContents(), ["Accueil", "Tableau", "Éducation", "Labs", "Jeux", "Progrès"]);
+  assert.deepEqual(await page.locator(".nav-mobile .nav-mobile-bouton:not([hidden])").allTextContents(), ["Accueil", "Éducation", "Labs", "Jeux", "Progrès"]);
   assert.deepEqual(await page.locator(".nav-mobile [aria-current=page]").allTextContents(), ["Accueil"]);
   const boutons = await page.locator(".nav-mobile .nav-mobile-bouton:not([hidden])").evaluateAll((elements) => elements.map((n) => {
     const r = n.getBoundingClientRect();
     return { largeur: r.width, hauteur: r.height, droite: r.right, bas: r.bottom };
   }));
-  assert.ok(boutons.every((b) => b.largeur >= 44 && b.hauteur >= 44 && b.droite <= 320 && b.bas <= 740), "les six entrées restent visibles et tactiles");
+  assert.ok(boutons.every((b) => b.largeur >= 44 && b.hauteur >= 44 && b.droite <= 320 && b.bas <= 740), "les cinq entrées restent visibles et tactiles");
   const debord = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   assert.ok(debord <= 0, `déborde de ${debord}px`);
   await contexte.close();
@@ -801,4 +825,55 @@ test("assistant : progression résumée sur l'appareil et boutons vers les écra
   assert.equal(await page.locator("#progres").isVisible(), false);
   assert.deepEqual(erreurs, []);
   await contexte.close();
+});
+
+test("accessibilité (lot 8, ADR 0039) : contrastes des couleurs d'état, cibles du pied de page, onglets et 320 px", async () => {
+  const contraste = (page, avant, fond) => page.evaluate(([avant, fond]) => {
+    const rvb = (c) => { const e = document.createElement("i"); e.style.color = c; document.body.append(e); const v = getComputedStyle(e).color.match(/[\d.]+/g).slice(0, 3).map(Number); e.remove(); return v; };
+    const L = (c) => rvb(c).map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }).reduce((s, v, i) => s + v * [0.2126, 0.7152, 0.0722][i], 0);
+    const [a, b] = [L(avant), L(fond)].sort((x, y) => y - x);
+    return (a + 0.05) / (b + 0.05);
+  }, [avant, fond]);
+  for (const theme of ["light", "dark"]) {
+    const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 800 }, colorScheme: theme });
+    await simulerApi(page);
+    await page.goto(serveur.url);
+    for (const [texte, fond] of [["var(--succes)", "var(--surface)"], ["var(--chaud)", "var(--surface)"], ["var(--danger)", "var(--surface)"], ["var(--danger)", "var(--danger-doux)"], ["var(--succes)", "var(--succes-doux)"], ["var(--chaud)", "var(--chaud-doux)"]]) {
+      assert.ok(await contraste(page, texte, fond) >= 4.5, `${theme} : ${texte} sur ${fond}`);
+    }
+    assert.ok(await contraste(page, "#fff", await page.locator(".avatar-profil").first().evaluate((n) => getComputedStyle(n).backgroundColor)) >= 4.5, `${theme} : initiale de l'avatar`);
+    const hauteurs = await page.locator(".pied a, .pied button").evaluateAll((l) => l.filter((n) => n.offsetParent).map((n) => n.getBoundingClientRect().height));
+    assert.ok(hauteurs.length && hauteurs.every((h) => h >= 24), `cibles du pied de page ≥ 24 px (${hauteurs})`);
+    assert.deepEqual(erreurs, []);
+    await contexte.close();
+  }
+  // Onglets en haut : une seule ligne à 1 024 px, sans défilement de la barre.
+  const large = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1024, height: 768 } });
+  await simulerApi(large.page);
+  await large.page.goto(serveur.url);
+  assert.equal(await large.page.locator(".barre-laterale .nav").evaluate((n) => n.scrollWidth <= n.clientWidth), true);
+  assert.ok(await large.page.locator(".barre-laterale").evaluate((n) => n.getBoundingClientRect().height) < 90, "barre sur une ligne");
+  await large.contexte.close();
+  // Barre collante : la colonne « Pour s'entraîner » (collante à partir de 1 200 px) et les ancres restent sous la barre.
+  const ecran = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 600 } });
+  await simulerApi(ecran.page);
+  await ecran.page.goto(`${serveur.url}/#education`);
+  await ecran.page.locator(".outils-education").waitFor();
+  await ecran.page.evaluate(() => { document.querySelector(".education-principal").style.minHeight = "3000px"; scrollTo(0, 1500); });
+  await ecran.page.waitForTimeout(100);
+  const bas = await ecran.page.locator(".barre-laterale").evaluate((n) => n.getBoundingClientRect().bottom);
+  const haut = await ecran.page.locator(".outils-education").evaluate((n) => n.getBoundingClientRect().top);
+  assert.ok(haut >= bas, `colonne collante sous la barre (haut ${haut}, barre ${bas})`);
+  assert.ok(await ecran.page.evaluate(() => parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0) >= bas, "défilement vers une ancre sous la barre");
+  await ecran.contexte.close();
+  // 320 px : aucun défilement horizontal sur les destinations principales.
+  const etroit = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 320, height: 640 }, isMobile: true });
+  await simulerApi(etroit.page, { jeux: true });
+  for (const ecran of ["accueil", "education", "labs", "jeux", "progression", "profil"]) {
+    await etroit.page.goto(`${serveur.url}/#${ecran}`);
+    await etroit.page.waitForTimeout(150);
+    const debord = await etroit.page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+    assert.ok(debord <= 0, `${ecran} déborde de ${debord} px à 320 px`);
+  }
+  await etroit.contexte.close();
 });

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.analyser-les-flux-et-les-acteurs-touristiques-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tourisme/contenu.json"
+  },
+  "source": "microskill.geographie.analyser-les-flux-et-les-acteurs-touristiques",
+  "target": "skill.geographie.tourisme"
+}

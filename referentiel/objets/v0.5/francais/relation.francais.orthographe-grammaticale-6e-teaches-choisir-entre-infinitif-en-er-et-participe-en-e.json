@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.orthographe-grammaticale-6e-teaches-choisir-entre-infinitif-en-er-et-participe-en-e",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/orthographe-grammaticale-6e/contenu.json"
+  },
+  "source": "notion.francais.orthographe-grammaticale-6e",
+  "target": "microskill.francais.choisir-entre-infinitif-en-er-et-participe-en-e"
+}

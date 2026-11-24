@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-justice-et-vengeance-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-justice-et-vengeance",
+  "target": "skill.emc.justice"
+}

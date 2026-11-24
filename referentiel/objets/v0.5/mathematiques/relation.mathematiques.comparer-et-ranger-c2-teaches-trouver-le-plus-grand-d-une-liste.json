@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.comparer-et-ranger-c2-teaches-trouver-le-plus-grand-d-une-liste",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/comparer-et-ranger-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.comparer-et-ranger-c2",
+  "target": "microskill.mathematiques.trouver-le-plus-grand-d-une-liste"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.definir-les-hebreux-et-leur-monotheisme-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monotheisme-juif-6e/contenu.json"
+  },
+  "source": "microskill.histoire.definir-les-hebreux-et-leur-monotheisme",
+  "target": "skill.histoire.monotheisme-juif-6e"
+}

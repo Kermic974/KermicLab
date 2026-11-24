@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Le XIXe siècle voit naître la démocratie, l'école pour tous et de grands mouvements artistiques.",
+  "niveaux": [
+    {
+      "titre": "Régimes et droits",
+      "niveau": "4e",
+      "paragraphes": [
+        "Le XIXe siècle alterne **monarchies**, **Empire** et **Républiques**. Le **suffrage universel masculin** est instauré en 1848 : tous les hommes votent. Les **femmes** n'ont pas encore le droit de vote (1944). L'**école** devient gratuite, obligatoire et laïque avec les lois de Jules Ferry (1881-1882). Les ouvriers s'organisent (syndicats légaux en 1884).",
+        "La **liberté de la presse** et de réunion progresse."
+      ],
+      "exemple": {
+        "titre": "Exemple : 1848",
+        "etapes": [
+          "Révolution de février.",
+          "Proclamation de la Deuxième République.",
+          "Suffrage universel masculin."
+        ]
+      },
+      "aRetenir": "1848 : suffrage universel masculin."
+    },
+    {
+      "titre": "Arts et idées",
+      "niveau": "4e",
+      "paragraphes": [
+        "Les artistes expriment les bouleversements du siècle : **romantisme** (sentiments, nature, liberté : Hugo, Delacroix), **réalisme** (peindre la vraie vie : Balzac, Courbet), **naturalisme** (étudier la société : Zola, *Germinal*), **impressionnisme** (la lumière : Monet).",
+        "Les sciences et techniques avancent : chemin de fer, photographie, vaccin de Pasteur."
+      ],
+      "exemple": {
+        "titre": "Exemple : Zola",
+        "etapes": [
+          "Zola décrit la vie des mineurs dans *Germinal*.",
+          "Il dénonce les conditions de travail.",
+          "Naturalisme : observer la société."
+        ]
+      },
+      "aRetenir": "Romantisme, réalisme, naturalisme, impressionnisme."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "En quelle année est instauré le suffrage universel masculin ?",
+        "reponse": 1848,
+        "indices": [
+          "Milieu du XIXe siècle."
+        ],
+        "solution": "Deuxième République.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Qui a écrit Germinal ?",
+        "choix": [
+          "Balzac",
+          "Voltaire",
+          "Émile Zola",
+          "Victor Hugo"
+        ],
+        "bonne": 2,
+        "explication": "Naturalisme."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Les lois de Jules Ferry rendent l'école…",
+        "choix": [
+          "privée et ouverte aux riches",
+          "gratuite, obligatoire et laïque",
+          "payante, facultative et religieuse",
+          "réservée aux garçons de la ville"
+        ],
+        "bonne": 1,
+        "explication": "1881-1882."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La classe de 1882",
+    "histoire": [
+      "Tu entres dans une école publique de 1882."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Qui peut aller à l'école ?",
+        "choix": [
+          "Personne avant l'âge de 12 ans",
+          "Seulement les enfants des riches",
+          "Tous les enfants de 6 à 13 ans",
+          "Seulement les garçons de la ville"
+        ],
+        "bonne": 2,
+        "explication": "Obligatoire."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pourquoi l'école est-elle laïque ?",
+        "choix": [
+          "Pour interdire toute religion dans la vie privée",
+          "Pour enseigner une seule religion à tous les élèves",
+          "Pour faire plaisir à l'Église catholique",
+          "Pour accueillir tous les enfants sans distinction de religion"
+        ],
+        "bonne": 3,
+        "explication": "Neutralité."
+      }
+    ],
+    "conclusion": "Bonne leçon d'histoire !"
+  }
+}

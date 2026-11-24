@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.energie-et-sources-cm-teaches-associer-un-objet-a-l-energie-qu-il-utilise",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie-et-sources-cm/contenu.json"
+  },
+  "source": "notion.physique-chimie.energie-et-sources-cm",
+  "target": "microskill.physique-chimie.associer-un-objet-a-l-energie-qu-il-utilise"
+}

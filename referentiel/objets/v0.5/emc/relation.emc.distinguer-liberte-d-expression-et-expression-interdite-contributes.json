@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-liberte-d-expression-et-expression-interdite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-libertes-et-droits-l/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-liberte-d-expression-et-expression-interdite",
+  "target": "skill.emc.emc-libertes-et-droits-l"
+}

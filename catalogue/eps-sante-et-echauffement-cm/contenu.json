@@ -1,0 +1,119 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Bouger régulièrement est bon pour le corps et la tête, à condition de bien se préparer.",
+  "niveaux": [
+    {
+      "titre": "Intuition : préparer son corps",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "L'**échauffement** prépare les muscles, le cœur et les articulations : course légère, rotations des articulations, étirements doux. Il réduit les risques de blessure. Il faut aussi s'**hydrater** (boire de l'eau) et avoir une tenue adaptée."
+      ],
+      "exemple": {
+        "titre": "Exemple : 5 minutes",
+        "etapes": [
+          "Course lente.",
+          "Rotations des épaules, des poignets.",
+          "Quelques sauts."
+        ]
+      },
+      "aRetenir": "Toujours s'échauffer avant l'effort."
+    },
+    {
+      "titre": "Santé et récupération",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Le sport est bon pour le cœur, les muscles, les os, le sommeil et l'humeur. L'**OMS** recommande aux enfants au moins **60 minutes** d'activité physique par jour. Après l'effort : retour au calme, boire, étirements, bon sommeil. En cas de douleur forte, on arrête et on prévient un adulte."
+      ],
+      "exemple": {
+        "titre": "Exemple : mesurer l'effort",
+        "etapes": [
+          "Pouls au repos : 80.",
+          "Après la course : 160.",
+          "Après récupération : 90."
+        ]
+      },
+      "aRetenir": "60 minutes d'activité par jour pour les enfants."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pourquoi s'échauffer ?",
+        "choix": [
+          "Pour se fatiguer avant le match",
+          "Pour gagner du temps sur le terrain",
+          "Pour avoir moins soif ensuite",
+          "Pour préparer le corps et éviter les blessures"
+        ],
+        "bonne": 3,
+        "explication": "Prévention."
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de minutes d'activité par jour pour un enfant ?",
+        "reponse": 60,
+        "unite": "min",
+        "indices": [
+          "Environ une heure."
+        ],
+        "solution": "Recommandation de l'OMS.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Après l'effort, il faut…",
+        "choix": [
+          "s'arrêter de boire",
+          "courir encore",
+          "ne pas dormir",
+          "boire et récupérer"
+        ],
+        "bonne": 3,
+        "explication": "Récupération."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le cours d'EPS",
+    "histoire": [
+      "Avant un match, ton enseignant vous fait préparer votre corps."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fais-tu d'abord ?",
+        "choix": [
+          "Je m'assois",
+          "Je mange",
+          "Je dors",
+          "Je m'échauffe"
+        ],
+        "bonne": 3,
+        "explication": "Échauffement."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Tu as très soif pendant l'effort. Tu…",
+        "choix": [
+          "ne bois pas",
+          "bois une boisson sucrée",
+          "bois de l'eau",
+          "attends la fin du cours"
+        ],
+        "bonne": 2,
+        "explication": "Hydratation."
+      }
+    ],
+    "conclusion": "Prêt à jouer !"
+  }
+}

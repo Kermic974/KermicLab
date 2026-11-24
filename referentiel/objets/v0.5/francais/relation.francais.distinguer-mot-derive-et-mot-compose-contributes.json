@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.distinguer-mot-derive-et-mot-compose-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/formation-des-mots-cm/contenu.json"
+  },
+  "source": "microskill.francais.distinguer-mot-derive-et-mot-compose",
+  "target": "skill.francais.formation-des-mots-cm"
+}

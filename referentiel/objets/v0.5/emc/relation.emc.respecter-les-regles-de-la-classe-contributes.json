@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.respecter-les-regles-de-la-classe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vivre-ensemble-c2/contenu.json"
+  },
+  "source": "microskill.emc.respecter-les-regles-de-la-classe",
+  "target": "skill.emc.vivre-ensemble-c2"
+}

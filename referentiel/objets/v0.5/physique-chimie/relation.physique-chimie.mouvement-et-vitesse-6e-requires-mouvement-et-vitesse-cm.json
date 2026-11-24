@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.mouvement-et-vitesse-6e-requires-mouvement-et-vitesse-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mouvement-et-vitesse-6e/contenu.json"
+  },
+  "source": "notion.physique-chimie.mouvement-et-vitesse-6e",
+  "target": "notion.physique-chimie.mouvement-et-vitesse-cm",
+  "rationale": "« Mouvement et vitesse » : La vitesse de 6e prolonge celle du CM."
+}

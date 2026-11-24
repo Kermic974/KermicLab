@@ -76,6 +76,19 @@ test("Éducation : « Ma classe » propose les classes du collège, ouvre le niv
   await page.goto(serveur.url);
   await page.click('.barre-laterale [data-nav="education"]');
   const ouvert = (niveau) => page.locator(`[aria-controls="edu-${niveau}"]`).getAttribute("aria-expanded");
+  // Espace coloré (ADR 0039) : le bandeau d'en-tête prend la couleur d'Éducation, puis de l'Accueil.
+  assert.equal(await page.evaluate(() => document.documentElement.dataset.espace), "education");
+  // Lot 4 (ADR 0039) : deux colonnes sur grand écran (notions, puis « Pour s'entraîner »), recherche avec loupe.
+  assert.equal(await page.locator(".education-colonnes").evaluate((n) => getComputedStyle(n).gridTemplateColumns.split(" ").length), 2);
+  assert.equal(await page.locator(".recherche-education .ico").count(), 1);
+  assert.equal(await page.locator('.outils-education [data-espace-carte="labs"] h3').textContent(), "À manipuler dans les Labs");
+  // « Mes cahiers » (colonne de droite) : le panneau s'ouvre sous la liste des notions et défile pour être visible.
+  // Liste longue (le catalogue réel compte des centaines de notions) : simulée par une hauteur minimale.
+  await page.evaluate(() => { document.querySelector("#catalogue-liste").style.minHeight = "2000px"; window.scrollTo(0, 0); });
+  await page.click('.outils-education [aria-controls="ecran-cahiers"]');
+  await page.waitForFunction(() => { const r = document.querySelector("#ecran-cahiers").getBoundingClientRect(); return r.top >= 0 && r.top < window.innerHeight - 40; }, null, { timeout: 3000 });
+  await page.click('.outils-education [aria-controls="ecran-cahiers"]');
+  await page.evaluate(() => { document.querySelector("#catalogue-liste").style.minHeight = ""; window.scrollTo(0, 0); });
   assert.deepEqual(await page.locator("#ma-classe [data-classe]").allTextContents(), ["6e", "5e", "4e", "Seconde", "Première"]);
   assert.deepEqual([await ouvert("4e"), await ouvert("seconde")], ["false", "false"], "rien d'ouvert sans choix");
 
@@ -125,6 +138,33 @@ test("Profil : les réglages techniques sont repliés ; les choix de l'élève r
   assert.equal(await page.locator("#config-modules").isVisible(), false, "ni modèle ni budget de tokens affiché d'emblée");
   await page.click("#config-serveur > summary");
   assert.equal(await page.locator('#config-modules [data-cle="MODELE_CHAT"]').isVisible(), true);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("Jeux : filtre par catégorie (ADR 0039, D7), étiquette sur chaque carte, combiné à la recherche", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
+  const jeux = [
+    { id: "sudoku", titre: "Sudoku", categorie: "calcul" }, { id: "demineur", titre: "Le démineur", categorie: "calcul" },
+    { id: "echecs", titre: "Les échecs", categorie: "strategie" }, { id: "pendu", titre: "Le pendu", categorie: "mots" },
+  ].map((j) => ({ version: "1.0.0", niveau: "autres", matiere: "jeux", ...j }));
+  await preparer(page, { catalogue: [...CATALOGUE, ...jeux] });
+  await page.goto(`${serveur.url}/#jeux`);
+  const puces = page.locator("#filtre-categorie-jeux button");
+  await puces.first().waitFor();
+  assert.deepEqual(await puces.allTextContents(), ["Tous", "Calcul et logique", "Stratégie et cartes", "Lettres et mots"]);
+  assert.equal(await page.locator("#grille-jeux .jeu-carte").count(), 4);
+  await page.click('[data-categorie-jeu="calcul"]');
+  assert.deepEqual(await page.locator("#grille-jeux h3").allTextContents(), ["Sudoku", "Le démineur"]);
+  assert.deepEqual(await page.locator("#grille-jeux .etiquette-categorie").allTextContents(), ["Calcul et logique", "Calcul et logique"]);
+  assert.equal(await page.locator('[data-categorie-jeu="calcul"]').getAttribute("aria-pressed"), "true");
+  await page.fill("#recherche-jeu", "dem");
+  await page.locator("#recherche-jeu").dispatchEvent("input");
+  assert.deepEqual(await page.locator("#grille-jeux h3").allTextContents(), ["Le démineur"], "recherche et catégorie se combinent");
+  await page.fill("#recherche-jeu", "");
+  await page.locator("#recherche-jeu").dispatchEvent("input");
+  await page.click('[data-categorie-jeu="tous"]');
+  assert.equal(await page.locator("#grille-jeux .jeu-carte").count(), 4);
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });

@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.solutions-et-concentration-l-requires-masse-et-volume-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/solutions-et-concentration-l/contenu.json"
+  },
+  "source": "notion.physique-chimie.solutions-et-concentration-l",
+  "target": "notion.physique-chimie.masse-et-volume-6e",
+  "rationale": "« Masse, volume et mélanges en 6e » : Les concentrations reprennent la quantité de matière et les solutions de 6e."
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.energie-et-signaux-6e-requires-energie-et-sources-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie-et-signaux-6e/contenu.json"
+  },
+  "source": "notion.physique-chimie.energie-et-signaux-6e",
+  "target": "notion.physique-chimie.energie-et-sources-cm",
+  "rationale": "« L'énergie et ses sources » : L’énergie de 6e reprend les sources d’énergie et la lumière du cycle 3."
+}

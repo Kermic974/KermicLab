@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.organiser-un-paragraphe-argumentatif-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/argumentation/contenu.json"
+  },
+  "source": "microskill.francais.organiser-un-paragraphe-argumentatif",
+  "target": "skill.francais.argumentation"
+}

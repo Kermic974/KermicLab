@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.rome-republique-empire-6e-requires-grece-et-citoyennete-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/rome-republique-empire-6e/contenu.json"
+  },
+  "source": "notion.histoire.rome-republique-empire-6e",
+  "target": "notion.histoire.grece-et-citoyennete-6e",
+  "rationale": "« La Grèce antique : citoyens et démocratie » : Progression chronologique du programme (lien de continuité du parcours, pas un prérequis conceptuel strict) : Rome suit la Grèce et la romanisation s’appuie sur la Gaule romaine."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.analyser-les-causes-multiples-du-chomage-dans-une-situation-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/chomage/contenu.json"
+  },
+  "source": "microskill.ses.analyser-les-causes-multiples-du-chomage-dans-une-situation",
+  "target": "skill.ses.chomage"
+}

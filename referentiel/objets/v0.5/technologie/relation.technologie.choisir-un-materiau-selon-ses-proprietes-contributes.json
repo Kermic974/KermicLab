@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.choisir-un-materiau-selon-ses-proprietes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/objets-techniques-6e/contenu.json"
+  },
+  "source": "microskill.technologie.choisir-un-materiau-selon-ses-proprietes",
+  "target": "skill.technologie.objets-techniques-6e"
+}

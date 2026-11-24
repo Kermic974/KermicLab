@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.expliquer-le-voile-d-ignorance-de-rawls-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/justice-philosophie/contenu.json"
+  },
+  "source": "microskill.philosophie.expliquer-le-voile-d-ignorance-de-rawls",
+  "target": "skill.philosophie.justice-philosophie"
+}

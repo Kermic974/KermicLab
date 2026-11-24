@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.determiner-la-constante-avec-une-condition-initiale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/primitives-et-equations-differentielles-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.determiner-la-constante-avec-une-condition-initiale",
+  "target": "skill.mathematiques.primitives-et-equations-differentielles-l"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.technologie.energie-et-materiaux-c4-requires-materiaux-et-environnement-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie-et-materiaux-c4/contenu.json"
+  },
+  "source": "notion.technologie.energie-et-materiaux-c4",
+  "target": "notion.technologie.materiaux-et-environnement-6e",
+  "rationale": "Cycle de vie, recyclage et impact des matériaux sont étendus à l’énergie et à l’économie circulaire."
+}

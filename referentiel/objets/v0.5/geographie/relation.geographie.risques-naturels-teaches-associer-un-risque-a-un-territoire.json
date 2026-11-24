@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.risques-naturels-teaches-associer-un-risque-a-un-territoire",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/risques-naturels/contenu.json"
+  },
+  "source": "notion.geographie.risques-naturels",
+  "target": "microskill.geographie.associer-un-risque-a-un-territoire"
+}

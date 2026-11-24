@@ -5,15 +5,6 @@ sujet: mathematiques/loi-binomiale
 version: 1.0.0
 date: 2026-11-01
 niveau: terminale
-niveaux: terminale
-prerequis:
-  - probabilites-conditionnelles
-  - denombrement
-competences:
-  - reconnaitre-un-schema-de-bernoulli
-  - calculer-une-probabilite-binomiale
-  - calculer-esperance-variance-et-ecart-type
-  - interpreter-un-echantillonnage
 duree: 40
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -32,6 +23,9 @@ questions:
   - je ne comprends pas le schéma de Bernoulli
   - c'est quoi une variable aléatoire ?
   - what is the binomial distribution?
+prerequis: probabilites-conditionnelles, denombrement, variables-aleatoires-l
+niveaux: terminale
+competences: reconnaitre-un-schema-de-bernoulli, calculer-une-probabilite-binomiale, calculer-esperance-variance-et-ecart-type, interpreter-un-echantillonnage
 ---
 
 # La loi binomiale

@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.devoir-teaches-distinguer-agir-conformement-au-devoir-et-agir-par-devoir-chez-kant",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/devoir/contenu.json"
+  },
+  "source": "notion.philosophie.devoir",
+  "target": "microskill.philosophie.distinguer-agir-conformement-au-devoir-et-agir-par-devoir-chez-kant"
+}

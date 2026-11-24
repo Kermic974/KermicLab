@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.ses-marches-et-prix-l-teaches-distinguer-concurrence-et-monopole",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ses-marches-et-prix-l/contenu.json"
+  },
+  "source": "notion.ses.ses-marches-et-prix-l",
+  "target": "microskill.ses.distinguer-concurrence-et-monopole"
+}

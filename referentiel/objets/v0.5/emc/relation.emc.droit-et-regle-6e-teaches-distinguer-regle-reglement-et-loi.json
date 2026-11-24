@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.droit-et-regle-6e-teaches-distinguer-regle-reglement-et-loi",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droit-et-regle-6e/contenu.json"
+  },
+  "source": "notion.emc.droit-et-regle-6e",
+  "target": "microskill.emc.distinguer-regle-reglement-et-loi"
+}

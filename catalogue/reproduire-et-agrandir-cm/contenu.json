@@ -1,0 +1,117 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Reproduire une figure demande de repérer ses éléments et de les tracer dans l'ordre.",
+  "niveaux": [
+    {
+      "titre": "Intuition : décrire pour faire tracer",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour qu'un ami reproduise ta figure sans la voir, tu la décris avec précision : « Trace un carré de 4 cm de côté. Place le milieu M du côté [AB]. Trace un cercle de centre M et de rayon 2 cm. »"
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "On repère les figures simples.",
+          "On décide de l'ordre de tracé.",
+          "On utilise règle, équerre et compas."
+        ]
+      },
+      "aRetenir": "Une bonne description est précise et ordonnée."
+    },
+    {
+      "titre": "Agrandir",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Pour **agrandir** une figure à l'échelle 2, toutes les longueurs sont multipliées par 2 (les angles ne changent pas). Sur un quadrillage, un carré de 3 carreaux devient un carré de 6 carreaux. Le périmètre double, l'aire est multipliée par 4."
+      ],
+      "exemple": {
+        "titre": "Exemple : agrandir un rectangle",
+        "etapes": [
+          "3 cm sur 2 cm.",
+          "Agrandissement × 2 : 6 cm sur 4 cm.",
+          "Aire : 6 → 24 (× 4)."
+        ]
+      },
+      "aRetenir": "Longueurs × k, aire × k × k."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "On agrandit un carré de 3 cm de côté en multipliant les longueurs par 2. Nouveau côté ?",
+        "reponse": 6,
+        "unite": "cm",
+        "indices": [
+          "Multiplie par 2."
+        ],
+        "solution": "3 × 2 = 6.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Dans un agrandissement, les angles…",
+        "choix": [
+          "doublent",
+          "diminuent",
+          "disparaissent",
+          "ne changent pas"
+        ],
+        "bonne": 3,
+        "explication": "Ils sont conservés."
+      },
+      {
+        "type": "nombre",
+        "question": "Un carré de 3 cm de côté est agrandi × 2. Quelle est son aire ?",
+        "reponse": 36,
+        "unite": "cm²",
+        "indices": [
+          "Calcule le nouveau côté."
+        ],
+        "solution": "6 × 6 = 36.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le message au dessinateur",
+    "histoire": [
+      "Tu dois dicter une figure à un camarade."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle consigne est la plus précise ?",
+        "choix": [
+          "Trace un cercle de centre O et de rayon 3 cm",
+          "Trace un grand cercle bien rond",
+          "Dessine un cercle quelque part",
+          "Fais un rond de la taille d'une pièce"
+        ],
+        "bonne": 0,
+        "explication": "Centre et rayon."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Pour agrandir, on commence par…",
+        "choix": [
+          "effacer le dessin de départ",
+          "ajouter un cercle autour",
+          "multiplier toutes les longueurs",
+          "changer la mesure des angles"
+        ],
+        "bonne": 2,
+        "explication": "Même coefficient."
+      }
+    ],
+    "conclusion": "Figure reproduite !"
+  }
+}

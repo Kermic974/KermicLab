@@ -1,0 +1,113 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "En 6e, on calcule avec des entiers de plus en plus grands et on apprend à contrôler ses résultats.",
+  "niveaux": [
+    {
+      "titre": "Intuition : estimer avant de calculer",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour 4 987 + 3 012, on estime : 5 000 + 3 000 = 8 000. Un résultat très éloigné d'une estimation est suspect.",
+        "On arrondit à la dizaine, à la centaine, au millier pour obtenir un **ordre de grandeur**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "4 987 ≈ 5 000.",
+          "3 012 ≈ 3 000.",
+          "Somme estimée : 8 000 ; somme exacte : 7 999."
+        ]
+      },
+      "aRetenir": "Estimer permet de vérifier un résultat."
+    },
+    {
+      "titre": "Opérations et encadrements",
+      "niveau": "6e",
+      "paragraphes": [
+        "Les quatre opérations s'appliquent aux entiers : addition, soustraction, multiplication, division euclidienne. Pour **encadrer** 4 587 à la centaine : 4 500 < 4 587 < 4 600.",
+        "Pour **arrondir** à la centaine, on regarde le chiffre des dizaines : 4 587 → 4 600 (8 ≥ 5)."
+      ],
+      "exemple": {
+        "titre": "Exemple : 23 × 47",
+        "etapes": [
+          "Estimation : 20 × 50 = 1 000.",
+          "Calcul : 23 × 47 = 1 081.",
+          "1 081 est proche de 1 000 : plausible."
+        ]
+      },
+      "aRetenir": "On vérifie avec un ordre de grandeur."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Calcule 23 × 47.",
+        "reponse": 1081,
+        "indices": [
+          "23 × 40 puis 23 × 7."
+        ],
+        "solution": "23 × 47 = 23 × 40 + 23 × 7 = 920 + 161 = 1 081.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Arrondis 4 587 à la centaine.",
+        "reponse": 4600,
+        "indices": [
+          "Regarde le chiffre des dizaines."
+        ],
+        "solution": "Chiffre des dizaines : 8 (≥ 5), donc on passe à la centaine supérieure : 4 600.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel encadrement à la dizaine convient à 372 ?",
+        "choix": [
+          "380 < 372 < 390",
+          "372 < 372 < 380",
+          "370 < 372 < 380",
+          "360 < 372 < 370"
+        ],
+        "bonne": 2,
+        "explication": "370 ≤ 372 < 380."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le budget de la classe",
+    "histoire": [
+      "Ta classe reçoit 4 987 € et dépense 3 012 €."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quel est le reste ?",
+        "reponse": 1975,
+        "unite": "€",
+        "indices": [
+          "Soustrais."
+        ],
+        "solution": "4 987 − 3 012 = 1 975.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Arrondi à la centaine, le reste vaut environ…",
+        "reponse": 2000,
+        "unite": "€",
+        "indices": [
+          "Chiffre des dizaines : 7."
+        ],
+        "solution": "1 975 → 2 000.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Budget maîtrisé !"
+  }
+}

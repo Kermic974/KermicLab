@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.france-et-europe-dans-la-mondialisation-l-teaches-expliquer-l-espace-schengen-et-l-euro",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-et-europe-dans-la-mondialisation-l/contenu.json"
+  },
+  "source": "notion.geographie.france-et-europe-dans-la-mondialisation-l",
+  "target": "microskill.geographie.expliquer-l-espace-schengen-et-l-euro"
+}

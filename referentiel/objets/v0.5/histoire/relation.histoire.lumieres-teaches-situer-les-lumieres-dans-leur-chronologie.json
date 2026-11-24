@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.lumieres-teaches-situer-les-lumieres-dans-leur-chronologie",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lumieres/contenu.json"
+  },
+  "source": "notion.histoire.lumieres",
+  "target": "microskill.histoire.situer-les-lumieres-dans-leur-chronologie"
+}

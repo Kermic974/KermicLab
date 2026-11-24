@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.comparer-avec-le-comparatif-de-superiorite-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-5e-c4/contenu.json"
+  },
+  "source": "microskill.anglais.comparer-avec-le-comparatif-de-superiorite",
+  "target": "skill.anglais.anglais-5e-c4"
+}

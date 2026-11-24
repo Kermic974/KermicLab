@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.dynamiques-territoriales-requires-mobilites",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/dynamiques-territoriales/contenu.json"
+  },
+  "source": "notion.geographie.dynamiques-territoriales",
+  "target": "notion.geographie.mobilites",
+  "rationale": "Les recompositions territoriales s’expliquent par les déplacements (domicile-travail, accès aux réseaux)."
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.associer-une-infraction-a-la-juridiction-competente-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/emc-justice-et-securite-l/contenu.json"
+  },
+  "source": "microskill.emc.associer-une-infraction-a-la-juridiction-competente",
+  "target": "skill.emc.emc-justice-et-securite-l"
+}

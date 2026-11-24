@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.lire-un-tableau-de-donnees-au-cycle-2-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tableaux-et-algorithmes-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.lire-un-tableau-de-donnees-au-cycle-2",
+  "target": "skill.mathematiques.tableaux-et-algorithmes-c2"
+}

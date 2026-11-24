@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.appliquer-les-3-r-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mieux-habiter-cm/contenu.json"
+  },
+  "source": "microskill.geographie.appliquer-les-3-r",
+  "target": "skill.geographie.mieux-habiter-cm"
+}

@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les sociétés dépendent de ressources et subissent des risques ; le développement durable cherche à concilier économie, société et environnement.",
+  "niveaux": [
+    {
+      "titre": "Risques et vulnérabilité",
+      "niveau": "2de",
+      "paragraphes": [
+        "Un **risque** = **aléa** (phénomène : séisme, inondation) × **vulnérabilité** (exposition et capacité à faire face). Un même aléa produit des effets différents selon le niveau de développement, la préparation et la prévention. On distingue **prévision**, **prévention** (aménagement, normes) et **gestion de crise**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Même séisme dans deux pays.",
+          "Pays préparé : peu de dégâts.",
+          "Pays vulnérable : lourdes pertes."
+        ]
+      },
+      "aRetenir": "Risque = aléa × vulnérabilité."
+    },
+    {
+      "titre": "Développement durable",
+      "niveau": "2de",
+      "paragraphes": [
+        "Le **développement durable** (rapport Brundtland, 1987) répond aux besoins du présent sans compromettre ceux des générations futures ; il articule **trois piliers** : économique, social, environnemental. L'**empreinte écologique** mesure la pression d'une population sur les ressources. La **transition énergétique** remplace progressivement les énergies fossiles par des sources renouvelables et la sobriété."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Une ville développe tramways et vélos.",
+          "Elle réduit ses émissions.",
+          "Elle améliore la santé et la qualité de vie."
+        ]
+      },
+      "aRetenir": "Trois piliers : économie, société, environnement."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Un risque combine…",
+        "choix": [
+          "un coût et un prix",
+          "une loi et un décret",
+          "un aléa et une vulnérabilité",
+          "un lieu et une date"
+        ],
+        "bonne": 2,
+        "explication": "Définition."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le développement durable repose sur…",
+        "choix": [
+          "un seul pilier, le pilier économique",
+          "trois piliers : économie, société, nature",
+          "la croissance et la production seules",
+          "la protection de la nature seule"
+        ],
+        "bonne": 1,
+        "explication": "Brundtland."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La transition énergétique consiste à…",
+        "choix": [
+          "supprimer toute forme d'énergie",
+          "utiliser davantage de charbon",
+          "fermer toutes les écoles du pays",
+          "remplacer les fossiles par du renouvelable"
+        ],
+        "bonne": 3,
+        "explication": "Sobriété et renouvelables."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le quartier inondable",
+    "histoire": [
+      "Une ville prépare ses habitants aux crues."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Une mesure de prévention est…",
+        "choix": [
+          "supprimer les alertes",
+          "interdire de bâtir en zone inondable",
+          "ne rien faire du tout",
+          "bâtir plus près de la rivière"
+        ],
+        "bonne": 1,
+        "explication": "Aménagement."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel pilier est concerné par la santé des habitants ?",
+        "choix": [
+          "le pilier social",
+          "le pilier fiscal",
+          "le pilier minier",
+          "aucun"
+        ],
+        "bonne": 0,
+        "explication": "Développement durable."
+      }
+    ],
+    "conclusion": "Ville résiliente !"
+  }
+}

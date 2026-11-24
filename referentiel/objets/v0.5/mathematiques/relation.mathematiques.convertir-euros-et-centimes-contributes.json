@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.convertir-euros-et-centimes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/monnaie-et-euro-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.convertir-euros-et-centimes",
+  "target": "skill.mathematiques.monnaie-et-euro-c2"
+}

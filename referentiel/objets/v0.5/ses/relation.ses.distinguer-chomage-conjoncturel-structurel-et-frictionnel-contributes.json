@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.distinguer-chomage-conjoncturel-structurel-et-frictionnel-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ses-travail-chomage-et-protection-l/contenu.json"
+  },
+  "source": "microskill.ses.distinguer-chomage-conjoncturel-structurel-et-frictionnel",
+  "target": "skill.ses.ses-travail-chomage-et-protection-l"
+}

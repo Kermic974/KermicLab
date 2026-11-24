@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.volumes-requires-volumes-contenances-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/volumes/contenu.json"
+  },
+  "source": "notion.mathematiques.volumes",
+  "target": "notion.mathematiques.volumes-contenances-cm",
+  "rationale": "« Volumes et contenances » : Les volumes et contenances du cycle 3 sont étendus à de nouveaux solides."
+}

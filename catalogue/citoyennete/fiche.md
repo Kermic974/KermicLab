@@ -16,10 +16,10 @@ questions:
   - c'est quoi la citoyenneté ?
   - Comment exercer sa citoyenneté avant 18 ans ?
   - what is citizenship?
-prerequis:
-niveaux: cycle-4
 classes: 3e
-competences: emc-citoyennete-action-1, emc-citoyennete-action-2
+prerequis: democratie, droits-de-lhomme, devise-republique-cm
+niveaux: cycle-4
+competences: distinguer-citoyennete-juridique-et-participation-a-la-vie-collective, identifier-les-droits-et-les-devoirs-du-citoyen, expliquer-les-conditions-de-nationalite-et-de-participation-politique, choisir-une-forme-de-participation-adaptee-a-une-situation
 ---
 
 # La citoyenneté

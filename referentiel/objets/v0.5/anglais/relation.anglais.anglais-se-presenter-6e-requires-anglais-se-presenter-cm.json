@@ -1,0 +1,13 @@
+{
+  "id": "relation.anglais.anglais-se-presenter-6e-requires-anglais-se-presenter-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-se-presenter-6e/contenu.json"
+  },
+  "source": "notion.anglais.anglais-se-presenter-6e",
+  "target": "notion.anglais.anglais-se-presenter-cm",
+  "rationale": "La présentation orale du cycle 3 est structurée avec to be et have got."
+}

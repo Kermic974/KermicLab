@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.lois-de-l-electricite-l-requires-electricite",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lois-de-l-electricite-l/contenu.json"
+  },
+  "source": "notion.physique-chimie.lois-de-l-electricite-l",
+  "target": "notion.physique-chimie.electricite",
+  "rationale": "« Circuits électriques et loi d'Ohm » : Les lois du lycée reprennent les circuits du collège."
+}

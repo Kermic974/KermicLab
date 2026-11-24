@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.cerveau-et-plasticite-l-requires-expression-genetique",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/cerveau-et-plasticite-l/contenu.json"
+  },
+  "source": "notion.svt.cerveau-et-plasticite-l",
+  "target": "notion.svt.expression-genetique",
+  "rationale": "« L'expression des gènes » : La plasticité s’appuie sur le message nerveux et sur l’expression des gènes."
+}

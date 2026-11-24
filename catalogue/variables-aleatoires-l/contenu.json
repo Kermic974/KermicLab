@@ -1,0 +1,115 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une variable aléatoire associe un nombre au résultat d'une expérience ; l'espérance donne sa valeur moyenne à long terme.",
+  "niveaux": [
+    {
+      "titre": "Loi et espérance",
+      "niveau": "1re",
+      "paragraphes": [
+        "Une **variable aléatoire** X associe un nombre à chaque issue (le gain d'un jeu, une somme de dés). Sa **loi de probabilité** donne les valeurs x_i et leurs probabilités p_i (somme = 1). **Espérance** : E(X) = Σ p_i x_i : c'est la valeur moyenne obtenue en répétant l'expérience un grand nombre de fois."
+      ],
+      "exemple": {
+        "titre": "Exemple : un jeu",
+        "etapes": [
+          "On gagne 10 € avec probabilité 0,2 et on perd 3 € avec probabilité 0,8.",
+          "E(X) = 0,2 × 10 + 0,8 × (−3) = 2 − 2,4.",
+          "E(X) = −0,4 € : jeu défavorable."
+        ]
+      },
+      "aRetenir": "E(X) = Σ p_i × x_i."
+    },
+    {
+      "titre": "Dispersion",
+      "niveau": "1re",
+      "paragraphes": [
+        "**Variance** : V(X) = Σ p_i (x_i − E(X))² = E(X²) − (E(X))². **Écart type** : σ(X) = √V(X). Ils mesurent la dispersion autour de l'espérance. Pour Y = aX + b : E(Y) = aE(X) + b et σ(Y) = |a| σ(X).",
+        "Un jeu est **équitable** si E(X) = 0."
+      ],
+      "exemple": {
+        "titre": "Exemple : lancer d'un dé",
+        "etapes": [
+          "E(X) = 3,5.",
+          "V(X) = (1 + 4 + 9 + 16 + 25 + 36)/6 − 3,5² ≈ 2,92.",
+          "σ ≈ 1,71."
+        ]
+      },
+      "aRetenir": "V(X) = E(X²) − E(X)²."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "On gagne 10 € avec p = 0,2 et on perd 3 € avec p = 0,8. Espérance (en €) ?",
+        "reponse": -0.4,
+        "unite": "€",
+        "indices": [
+          "Σ p_i x_i."
+        ],
+        "solution": "0,2 × 10 + 0,8 × (−3) = −0,4.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "E(X) pour un dé équilibré à 6 faces ?",
+        "reponse": 3.5,
+        "indices": [
+          "Moyenne des 6 valeurs."
+        ],
+        "solution": "(1 + … + 6)/6 = 3,5.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un jeu est équitable si…",
+        "choix": [
+          "V(X) = 0",
+          "p = 0,5",
+          "E(X) = 0",
+          "E(X) > 0"
+        ],
+        "bonne": 2,
+        "explication": "Gain moyen nul."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La loterie de la kermesse",
+    "histoire": [
+      "Un billet coûte 2 €. On gagne 20 € avec probabilité 0,05, sinon rien."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Espérance du gain net par billet (en €) ?",
+        "reponse": -1,
+        "unite": "€",
+        "indices": [
+          "Gain net : 20 − 2 = 18 ou −2."
+        ],
+        "solution": "0,05 × 18 + 0,95 × (−2) = 0,9 − 1,9 = −1.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Ce jeu est…",
+        "choix": [
+          "impossible",
+          "défavorable au joueur",
+          "équitable",
+          "favorable au joueur"
+        ],
+        "bonne": 1,
+        "explication": "E(X) < 0."
+      }
+    ],
+    "conclusion": "Bien calculé !"
+  }
+}

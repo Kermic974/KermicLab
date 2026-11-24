@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.adn-et-division-cellulaire-requires-genetique-et-heredite",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/adn-et-division-cellulaire/contenu.json"
+  },
+  "source": "notion.svt.adn-et-division-cellulaire",
+  "target": "notion.svt.genetique-et-heredite",
+  "rationale": "La réplication et la mitose reprennent chromosomes, gènes et allèles."
+}

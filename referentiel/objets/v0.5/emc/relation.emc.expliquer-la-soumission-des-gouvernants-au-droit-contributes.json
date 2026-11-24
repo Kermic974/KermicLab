@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.expliquer-la-soumission-des-gouvernants-au-droit-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/etat-de-droit/contenu.json"
+  },
+  "source": "microskill.emc.expliquer-la-soumission-des-gouvernants-au-droit",
+  "target": "skill.emc.etat-de-droit"
+}

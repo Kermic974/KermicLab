@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.se-deplacer-transports-cm-teaches-comparer-l-impact-de-modes-de-transport",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/se-deplacer-transports-cm/contenu.json"
+  },
+  "source": "notion.geographie.se-deplacer-transports-cm",
+  "target": "microskill.geographie.comparer-l-impact-de-modes-de-transport"
+}

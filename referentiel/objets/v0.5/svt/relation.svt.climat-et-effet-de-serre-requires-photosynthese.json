@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.climat-et-effet-de-serre-requires-photosynthese",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/climat-et-effet-de-serre/contenu.json"
+  },
+  "source": "notion.svt.climat-et-effet-de-serre",
+  "target": "notion.svt.photosynthese",
+  "rationale": "Le cycle du carbone, la fixation du CO₂ et les puits de carbone mobilisent la photosynthèse."
+}

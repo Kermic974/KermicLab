@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.expliquer-la-specificite-d-une-enzyme-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/metabolisme-et-enzymes/contenu.json"
+  },
+  "source": "microskill.svt.expliquer-la-specificite-d-une-enzyme",
+  "target": "skill.svt.metabolisme-et-enzymes"
+}

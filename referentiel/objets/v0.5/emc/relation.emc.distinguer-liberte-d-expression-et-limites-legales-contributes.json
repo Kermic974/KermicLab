@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.distinguer-liberte-d-expression-et-limites-legales-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/laicite-et-liberte-cm/contenu.json"
+  },
+  "source": "microskill.emc.distinguer-liberte-d-expression-et-limites-legales",
+  "target": "skill.emc.laicite-et-liberte-cm"
+}

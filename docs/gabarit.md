@@ -14,14 +14,15 @@ Les Lumières et la Renaissance sont des mouvements inclus dans les Temps modern
 `catalogue/<id>/` (ou `<id>/` dans le dépôt privé `maquettes-catalogue`) avec :
 
 - `fiche.md` : front matter habituel (`id`, `titre`, `sujet`, `version`, **`date`**, `langues: fr`, `onglets`, `mots-cles`, `questions`)
-  et **`niveau`** (`college`, `seconde`, `premiere` ou `terminale`) qui range la notion dans la barre de navigation du chat (sinon : « Autres notions »).
+  et **`niveau`** (`primaire`, `college`, `seconde`, `premiere` ou `terminale`) qui range la notion dans la barre de navigation du chat (sinon : « Autres notions »).
   - Chaque question d'exemple doit être routée vers la notion par les mots-clés (test de non-régression) : vérifie qu'un mot-clé n'est pas déjà utilisé par une autre notion.
   - Les questions servent aussi de **suggestions cliquables** dans le chat : écris-les comme un élève les poserait.
   - **Référentiel (facultatif, recommandé)** : champs vérifiés par `npm run build` quand ils sont présents (feuille de route,
     phase 1). Exemple : `catalogue/proportionnalite/fiche.md`.
-    - `niveaux` : parmi `cycle-3`, `cycle-4`, `seconde`, `premiere`, `terminale`, sans doublon, du plus jeune au plus
+    - `niveaux` : parmi `cycle-2`, `cycle-3`, `cycle-4`, `seconde`, `premiere`, `terminale`, sans doublon, du plus jeune au plus
       avancé, d'après les niveaux réellement couverts par le contenu (`niveau` reste le rangement dans la navigation).
-    - `classes` (notions de niveau `college` seulement) : parmi `6e`, `5e`, `4e`, `3e`, sans doublon, de la 6e à la 3e.
+    - `classes` (notions de niveau `primaire` ou `college`) : `CP`, `CE1`, `CE2` (cycle 2) et `CM1`, `CM2` (cycle 3) pour le primaire, `6e`, `5e`, `4e`, `3e` pour le collège, sans doublon, dans l'ordre. Les classes du primaire exigent leur cycle dans `niveaux` (`cycle-2` pour CP, CE1, CE2 ; `cycle-3` pour CM1, CM2).
+      (Pour le collège : de la 6e à la 3e.)
       Elles découpent « Collège » dans l'écran Éducation (barre « Ma classe ») ; une notion apparaît dans chacune de ses
       classes. La 6e exige `cycle-3` dans `niveaux`, les 5e, 4e et 3e exigent `cycle-4`. Sans `classes`, la notion reste
       sous « Collège ». Métadonnée seulement : la version de la fiche ne change pas.
@@ -29,7 +30,8 @@ Les Lumières et la Renaissance sont des mouvements inclus dans les Temps modern
       (la notion compte alors comme renseignée). Le **graphe des prérequis** est vérifié à chaque build, sur le catalogue
       public et privé : chaque prérequis existe et est une notion (pas un jeu), aucun cycle (le message donne le chemin,
       par exemple `fractions → proportionnalite → fractions`), et un prérequis ne commence pas à un niveau plus avancé que
-      la notion (vérifié quand les deux fiches renseignent `niveaux`).
+      la notion (vérifié quand les deux fiches renseignent `niveaux`), ni dans une classe plus avancée (`CP` < `CE1` < `CE2` < `CM1` < `CM2` < `6e` < … < `3e`, vérifié quand les deux fiches renseignent `classes`).
+    - **Fiches projetées depuis le référentiel S4** : les fiches listées dans `referentiel/projection-v0.json` (les 165 notions de la V0) ont leurs champs `prerequis`, `niveaux` et `competences` **générés** par `npm run build` à partir de `referentiel/objets/`. Ne pas les modifier dans la fiche : le build les réécrit. Pour ajouter un prérequis à une telle notion, passer par le processus S4 ([génération des lots](../referentiel/generation-v0.5.md)). Les notions ajoutées depuis (suffixes `-c2`, `-cm`, `-6e`, `-c4`) ne sont pas projetées : leurs champs se renseignent dans la fiche.
     - `competences` : identifiants (minuscules, chiffres, tirets) de ce que l'élève sait faire après la notion.
     - `duree` : durée estimée en minutes, entier de 1 à 240.
   - **Relecture pédagogique** : après une relecture humaine selon la grille publiée, ajouter `relue` (date), `relue-version`

@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.union-europeenne-teaches-analyser-les-ecarts-entre-territoires-de-l-ue",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/union-europeenne/contenu.json"
+  },
+  "source": "notion.geographie.union-europeenne",
+  "target": "microskill.geographie.analyser-les-ecarts-entre-territoires-de-l-ue"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.types-de-textes-cm-teaches-identifier-un-texte-narratif",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/types-de-textes-cm/contenu.json"
+  },
+  "source": "notion.francais.types-de-textes-cm",
+  "target": "microskill.francais.identifier-un-texte-narratif"
+}

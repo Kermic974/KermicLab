@@ -105,3 +105,48 @@ test("durée : heures et minutes sans secondes, jamais négative", () => {
   assert.deepEqual(E.decomposerDuree(-5), { heures: 0, minutes: 0 });
   assert.deepEqual(E.decomposerDuree(NaN), { heures: 0, minutes: 0 });
 });
+
+test("journal de l'Accueil : découvertes datées, du plus récent au plus ancien, retirées du catalogue écartées", () => {
+  const p = {
+    decouvertes: {
+      notion: { pythagore: { premiere: "2026-11-20", ouvertures: 2 }, thales: { premiere: "2026-11-22", ouvertures: 1 }, ancienne: { premiere: "2026-11-23", ouvertures: 1 }, migree: { premiere: null, ouvertures: 3 } },
+      jeu: { demineur: { premiere: "2026-11-21", ouvertures: 4 } },
+      section: { education: { premiere: "2026-11-23", ouvertures: 1 } },
+    },
+  };
+  assert.deepEqual(E.journalRecent(p, registre).map((x) => [x.type, x.id, x.premiere]), [
+    ["notion", "thales", "2026-11-22"], ["jeu", "demineur", "2026-11-21"], ["notion", "pythagore", "2026-11-20"],
+  ], "sections exclues, notion sans date (migrée) et notion retirée du catalogue écartées");
+  assert.equal(E.journalRecent(p, registre, { max: 1 }).length, 1);
+  assert.deepEqual(E.journalRecent({}, registre), []);
+  assert.deepEqual(E.journalRecent(null, registre), []);
+});
+
+test("progression par matière : filtre par groupe de niveaux (primaire, collège, lycée), totaux du même groupe", () => {
+  const reg = E.creerRegistre([
+    { id: "fractions-cm", titre: "Fractions CM", niveau: "primaire", matiere: "mathematiques" },
+    { id: "pythagore", titre: "Pythagore", niveau: "college", matiere: "mathematiques" },
+    { id: "thales", titre: "Thalès", niveau: "college", matiere: "mathematiques" },
+    { id: "derivation", titre: "Dérivation", niveau: "premiere", matiere: "mathematiques" },
+    { id: "la-cellule", titre: "La cellule", niveau: "seconde", matiere: "svt" },
+  ]);
+  const p = { decouvertes: { notion: { pythagore: {}, "la-cellule": {} } } };
+  assert.deepEqual(E.groupesExplores(p, reg), ["college", "lycee"], "le primaire, jamais exploré, n'est pas proposé");
+  assert.deepEqual(E.progressionParMatiere(p, reg, ["mathematiques", "svt"]).map((m) => [m.matiere, m.explorees, m.total]), [["mathematiques", 1, 4], ["svt", 1, 1]]);
+  assert.deepEqual(E.progressionParMatiere(p, reg, ["mathematiques", "svt"], { groupe: "college" }).map((m) => [m.matiere, m.explorees, m.total]), [["mathematiques", 1, 2]]);
+  assert.deepEqual(E.progressionParMatiere(p, reg, ["mathematiques", "svt"], { groupe: "lycee" }).map((m) => [m.matiere, m.explorees, m.total]), [["svt", 1, 1]], "matière sans notion explorée dans le groupe : absente");
+  assert.deepEqual(E.groupesExplores({}, reg), []);
+});
+
+test("catégories des jeux : gardées pour les jeux connus, ordre d'affichage, notions jamais classées", () => {
+  const reg = E.creerRegistre([
+    { id: "pendu", titre: "Le pendu", matiere: "jeux", categorie: "mots" },
+    { id: "sudoku", titre: "Sudoku", matiere: "jeux", categorie: "calcul" },
+    { id: "inconnu", titre: "Jeu", matiere: "jeux", categorie: "sport" },
+    { id: "pythagore", titre: "Pythagore", niveau: "college", matiere: "mathematiques", categorie: "calcul" },
+  ]);
+  assert.equal(reg.trouver("pendu").categorie, "mots");
+  assert.equal("categorie" in reg.trouver("inconnu"), false, "catégorie inconnue écartée");
+  assert.equal("categorie" in reg.trouver("pythagore"), false, "une notion n'a pas de catégorie de jeu");
+  assert.deepEqual(E.categoriesDesJeux(reg), ["calcul", "mots"], "ordre de CATEGORIES_JEUX, seulement les catégories présentes");
+});

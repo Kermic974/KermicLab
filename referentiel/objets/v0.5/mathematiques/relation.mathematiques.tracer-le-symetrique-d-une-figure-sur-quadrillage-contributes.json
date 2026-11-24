@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.tracer-le-symetrique-d-une-figure-sur-quadrillage-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/symetrie-axiale-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.tracer-le-symetrique-d-une-figure-sur-quadrillage",
+  "target": "skill.mathematiques.symetrie-axiale-cm"
+}

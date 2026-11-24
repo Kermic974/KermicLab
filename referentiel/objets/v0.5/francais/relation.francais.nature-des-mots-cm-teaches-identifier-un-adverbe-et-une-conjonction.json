@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.nature-des-mots-cm-teaches-identifier-un-adverbe-et-une-conjonction",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nature-des-mots-cm/contenu.json"
+  },
+  "source": "notion.francais.nature-des-mots-cm",
+  "target": "microskill.francais.identifier-un-adverbe-et-une-conjonction"
+}

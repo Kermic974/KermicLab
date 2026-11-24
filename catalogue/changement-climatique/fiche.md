@@ -16,10 +16,10 @@ questions:
   - C'est quoi le changement climatique ?
   - Pourquoi le réchauffement climatique se poursuit ?
   - Quelle différence entre adaptation climatique et atténuation climatique ?
+classes: 5e
 prerequis:
 niveaux: cycle-4
-classes: 5e
-competences: geographie-changement-climatique-action-1, geographie-changement-climatique-action-2
+competences: distinguer-meteo-et-climat, identifier-les-causes-du-changement-climatique, analyser-les-effets-du-changement-climatique-sur-un-territoire, distinguer-attenuation-et-adaptation, associer-les-acteurs-aux-echelles-d-action-sur-les-emissions
 ---
 
 # Le changement climatique

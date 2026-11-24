@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.choisir-un-indicateur-adapte-a-une-inegalite-precise-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/inegalites/contenu.json"
+  },
+  "source": "microskill.ses.choisir-un-indicateur-adapte-a-une-inegalite-precise",
+  "target": "skill.ses.inegalites"
+}

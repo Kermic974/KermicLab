@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les sports collectifs demandent de la tactique, de la coopération et le respect des règles.",
+  "niveaux": [
+    {
+      "titre": "Tactique et rôles",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "Dans un sport collectif (handball, basket, volley, football, rugby), on construit un **projet de jeu** : se démarquer, passer, créer un surnombre, défendre en bloc ou individuellement. Chacun a un **rôle** (attaquant, défenseur, gardien, meneur). On analyse le jeu (vidéo, observation) pour s'améliorer."
+      ],
+      "exemple": {
+        "titre": "Exemple : créer du surnombre",
+        "etapes": [
+          "3 attaquants contre 2 défenseurs.",
+          "Le porteur du ballon attire un défenseur.",
+          "Un partenaire libre reçoit la passe."
+        ]
+      },
+      "aRetenir": "Tactique : se démarquer et passer."
+    },
+    {
+      "titre": "Règles et arbitrage",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "L'**arbitre** applique les règles et garantit l'équité ; on respecte ses décisions. On peut devenir **arbitre**, **coach**, **chronométreur**, **organisateur**. Le **fair-play** : féliciter l'adversaire, ne pas tricher, accepter la défaite. La **sécurité** : s'échauffer, protéger les articulations, ne pas pousser."
+      ],
+      "exemple": {
+        "titre": "Exemple : accepter une décision",
+        "etapes": [
+          "L'arbitre siffle une faute.",
+          "Tu ne contestes pas.",
+          "Le jeu reprend."
+        ]
+      },
+      "aRetenir": "Respect : règles, arbitre, adversaires."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Créer un surnombre, c'est…",
+        "choix": [
+          "changer d'équipe pendant la partie",
+          "jouer avec moins de joueurs que l'adversaire",
+          "avoir plus d'attaquants que de défenseurs dans une zone",
+          "arrêter le jeu pour réorganiser l'équipe"
+        ],
+        "bonne": 2,
+        "explication": "Avantage numérique."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "L'arbitre…",
+        "choix": [
+          "décide du score avant",
+          "applique les règles",
+          "choisit l'équipe gagnante",
+          "joue pour une équipe"
+        ],
+        "bonne": 1,
+        "explication": "Équité."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Le fair-play, c'est…",
+        "choix": [
+          "contester systématiquement chaque décision",
+          "respecter les règles et les autres",
+          "tricher légèrement quand l'arbitre ne voit pas",
+          "gagner à tout prix et par tous les moyens"
+        ],
+        "bonne": 1,
+        "explication": "Esprit sportif."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le tournoi",
+    "histoire": [
+      "Ta classe organise un tournoi de handball."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Ton équipe perd. Tu…",
+        "choix": [
+          "quittes le terrain",
+          "félicites les gagnants",
+          "te fâches",
+          "tricheras la prochaine fois"
+        ],
+        "bonne": 1,
+        "explication": "Fair-play."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel rôle peut tenir un élève non joueur ?",
+        "choix": [
+          "arbitre ou chronométreur",
+          "directeur du collège",
+          "ministre",
+          "entraîneur national"
+        ],
+        "bonne": 0,
+        "explication": "Rôles sociaux."
+      }
+    ],
+    "conclusion": "Bon tournoi !"
+  }
+}

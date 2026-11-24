@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.ranger-des-nombres-dans-l-ordre-croissant-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/comparer-et-ranger-c2/contenu.json"
+  },
+  "source": "microskill.mathematiques.ranger-des-nombres-dans-l-ordre-croissant",
+  "target": "skill.mathematiques.comparer-et-ranger-c2"
+}

@@ -18,10 +18,10 @@ questions:
   - Quelles sont les causes de la Seconde Guerre mondiale ?
   - Quels sont les acteurs de la guerre de 39-45 ?
   - Comment transmettre la mémoire de la Shoah ?
-prerequis:
-niveaux: cycle-4, terminale
 classes: 3e
-competences: his-seconde-guerre-mondiale-action-1, his-seconde-guerre-mondiale-action-2
+prerequis: totalitarismes, premiere-guerre-mondiale
+niveaux: cycle-4, terminale
+competences: identifier-les-facteurs-de-declenchement-de-la-guerre, situer-les-grandes-phases-de-la-guerre-sur-plusieurs-theatres, distinguer-les-regimes-d-occupation-dont-vichy, analyser-les-violences-de-masse-et-la-shoah, expliquer-la-reconstruction-et-la-justice-d-apres-guerre
 ---
 
 # La Seconde Guerre mondiale

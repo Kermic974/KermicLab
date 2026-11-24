@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.la-phrase-c2-teaches-ecrire-une-phrase-avec-majuscule-et-point",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/la-phrase-c2/contenu.json"
+  },
+  "source": "notion.francais.la-phrase-c2",
+  "target": "microskill.francais.ecrire-une-phrase-avec-majuscule-et-point"
+}

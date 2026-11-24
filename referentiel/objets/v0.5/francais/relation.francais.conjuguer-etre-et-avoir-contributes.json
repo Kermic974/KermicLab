@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.conjuguer-etre-et-avoir-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/temps-des-verbes-c2/contenu.json"
+  },
+  "source": "microskill.francais.conjuguer-etre-et-avoir",
+  "target": "skill.francais.temps-des-verbes-c2"
+}

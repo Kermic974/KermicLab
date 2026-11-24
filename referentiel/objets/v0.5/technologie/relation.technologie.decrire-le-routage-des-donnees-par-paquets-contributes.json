@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.decrire-le-routage-des-donnees-par-paquets-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/snt-internet-et-reseaux-l/contenu.json"
+  },
+  "source": "microskill.technologie.decrire-le-routage-des-donnees-par-paquets",
+  "target": "skill.technologie.snt-internet-et-reseaux-l"
+}

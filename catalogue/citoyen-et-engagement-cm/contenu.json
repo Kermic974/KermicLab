@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un citoyen participe à la vie de sa classe, de sa ville et de son pays.",
+  "niveaux": [
+    {
+      "titre": "Intuition : s'engager à son niveau",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dans ta classe, tu peux élire un **délégué** qui porte la parole des élèves, participer au **conseil d'élèves**, aider un camarade. Dans la ville, des associations s'engagent pour l'environnement, le sport, la solidarité.",
+        "Être citoyen, c'est avoir des droits mais aussi des responsabilités."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Élire un délégué de classe.",
+          "Proposer un projet au conseil.",
+          "Participer à une collecte de jouets."
+        ]
+      },
+      "aRetenir": "Citoyen : droits et responsabilités."
+    },
+    {
+      "titre": "Voter et décider ensemble",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "En démocratie, les décisions se prennent par le **vote**. Les citoyens majeurs élisent le **maire** (commune), les **députés** (Assemblée nationale), le **président de la République**. Le vote est **secret** : chacun choisit librement.",
+        "Les élus décident au nom des citoyens et doivent rendre des comptes. On peut aussi s'engager hors des élections : associations, bénévolat, pétitions."
+      ],
+      "exemple": {
+        "titre": "Exemple : l'élection d'un délégué",
+        "etapes": [
+          "Chaque élève propose ou vote.",
+          "Le vote est secret.",
+          "Celui qui a le plus de voix est élu."
+        ]
+      },
+      "aRetenir": "Vote : libre, secret, égal."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Qui élit le maire ?",
+        "choix": [
+          "Les conseillers municipaux élus par les habitants",
+          "Le président de la République seul",
+          "Les députés de l'Assemblée nationale",
+          "Les élèves de la commune"
+        ],
+        "bonne": 0,
+        "explication": "Élection municipale."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le vote est…",
+        "choix": [
+          "public",
+          "réservé aux riches",
+          "secret et libre",
+          "obligatoire pour les enfants"
+        ],
+        "bonne": 2,
+        "explication": "Pour protéger la liberté de choix."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Que fait un délégué de classe ?",
+        "choix": [
+          "Il dirige tout l'établissement",
+          "Il représente ses camarades",
+          "Il choisit les notes de la classe",
+          "Il remplace le professeur absent"
+        ],
+        "bonne": 1,
+        "explication": "Il porte la parole de la classe."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'élection du délégué",
+    "histoire": [
+      "Ta classe élit son délégué. Il y a deux candidats."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment voter correctement ?",
+        "choix": [
+          "Chacun vote en secret",
+          "À voix haute pour tous",
+          "On tire au sort",
+          "Le maître choisit"
+        ],
+        "bonne": 0,
+        "explication": "Le vote est secret."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un candidat obtient 14 voix, l'autre 11. Combien d'élèves ont voté ?",
+        "choix": [
+          "3",
+          "14",
+          "11",
+          "25"
+        ],
+        "bonne": 3,
+        "explication": "14 + 11 = 25 votants."
+      }
+    ],
+    "conclusion": "Élection réussie !"
+  }
+}

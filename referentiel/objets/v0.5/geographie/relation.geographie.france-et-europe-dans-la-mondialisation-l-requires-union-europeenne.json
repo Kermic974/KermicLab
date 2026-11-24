@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.france-et-europe-dans-la-mondialisation-l-requires-union-europeenne",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-et-europe-dans-la-mondialisation-l/contenu.json"
+  },
+  "source": "notion.geographie.france-et-europe-dans-la-mondialisation-l",
+  "target": "notion.geographie.union-europeenne",
+  "rationale": "« L'Union européenne et ses territoires » : Le lycée relie l’Union européenne et la mondialisation étudiées au collège."
+}

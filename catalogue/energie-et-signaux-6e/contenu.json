@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un objet transforme de l'énergie ; un signal transmet une information.",
+  "niveaux": [
+    {
+      "titre": "Intuition : l'énergie se transforme",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une ampoule transforme de l'énergie **électrique** en énergie **lumineuse** (et un peu de chaleur). Une voiture transforme l'énergie **chimique** de l'essence en énergie de **mouvement**. L'énergie ne disparaît pas : elle **se conserve**, elle se **convertit**."
+      ],
+      "exemple": {
+        "titre": "Exemple : le grille-pain",
+        "etapes": [
+          "Électricité → chaleur.",
+          "La chaleur grille le pain.",
+          "Une partie se perd dans l'air."
+        ]
+      },
+      "aRetenir": "Énergie : stockée, convertie, transférée."
+    },
+    {
+      "titre": "Chaînes d'énergie et signaux",
+      "niveau": "6e",
+      "paragraphes": [
+        "Une **chaîne d'énergie** relie une **source** (pile, soleil), un **convertisseur** (moteur, ampoule) et un **récepteur**. Les énergies **renouvelables** (solaire, éolienne, hydraulique) se renouvellent vite ; les **fossiles** s'épuisent.",
+        "Un **signal** (lumière, son, électricité) transporte une information : feux de signalisation, sonnerie, code. Pour qu'il soit compris, l'émetteur et le récepteur doivent partager le même code."
+      ],
+      "exemple": {
+        "titre": "Exemple : le feu tricolore",
+        "etapes": [
+          "Rouge : stop ; vert : passez.",
+          "Le code est partagé par tous.",
+          "Signal lumineux visible de loin."
+        ]
+      },
+      "aRetenir": "Un code partagé permet de comprendre un signal."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Une ampoule convertit surtout l'énergie…",
+        "choix": [
+          "électrique en lumineuse",
+          "chimique en nucléaire",
+          "lumineuse en électrique",
+          "sonore en thermique"
+        ],
+        "bonne": 0,
+        "explication": "Électricité → lumière."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle énergie est renouvelable ?",
+        "choix": [
+          "Le charbon",
+          "Le pétrole",
+          "Le gaz",
+          "Le vent"
+        ],
+        "bonne": 3,
+        "explication": "Se renouvelle."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un feu tricolore transmet une information par…",
+        "choix": [
+          "un signal lumineux",
+          "un son",
+          "une odeur",
+          "une vibration"
+        ],
+        "bonne": 0,
+        "explication": "Lumière colorée."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le code secret",
+    "histoire": [
+      "Deux équipes communiquent à distance avec une lampe."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que faut-il pour se comprendre ?",
+        "choix": [
+          "Un code commun",
+          "Un son fort",
+          "Une grande lampe",
+          "Du soleil"
+        ],
+        "bonne": 0,
+        "explication": "Même code."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La lampe transforme…",
+        "choix": [
+          "le son en chaleur utilisable",
+          "rien du tout, elle ne transforme rien",
+          "l'électricité en lumière",
+          "la lumière en son audible"
+        ],
+        "bonne": 2,
+        "explication": "Conversion."
+      }
+    ],
+    "conclusion": "Code déchiffré !"
+  }
+}

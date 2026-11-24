@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La France est présente sur plusieurs continents et fait partie de l'Union européenne.",
+  "niveaux": [
+    {
+      "titre": "Intuition : une France sur plusieurs continents",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "La **France métropolitaine** est située en Europe de l'Ouest. Elle a la forme d'un hexagone, bordée par la Manche, l'Atlantique, la Méditerranée, et touche l'Allemagne, la Belgique, le Luxembourg, la Suisse, l'Italie, l'Espagne, Monaco, Andorre.",
+        "Elle comprend aussi des territoires d'**outre-mer** : Guadeloupe, Martinique, Guyane, La Réunion, Mayotte, Polynésie française, Nouvelle-Calédonie…"
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "La Guyane est en Amérique du Sud.",
+          "La Réunion est dans l'océan Indien.",
+          "Ces territoires font partie de la France."
+        ]
+      },
+      "aRetenir": "Métropole + outre-mer."
+    },
+    {
+      "titre": "L'Union européenne",
+      "niveau": "CM2",
+      "paragraphes": [
+        "La France est membre de l'**Union européenne** (27 pays), qui permet la circulation des personnes, des marchandises et des capitaux. Elle partage l'euro avec de nombreux pays. Son siège principal est à Bruxelles et son Parlement à Strasbourg.",
+        "La France métropolitaine compte **13 régions** (+ 5 d'outre-mer) et 101 départements. Paris est la capitale."
+      ],
+      "exemple": {
+        "titre": "Exemple : voyager en Europe",
+        "etapes": [
+          "Pas de frontière contrôlée dans l'espace Schengen.",
+          "Paiement en euros dans la zone euro.",
+          "Études possibles dans un autre pays."
+        ]
+      },
+      "aRetenir": "La France : 13 régions métropolitaines, 27 pays dans l'UE."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien de régions compte la France métropolitaine ?",
+        "reponse": 13,
+        "indices": [
+          "Depuis la réforme de 2016."
+        ],
+        "solution": "13 régions depuis 2016.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel territoire d'outre-mer est en Amérique du Sud ?",
+        "choix": [
+          "Mayotte",
+          "La Polynésie",
+          "La Guyane",
+          "La Réunion"
+        ],
+        "bonne": 2,
+        "explication": "La Guyane est en Amérique du Sud."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quelle ville est la capitale de la France ?",
+        "choix": [
+          "Lyon",
+          "Marseille",
+          "Bordeaux",
+          "Paris"
+        ],
+        "bonne": 3,
+        "explication": "Paris."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le tour de la France",
+    "histoire": [
+      "Tu prépares un tour de France des territoires."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle mer borde le sud de la France ?",
+        "choix": [
+          "La Baltique",
+          "La mer Noire",
+          "La Méditerranée",
+          "La mer du Nord"
+        ],
+        "bonne": 2,
+        "explication": "La Méditerranée."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel pays est voisin de la France ?",
+        "choix": [
+          "La Grèce",
+          "L'Espagne",
+          "Le Portugal",
+          "La Pologne"
+        ],
+        "bonne": 1,
+        "explication": "L'Espagne borde les Pyrénées."
+      }
+    ],
+    "conclusion": "Tu connais ton pays !"
+  }
+}

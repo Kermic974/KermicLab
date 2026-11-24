@@ -1,0 +1,113 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Diviser, c'est partager en parts égales ou chercher combien de fois un nombre contient un autre.",
+  "niveaux": [
+    {
+      "titre": "Intuition : partager équitablement",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Tu as 17 billes à partager entre 5 amis. Chacun reçoit 3 billes et il en reste 2.",
+        "On écrit 17 = 5 × 3 + 2. Le **quotient** est 3, le **reste** est 2 (le reste est toujours plus petit que le diviseur)."
+      ],
+      "exemple": {
+        "titre": "Exemple : 17 ÷ 5",
+        "etapes": [
+          "5 × 3 = 15, 5 × 4 = 20 est trop grand.",
+          "Quotient 3, reste 17 − 15 = 2."
+        ]
+      },
+      "aRetenir": "Dans une division euclidienne : dividende = diviseur × quotient + reste, avec reste < diviseur."
+    },
+    {
+      "titre": "Poser une division",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Pour **857 ÷ 4**, on divise chiffre par chiffre : 8 centaines ÷ 4 = 2 centaines ; 5 dizaines ÷ 4 = 1 dizaine, reste 1 dizaine ; 17 unités ÷ 4 = 4, reste 1.",
+        "Le quotient est 214 et le reste 1. **Preuve** : 4 × 214 + 1 = 857.",
+        "On utilise la division pour les partages et pour savoir combien de groupes on peut former."
+      ],
+      "exemple": {
+        "titre": "Exemple : 857 ÷ 4",
+        "etapes": [
+          "8 ÷ 4 = 2, reste 0.",
+          "5 ÷ 4 = 1, reste 1 ; on abaisse 7 : 17 ÷ 4 = 4, reste 1.",
+          "Quotient 214, reste 1."
+        ]
+      },
+      "aRetenir": "Le reste est toujours strictement inférieur au diviseur."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Quel est le quotient de 857 ÷ 4 ?",
+        "reponse": 214,
+        "indices": [
+          "Divise d'abord les centaines.",
+          "Vérifie avec 4 × quotient + reste."
+        ],
+        "solution": "4 × 214 = 856 et 857 − 856 = 1 : quotient 214, reste 1.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Quel est le reste de 47 ÷ 6 ?",
+        "reponse": 5,
+        "indices": [
+          "Cherche le plus grand multiple de 6 inférieur à 47."
+        ],
+        "solution": "6 × 7 = 42 et 47 − 42 = 5.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un reste de division par 7 peut-il être égal à 7 ?",
+        "choix": [
+          "Oui toujours",
+          "Oui si le nombre est grand",
+          "Seulement pour 49",
+          "Non, il doit être inférieur à 7"
+        ],
+        "bonne": 3,
+        "explication": "Le reste est toujours strictement inférieur au diviseur."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Les minibus de la sortie",
+    "histoire": [
+      "83 élèves partent en sortie scolaire. Chaque minibus a 9 places."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Combien de minibus complètement remplis ?",
+        "reponse": 9,
+        "indices": [
+          "Quel est le quotient de 83 ÷ 9 ?"
+        ],
+        "solution": "83 = 9 × 9 + 2 : 9 minibus pleins.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de minibus faut-il commander au total ?",
+        "reponse": 10,
+        "indices": [
+          "Il reste des élèves après les minibus pleins.",
+          "Un reste non nul demande un véhicule de plus."
+        ],
+        "solution": "Il reste 2 élèves : il faut un 10e minibus.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bien partagé !"
+  }
+}

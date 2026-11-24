@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.respecter-le-droit-a-l-image-d-un-camarade-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/numerique-responsable-cm/contenu.json"
+  },
+  "source": "microskill.emc.respecter-le-droit-a-l-image-d-un-camarade",
+  "target": "skill.emc.numerique-responsable-cm"
+}

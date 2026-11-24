@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.revolution-empire-cm-teaches-situer-la-prise-de-la-bastille",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/revolution-empire-cm/contenu.json"
+  },
+  "source": "notion.histoire.revolution-empire-cm",
+  "target": "microskill.histoire.situer-la-prise-de-la-bastille"
+}

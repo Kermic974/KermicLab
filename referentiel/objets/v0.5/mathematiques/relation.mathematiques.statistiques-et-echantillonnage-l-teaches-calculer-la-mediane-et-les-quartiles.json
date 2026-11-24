@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.statistiques-et-echantillonnage-l-teaches-calculer-la-mediane-et-les-quartiles",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/statistiques-et-echantillonnage-l/contenu.json"
+  },
+  "source": "notion.mathematiques.statistiques-et-echantillonnage-l",
+  "target": "microskill.mathematiques.calculer-la-mediane-et-les-quartiles"
+}

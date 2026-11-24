@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une carte représente un territoire vu de dessus, réduit et expliqué par une légende.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le monde sur une feuille",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une **carte** est un dessin réduit d'un territoire vu du ciel. Elle a un **titre**, une **légende** (explication des signes), une **échelle** et une **orientation** (le nord est en haut en général).",
+        "Un **plan** représente un petit espace (une ville, un bâtiment) avec beaucoup de détails."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Titre : « La France physique ».",
+          "Légende : bleu = mers, vert = plaines, marron = montagnes.",
+          "Rose des vents : N, S, E, O."
+        ]
+      },
+      "aRetenir": "Titre, légende, échelle, orientation."
+    },
+    {
+      "titre": "Points cardinaux et repères",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Les quatre **points cardinaux** sont le nord, le sud, l'est et l'ouest. Le soleil se lève à l'est et se couche à l'ouest. La **boussole** indique le nord.",
+        "L'**équateur** divise la Terre en deux hémisphères (nord et sud). Le **méridien de Greenwich** sépare l'est de l'ouest. Un point se repère par sa **latitude** et sa **longitude**."
+      ],
+      "exemple": {
+        "titre": "Exemple : s'orienter",
+        "etapes": [
+          "Le soleil se lève à ta droite : tu regardes le nord.",
+          "Derrière toi : le sud.",
+          "À ta gauche : l'ouest."
+        ]
+      },
+      "aRetenir": "Nord en haut, sauf indication contraire."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que contient la légende d'une carte ?",
+        "choix": [
+          "L'explication des symboles et couleurs",
+          "Le nom de l'auteur seulement",
+          "La météo",
+          "La liste des habitants"
+        ],
+        "bonne": 0,
+        "explication": "Sans légende on ne comprend pas la carte."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Où le soleil se lève-t-il ?",
+        "choix": [
+          "À l'ouest",
+          "Au nord",
+          "Au sud",
+          "À l'est"
+        ],
+        "bonne": 3,
+        "explication": "Il se lève à l'est."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quelle ligne imaginaire sépare l'hémisphère nord et l'hémisphère sud ?",
+        "choix": [
+          "La frontière",
+          "L'équateur",
+          "Le méridien de Greenwich",
+          "Le tropique de l'Atlantique"
+        ],
+        "bonne": 1,
+        "explication": "L'équateur."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La chasse au trésor sur carte",
+    "histoire": [
+      "Une carte au trésor indique : « Marche 10 pas vers le nord, puis 5 pas vers l'est »."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans quel sens marches-tu d'abord ?",
+        "choix": [
+          "Vers le nord",
+          "Vers l'est",
+          "Vers le sud",
+          "Vers l'ouest"
+        ],
+        "bonne": 0,
+        "explication": "Le nord d'abord."
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de pas fais-tu en tout ?",
+        "reponse": 15,
+        "indices": [
+          "Additionne les deux trajets."
+        ],
+        "solution": "10 + 5 = 15.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Trésor trouvé !"
+  }
+}

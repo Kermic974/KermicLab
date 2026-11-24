@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.concevoir-une-preparation-a-un-risque-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/risques-naturels/contenu.json"
+  },
+  "source": "microskill.geographie.concevoir-une-preparation-a-un-risque",
+  "target": "skill.geographie.risques-naturels"
+}

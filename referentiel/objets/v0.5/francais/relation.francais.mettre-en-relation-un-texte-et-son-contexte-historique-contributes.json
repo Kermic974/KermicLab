@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.mettre-en-relation-un-texte-et-son-contexte-historique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/litterature-didees/contenu.json"
+  },
+  "source": "microskill.francais.mettre-en-relation-un-texte-et-son-contexte-historique",
+  "target": "skill.francais.litterature-didees"
+}

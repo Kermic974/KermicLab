@@ -9,13 +9,20 @@
 export const CATEGORIE_JEUX = "jeux";
 /** Classes du collège, qui découpent « Collège » dans l'écran Éducation quand la fiche les renseigne. */
 export const CLASSES_COLLEGE = ["6e", "5e", "4e", "3e"];
+/** Classes du primaire (cycle 2 et cycle 3) : elles découpent « Primaire » dans l'écran Éducation. */
+export const CLASSES_PRIMAIRE = ["CP", "CE1", "CE2", "CM1", "CM2"];
 /**
  * Ordre d'affichage des niveaux scolaires ; un niveau inconnu est rangé à la fin, jamais perdu. « college » ne garde
  * que les notions sans classe renseignée (catalogue privé non classé, par exemple).
  */
-export const ORDRE_NIVEAUX = [...CLASSES_COLLEGE, "college", "seconde", "premiere", "terminale", "autres"];
+export const ORDRE_NIVEAUX = [...CLASSES_PRIMAIRE, "primaire", ...CLASSES_COLLEGE, "college", "seconde", "premiere", "terminale", "autres"];
 
 export const typeDeCatalogue = (entree) => (entree?.matiere === CATEGORIE_JEUX ? "jeu" : "notion");
+const typeCatalogue = typeDeCatalogue;
+/** Catégories des jeux (ADR 0039, D7), dans l'ordre d'affichage des filtres de l'écran Jeux. */
+export const CATEGORIES_JEUX = Object.freeze(["calcul", "strategie", "mots"]);
+/** Catégories présentes parmi les jeux du registre, dans l'ordre de CATEGORIES_JEUX. */
+export const categoriesDesJeux = (registre) => CATEGORIES_JEUX.filter((c) => registre.deType("jeu").some((j) => j.categorie === c));
 
 export function creerRegistre(catalogue) {
   const entrees = (Array.isArray(catalogue) ? catalogue : [])
@@ -27,8 +34,11 @@ export function creerRegistre(catalogue) {
       niveau: typeof n.niveau === "string" && n.niveau ? n.niveau : "autres",
       matiere: typeof n.matiere === "string" && n.matiere ? n.matiere : "autres",
       ...(typeof n.resume === "string" && n.resume ? { resume: n.resume } : {}),
-      ...(n.niveau === "college" && Array.isArray(n.classes) && n.classes.some((c) => CLASSES_COLLEGE.includes(c))
-        ? { classes: CLASSES_COLLEGE.filter((c) => n.classes.includes(c)) } : {}),
+      ...(["college", "primaire"].includes(n.niveau) && Array.isArray(n.classes)
+        && n.classes.some((c) => (n.niveau === "college" ? CLASSES_COLLEGE : CLASSES_PRIMAIRE).includes(c))
+        ? { classes: (n.niveau === "college" ? CLASSES_COLLEGE : CLASSES_PRIMAIRE).filter((c) => n.classes.includes(c)) } : {}),
+      // Jeux : catégorie (ADR 0039, D7), parmi celles connues.
+      ...(typeCatalogue(n) === "jeu" && CATEGORIES_JEUX.includes(n.categorie) ? { categorie: n.categorie } : {}),
       // Jeux : notions qu'ils font travailler (identifiants du catalogue, bornés).
       ...(Array.isArray(n.notionsLiees) && n.notionsLiees.length
         ? { notionsLiees: n.notionsLiees.filter((id) => typeof id === "string" && id).slice(0, 6) } : {})
@@ -100,10 +110,22 @@ export function compteurs(p, registre) {
  * Progression par matière : notions explorées / notions publiées dans le catalogue. Le dénominateur est le catalogue
  * réel, donc fiable ; seules les matières déjà commencées apparaissent (divulgation progressive).
  */
-export function progressionParMatiere(p, registre, ordreMatieres = []) {
+/** Groupes de niveaux du filtre de la progression par matière (ADR 0039, lot 3). */
+export const GROUPES_NIVEAU = Object.freeze({ primaire: ["primaire"], college: ["college"], lycee: ["seconde", "premiere", "terminale"] });
+const dansGroupe = (groupe, niveau) => !groupe || (GROUPES_NIVEAU[groupe] ?? []).includes(niveau);
+
+/** Groupes de niveaux où au moins une notion a été explorée, dans l'ordre primaire, collège, lycée. */
+export function groupesExplores(p, registre) {
+  const vues = new Set(decouvertesDe(p, "notion"));
+  const niveaux = new Set(registre.deType("notion").filter((e) => vues.has(e.id)).map((e) => e.niveau));
+  return Object.keys(GROUPES_NIVEAU).filter((g) => GROUPES_NIVEAU[g].some((n) => niveaux.has(n)));
+}
+
+/** `groupe` (facultatif) limite le calcul aux notions d'un groupe de niveaux : explorées et total du même groupe. */
+export function progressionParMatiere(p, registre, ordreMatieres = [], { groupe = null } = {}) {
   const vues = new Set(decouvertesDe(p, "notion"));
   const parMatiere = new Map();
-  for (const e of registre.deType("notion")) {
+  for (const e of registre.deType("notion").filter((n) => dansGroupe(groupe, n.niveau))) {
     const m = parMatiere.get(e.matiere) ?? { matiere: e.matiere, explorees: 0, total: 0 };
     m.total += 1;
     if (vues.has(e.id)) m.explorees += 1;
@@ -138,4 +160,16 @@ export function experiencesDecouvertes(p, registre, type) {
 export function decomposerDuree(ms) {
   const minutes = Math.floor(entier(ms) / 60_000);
   return { heures: Math.floor(minutes / 60), minutes: minutes % 60 };
+}
+
+/**
+ * Journal de l'Accueil (ADR 0039 § 3) : notions et jeux découverts, du plus récent au plus ancien, d'après la date de
+ * première ouverture enregistrée sur l'appareil. Seules les expériences encore au catalogue et datées y figurent.
+ */
+export function journalRecent(p, registre, { max = 5 } = {}) {
+  return ["notion", "jeu"]
+    .flatMap((type) => experiencesDecouvertes(p, registre, type))
+    .filter((x) => x.disponible && typeof x.premiere === "string" && /^\d{4}-\d{2}-\d{2}$/.test(x.premiere))
+    .sort((a, b) => b.premiere.localeCompare(a.premiere) || b.ouvertures - a.ouvertures || a.titre.localeCompare(b.titre))
+    .slice(0, Math.max(0, max));
 }

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decrire-l-organisation-d-une-seigneurie-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/moyen-age/contenu.json"
+  },
+  "source": "microskill.histoire.decrire-l-organisation-d-une-seigneurie",
+  "target": "skill.histoire.moyen-age"
+}

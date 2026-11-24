@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.verbe-sujet-adjectif-c2-requires-noms-et-determinants-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/verbe-sujet-adjectif-c2/contenu.json"
+  },
+  "source": "notion.francais.verbe-sujet-adjectif-c2",
+  "target": "notion.francais.noms-et-determinants-c2",
+  "rationale": "« Le nom et le déterminant » : Repérer un verbe et son sujet suppose de reconnaître les noms et déterminants."
+}

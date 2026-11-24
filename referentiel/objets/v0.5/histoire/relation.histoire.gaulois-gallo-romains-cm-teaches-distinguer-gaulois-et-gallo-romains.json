@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.gaulois-gallo-romains-cm-teaches-distinguer-gaulois-et-gallo-romains",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/gaulois-gallo-romains-cm/contenu.json"
+  },
+  "source": "notion.histoire.gaulois-gallo-romains-cm",
+  "target": "microskill.histoire.distinguer-gaulois-et-gallo-romains"
+}

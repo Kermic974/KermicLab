@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Vivre ensemble, c'est se respecter, quelles que soient nos différences.",
+  "niveaux": [
+    {
+      "titre": "Intuition : on est tous différents",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Chaque personne est unique : apparence, goûts, origine, famille. Respecter, c'est accepter ces différences, ne pas se moquer, ne pas exclure.",
+        "Les filles et les garçons ont les **mêmes droits** et les mêmes chances."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "On écoute chacun sans l'interrompre.",
+          "On ne juge pas sur l'apparence.",
+          "On propose de jouer à un camarade seul."
+        ]
+      },
+      "aRetenir": "Respect : écouter, accepter, aider."
+    },
+    {
+      "titre": "Harcèlement et discriminations",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Le **harcèlement** est un comportement répété (moqueries, insultes, coups, exclusion, messages blessants en ligne) qui fait souffrir. Il est **interdit** par la loi. Ce n'est jamais la faute de la victime.",
+        "Que faire ? **Dire** à un adulte (enseignant, parent, 3018), ne pas rester spectateur, soutenir la victime. La **discrimination** est un traitement injuste lié à l'origine, au sexe, au handicap… : elle est punie par la loi."
+      ],
+      "exemple": {
+        "titre": "Exemple : agir",
+        "etapes": [
+          "Tu vois un camarade mis à l'écart.",
+          "Tu vas le voir et l'invites à jouer.",
+          "Tu préviens un adulte si les moqueries continuent."
+        ]
+      },
+      "aRetenir": "En cas de harcèlement : en parler, le numéro 3018."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que faire si un camarade est harcelé ?",
+        "choix": [
+          "Ne rien dire pour éviter les ennuis",
+          "En parler à un adulte et le soutenir",
+          "Le filmer pour garder une preuve",
+          "Rire avec les autres pour s'intégrer"
+        ],
+        "bonne": 1,
+        "explication": "Il ne faut pas rester spectateur."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le harcèlement est…",
+        "choix": [
+          "autorisé entre amis",
+          "une blague sans conséquence",
+          "obligatoire",
+          "interdit par la loi"
+        ],
+        "bonne": 3,
+        "explication": "Il est puni par la loi."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Les filles et les garçons ont…",
+        "choix": [
+          "moins de droits à l'école",
+          "les mêmes droits",
+          "des droits différents",
+          "aucun droit"
+        ],
+        "bonne": 1,
+        "explication": "Égalité des droits."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Dans la cour de récréation",
+    "histoire": [
+      "Tu vois un élève seul dans un coin, certains se moquent de lui."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fais-tu ?",
+        "choix": [
+          "Je filme la scène avec mon téléphone",
+          "Je me moque aussi pour ne pas être seul",
+          "Je vais le voir et j'en parle à un adulte",
+          "Je pars sans me retourner"
+        ],
+        "bonne": 2,
+        "explication": "Soutenir et prévenir."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel numéro peut aider en cas de harcèlement ?",
+        "choix": [
+          "Le 17",
+          "Le 112 uniquement",
+          "Le 3018",
+          "Le 15"
+        ],
+        "bonne": 2,
+        "explication": "Le 3018 est dédié au harcèlement et au cyberharcèlement."
+      }
+    ],
+    "conclusion": "Tu agis avec courage et respect !"
+  }
+}

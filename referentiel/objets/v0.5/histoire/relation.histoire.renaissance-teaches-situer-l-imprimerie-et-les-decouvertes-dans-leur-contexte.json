@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.renaissance-teaches-situer-l-imprimerie-et-les-decouvertes-dans-leur-contexte",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/renaissance/contenu.json"
+  },
+  "source": "notion.histoire.renaissance",
+  "target": "microskill.histoire.situer-l-imprimerie-et-les-decouvertes-dans-leur-contexte"
+}

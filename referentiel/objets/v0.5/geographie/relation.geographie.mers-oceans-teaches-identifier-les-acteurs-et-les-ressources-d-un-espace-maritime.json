@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.mers-oceans-teaches-identifier-les-acteurs-et-les-ressources-d-un-espace-maritime",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mers-oceans/contenu.json"
+  },
+  "source": "notion.geographie.mers-oceans",
+  "target": "microskill.geographie.identifier-les-acteurs-et-les-ressources-d-un-espace-maritime"
+}

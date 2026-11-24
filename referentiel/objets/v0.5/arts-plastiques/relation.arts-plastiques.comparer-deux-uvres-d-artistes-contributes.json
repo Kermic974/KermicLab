@@ -1,0 +1,12 @@
+{
+  "id": "relation.arts-plastiques.comparer-deux-uvres-d-artistes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/arts-formes-et-composition-cm/contenu.json"
+  },
+  "source": "microskill.arts-plastiques.comparer-deux-uvres-d-artistes",
+  "target": "skill.arts-plastiques.arts-formes-et-composition-cm"
+}

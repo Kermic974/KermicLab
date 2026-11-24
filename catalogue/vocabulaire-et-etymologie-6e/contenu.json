@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Beaucoup de mots français viennent du latin et du grec : connaître leurs racines aide à les comprendre.",
+  "niveaux": [
+    {
+      "titre": "Racines latines et grecques",
+      "niveau": "6e",
+      "paragraphes": [
+        "L'**étymologie** est l'origine d'un mot. Le français vient surtout du latin : « aquatique » vient d'*aqua* (eau), « manuel » de *manus* (main). Beaucoup de mots savants viennent du grec : « téléphone » = *télé* (loin) + *phone* (voix), « géographie » = *géo* (terre) + *graphein* (écrire).",
+        "Connaître une racine permet de deviner le sens de mots inconnus."
+      ],
+      "exemple": {
+        "titre": "Exemple : trouver le sens",
+        "etapes": [
+          "« aquarium » : aqua = eau.",
+          "« manuscrit » : manus = main, scrit = écrit.",
+          "« chronomètre » : chrono = temps, mètre = mesure."
+        ]
+      },
+      "aRetenir": "Les racines révèlent le sens des mots."
+    },
+    {
+      "titre": "Emprunts et sens",
+      "niveau": "6e",
+      "paragraphes": [
+        "Le français emprunte des mots à d'autres langues : *pizza* (italien), *algèbre* (arabe), *week-end* (anglais), *kayak* (inuit). Les mots changent de sens avec le temps. Le **dictionnaire** donne les sens, des exemples et l'origine.",
+        "Un **mot polysémique** a plusieurs sens selon le contexte : « une feuille » d'arbre, de papier."
+      ],
+      "exemple": {
+        "titre": "Exemple : « sympathique »",
+        "etapes": [
+          "Du grec *sun* (avec) et *pathos* (ressenti).",
+          "Sens ancien : qui partage ses émotions.",
+          "Sens actuel : agréable."
+        ]
+      },
+      "aRetenir": "Le sens d'un mot se précise dans le contexte."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que signifie *aqua* (racine latine) ?",
+        "choix": [
+          "terre",
+          "feu",
+          "air",
+          "eau"
+        ],
+        "bonne": 3,
+        "explication": "Aquatique, aquarium."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "« Télé » dans « téléphone » signifie…",
+        "choix": [
+          "voix",
+          "écrire",
+          "temps",
+          "loin"
+        ],
+        "bonne": 3,
+        "explication": "Du grec *télé*."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« Pizza » est un emprunt à…",
+        "choix": [
+          "l'allemand",
+          "l'italien",
+          "l'arabe",
+          "l'anglais"
+        ],
+        "bonne": 1,
+        "explication": "Mot venu d'Italie."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le détective des racines",
+    "histoire": [
+      "Tu dois deviner le sens de mots inconnus grâce à leurs racines."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« Chronomètre » mesure…",
+        "choix": [
+          "la température",
+          "le temps",
+          "la distance",
+          "le poids"
+        ],
+        "bonne": 1,
+        "explication": "Chrono = temps."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "« Géographie » veut dire…",
+        "choix": [
+          "écrire sur la Terre",
+          "mesurer le temps",
+          "parler aux dieux",
+          "compter les étoiles"
+        ],
+        "bonne": 0,
+        "explication": "Géo + graphein."
+      }
+    ],
+    "conclusion": "Bien deviné !"
+  }
+}

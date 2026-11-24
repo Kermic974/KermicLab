@@ -1,0 +1,13 @@
+{
+  "id": "relation.mathematiques.proportionnalite-requires-moyenne-et-proportions-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/proportionnalite/contenu.json"
+  },
+  "source": "notion.mathematiques.proportionnalite",
+  "target": "notion.mathematiques.moyenne-et-proportions-cm",
+  "rationale": "« Moyenne, pourcentages et comparaison de données » : La proportionnalité et les pourcentages simples du cycle 3 sont généralisés."
+}

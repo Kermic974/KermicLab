@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.calculer-le-grossissement-d-un-microscope-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/la-cellule/contenu.json"
+  },
+  "source": "microskill.svt.calculer-le-grossissement-d-un-microscope",
+  "target": "skill.svt.la-cellule"
+}

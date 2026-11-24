@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.poser-et-calculer-une-soustraction-avec-retenue-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/addition-soustraction-posees-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.poser-et-calculer-une-soustraction-avec-retenue",
+  "target": "skill.mathematiques.addition-soustraction-posees-cm"
+}

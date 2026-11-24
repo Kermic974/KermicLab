@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.evolution-et-fossiles-cm-requires-biodiversite-et-chaines-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/evolution-et-fossiles-cm/contenu.json"
+  },
+  "source": "notion.svt.evolution-et-fossiles-cm",
+  "target": "notion.svt.biodiversite-et-chaines-cm",
+  "rationale": "« Biodiversité et chaînes alimentaires » : L’évolution des espèces prolonge la biodiversité."
+}

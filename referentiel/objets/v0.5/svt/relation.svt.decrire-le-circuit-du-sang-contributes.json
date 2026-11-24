@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.decrire-le-circuit-du-sang-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/respiration-circulation-cm/contenu.json"
+  },
+  "source": "microskill.svt.decrire-le-circuit-du-sang",
+  "target": "skill.svt.respiration-circulation-cm"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.quantite-de-matiere-teaches-calculer-une-concentration-molaire",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/quantite-de-matiere/contenu.json"
+  },
+  "source": "notion.physique-chimie.quantite-de-matiere",
+  "target": "microskill.physique-chimie.calculer-une-concentration-molaire"
+}

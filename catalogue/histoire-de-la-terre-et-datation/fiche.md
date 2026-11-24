@@ -31,7 +31,7 @@ questions:
   - how old is the earth?
 prerequis:
 niveaux: terminale
-competences: svt-histoire-de-la-terre-et-datation-action-1, svt-histoire-de-la-terre-et-datation-action-2
+competences: appliquer-le-principe-de-superposition-a-une-serie-de-couches, dater-relativement-des-evenements-geologiques-avec-les-failles-et-les-discordances, utiliser-un-fossile-stratigraphique-pour-dater-une-couche, placer-des-evenements-sur-l-echelle-des-temps-geologiques, interpreter-une-datation-absolue-par-desintegration-d-un-element
 ---
 
 # Histoire de la Terre et datation

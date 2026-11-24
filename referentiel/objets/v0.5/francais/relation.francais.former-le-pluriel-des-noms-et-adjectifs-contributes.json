@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.former-le-pluriel-des-noms-et-adjectifs-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/accords-cm/contenu.json"
+  },
+  "source": "microskill.francais.former-le-pluriel-des-noms-et-adjectifs",
+  "target": "skill.francais.accords-cm"
+}

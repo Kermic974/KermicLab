@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.nommer-les-couleurs-en-anglais-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-bonjour-c2/contenu.json"
+  },
+  "source": "microskill.anglais.nommer-les-couleurs-en-anglais",
+  "target": "skill.anglais.anglais-bonjour-c2"
+}

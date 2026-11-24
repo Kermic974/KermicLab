@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.transformations-chimiques-c4-requires-etats-matiere-et-melanges-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/transformations-chimiques-c4/contenu.json"
+  },
+  "source": "notion.physique-chimie.transformations-chimiques-c4",
+  "target": "notion.physique-chimie.etats-matiere-et-melanges-6e",
+  "rationale": "« États de la matière, mélanges et masse en 6e » : Les transformations chimiques s’appuient sur les atomes et les mélanges."
+}

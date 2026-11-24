@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.ordonner-les-jours-de-la-semaine-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/se-reperer-dans-le-temps-c2/contenu.json"
+  },
+  "source": "microskill.histoire.ordonner-les-jours-de-la-semaine",
+  "target": "skill.histoire.se-reperer-dans-le-temps-c2"
+}

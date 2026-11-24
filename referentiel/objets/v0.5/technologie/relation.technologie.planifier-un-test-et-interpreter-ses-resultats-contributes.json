@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.planifier-un-test-et-interpreter-ses-resultats-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/conception-et-prototypage-c4/contenu.json"
+  },
+  "source": "microskill.technologie.planifier-un-test-et-interpreter-ses-resultats",
+  "target": "skill.technologie.conception-et-prototypage-c4"
+}

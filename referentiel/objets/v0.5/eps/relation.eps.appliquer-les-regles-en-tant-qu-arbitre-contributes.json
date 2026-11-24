@@ -1,0 +1,12 @@
+{
+  "id": "relation.eps.appliquer-les-regles-en-tant-qu-arbitre-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/eps-sports-collectifs-et-arbitrage-c4/contenu.json"
+  },
+  "source": "microskill.eps.appliquer-les-regles-en-tant-qu-arbitre",
+  "target": "skill.eps.eps-sports-collectifs-et-arbitrage-c4"
+}

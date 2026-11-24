@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.renaissance-teaches-analyser-le-role-des-mecenes-et-des-artistes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/renaissance/contenu.json"
+  },
+  "source": "notion.histoire.renaissance",
+  "target": "microskill.histoire.analyser-le-role-des-mecenes-et-des-artistes"
+}

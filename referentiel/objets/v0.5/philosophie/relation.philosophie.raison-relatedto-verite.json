@@ -1,0 +1,13 @@
+{
+  "id": "relation.philosophie.raison-relatedto-verite",
+  "type": "relatedTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/raison/contenu.json"
+  },
+  "source": "notion.philosophie.raison",
+  "target": "notion.philosophie.verite",
+  "rationale": "Lien conceptuel (relation de voisinage, sans ordre d’apprentissage) : Les critères de vérité engagent la validité des raisonnements."
+}

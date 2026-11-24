@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.proportionnalite-cm-teaches-calculer-25-ou-50-d-une-quantite",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/proportionnalite-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.proportionnalite-cm",
+  "target": "microskill.mathematiques.calculer-25-ou-50-d-une-quantite"
+}

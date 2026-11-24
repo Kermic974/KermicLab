@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.respecter-les-croyances-de-chacun-dans-la-classe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/laicite-et-liberte-cm/contenu.json"
+  },
+  "source": "microskill.emc.respecter-les-croyances-de-chacun-dans-la-classe",
+  "target": "skill.emc.laicite-et-liberte-cm"
+}

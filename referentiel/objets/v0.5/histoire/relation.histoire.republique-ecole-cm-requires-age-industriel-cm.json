@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.republique-ecole-cm-requires-age-industriel-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/republique-ecole-cm/contenu.json"
+  },
+  "source": "notion.histoire.republique-ecole-cm",
+  "target": "notion.histoire.age-industriel-cm",
+  "rationale": "« L'âge industriel en France » : Progression chronologique du programme (lien de continuité du parcours, pas un prérequis conceptuel strict) : la IIIe République suit l’âge industriel."
+}

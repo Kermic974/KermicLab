@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decrire-la-renaissance-des-arts-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/francois-ier-cm/contenu.json"
+  },
+  "source": "microskill.histoire.decrire-la-renaissance-des-arts",
+  "target": "skill.histoire.francois-ier-cm"
+}

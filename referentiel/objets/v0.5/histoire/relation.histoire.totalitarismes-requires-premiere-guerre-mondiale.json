@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.totalitarismes-requires-premiere-guerre-mondiale",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/totalitarismes/contenu.json"
+  },
+  "source": "notion.histoire.totalitarismes",
+  "target": "notion.histoire.premiere-guerre-mondiale",
+  "rationale": "Les régimes de l’entre-deux-guerres naissent des crises et des frustrations de l’après-guerre."
+}

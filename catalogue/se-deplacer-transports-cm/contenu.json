@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les transports relient les lieux, mais ils ont aussi un coût pour l'environnement.",
+  "niveaux": [
+    {
+      "titre": "Intuition : relier les lieux",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour aller à l'école, au travail, en vacances, on utilise des **transports** : marche, vélo, bus, train, voiture, avion. Les routes, les voies ferrées, les ports et les aéroports forment des **réseaux** de transport.",
+        "Le **TGV** (depuis 1981) relie les grandes villes françaises en quelques heures."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Paris-Lyon en TGV : environ 2 heures.",
+          "Dans la ville : bus, tram, métro.",
+          "Entre pays : avion, train, bateau."
+        ]
+      },
+      "aRetenir": "Un réseau de transport relie des lieux."
+    },
+    {
+      "titre": "Mobilités et environnement",
+      "niveau": "CM2",
+      "paragraphes": [
+        "Les transports émettent des **gaz à effet de serre**. La voiture individuelle et l'avion polluent plus par personne que le train, le bus ou le vélo. Pour réduire la pollution : transports en commun, covoiturage, vélo, véhicules électriques.",
+        "Les **marchandises** voyagent par camion, train, bateau cargo (les plus gros transports), avion (plus rapide mais cher et polluant)."
+      ],
+      "exemple": {
+        "titre": "Exemple : choisir un trajet",
+        "etapes": [
+          "Trajet de 3 km : vélo ou marche.",
+          "Trajet urbain : tram ou bus.",
+          "Longue distance : train plutôt qu'avion."
+        ]
+      },
+      "aRetenir": "Moins polluer : marcher, pédaler, partager."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel mode de transport est le plus écologique pour 2 km ?",
+        "choix": [
+          "La voiture seule",
+          "Le camion",
+          "La marche ou le vélo",
+          "L'avion"
+        ],
+        "bonne": 2,
+        "explication": "Ni carburant ni pollution."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que transportent les cargos ?",
+        "choix": [
+          "Des marchandises en grande quantité",
+          "Uniquement des voyageurs en vacances",
+          "Du courrier et des lettres",
+          "Des cartes et des plans"
+        ],
+        "bonne": 0,
+        "explication": "Ce sont les plus gros navires de marchandises."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Qu'est-ce que le covoiturage ?",
+        "choix": [
+          "Partager une voiture pour un même trajet",
+          "Louer un avion pour plusieurs personnes",
+          "Prendre le train à plusieurs",
+          "Marcher en groupe vers l'école"
+        ],
+        "bonne": 0,
+        "explication": "Moins de voitures sur la route."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le trajet de l'école",
+    "histoire": [
+      "Tu veux réduire la pollution des trajets de ta classe."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment aller à l'école à 1 km ?",
+        "choix": [
+          "En avion de ligne",
+          "En taxi tous les jours",
+          "En camion de livraison",
+          "À pied ou à vélo"
+        ],
+        "bonne": 3,
+        "explication": "Court trajet : mobilité douce."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel avantage pour le bus scolaire ?",
+        "choix": [
+          "Il va plus vite qu'un avion",
+          "Il roule sans conducteur",
+          "Il ne s'arrête jamais en route",
+          "Beaucoup d'élèves dans un seul véhicule"
+        ],
+        "bonne": 3,
+        "explication": "Un seul véhicule pour beaucoup de passagers."
+      }
+    ],
+    "conclusion": "Bonne mobilité !"
+  }
+}

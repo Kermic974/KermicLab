@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.soleil-et-energie-terrestre-l-teaches-definir-l-albedo",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/soleil-et-energie-terrestre-l/contenu.json"
+  },
+  "source": "notion.physique-chimie.soleil-et-energie-terrestre-l",
+  "target": "microskill.physique-chimie.definir-l-albedo"
+}

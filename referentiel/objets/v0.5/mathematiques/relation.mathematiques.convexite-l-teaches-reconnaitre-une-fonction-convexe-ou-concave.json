@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.convexite-l-teaches-reconnaitre-une-fonction-convexe-ou-concave",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/convexite-l/contenu.json"
+  },
+  "source": "notion.mathematiques.convexite-l",
+  "target": "microskill.mathematiques.reconnaitre-une-fonction-convexe-ou-concave"
+}

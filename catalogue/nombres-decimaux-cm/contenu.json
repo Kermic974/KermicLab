@@ -1,0 +1,116 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les nombres décimaux servent à mesurer avec précision : 2,5 m, 1,35 €, 12,4 s.",
+  "niveaux": [
+    {
+      "titre": "Intuition : les dixièmes et les centièmes",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "1 euro = 100 centimes. 1 centime est donc **un centième** d'euro : 0,01 €. 10 centimes sont **un dixième** : 0,10 €.",
+        "Dans 3,45 : 3 unités, 4 dixièmes, 5 centièmes. 3,45 = 3 + 4/10 + 5/100 = 345/100."
+      ],
+      "exemple": {
+        "titre": "Exemple : lire 12,07",
+        "etapes": [
+          "12 unités.",
+          "0 dixième, 7 centièmes.",
+          "12,07 = 12 + 7/100."
+        ]
+      },
+      "aRetenir": "La virgule sépare les unités des parties plus petites qu'une unité."
+    },
+    {
+      "titre": "Comparer, ranger, multiplier par 10",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Pour comparer 3,45 et 3,5, on écrit 3,5 = 3,50 : 3,50 > 3,45. Un nombre avec moins de chiffres après la virgule n'est pas forcément plus petit.",
+        "Multiplier par 10 décale chaque chiffre d'un rang vers la gauche : 3,45 × 10 = 34,5 ; 3,45 × 100 = 345. Diviser par 10 décale vers la droite.",
+        "On peut intercaler des décimaux : 3,4 < 3,45 < 3,5."
+      ],
+      "exemple": {
+        "titre": "Exemple : ranger 4,2 ; 4,15 ; 4,09",
+        "etapes": [
+          "4,20 ; 4,15 ; 4,09.",
+          "On compare les centièmes : 4,09 < 4,15 < 4,20.",
+          "Ordre croissant : 4,09 ; 4,15 ; 4,2."
+        ]
+      },
+      "aRetenir": "Pour comparer des décimaux, on écrit le même nombre de chiffres après la virgule."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel nombre est le plus grand ?",
+        "choix": [
+          "3,4",
+          "3,5",
+          "3,45",
+          "3,09"
+        ],
+        "bonne": 1,
+        "explication": "3,5 = 3,50 > 3,45 > 3,40 > 3,09."
+      },
+      {
+        "type": "nombre",
+        "question": "Calcule 3,45 × 10.",
+        "reponse": 34.5,
+        "indices": [
+          "Multiplier par 10 décale d'un rang vers la gauche."
+        ],
+        "solution": "Décale la virgule d'un rang : 34,5.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "nombre",
+        "question": "Écris 7/10 sous forme décimale.",
+        "reponse": 0.7,
+        "indices": [
+          "Un dixième = 0,1."
+        ],
+        "solution": "7/10 = 0,7.",
+        "titre": "Exercice 3"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le saut en longueur",
+    "histoire": [
+      "Trois enfants ont sauté : 3,45 m ; 3,5 m ; 3,09 m."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Qui a gagné ?",
+        "choix": [
+          "Celui qui a sauté 3,09 m",
+          "Égalité",
+          "Celui qui a sauté 3,5 m",
+          "Celui qui a sauté 3,45 m"
+        ],
+        "bonne": 2,
+        "explication": "3,5 = 3,50 m est la plus grande longueur."
+      },
+      {
+        "type": "nombre",
+        "question": "Quelle est la différence entre 3,5 m et 3,09 m, en mètres ?",
+        "reponse": 0.41,
+        "unite": "m",
+        "indices": [
+          "Écris 3,5 sous la forme 3,50."
+        ],
+        "solution": "3,50 − 3,09 = 0,41.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Bien joué : tu compares les décimaux !"
+  }
+}

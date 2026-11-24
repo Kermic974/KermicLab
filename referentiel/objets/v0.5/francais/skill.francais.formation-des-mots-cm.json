@@ -1,0 +1,11 @@
+{
+  "id": "skill.francais.formation-des-mots-cm",
+  "type": "skill",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/formation-des-mots-cm/contenu.json"
+  },
+  "label": "Analyser la formation d’un mot (préfixe, suffixe, famille)"
+}

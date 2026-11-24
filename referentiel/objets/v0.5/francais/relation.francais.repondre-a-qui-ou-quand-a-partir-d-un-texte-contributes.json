@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.repondre-a-qui-ou-quand-a-partir-d-un-texte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/lire-et-comprendre-c2/contenu.json"
+  },
+  "source": "microskill.francais.repondre-a-qui-ou-quand-a-partir-d-un-texte",
+  "target": "skill.francais.lire-et-comprendre-c2"
+}

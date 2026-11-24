@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.calculer-une-energie-cinetique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/energie/contenu.json"
+  },
+  "source": "microskill.physique-chimie.calculer-une-energie-cinetique",
+  "target": "skill.physique-chimie.energie"
+}

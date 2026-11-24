@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-la-these-d-un-texte-de-la-litterature-d-idees-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/litterature-didees/contenu.json"
+  },
+  "source": "microskill.francais.identifier-la-these-d-un-texte-de-la-litterature-d-idees",
+  "target": "skill.francais.litterature-didees"
+}

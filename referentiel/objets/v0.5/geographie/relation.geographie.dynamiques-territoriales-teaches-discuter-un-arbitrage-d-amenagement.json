@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.dynamiques-territoriales-teaches-discuter-un-arbitrage-d-amenagement",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/dynamiques-territoriales/contenu.json"
+  },
+  "source": "notion.geographie.dynamiques-territoriales",
+  "target": "microskill.geographie.discuter-un-arbitrage-d-amenagement"
+}

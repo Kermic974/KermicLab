@@ -19,7 +19,7 @@ questions:
   - Comment fonctionne le voile d'ignorance ?
 prerequis:
 niveaux: terminale
-competences: philosophie-justice-philosophie-action-1, philosophie-justice-philosophie-action-2
+competences: distinguer-justice-distributive-reparatrice-et-legale-chez-aristote, expliquer-le-voile-d-ignorance-de-rawls, distinguer-egalite-et-equite-dans-une-situation, discuter-un-principe-de-justice-impartial
 ---
 
 # La justice

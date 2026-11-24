@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Pour bien écrire un mot, on cherche sa famille, son sens et ses régularités.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le truc du mot de la famille",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour savoir si « grand » s'écrit avec un d, on pense au féminin « grande » ou au mot de la famille « grandir ». La lettre muette finale se retrouve dans un mot de la même famille.",
+        "Les **accents** changent le son : é (cliché), è (père), ê (fête)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« lait » : laitier (le t se prononce).",
+          "« petit » : petite.",
+          "« chant » : chanter, chanteur."
+        ]
+      },
+      "aRetenir": "Un mot de la même famille révèle la lettre muette."
+    },
+    {
+      "titre": "Quelques régularités",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "On écrit **m** devant m, b, p : « un nombre », « un lampadaire », « emmener ». On écrit **-ss-** entre deux voyelles pour le son [s] : « poisson », mais « poison » avec un seul s.",
+        "La lettre **c** devant e et i fait [s] : « cerise » ; le **ç** (cédille) devant a, o, u : « garçon »."
+      ],
+      "exemple": {
+        "titre": "Exemple : le bon accent",
+        "etapes": [
+          "« mère » : è.",
+          "« fête » : ê.",
+          "« été » : é."
+        ]
+      },
+      "aRetenir": "m devant m, b, p. Le ç devant a, o, u."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment s'écrit le mot dont le féminin est « grande » ?",
+        "choix": [
+          "grant",
+          "grend",
+          "grand",
+          "gran"
+        ],
+        "bonne": 2,
+        "explication": "Le d se retrouve au féminin."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle écriture est correcte ?",
+        "choix": [
+          "un nomre",
+          "un nombbre",
+          "un nombre",
+          "un nonbre"
+        ],
+        "bonne": 2,
+        "explication": "m devant b."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quelle écriture est correcte ?",
+        "choix": [
+          "garson",
+          "garçone",
+          "garçon",
+          "garcon"
+        ],
+        "bonne": 2,
+        "explication": "Cédille devant o."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La dictée du matin",
+    "histoire": [
+      "Tu prépares la dictée en vérifiant l'orthographe des mots."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel mot est bien écrit ?",
+        "choix": [
+          "poisson",
+          "poiçon",
+          "poissson",
+          "poisonn"
+        ],
+        "bonne": 0,
+        "explication": "Deux s pour [s] entre deux voyelles (poisson = animal)."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel mot est bien écrit ?",
+        "choix": [
+          "lampe",
+          "lanpe",
+          "lamppe",
+          "lamme"
+        ],
+        "bonne": 0,
+        "explication": "m devant p."
+      }
+    ],
+    "conclusion": "Dictée prête !"
+  }
+}

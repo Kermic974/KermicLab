@@ -5,16 +5,7 @@ sujet: mathematiques/fonctions-affines
 version: 1.0.0
 date: 2026-11-01
 niveau: college
-niveaux: cycle-4, seconde
 classes: 3e
-prerequis:
-  - proportionnalite
-  - calcul-litteral
-competences:
-  - calculer-une-image-et-un-antecedent
-  - distinguer-fonction-lineaire-et-affine
-  - lire-le-coefficient-directeur-et-l-ordonnee-a-l-origine
-  - etudier-le-sens-de-variation-et-le-signe
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -35,6 +26,9 @@ questions:
   - je ne comprends pas l'ordonnée à l'origine
   - c'est quoi un antécédent ?
   - what is a linear function?
+prerequis: proportionnalite, calcul-litteral, equations, notion-de-fonction-c4
+niveaux: cycle-4, seconde
+competences: calculer-une-image-et-un-antecedent, distinguer-fonction-lineaire-et-affine, lire-le-coefficient-directeur-et-l-ordonnee-a-l-origine, etudier-le-sens-de-variation-et-le-signe
 ---
 
 # Les fonctions affines et linéaires

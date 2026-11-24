@@ -4,7 +4,7 @@
 // Les offres et les hypothèses financières sont des réglages (table `reglages`, clés `souscriptions` et `finances`).
 import { lireConfiguration, parametreDuRegistre } from "./configuration.js";
 import { FONCTIONNALITES } from "./roles.js";
-import { BORNES_FINANCES, FINANCES_PAR_DEFAUT, estimerSouscription, validerFinances } from "../../web/admin/financier.js";
+import { BORNES_FINANCES, FINANCES_PAR_DEFAUT, estimerSouscription, repartitionFixes, validerFinances } from "../../web/admin/financier.js";
 
 export { FINANCES_PAR_DEFAUT, validerFinances };
 export const SOUSCRIPTION_GRATUITE = "gratuit";
@@ -50,28 +50,28 @@ export const SOUSCRIPTIONS_PAR_DEFAUT = Object.freeze([
     id: SOUSCRIPTION_GRATUITE, libelle: "Gratuit", description: "Découverte : catalogue, jeux et tuteur IA dans la limite du quota gratuit.",
     statut: "projet", role: "visiteur", fonctionnalites: BASE,
     limites: { cahiersMois: 0, enfantsMax: 0, classesMax: 0, elevesMax: 0 },
-    usage: { joursActifsMois: 6, tauxUtilisation: 40 },
+    usage: { joursActifsMois: 6, tauxUtilisation: 40, utilisateursCibles: 150 },
     prix: { mode: "prix", prixMensuelHT: 0, margeCible: 0, remiseAnnuelle: 0 }
   },
   {
     id: "solo", libelle: "Solo", description: "Un apprenant : tuteur IA étendu, défis et cahiers générés.",
     statut: "projet", role: "visiteur", fonctionnalites: [...BASE, ...IA],
     limites: { tokensSession: 2000, tokensAppel: 500, defisJour: 5, cahiersJour: 1, cahiersMois: 0, enfantsMax: 0, classesMax: 0, elevesMax: 0 },
-    usage: { joursActifsMois: 12, tauxUtilisation: 30 },
+    usage: { joursActifsMois: 12, tauxUtilisation: 30, utilisateursCibles: 25 },
     prix: { mode: "prix", prixMensuelHT: 4.99, margeCible: 60, remiseAnnuelle: 17 }
   },
   {
     id: "parent", libelle: "Parent", description: "Une famille : Espace famille, profils des enfants, suivi et cahiers assignés.",
     statut: "projet", role: "parent", fonctionnalites: [...BASE, ...IA, "famille"],
     limites: { tokensSession: 2000, tokensAppel: 500, defisJour: 8, cahiersJour: 1, cahiersMois: 5, enfantsMax: 4, classesMax: 0, elevesMax: 0 },
-    usage: { joursActifsMois: 15, tauxUtilisation: 30 },
+    usage: { joursActifsMois: 15, tauxUtilisation: 30, utilisateursCibles: 20 },
     prix: { mode: "prix", prixMensuelHT: 7.99, margeCible: 60, remiseAnnuelle: 17 }
   },
   {
     id: "professeur", libelle: "Professeur", description: "Un enseignant : classes, liens d'invitation, suivi des élèves et relecture des contributions.",
     statut: "projet", role: "prof", fonctionnalites: [...BASE, ...IA, "professeur", "contributions.proposer", "contributions.relire"],
     limites: { tokensSession: 4000, tokensAppel: 1000, defisJour: 10, cahiersJour: 3, cahiersMois: 0, enfantsMax: 0, classesMax: 8, elevesMax: 240 },
-    usage: { joursActifsMois: 18, tauxUtilisation: 30 },
+    usage: { joursActifsMois: 18, tauxUtilisation: 30, utilisateursCibles: 5 },
     prix: { mode: "marge", prixMensuelHT: 0, margeCible: 60, remiseAnnuelle: 17 }
   }
 ].map((s) => Object.freeze(s)));
@@ -113,8 +113,10 @@ export function validerSouscription(id, brut, { roles = [] } = {}) {
   }
 
   const usage = {};
-  for (const champ of ["joursActifsMois", "tauxUtilisation"]) {
-    const v = nombre(brut?.usage?.[champ]);
+  for (const champ of ["joursActifsMois", "tauxUtilisation", "utilisateursCibles"]) {
+    // Abonnés visés (ADR 0036) : absents des offres enregistrées avant, repris des offres pressenties, sinon 0.
+    const brutChamp = champ === "utilisateursCibles" ? brut?.usage?.[champ] ?? SOUSCRIPTIONS_PAR_DEFAUT.find((x) => x.id === id)?.usage.utilisateursCibles ?? 0 : brut?.usage?.[champ];
+    const v = nombre(brutChamp);
     if (!entierDans(v, BORNES_FINANCES[champ])) return { ok: false, code: `hors-bornes:${champ}` };
     usage[champ] = v;
   }
@@ -154,7 +156,7 @@ export function depuisNiveaux(niveaux) {
   return [gratuite, ...niveaux.map((n) => ({
     id: n.id, libelle: n.libelle, description: "", statut: "projet", role: "visiteur", fonctionnalites: [...FONCTIONNALITES],
     limites: { tokensSession: n.tokensSession, tokensAppel: n.tokensAppel, defisJour: n.defisJour, cahiersJour: n.cahiersJour, cahiersMois: 0, enfantsMax: 0, classesMax: 0, elevesMax: 0 },
-    usage: { joursActifsMois: 12, tauxUtilisation: 50 },
+    usage: { joursActifsMois: 12, tauxUtilisation: 50, utilisateursCibles: 0 },
     prix: { mode: "prix", prixMensuelHT: 0, margeCible: 60, remiseAnnuelle: 0 }
   }))];
 }
@@ -168,12 +170,16 @@ export function limitesEffectives(souscription, config) {
   return { ...souscription.limites, ...Object.fromEntries(Object.entries(LIMITES_CONSOMMATION).map(([champ, cle]) => [champ, config[cle]])) };
 }
 
-/** Souscription prête à afficher : limites effectives et estimation financière. */
-export function decrireSouscription(souscription, env, finances) {
+/**
+ * Souscription prête à afficher : limites effectives et estimation financière. `souscriptions` : toutes les offres,
+ * entre lesquelles les coûts fixes sont répartis au prorata des abonnés visés (ADR 0036) ; le prix calculé en mode
+ * « marge » en dépend, il doit donc être le même dans le back-office et dans « Mon abonnement ».
+ */
+export function decrireSouscription(souscription, env, finances, souscriptions = [souscription]) {
   const config = lireConfiguration(env);
   const limites = limitesEffectives(souscription, config);
   const tokensParGeneration = { defi: config.MAX_TOKENS_DEFI, cahiers: config.MAX_TOKENS_CAHIERS };
-  return { ...souscription, limites, estimation: estimerSouscription({ ...souscription, limites }, finances, tokensParGeneration) };
+  return { ...souscription, limites, estimation: estimerSouscription({ ...souscription, limites }, finances, tokensParGeneration, repartitionFixes(souscriptions, finances)) };
 }
 
 /** Anciens niveaux, dérivés des souscriptions : identifiants attribuables aux comptes et cibles des stratégies. */

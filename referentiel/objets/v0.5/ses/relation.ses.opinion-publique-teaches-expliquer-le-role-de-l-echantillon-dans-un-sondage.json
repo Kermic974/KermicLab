@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.opinion-publique-teaches-expliquer-le-role-de-l-echantillon-dans-un-sondage",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/opinion-publique/contenu.json"
+  },
+  "source": "notion.ses.opinion-publique",
+  "target": "microskill.ses.expliquer-le-role-de-l-echantillon-dans-un-sondage"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.emc.engagement-civique-requires-engagement-et-solidarite-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/engagement-civique/contenu.json"
+  },
+  "source": "notion.emc.engagement-civique",
+  "target": "notion.emc.engagement-et-solidarite-6e",
+  "rationale": "« S'engager : solidarité, délégués et vie du collège » : La solidarité et le rôle de délégué de 6e préparent les formes et le bilan de l’engagement."
+}

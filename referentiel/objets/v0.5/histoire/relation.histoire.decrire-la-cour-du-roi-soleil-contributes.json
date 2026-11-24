@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decrire-la-cour-du-roi-soleil-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/louis-xiv-cm/contenu.json"
+  },
+  "source": "microskill.histoire.decrire-la-cour-du-roi-soleil",
+  "target": "skill.histoire.louis-xiv-cm"
+}

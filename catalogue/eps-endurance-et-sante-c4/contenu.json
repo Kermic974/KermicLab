@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "L'EPS apprend à connaître son corps, à gérer ses efforts et à construire un entraînement adapté.",
+  "niveaux": [
+    {
+      "titre": "Connaître ses limites",
+      "niveau": "5e / 4e",
+      "paragraphes": [
+        "L'**endurance** est la capacité à poursuivre un effort longtemps. On mesure la **fréquence cardiaque** (battements par minute) : elle augmente avec l'effort et diminue pendant la récupération. La **fréquence cardiaque maximale** est environ 220 − âge. On travaille à une allure **régulière**, on s'hydrate, on s'**échauffe** avant et on fait un **retour au calme** après."
+      ],
+      "exemple": {
+        "titre": "Exemple : une séance",
+        "etapes": [
+          "Échauffement : 10 minutes.",
+          "Course à allure régulière : 15 minutes.",
+          "Retour au calme : étirements."
+        ]
+      },
+      "aRetenir": "FC max ≈ 220 − âge."
+    },
+    {
+      "titre": "Construire son projet",
+      "niveau": "4e / 3e",
+      "paragraphes": [
+        "En 4e-3e, on apprend à construire un **projet d'entraînement** : objectif (courir 20 minutes sans s'arrêter), fréquence (2 séances par semaine), progression (augmenter doucement), évaluation (carnet de bord). La **force** et la **souplesse** se travaillent avec précaution, sous la conduite d'un adulte, avec des charges adaptées à l'âge.",
+        "Le sport est bon pour le cœur, les os, le sommeil et la confiance en soi."
+      ],
+      "exemple": {
+        "titre": "Exemple : un carnet",
+        "etapes": [
+          "Date, durée, distance.",
+          "Fréquence cardiaque.",
+          "Sensation (facile, difficile)."
+        ]
+      },
+      "aRetenir": "Progresser sans se blesser."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Fréquence cardiaque maximale approximative à 14 ans (220 − âge) ?",
+        "reponse": 206,
+        "unite": "bpm",
+        "indices": [
+          "Soustrais l'âge."
+        ],
+        "solution": "220 − 14 = 206.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Après un effort, on fait…",
+        "choix": [
+          "rien du tout",
+          "un retour au calme",
+          "un sprint",
+          "un saut maximal"
+        ],
+        "bonne": 1,
+        "explication": "Récupération."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un projet d'entraînement comprend…",
+        "choix": [
+          "un seul effort maximal par mois",
+          "uniquement des compétitions officielles",
+          "un objectif, une fréquence, une progression",
+          "aucun suivi des séances réalisées"
+        ],
+        "bonne": 2,
+        "explication": "Progressivité."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le cross du collège",
+    "histoire": [
+      "Tu prépares le cross de fin d'année."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment progresses-tu ?",
+        "choix": [
+          "en ne t'entraînant jamais",
+          "en courant sans boire",
+          "en augmentant doucement la durée",
+          "en doublant l'effort chaque jour"
+        ],
+        "bonne": 2,
+        "explication": "Progression."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel signe indique qu'il faut ralentir ?",
+        "choix": [
+          "bonne humeur pendant l'effort",
+          "chaleur douce sur le visage",
+          "petite faim avant le repas",
+          "essoufflement important et douleur"
+        ],
+        "bonne": 3,
+        "explication": "Écouter son corps."
+      }
+    ],
+    "conclusion": "Bon entraînement !"
+  }
+}

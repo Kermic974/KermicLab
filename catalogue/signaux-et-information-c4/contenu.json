@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Lumière, son et ondes radio transportent des signaux qui transmettent des informations.",
+  "niveaux": [
+    {
+      "titre": "Lumière et son",
+      "niveau": "4e",
+      "paragraphes": [
+        "La **lumière** est une onde qui se propage dans le vide à environ **300 000 km/s** ; le **son** est une vibration qui se propage dans la matière (≈ 340 m/s dans l'air, plus vite dans l'eau). La lumière blanche se **décompose** en couleurs (arc-en-ciel, prisme). La **fréquence** (en hertz) mesure le nombre de vibrations par seconde : plus elle est élevée, plus le son est aigu.",
+        "L'**amplitude** détermine l'intensité (fort/faible)."
+      ],
+      "exemple": {
+        "titre": "Exemple : l'arc-en-ciel",
+        "etapes": [
+          "La lumière blanche traverse une goutte d'eau.",
+          "Elle est décomposée.",
+          "On voit les couleurs."
+        ]
+      },
+      "aRetenir": "Fréquence : aigu/grave. Amplitude : fort/faible."
+    },
+    {
+      "titre": "Transmettre une information",
+      "niveau": "3e",
+      "paragraphes": [
+        "Un **signal** transporte une information : lumière dans une **fibre optique** (réseaux Internet), **ondes radio** (téléphone, wifi, télévision), signaux électriques. L'information peut être **analogique** (continue) ou **numérique** (suite de 0 et de 1). Le numérique se copie sans perte et se transmet facilement.",
+        "Pour une communication : un émetteur, un canal, un récepteur."
+      ],
+      "exemple": {
+        "titre": "Exemple : une fibre optique",
+        "etapes": [
+          "Un signal lumineux entre d'un côté.",
+          "Il est guidé par réflexions.",
+          "Il sort à l'autre bout."
+        ]
+      },
+      "aRetenir": "Numérique : 0 et 1."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Plus la fréquence d'un son est élevée…",
+        "choix": [
+          "plus le son est long",
+          "plus le son est fort",
+          "plus le son est aigu",
+          "plus le son est grave"
+        ],
+        "bonne": 2,
+        "explication": "Hauteur."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La lumière dans le vide va à…",
+        "choix": [
+          "340 km/s",
+          "30 km/s",
+          "300 000 km/s",
+          "340 m/s"
+        ],
+        "bonne": 2,
+        "explication": "Vitesse de la lumière."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un signal numérique est…",
+        "choix": [
+          "une couleur",
+          "une suite de 0 et de 1",
+          "une onde continue",
+          "un son"
+        ],
+        "bonne": 1,
+        "explication": "Binaire."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La visioconférence",
+    "histoire": [
+      "Tu communiques en vidéo avec un correspondant."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le signal voyage surtout…",
+        "choix": [
+          "par la poste en quelques secondes",
+          "dans des fibres optiques et par ondes",
+          "par le vent à travers la rue",
+          "par bateau entre les continents"
+        ],
+        "bonne": 1,
+        "explication": "Réseau."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le son voyage-t-il dans le vide ?",
+        "choix": [
+          "non",
+          "oui",
+          "seulement la nuit",
+          "seulement l'été"
+        ],
+        "bonne": 0,
+        "explication": "Il lui faut un milieu."
+      }
+    ],
+    "conclusion": "Bien transmis !"
+  }
+}

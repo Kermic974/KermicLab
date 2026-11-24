@@ -5,15 +5,7 @@ sujet: mathematiques/theoreme-de-pythagore
 version: 1.2.0
 date: 2026-11-01
 niveau: college
-niveaux: cycle-4, seconde, premiere
 classes: 4e
-prerequis:
-  - perimetres-aires
-  - puissances
-competences:
-  - calculer-l-hypotenuse
-  - calculer-un-cote-de-l-angle-droit
-  - prouver-qu-un-triangle-est-rectangle
 duree: 25
 langues: fr
 onglets: explication, memo, application, mise-en-situation
@@ -32,6 +24,9 @@ questions:
   - je ne comprends pas la réciproque de Pythagore
   - à quoi sert Pythagore dans la vraie vie ?
   - what is the Pythagorean theorem?
+prerequis: perimetres-aires, puissances, triangles-et-constructions-c4
+niveaux: cycle-4, seconde, premiere
+competences: calculer-l-hypotenuse, calculer-un-cote-de-l-angle-droit, prouver-qu-un-triangle-est-rectangle
 ---
 
 # Le théorème de Pythagore

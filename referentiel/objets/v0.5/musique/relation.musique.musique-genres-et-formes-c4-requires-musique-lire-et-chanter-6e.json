@@ -1,0 +1,13 @@
+{
+  "id": "relation.musique.musique-genres-et-formes-c4-requires-musique-lire-et-chanter-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-genres-et-formes-c4/contenu.json"
+  },
+  "source": "notion.musique.musique-genres-et-formes-c4",
+  "target": "notion.musique.musique-lire-et-chanter-6e",
+  "rationale": "Lire, chanter et écouter en 6e préparent l’analyse de genres et de formes."
+}

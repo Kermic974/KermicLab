@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.identifier-le-nom-le-verbe-et-l-adjectif-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nature-des-mots-cm/contenu.json"
+  },
+  "source": "microskill.francais.identifier-le-nom-le-verbe-et-l-adjectif",
+  "target": "skill.francais.nature-des-mots-cm"
+}

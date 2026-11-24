@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.compter-les-pattes-et-reconnaitre-un-insecte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/animaux-et-plantes-c2/contenu.json"
+  },
+  "source": "microskill.svt.compter-les-pattes-et-reconnaitre-un-insecte",
+  "target": "skill.svt.animaux-et-plantes-c2"
+}

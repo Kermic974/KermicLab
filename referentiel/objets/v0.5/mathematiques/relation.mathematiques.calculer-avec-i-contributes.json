@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-avec-i-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/nombres-complexes-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-avec-i",
+  "target": "skill.mathematiques.nombres-complexes-l"
+}

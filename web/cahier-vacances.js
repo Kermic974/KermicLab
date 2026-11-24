@@ -2,7 +2,7 @@
 // planning jour par jour. Module pur, sans DOM ni stockage ni réseau : les dates (AAAA-MM-JJ) sont fournies par
 // l'appelant. Une absence ne pénalise jamais : le planning est recalculé à partir d'aujourd'hui, la suite se décale.
 export const VERSION_PLAN = 1;
-export const NIVEAUX = Object.freeze(["cycle-3", "cycle-4", "seconde", "premiere", "terminale"]);
+export const NIVEAUX = Object.freeze(["cycle-2", "cycle-3", "cycle-4", "seconde", "premiere", "terminale"]);
 /** Jours de séance selon le rythme (0 = dimanche … 6 = samedi). */
 export const RYTHMES = Object.freeze({ 3: [1, 3, 5], 5: [1, 2, 3, 4, 5], 7: [0, 1, 2, 3, 4, 5, 6] });
 export const DUREE_MAX_JOURS = 120;

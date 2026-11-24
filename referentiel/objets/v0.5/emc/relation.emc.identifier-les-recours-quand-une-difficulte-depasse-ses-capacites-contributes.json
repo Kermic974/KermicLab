@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.identifier-les-recours-quand-une-difficulte-depasse-ses-capacites-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/fraternite/contenu.json"
+  },
+  "source": "microskill.emc.identifier-les-recours-quand-une-difficulte-depasse-ses-capacites",
+  "target": "skill.emc.fraternite"
+}

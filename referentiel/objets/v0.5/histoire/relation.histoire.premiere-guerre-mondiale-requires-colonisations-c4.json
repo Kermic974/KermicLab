@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.premiere-guerre-mondiale-requires-colonisations-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/premiere-guerre-mondiale/contenu.json"
+  },
+  "source": "notion.histoire.premiere-guerre-mondiale",
+  "target": "notion.histoire.colonisations-c4",
+  "rationale": "« Les colonisations au XIXe siècle » : Les deux guerres mondiales du cycle 3 et les rivalités coloniales précèdent les causes et le caractère total de 1914-1918."
+}

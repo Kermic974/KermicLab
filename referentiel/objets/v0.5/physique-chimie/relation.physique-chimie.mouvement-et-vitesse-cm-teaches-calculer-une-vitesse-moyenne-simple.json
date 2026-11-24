@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.mouvement-et-vitesse-cm-teaches-calculer-une-vitesse-moyenne-simple",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mouvement-et-vitesse-cm/contenu.json"
+  },
+  "source": "notion.physique-chimie.mouvement-et-vitesse-cm",
+  "target": "microskill.physique-chimie.calculer-une-vitesse-moyenne-simple"
+}

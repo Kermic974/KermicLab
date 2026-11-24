@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.situer-la-convention-internationale-des-droits-de-l-enfant-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/droits-de-l-enfant-cm/contenu.json"
+  },
+  "source": "microskill.emc.situer-la-convention-internationale-des-droits-de-l-enfant",
+  "target": "skill.emc.droits-de-l-enfant-cm"
+}

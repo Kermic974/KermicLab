@@ -5,15 +5,7 @@ sujet: mathematiques/volumes
 version: 1.1.0
 date: 2026-11-01
 niveau: college
-niveaux: cycle-3, cycle-4
 classes: 6e, 5e, 4e, 3e
-prerequis:
-  - perimetres-aires
-competences:
-  - calculer-le-volume-d-un-pave
-  - convertir-volumes-et-contenances
-  - calculer-le-volume-d-un-prisme-et-d-un-cylindre
-  - calculer-le-volume-d-une-pyramide-d-un-cone-et-d-une-boule
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -38,6 +30,9 @@ questions:
   - je ne comprends pas la différence entre litre et cm3
   - comment calculer le volume d'un cylindre
   - how do you find the volume of a cube?
+prerequis: perimetres-aires, volumes-contenances-cm
+niveaux: cycle-3, cycle-4
+competences: calculer-le-volume-d-un-pave, convertir-volumes-et-contenances, calculer-le-volume-d-un-prisme-et-d-un-cylindre, calculer-le-volume-d-une-pyramide-d-un-cone-et-d-une-boule
 ---
 
 # Les volumes

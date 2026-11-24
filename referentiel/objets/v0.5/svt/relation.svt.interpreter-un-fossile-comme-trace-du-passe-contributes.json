@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.interpreter-un-fossile-comme-trace-du-passe-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/evolution-et-fossiles-cm/contenu.json"
+  },
+  "source": "microskill.svt.interpreter-un-fossile-comme-trace-du-passe",
+  "target": "skill.svt.evolution-et-fossiles-cm"
+}

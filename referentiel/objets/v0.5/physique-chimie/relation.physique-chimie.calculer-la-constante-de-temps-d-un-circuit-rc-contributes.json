@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.calculer-la-constante-de-temps-d-un-circuit-rc-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/condensateur-et-circuit-rc/contenu.json"
+  },
+  "source": "microskill.physique-chimie.calculer-la-constante-de-temps-d-un-circuit-rc",
+  "target": "skill.physique-chimie.condensateur-et-circuit-rc"
+}

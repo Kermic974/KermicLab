@@ -1,0 +1,13 @@
+{
+  "id": "relation.anglais.anglais-se-presenter-cm-requires-anglais-bonjour-c2",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-se-presenter-cm/contenu.json"
+  },
+  "source": "notion.anglais.anglais-se-presenter-cm",
+  "target": "notion.anglais.anglais-bonjour-c2",
+  "rationale": "Les salutations du cycle 2 sont développées pour parler de soi."
+}

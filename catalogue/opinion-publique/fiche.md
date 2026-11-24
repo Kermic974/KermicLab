@@ -20,9 +20,9 @@ questions:
   - comment fonctionne un sondage d'opinion ?
   - un sondage d'opinion représente-t-il toute l'opinion publique ?
   - quel rôle les médias jouent-ils dans la formation de l'opinion publique ?
-prerequis:
+prerequis: socialisation
 niveaux: premiere, terminale
-competences: ses-opinion-publique-action-1, ses-opinion-publique-action-2
+competences: expliquer-le-role-de-l-echantillon-dans-un-sondage, reperer-l-effet-d-une-question-orientee, interpreter-une-marge-d-incertitude, analyser-le-role-des-medias-dans-la-formation-de-l-opinion
 ---
 
 # L'opinion publique

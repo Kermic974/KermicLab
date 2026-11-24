@@ -1,0 +1,12 @@
+{
+  "id": "relation.emc.nommer-une-emotion-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/vivre-ensemble-c2/contenu.json"
+  },
+  "source": "microskill.emc.nommer-une-emotion",
+  "target": "skill.emc.vivre-ensemble-c2"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.diffraction-et-interferences-requires-ondes",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/diffraction-et-interferences/contenu.json"
+  },
+  "source": "notion.physique-chimie.diffraction-et-interferences",
+  "target": "notion.physique-chimie.ondes",
+  "rationale": "La diffraction et les interférences s’expriment avec longueur d’onde et célérité."
+}

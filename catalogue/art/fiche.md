@@ -21,7 +21,7 @@ questions:
   - what is art?
 prerequis:
 niveaux: terminale
-competences: philosophie-art-action-1, philosophie-art-action-2
+competences: distinguer-imitation-et-creation-dans-une-uvre, expliquer-la-mimesis-chez-platon-et-aristote, discuter-le-jugement-de-gout-en-distinguant-plaisir-et-jugement-esthetique, analyser-le-risque-et-l-interet-d-une-uvre-qui-derange
 ---
 
 # L'art

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-la-revolte-de-saint-domingue-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/traites-et-esclavage-c4/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-la-revolte-de-saint-domingue",
+  "target": "skill.histoire.traites-et-esclavage-c4"
+}

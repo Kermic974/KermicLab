@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.transformations-chimiques-c4-requires-atomes-et-molecules",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/transformations-chimiques-c4/contenu.json"
+  },
+  "source": "notion.physique-chimie.transformations-chimiques-c4",
+  "target": "notion.physique-chimie.atomes-et-molecules",
+  "rationale": "« Atomes, molécules et transformations chimiques » : Les transformations chimiques s’appuient sur les atomes et les mélanges."
+}

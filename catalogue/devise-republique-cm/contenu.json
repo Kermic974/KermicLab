@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La République a une devise et des symboles qui rappellent ses valeurs.",
+  "niveaux": [
+    {
+      "titre": "Intuition : les symboles du pays",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Le **drapeau tricolore** (bleu, blanc, rouge), **La Marseillaise** (l'hymne), **Marianne** (le visage de la République) et le **14 juillet** (fête nationale) sont des symboles de la France.",
+        "La **devise** de la République est **Liberté, Égalité, Fraternité**."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "On voit le drapeau sur les mairies et les écoles.",
+          "On chante La Marseillaise lors des cérémonies.",
+          "Marianne figure sur les timbres."
+        ]
+      },
+      "aRetenir": "Devise : Liberté, Égalité, Fraternité."
+    },
+    {
+      "titre": "Que signifient ces mots ?",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "**Liberté** : pouvoir penser, parler et agir dans le respect des autres. **Égalité** : tous ont les mêmes droits devant la loi. **Fraternité** : on s'entraide, on est solidaires.",
+        "Le 14 juillet rappelle la prise de la Bastille (1789) et la fête de la Fédération (1790). La Marseillaise a été composée en 1792."
+      ],
+      "exemple": {
+        "titre": "Exemple : égalité à l'école",
+        "etapes": [
+          "Chaque élève a le même droit d'apprendre.",
+          "Filles et garçons sont traités de la même façon.",
+          "Les règles valent pour tous."
+        ]
+      },
+      "aRetenir": "La devise est inscrite sur les bâtiments publics."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle est la devise de la République ?",
+        "choix": [
+          "Travail, Famille, Patrie",
+          "Paix et Joie",
+          "Union, Force, Gloire",
+          "Liberté, Égalité, Fraternité"
+        ],
+        "bonne": 3,
+        "explication": "La devise officielle."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelles sont les couleurs du drapeau ?",
+        "choix": [
+          "Bleu, blanc, rouge",
+          "Vert, blanc, rouge",
+          "Jaune, rouge, bleu",
+          "Noir, blanc, rouge"
+        ],
+        "bonne": 0,
+        "explication": "Le tricolore."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Qui est Marianne ?",
+        "choix": [
+          "Une chanteuse très célèbre",
+          "Une élève de l'école Jules Ferry",
+          "Le visage symbolique de la République",
+          "Une reine du XVIIe siècle"
+        ],
+        "bonne": 2,
+        "explication": "Elle représente la République."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La fête nationale",
+    "histoire": [
+      "Tu prépares la cérémonie du 14 juillet dans ta ville."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel événement célèbre-t-on ?",
+        "choix": [
+          "La fête de la musique",
+          "Noël",
+          "Un anniversaire lié à la Révolution",
+          "La fin de la guerre de 1914"
+        ],
+        "bonne": 2,
+        "explication": "Le 14 juillet 1789 / 1790."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que signifie « fraternité » ?",
+        "choix": [
+          "Se disputer",
+          "Se séparer",
+          "Faire la guerre",
+          "S'entraider"
+        ],
+        "bonne": 3,
+        "explication": "Solidarité."
+      }
+    ],
+    "conclusion": "Vive la République !"
+  }
+}

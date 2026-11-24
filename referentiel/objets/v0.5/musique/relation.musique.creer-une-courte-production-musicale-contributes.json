@@ -1,0 +1,12 @@
+{
+  "id": "relation.musique.creer-une-courte-production-musicale-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/musique-creation-et-engagement-c4/contenu.json"
+  },
+  "source": "microskill.musique.creer-une-courte-production-musicale",
+  "target": "skill.musique.musique-creation-et-engagement-c4"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.afrique-australe-requires-mondialisation",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/afrique-australe/contenu.json"
+  },
+  "source": "notion.geographie.afrique-australe",
+  "target": "notion.geographie.mondialisation",
+  "rationale": "L’étude des corridors et de l’intégration régionale mobilise les flux et les acteurs de la mondialisation."
+}

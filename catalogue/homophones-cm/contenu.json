@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les homophones se prononcent pareil, mais ne s'écrivent pas pareil : il faut tester.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le test de remplacement",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Pour choisir entre « a » et « à », on remplace par « avait » : « Il **a** (avait) un chat » ; « Il va **à** l'école » (on ne peut pas dire « avait l'école »).",
+        "De même, « est » peut devenir « était » (« Il **est** (était) content »), alors que « et » veut dire « et puis »."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« Elle a un vélo » : on peut dire « avait » : verbe avoir.",
+          "« Elle va à la piscine » : préposition.",
+          "« Pierre et Marie » : on peut dire « et puis »."
+        ]
+      },
+      "aRetenir": "On teste en changeant de temps ou de mot."
+    },
+    {
+      "titre": "Les paires à connaître",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "**on / ont** : « ont » = « avaient » (ils ont) ; « on » = « il » (on joue). **son / sont** : « sont » = « étaient » ; « son » = « mon » (son cahier). **ou / où** : « où » indique un lieu ; « ou » = « ou bien ».",
+        "**ces / ses** : « ces » = « ces gâteaux-là » ; « ses » = « les siens ». **c'est / s'est** : « c'est » = « cela est » ; « s'est » = « s'était ». **ce / se** : « se » est devant un verbe (« il se lave »)."
+      ],
+      "exemple": {
+        "titre": "Exemple : « Ils ___ des idées. »",
+        "etapes": [
+          "On remplace par « avaient » : « Ils avaient des idées ».",
+          "On écrit donc « ont ».",
+          "Ils ont des idées."
+        ]
+      },
+      "aRetenir": "On remplace par un mot de la même famille pour tester."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Complète : « Elle ___ un chien. »",
+        "choix": [
+          "as",
+          "ah",
+          "a",
+          "à"
+        ],
+        "bonne": 2,
+        "explication": "On peut dire « avait » : verbe avoir."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Complète : « Ils ___ partis. »",
+        "choix": [
+          "son",
+          "ont",
+          "on",
+          "sont"
+        ],
+        "bonne": 3,
+        "explication": "« étaient partis » : sont."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Complète : « ___ ton vélo ? »",
+        "choix": [
+          "Ou et",
+          "Où et",
+          "Où est",
+          "Ou est"
+        ],
+        "bonne": 2,
+        "explication": "« Où » indique le lieu ; « est » = était."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La chasse aux erreurs",
+    "histoire": [
+      "Tu corriges un texte rempli d'homophones."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« Il (a/à) mal (a/à) la tête. » La bonne écriture :",
+        "choix": [
+          "Il a mal à la tête.",
+          "Il à mal a la tête.",
+          "Il a mal a la tête.",
+          "Il à mal à la tête."
+        ],
+        "bonne": 0,
+        "explication": "Premier : verbe avoir ; second : préposition."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "« Marie ___ Paul jouent. »",
+        "choix": [
+          "es",
+          "et",
+          "est",
+          "ai"
+        ],
+        "bonne": 1,
+        "explication": "On peut dire « et puis »."
+      }
+    ],
+    "conclusion": "Chasse aux erreurs réussie !"
+  }
+}

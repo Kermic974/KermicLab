@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.tourisme-teaches-proposer-une-transformation-touristique-durable",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/tourisme/contenu.json"
+  },
+  "source": "notion.geographie.tourisme",
+  "target": "microskill.geographie.proposer-une-transformation-touristique-durable"
+}

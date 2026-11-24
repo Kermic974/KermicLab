@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.univers-et-atome-l-requires-ondes",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/univers-et-atome-l/contenu.json"
+  },
+  "source": "notion.physique-chimie.univers-et-atome-l",
+  "target": "notion.physique-chimie.ondes",
+  "rationale": "« Les ondes mécaniques » : Les spectres s’appuient sur la structure de l’atome et les ondes."
+}

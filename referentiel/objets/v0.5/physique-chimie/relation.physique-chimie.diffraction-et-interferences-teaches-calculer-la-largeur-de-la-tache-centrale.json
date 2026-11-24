@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.diffraction-et-interferences-teaches-calculer-la-largeur-de-la-tache-centrale",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/diffraction-et-interferences/contenu.json"
+  },
+  "source": "notion.physique-chimie.diffraction-et-interferences",
+  "target": "microskill.physique-chimie.calculer-la-largeur-de-la-tache-centrale"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.decrire-le-voyage-d-ulysse-et-son-but-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/voyages-d-ulysse-6e/contenu.json"
+  },
+  "source": "microskill.histoire.decrire-le-voyage-d-ulysse-et-son-but",
+  "target": "skill.histoire.voyages-d-ulysse-6e"
+}

@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "En 1789, le peuple français renverse l'Ancien Régime et invente de nouveaux droits.",
+  "niveaux": [
+    {
+      "titre": "Intuition : un peuple qui réclame ses droits",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Avant 1789, la France est une monarchie absolue : la société est divisée en trois **ordres** (clergé, noblesse, tiers état) et le tiers état paie presque tous les impôts. En 1789, le roi Louis XVI convoque les **états généraux**.",
+        "Le **14 juillet 1789**, des Parisiens prennent la **Bastille**, symbole de l'arbitraire. Le 26 août, l'Assemblée adopte la **Déclaration des droits de l'homme et du citoyen** : « Les hommes naissent et demeurent libres et égaux en droits »."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "La nuit du 4 août 1789 : abolition des privilèges.",
+          "Les droits : liberté, égalité, propriété, sûreté.",
+          "La devise plus tard : Liberté, Égalité, Fraternité."
+        ]
+      },
+      "aRetenir": "14 juillet 1789 : prise de la Bastille."
+    },
+    {
+      "titre": "De la République à l'Empire",
+      "niveau": "CM2",
+      "paragraphes": [
+        "En 1792, la monarchie est abolie et la **Ire République** est proclamée. Louis XVI est exécuté en 1793. Le pays traverse la guerre, la Terreur, puis des régimes instables.",
+        "**Napoléon Bonaparte**, général victorieux, prend le pouvoir en 1799, puis est sacré **empereur** en 1804. Il crée le **Code civil** (1804), les lycées, la Banque de France, mais fait aussi la guerre en Europe. Il est vaincu à **Waterloo** en 1815."
+      ],
+      "exemple": {
+        "titre": "Exemple : le Code civil",
+        "etapes": [
+          "Tous les citoyens sont égaux devant la loi.",
+          "Les lois sont écrites et valent pour tous.",
+          "Il sert encore de base au droit français."
+        ]
+      },
+      "aRetenir": "1789 : Révolution. 1804 : Napoléon empereur."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "En quelle année a lieu la prise de la Bastille ?",
+        "reponse": 1789,
+        "indices": [
+          "Fin du XVIIIe siècle."
+        ],
+        "solution": "Le 14 juillet 1789.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que proclame la Déclaration de 1789 ?",
+        "choix": [
+          "Le roi décide de toutes les lois",
+          "Les nobles ne paient aucun impôt",
+          "Chaque région a son propre roi",
+          "Les hommes naissent libres et égaux"
+        ],
+        "bonne": 3,
+        "explication": "Article 1."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Que crée Napoléon en 1804 ?",
+        "choix": [
+          "La Ve République",
+          "L'Union européenne",
+          "Le Code civil",
+          "L'école gratuite"
+        ],
+        "bonne": 2,
+        "explication": "Le Code civil de 1804."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Journal d'un révolutionnaire",
+    "histoire": [
+      "Tu es un habitant de Paris en juillet 1789."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pourquoi la Bastille est-elle prise ?",
+        "choix": [
+          "Elle est le siège du Parlement",
+          "Elle abrite les richesses de la Cour",
+          "Elle est la résidence de la reine",
+          "Elle symbolise l'arbitraire du roi"
+        ],
+        "bonne": 3,
+        "explication": "C'est une prison royale."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel groupe paie la plupart des impôts ?",
+        "choix": [
+          "Le tiers état",
+          "La noblesse",
+          "Le clergé",
+          "Le roi"
+        ],
+        "bonne": 0,
+        "explication": "Le tiers état est le peuple."
+      }
+    ],
+    "conclusion": "Tu connais la Révolution !"
+  }
+}

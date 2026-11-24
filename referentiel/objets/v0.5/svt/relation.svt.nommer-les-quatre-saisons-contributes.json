@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.nommer-les-quatre-saisons-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/milieux-et-saisons-c2/contenu.json"
+  },
+  "source": "microskill.svt.nommer-les-quatre-saisons",
+  "target": "skill.svt.milieux-et-saisons-c2"
+}

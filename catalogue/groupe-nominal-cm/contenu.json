@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un groupe nominal s'enrichit avec des adjectifs, des compléments du nom ou des propositions relatives.",
+  "niveaux": [
+    {
+      "titre": "Intuition : décrire plus précisément",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un **groupe nominal** (GN) est formé d'un nom et de son déterminant : « un chien ». On peut l'enrichir : « un **grand** chien », « un chien **de berger** », « un chien **qui aboie** ».",
+        "Plus le GN est précis, mieux le lecteur imagine."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un chien.",
+          "Un grand chien noir.",
+          "Un grand chien noir de la ferme qui aboie."
+        ]
+      },
+      "aRetenir": "Les expansions apportent des détails."
+    },
+    {
+      "titre": "Les expansions du nom",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "L'**adjectif épithète** est collé au nom : « une **belle** maison ». Le **complément du nom** est introduit par une préposition : « la maison **de mon oncle** ». La **proposition relative** commence par qui, que, dont, où : « la maison **que j'aime** ».",
+        "Les expansions peuvent être supprimées sans que la phrase devienne fausse, mais elles enrichissent la description."
+      ],
+      "exemple": {
+        "titre": "Exemple : enrichir « une fleur »",
+        "etapes": [
+          "Adjectif : une fleur rouge.",
+          "Complément du nom : une fleur du jardin.",
+          "Relative : une fleur que j'ai cueillie."
+        ]
+      },
+      "aRetenir": "Chaque expansion apporte une précision."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans « la maison de mon oncle », « de mon oncle » est…",
+        "choix": [
+          "un complément circonstanciel",
+          "un complément du nom",
+          "un complément d'objet direct",
+          "un adjectif épithète"
+        ],
+        "bonne": 1,
+        "explication": "Il précise le nom « maison »."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Dans « une belle fleur », « belle » est…",
+        "choix": [
+          "un adverbe",
+          "un adjectif épithète",
+          "un complément du nom",
+          "une relative"
+        ],
+        "bonne": 1,
+        "explication": "Il est collé au nom."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quelle expansion est une proposition relative ?",
+        "choix": [
+          "rapidement",
+          "que j'aime",
+          "très grand",
+          "de bois"
+        ],
+        "bonne": 1,
+        "explication": "Elle commence par « que »."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La description du château",
+    "histoire": [
+      "Tu décris un château pour ton histoire."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel GN est le plus précis ?",
+        "choix": [
+          "le château du village de la vallée voisine",
+          "un vieux château de pierre qui domine la vallée",
+          "un château de pierre grise très ancien",
+          "un vieux château fort sur la colline"
+        ],
+        "bonne": 1,
+        "explication": "Il cumule adjectif, complément et relative."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Dans ce GN, « de pierre » est…",
+        "choix": [
+          "un complément du nom",
+          "un adjectif épithète",
+          "une proposition relative",
+          "un complément circonstanciel"
+        ],
+        "bonne": 0,
+        "explication": "Préposition « de » + nom."
+      }
+    ],
+    "conclusion": "Quelle belle description !"
+  }
+}

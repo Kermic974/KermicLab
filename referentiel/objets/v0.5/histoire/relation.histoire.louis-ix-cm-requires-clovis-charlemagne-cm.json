@@ -1,0 +1,13 @@
+{
+  "id": "relation.histoire.louis-ix-cm-requires-clovis-charlemagne-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/louis-ix-cm/contenu.json"
+  },
+  "source": "notion.histoire.louis-ix-cm",
+  "target": "notion.histoire.clovis-charlemagne-cm",
+  "rationale": "« Clovis et Charlemagne » : Progression chronologique du programme (lien de continuité du parcours, pas un prérequis conceptuel strict) : Louis IX est un roi capétien qui succède à l’époque de Charlemagne."
+}

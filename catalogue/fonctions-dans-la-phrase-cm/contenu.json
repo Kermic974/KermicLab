@@ -1,0 +1,124 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La fonction dit quel rôle un groupe de mots joue dans la phrase.",
+  "niveaux": [
+    {
+      "titre": "Intuition : qui fait quoi ?",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Dans « Léa mange une pomme dans le jardin », **qui est-ce qui mange ?** Léa : c'est le **sujet**. **Mange quoi ?** Une pomme : complément d'objet direct (**COD**). **Où ?** Dans le jardin : complément circonstanciel de lieu.",
+        "Pour trouver le sujet, on pose : « Qui est-ce qui … ? » ou « Qu'est-ce qui … ? » avant le verbe."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« Les enfants chantent » : qui chante ? Les enfants (sujet).",
+          "« Ils chantent une chanson » : chantent quoi ? Une chanson (COD).",
+          "« Hier » : quand ? complément circonstanciel de temps."
+        ]
+      },
+      "aRetenir": "Le sujet fait l'action, le COD la subit ou la reçoit."
+    },
+    {
+      "titre": "Les fonctions du cycle 3",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Le **COI** est introduit par une préposition (à, de) : « Il parle **à son frère** ». Les **compléments circonstanciels** (lieu, temps, manière…) peuvent être déplacés ou supprimés.",
+        "L'**attribut du sujet** suit un verbe d'état (être, devenir, sembler, paraître, rester) : « Cette soupe est **chaude** ». Il qualifie le sujet.",
+        "Le **complément du nom** précise un nom : « la maison **de ma grand-mère** »."
+      ],
+      "exemple": {
+        "titre": "Exemple : « Max semble fatigué. »",
+        "etapes": [
+          "« semble » : verbe d'état.",
+          "« fatigué » : attribut du sujet « Max ».",
+          "On ne peut pas le supprimer sans changer le sens."
+        ]
+      },
+      "aRetenir": "Un complément circonstanciel se supprime et se déplace ; un COD, non."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans « Le chien mange sa pâtée », le COD est…",
+        "choix": [
+          "mange",
+          "chien mange",
+          "sa pâtée",
+          "le chien"
+        ],
+        "bonne": 2,
+        "explication": "Mange quoi ? Sa pâtée."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Dans « Nous partirons demain », « demain » est…",
+        "choix": [
+          "un complément circonstanciel de temps",
+          "un complément d'objet direct",
+          "le sujet du verbe partir",
+          "un attribut du sujet « nous »"
+        ],
+        "bonne": 0,
+        "explication": "Il répond à « quand ? » et se déplace."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Dans « Elle est contente », « contente » est…",
+        "choix": [
+          "le COD",
+          "le sujet",
+          "un complément du nom",
+          "l'attribut du sujet"
+        ],
+        "bonne": 3,
+        "explication": "Verbe d'état « est » + qualité du sujet."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'analyse de phrase",
+    "histoire": [
+      "Tu analyses « Le facteur apporte le courrier à la voisine tous les matins »."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel est le sujet ?",
+        "choix": [
+          "le courrier",
+          "la voisine",
+          "tous les matins",
+          "Le facteur"
+        ],
+        "bonne": 3,
+        "explication": "Qui apporte ? Le facteur."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel est le COD ?",
+        "choix": [
+          "le courrier",
+          "à la voisine",
+          "Le facteur",
+          "tous les matins"
+        ],
+        "bonne": 0,
+        "explication": "Apporte quoi ? Le courrier."
+      }
+    ],
+    "conclusion": "Analyse réussie !"
+  }
+}

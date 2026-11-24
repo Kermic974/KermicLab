@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.accords-teaches-reperer-une-erreur-d-accord-dans-un-texte",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/accords/contenu.json"
+  },
+  "source": "notion.francais.accords",
+  "target": "microskill.francais.reperer-une-erreur-d-accord-dans-un-texte"
+}

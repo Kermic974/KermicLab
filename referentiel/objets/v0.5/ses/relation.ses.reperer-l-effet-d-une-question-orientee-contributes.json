@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.reperer-l-effet-d-une-question-orientee-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/opinion-publique/contenu.json"
+  },
+  "source": "microskill.ses.reperer-l-effet-d-une-question-orientee",
+  "target": "skill.ses.opinion-publique"
+}

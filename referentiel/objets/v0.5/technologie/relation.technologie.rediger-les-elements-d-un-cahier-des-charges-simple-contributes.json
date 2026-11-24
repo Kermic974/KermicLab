@@ -1,0 +1,12 @@
+{
+  "id": "relation.technologie.rediger-les-elements-d-un-cahier-des-charges-simple-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/objets-techniques-6e/contenu.json"
+  },
+  "source": "microskill.technologie.rediger-les-elements-d-un-cahier-des-charges-simple",
+  "target": "skill.technologie.objets-techniques-6e"
+}

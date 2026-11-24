@@ -1,0 +1,12 @@
+{
+  "id": "relation.philosophie.religion-teaches-distinguer-sacre-et-profane",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/religion/contenu.json"
+  },
+  "source": "notion.philosophie.religion",
+  "target": "microskill.philosophie.distinguer-sacre-et-profane"
+}

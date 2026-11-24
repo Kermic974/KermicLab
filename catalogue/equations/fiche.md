@@ -5,15 +5,7 @@ sujet: mathematiques/equations
 version: 1.0.0
 date: 2026-11-01
 niveau: college
-niveaux: cycle-4, seconde
 classes: 4e, 3e
-prerequis:
-  - calcul-litteral
-competences:
-  - resoudre-une-equation-du-premier-degre
-  - mettre-un-probleme-en-equation
-  - resoudre-une-equation-produit-nul
-  - resoudre-une-inequation
 duree: 30
 langues: fr
 onglets: explication, application, mise-en-situation
@@ -33,6 +25,9 @@ questions:
   - je ne comprends pas les inéquations
   - c'est quoi une équation produit nul ?
   - how do I solve an equation?
+prerequis: calcul-litteral, nombres-relatifs
+niveaux: cycle-4, seconde
+competences: resoudre-une-equation-du-premier-degre, mettre-un-probleme-en-equation, resoudre-une-equation-produit-nul, resoudre-une-inequation
 ---
 
 # Les équations et inéquations

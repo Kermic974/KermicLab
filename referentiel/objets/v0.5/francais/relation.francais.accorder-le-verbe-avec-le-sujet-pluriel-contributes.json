@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.accorder-le-verbe-avec-le-sujet-pluriel-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/singulier-pluriel-masculin-feminin-c2/contenu.json"
+  },
+  "source": "microskill.francais.accorder-le-verbe-avec-le-sujet-pluriel",
+  "target": "skill.francais.singulier-pluriel-masculin-feminin-c2"
+}

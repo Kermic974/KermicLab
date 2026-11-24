@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.systeme-nerveux-requires-la-cellule",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/systeme-nerveux/contenu.json"
+  },
+  "source": "notion.svt.systeme-nerveux",
+  "target": "notion.svt.la-cellule",
+  "rationale": "Le neurone est une cellule spécialisée dont la structure se lit à partir de l’organisation cellulaire."
+}

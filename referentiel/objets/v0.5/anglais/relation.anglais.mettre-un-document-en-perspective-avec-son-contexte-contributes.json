@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.mettre-un-document-en-perspective-avec-son-contexte-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-culture-et-civilisation-l/contenu.json"
+  },
+  "source": "microskill.anglais.mettre-un-document-en-perspective-avec-son-contexte",
+  "target": "skill.anglais.anglais-culture-et-civilisation-l"
+}

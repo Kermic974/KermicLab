@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.antiquite-teaches-comparer-la-citoyennete-athenienne-et-la-citoyennete-romaine",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/antiquite/contenu.json"
+  },
+  "source": "notion.histoire.antiquite",
+  "target": "microskill.histoire.comparer-la-citoyennete-athenienne-et-la-citoyennete-romaine"
+}

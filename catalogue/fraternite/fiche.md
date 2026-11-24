@@ -14,10 +14,10 @@ questions:
   - c'est quoi la fraternité ?
   - Comment vivre la fraternité en classe ?
   - what is brotherhood?
-prerequis:
-niveaux: cycle-4
 classes: 5e
-competences: emc-fraternite-action-1, emc-fraternite-action-2
+prerequis: engagement-et-solidarite-6e
+niveaux: cycle-4
+competences: expliquer-la-fraternite-comme-principe-republicain, distinguer-solidarite-et-assistance-humiliante, choisir-une-forme-d-aide-respectueuse-de-la-dignite, identifier-les-recours-quand-une-difficulte-depasse-ses-capacites
 ---
 
 # La fraternité

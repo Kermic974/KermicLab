@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.identifier-les-sources-de-la-croissance-travail-capital-progres-technique-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/ses-economie-et-croissance-l/contenu.json"
+  },
+  "source": "microskill.ses.identifier-les-sources-de-la-croissance-travail-capital-progres-technique",
+  "target": "skill.ses.ses-economie-et-croissance-l"
+}

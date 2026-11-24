@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.identifier-les-activites-du-littoral-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-le-littoral-6e/contenu.json"
+  },
+  "source": "microskill.geographie.identifier-les-activites-du-littoral",
+  "target": "skill.geographie.habiter-le-littoral-6e"
+}

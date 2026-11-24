@@ -1,0 +1,12 @@
+{
+  "id": "relation.anglais.comprendre-et-donner-une-direction-turn-left-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/anglais-lieux-et-pays-cm/contenu.json"
+  },
+  "source": "microskill.anglais.comprendre-et-donner-une-direction-turn-left",
+  "target": "skill.anglais.anglais-lieux-et-pays-cm"
+}

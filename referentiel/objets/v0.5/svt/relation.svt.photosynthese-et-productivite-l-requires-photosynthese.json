@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.photosynthese-et-productivite-l-requires-photosynthese",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/photosynthese-et-productivite-l/contenu.json"
+  },
+  "source": "notion.svt.photosynthese-et-productivite-l",
+  "target": "notion.svt.photosynthese",
+  "rationale": "« La photosynthèse et les besoins des plantes » : Le lycée approfondit la photosynthèse vue au collège."
+}

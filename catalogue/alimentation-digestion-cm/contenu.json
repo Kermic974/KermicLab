@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les aliments apportent l'énergie et les matériaux dont ton corps a besoin pour grandir.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le carburant du corps",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Les aliments servent à fournir de l'**énergie**, à **construire** le corps et à le **protéger**. Il y a plusieurs groupes : fruits et légumes, féculents (pain, pâtes), produits laitiers, viandes-poissons-œufs, matières grasses, produits sucrés.",
+        "Une alimentation **équilibrée** est variée : un peu de chaque groupe, avec beaucoup de fruits et légumes et peu de sucre et de gras. Il faut aussi boire de l'eau."
+      ],
+      "exemple": {
+        "titre": "Exemple : un repas équilibré",
+        "etapes": [
+          "Un légume ou une salade.",
+          "Un féculent et une protéine.",
+          "Un produit laitier et un fruit."
+        ]
+      },
+      "aRetenir": "Varier les aliments et boire de l'eau."
+    },
+    {
+      "titre": "Le trajet des aliments",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "La **digestion** transforme les aliments en petits éléments (les **nutriments**) que le sang peut transporter. Le trajet : bouche (mastication, salive) → œsophage → **estomac** (brassage et suc gastrique) → **intestin grêle** (absorption des nutriments dans le sang) → **gros intestin** (eau) → évacuation des déchets.",
+        "L'**hygiène** compte : se laver les mains, bien mâcher, éviter les excès de sucre, manger à heures régulières."
+      ],
+      "exemple": {
+        "titre": "Exemple : un morceau de pain",
+        "etapes": [
+          "Mâché dans la bouche, mélangé à la salive.",
+          "Descend dans l'estomac, brassé.",
+          "Les nutriments passent dans le sang dans l'intestin grêle."
+        ]
+      },
+      "aRetenir": "Le sang transporte les nutriments dans tout le corps."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Où passent les nutriments dans le sang ?",
+        "choix": [
+          "Dans la bouche",
+          "Dans l'œsophage",
+          "Dans l'estomac seulement",
+          "Dans l'intestin grêle"
+        ],
+        "bonne": 3,
+        "explication": "L'intestin grêle absorbe les nutriments."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel groupe d'aliments faut-il consommer en grande quantité ?",
+        "choix": [
+          "Sucreries",
+          "Boissons sucrées",
+          "Chips",
+          "Fruits et légumes"
+        ],
+        "bonne": 3,
+        "explication": "Fruits et légumes variés."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel organe brasse les aliments avec un suc acide ?",
+        "choix": [
+          "Le foie seulement",
+          "L'estomac",
+          "Le cœur",
+          "Les poumons"
+        ],
+        "bonne": 1,
+        "explication": "L'estomac."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le menu de la cantine",
+    "histoire": [
+      "Tu composes un menu équilibré pour la cantine."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel menu est le plus équilibré ?",
+        "choix": [
+          "Frites, steak haché, soda, gâteau",
+          "Pizza, bonbons, soda, glace",
+          "Chips, saucisson, biscuits, jus sucré",
+          "Poisson, riz, légumes, yaourt, fruit"
+        ],
+        "bonne": 3,
+        "explication": "Il contient plusieurs groupes d'aliments."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que doit-on faire avant de manger ?",
+        "choix": [
+          "Courir",
+          "Mâcher du chewing-gum",
+          "Sauter le repas",
+          "Se laver les mains"
+        ],
+        "bonne": 3,
+        "explication": "Hygiène."
+      }
+    ],
+    "conclusion": "Menu équilibré !"
+  }
+}

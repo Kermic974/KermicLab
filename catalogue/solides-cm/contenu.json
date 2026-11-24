@@ -1,0 +1,111 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un solide est un objet en trois dimensions : on le décrit par ses faces, ses arêtes et ses sommets.",
+  "niveaux": [
+    {
+      "titre": "Intuition : les boîtes",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une boîte de céréales est un **pavé droit**. Un dé est un **cube**. Une boîte de conserve est un **cylindre**. Un entonnoir est un **cône**.",
+        "Les **faces** sont les surfaces planes, les **arêtes** les segments où deux faces se rencontrent, les **sommets** les coins."
+      ],
+      "exemple": {
+        "titre": "Exemple : le cube",
+        "etapes": [
+          "6 faces carrées.",
+          "12 arêtes de même longueur.",
+          "8 sommets."
+        ]
+      },
+      "aRetenir": "Face : surface. Arête : segment. Sommet : coin."
+    },
+    {
+      "titre": "Prismes, pyramides et patrons",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Le **pavé droit** a 6 faces rectangulaires, 12 arêtes, 8 sommets. Un **prisme droit** a deux bases identiques parallèles et des faces latérales rectangulaires. Une **pyramide** a une base et des faces triangulaires qui se rejoignent en un sommet.",
+        "Un **patron** est le dessin à plat d'un solide : en le découpant et en le pliant, on retrouve le solide. Le patron d'un cube est formé de 6 carrés."
+      ],
+      "exemple": {
+        "titre": "Exemple : la pyramide à base carrée",
+        "etapes": [
+          "Une base carrée.",
+          "4 faces triangulaires.",
+          "5 faces, 8 arêtes, 5 sommets."
+        ]
+      },
+      "aRetenir": "Le patron est le solide « mis à plat »."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien de faces a un pavé droit ?",
+        "reponse": 6,
+        "indices": [
+          "Haut, bas, devant, derrière, gauche, droite."
+        ],
+        "solution": "6 faces rectangulaires.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien d'arêtes a un cube ?",
+        "reponse": 12,
+        "indices": [
+          "Compte-les par groupes de 4."
+        ],
+        "solution": "4 en haut, 4 en bas, 4 verticales.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Combien de faces a une pyramide à base carrée ?",
+        "choix": [
+          "4",
+          "6",
+          "8",
+          "5"
+        ],
+        "bonne": 3,
+        "explication": "1 base + 4 faces triangulaires = 5 faces."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La boîte cadeau",
+    "histoire": [
+      "Tu fabriques une boîte cadeau en forme de pavé droit."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Combien de rectangles dans le patron ?",
+        "reponse": 6,
+        "indices": [
+          "Une face = un rectangle."
+        ],
+        "solution": "Un pavé droit a 6 faces.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien de sommets a la boîte ?",
+        "reponse": 8,
+        "indices": [
+          "4 en haut et 4 en bas."
+        ],
+        "solution": "8 coins.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Boîte fabriquée !"
+  }
+}

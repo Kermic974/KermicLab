@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "L'EPS, c'est bouger, courir, sauter, lancer, jouer ensemble et nager, en respectant les règles.",
+  "niveaux": [
+    {
+      "titre": "Bouger pour sa santé",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Bouger est bon pour le cœur, les muscles, les os et la bonne humeur. Les enfants ont besoin d'au moins **une heure** d'activité par jour : marcher, courir, sauter, nager, jouer.",
+        "Avant l'effort, je m'**échauffe** doucement. Après, je bois de l'eau et je me repose."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Courir 5 minutes à petite vitesse.",
+          "Faire des sauts.",
+          "Étirer ses jambes."
+        ]
+      },
+      "aRetenir": "Une heure d'activité par jour."
+    },
+    {
+      "titre": "Jeux et sécurité",
+      "niveau": "CP / CE1 / CE2",
+      "paragraphes": [
+        "Dans un **jeu collectif**, on joue en équipe : on respecte les règles, l'arbitre et les adversaires. On gagne ou on perd avec **fair-play** : on félicite les autres.",
+        "En EPS, je porte des vêtements adaptés, j'attache mes lacets, je ne pousse pas. À la piscine, j'écoute le maître-nageur et je ne plonge jamais seul."
+      ],
+      "exemple": {
+        "titre": "Exemple : le jeu des déménageurs",
+        "etapes": [
+          "Les équipes déplacent des balles.",
+          "On respecte les règles.",
+          "On serre la main à la fin."
+        ]
+      },
+      "aRetenir": "Fair-play : respecter les règles et les autres."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Avant de courir, il faut…",
+        "choix": [
+          "dormir",
+          "manger beaucoup",
+          "rester immobile",
+          "s'échauffer"
+        ],
+        "bonne": 3,
+        "explication": "Échauffement."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le fair-play, c'est…",
+        "choix": [
+          "crier sur l'arbitre",
+          "respecter les règles et les autres",
+          "gagner en trichant un peu",
+          "se fâcher quand on perd"
+        ],
+        "bonne": 1,
+        "explication": "Esprit sportif."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "À la piscine, on…",
+        "choix": [
+          "écoute le maître-nageur",
+          "plonge partout",
+          "court au bord",
+          "nage seul au grand bassin"
+        ],
+        "bonne": 0,
+        "explication": "Sécurité."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La récréation sportive",
+    "histoire": [
+      "Ta classe joue à un jeu d'équipe."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Ton équipe perd. Tu…",
+        "choix": [
+          "pleures fort",
+          "félicites les gagnants",
+          "te fâches",
+          "tricheras la prochaine fois"
+        ],
+        "bonne": 1,
+        "explication": "Fair-play."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Après l'effort, que fais-tu ?",
+        "choix": [
+          "je mange des bonbons seulement",
+          "je bois de l'eau",
+          "je cours encore",
+          "je ne bois rien"
+        ],
+        "bonne": 1,
+        "explication": "Récupération."
+      }
+    ],
+    "conclusion": "Bravo, sportifs !"
+  }
+}

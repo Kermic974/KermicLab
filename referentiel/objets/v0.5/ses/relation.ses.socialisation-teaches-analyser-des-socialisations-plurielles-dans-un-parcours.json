@@ -1,0 +1,12 @@
+{
+  "id": "relation.ses.socialisation-teaches-analyser-des-socialisations-plurielles-dans-un-parcours",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/socialisation/contenu.json"
+  },
+  "source": "notion.ses.socialisation",
+  "target": "microskill.ses.analyser-des-socialisations-plurielles-dans-un-parcours"
+}

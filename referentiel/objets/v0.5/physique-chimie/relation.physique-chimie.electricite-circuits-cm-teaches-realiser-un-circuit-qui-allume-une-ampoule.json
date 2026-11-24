@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.electricite-circuits-cm-teaches-realiser-un-circuit-qui-allume-une-ampoule",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/electricite-circuits-cm/contenu.json"
+  },
+  "source": "notion.physique-chimie.electricite-circuits-cm",
+  "target": "microskill.physique-chimie.realiser-un-circuit-qui-allume-une-ampoule"
+}

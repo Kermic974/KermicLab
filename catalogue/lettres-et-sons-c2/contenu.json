@@ -1,0 +1,120 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les lettres s'assemblent pour faire des sons, et les sons pour faire des mots.",
+  "niveaux": [
+    {
+      "titre": "L'alphabet",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "L'alphabet a 26 lettres. Il y a 6 **voyelles** : a, e, i, o, u, y. Les autres sont des **consonnes** : b, c, d, f…",
+        "Une lettre peut s'écrire en majuscule (A) ou en minuscule (a)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Dans « chat » : c, h, a, t.",
+          "La voyelle est « a ».",
+          "Les consonnes sont c, h, t."
+        ]
+      },
+      "aRetenir": "26 lettres, dont 6 voyelles."
+    },
+    {
+      "titre": "Les sons",
+      "niveau": "CP",
+      "paragraphes": [
+        "Deux lettres peuvent faire un seul son : **ou** (loup), **on** (mouton), **an** (maman), **ch** (chat), **in** (lapin), **oi** (poisson). Je les repère pour lire plus vite.",
+        "Les voyelles se prononcent seules ; les consonnes s'appuient sur une voyelle (ba, bi, bou…)."
+      ],
+      "exemple": {
+        "titre": "Exemple : « chat »",
+        "etapes": [
+          "ch fait un seul son.",
+          "a fait le son [a].",
+          "Le t final ne se prononce pas : cha."
+        ]
+      },
+      "aRetenir": "ou, on, an, ch, in : deux lettres, un son."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Combien de voyelles y a-t-il dans l'alphabet ?",
+        "reponse": 6,
+        "indices": [
+          "Compte-les."
+        ],
+        "solution": "a, e, i, o, u, y.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel son entends-tu dans « loup » ?",
+        "choix": [
+          "an",
+          "in",
+          "ou",
+          "on"
+        ],
+        "bonne": 2,
+        "explication": "On entend [ou]."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Dans « chat », quelles lettres font le même son ?",
+        "choix": [
+          "c et a",
+          "c et h",
+          "h et a",
+          "a et t"
+        ],
+        "bonne": 1,
+        "explication": "ch fait le son [ch]."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le jeu des sons",
+    "histoire": [
+      "Tu écoutes des mots et tu trouves leur son."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans « mouton », quel son entends-tu à la fin ?",
+        "choix": [
+          "on",
+          "ou",
+          "an",
+          "in"
+        ],
+        "bonne": 0,
+        "explication": "mou-ton : [on]."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle lettre est une voyelle ?",
+        "choix": [
+          "t",
+          "b",
+          "o",
+          "p"
+        ],
+        "bonne": 2,
+        "explication": "o est une voyelle."
+      }
+    ],
+    "conclusion": "Tu lis de mieux en mieux !"
+  }
+}

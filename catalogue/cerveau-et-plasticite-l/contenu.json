@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Le cerveau se transforme tout au long de la vie : les connexions entre neurones se renforcent ou s'affaiblissent selon l'expérience.",
+  "niveaux": [
+    {
+      "titre": "Neurones et synapses",
+      "niveau": "Tle",
+      "paragraphes": [
+        "Le cerveau compte environ 86 milliards de **neurones** reliés par des **synapses** (des milliers par neurone). Un message nerveux est un signal électrique (potentiel d'action) le long de l'axone, converti à la synapse en signal chimique (**neurotransmetteurs**). Les réseaux de neurones traitent les informations sensorielles, les mémorisent et commandent les actions."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Un neurone reçoit un signal.",
+          "Il libère un neurotransmetteur à la synapse.",
+          "Le neurone suivant est excité ou inhibé."
+        ]
+      },
+      "aRetenir": "Synapse : relais chimique entre neurones."
+    },
+    {
+      "titre": "La plasticité",
+      "niveau": "Tle",
+      "paragraphes": [
+        "La **plasticité cérébrale** est la capacité du cerveau à modifier ses connexions : les synapses utilisées se renforcent (potentialisation à long terme), les autres s'affaiblissent ou disparaissent. L'**apprentissage** et la **mémoire** reposent sur ces modifications. L'activité, le sommeil, l'exercice physique et l'environnement l'influencent ; l'âge, le stress chronique et certaines drogues peuvent la perturber. L'**imagerie** (IRM fonctionnelle) permet d'observer les régions actives."
+      ],
+      "exemple": {
+        "titre": "Exemple : apprendre un instrument",
+        "etapes": [
+          "La pratique active des réseaux moteurs.",
+          "Les connexions se renforcent.",
+          "La performance s'améliore avec l'entraînement."
+        ]
+      },
+      "aRetenir": "L'expérience modifie les connexions."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Le relais entre deux neurones s'appelle…",
+        "choix": [
+          "la synapse",
+          "l'axone",
+          "le noyau",
+          "la gaine de myéline"
+        ],
+        "bonne": 0,
+        "explication": "Synapse."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La plasticité cérébrale est…",
+        "choix": [
+          "une maladie dégénérative rare",
+          "la capacité de modifier les connexions",
+          "la dureté mesurable du cerveau",
+          "le nombre de neurones à la naissance"
+        ],
+        "bonne": 1,
+        "explication": "Adaptation."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Le sommeil contribue…",
+        "choix": [
+          "à effacer ce qu'on a appris",
+          "à la consolidation de la mémoire",
+          "à la perte progressive des souvenirs",
+          "à l'arrêt de l'activité cérébrale"
+        ],
+        "bonne": 1,
+        "explication": "Consolidation."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Réviser pour le bac",
+    "histoire": [
+      "Tu prépares un examen."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle stratégie renforce les connexions ?",
+        "choix": [
+          "répéter en espaçant les révisions",
+          "tout apprendre en une seule nuit",
+          "ne jamais relire ses notes",
+          "lire une seule fois, passivement"
+        ],
+        "bonne": 0,
+        "explication": "Répétition espacée."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que fait le sommeil la nuit avant ?",
+        "choix": [
+          "il efface les notions apprises",
+          "il empêche toute mémorisation",
+          "il n'a aucun effet sur l'esprit",
+          "il consolide ce qui a été appris"
+        ],
+        "bonne": 3,
+        "explication": "Consolidation."
+      }
+    ],
+    "conclusion": "Bien appris !"
+  }
+}

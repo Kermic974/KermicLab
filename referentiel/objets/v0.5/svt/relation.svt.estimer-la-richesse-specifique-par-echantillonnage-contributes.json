@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.estimer-la-richesse-specifique-par-echantillonnage-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/biodiversite-et-ecosystemes-l/contenu.json"
+  },
+  "source": "microskill.svt.estimer-la-richesse-specifique-par-echantillonnage",
+  "target": "skill.svt.biodiversite-et-ecosystemes-l"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.construire-un-triangle-avec-les-instruments-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/constructions-geometriques-6e/contenu.json"
+  },
+  "source": "microskill.mathematiques.construire-un-triangle-avec-les-instruments",
+  "target": "skill.mathematiques.constructions-geometriques-6e"
+}

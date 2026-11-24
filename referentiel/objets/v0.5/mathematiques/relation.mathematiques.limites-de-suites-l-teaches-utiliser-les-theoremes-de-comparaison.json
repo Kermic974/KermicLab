@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.limites-de-suites-l-teaches-utiliser-les-theoremes-de-comparaison",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/limites-de-suites-l/contenu.json"
+  },
+  "source": "notion.mathematiques.limites-de-suites-l",
+  "target": "microskill.mathematiques.utiliser-les-theoremes-de-comparaison"
+}

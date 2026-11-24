@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Étudier la langue, c'est comprendre comment la syntaxe, le lexique et l'énonciation produisent le sens et le style.",
+  "niveaux": [
+    {
+      "titre": "Phrase et énonciation",
+      "niveau": "2de",
+      "paragraphes": [
+        "La **phrase complexe** combine propositions **coordonnées**, **juxtaposées** et **subordonnées** (relatives, complétives, circonstancielles). L'**énonciation** : qui parle (**je**), à qui (**tu/vous**), quand et où (**déictiques** : maintenant, ici). La **modalisation** exprime l'attitude du locuteur (adverbes, verbes modaux, ponctuation)."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "« Je crois que le temps change. »",
+          "« que le temps change » : subordonnée complétive.",
+          "« Je crois » : modalisation."
+        ]
+      },
+      "aRetenir": "Énonciation : qui, à qui, quand, où."
+    },
+    {
+      "titre": "Registres et rythme",
+      "niveau": "1re",
+      "paragraphes": [
+        "Les **registres** : **lyrique** (émotion), **pathétique** (compassion), **tragique** (fatalité), **comique** (rire), **satirique** (critique), **épique** (grandeur), **polémique** (combat), **ironique**. Le style joue avec le **rythme** de la phrase (période, parataxe), la **ponctuation**, le **lexique** (champs lexicaux, connotations). On relie toujours le procédé à son effet."
+      ],
+      "exemple": {
+        "titre": "Exemple : la parataxe",
+        "etapes": [
+          "« Il vint, il vit, il vainquit. »",
+          "Phrases courtes juxtaposées.",
+          "Effet : rapidité, énergie."
+        ]
+      },
+      "aRetenir": "Registre : l'effet recherché sur le lecteur."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Un déictique est un mot dont le sens dépend…",
+        "choix": [
+          "du titre de l'ouvrage",
+          "de la situation d'énonciation",
+          "de la rime du vers",
+          "de la ponctuation finale"
+        ],
+        "bonne": 1,
+        "explication": "Ici, maintenant, je."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Le registre pathétique cherche à…",
+        "choix": [
+          "critiquer un travers",
+          "émouvoir par la compassion",
+          "faire rire le public",
+          "décrire une bataille"
+        ],
+        "bonne": 1,
+        "explication": "Émotion."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "La parataxe est…",
+        "choix": [
+          "un temps du récit au passé",
+          "une figure d'opposition forte",
+          "la juxtaposition de propositions",
+          "une rime riche en fin de vers"
+        ],
+        "bonne": 2,
+        "explication": "Style rapide."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Analyser un extrait",
+    "histoire": [
+      "Tu étudies une phrase longue de Proust."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que fais-tu d'abord ?",
+        "choix": [
+          "je saute la phrase difficile",
+          "je la traduis en anglais",
+          "j'efface la ponctuation",
+          "j'identifie les propositions"
+        ],
+        "bonne": 3,
+        "explication": "Syntaxe."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Une phrase longue peut produire…",
+        "choix": [
+          "un effet de lenteur ou de flux de pensée",
+          "toujours de la confusion totale",
+          "un registre comique obligatoire",
+          "aucun effet sur le lecteur"
+        ],
+        "bonne": 0,
+        "explication": "Effet de rythme."
+      }
+    ],
+    "conclusion": "Bien lu !"
+  }
+}

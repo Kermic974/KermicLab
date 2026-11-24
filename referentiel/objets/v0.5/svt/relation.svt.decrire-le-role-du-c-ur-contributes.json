@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.decrire-le-role-du-c-ur-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/respiration-circulation-cm/contenu.json"
+  },
+  "source": "microskill.svt.decrire-le-role-du-c-ur",
+  "target": "skill.svt.respiration-circulation-cm"
+}

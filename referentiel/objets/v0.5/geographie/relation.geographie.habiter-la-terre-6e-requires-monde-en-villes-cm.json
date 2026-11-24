@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.habiter-la-terre-6e-requires-monde-en-villes-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-la-terre-6e/contenu.json"
+  },
+  "source": "notion.geographie.habiter-la-terre-6e",
+  "target": "notion.geographie.monde-en-villes-cm",
+  "rationale": "« La Terre : continents, océans et villes du monde » : La répartition de la population s’appuie sur la carte des villes du monde."
+}

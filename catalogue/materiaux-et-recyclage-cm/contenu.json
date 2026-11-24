@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Les déchets sont une ressource : en les triant, on fabrique de nouveaux objets.",
+  "niveaux": [
+    {
+      "titre": "Intuition : trier pour recycler",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Chaque Français produit environ 500 kg de déchets ménagers par an. Les trier permet de **recycler** : le verre, le papier, le carton, les emballages en métal et en plastique deviennent de nouveaux objets.",
+        "Le verre se recycle presque à l'infini ; une bouteille en plastique recyclée peut devenir un vêtement en polaire."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Bac jaune : emballages et papiers.",
+          "Colonne à verre : bouteilles, bocaux.",
+          "Compost : épluchures."
+        ]
+      },
+      "aRetenir": "Trier, c'est donner une deuxième vie aux déchets."
+    },
+    {
+      "titre": "Les 3 R et le cycle de vie",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "**Réduire** (acheter moins, éviter les emballages), **réutiliser** (réparer, donner) et **recycler** (trier). Le **compost** transforme les déchets de cuisine en terreau pour le jardin.",
+        "Le cycle de vie d'un objet comprend l'extraction des matières premières, la fabrication, le transport, l'utilisation, puis la fin de vie (recyclage ou déchet). Plus un objet dure, moins il pollue."
+      ],
+      "exemple": {
+        "titre": "Exemple : la gourde",
+        "etapes": [
+          "Une gourde réutilisable remplace des centaines de bouteilles.",
+          "Elle évite des déchets plastiques.",
+          "On la réutilise pendant des années."
+        ]
+      },
+      "aRetenir": "Le meilleur déchet est celui qu'on ne produit pas."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans quel bac jette-t-on un pot de yaourt en plastique ?",
+        "choix": [
+          "Le compost",
+          "Dans la nature",
+          "Le bac jaune (emballages)",
+          "La colonne à verre"
+        ],
+        "bonne": 2,
+        "explication": "Les emballages plastiques se recyclent."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel geste réduit les déchets ?",
+        "choix": [
+          "Jeter les piles à la poubelle",
+          "Brûler le papier",
+          "Utiliser une gourde",
+          "Acheter des bouteilles"
+        ],
+        "bonne": 2,
+        "explication": "Réduire à la source."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Que devient le compost ?",
+        "choix": [
+          "Du terreau",
+          "Du verre",
+          "De l'essence",
+          "Du carton"
+        ],
+        "bonne": 0,
+        "explication": "Il enrichit le sol."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le défi zéro déchet",
+    "histoire": [
+      "Ta classe relève le défi « zéro déchet » pendant une semaine."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quelle idée est la meilleure ?",
+        "choix": [
+          "Brûler les papiers dans la cour",
+          "Acheter des bouteilles de plus",
+          "Apporter un goûter sans emballage jetable",
+          "Jeter les épluchures à la poubelle"
+        ],
+        "bonne": 2,
+        "explication": "Éviter les déchets."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Que devient une bouteille en verre triée ?",
+        "choix": [
+          "Un sac en plastique souple",
+          "Une feuille de papier recyclé",
+          "Un tuyau en métal",
+          "Une nouvelle bouteille"
+        ],
+        "bonne": 3,
+        "explication": "Le verre se recycle."
+      }
+    ],
+    "conclusion": "Défi relevé !"
+  }
+}

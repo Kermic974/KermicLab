@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.univers-et-atome-l-teaches-identifier-un-element-chimique-a-partir-de-son-spectre",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/univers-et-atome-l/contenu.json"
+  },
+  "source": "notion.physique-chimie.univers-et-atome-l",
+  "target": "microskill.physique-chimie.identifier-un-element-chimique-a-partir-de-son-spectre"
+}

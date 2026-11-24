@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.comparer-et-ranger-c2-teaches-comparer-deux-nombres-avec-les-signes-et",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/comparer-et-ranger-c2/contenu.json"
+  },
+  "source": "notion.mathematiques.comparer-et-ranger-c2",
+  "target": "microskill.mathematiques.comparer-deux-nombres-avec-les-signes-et"
+}

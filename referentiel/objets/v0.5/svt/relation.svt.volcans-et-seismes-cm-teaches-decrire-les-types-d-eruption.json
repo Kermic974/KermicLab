@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.volcans-et-seismes-cm-teaches-decrire-les-types-d-eruption",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/volcans-et-seismes-cm/contenu.json"
+  },
+  "source": "notion.svt.volcans-et-seismes-cm",
+  "target": "microskill.svt.decrire-les-types-d-eruption"
+}

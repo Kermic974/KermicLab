@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.relier-la-contraction-a-l-utilisation-d-atp-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/contraction-musculaire/contenu.json"
+  },
+  "source": "microskill.svt.relier-la-contraction-a-l-utilisation-d-atp",
+  "target": "skill.svt.contraction-musculaire"
+}

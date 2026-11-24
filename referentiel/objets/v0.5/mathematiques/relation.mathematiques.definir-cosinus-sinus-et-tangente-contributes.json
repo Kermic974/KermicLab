@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.definir-cosinus-sinus-et-tangente-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/trigonometrie-triangle-rectangle-c4/contenu.json"
+  },
+  "source": "microskill.mathematiques.definir-cosinus-sinus-et-tangente",
+  "target": "skill.mathematiques.trigonometrie-triangle-rectangle-c4"
+}

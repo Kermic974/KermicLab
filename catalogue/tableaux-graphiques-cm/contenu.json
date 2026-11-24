@@ -1,0 +1,111 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un tableau ou un graphique rend lisible une série de données.",
+  "niveaux": [
+    {
+      "titre": "Intuition : les fruits préférés",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "On demande à 20 élèves leur fruit préféré : pommes 8, bananes 6, fraises 4, poires 2. Dans un tableau, chaque catégorie a son effectif ; le total est 20.",
+        "Un **diagramme en barres** dessine une barre plus haute quand l'effectif est plus grand."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Le fruit le plus choisi : la pomme (8).",
+          "Il y a 8 − 2 = 6 de plus que pour les poires.",
+          "Total : 8 + 6 + 4 + 2 = 20."
+        ]
+      },
+      "aRetenir": "Lire d'abord le titre et les axes."
+    },
+    {
+      "titre": "Graphiques en courbe et en barres",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Une **courbe** montre une évolution : la température au fil de la journée. On lit une valeur en suivant la ligne verticale puis horizontale.",
+        "Pour tracer un graphique, on choisit une **échelle** régulière sur chaque axe, on place les points, on les relie."
+      ],
+      "exemple": {
+        "titre": "Exemple : lire une courbe",
+        "etapes": [
+          "À 12 h, la courbe est à 18 °C.",
+          "À 18 h, elle est à 14 °C.",
+          "La température a baissé de 4 °C."
+        ]
+      },
+      "aRetenir": "Une échelle régulière est indispensable."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "nombre",
+        "question": "Pommes 8, bananes 6, fraises 4, poires 2. Combien d'élèves en tout ?",
+        "reponse": 20,
+        "indices": [
+          "Additionne les effectifs."
+        ],
+        "solution": "8 + 6 + 4 + 2 = 20.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien d'élèves de plus ont choisi la pomme que la poire ?",
+        "reponse": 6,
+        "indices": [
+          "Soustrais."
+        ],
+        "solution": "8 − 2 = 6.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel graphique montre le mieux l'évolution d'une température ?",
+        "choix": [
+          "Un tableau de noms",
+          "Une carte",
+          "Une courbe",
+          "Un camembert"
+        ],
+        "bonne": 2,
+        "explication": "Une courbe montre comment une valeur change au cours du temps."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'enquête de la classe",
+    "histoire": [
+      "Tu fais une enquête sur le sport préféré de 25 élèves : foot 10, natation 7, basket 5, tennis 3."
+    ],
+    "etapes": [
+      {
+        "type": "nombre",
+        "question": "Quel est l'effectif total ?",
+        "reponse": 25,
+        "indices": [
+          "Additionne tout."
+        ],
+        "solution": "10 + 7 + 5 + 3 = 25.",
+        "titre": "Exercice 1"
+      },
+      {
+        "type": "nombre",
+        "question": "Combien d'élèves n'ont pas choisi le foot ?",
+        "reponse": 15,
+        "indices": [
+          "Total moins foot."
+        ],
+        "solution": "25 − 10 = 15.",
+        "titre": "Exercice 2"
+      }
+    ],
+    "conclusion": "Enquête réussie !"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calculer-le-perimetre-d-un-rectangle-au-cycle-3-cm-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/perimetre-aire-cm/contenu.json"
+  },
+  "source": "microskill.mathematiques.calculer-le-perimetre-d-un-rectangle-au-cycle-3-cm",
+  "target": "skill.mathematiques.perimetre-aire-cm"
+}

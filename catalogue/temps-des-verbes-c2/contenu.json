@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un verbe change selon qui fait l'action et selon le moment : passé, présent ou futur.",
+  "niveaux": [
+    {
+      "titre": "Passé, présent, futur",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Hier, j'ai mangé (passé). Aujourd'hui, je mange (présent). Demain, je mangerai (futur). Le verbe change de forme.",
+        "Pour **conjuguer**, on change la fin du verbe selon la personne : je mange, tu manges, il mange, nous mangeons, vous mangez, ils mangent."
+      ],
+      "exemple": {
+        "titre": "Exemple : chanter au présent",
+        "etapes": [
+          "Je chante.",
+          "Tu chantes, il chante.",
+          "Nous chantons, vous chantez, ils chantent."
+        ]
+      },
+      "aRetenir": "Verbes en -er : -e, -es, -e, -ons, -ez, -ent."
+    },
+    {
+      "titre": "Être, avoir et le futur",
+      "niveau": "CE1 / CE2",
+      "paragraphes": [
+        "**Être** : je suis, tu es, il est, nous sommes, vous êtes, ils sont. **Avoir** : j'ai, tu as, il a, nous avons, vous avez, ils ont. Ce sont les verbes les plus employés.",
+        "Au **futur** : je chanterai, tu chanteras, il chantera. Au **passé composé** (CE2) : j'ai chanté, il est parti : être ou avoir + participe passé."
+      ],
+      "exemple": {
+        "titre": "Exemple : futur de manger",
+        "etapes": [
+          "Je mangerai.",
+          "Tu mangeras.",
+          "Ils mangeront."
+        ]
+      },
+      "aRetenir": "Futur : infinitif + -ai, -as, -a, -ons, -ez, -ont."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Complète : « Je ___ une glace. » (manger, présent)",
+        "choix": [
+          "mangent",
+          "mange",
+          "manges",
+          "mangeons"
+        ],
+        "bonne": 1,
+        "explication": "Je mange."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Complète : « Nous ___ contents. » (être)",
+        "choix": [
+          "est",
+          "êtes",
+          "sont",
+          "sommes"
+        ],
+        "bonne": 3,
+        "explication": "Nous sommes."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quelle phrase est au futur ?",
+        "choix": [
+          "Je jouais.",
+          "Demain, je jouerai.",
+          "Hier, j'ai joué.",
+          "Je joue."
+        ],
+        "bonne": 1,
+        "explication": "Demain : futur."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le journal de bord",
+    "histoire": [
+      "Tu écris dans un journal : ce que tu as fait, fais, feras."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Complète : « Demain, nous ___ au zoo. » (aller, futur)",
+        "choix": [
+          "sommes allés",
+          "allions",
+          "irons",
+          "allons"
+        ],
+        "bonne": 2,
+        "explication": "Nous irons."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Complète : « Ils ___ un chien. » (avoir, présent)",
+        "choix": [
+          "a",
+          "avons",
+          "avez",
+          "ont"
+        ],
+        "bonne": 3,
+        "explication": "Ils ont."
+      }
+    ],
+    "conclusion": "Bien conjugué !"
+  }
+}

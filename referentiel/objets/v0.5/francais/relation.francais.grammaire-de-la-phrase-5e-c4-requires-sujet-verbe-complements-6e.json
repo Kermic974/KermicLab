@@ -1,0 +1,13 @@
+{
+  "id": "relation.francais.grammaire-de-la-phrase-5e-c4-requires-sujet-verbe-complements-6e",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/grammaire-de-la-phrase-5e-c4/contenu.json"
+  },
+  "source": "notion.francais.grammaire-de-la-phrase-5e-c4",
+  "target": "notion.francais.sujet-verbe-complements-6e",
+  "rationale": "« Sujet, verbe et compléments en 6e » : L’analyse de la phrase reprend sujet, verbe et compléments de 6e."
+}

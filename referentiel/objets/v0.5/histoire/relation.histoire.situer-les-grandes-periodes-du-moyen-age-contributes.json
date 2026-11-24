@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.situer-les-grandes-periodes-du-moyen-age-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/moyen-age/contenu.json"
+  },
+  "source": "microskill.histoire.situer-les-grandes-periodes-du-moyen-age",
+  "target": "skill.histoire.moyen-age"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.france-europe-depuis-1945-cm-teaches-definir-l-euro",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/france-europe-depuis-1945-cm/contenu.json"
+  },
+  "source": "notion.histoire.france-europe-depuis-1945-cm",
+  "target": "microskill.histoire.definir-l-euro"
+}

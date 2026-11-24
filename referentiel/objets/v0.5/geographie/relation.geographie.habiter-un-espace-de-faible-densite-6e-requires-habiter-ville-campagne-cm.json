@@ -1,0 +1,13 @@
+{
+  "id": "relation.geographie.habiter-un-espace-de-faible-densite-6e-requires-habiter-ville-campagne-cm",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/habiter-un-espace-de-faible-densite-6e/contenu.json"
+  },
+  "source": "notion.geographie.habiter-un-espace-de-faible-densite-6e",
+  "target": "notion.geographie.habiter-ville-campagne-cm",
+  "rationale": "« Habiter en ville ou à la campagne » : Les espaces peu peuplés s’opposent à ville et campagne du cycle 3."
+}

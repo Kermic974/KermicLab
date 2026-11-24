@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.interpreter-la-fluctuation-d-echantillonnage-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/statistiques-et-echantillonnage-l/contenu.json"
+  },
+  "source": "microskill.mathematiques.interpreter-la-fluctuation-d-echantillonnage",
+  "target": "skill.mathematiques.statistiques-et-echantillonnage-l"
+}

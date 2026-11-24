@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.expliquer-l-arrivee-au-pouvoir-d-un-regime-a-partir-de-ses-causes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/totalitarismes/contenu.json"
+  },
+  "source": "microskill.histoire.expliquer-l-arrivee-au-pouvoir-d-un-regime-a-partir-de-ses-causes",
+  "target": "skill.histoire.totalitarismes"
+}

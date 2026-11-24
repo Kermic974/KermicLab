@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.construction-europeenne-teaches-discuter-la-souverainete-nationale-et-les-institutions-europeennes",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/construction-europeenne/contenu.json"
+  },
+  "source": "notion.histoire.construction-europeenne",
+  "target": "microskill.histoire.discuter-la-souverainete-nationale-et-les-institutions-europeennes"
+}

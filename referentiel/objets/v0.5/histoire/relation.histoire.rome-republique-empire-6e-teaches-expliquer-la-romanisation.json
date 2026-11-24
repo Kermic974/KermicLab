@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.rome-republique-empire-6e-teaches-expliquer-la-romanisation",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/rome-republique-empire-6e/contenu.json"
+  },
+  "source": "notion.histoire.rome-republique-empire-6e",
+  "target": "microskill.histoire.expliquer-la-romanisation"
+}

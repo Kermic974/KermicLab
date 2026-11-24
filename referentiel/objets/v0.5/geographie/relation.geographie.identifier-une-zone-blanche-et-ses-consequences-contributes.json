@@ -1,0 +1,12 @@
+{
+  "id": "relation.geographie.identifier-une-zone-blanche-et-ses-consequences-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/territoires-urbains-et-ruraux-l/contenu.json"
+  },
+  "source": "microskill.geographie.identifier-une-zone-blanche-et-ses-consequences",
+  "target": "skill.geographie.territoires-urbains-et-ruraux-l"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.histoire.feodalite-eglise-et-pouvoirs-c4-teaches-expliquer-le-role-de-l-eglise-et-des-rois",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/feodalite-eglise-et-pouvoirs-c4/contenu.json"
+  },
+  "source": "notion.histoire.feodalite-eglise-et-pouvoirs-c4",
+  "target": "microskill.histoire.expliquer-le-role-de-l-eglise-et-des-rois"
+}

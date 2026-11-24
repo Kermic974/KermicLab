@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La littérature d'idées défend des thèses par des arguments, des exemples et des procédés (ironie, fable, utopie).",
+  "niveaux": [
+    {
+      "titre": "Genres et stratégies",
+      "niveau": "2de",
+      "paragraphes": [
+        "Les genres argumentatifs : **essai**, **lettre**, **dialogue**, **fable**, **conte philosophique** (Voltaire, *Candide*), **utopie**, **pamphlet**. Pour **convaincre** : arguments logiques et exemples ; pour **persuader** : émotion ; l'**ironie** et la satire font réfléchir en faisant sourire. Les Lumières défendent la raison, la tolérance et la liberté."
+      ],
+      "exemple": {
+        "titre": "Exemple : Candide",
+        "etapes": [
+          "Voltaire raconte les malheurs d'un naïf.",
+          "Il critique l'optimisme de Leibniz.",
+          "Conte philosophique : fiction pour penser."
+        ]
+      },
+      "aRetenir": "Thèse + arguments + exemples."
+    },
+    {
+      "titre": "Dissertation et commentaire",
+      "niveau": "1re",
+      "paragraphes": [
+        "La **dissertation** : **introduction** (accroche, analyse du sujet, problématique, annonce du plan), **développement** en 2 ou 3 parties (arguments + exemples précis tirés des œuvres), **conclusion** (bilan et ouverture). Plans courants : dialectique (thèse/antithèse/synthèse), progressif. Le **commentaire** : problématique, axes et analyse des procédés avec leurs effets. On cite précisément, jamais de paraphrase."
+      ],
+      "exemple": {
+        "titre": "Exemple : problématique",
+        "etapes": [
+          "Sujet : « Le roman peut-il changer le monde ? ».",
+          "Problématique : dans quelle mesure l'imaginaire agit sur la réalité ?",
+          "Plan en deux ou trois parties."
+        ]
+      },
+      "aRetenir": "Une partie = un argument + un exemple."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Un conte philosophique…",
+        "choix": [
+          "est un récit sans aucune idée",
+          "est un poème lyrique en vers",
+          "est une pièce de théâtre classique",
+          "illustre une thèse par une fiction"
+        ],
+        "bonne": 3,
+        "explication": "Voltaire."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Une dissertation comporte…",
+        "choix": [
+          "des didascalies et des répliques",
+          "introduction, développement, conclusion",
+          "uniquement un résumé de cours",
+          "un dialogue entre deux personnages"
+        ],
+        "bonne": 1,
+        "explication": "Structure."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Convaincre, c'est surtout…",
+        "choix": [
+          "supprimer toute thèse du discours",
+          "s'adresser à la raison par des arguments",
+          "faire peur à son interlocuteur",
+          "émouvoir par des larmes seulement"
+        ],
+        "bonne": 1,
+        "explication": "Raison."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le sujet",
+    "histoire": [
+      "Sujet : « Faut-il croire à la perfectibilité de l'homme ? »"
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Que construis-tu d'abord ?",
+        "choix": [
+          "une problématique à partir du sujet",
+          "la conclusion de la copie",
+          "un résumé de cours appris",
+          "une liste d'auteurs cités"
+        ],
+        "bonne": 0,
+        "explication": "Analyse du sujet."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un exemple de dissertation doit être…",
+        "choix": [
+          "inventé",
+          "très long",
+          "sans rapport avec l'argument",
+          "précis et tiré d'une œuvre étudiée"
+        ],
+        "bonne": 3,
+        "explication": "Preuve."
+      }
+    ],
+    "conclusion": "Bon plan !"
+  }
+}

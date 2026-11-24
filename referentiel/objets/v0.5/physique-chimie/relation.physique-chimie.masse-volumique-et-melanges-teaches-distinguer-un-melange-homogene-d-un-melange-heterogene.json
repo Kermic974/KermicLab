@@ -1,0 +1,12 @@
+{
+  "id": "relation.physique-chimie.masse-volumique-et-melanges-teaches-distinguer-un-melange-homogene-d-un-melange-heterogene",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/masse-volumique-et-melanges/contenu.json"
+  },
+  "source": "notion.physique-chimie.masse-volumique-et-melanges",
+  "target": "microskill.physique-chimie.distinguer-un-melange-homogene-d-un-melange-heterogene"
+}

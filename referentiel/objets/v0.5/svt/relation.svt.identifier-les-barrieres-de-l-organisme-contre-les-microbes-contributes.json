@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.identifier-les-barrieres-de-l-organisme-contre-les-microbes-contributes",
+  "type": "contributesTo",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/systeme-immunitaire/contenu.json"
+  },
+  "source": "microskill.svt.identifier-les-barrieres-de-l-organisme-contre-les-microbes",
+  "target": "skill.svt.systeme-immunitaire"
+}

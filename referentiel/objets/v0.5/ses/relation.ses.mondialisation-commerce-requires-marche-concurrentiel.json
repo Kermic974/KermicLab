@@ -1,0 +1,13 @@
+{
+  "id": "relation.ses.mondialisation-commerce-requires-marche-concurrentiel",
+  "type": "requires",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mondialisation-commerce/contenu.json"
+  },
+  "source": "notion.ses.mondialisation-commerce",
+  "target": "notion.ses.marche-concurrentiel",
+  "rationale": "L’avantage comparatif et les effets des échanges se raisonnent avec le modèle d’offre, de demande et de prix."
+}

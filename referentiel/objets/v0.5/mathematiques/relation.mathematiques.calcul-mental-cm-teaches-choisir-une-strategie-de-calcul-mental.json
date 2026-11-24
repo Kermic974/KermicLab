@@ -1,0 +1,12 @@
+{
+  "id": "relation.mathematiques.calcul-mental-cm-teaches-choisir-une-strategie-de-calcul-mental",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/calcul-mental-cm/contenu.json"
+  },
+  "source": "notion.mathematiques.calcul-mental-cm",
+  "target": "microskill.mathematiques.choisir-une-strategie-de-calcul-mental"
+}

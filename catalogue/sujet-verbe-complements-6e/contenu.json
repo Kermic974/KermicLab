@@ -1,0 +1,122 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Une phrase simple s'organise autour d'un verbe, de son sujet et de ses compléments.",
+  "niveaux": [
+    {
+      "titre": "Intuition : le noyau de la phrase",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une phrase simple a **un seul verbe conjugué**. On y trouve le **groupe sujet** (qui fait l'action) et le **groupe verbal** (verbe + compléments). « Le petit chat boit du lait » : sujet « Le petit chat », verbe « boit », COD « du lait »."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Qui boit ? Le petit chat : sujet.",
+          "Boit quoi ? Du lait : COD.",
+          "La phrase peut avoir des compléments circonstanciels (où ? quand ?)."
+        ]
+      },
+      "aRetenir": "Verbe, sujet, compléments."
+    },
+    {
+      "titre": "Les fonctions",
+      "niveau": "6e",
+      "paragraphes": [
+        "Le **COD** répond à « quoi ? / qui ? » sans préposition ; le **COI** s'introduit par à ou de (« parler à son frère »). Les **compléments circonstanciels** (lieu, temps, manière, cause) sont déplaçables et supprimables. L'**attribut du sujet** suit un verbe d'état (être, paraître, sembler, devenir, rester, demeurer).",
+        "Les expansions peuvent précéder ou suivre le groupe verbal."
+      ],
+      "exemple": {
+        "titre": "Exemple : « Hier, Léa parlait à sa voisine. »",
+        "etapes": [
+          "Hier : complément circonstanciel de temps.",
+          "Léa : sujet.",
+          "À sa voisine : COI."
+        ]
+      },
+      "aRetenir": "COD/COI : on ne peut pas les supprimer sans changer le sens."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "« Léa parle à sa voisine. » « à sa voisine » est…",
+        "choix": [
+          "un sujet",
+          "un COI",
+          "un COD",
+          "un attribut"
+        ],
+        "bonne": 1,
+        "explication": "Préposition « à »."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Dans « Cette soupe semble chaude », « chaude » est…",
+        "choix": [
+          "attribut du sujet",
+          "COD",
+          "COI",
+          "complément circonstanciel"
+        ],
+        "bonne": 0,
+        "explication": "Verbe d'état « semble »."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Dans « Il mange une pomme dans le jardin », « dans le jardin » est…",
+        "choix": [
+          "un complément circonstanciel de lieu",
+          "un complément d'objet direct",
+          "un attribut du sujet",
+          "le sujet du verbe manger"
+        ],
+        "bonne": 0,
+        "explication": "Où ?"
+      }
+    ]
+  },
+  "situation": {
+    "titre": "L'analyse en classe",
+    "histoire": [
+      "Le professeur écrit : « Chaque matin, les élèves lisent un livre. »"
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel est le sujet ?",
+        "choix": [
+          "un livre",
+          "Chaque matin",
+          "lisent",
+          "les élèves"
+        ],
+        "bonne": 3,
+        "explication": "Qui lit ?"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel est le COD ?",
+        "choix": [
+          "un livre",
+          "Chaque matin",
+          "les élèves",
+          "lisent un"
+        ],
+        "bonne": 0,
+        "explication": "Lisent quoi ?"
+      }
+    ],
+    "conclusion": "Analyse réussie !"
+  }
+}

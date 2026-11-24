@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "La lumière se propage en ligne droite ; le son est une vibration qui voyage dans l'air.",
+  "niveaux": [
+    {
+      "titre": "Intuition : les ombres",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Une **source de lumière** (Soleil, lampe) émet de la lumière. La lumière se propage **en ligne droite**. Quand elle rencontre un objet opaque, elle est arrêtée : une **ombre** se forme derrière l'objet.",
+        "L'ombre change de taille et de direction selon la position de la source : le matin et le soir, les ombres sont longues ; à midi, elles sont courtes."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "La lampe éclaire un livre.",
+          "L'ombre est derrière le livre.",
+          "Rapprocher la lampe agrandit l'ombre."
+        ]
+      },
+      "aRetenir": "Pas de lumière derrière un obstacle opaque."
+    },
+    {
+      "titre": "Le son",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Un **son** est produit par une **vibration** (corde de guitare, peau d'un tambour, voix). Il se propage dans l'air (ou l'eau, ou un solide) jusqu'à l'oreille. Il ne se propage **pas dans le vide**.",
+        "La lumière va très vite (300 000 km/s) ; le son beaucoup moins (environ 340 m/s dans l'air). C'est pourquoi on voit l'éclair avant d'entendre le tonnerre. Un **écho** est un son qui rebondit sur un obstacle."
+      ],
+      "exemple": {
+        "titre": "Exemple : l'orage",
+        "etapes": [
+          "On voit l'éclair.",
+          "On compte 3 secondes jusqu'au tonnerre.",
+          "La foudre est à environ 1 km (3 × 340 m)."
+        ]
+      },
+      "aRetenir": "Le son a besoin d'un milieu pour se propager."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Comment se propage la lumière ?",
+        "choix": [
+          "En ligne droite",
+          "En zigzag",
+          "En cercle",
+          "Avec des vagues visibles"
+        ],
+        "bonne": 0,
+        "explication": "Propagation rectiligne."
+      },
+      {
+        "type": "nombre",
+        "question": "On entend le tonnerre 3 s après l'éclair. À peu près à quelle distance (en mètres, avec 340 m/s) est la foudre ?",
+        "reponse": 1020,
+        "unite": "m",
+        "indices": [
+          "Distance = vitesse × durée."
+        ],
+        "solution": "3 × 340 = 1 020 m.",
+        "titre": "Exercice 2"
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Un son se propage-t-il dans le vide ?",
+        "choix": [
+          "Oui",
+          "Oui mais lentement",
+          "Seulement la nuit",
+          "Non"
+        ],
+        "bonne": 3,
+        "explication": "Il a besoin d'un milieu."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le théâtre d'ombres",
+    "histoire": [
+      "Ta classe prépare un spectacle d'ombres chinoises."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Pour agrandir une ombre sur l'écran, on…",
+        "choix": [
+          "change de couleur",
+          "rapproche l'objet de la lampe",
+          "éloigne l'objet de la lampe",
+          "éteint la lampe"
+        ],
+        "bonne": 1,
+        "explication": "Plus l'objet est près de la source, plus l'ombre est grande."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quel élément produit un son ?",
+        "choix": [
+          "Un caillou posé",
+          "Un nuage",
+          "Un mur",
+          "Une corde qui vibre"
+        ],
+        "bonne": 3,
+        "explication": "Un son vient d'une vibration."
+      }
+    ],
+    "conclusion": "Spectacle réussi !"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": "relation.svt.glycemie-et-diabete-teaches-distinguer-diabete-de-type-1-et-diabete-de-type-2",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/glycemie-et-diabete/contenu.json"
+  },
+  "source": "notion.svt.glycemie-et-diabete",
+  "target": "microskill.svt.distinguer-diabete-de-type-1-et-diabete-de-type-2"
+}

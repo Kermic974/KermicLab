@@ -1,0 +1,13 @@
+{
+  "id": "relation.svt.sante-et-prevention-c4-requires-microbes-et-sante-c4",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/sante-et-prevention-c4/contenu.json"
+  },
+  "source": "notion.svt.sante-et-prevention-c4",
+  "target": "notion.svt.microbes-et-sante-c4",
+  "rationale": "« Micro-organismes, hygiène et santé » : La prévention s’appuie sur les micro-organismes et l’hygiène."
+}

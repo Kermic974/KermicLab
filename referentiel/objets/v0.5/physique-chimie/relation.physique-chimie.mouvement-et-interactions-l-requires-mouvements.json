@@ -1,0 +1,13 @@
+{
+  "id": "relation.physique-chimie.mouvement-et-interactions-l-requires-mouvements",
+  "type": "requires",
+  "status": "draft",
+  "version": 2,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/mouvement-et-interactions-l/contenu.json"
+  },
+  "source": "notion.physique-chimie.mouvement-et-interactions-l",
+  "target": "notion.physique-chimie.mouvements",
+  "rationale": "« Mouvements et référentiels » : Les interactions du lycée reprennent les mouvements et les forces du collège."
+}

@@ -14,10 +14,10 @@ questions:
   - c'est quoi la justice ?
   - Que signifie la présomption d'innocence ?
   - what is justice?
-prerequis:
-niveaux: cycle-4
 classes: 4e
-competences: emc-justice-action-1, emc-justice-action-2
+prerequis: etat-de-droit, droit-et-regle-6e
+niveaux: cycle-4
+competences: distinguer-justice-et-vengeance, expliquer-le-principe-du-contradictoire, expliquer-la-presomption-d-innocence, identifier-les-garanties-d-independance-de-la-justice
 ---
 
 # La justice

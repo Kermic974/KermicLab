@@ -1,0 +1,121 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "Un texte peut raconter, décrire, expliquer, argumenter ou donner des consignes.",
+  "niveaux": [
+    {
+      "titre": "Intuition : à quoi sert un texte ?",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Un **texte narratif** raconte une histoire. Un **texte descriptif** décrit un lieu ou un personnage. Un **texte explicatif** (documentaire) explique un phénomène. Un **texte injonctif** donne des ordres (une recette, une règle de jeu). Un **texte argumentatif** cherche à convaincre."
+      ],
+      "exemple": {
+        "titre": "Exemple",
+        "etapes": [
+          "Une recette : texte injonctif (verbes à l'impératif).",
+          "Un conte : texte narratif (verbes d'action).",
+          "Une fiche sur les volcans : texte explicatif."
+        ]
+      },
+      "aRetenir": "Le but du texte indique son type."
+    },
+    {
+      "titre": "Les indices à repérer",
+      "niveau": "CM1 / CM2",
+      "paragraphes": [
+        "Narratif : verbes d'action, connecteurs de temps, personnages. Descriptif : imparfait ou présent, adjectifs, compléments de lieu. Explicatif : présent de vérité générale, connecteurs de cause (parce que, car, donc). Argumentatif : « je pense que », arguments et exemples."
+      ],
+      "exemple": {
+        "titre": "Exemple : « Mélangez la farine et le sucre. »",
+        "etapes": [
+          "Verbes à l'impératif.",
+          "But : faire faire quelque chose.",
+          "Texte injonctif."
+        ]
+      },
+      "aRetenir": "Un texte peut mêler plusieurs types."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Une recette de cuisine est un texte…",
+        "choix": [
+          "narratif",
+          "poétique",
+          "descriptif",
+          "injonctif"
+        ],
+        "bonne": 3,
+        "explication": "Elle donne des ordres."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un texte qui raconte les aventures d'un chevalier est…",
+        "choix": [
+          "explicatif",
+          "injonctif",
+          "argumentatif",
+          "narratif"
+        ],
+        "bonne": 3,
+        "explication": "Il raconte une histoire."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "« Je pense qu'il faut protéger les forêts, car… » est un texte…",
+        "choix": [
+          "narratif",
+          "injonctif",
+          "argumentatif",
+          "descriptif"
+        ],
+        "bonne": 2,
+        "explication": "Il cherche à convaincre."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "La bibliothèque",
+    "histoire": [
+      "Tu classes les textes de la bibliothèque."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Une notice de montage est un texte…",
+        "choix": [
+          "injonctif",
+          "narratif",
+          "poétique",
+          "argumentatif"
+        ],
+        "bonne": 0,
+        "explication": "Elle donne des consignes."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "La description d'une forêt est un texte…",
+        "choix": [
+          "injonctif",
+          "narratif",
+          "théâtral",
+          "descriptif"
+        ],
+        "bonne": 3,
+        "explication": "Elle décrit un lieu."
+      }
+    ],
+    "conclusion": "Bibliothèque classée !"
+  }
+}

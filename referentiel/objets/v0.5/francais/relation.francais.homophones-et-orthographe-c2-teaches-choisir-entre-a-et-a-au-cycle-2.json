@@ -1,0 +1,12 @@
+{
+  "id": "relation.francais.homophones-et-orthographe-c2-teaches-choisir-entre-a-et-a-au-cycle-2",
+  "type": "teaches",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "catalogue/homophones-et-orthographe-c2/contenu.json"
+  },
+  "source": "notion.francais.homophones-et-orthographe-c2",
+  "target": "microskill.francais.choisir-entre-a-et-a-au-cycle-2"
+}

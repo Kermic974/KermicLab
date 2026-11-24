@@ -1,0 +1,123 @@
+{
+  "titresOnglets": {
+    "explication": "Explication",
+    "application": "S'entraîner",
+    "mise-en-situation": "Défi"
+  },
+  "intro": "En technologie, on conçoit, on fabrique et on programme des objets pour répondre à un besoin.",
+  "niveaux": [
+    {
+      "titre": "Intuition : du besoin à l'objet",
+      "niveau": "pour démarrer",
+      "paragraphes": [
+        "Tout objet technique répond à un **besoin** : se déplacer, éclairer, communiquer. On écrit un **cahier des charges** : ce que l'objet doit faire, avec quelles contraintes (coût, taille, matériaux, sécurité).",
+        "Plusieurs solutions sont possibles : on les compare avant de choisir."
+      ],
+      "exemple": {
+        "titre": "Exemple : un porte-clés",
+        "etapes": [
+          "Besoin : ne pas perdre ses clés.",
+          "Contrainte : solide et léger.",
+          "Solution : bois ou plastique recyclé."
+        ]
+      },
+      "aRetenir": "Besoin → cahier des charges → solution."
+    },
+    {
+      "titre": "Matériaux, énergie et programmation",
+      "niveau": "6e",
+      "paragraphes": [
+        "Les **matériaux** (métaux, plastiques, bois, verre, céramique, composites) ont des propriétés différentes (dureté, masse, conduction). On choisit selon l'usage et l'impact sur l'environnement (recyclable, durable).",
+        "Un objet technique peut être **programmé** : un robot, une barrière automatique. Une **chaîne d'information** (capteur → programme → actionneur) décide de l'action : si un obstacle est détecté, le robot s'arrête."
+      ],
+      "exemple": {
+        "titre": "Exemple : une barrière",
+        "etapes": [
+          "Capteur : détecte la voiture.",
+          "Programme : si voiture alors lever la barrière.",
+          "Actionneur : moteur qui lève."
+        ]
+      },
+      "aRetenir": "Capteur → traitement → action."
+    }
+  ],
+  "application": {
+    "intro": "Réponds à chaque question, puis lis la correction.",
+    "exercices": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Dans une chaîne d'information, le capteur…",
+        "choix": [
+          "détecte",
+          "agit",
+          "pense",
+          "stocke l'énergie"
+        ],
+        "bonne": 0,
+        "explication": "Il recueille l'information."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Un cahier des charges contient…",
+        "choix": [
+          "la recette de cuisine",
+          "un poème",
+          "la météo",
+          "les fonctions et contraintes"
+        ],
+        "bonne": 3,
+        "explication": "Fonctions et contraintes."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 3",
+        "question": "Quel matériau est biodégradable ?",
+        "choix": [
+          "Le bois",
+          "Le plastique ordinaire",
+          "Le verre",
+          "L'acier"
+        ],
+        "bonne": 0,
+        "explication": "Il se décompose naturellement."
+      }
+    ]
+  },
+  "situation": {
+    "titre": "Le robot qui s'arrête",
+    "histoire": [
+      "Tu programmes un robot qui doit s'arrêter devant un obstacle."
+    ],
+    "etapes": [
+      {
+        "type": "qcm",
+        "titre": "Exercice 1",
+        "question": "Quel capteur utiliser ?",
+        "choix": [
+          "Une pile électrique plate",
+          "Une roue d'entraînement",
+          "Un capteur de distance",
+          "Un haut-parleur de petite taille"
+        ],
+        "bonne": 2,
+        "explication": "Il détecte l'obstacle."
+      },
+      {
+        "type": "qcm",
+        "titre": "Exercice 2",
+        "question": "Quelle instruction écrire ?",
+        "choix": [
+          "Reculer sans raison",
+          "Tourner sans fin",
+          "Si obstacle alors arrêter",
+          "Toujours avancer"
+        ],
+        "bonne": 2,
+        "explication": "Condition."
+      }
+    ],
+    "conclusion": "Robot programmé !"
+  }
+}
