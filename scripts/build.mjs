@@ -11,7 +11,7 @@ import { genererSeoStatique } from "./lib/seo.mjs";
 
 import { synchroniserProjectionV0 } from "./lib/referentiel-projection.mjs";
 import { compacter, construireGraphe, disposer } from "../web/graphe-referentiel.js";
-import { enrichirMetiers, verifierMetiers } from "../web/metiers.js";
+import { couvertureMetiers, enrichirMetiers, verifierMetiers } from "../web/metiers.js";
 
 const racine = fileURLToPath(new URL("..", import.meta.url));
 const { version } = JSON.parse(await readFile(`${racine}package.json`, "utf8"));
@@ -58,6 +58,10 @@ await writeFile(`${racine}dist/trophees.json`, `${JSON.stringify(collectionTroph
   const publie = enrichirMetiers(metiers, projection, titres);
   await writeFile(`${racine}dist/metiers.json`, `${JSON.stringify(publie)}\n`);
   console.log(`Espace Métiers : ${metiers.metiers.length} métiers, ${metiers.disciplines.length} disciplines, ${Object.keys(publie.notions).length} notions reliées.`);
+  // Couverture (chantier Métiers, docs/chantiers/metiers.md) : information, jamais bloquante.
+  const c = couvertureMetiers(metiers, Object.values(projection.notions));
+  const statuts = (s) => Object.entries(s).map(([k, n]) => `${k} ${n}`).join(", ");
+  console.log(`Couverture métiers : ${c.notions.reliees}/${c.notions.total} notions reliées ; ONISEP ${c.avecOnisep}/${c.metiers}, ROME ${c.avecRome}/${c.metiers}, niveau d'accès ${c.avecNiveau}/${c.metiers} ; correspondances métiers (${statuts(c.correspondances.metiers)}), disciplines (${statuts(c.correspondances.disciplines)}).`);
 }
 await versionnerRessources(`${racine}dist`);
 // Blog (issue #277) : écrit après la boîte à idées et le versionnement, qui ne parcourent que les pages de la racine

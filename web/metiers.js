@@ -2,12 +2,29 @@
 // référentiel → disciplines académiques → métiers → gestes métier. Module pur, sans DOM : partagé par le build
 // (validation, enrichissement de `dist/metiers.json`) et par l'écran du site. Testé par tests/unit/metiers.test.mjs.
 
-export const VERSION_METIERS = 1;
+export const VERSION_METIERS = 2;
 export const TYPES_SELECTION = Object.freeze(["metier", "discipline", "notion", "geste"]);
+// Statut d'une correspondance (discipline → notions, métier → disciplines) : reprise de la maquette V5, proposée par un
+// agent ou un import, ou validée par une relecture humaine (date `relue`, que seul un humain renseigne). Plan : chantier
+// docs/chantiers/metiers.md, ADR 0042.
+export const STATUTS_CORRESPONDANCE = Object.freeze(["v5", "proposition", "validee"]);
+// Niveau d'accès minimum au métier, aligné sur les niveaux de diplôme utilisés par l'ONISEP.
+export const NIVEAUX_ACCES = Object.freeze(["cap", "bac", "bac+2", "bac+3", "bac+5", "bac+8"]);
+const MOTIF_ONISEP = /^MET\.\d+$/;
+const MOTIF_ROME = /^[A-N]\d{4}$/;
+const MOTIF_DATE = /^\d{4}-\d{2}-\d{2}$/;
+
+// Statut et relecture d'un élément : « validee » exige une date de relecture humaine.
+function verifierCorrespondance(element, erreurs) {
+  if (!STATUTS_CORRESPONDANCE.includes(element.correspondance)) erreurs.push(`${element.id} : correspondance inconnue`);
+  if (element.relue !== undefined && !MOTIF_DATE.test(String(element.relue))) erreurs.push(`${element.id} : date de relecture invalide`);
+  if (element.correspondance === "validee" && element.relue === undefined) erreurs.push(`${element.id} : correspondance validée sans relecture`);
+}
 
 /**
  * Erreurs de cohérence de `referentiel/metiers-v0.json` (liste vide si tout va bien) : identifiants uniques, catégorie
- * et disciplines connues, notions présentes dans le référentiel (`notionsConnues` : ensemble d'identifiants).
+ * et disciplines connues, notions présentes dans le référentiel (`notionsConnues` : ensemble d'identifiants), statut
+ * des correspondances, identifiants externes (ONISEP, ROME) et niveau d'accès bien formés.
  */
 export function verifierMetiers(donnees, notionsConnues) {
   const erreurs = [];
@@ -17,18 +34,61 @@ export function verifierMetiers(donnees, notionsConnues) {
   for (const d of donnees?.disciplines ?? []) {
     if (!d.id || disciplines.has(d.id)) erreurs.push(`discipline en double ou sans identifiant : ${d.id}`);
     disciplines.set(d.id, d);
-    if (!["v5", "proposition"].includes(d.correspondance)) erreurs.push(`${d.id} : correspondance inconnue`);
+    verifierCorrespondance(d, erreurs);
     for (const n of d.notions ?? []) if (!notionsConnues.has(n)) erreurs.push(`${d.id} : notion inconnue ${n}`);
   }
   const metiers = new Set();
+  const onisep = new Map();
   for (const m of donnees?.metiers ?? []) {
     if (!m.id || metiers.has(m.id)) erreurs.push(`métier en double ou sans identifiant : ${m.id}`);
     metiers.add(m.id);
     if (!categories.has(m.categorie)) erreurs.push(`${m.id} : catégorie inconnue ${m.categorie}`);
     for (const d of m.disciplines ?? []) if (!disciplines.has(d)) erreurs.push(`${m.id} : discipline inconnue ${d}`);
     if (!m.gestes?.length) erreurs.push(`${m.id} : aucun geste métier`);
+    verifierCorrespondance(m, erreurs);
+    if (m.onisep !== undefined) {
+      if (!MOTIF_ONISEP.test(String(m.onisep))) erreurs.push(`${m.id} : identifiant ONISEP invalide ${m.onisep}`);
+      else if (onisep.has(m.onisep)) erreurs.push(`${m.id} : identifiant ONISEP déjà utilisé par ${onisep.get(m.onisep)}`);
+      else onisep.set(m.onisep, m.id);
+    }
+    if (m.rome !== undefined) {
+      if (!Array.isArray(m.rome) || !m.rome.length) erreurs.push(`${m.id} : codes ROME attendus en liste non vide`);
+      else for (const code of m.rome) if (!MOTIF_ROME.test(String(code))) erreurs.push(`${m.id} : code ROME invalide ${code}`);
+    }
+    if (m.niveauAcces !== undefined && !NIVEAUX_ACCES.includes(m.niveauAcces)) erreurs.push(`${m.id} : niveau d'accès inconnu ${m.niveauAcces}`);
   }
   return erreurs;
+}
+
+/**
+ * Indicateurs de couverture (chantier Métiers) : métiers rattachés à l'ONISEP et au ROME, statuts des correspondances,
+ * notions du référentiel reliées à au moins un métier, au total et par matière (`notion.<matière>.<slug>`).
+ * `notionsDuReferentiel` : identifiants canoniques de toutes les notions (valeurs de `projection.notions`).
+ */
+export function couvertureMetiers(donnees, notionsDuReferentiel) {
+  const compter = (liste) => {
+    const statuts = Object.fromEntries(STATUTS_CORRESPONDANCE.map((s) => [s, 0]));
+    for (const e of liste) if (e.correspondance in statuts) statuts[e.correspondance] += 1;
+    return statuts;
+  };
+  const disciplinesUtilisees = new Set(donnees.metiers.flatMap((m) => m.disciplines));
+  const reliees = new Set(donnees.disciplines.filter((d) => disciplinesUtilisees.has(d.id)).flatMap((d) => d.notions));
+  const parMatiere = {};
+  for (const id of new Set(notionsDuReferentiel)) {
+    const matiere = String(id).split(".")[1] ?? "";
+    parMatiere[matiere] ??= { reliees: 0, total: 0 };
+    parMatiere[matiere].total += 1;
+    if (reliees.has(id)) parMatiere[matiere].reliees += 1;
+  }
+  const total = Object.values(parMatiere).reduce((s, m) => s + m.total, 0);
+  return {
+    metiers: donnees.metiers.length,
+    avecOnisep: donnees.metiers.filter((m) => m.onisep).length,
+    avecRome: donnees.metiers.filter((m) => m.rome?.length).length,
+    avecNiveau: donnees.metiers.filter((m) => m.niveauAcces).length,
+    correspondances: { metiers: compter(donnees.metiers), disciplines: compter(donnees.disciplines) },
+    notions: { reliees: Object.values(parMatiere).reduce((s, m) => s + m.reliees, 0), total, parMatiere }
+  };
 }
 
 /**

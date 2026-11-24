@@ -1,6 +1,6 @@
 {
-  "version": 1,
-  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider.",
+  "version": 2,
+  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès.",
   "categories": [
     {
       "id": "disc",
@@ -403,7 +403,8 @@
         "Tests utilisateurs",
         "Architecture info"
       ],
-      "contexte": "Conception d’interfaces numériques centrées sur l’humain."
+      "contexte": "Conception d’interfaces numériques centrées sur l’humain.",
+      "correspondance": "v5"
     },
     {
       "id": "data-analyst",
@@ -418,7 +419,8 @@
         "Nettoyage données",
         "Datavisualisation"
       ],
-      "contexte": "Transformation de données brutes en indicateurs décisionnels."
+      "contexte": "Transformation de données brutes en indicateurs décisionnels.",
+      "correspondance": "v5"
     },
     {
       "id": "developpeur-web",
@@ -433,7 +435,8 @@
         "Débogage JS",
         "Gestion API REST"
       ],
-      "contexte": "Création et maintenance d’applications web interactives."
+      "contexte": "Création et maintenance d’applications web interactives.",
+      "correspondance": "v5"
     },
     {
       "id": "architecte-cloud",
@@ -448,7 +451,8 @@
         "Sécurisation IAM",
         "Conteneurisation"
       ],
-      "contexte": "Infrastructure distribuée haute disponibilité."
+      "contexte": "Infrastructure distribuée haute disponibilité.",
+      "correspondance": "v5"
     },
     {
       "id": "ebeniste",
@@ -463,7 +467,8 @@
         "Finition au tampon",
         "Lecture de plan"
       ],
-      "contexte": "Fabrication de mobilier sur mesure et restauration."
+      "contexte": "Fabrication de mobilier sur mesure et restauration.",
+      "correspondance": "v5"
     },
     {
       "id": "ceramiste",
@@ -478,7 +483,8 @@
         "Formulation émaux",
         "Conduite cuisson"
       ],
-      "contexte": "Création d’objets utilitaires et artistiques en terre cuite."
+      "contexte": "Création d’objets utilitaires et artistiques en terre cuite.",
+      "correspondance": "v5"
     },
     {
       "id": "maroquinier",
@@ -493,7 +499,8 @@
         "Point sellier",
         "Parage du cuir"
       ],
-      "contexte": "Confection d’articles de maroquinerie haute précision."
+      "contexte": "Confection d’articles de maroquinerie haute précision.",
+      "correspondance": "v5"
     },
     {
       "id": "menuisier-agenceur",
@@ -508,7 +515,8 @@
         "Usinage CNC",
         "Pose sur chantier"
       ],
-      "contexte": "Aménagement intérieur bois et agencement d’espaces."
+      "contexte": "Aménagement intérieur bois et agencement d’espaces.",
+      "correspondance": "v5"
     },
     {
       "id": "acheteur-industriel",
@@ -523,7 +531,8 @@
         "Négociation",
         "Sourcing mondial"
       ],
-      "contexte": "Optimisation de la chaîne d’approvisionnement."
+      "contexte": "Optimisation de la chaîne d’approvisionnement.",
+      "correspondance": "v5"
     },
     {
       "id": "charge-daffaires",
@@ -538,7 +547,8 @@
         "Prospection B2B",
         "Suivi de marge"
       ],
-      "contexte": "Développement commercial et pilotage de contrats."
+      "contexte": "Développement commercial et pilotage de contrats.",
+      "correspondance": "v5"
     },
     {
       "id": "resp-logistique",
@@ -553,7 +563,8 @@
         "Planification flux",
         "Audit entrepôt"
       ],
-      "contexte": "Coordination des flux physiques et des stocks."
+      "contexte": "Coordination des flux physiques et des stocks.",
+      "correspondance": "v5"
     },
     {
       "id": "controleur-gestion",
@@ -568,7 +579,8 @@
         "Analyse des écarts",
         "Reporting financier"
       ],
-      "contexte": "Pilotage de la performance économique de l’entreprise."
+      "contexte": "Pilotage de la performance économique de l’entreprise.",
+      "correspondance": "v5"
     },
     {
       "id": "content-strategist",
@@ -583,7 +595,8 @@
         "Rédaction SEO",
         "Storytelling"
       ],
-      "contexte": "Production de contenus à forte valeur ajoutée."
+      "contexte": "Production de contenus à forte valeur ajoutée.",
+      "correspondance": "v5"
     },
     {
       "id": "traffic-manager",
@@ -598,7 +611,8 @@
         "Optimisation ROAS",
         "Paramétrage Analytics"
       ],
-      "contexte": "Acquisition et conversion d’audience en ligne."
+      "contexte": "Acquisition et conversion d’audience en ligne.",
+      "correspondance": "v5"
     },
     {
       "id": "brand-manager",
@@ -613,7 +627,8 @@
         "Veille culturelle",
         "Brief créatif"
       ],
-      "contexte": "Construction et cohérence de l’identité de marque."
+      "contexte": "Construction et cohérence de l’identité de marque.",
+      "correspondance": "v5"
     },
     {
       "id": "community-builder",
@@ -628,7 +643,8 @@
         "Modération active",
         "Événementiel"
       ],
-      "contexte": "Fédérer et engager une communauté autour d’un projet."
+      "contexte": "Fédérer et engager une communauté autour d’un projet.",
+      "correspondance": "v5"
     },
     {
       "id": "ing-biomedical",
@@ -643,7 +659,8 @@
         "Conformité normes",
         "Maintenance préventive"
       ],
-      "contexte": "Conception et suivi des dispositifs médicaux."
+      "contexte": "Conception et suivi des dispositifs médicaux.",
+      "correspondance": "v5"
     },
     {
       "id": "eco-concepteur",
@@ -658,7 +675,8 @@
         "Substitution matériaux",
         "Éco-audit"
       ],
-      "contexte": "Réduction de l’empreinte environnementale des produits."
+      "contexte": "Réduction de l’empreinte environnementale des produits.",
+      "correspondance": "v5"
     },
     {
       "id": "geometre-topographe",
@@ -673,7 +691,8 @@
         "Calculer des coordonnées",
         "Produire un plan"
       ],
-      "contexte": "Mesure, représentation et implantation précise des espaces."
+      "contexte": "Mesure, représentation et implantation précise des espaces.",
+      "correspondance": "v5"
     },
     {
       "id": "ingenieur-genie-civil",
@@ -689,7 +708,8 @@
         "Modéliser des efforts",
         "Contrôler une conformité"
       ],
-      "contexte": "Conception et suivi d’ouvrages durables et sûrs."
+      "contexte": "Conception et suivi d’ouvrages durables et sûrs.",
+      "correspondance": "v5"
     },
     {
       "id": "technicien-de-laboratoire",
@@ -704,7 +724,8 @@
         "Réaliser un dosage",
         "Interpréter des mesures"
       ],
-      "contexte": "Réalisation d’analyses et contrôle de la fiabilité des résultats."
+      "contexte": "Réalisation d’analyses et contrôle de la fiabilité des résultats.",
+      "correspondance": "v5"
     },
     {
       "id": "biologiste-de-lenvironnement",
@@ -720,7 +741,8 @@
         "Identifier des indicateurs",
         "Analyser une évolution"
       ],
-      "contexte": "Étude de la biodiversité et de la qualité des écosystèmes."
+      "contexte": "Étude de la biodiversité et de la qualité des écosystèmes.",
+      "correspondance": "v5"
     },
     {
       "id": "agronome",
@@ -736,7 +758,8 @@
         "Comparer des rendements",
         "Concevoir un itinéraire cultural"
       ],
-      "contexte": "Amélioration des systèmes de production agricole."
+      "contexte": "Amélioration des systèmes de production agricole.",
+      "correspondance": "v5"
     },
     {
       "id": "urbaniste",
@@ -752,7 +775,8 @@
         "Cartographier des usages",
         "Évaluer un scénario"
       ],
-      "contexte": "Conception de projets urbains à partir des besoins et contraintes du territoire."
+      "contexte": "Conception de projets urbains à partir des besoins et contraintes du territoire.",
+      "correspondance": "v5"
     },
     {
       "id": "professeur-de-sciences",
@@ -768,7 +792,8 @@
         "Conduire une expérimentation",
         "Évaluer un raisonnement"
       ],
-      "contexte": "Transmission des démarches scientifiques et accompagnement des apprentissages."
+      "contexte": "Transmission des démarches scientifiques et accompagnement des apprentissages.",
+      "correspondance": "v5"
     },
     {
       "id": "journaliste-scientifique",
@@ -784,7 +809,8 @@
         "Vulgariser un résultat",
         "Structurer un article"
       ],
-      "contexte": "Médiation fiable de connaissances scientifiques auprès du public."
+      "contexte": "Médiation fiable de connaissances scientifiques auprès du public.",
+      "correspondance": "v5"
     },
     {
       "id": "analyste-des-risques",
@@ -800,7 +826,8 @@
         "Estimer une probabilité",
         "Prioriser des mesures"
       ],
-      "contexte": "Identification, quantification et suivi des risques."
+      "contexte": "Identification, quantification et suivi des risques.",
+      "correspondance": "v5"
     },
     {
       "id": "mediateur-scientifique",
@@ -816,7 +843,8 @@
         "Concevoir un atelier",
         "Animer une démonstration"
       ],
-      "contexte": "Création de passerelles entre science, culture et publics."
+      "contexte": "Création de passerelles entre science, culture et publics.",
+      "correspondance": "v5"
     },
     {
       "id": "medecin-generaliste",
@@ -832,7 +860,8 @@
         "Établir une orientation diagnostique",
         "Coordonner un parcours de soins"
       ],
-      "contexte": "Prévention, diagnostic initial et suivi global des patients."
+      "contexte": "Prévention, diagnostic initial et suivi global des patients.",
+      "correspondance": "v5"
     },
     {
       "id": "infirmier",
@@ -848,7 +877,8 @@
         "Réaliser un soin protocolisé",
         "Transmettre des observations"
       ],
-      "contexte": "Soins, surveillance clinique et coordination au contact des patients."
+      "contexte": "Soins, surveillance clinique et coordination au contact des patients.",
+      "correspondance": "v5"
     },
     {
       "id": "aide-soignant",
@@ -864,7 +894,8 @@
         "Observer une évolution clinique",
         "Appliquer les règles d’hygiène"
       ],
-      "contexte": "Accompagnement, confort et observation quotidienne des personnes soignées."
+      "contexte": "Accompagnement, confort et observation quotidienne des personnes soignées.",
+      "correspondance": "v5"
     },
     {
       "id": "pharmacien",
@@ -880,7 +911,8 @@
         "Sécuriser une dispensation",
         "Conseiller sur le bon usage"
       ],
-      "contexte": "Délivrance sécurisée, conseil et suivi des produits de santé."
+      "contexte": "Délivrance sécurisée, conseil et suivi des produits de santé.",
+      "correspondance": "v5"
     },
     {
       "id": "sage-femme",
@@ -896,7 +928,8 @@
         "Accompagner un accouchement",
         "Conduire une action de prévention"
       ],
-      "contexte": "Suivi médical, prévention et accompagnement autour de la grossesse et de la naissance."
+      "contexte": "Suivi médical, prévention et accompagnement autour de la grossesse et de la naissance.",
+      "correspondance": "v5"
     },
     {
       "id": "kinesitherapeute",
@@ -912,7 +945,8 @@
         "Construire un programme de rééducation",
         "Guider un exercice thérapeutique"
       ],
-      "contexte": "Évaluation et rééducation des fonctions motrices et respiratoires."
+      "contexte": "Évaluation et rééducation des fonctions motrices et respiratoires.",
+      "correspondance": "v5"
     },
     {
       "id": "dentiste",
@@ -928,7 +962,8 @@
         "Planifier un soin dentaire",
         "Prévenir les risques infectieux"
       ],
-      "contexte": "Prévention, diagnostic et traitement des affections bucco-dentaires."
+      "contexte": "Prévention, diagnostic et traitement des affections bucco-dentaires.",
+      "correspondance": "v5"
     },
     {
       "id": "technicien-de-laboratoire-medical",
@@ -944,7 +979,8 @@
         "Exécuter une analyse contrôlée",
         "Valider la qualité technique"
       ],
-      "contexte": "Réalisation et contrôle technique des analyses de biologie médicale."
+      "contexte": "Réalisation et contrôle technique des analyses de biologie médicale.",
+      "correspondance": "v5"
     },
     {
       "id": "manipulateur-en-electroradiologie-medicale",
@@ -960,7 +996,8 @@
         "Positionner un patient",
         "Appliquer la radioprotection"
       ],
-      "contexte": "Réalisation d’examens d’imagerie et de traitements utilisant des rayonnements."
+      "contexte": "Réalisation d’examens d’imagerie et de traitements utilisant des rayonnements.",
+      "correspondance": "v5"
     },
     {
       "id": "psychologue",
@@ -976,7 +1013,8 @@
         "Analyser une situation clinique",
         "Construire un accompagnement"
       ],
-      "contexte": "Évaluation et accompagnement psychologique des personnes et des groupes."
+      "contexte": "Évaluation et accompagnement psychologique des personnes et des groupes.",
+      "correspondance": "v5"
     }
   ]
 }

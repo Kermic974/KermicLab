@@ -2,6 +2,16 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Espace Métiers (chantier Métiers)
+
+Plan : [chantier Métiers](chantiers/metiers.md), [ADR 0042](decisions/0042-referentiel-metiers-onisep.md).
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Récupérer l'instantané « Idéo – Fiches métiers » de l'ONISEP et confirmer sa licence | `https://opendata.onisep.fr` ou data.gouv.fr (recherche « Idéo fiches métiers ») | Les sessions d'agents n'ont pas pu lire ces sites (accès réseau refusé) ; la licence conditionne la republication | Fichier déposé sous `referentiel/sources/onisep/` avec sa date et sa licence, ou accès réseau ouvert aux agents | à faire |
+| Valider l'ADR 0042 (format v2, import ONISEP) | [ADR 0042](decisions/0042-referentiel-metiers-onisep.md) | Décision de structure des données et de source externe | ADR passée au statut accepté | à faire |
+| Relire les 38 associations métier → disciplines et les 12 correspondances « proposition » | `referentiel/metiers-v0.json` | Associations reprises de la maquette V5 ou proposées par un agent ; public mineur | Champs `correspondance: "validee"` et `relue` renseignés par un humain | à faire |
+
 ## Relecture humaine vérifiable (ADR 0039)
 
 | Action | Où | Pourquoi | Comment confirmer | Statut |
