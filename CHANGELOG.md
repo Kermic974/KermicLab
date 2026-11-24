@@ -4,7 +4,11 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
-- **Espace Métiers** (ADR 0041) : nouvel espace du site, « Des notions aux métiers ». Quatre anneaux relient les notions KermicLab, 26 disciplines, 38 métiers et leurs gestes ; choisir un élément allume toute sa chaîne. Le détail liste les notions à travailler (ouvrables comme dans Éducation) et montre leur graphe 3D (prérequis directs, MicroSkills). Données : `referentiel/metiers-v0.json`, validé au build contre le référentiel. / New Careers space linking KermicLab topics to subjects, jobs and job skills, with a 3D topic graph in the details.
+## [0.2.0] — 2026-11-23
+
+- **Correctif : « Se connecter » sans effet au chargement** : les boutons de navigation (dont « Se connecter » et les onglets) ne répondaient qu'une fois le catalogue chargé, soit plusieurs secondes sur une connexion lente ; les clics faits avant étaient perdus. La navigation est désormais branchée dès le démarrage. Tests : catalogue lent, et compte en ligne retrouvé sur un nouvel appareil. / Fix: navigation buttons, including "Log in", were inert until the catalogue had loaded.
+
+- **Back-office : écran « Graphe du référentiel »** (ADR 0040) : les notions, MicroSkills et prérequis du référentiel en 3D (canvas 2D en perspective, sans dépendance ajoutée), avec filtre par discipline, recherche, isolement d'un voisinage, plus court chemin et tableau par discipline ; la disposition est calculée au build (`dist/admin/referentiel-graphe.json`). / Back-office: 3D graph of the curriculum referential.
 
 - **Refonte UX, lot 8 — accessibilité** (ADR 0039) : audit des destinations à 1 280, 900, 390 et 320 px, en clair et en sombre, en français et en anglais. Les couleurs d'état succès, chaud et danger sont foncées en thème clair pour un contraste d'au moins 4,5:1 (y compris sur leur fond doux), l'initiale de l'avatar passe à 5,5:1, les liens du pied de page et les liens de mode des Labs atteignent 28 et 32 px de haut. Test de non-régression (contrastes, cibles, onglets sur une ligne, 320 px sans défilement horizontal). La refonte de l'ADR 0039 est livrée. / Redesign batch 8: accessibility pass (state colour contrast, target sizes, 320 px); the redesign is complete.
 
