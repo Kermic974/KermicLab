@@ -49,6 +49,19 @@ test("Labo adultes : parcours autonome, points uniques, récompenses, effacement
   await page.waitForLoadState("load");
   await page.waitForFunction(() => state.tasks.length === 0);
   assert.equal(await page.evaluate(() => totalXP()), 0);
+  const ancienneSauvegarde = {
+    version: 1,
+    tasks: [{ id: "ancienne-tache", title: "Exemple fictif", domain: "Pro", energy: 2, priorities: [],
+      steps: [{ id: "ancienne-etape", text: "Ouvrir le dossier", done: "2026-11-24" }], done: "2026-11-24" }],
+    days: {}, tomorrows: {}
+  };
+  await page.locator("#importFile").setInputFiles({ name: "sauvegarde.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(ancienneSauvegarde)) });
+  await page.waitForFunction(() => state.tasks.length === 1);
+  assert.equal(await page.evaluate(() => totalXP()), 30);
+  const invalide = { ...ancienneSauvegarde, days: { '<img src=x onerror="alert(1)">': { win: "", note: "" } } };
+  await page.locator("#importFile").setInputFiles({ name: "invalide.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(invalide)) });
+  await page.waitForFunction(() => document.getElementById("toast").textContent.includes("non reconnu"));
+  assert.equal(await page.evaluate(() => totalXP()), 30);
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
