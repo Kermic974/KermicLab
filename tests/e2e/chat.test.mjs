@@ -563,7 +563,7 @@ test("navigation : 6 entrées latérales (Métiers, ADR 0041) (tableau de bord f
   assert.equal(await page.locator(".barre-laterale [data-nav=labs]").getAttribute("aria-current"), "page");
   assert.equal(await page.locator("#salut").textContent(), "Labs");
   assert.deepEqual(await page.locator("#ecran-labs .outil a").evaluateAll((liens) => liens.map((l) => l.getAttribute("href"))), [
-    "cercle/?mode=explore", "cercle/?mode=learn", "cercle/?mode=play", "labs/business-plan/", "labs/systeme-solaire/"
+    "cercle/?mode=explore", "cercle/?mode=learn", "cercle/?mode=play", "labs/business-plan/", "labs/systeme-solaire/", "labs/remediation-tdah/"
   ]);
   await page.click("#ecran-labs [data-nav=education]");
   assert.equal(await page.locator("#catalogue").isVisible(), true);

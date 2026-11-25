@@ -75,7 +75,7 @@ test("Labo adultes : clavier, mobile et absence de débordement", async () => {
   for (const tab of ["home", "brain", "sort", "action", "review", "journey", "mise-en-situation"]) {
     await page.locator(`[data-tab="${tab}"]`).click();
     assert.equal(await page.locator(`#${tab}`).isVisible(), true);
-    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `Pas de débordement dans ${tab}`);
   }
   assert.deepEqual(erreurs, []);
   await contexte.close();
