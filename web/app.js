@@ -6643,6 +6643,44 @@ function rendreListeMetiers(visibles) {
 }
 
 /** Détail de la sélection : la chaîne lue dans les deux sens, les notions KermicLab et leur graphe 3D. */
+const SCENARIOS_BUSINESS_PLAN = Object.freeze({
+  "designer-ux-ui": "kljob1",
+  "data-analyst": "kljob2",
+  "developpeur-web": "kljob3",
+  "architecte-cloud": "kljob4",
+  "ebeniste": "kljob5",
+  "ceramiste": "kljob6",
+  "maroquinier": "kljob7",
+  "menuisier-agenceur": "carpenter",
+  "acheteur-industriel": "kljob9",
+  "charge-daffaires": "kljob10",
+  "resp-logistique": "kljob11",
+  "controleur-gestion": "kljob12",
+  "content-strategist": "kljob13",
+  "traffic-manager": "kljob14",
+  "brand-manager": "kljob15",
+  "community-builder": "kljob16",
+  "ing-biomedical": "kljob17",
+  "eco-concepteur": "kljob18",
+  "geometre-topographe": "kljob19",
+  "ingenieur-genie-civil": "kljob20",
+  "technicien-de-laboratoire": "kljob21",
+  "biologiste-de-lenvironnement": "kljob22",
+  "agronome": "kljob23",
+  "urbaniste": "kljob24",
+  "professeur-de-sciences": "kljob25",
+  "journaliste-scientifique": "kljob26",
+  "analyste-des-risques": "kljob27",
+  "mediateur-scientifique": "kljob28",
+  "boulanger": "baker",
+  "cuisinier": "restaurant",
+  "coiffeur": "hairdresser",
+  "electricien-du-batiment": "electrician",
+  "plombier-chauffagiste": "plumber",
+  "macon": "mason",
+  "mecanicien-automobile": "mechanic"
+});
+
 function rendreDetailMetiers(actifs) {
   const { carte, selection } = espaceMetiers;
   const zone = $("#metiers-detail");
@@ -6671,6 +6709,14 @@ function rendreDetailMetiers(actifs) {
   tete.append(element("h3", { texte: titre, attributs: { id: "metiers-detail-titre" } }), fermer);
   const enfants = [genre, tete];
   if (metier) enfants.push(element("p", { classe: "doux", texte: metier.contexte }));
+  const scenarioBusinessPlan = metier && SCENARIOS_BUSINESS_PLAN[metier.id];
+  if (scenarioBusinessPlan) {
+    enfants.push(element("a", {
+      classe: "bouton lab",
+      cle: "labBusinessPlanAction",
+      attributs: { href: `labs/business-plan/?activite=${encodeURIComponent(scenarioBusinessPlan)}` },
+    }));
+  }
   if (metier?.niveauAcces) enfants.push(element("p", { classe: "petit metiers-niveau-acces", texte: t("metiersNiveauMetier", { niveau: t(`metiersNiveau_${metier.niveauAcces}`) }) }));
   if (metier?.correspondance === "proposition") enfants.push(element("p", { classe: "doux petit metiers-proposition", cle: "metiersMetierProposition" }));
   const disciplines = [...actifs.disciplines];

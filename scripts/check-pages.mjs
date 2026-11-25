@@ -15,9 +15,11 @@ if (fichesObsoletes.length) {
 const { sources, pages } = await chargerCatalogue([`${racine}catalogue`, `${racine}catalogue-prive`]);
 const publiees = Object.entries(pages).flatMap(([id, traductions]) =>
   Object.entries(traductions).map(([langue, html]) => ({ fichier: `Worker/${id}/${langue}`, aJour: true, html })));
-const fichierPilote = `${racine}Sample/lab/systeme-solaire.html`;
-const htmlPilote = await readFile(fichierPilote, "utf8");
-const pilotes = [{ fichier: fichierPilote, aJour: htmlPilote === appliquerCsp(htmlPilote), html: htmlPilote }];
+const pilotes = await Promise.all(["systeme-solaire", "business-plan"].map(async (id) => {
+  const fichier = `${racine}Sample/lab/${id}.html`;
+  const html = await readFile(fichier, "utf8");
+  return { fichier, aJour: html === appliquerCsp(html), html };
+}));
 const ONGLETS_DE_BASE = ["explication", "application", "mise-en-situation"];
 const erreurs = [];
 

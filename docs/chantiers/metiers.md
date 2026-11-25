@@ -145,3 +145,5 @@ pas atteint ; la mesure est refaite à chaque vague.
 Les champs `onisep`, `rome`, `niveauAcces` (de `sans-diplome` à `bac+9`), `domaines`, `synonymes` et `relue` sont
 facultatifs ; `sources` (racine) porte l'attribution des bases dont dérivent ces champs. `relue` n'est renseigné que par
 un humain, comme dans les fiches du catalogue. L'exemple illustre la forme ; ses domaines sont indicatifs.
+
+Le Lab Business Plan est accessible depuis le détail des métiers qui disposent d’un scénario associé. Le lien ouvre le simulateur avec le catalogue, les charges et l’équipe du scénario.
