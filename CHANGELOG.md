@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- Lab « À petits pas » pour adultes : organisation, mini-étapes, cycles de travail, progression et récompenses locales, publié sous `/labs/remediation-tdah/` depuis la section Labs.
+
 - **Chat sur ordinateur peu haut** : le panneau flottant réserve la hauteur de la navigation collante ; à 1 280 × 720, il ne recouvre plus « À propos ». Le mode plein écran conserve sa couverture prévue. / Keep navigation accessible above the floating chat on short desktop screens.
 
 - **Vagues complémentaires de métiers** (chantier Métiers) : outil `npm run vague:metiers` pour faire entrer les 1 032 fiches ONISEP restantes par vagues (squelette par domaine avec nom affiché, famille et disciplines proposées, vérification, garde anti-recopie, fusion en « proposition ») ; repli des disciplines par domaine ONISEP pour les fiches sans code ROME ; le test de l'écran Métiers suit la limite des anneaux au-delà de 120 métiers. / Tooling for further ONISEP career waves.

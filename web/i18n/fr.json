@@ -310,7 +310,7 @@
   "cahierBilanFin": "Tu es au bout du cahier, bravo !",
   "labsIntro": "Des applications pour explorer, manipuler et expérimenter.",
   "labsDisponibles": "Choisis ton Lab",
-  "labsSeparation": "Un Lab interactif par matière, construit autour d’une notion à explorer.",
+  "labsSeparation": "Des Labs pour explorer une notion ou pratiquer une démarche à son rythme.",
   "labCercleTitre": "Le cercle trigonométrique",
   "labCercleDescription": "Fais tourner le point sur le cercle, observe les valeurs du sinus et du cosinus et entraîne-toi à ton rythme.",
   "labSolaireTitre": "Le système solaire",
@@ -1672,5 +1672,9 @@
   "metiersMetierProposition": "Fiche proposée, en cours de relecture.",
   "metiersPlus": "Afficher {n} métier(s) de plus",
   "metiersAnneauxLimites": "Les anneaux montrent {n} métiers : choisis une famille, un niveau ou une recherche pour voir les autres.",
-  "metiersSources": "Sources : {sources}."
+  "metiersSources": "Sources : {sources}.",
+  "labRemediationTitre": "À petits pas · Organisation et attention",
+  "labRemediationNiveaux": "Adultes · Français",
+  "labRemediationDescription": "Un outil personnel pour organiser ses tâches, avancer par mini-étapes et suivre ses efforts avec des récompenses locales. Adapté d’un plan TDAH adulte ; sans diagnostic ni envoi de données.",
+  "labRemediationAction": "Ouvrir mon espace"
 }
