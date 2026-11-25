@@ -1,0 +1,17 @@
+{
+  "id": "microskill.transversal.decomposer-une-tache-en-actions-simples",
+  "type": "microskill",
+  "label": "Découper une tâche en actions simples",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "Sample/lab/remediation-tdah.md"
+  },
+  "evidence": [
+    {
+      "ref": "Sample/lab/remediation-tdah.md#decomposer",
+      "excerpt": "Transformer une tâche large en mini-étapes ordonnées et cochables."
+    }
+  ]
+}

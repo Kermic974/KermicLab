@@ -1,0 +1,13 @@
+{
+  "id": "relation.transversal.ajuster-related-conception-et-prototypage-c4-0",
+  "type": "relatedTo",
+  "source": "microskill.technologie.planifier-un-test-et-interpreter-ses-resultats",
+  "target": "microskill.transversal.identifier-un-blocage-et-ajuster-son-action",
+  "rationale": "Observer ce qui bloque, tester une piste et ajuster : une méthode à réinvestir dans un projet technique. Relation de proximité, pas équivalence ni validation de la compétence disciplinaire.",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "Sample/lab/remediation-tdah.md"
+  }
+}

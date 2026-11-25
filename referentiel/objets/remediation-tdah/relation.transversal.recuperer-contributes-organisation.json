@@ -1,0 +1,13 @@
+{
+  "id": "relation.transversal.recuperer-contributes-organisation",
+  "type": "contributesTo",
+  "source": "microskill.transversal.alterner-effort-et-recuperation",
+  "target": "skill.transversal.organiser-et-ajuster-son-action",
+  "rationale": "Utiliser les pauses comme repères pour reprendre l’action.",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "Sample/lab/remediation-tdah.md"
+  }
+}

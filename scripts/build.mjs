@@ -1,4 +1,5 @@
 import { LABS_EXPERIENCES } from "./lib/labs-experiences.mjs";
+import { lierReferencesRemediation } from "./lib/remediation-tdah.mjs";
 import { fileURLToPath } from "node:url";
 // Construit : 1) l'index du catalogue + pages pour le Worker, 2) le site statique dist/ publié sur Cloudflare Pages :
 //    le tableau de bord élève (avec le chat) à la racine et l'application autonome du cercle trigonométrique sous /cercle/.
@@ -133,6 +134,10 @@ await writeFile(`${racine}dist/_redirects`, "/dashboard/* / 301\n/dashboard / 30
 
 // Labs publiés hors catalogue (page autonome, CSP propre en meta, contrôlée par check:pages) : /labs/<id>/.
 // Écrits avant la génération SEO pour recevoir l'adresse canonique et figurer dans le sitemap.
+const sourceRemediation = `${racine}Sample/lab/remediation-tdah.html`;
+const avantRemediation = await readFile(sourceRemediation, "utf8");
+const apresRemediation = await lierReferencesRemediation(avantRemediation, racine, apiUrl);
+if (avantRemediation !== apresRemediation) await writeFile(sourceRemediation, apresRemediation);
 const LABS_PUBLIES = [{ id: "systeme-solaire", source: "Sample/lab/systeme-solaire.html" }, { id: "business-plan", source: "Sample/lab/business-plan.html" }, { id: "remediation-tdah", source: "Sample/lab/remediation-tdah.html" }];
 for (const lab of [...LABS_PUBLIES, ...LABS_EXPERIENCES]) {
   await mkdir(`${racine}dist/labs/${lab.id}`, { recursive: true });

@@ -1,0 +1,13 @@
+{
+  "id": "relation.transversal.commencer-related-ecrire-et-reecrire-c4-0",
+  "type": "relatedTo",
+  "source": "microskill.francais.reecrire-un-texte-pour-l-ameliorer",
+  "target": "microskill.transversal.initier-une-premiere-petite-action",
+  "rationale": "Commencer par une première version améliorable ; la réécriture relève ensuite du contenu de français. Relation de proximité, pas équivalence ni validation de la compétence disciplinaire.",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "Sample/lab/remediation-tdah.md"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "microskill.transversal.prioriser-selon-son-energie",
+  "type": "microskill",
+  "label": "Choisir des priorités selon son énergie",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "Sample/lab/remediation-tdah.md"
+  },
+  "evidence": [
+    {
+      "ref": "Sample/lab/remediation-tdah.md#prioriser",
+      "excerpt": "Observer son énergie et limiter les priorités de la journée."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.transversal.recentrer-contributes-organisation",
+  "type": "contributesTo",
+  "source": "microskill.transversal.revenir-a-la-tache-apres-une-distraction",
+  "target": "skill.transversal.organiser-et-ajuster-son-action",
+  "rationale": "Préparer un espace monotâche et retrouver le fil de l’action.",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "Sample/lab/remediation-tdah.md"
+  }
+}

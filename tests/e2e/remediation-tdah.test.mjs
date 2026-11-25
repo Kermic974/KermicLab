@@ -70,13 +70,54 @@ test("Labo adultes : clavier, mobile et absence de débordement", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { viewport: { width: 390, height: 844 } });
   await page.goto(`${serveur.url}/labs/remediation-tdah/`);
   await page.locator("[data-tab=explication]").focus();
+  for (const bouton of await page.locator("header nav button").all()) {
+    const taille = await bouton.boundingBox();
+    assert.ok(taille.width >= 90 && taille.height <= 100, "Navigation mobile lisible, sans mots découpés en colonnes");
+  }
   await page.keyboard.press("Enter");
   assert.equal(await page.locator("#explication").isVisible(), true);
-  for (const tab of ["home", "brain", "sort", "action", "review", "journey", "mise-en-situation"]) {
+  for (const tab of ["home", "brain", "sort", "action", "review", "journey", "mise-en-situation", "memo"]) {
     await page.locator(`[data-tab="${tab}"]`).click();
     assert.equal(await page.locator(`#${tab}`).isVisible(), true);
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `Pas de débordement dans ${tab}`);
   }
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("Micro-skills : rebond contextualisé vers les mémos et les notions sans gain de maîtrise fictif", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url);
+  await page.goto(`${serveur.url}/labs/remediation-tdah/`);
+  await page.locator("[data-tab=brain]").click();
+  await page.locator("#title").fill("Un exemple fictif à découper");
+  await page.locator("#addForm button").click();
+  await page.locator("#inbox [data-open]").click();
+  await page.locator("#stepText").fill("Ouvrir le document");
+  await page.locator("#stepForm button").click();
+  const id = "microskill.transversal.decomposer-une-tache-en-actions-simples";
+  const points = await page.evaluate(() => totalXP());
+  await page.locator(`[data-retenir="${id}"]`).click();
+  assert.equal(await page.locator("#memo").isVisible(), true);
+  const carte = page.locator(`[data-competence="${id}"]`);
+  assert.match(await carte.textContent(), /Pratiqué aujourd’hui/);
+  assert.match(await carte.textContent(), /Une case correspond à une action simple/);
+  assert.match(await carte.textContent(), /Trouver l'inconnue intermédiaire/);
+  await carte.locator("summary").first().click();
+  assert.equal(await carte.locator("code").textContent(), id);
+  assert.equal(await page.evaluate(() => totalXP()), points, "Lire un mémo ne valide pas une maîtrise et ne donne pas de points");
+  await carte.locator("[data-pratiquer]").click();
+  assert.equal(await page.locator("#stepText").isVisible(), true);
+  assert.equal(await page.locator("#actionDetails .steps").textContent(), "Ouvrir le document");
+  await page.reload();
+  assert.equal(await page.locator("#memo").isVisible(), true, "Le lien profond retrouve le repère");
+  assert.equal(await page.locator("#filtreMicroSkill").inputValue(), id);
+  assert.match(await page.locator(`[data-competence="${id}"]`).textContent(), /Pratiqué aujourd’hui/);
+  await contexte.route("**/maquettes/problemes-a-etapes-cm?lang=fr", route => route.fulfill({ contentType: "text/html", body: "<title>Notion liée</title><p>Lecture complète</p>" }));
+  const ouverture = page.waitForEvent("popup");
+  await page.locator('[data-notion-connexe="problemes-a-etapes-cm"]').click();
+  const notion = await ouverture;
+  await notion.waitForLoadState();
+  assert.equal(new URL(notion.url()).pathname, "/maquettes/problemes-a-etapes-cm");
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });

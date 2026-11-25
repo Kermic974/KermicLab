@@ -1,0 +1,17 @@
+{
+  "id": "microskill.transversal.externaliser-les-taches-et-les-pensees",
+  "type": "microskill",
+  "label": "Externaliser les tâches et les pensées",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "Sample/lab/remediation-tdah.md"
+  },
+  "evidence": [
+    {
+      "ref": "Sample/lab/remediation-tdah.md#externaliser",
+      "excerpt": "Noter les tâches et les idées dans un support unique."
+    }
+  ]
+}

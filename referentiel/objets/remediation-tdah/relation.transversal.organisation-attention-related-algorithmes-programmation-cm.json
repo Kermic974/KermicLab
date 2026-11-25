@@ -1,0 +1,13 @@
+{
+  "id": "relation.transversal.organisation-attention-related-algorithmes-programmation-cm",
+  "type": "relatedTo",
+  "source": "notion.mathematiques.algorithmes-programmation-cm",
+  "target": "notion.transversal.organisation-et-attention",
+  "rationale": "Notion connexe mobilisable pour transférer une méthode ou éclairer la pratique ; le labo ne valide pas les connaissances de cette notion.",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "Sample/lab/remediation-tdah.md"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.transversal.decomposer-related-problemes-a-etapes-cm-0",
+  "type": "relatedTo",
+  "source": "microskill.mathematiques.resoudre-un-probleme-a-plusieurs-etapes",
+  "target": "microskill.transversal.decomposer-une-tache-en-actions-simples",
+  "rationale": "Repérer les étapes intermédiaires avant la réponse finale. Relation de proximité, pas équivalence ni validation de la compétence disciplinaire.",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "Sample/lab/remediation-tdah.md"
+  }
+}

@@ -49,7 +49,7 @@
     <nav aria-label="Fichiers de l'atelier"><a href="index.html">Site et parcours principal</a><a href="notion.html">Page de notion</a><a href="cercle.html">Application cercle</a><a href="jeux.html">Les neuf jeux</a><a href="editorial.html">Pages annexes</a><a href="inventaire.html">Inventaire des écrans</a></nav>
 <!-- ux:suivi:debut -->
 <aside data-suivi-ux style="border:1px dashed #777;padding:1rem;margin:1rem 0;background:#eee;overflow-wrap:anywhere">
-  <strong>Squelette v1.114.0 · 2026-11-25</strong>
+  <strong>Squelette v1.115.0 · 2026-11-25</strong>
   <p>Référence source : <a href="https://github.com/Kermic974/KermicLab/tree/27ded583a3436aba68ec5463c2a482bbb5529588" target="_blank" rel="noopener noreferrer" data-lien-actif>27ded58</a>.
   <a href="https://github.com/Kermic974/KermicLab/commits/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>Historique des sources</a> · <a href="https://github.com/Kermic974/KermicLab/blob/main/docs/ux/index.html" target="_blank" rel="noopener noreferrer" data-lien-actif>Dernier squelette sur main</a></p>
   <details><summary>Comparer avec les vues actives et les sources</summary>
@@ -81,7 +81,7 @@
 <li><a href="#comptes">Squelette</a> ↔ Type de profil : dialogue Profil, bloc masqué tant que connexionActive vaut false</li>
 <li><a href="#backoffice">Squelette</a> ↔ <a href="https://kermiclab.online/admin/" target="_blank" rel="noopener noreferrer" data-lien-actif>Back-office : page séparée /admin/, clé partagée, douze écrans dont le graphe du référentiel (ADR 0026, 0031, 0040)</a></li></ul>
     <p>Sources liées : <a href="https://github.com/Kermic974/KermicLab/tree/main/web" target="_blank" rel="noopener noreferrer" data-lien-actif>web</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/catalogue" target="_blank" rel="noopener noreferrer" data-lien-actif>catalogue</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/gabarit/jeux/trophees.js" target="_blank" rel="noopener noreferrer" data-lien-actif>gabarit/jeux/trophees.js</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/scripts/lib/trophees.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/lib/trophees.mjs</a> · <a href="https://github.com/Kermic974/KermicLab/tree/main/scripts/roadmap.mjs" target="_blank" rel="noopener noreferrer" data-lien-actif>scripts/roadmap.mjs</a></p>
-    <p>Empreinte des sources : <code>b9fd9ca218c5849bd3cd9ca82dab0c53ecf1d2c215daf22305311b8ac2c06f32</code><br>Empreinte du squelette hors cartouche : <code>a4f17861e4499ef55a1c2ccdfdf449f565224599d404193a0b53b28878d40489</code></p>
+    <p>Empreinte des sources : <code>b9fd9ca218c5849bd3cd9ca82dab0c53ecf1d2c215daf22305311b8ac2c06f32</code><br>Empreinte du squelette hors cartouche : <code>999eb0a8239804491160c0d1197529d1f5f7bb9c9c2bf887f41b57ae02970a08</code></p>
     <p>Registre et journal : docs/ux/suivi.json. Mise à jour : <code>node scripts/ux-suivi.mjs --version=X.Y.Z</code>. Contrôle sans modification : <code>node scripts/ux-suivi.mjs --check</code>.</p>
   </details>
 </aside>
@@ -191,7 +191,7 @@
           <article class="carte"><h4>Lab Business Plan</h4><p>Comparer des scénarios métier et évaluer leur faisabilité sur 36 mois.</p><p><strong>Ouvrir le Lab</strong> → /labs/business-plan/</p></article>
           <article class="carte"><h4>Laboratoires de sciences et SES</h4><p>Quatre expériences guidées et deux versions précédentes du titrage.</p><p><strong>Choisir une expérience</strong> → /labs/experiences/</p></article>
           <article class="carte"><h4>Le système solaire</h4><p>Le Soleil, les huit planètes, le jour, la nuit et l’année : manipule le modèle, lis les explications et la fiche, gagne des badges et réponds à cinq questions.</p><p><strong>Ouvrir le Lab</strong> → /labs/systeme-solaire/</p><p class="note">Page autonome publiée sous /labs/systeme-solaire/ (onglets Explication, Ciel, Mission, Fiche, À retenir ; texte masquable dans le Ciel ; badges et XP gardés sur l’appareil ; parcours textuel sans WebGL). Ouverte dans le même onglet depuis la carte.</p></article>
-          <article class="carte"><h4>À petits pas · Organisation et attention</h4><p>Adultes · Français. Tâches, mini-étapes, énergie, cycles de travail, bilan et récompenses, gardés localement. Sans diagnostic ni envoi de données.</p><p><strong>Ouvrir mon espace</strong> → /labs/remediation-tdah/</p><p class="note">Page autonome en français, ouverte dans le même onglet ; export/import volontaire pour reprendre une sauvegarde du fichier HTML local.</p></article>
+          <article class="carte"><h4>À petits pas · Organisation et attention</h4><p>Adultes · Français. Tâches, mini-étapes, énergie, cycles de travail, bilan et récompenses, gardés localement. Huit micro-skills transversaux partagés, repères contextuels et onglet À retenir relié aux mémos de six notions du catalogue. Sans diagnostic ni envoi de données.</p><p><strong>Ouvrir mon espace</strong> → /labs/remediation-tdah/</p><p class="note">Page autonome en français, ouverte dans le même onglet ; export/import volontaire pour reprendre une sauvegarde du fichier HTML local.</p></article>
         </div>
       </section>
       <section class="ecran" id="metiers" data-ecran="metiers" data-vue-active="metiers" data-source="web/index.html:ecran-metiers">

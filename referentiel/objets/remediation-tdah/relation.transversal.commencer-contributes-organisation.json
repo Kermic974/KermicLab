@@ -1,0 +1,13 @@
+{
+  "id": "relation.transversal.commencer-contributes-organisation",
+  "type": "contributesTo",
+  "source": "microskill.transversal.initier-une-premiere-petite-action",
+  "target": "skill.transversal.organiser-et-ajuster-son-action",
+  "rationale": "Commencer par un geste limité, avec le droit de s’arrêter.",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "Sample/lab/remediation-tdah.md"
+  }
+}
