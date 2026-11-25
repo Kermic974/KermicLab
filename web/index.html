@@ -354,10 +354,61 @@
             <a class="bouton lab" href="labs/business-plan/" data-i18n="labBusinessPlanAction"></a>
           </div>
         </article>
-        <article class="carte outil" id="lab-experiences" data-espace-carte="labs">
-          <h3 data-i18n="labExperiencesTitre"></h3>
-          <p class="doux" data-i18n="labExperiencesDescription"></p>
-          <div class="outil-actions"><a class="bouton lab" href="labs/experiences/" data-i18n="labExperiencesAction"></a></div>
+        <article class="carte outil" id="lab-quantique" data-espace-carte="labs">
+          <h3 data-i18n="labDirect_quantique_titre"></h3>
+          <p class="doux" data-i18n="labDirect_quantique_description"></p>
+          <div class="outil-actions"><a class="bouton lab" href="labs/experiences/quantique/" data-i18n="labDirectOuvrir"></a></div>
+          <p class="petit doux" data-i18n="labDirectNotions"></p>
+          <div class="outil-actions">
+            <button type="button" class="lien-bouton" data-lab-notion="diffraction-et-interferences" data-i18n="labDirect_diffraction_et_interferences_notion"></button>
+          </div>
+        </article>
+        <article class="carte outil" id="lab-atomes" data-espace-carte="labs">
+          <h3 data-i18n="labDirect_atomes_titre"></h3>
+          <p class="doux" data-i18n="labDirect_atomes_description"></p>
+          <div class="outil-actions"><a class="bouton lab" href="labs/experiences/atomes/" data-i18n="labDirectOuvrir"></a></div>
+          <p class="petit doux" data-i18n="labDirectNotions"></p>
+          <div class="outil-actions">
+            <button type="button" class="lien-bouton" data-lab-notion="atomes-et-molecules" data-i18n="labDirect_atomes_et_molecules_notion"></button>
+            <button type="button" class="lien-bouton" data-lab-notion="univers-et-atome-l" data-i18n="labDirect_univers_et_atome_l_notion"></button>
+          </div>
+        </article>
+        <article class="carte outil" id="lab-marche-ses" data-espace-carte="labs">
+          <h3 data-i18n="labDirect_marche_ses_titre"></h3>
+          <p class="doux" data-i18n="labDirect_marche_ses_description"></p>
+          <div class="outil-actions"><a class="bouton lab" href="labs/experiences/marche-ses/" data-i18n="labDirectOuvrir"></a></div>
+          <p class="petit doux" data-i18n="labDirectNotions"></p>
+          <div class="outil-actions">
+            <button type="button" class="lien-bouton" data-lab-notion="ses-marches-et-prix-l" data-i18n="labDirect_ses_marches_et_prix_l_notion"></button>
+          </div>
+        </article>
+        <article class="carte outil" id="lab-titrage" data-espace-carte="labs">
+          <h3 data-i18n="labDirect_titrage_titre"></h3>
+          <p class="doux" data-i18n="labDirect_titrage_description"></p>
+          <div class="outil-actions"><a class="bouton lab" href="labs/experiences/titrage/" data-i18n="labDirectOuvrir"></a></div>
+          <p class="petit doux" data-i18n="labDirectNotions"></p>
+          <div class="outil-actions">
+            <button type="button" class="lien-bouton" data-lab-notion="acides-bases-et-ph-l" data-i18n="labDirect_acides_bases_et_ph_l_notion"></button>
+            <button type="button" class="lien-bouton" data-lab-notion="acides-et-bases" data-i18n="labDirect_acides_et_bases_notion"></button>
+          </div>
+        </article>
+        <article class="carte outil" id="lab-titrage-v5" data-espace-carte="labs">
+          <h3 data-i18n="labDirect_titrage_v5_titre"></h3>
+          <p class="doux" data-i18n="labDirect_titrage_v5_description"></p>
+          <div class="outil-actions"><a class="bouton lab" href="labs/experiences/titrage-v5/" data-i18n="labDirectOuvrir"></a></div>
+          <p class="petit doux" data-i18n="labDirectNotions"></p>
+          <div class="outil-actions">
+            <button type="button" class="lien-bouton" data-lab-notion="acides-bases-et-ph-l" data-i18n="labDirect_acides_bases_et_ph_l_notion"></button>
+          </div>
+        </article>
+        <article class="carte outil" id="lab-titrage-v4" data-espace-carte="labs">
+          <h3 data-i18n="labDirect_titrage_v4_titre"></h3>
+          <p class="doux" data-i18n="labDirect_titrage_v4_description"></p>
+          <div class="outil-actions"><a class="bouton lab" href="labs/experiences/titrage-v4/" data-i18n="labDirectOuvrir"></a></div>
+          <p class="petit doux" data-i18n="labDirectNotions"></p>
+          <div class="outil-actions">
+            <button type="button" class="lien-bouton" data-lab-notion="acides-bases-et-ph-l" data-i18n="labDirect_acides_bases_et_ph_l_notion"></button>
+          </div>
         </article>
         <article class="carte outil" id="lab-systeme-solaire" data-espace-carte="labs">
           <h3 data-i18n="labSolaireTitre"></h3>
@@ -1445,6 +1496,7 @@
     <div class="bulle-titres">
       <p class="sur-titre" id="bulle-contexte"></p>
       <h2 id="bulle-titre"></h2>
+      <div id="bulle-labs-associes" class="outil-actions" hidden></div>
       <p id="bulle-relecture-badge" class="relecture-badge" hidden></p>
     </div>
     <div class="bulle-actions">

@@ -5285,6 +5285,16 @@ function ouvrirBulle(n, url) {
     : t("reprendreTitre");
   $("#bulle-contexte").textContent = contexte;
   $("#bulle-titre").textContent = n.titre;
+  const labsAssocies = $("#bulle-labs-associes");
+  const cartes = [...document.querySelectorAll("[data-lab-notion]")]
+    .filter((bouton) => bouton.dataset.labNotion === n.id)
+    .map((bouton) => bouton.closest("article"));
+  labsAssocies.replaceChildren(...cartes.map((carte) => element("a", {
+    classe: "lien-bouton",
+    texte: carte.querySelector("h3").textContent,
+    attributs: { href: carte.querySelector("a").getAttribute("href") },
+  })));
+  labsAssocies.hidden = !cartes.length;
   $("#bulle-plein-ecran").href = url;
   const cadre = $("#bulle-cadre");
   // Même origine que le chat : pas d'allow-same-origin, pour que la page reste isolée (comme dans le fil).
@@ -5299,6 +5309,12 @@ function ouvrirBulle(n, url) {
 }
 
 function brancherBulle() {
+  for (const bouton of document.querySelectorAll("[data-lab-notion]")) {
+    bouton.addEventListener("click", () => {
+      const id = bouton.dataset.labNotion;
+      ouvrirNotion(notionParId(id) ?? { id, titre: bouton.textContent });
+    });
+  }
   const bulle = $("#bulle-lab");
   brancherDialogue(bulle, $("#fermer-bulle"));
   // Fermée : on décharge la page pour arrêter ses animations et libérer la mémoire.

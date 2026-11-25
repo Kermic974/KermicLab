@@ -563,8 +563,12 @@ test("navigation : 6 entrées latérales (Métiers, ADR 0041) (tableau de bord f
   assert.equal(await page.locator(".barre-laterale [data-nav=labs]").getAttribute("aria-current"), "page");
   assert.equal(await page.locator("#salut").textContent(), "Labs");
   assert.deepEqual(await page.locator("#ecran-labs .outil a").evaluateAll((liens) => liens.map((l) => l.getAttribute("href"))), [
-    "cercle/?mode=explore", "cercle/?mode=learn", "cercle/?mode=play", "labs/business-plan/", "labs/experiences/", "labs/systeme-solaire/"
+    "cercle/?mode=explore", "cercle/?mode=learn", "cercle/?mode=play", "labs/business-plan/", "labs/experiences/quantique/", "labs/experiences/atomes/", "labs/experiences/marche-ses/", "labs/experiences/titrage/", "labs/experiences/titrage-v5/", "labs/experiences/titrage-v4/", "labs/systeme-solaire/"
   ]);
+  await page.click("#lab-atomes [data-lab-notion=atomes-et-molecules]");
+  await page.locator("#bulle-lab[open][data-notion=atomes-et-molecules]").waitFor();
+  assert.equal(await page.locator("#bulle-labs-associes a").getAttribute("href"), "labs/experiences/atomes/");
+  await page.click("#fermer-bulle");
   await page.click("#ecran-labs [data-nav=education]");
   assert.equal(await page.locator("#catalogue").isVisible(), true);
   await page.fill("#recherche-notion", "echecs");
