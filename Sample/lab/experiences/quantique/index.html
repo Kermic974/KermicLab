@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-SdS572XWGNqxDs0hRyNm/E0t/T1VttBi68KWsnADZO8='; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KermicLab — Laboratoire de Physique Quantique V4</title><script type="application/json" id="kermiclab-meta">{"id":"experiences-quantique","titre":"Physique quantique","sujet":"Physique","version":"4.0.0","date":"2026-11-25","langue":"fr","onglets":["fentes de Young"]}</script>
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --bg-panel: #111827;
+      --bg-card: #182234;
+      --border: #26334d;
+      --border-highlight: #3b4f74;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.25);
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --success: #10b981;
+      --purple: #a78bfa;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* En-tête principal */
+    header {
+      background: linear-gradient(180deg, #0f172a 0%, var(--bg-dark) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.75rem 0 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .header-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .brand-badge {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 0.3rem 0.7rem;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .status-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+    }
+
+    /* Navigation par onglets (Modules) */
+    .nav-tabs {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-tabs::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      border-bottom: 3px solid transparent;
+      border-radius: 8px 8px 0 0;
+      color: var(--text-muted);
+      padding: 0.7rem 1.1rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .tab-btn.active {
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.08);
+      border-bottom-color: var(--accent);
+    }
+
+    /* Layout principal */
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 1.25rem;
+      padding: 1.25rem 1.75rem;
+      max-width: 1536px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1024px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stage-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* Carte Canvas */
+    .canvas-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .canvas-header {
+      padding: 0.75rem 1.2rem;
+      background: rgba(24, 34, 52, 0.8);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .canvas-wrapper {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      background-color: #060911;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Infobulle hover */
+    .tooltip {
+      position: absolute;
+      pointer-events: none;
+      background: rgba(11, 17, 32, 0.94);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 0.6rem 0.85rem;
+      font-size: 0.78rem;
+      color: #fff;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      z-index: 20;
+      white-space: nowrap;
+      line-height: 1.6;
+    }
+
+    /* Barre de métriques */
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.85rem;
+    }
+
+    @media (max-width: 640px) {
+      .metrics-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .metric-box {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.85rem 1.1rem;
+    }
+
+    .metric-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    /* Panneau latéral de contrôle */
+    .controls-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .panel-section {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .section-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.6rem;
+    }
+
+    .module-controls {
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .module-controls.active {
+      display: flex;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: var(--text-main);
+    }
+
+    .control-val {
+      font-family: var(--font-mono);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      background: #1e293b;
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    /* Interrupteur Détecteur */
+    .detector-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .detector-card.active {
+      border-color: rgba(245, 158, 11, 0.5);
+      background: rgba(245, 158, 11, 0.05);
+    }
+
+    .detector-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 48px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background-color: #334155;
+      transition: 0.3s;
+      border-radius: 26px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 3px;
+      bottom: 3px;
+      background-color: #ffffff;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: var(--warning);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(22px);
+    }
+
+    /* Grille de boutons */
+    .btn-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+
+    .btn-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.5rem;
+    }
+
+    button.action-btn {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.6rem 0.75rem;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: #ffffff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    button.action-btn:hover {
+      border-color: var(--accent);
+      background: #1e293b;
+    }
+
+    button.action-btn.primary {
+      background: rgba(56, 189, 248, 0.16);
+      border-color: rgba(56, 189, 248, 0.6);
+      color: var(--accent);
+    }
+
+    button.action-btn.primary:hover {
+      background: rgba(56, 189, 248, 0.28);
+    }
+
+    button.action-btn.active-mode {
+      background: var(--accent);
+      color: #090d16;
+      border-color: var(--accent);
+    }
+
+    button.full-width {
+      grid-column: span 2;
+    }
+
+    /* Encart pédagogique */
+    .pedagogy-box {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      line-height: 1.5;
+    }
+
+    .formula {
+      background: #0b1120;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.65rem 0.85rem;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--accent);
+      text-align: center;
+    }
+
+    .challenge-card {
+      background: rgba(56, 189, 248, 0.05);
+      border: 1px dashed rgba(56, 189, 248, 0.3);
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    .challenge-card strong {
+      color: var(--accent);
+    }
+
+    /* V3 : mise en situation, banc materiel et player */
+    .mission-wrap{max-width:1536px;width:100%;margin:1rem auto 0;padding:0 1.75rem}
+    .mission{position:relative;overflow:hidden;display:grid;grid-template-columns:1.35fr .85fr;gap:1rem;padding:1rem 1.2rem;border:1px solid #365276;border-radius:15px;background:linear-gradient(120deg,#10213a,#111827 56%,#281b45);box-shadow:0 14px 36px rgba(0,0,0,.35)}
+    .mission:after{content:"";position:absolute;inset:-80% 20%;background:radial-gradient(circle,rgba(56,189,248,.14),transparent 55%);pointer-events:none}
+    .mission-main,.mission-kpis{position:relative;z-index:1}.mission-eyebrow{font-size:.68rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#7dd3fc}.mission h2{font-size:1.1rem;margin:.18rem 0 .3rem}.mission p{font-size:.8rem;color:#c5d2e3;max-width:75ch}.mission-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.62rem}.mission-tags span{font-size:.68rem;padding:.28rem .58rem;border:1px solid rgba(255,255,255,.15);border-radius:999px;background:rgba(3,9,20,.48);color:#dbeafe}.mission-kpis{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}.mission-kpi{padding:.58rem .68rem;border:1px solid rgba(255,255,255,.12);background:rgba(3,9,20,.55);border-radius:9px}.mission-kpi small{display:block;color:#94a3b8;font-size:.66rem}.mission-kpi b{display:block;margin-top:.2rem;font-size:.8rem}
+    .bench{display:grid;grid-template-columns:repeat(4,1fr);gap:.55rem;padding:.65rem;background:var(--bg-panel);border:1px solid var(--border);border-radius:12px}.tool{display:grid;grid-template-columns:34px 1fr;gap:.5rem;align-items:center;padding:.5rem;border:1px solid var(--border);border-radius:9px;background:var(--bg-card);transition:.18s}.tool:hover{border-color:var(--accent);transform:translateY(-1px)}.tool.active{border-color:var(--accent);background:#102840}.tool.ready{border-color:#10b981}.tool-icon{width:34px;height:34px;display:grid;place-items:center;border-radius:8px;background:#0d3149;color:#7dd3fc;font-weight:900}.tool b{display:block;font-size:.72rem}.tool small{display:block;color:var(--text-muted);font-size:.62rem;margin-top:.1rem}
+    .scene-hud{position:absolute;left:10px;top:10px;display:flex;flex-direction:column;gap:5px;pointer-events:none;z-index:8}.hud{width:max-content;max-width:min(70vw,520px);padding:.38rem .58rem;border:1px solid #385273;border-radius:8px;background:rgba(5,12,24,.9);box-shadow:0 6px 18px rgba(0,0,0,.4);font-size:.68rem;color:#dbeafe}.hud strong{color:#7dd3fc}.scene-actions{position:absolute;right:10px;bottom:10px;display:flex;gap:5px;z-index:9}.scene-actions button{padding:.42rem .58rem;background:rgba(5,12,24,.9);font-size:.68rem}
+    .player{display:grid;grid-template-columns:auto minmax(180px,1fr) auto;gap:.75rem;align-items:center;padding:.62rem .75rem;border:1px solid var(--border);border-radius:12px;background:#08111f}.player-buttons{display:flex;gap:.35rem}.player-buttons button{width:36px;height:34px;padding:0}.player-buttons .play{color:var(--accent);border-color:var(--accent)}.timeline{display:grid;gap:.25rem}.timeline input{width:100%;accent-color:var(--accent)}.time-labels{display:flex;justify-content:space-between;font:700 .62rem var(--font-mono);color:var(--text-muted)}.speed{display:flex;align-items:center;gap:.35rem;color:var(--text-muted);font-size:.66rem}.speed select{background:var(--bg-card);color:#fff;border:1px solid var(--border);border-radius:7px;padding:.35rem}
+    .protocol{display:grid;grid-template-columns:repeat(4,1fr);gap:.45rem}.pstep{padding:.5rem;border:1px solid var(--border);border-radius:9px;background:var(--bg-panel);font-size:.65rem;color:var(--text-muted)}.pstep b{display:block;color:#fff;margin-bottom:.12rem}.pstep.current{border-color:var(--accent);background:#102840}.pstep.done{border-color:var(--success);background:#0d2b26}.toast-v3{position:fixed;left:50%;bottom:18px;transform:translate(-50%,20px);padding:.62rem 1rem;border:1px solid rgba(56,189,248,.5);border-radius:999px;background:#07101f;color:#fff;font-size:.75rem;font-weight:800;opacity:0;pointer-events:none;transition:.2s;z-index:99}.toast-v3.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:1024px){.mission{grid-template-columns:1fr}.mission-wrap{padding:0 1rem}.bench{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.mission-kpis,.protocol{grid-template-columns:repeat(2,1fr)}.player{grid-template-columns:1fr}.bench{grid-template-columns:1fr 1fr}.tool{grid-template-columns:28px 1fr}.tool-icon{width:28px;height:28px}}
+
+
+    /* V4 : interactions materiel, mise en scene et tutoriel guide */
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(56,189,248,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.018) 1px,transparent 1px);background-size:38px 38px;mask-image:linear-gradient(to bottom,#000,transparent 76%)}
+    .canvas-card{box-shadow:0 18px 48px rgba(0,0,0,.5),0 0 0 1px rgba(56,189,248,.04) inset}.canvas-wrapper:before{content:"BANC QUANTIQUE · ENVIRONNEMENT CONTRÔLÉ";position:absolute;right:12px;top:10px;z-index:3;font:700 .58rem var(--font-mono);letter-spacing:.13em;color:rgba(125,211,252,.48)}
+    .canvas-wrapper:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 20% 50%,rgba(56,189,248,.07),transparent 25%),linear-gradient(180deg,rgba(255,255,255,.018),transparent 14%,transparent 86%,rgba(56,189,248,.025));mix-blend-mode:screen}
+    .tool{cursor:pointer;position:relative;user-select:none}.tool:after{content:"Installer";position:absolute;right:7px;top:6px;font-size:.52rem;color:#7dd3fc;opacity:0;transition:.18s}.tool:hover:after{opacity:1}.tool.installed{border-color:var(--success);background:linear-gradient(135deg,#0d2b26,var(--bg-card))}.tool.installed:after{content:"Connecté";opacity:1;color:#6ee7b7}.tool.selected{outline:2px solid rgba(56,189,248,.35);outline-offset:1px}.tool.shake{animation:toolShake .28s ease}.tool-pulse{animation:toolPulse .65s ease}@keyframes toolShake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}@keyframes toolPulse{50%{box-shadow:0 0 24px rgba(56,189,248,.55)}}
+    .connection-strip{display:flex;align-items:center;gap:.45rem;padding:.45rem .65rem;border:1px solid var(--border);border-radius:9px;background:#07101d;color:var(--text-muted);font-size:.65rem}.connection-led{width:8px;height:8px;border-radius:50%;background:#ef4444;box-shadow:0 0 8px #ef4444}.connection-strip.ready .connection-led{background:#10b981;box-shadow:0 0 8px #10b981}.connection-strip strong{color:#fff}.equipment-help{margin-top:.45rem;color:var(--text-muted);font-size:.62rem;text-align:center}
+    .guided-launch{position:fixed;right:18px;bottom:18px;z-index:70;border:1px solid var(--accent);background:linear-gradient(135deg,#075985,#312e81);color:#fff;padding:.7rem 1rem;border-radius:999px;font-weight:800;box-shadow:0 12px 30px rgba(0,0,0,.4)}
+    .guide{position:fixed;right:18px;bottom:18px;width:min(390px,calc(100vw - 24px));z-index:80;border:1px solid #3b82f6;border-radius:16px;background:rgba(8,17,31,.97);box-shadow:0 24px 70px rgba(0,0,0,.65);overflow:hidden;transform:translateY(calc(100% + 35px));opacity:0;pointer-events:none;transition:.25s}.guide.open{transform:none;opacity:1;pointer-events:auto}.guide-head{padding:.75rem .9rem;background:linear-gradient(120deg,#0c4a6e,#312e81);display:flex;justify-content:space-between;align-items:center}.guide-head b{font-size:.82rem}.guide-head button{padding:.2rem .42rem;background:transparent}.guide-body{padding:.9rem}.guide-progress{display:grid;grid-template-columns:repeat(4,1fr);gap:.32rem;margin-bottom:.75rem}.guide-dot{height:5px;border-radius:5px;background:#26334d}.guide-dot.done{background:#10b981}.guide-dot.current{background:#38bdf8}.guide-kicker{color:#7dd3fc;font-size:.64rem;text-transform:uppercase;letter-spacing:.11em;font-weight:900}.guide-title{font-size:1rem;margin:.25rem 0}.guide-text{font-size:.78rem;color:#c5d2e3;line-height:1.55}.guide-check{margin-top:.7rem;padding:.6rem;border:1px solid var(--border);border-radius:9px;background:#0b1525;font-size:.72rem;color:#94a3b8}.guide-check.ok{border-color:#10b981;color:#a7f3d0;background:#0d2b26}.guide-actions{display:flex;gap:.45rem;margin-top:.75rem}.guide-actions button{flex:1}.guide-actions button:disabled{opacity:.35;cursor:not-allowed}.spotlight{position:relative;z-index:61!important;box-shadow:0 0 0 4px rgba(56,189,248,.5),0 0 35px rgba(56,189,248,.3)!important}.guide-scrim{position:fixed;inset:0;background:rgba(2,6,16,.48);z-index:60;opacity:0;pointer-events:none;transition:.2s}.guide-scrim.show{opacity:1;pointer-events:auto}
+    @media(max-width:640px){.guided-launch{right:10px;bottom:10px}.guide{right:6px;bottom:6px}.tool:after{display:none}}
+
+  </style>
+</head>
+<body>
+
+  <!-- En-tête principal & Onglets -->
+  <header>
+    <div class="header-top">
+      <div class="brand">
+        <span class="brand-badge">KermicLab • Physique Quantique</span>
+        <div>
+          <h1 id="header-title">Expérience des fentes de Young</h1>
+          <p class="subtitle" id="header-subtitle">Dualité onde-corpuscule, superposition d'états et décohérence par la mesure</p>
+        </div>
+      </div>
+      <div id="regime-pill" class="status-pill" data-testid="regime-status">
+        <span class="status-dot" id="regime-dot"></span>
+        <span id="regime-text">Régime Quantique (Interférences)</span>
+      </div>
+    </div>
+
+    <nav class="nav-tabs" role="tablist">
+      <button class="tab-btn active" data-module="young" data-testid="tab-young">1. Fentes de Young</button>
+      <button class="tab-btn" data-module="well" data-testid="tab-well">2. Puits de potentiel infini</button>
+      <button class="tab-btn" data-module="tunnel" data-testid="tab-tunnel">3. Effet tunnel quantique</button>
+      <button class="tab-btn" data-module="bloch" data-testid="tab-bloch">4. Sphère de Bloch (Qubit)</button>
+    </nav>
+  </header>
+  <section class="mission-wrap" aria-label="Mise en situation du laboratoire"><div class="mission"><div class="mission-main"><div class="mission-eyebrow">Centre de recherche KermicLab · Mission Q-04</div><h2 id="mission-title">Identifier la signature d’un comportement quantique</h2><p id="mission-text">Le détecteur reçoit une succession d’impacts inexpliqués. Préparez le banc optique, lancez l’acquisition et identifiez les paramètres qui contrôlent la distribution.</p><div class="mission-tags"><span id="mission-role">Rôle · Opticien quantique</span><span>Niveau · Terminale+ / Supérieur</span><span>Mode · Investigation guidée</span></div></div><div class="mission-kpis"><div class="mission-kpi"><small>État du banc</small><b id="bench-state">Configuration prête</b></div><div class="mission-kpi"><small>Acquisition</small><b id="acq-state">En attente</b></div><div class="mission-kpi"><small>Protocole</small><b id="protocol-state">Étape 1 sur 4</b></div><div class="mission-kpi"><small>Qualité des données</small><b id="quality-state">Non évaluée</b></div></div></div></section>
+
+
+  <!-- Contenu principal -->
+  <main>
+    <!-- Scène et Métriques -->
+    <div class="stage-container"><div class="bench" id="equipment-bench" aria-label="Matériel virtuel"></div><div class="connection-strip" id="connection-strip"><span class="connection-led"></span><strong id="connection-label">Banc incomplet</strong><span>· cliquez sur chaque instrument pour l’installer et le calibrer</span></div>
+      <div class="canvas-card">
+        <div class="canvas-header">
+          <span id="canvas-header-left">Source &rarr; Double fente &rarr; Écran virtuel</span>
+          <span id="canvas-header-right">Distribution mesurée vs Densité |&psi;(y)|&sup2;</span>
+        </div>
+        <div class="canvas-wrapper" id="canvas-wrapper">
+          <canvas id="sim-canvas" data-testid="quantum-canvas"></canvas>
+          <div id="tooltip" class="tooltip"></div><div class="scene-hud"><div class="hud" id="hud-hint"><strong>Consigne</strong> · préparez le montage</div><div class="hud" id="hud-state">t = 0,00 s · système prêt</div></div><div class="scene-actions"><button id="export-png">Exporter PNG</button><button id="fullscreen-v3">Projection ⛶</button></div>
+        </div>
+      </div>
+
+      <!-- 4 métriques dynamiques -->
+      <div class="metrics-bar">
+        <div class="metric-box">
+          <div class="metric-label" id="m1-label">Impacts accumulés</div>
+          <div class="metric-value" id="m1-val">0</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label" id="m2-label">Interfrange (&Delta;y)</div>
+          <div class="metric-value" id="m2-val">13.0 mm</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label" id="m3-label">Énergie (E = hc/&lambda;)</div>
+          <div class="metric-value" id="m3-val">2.38 eV</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label" id="m4-label">Visibilité des franges</div>
+          <div class="metric-value" id="m4-val">100 %</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panneau de contrôles -->
+    <aside class="controls-panel" id="controls-panel">
+      <div class="panel-section">
+        <div class="section-title">Paramètres de l'expérience</div>
+
+        <!-- 1. CONTROLES FENTES DE YOUNG -->
+        <div id="ctrl-young" class="module-controls active">
+          <div class="control-group">
+            <div class="control-label">
+              <label for="slider-lambda">Longueur d'onde (&lambda;)</label>
+              <span class="control-val" id="val-lambda">520 nm</span>
+            </div>
+            <input type="range" id="slider-lambda" min="380" max="750" step="5" value="520">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label">
+              <label for="slider-d">Écartement des fentes (d)</label>
+              <span class="control-val" id="val-d">40 &mu;m</span>
+            </div>
+            <input type="range" id="slider-d" min="15" max="100" step="1" value="40">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label">
+              <label for="slider-rate">Cadence d'émission</label>
+              <span class="control-val" id="val-rate">40 part./s</span>
+            </div>
+            <input type="range" id="slider-rate" min="5" max="120" step="5" value="40">
+          </div>
+
+          <div class="detector-card" id="detector-card">
+            <div class="detector-row">
+              <strong>Détecteur « Quel-Chemin »</strong>
+              <label class="switch">
+                <input type="checkbox" id="toggle-detector" data-testid="toggle-detector">
+                <span class="slider"></span>
+              </label>
+            </div>
+            <p class="detector-hint" id="detector-desc" style="font-size:0.78rem; color:var(--text-muted);">
+              Éteint : superposition d'états (&psi;&sub1; + &psi;&sub2;) avec interférences.
+            </p>
+          </div>
+
+          <div class="btn-grid">
+            <button type="button" class="action-btn primary" id="btn-burst">Salve +500</button>
+            <button type="button" class="action-btn" id="btn-pause">Pause</button>
+            <button type="button" class="action-btn full-width" id="btn-reset-young">Réinitialiser l'écran</button>
+          </div>
+        </div>
+
+        <!-- 2. CONTROLES PUITS DE POTENTIEL INFINI -->
+        <div id="ctrl-well" class="module-controls">
+          <div class="control-group">
+            <div class="control-label">
+              <label for="slider-n">Nombre quantique (n)</label>
+              <span class="control-val" id="val-n">n = 2</span>
+            </div>
+            <input type="range" id="slider-n" min="1" max="6" step="1" value="2">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label">
+              <label for="slider-L">Largeur du puits (L)</label>
+              <span class="control-val" id="val-L">1.00 nm</span>
+            </div>
+            <input type="range" id="slider-L" min="0.5" max="2.0" step="0.05" value="1.0">
+          </div>
+
+          <div class="btn-grid">
+            <button type="button" class="action-btn active-mode" id="btn-well-both">Onde & Densité</button>
+            <button type="button" class="action-btn" id="btn-well-measure">Mesurer position</button>
+          </div>
+        </div>
+
+        <!-- 3. CONTROLES EFFET TUNNEL QUANTIQUE -->
+        <div id="ctrl-tunnel" class="module-controls">
+          <div class="control-group">
+            <div class="control-label">
+              <label for="slider-E">Énergie particule (E)</label>
+              <span class="control-val" id="val-E">4.0 eV</span>
+            </div>
+            <input type="range" id="slider-E" min="1.0" max="10.0" step="0.2" value="4.0">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label">
+              <label for="slider-V0">Hauteur barrière (V&sub0;)</label>
+              <span class="control-val" id="val-V0">6.0 eV</span>
+            </div>
+            <input type="range" id="slider-V0" min="2.0" max="12.0" step="0.2" value="6.0">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label">
+              <label for="slider-a">Épaisseur barrière (a)</label>
+              <span class="control-val" id="val-a">0.40 nm</span>
+            </div>
+            <input type="range" id="slider-a" min="0.1" max="1.2" step="0.05" value="0.40">
+          </div>
+
+          <button type="button" class="action-btn primary" id="btn-tunnel-pulse">Lancer un paquet d'ondes</button>
+        </div>
+
+        <!-- 4. CONTROLES SPHERE DE BLOCH (QUBIT) -->
+        <div id="ctrl-bloch" class="module-controls">
+          <div class="control-group">
+            <div class="control-label">
+              <label for="slider-theta">Angle polaire (&theta;)</label>
+              <span class="control-val" id="val-theta">90&deg; (&pi;/2)</span>
+            </div>
+            <input type="range" id="slider-theta" min="0" max="180" step="1" value="90">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label">
+              <label for="slider-phi">Phase azimutale (&phi;)</label>
+              <span class="control-val" id="val-phi">0&deg;</span>
+            </div>
+            <input type="range" id="slider-phi" min="0" max="360" step="5" value="0">
+          </div>
+
+          <div class="control-group">
+            <span style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.2rem;">Portes quantiques :</span>
+            <div class="btn-grid-4">
+              <button type="button" class="action-btn primary" id="gate-H" title="Porte Hadamard">H</button>
+              <button type="button" class="action-btn" id="gate-X" title="Porte Pauli-X (NOT)">X</button>
+              <button type="button" class="action-btn" id="gate-Y" title="Porte Pauli-Y">Y</button>
+              <button type="button" class="action-btn" id="gate-Z" title="Porte Pauli-Z">Z</button>
+            </div>
+          </div>
+
+          <div class="btn-grid">
+            <button type="button" class="action-btn primary" id="btn-measure-qubit">Mesurer Qubit</button>
+            <button type="button" class="action-btn" id="btn-reset-qubit">État |0&rangle;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Encart pédagogique dynamique -->
+      <div class="panel-section">
+        <div class="section-title">Comprendre le phénomène</div>
+        <div class="pedagogy-box">
+          <p id="pedagogy-text">
+            Chaque particule se matérialise par un impact ponctuel, mais la répartition statistique suit l'interférence des amplitudes :
+          </p>
+          <div class="formula" id="formula-display">
+            P(y) = |&psi;&sub1;(y) + &psi;&sub2;(y)|&sup2;
+          </div>
+          <div class="challenge-card" id="challenge-text">
+            <strong>Défi :</strong> Accumulez 1 000 impacts puis activez le <em>Détecteur Quel-Chemin</em> pour observer l'effondrement de la figure d'interférence.
+          </div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    (() => {
+      // =========================================================================
+      // ÉTAT GLOBAL DU LABORATOIRE QUANTIQUE
+      // =========================================================================
+      const state = {
+        activeModule: 'young', // 'young' | 'well' | 'tunnel' | 'bloch'
+        lastTime: performance.now(),
+        timeElapsed: 0,
+
+        // --- Module 1 : Fentes de Young ---
+        young: {
+          lambda: 520,
+          d: 40,
+          slitWidth: 6,
+          screenDist: 1.0,
+          rate: 40,
+          detectorOn: false,
+          paused: false,
+          impacts: [],
+          bins: new Array(120).fill(0),
+          particles: [],
+          emitAccumulator: 0,
+          hoverBin: -1
+        },
+
+        // --- Module 2 : Puits de potentiel infini ---
+        well: {
+          n: 2,
+          L: 1.0, // nm
+          measuredX: null, // position mesurée normalisée [0..1]
+          measureTimer: 0
+        },
+
+        // --- Module 3 : Effet tunnel quantique ---
+        tunnel: {
+          E: 4.0,   // eV
+          V0: 6.0,  // eV
+          a: 0.40,  // nm
+          pulseX: 0.15 // position du paquet d'ondes [0..1]
+        },
+
+        // --- Module 4 : Sphère de Bloch (Qubit) ---
+        bloch: {
+          theta: Math.PI / 2, // radians [0..PI]
+          phi: 0,             // radians [0..2*PI]
+          targetTheta: Math.PI / 2,
+          targetPhi: 0,
+          lastMeasurement: null,
+          measureCount0: 0,
+          measureCount1: 0
+        }
+      };
+
+      const MAX_IMPACTS = 8000;
+      const NUM_BINS = state.young.bins.length;
+      const SCREEN_HALF_HEIGHT_MM = 25;
+
+      // =========================================================================
+      // RÉFÉRENCES DOM
+      // =========================================================================
+      const canvas = document.getElementById('sim-canvas');
+      const ctx = canvas.getContext('2d');
+      const wrapper = document.getElementById('canvas-wrapper');
+      const tooltip = document.getElementById('tooltip');
+
+      const headerTitle = document.getElementById('header-title');
+      const headerSubtitle = document.getElementById('header-subtitle');
+      const regimeDot = document.getElementById('regime-dot');
+      const regimeText = document.getElementById('regime-text');
+      const canvasHeaderLeft = document.getElementById('canvas-header-left');
+      const canvasHeaderRight = document.getElementById('canvas-header-right');
+
+      const m1Label = document.getElementById('m1-label'), m1Val = document.getElementById('m1-val');
+      const m2Label = document.getElementById('m2-label'), m2Val = document.getElementById('m2-val');
+      const m3Label = document.getElementById('m3-label'), m3Val = document.getElementById('m3-val');
+      const m4Label = document.getElementById('m4-label'), m4Val = document.getElementById('m4-val');
+
+      const pedagogyText = document.getElementById('pedagogy-text');
+      const formulaDisplay = document.getElementById('formula-display');
+      const challengeText = document.getElementById('challenge-text');
+
+      // =========================================================================
+      // NAVIGATION ENTRE LES 4 MODULES
+      // =========================================================================
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          state.activeModule = btn.dataset.module;
+
+          document.querySelectorAll('.module-controls').forEach(c => c.classList.remove('active'));
+          document.getElementById(`ctrl-${state.activeModule}`).classList.add('active');
+
+          tooltip.style.opacity = '0';
+          updateUIForModule();
+        });
+      });
+
+      function updateUIForModule() {
+        const mod = state.activeModule;
+        if (mod === 'young') {
+          headerTitle.textContent = 'Expérience des fentes de Young';
+          headerSubtitle.textContent = 'Dualité onde-corpuscule, superposition d\'états et décohérence par la mesure';
+          canvasHeaderLeft.innerHTML = 'Source &rarr; Double fente &rarr; Écran virtuel';
+          canvasHeaderRight.innerHTML = 'Distribution mesurée vs Densité |&psi;(y)|&sup2;';
+          m1Label.textContent = 'Impacts accumulés';
+          m2Label.innerHTML = 'Interfrange (&Delta;y)';
+          m3Label.innerHTML = 'Énergie (E = hc/&lambda;)';
+          m4Label.textContent = 'Visibilité des franges';
+          pedagogyText.textContent = 'Sans mesure au niveau des fentes, les amplitudes ψ₁ et ψ₂ interfèrent impact après impact. L\'activation du détecteur supprime le terme d\'interférence.';
+          challengeText.innerHTML = '<strong>Défi :</strong> Accumulez 1 000 impacts puis activez le <em>Détecteur Quel-Chemin</em> pour observer l\'effondrement de la figure d\'interférence.';
+          updateYoungMetrics();
+        } else if (mod === 'well') {
+          headerTitle.textContent = 'Puits de potentiel infini';
+          headerSubtitle.textContent = 'Confinement quantique, ondes stationnaires et quantification de l\'énergie';
+          canvasHeaderLeft.textContent = 'Parois infinies (V = ∞) — Boîte de largeur L';
+          canvasHeaderRight.innerHTML = 'Fonction d\'onde &psi;<sub>n</sub>(x) & Densité |&psi;<sub>n</sub>(x)|&sup2;';
+          m1Label.textContent = 'Niveau quantique (n)';
+          m2Label.innerHTML = 'Énergie E<sub>n</sub> (électron)';
+          m3Label.textContent = 'Nombre de nœuds internes';
+          m4Label.innerHTML = 'Longueur d\'onde (&lambda;<sub>n</sub>)';
+          regimeDot.style.background = 'var(--accent)';
+          regimeDot.style.boxShadow = '0 0 10px var(--accent)';
+          regimeText.textContent = 'État Stationnaire Quantifié';
+          pedagogyText.innerHTML = 'Une particule confinée dans une boîte de largeur L ne peut occuper que des niveaux d\'énergie discrets E<sub>n</sub> proportionnels à n&sup2;.';
+          formulaDisplay.innerHTML = 'E<sub>n</sub> = (n&sup2; h&sup2;) / (8 m L&sup2;) &nbsp;|&nbsp; &psi;<sub>n</sub>(x) = &radic;(2/L) sin(n&pi;x/L)';
+          challengeText.innerHTML = '<strong>Défi :</strong> Passez de n = 1 à n = 4 et comptez les nœuds internes (n - 1) où la probabilité de présence |&psi;<sub>n</sub>(x)|&sup2; est strictement nulle.';
+          updateWellMetrics();
+        } else if (mod === 'tunnel') {
+          headerTitle.textContent = 'Effet tunnel quantique';
+          headerSubtitle.textContent = 'Onde évanescente et franchissement probabiliste d\'une barrière de potentiel';
+          canvasHeaderLeft.innerHTML = 'Onde incidente &rarr; Barrière V<sub>0</sub> &rarr; Onde transmise';
+          canvasHeaderRight.innerHTML = 'Profil énergétique & Paquet d\'ondes Re(&psi;)';
+          m1Label.textContent = 'Transmission (T)';
+          m2Label.textContent = 'Réflexion (R)';
+          m3Label.innerHTML = 'Barrière (V<sub>0</sub> - E)';
+          m4Label.innerHTML = 'Décroissance (&kappa;)';
+          pedagogyText.innerHTML = 'Lorsqu\'une particule d\'énergie E rencontre une barrière V<sub>0</sub> &gt; E, sa fonction d\'onde décroît exponentiellement sans s\'annuler, permettant une traversée.';
+          formulaDisplay.innerHTML = 'T &approx; e<sup>-2&kappa;a</sup> &nbsp;avec&nbsp; &kappa; = &radic;(2m(V<sub>0</sub> - E)) / &#8463;';
+          challengeText.innerHTML = '<strong>Défi :</strong> Réduisez l\'épaisseur <em>a</em> à 0.15 nm avec V<sub>0</sub> &gt; E : contrairement à la physique classique (T = 0%), l\'onde traverse la barrière !';
+          updateTunnelMetrics();
+        } else if (mod === 'bloch') {
+          headerTitle.textContent = 'Sphère de Bloch (Qubit & Superposition)';
+          headerSubtitle.textContent = 'Représentation géométrique d\'un bit quantique, portes logiques et mesure';
+          canvasHeaderLeft.innerHTML = 'Vecteur d\'état |&psi;&rangle; sur la sphère unité';
+          canvasHeaderRight.innerHTML = 'Probabilités de mesure P(|0&rangle;) et P(|1&rangle;)';
+          m1Label.innerHTML = 'Probabilité P(|0&rangle;)';
+          m2Label.innerHTML = 'Probabilité P(|1&rangle;)';
+          m3Label.innerHTML = 'Angle polaire (&theta;)';
+          m4Label.textContent = 'Dernière mesure';
+          regimeDot.style.background = 'var(--purple)';
+          regimeDot.style.boxShadow = '0 0 10px var(--purple)';
+          regimeText.textContent = 'Superposition Cohérente (Qubit)';
+          pedagogyText.innerHTML = 'Tout état pur d\'un qubit s\'écrit comme une superposition des états de base |0&rangle; et |1&rangle;. Les portes quantiques font pivoter ce vecteur sur la sphère.';
+          formulaDisplay.innerHTML = '|&psi;&rangle; = cos(&theta;/2)|0&rangle; + e<sup>i&phi;</sup>sin(&theta;/2)|1&rangle;';
+          challengeText.innerHTML = '<strong>Défi :</strong> Partez de |0&rangle;, appliquez la porte <strong>H (Hadamard)</strong> pour placer le qubit sur l\'équateur (50% / 50%), puis effectuez plusieurs mesures.';
+          updateBlochMetrics();
+        }
+      }
+
+      // =========================================================================
+      // LOGIQUE MODULE 1 : FENTES DE YOUNG
+      // =========================================================================
+      function wavelengthToRGB(wl) {
+        let r = 0, g = 0, b = 0;
+        if (wl >= 380 && wl < 440) { r = -(wl - 440) / 60; b = 1; }
+        else if (wl >= 440 && wl < 490) { g = (wl - 440) / 50; b = 1; }
+        else if (wl >= 490 && wl < 510) { g = 1; b = -(wl - 510) / 20; }
+        else if (wl >= 510 && wl < 580) { r = (wl - 510) / 70; g = 1; }
+        else if (wl >= 580 && wl < 645) { r = 1; g = -(wl - 645) / 65; }
+        else if (wl >= 645 && wl <= 750) { r = 1; }
+
+        let factor = 1.0;
+        if (wl >= 380 && wl < 420) factor = 0.3 + 0.7 * (wl - 380) / 40;
+        else if (wl > 700 && wl <= 750) factor = 0.3 + 0.7 * (750 - wl) / 50;
+
+        const R = Math.round(255 * Math.pow(r * factor, 0.8));
+        const G = Math.round(255 * Math.pow(g * factor, 0.8));
+        const B = Math.round(255 * Math.pow(b * factor, 0.8));
+        return { r: R, g: G, b: B, css: `rgb(${R}, ${G}, ${B})` };
+      }
+
+      function youngProbabilityDensity(yNorm) {
+        const y = state.young;
+        const yMeters = yNorm * SCREEN_HALF_HEIGHT_MM * 1e-3;
+        const lambdaMeters = y.lambda * 1e-9;
+        const dMeters = y.d * 1e-6;
+        const aMeters = y.slitWidth * 1e-6;
+        const L = y.screenDist;
+
+        const beta = (Math.PI * aMeters * yMeters) / (lambdaMeters * L);
+        const sinc = Math.abs(beta) < 1e-6 ? 1 : Math.sin(beta) / beta;
+        const diffractionEnvelope = sinc * sinc;
+
+        if (y.detectorOn) {
+          const shiftMeters = dMeters / 2;
+          const g1 = Math.exp(-0.5 * Math.pow((yMeters - shiftMeters) / 0.008, 2));
+          const g2 = Math.exp(-0.5 * Math.pow((yMeters + shiftMeters) / 0.008, 2));
+          return 0.5 * (g1 + g2) * diffractionEnvelope;
+        } else {
+          const delta = (Math.PI * dMeters * yMeters) / (lambdaMeters * L);
+          return Math.pow(Math.cos(delta), 2) * diffractionEnvelope;
+        }
+      }
+
+      function sampleYoungImpact() {
+        for (let attempt = 0; attempt < 80; attempt++) {
+          const yCandidate = Math.random() * 2 - 1;
+          if (Math.random() <= youngProbabilityDensity(yCandidate)) return yCandidate;
+        }
+        return (Math.random() - 0.5) * 0.4;
+      }
+
+      function registerYoungImpact(yNorm) {
+        const y = state.young;
+        const color = wavelengthToRGB(y.lambda).css;
+        y.impacts.push({ yNorm, xOffset: Math.random() * 2 - 1, color });
+
+        if (y.impacts.length > MAX_IMPACTS) {
+          const removed = y.impacts.shift();
+          const oldBin = Math.floor(((removed.yNorm + 1) / 2) * NUM_BINS);
+          if (oldBin >= 0 && oldBin < NUM_BINS && y.bins[oldBin] > 0) y.bins[oldBin]--;
+        }
+
+        const binIdx = Math.min(NUM_BINS - 1, Math.max(0, Math.floor(((yNorm + 1) / 2) * NUM_BINS)));
+        y.bins[binIdx]++;
+        if (state.activeModule === 'young') {
+          m1Val.textContent = y.impacts.length.toLocaleString('fr-FR');
+        }
+      }
+
+      function updateYoungMetrics() {
+        const y = state.young;
+        document.getElementById('val-lambda').textContent = `${y.lambda} nm`;
+        document.getElementById('val-d').innerHTML = `${y.d} &mu;m`;
+        document.getElementById('val-rate').textContent = `${y.rate} part./s`;
+
+        const fringeMm = ((y.lambda * 1e-9) * y.screenDist / (y.d * 1e-6)) * 1e3;
+        const energyEv = 1239.84 / y.lambda;
+
+        m1Val.textContent = y.impacts.length.toLocaleString('fr-FR');
+        m2Val.textContent = `${fringeMm.toFixed(1)} mm`;
+        m3Val.textContent = `${energyEv.toFixed(2)} eV`;
+
+        const detectorCard = document.getElementById('detector-card');
+        const detectorDesc = document.getElementById('detector-desc');
+
+        if (y.detectorOn) {
+          m4Val.textContent = '0 % (Décohérence)';
+          m4Val.style.color = 'var(--warning)';
+          regimeDot.style.background = 'var(--warning)';
+          regimeDot.style.boxShadow = '0 0 10px var(--warning)';
+          regimeText.textContent = 'Régime Classique (Sans interférences)';
+          detectorCard.classList.add('active');
+          detectorDesc.textContent = 'Allumé : la détection du chemin supprime le terme d\'interférence.';
+          formulaDisplay.innerHTML = 'P(y) = |&psi;&sub1;(y)|&sup2; + |&psi;&sub2;(y)|&sup2;';
+        } else {
+          m4Val.textContent = '100 %';
+          m4Val.style.color = 'var(--accent)';
+          regimeDot.style.background = 'var(--accent)';
+          regimeDot.style.boxShadow = '0 0 10px var(--accent)';
+          regimeText.textContent = 'Régime Quantique (Interférences)';
+          detectorCard.classList.remove('active');
+          detectorDesc.textContent = 'Éteint : superposition d\'états (ψ₁ + ψ₂) avec interférences.';
+          formulaDisplay.innerHTML = 'P(y) = |&psi;&sub1;(y) + &psi;&sub2;(y)|&sup2;';
+        }
+      }
+
+      // Écouteurs Module 1
+      document.getElementById('slider-lambda').addEventListener('input', e => { state.young.lambda = Number(e.target.value); updateYoungMetrics(); });
+      document.getElementById('slider-d').addEventListener('input', e => { state.young.d = Number(e.target.value); updateYoungMetrics(); });
+      document.getElementById('slider-rate').addEventListener('input', e => { state.young.rate = Number(e.target.value); updateYoungMetrics(); });
+      document.getElementById('toggle-detector').addEventListener('change', e => { state.young.detectorOn = e.target.checked; updateYoungMetrics(); });
+      document.getElementById('btn-burst').addEventListener('click', () => { for (let i = 0; i < 500; i++) registerYoungImpact(sampleYoungImpact()); });
+      document.getElementById('btn-pause').addEventListener('click', e => {
+        state.young.paused = !state.young.paused;
+        e.target.textContent = state.young.paused ? 'Reprendre' : 'Pause';
+      });
+      document.getElementById('btn-reset-young').addEventListener('click', () => {
+        state.young.impacts = [];
+        state.young.bins.fill(0);
+        state.young.particles = [];
+        m1Val.textContent = '0';
+      });
+
+      // =========================================================================
+      // LOGIQUE MODULE 2 : PUITS DE POTENTIEL INFINI
+      // =========================================================================
+      function updateWellMetrics() {
+        const w = state.well;
+        document.getElementById('val-n').textContent = `n = ${w.n}`;
+        document.getElementById('val-L').textContent = `${w.L.toFixed(2)} nm`;
+
+        // E_n (eV) = n^2 * h^2 / (8 * m_e * L^2) ≈ 0.37603 * n^2 / L(nm)^2
+        const energyEv = (0.37603 * w.n * w.n) / (w.L * w.L);
+        const lambdaNm = (2 * w.L) / w.n;
+
+        m1Val.textContent = `n = ${w.n}`;
+        m2Val.textContent = `${energyEv.toFixed(2)} eV`;
+        m3Val.textContent = `${w.n - 1} nœud${w.n - 1 > 1 ? 's' : ''}`;
+        m4Val.textContent = `${lambdaNm.toFixed(2)} nm`;
+        m4Val.style.color = '#ffffff';
+      }
+
+      document.getElementById('slider-n').addEventListener('input', e => {
+        state.well.n = Number(e.target.value);
+        state.well.measuredX = null;
+        updateWellMetrics();
+      });
+      document.getElementById('slider-L').addEventListener('input', e => {
+        state.well.L = Number(e.target.value);
+        updateWellMetrics();
+      });
+      document.getElementById('btn-well-measure').addEventListener('click', () => {
+        // Tirage selon |ψ_n(x)|^2 = 2 sin^2(n * pi * x)
+        const n = state.well.n;
+        for (let i = 0; i < 100; i++) {
+          const x = Math.random();
+          const p = Math.pow(Math.sin(n * Math.PI * x), 2);
+          if (Math.random() <= p) {
+            state.well.measuredX = x;
+            state.well.measureTimer = 2.5;
+            break;
+          }
+        }
+      });
+
+      // =========================================================================
+      // LOGIQUE MODULE 3 : EFFET TUNNEL QUANTIQUE
+      // =========================================================================
+      function computeTunnelTransmission() {
+        const t = state.tunnel;
+        if (t.E >= t.V0) {
+          // Au-dessus de la barrière (transmission oscillante proche de 1)
+          const k2 = Math.sqrt(t.E - t.V0);
+          const T = 1 / (1 + (t.V0 * t.V0 * Math.pow(Math.sin(5.12 * k2 * t.a), 2)) / (4 * t.E * (t.E - t.V0) + 0.01));
+          return { T: Math.min(1, T), kappa: 0 };
+        } else {
+          // Effet tunnel : kappa (nm^-1) = sqrt(2 * m_e * (V0 - E)) / hbar ≈ 5.123 * sqrt(V0 - E)
+          const kappa = 5.123 * Math.sqrt(t.V0 - t.E);
+          const sinhVal = Math.sinh(kappa * t.a);
+          const denom = 1 + (t.V0 * t.V0 * sinhVal * sinhVal) / (4 * t.E * (t.V0 - t.E));
+          const T = 1 / denom;
+          return { T, kappa };
+        }
+      }
+
+      function updateTunnelMetrics() {
+        const t = state.tunnel;
+        document.getElementById('val-E').textContent = `${t.E.toFixed(1)} eV`;
+        document.getElementById('val-V0').textContent = `${t.V0.toFixed(1)} eV`;
+        document.getElementById('val-a').textContent = `${t.a.toFixed(2)} nm`;
+
+        const { T, kappa } = computeTunnelTransmission();
+        const R = 1 - T;
+
+        m1Val.textContent = `${(T * 100).toFixed(1)} %`;
+        m2Val.textContent = `${(R * 100).toFixed(1)} %`;
+        const diff = t.V0 - t.E;
+        m3Val.textContent = diff > 0 ? `+${diff.toFixed(1)} eV (Tunnel)` : `${diff.toFixed(1)} eV (Classique)`;
+        m4Val.textContent = kappa > 0 ? `${kappa.toFixed(2)} nm⁻¹` : '0 (Propagatif)';
+        m4Val.style.color = '#ffffff';
+
+        if (diff > 0) {
+          regimeDot.style.background = 'var(--accent)';
+          regimeDot.style.boxShadow = '0 0 10px var(--accent)';
+          regimeText.textContent = 'Effet Tunnel (E < V₀)';
+        } else {
+          regimeDot.style.background = 'var(--success)';
+          regimeDot.style.boxShadow = '0 0 10px var(--success)';
+          regimeText.textContent = 'Franchissement Classique (E ≥ V₀)';
+        }
+      }
+
+      document.getElementById('slider-E').addEventListener('input', e => { state.tunnel.E = Number(e.target.value); updateTunnelMetrics(); });
+      document.getElementById('slider-V0').addEventListener('input', e => { state.tunnel.V0 = Number(e.target.value); updateTunnelMetrics(); });
+      document.getElementById('slider-a').addEventListener('input', e => { state.tunnel.a = Number(e.target.value); updateTunnelMetrics(); });
+      document.getElementById('btn-tunnel-pulse').addEventListener('click', () => { state.tunnel.pulseX = 0.05; });
+
+      // =========================================================================
+      // LOGIQUE MODULE 4 : SPHÈRE DE BLOCH (QUBIT)
+      // =========================================================================
+      function updateBlochMetrics() {
+        const b = state.bloch;
+        const degTheta = Math.round((b.targetTheta * 180) / Math.PI);
+        const degPhi = Math.round(((b.targetPhi % (2 * Math.PI)) * 180) / Math.PI);
+
+        document.getElementById('slider-theta').value = degTheta;
+        document.getElementById('slider-phi').value = (degPhi + 360) % 360;
+        document.getElementById('val-theta').innerHTML = `${degTheta}&deg;`;
+        document.getElementById('val-phi').innerHTML = `${(degPhi + 360) % 360}&deg;`;
+
+        const p0 = Math.pow(Math.cos(b.targetTheta / 2), 2);
+        const p1 = Math.pow(Math.sin(b.targetTheta / 2), 2);
+
+        m1Val.textContent = `${(p0 * 100).toFixed(1)} %`;
+        m2Val.textContent = `${(p1 * 100).toFixed(1)} %`;
+        m3Val.innerHTML = `${degTheta}&deg;`;
+        m4Val.textContent = b.lastMeasurement !== null ? `|${b.lastMeasurement}⟩` : 'Aucune';
+        m4Val.style.color = b.lastMeasurement === 0 ? 'var(--accent)' : (b.lastMeasurement === 1 ? 'var(--warning)' : '#ffffff');
+      }
+
+      // Application d'une porte quantique sur le vecteur de Bloch (x, y, z)
+      function applyBlochGate(gate) {
+        const b = state.bloch;
+        let x = Math.sin(b.targetTheta) * Math.cos(b.targetPhi);
+        let y = Math.sin(b.targetTheta) * Math.sin(b.targetPhi);
+        let z = Math.cos(b.targetTheta);
+
+        if (gate === 'X') {
+          // Rotation de pi autour de X : (x, -y, -z)
+          y = -y; z = -z;
+        } else if (gate === 'Y') {
+          // Rotation de pi autour de Y : (-x, y, -z)
+          x = -x; z = -z;
+        } else if (gate === 'Z') {
+          // Rotation de pi autour de Z : (-x, -y, z)
+          x = -x; y = -y;
+        } else if (gate === 'H') {
+          // Hadamard : échange X et Z, inverse Y : (z, -y, x)
+          const oldX = x;
+          x = z;
+          y = -y;
+          z = oldX;
+        }
+
+        b.targetTheta = Math.acos(Math.max(-1, Math.min(1, z)));
+        b.targetPhi = (Math.atan2(y, x) + 2 * Math.PI) % (2 * Math.PI);
+        b.lastMeasurement = null;
+        updateBlochMetrics();
+      }
+
+      document.getElementById('slider-theta').addEventListener('input', e => {
+        state.bloch.targetTheta = (Number(e.target.value) * Math.PI) / 180;
+        state.bloch.lastMeasurement = null;
+        updateBlochMetrics();
+      });
+      document.getElementById('slider-phi').addEventListener('input', e => {
+        state.bloch.targetPhi = (Number(e.target.value) * Math.PI) / 180;
+        state.bloch.lastMeasurement = null;
+        updateBlochMetrics();
+      });
+
+      document.getElementById('gate-H').addEventListener('click', () => applyBlochGate('H'));
+      document.getElementById('gate-X').addEventListener('click', () => applyBlochGate('X'));
+      document.getElementById('gate-Y').addEventListener('click', () => applyBlochGate('Y'));
+      document.getElementById('gate-Z').addEventListener('click', () => applyBlochGate('Z'));
+
+      document.getElementById('btn-measure-qubit').addEventListener('click', () => {
+        const p0 = Math.pow(Math.cos(state.bloch.targetTheta / 2), 2);
+        if (Math.random() < p0) {
+          state.bloch.targetTheta = 0;
+          state.bloch.targetPhi = 0;
+          state.bloch.lastMeasurement = 0;
+        } else {
+          state.bloch.targetTheta = Math.PI;
+          state.bloch.targetPhi = 0;
+          state.bloch.lastMeasurement = 1;
+        }
+        updateBlochMetrics();
+      });
+
+      document.getElementById('btn-reset-qubit').addEventListener('click', () => {
+        state.bloch.targetTheta = 0;
+        state.bloch.targetPhi = 0;
+        state.bloch.lastMeasurement = null;
+        updateBlochMetrics();
+      });
+
+      // =========================================================================
+      // GESTION CANVAS HIDPI & BOUCLE DE RENDU
+      // =========================================================================
+      let width = 800, height = 480;
+      function resizeCanvas() {
+        const rect = wrapper.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        width = rect.width;
+        height = rect.height;
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      // --- RENDU 1 : FENTES DE YOUNG ---
+      function renderYoung(dt) {
+        const y = state.young;
+        if (!y.paused) {
+          y.emitAccumulator += y.rate * dt;
+          while (y.emitAccumulator >= 1) {
+            y.particles.push({
+              progress: 0,
+              targetY: sampleYoungImpact(),
+              chosenSlit: Math.random() < 0.5 ? -1 : 1,
+              speed: 1.3 + Math.random() * 0.4
+            });
+            y.emitAccumulator -= 1;
+          }
+          for (let i = y.particles.length - 1; i >= 0; i--) {
+            const p = y.particles[i];
+            p.progress += p.speed * dt;
+            if (p.progress >= 1) {
+              registerYoungImpact(p.targetY);
+              y.particles.splice(i, 1);
+            }
+          }
+        }
+
+        const sourceX = width * 0.05;
+        const slitX = width * 0.27;
+        const screenLeft = width * 0.60;
+        const screenWidth = Math.max(38, width * 0.08);
+        const graphLeft = screenLeft + screenWidth + 16;
+        const graphWidth = width - graphLeft - 16;
+        const padY = 28;
+        const plotH = height - padY * 2;
+        const centerY = height / 2;
+        const rgb = wavelengthToRGB(y.lambda);
+
+        const slitGapPx = 16 + ((y.d - 15) / 85) * 44;
+        const slit1Y = centerY - slitGapPx / 2;
+        const slit2Y = centerY + slitGapPx / 2;
+
+        // Axe optique
+        ctx.strokeStyle = 'rgba(148, 163, 184, 0.08)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(sourceX, centerY);
+        ctx.lineTo(screenLeft, centerY);
+        ctx.stroke();
+
+        // Source
+        ctx.fillStyle = '#111827';
+        ctx.strokeStyle = rgb.css;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.roundRect(sourceX - 18, centerY - 14, 24, 28, 6);
+        ctx.fill();
+        ctx.stroke();
+
+        // Particules / Ondes
+        y.particles.forEach(p => {
+          if (p.progress < 0.35) {
+            const t = p.progress / 0.35;
+            const x = sourceX + 6 + t * (slitX - sourceX - 6);
+            if (y.detectorOn) {
+              const py = centerY + t * ((p.chosenSlit === -1 ? slit1Y : slit2Y) - centerY);
+              ctx.fillStyle = rgb.css;
+              ctx.beginPath();
+              ctx.arc(x, py, 3.5, 0, Math.PI * 2);
+              ctx.fill();
+            } else {
+              const radius = Math.max(0, x - (sourceX + 6));
+              if (radius > 0) {
+                ctx.strokeStyle = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${0.5 * (1 - t * 0.3)})`;
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.arc(sourceX + 6, centerY, radius, -0.45, 0.45);
+                ctx.stroke();
+              }
+            }
+          } else {
+            const t = (p.progress - 0.35) / 0.65;
+            const x = slitX + t * (screenLeft - slitX);
+            const targetPixelY = centerY + p.targetY * (plotH / 2);
+            if (y.detectorOn) {
+              const startY = p.chosenSlit === -1 ? slit1Y : slit2Y;
+              const py = startY + t * (targetPixelY - startY);
+              ctx.fillStyle = '#f59e0b';
+              ctx.beginPath();
+              ctx.arc(x, py, 3, 0, Math.PI * 2);
+              ctx.fill();
+            } else {
+              const radius = Math.max(0, x - slitX);
+              if (radius > 0) {
+                const alpha = 0.42 * (1 - t * 0.65);
+                ctx.strokeStyle = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})`;
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.arc(slitX, slit1Y, radius, -0.55, 0.55);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.arc(slitX, slit2Y, radius, -0.55, 0.55);
+                ctx.stroke();
+              }
+            }
+          }
+        });
+
+        // Paroi double fente
+        ctx.fillStyle = '#1e293b';
+        const wallW = 7, holeH = 6;
+        ctx.fillRect(slitX - wallW / 2, padY, wallW, slit1Y - holeH / 2 - padY);
+        ctx.fillRect(slitX - wallW / 2, slit1Y + holeH / 2, wallW, slit2Y - slit1Y - holeH);
+        ctx.fillRect(slitX - wallW / 2, slit2Y + holeH / 2, wallW, height - padY - (slit2Y + holeH / 2));
+
+        if (y.detectorOn) {
+          ctx.fillStyle = '#f59e0b';
+          ctx.beginPath();
+          ctx.arc(slitX + 9, slit1Y, 4.5, 0, Math.PI * 2);
+          ctx.arc(slitX + 9, slit2Y, 4.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Écran virtuel
+        ctx.fillStyle = '#030712';
+        ctx.strokeStyle = '#26334d';
+        ctx.fillRect(screenLeft, padY, screenWidth, plotH);
+        ctx.strokeRect(screenLeft, padY, screenWidth, plotH);
+
+        for (let i = 0; i < y.impacts.length; i++) {
+          const imp = y.impacts[i];
+          const px = screenLeft + screenWidth / 2 + imp.xOffset * (screenWidth * 0.42);
+          const py = centerY + imp.yNorm * (plotH / 2);
+          ctx.fillStyle = imp.color;
+          ctx.fillRect(px, py, 2, 2);
+        }
+
+        if (y.hoverBin >= 0 && y.hoverBin < NUM_BINS) {
+          const binH = plotH / NUM_BINS;
+          ctx.fillStyle = 'rgba(56, 189, 248, 0.22)';
+          ctx.fillRect(screenLeft, padY + y.hoverBin * binH, screenWidth + 16 + graphWidth, binH);
+        }
+
+        // Graphique densité
+        ctx.fillStyle = 'rgba(17, 24, 39, 0.6)';
+        ctx.fillRect(graphLeft, padY, graphWidth, plotH);
+        ctx.strokeStyle = '#26334d';
+        ctx.strokeRect(graphLeft, padY, graphWidth, plotH);
+
+        let maxBin = 1;
+        for (let i = 0; i < NUM_BINS; i++) if (y.bins[i] > maxBin) maxBin = y.bins[i];
+        const binH = plotH / NUM_BINS;
+        ctx.fillStyle = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.38)`;
+        for (let i = 0; i < NUM_BINS; i++) {
+          if (y.bins[i] === 0) continue;
+          const barW = (y.bins[i] / maxBin) * (graphWidth * 0.88);
+          ctx.fillRect(graphLeft, padY + i * binH, barW, Math.max(1, binH - 0.5));
+        }
+
+        ctx.strokeStyle = y.detectorOn ? '#f59e0b' : '#38bdf8';
+        ctx.lineWidth = 2.2;
+        ctx.beginPath();
+        for (let s = 0; s <= 180; s++) {
+          const yNorm = (s / 180) * 2 - 1;
+          const gx = graphLeft + youngProbabilityDensity(yNorm) * (graphWidth * 0.88);
+          const gy = padY + (s / 180) * plotH;
+          if (s === 0) ctx.moveTo(gx, gy); else ctx.lineTo(gx, gy);
+        }
+        ctx.stroke();
+      }
+
+      // --- RENDU 2 : PUITS DE POTENTIEL INFINI ---
+      function renderWell(dt) {
+        const w = state.well;
+        if (w.measureTimer > 0) {
+          w.measureTimer -= dt;
+          if (w.measureTimer <= 0) w.measuredX = null;
+        }
+
+        const padX = 56, padY = 42;
+        const wellW = width - padX * 2;
+        const topH = (height - padY * 2) * 0.46;
+        const botTop = padY + topH + 32;
+        const botH = (height - padY * 2) * 0.46;
+
+        // Parois de potentiel infini
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.08)';
+        ctx.fillRect(0, padY, padX, height - padY * 2);
+        ctx.fillRect(width - padX, padY, padX, height - padY * 2);
+
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(padX, padY); ctx.lineTo(padX, height - padY);
+        ctx.moveTo(width - padX, padY); ctx.lineTo(width - padX, height - padY);
+        ctx.stroke();
+
+        // Labels parois
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = '12px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('V = ∞', padX / 2, height / 2);
+        ctx.fillText('V = ∞', width - padX / 2, height / 2);
+        ctx.fillText('x = 0', padX, height - padY + 18);
+        ctx.fillText(`x = ${w.L.toFixed(2)} nm`, width - padX, height - padY + 18);
+
+        // Sous-zone supérieure : Fonction d'onde ψ_n(x, t)
+        const midTop = padY + topH / 2;
+        ctx.strokeStyle = 'rgba(148, 163, 184, 0.2)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(padX, midTop); ctx.lineTo(width - padX, midTop);
+        ctx.stroke();
+
+        ctx.fillStyle = '#38bdf8';
+        ctx.textAlign = 'left';
+        ctx.fillText(`Fonction d'onde ψ_${w.n}(x, t)`, padX + 10, padY + 14);
+
+        const osc = Math.cos(state.timeElapsed * (1.5 + w.n * 0.6));
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        for (let i = 0; i <= 200; i++) {
+          const u = i / 200;
+          const psi = Math.sin(w.n * Math.PI * u) * osc;
+          const px = padX + u * wellW;
+          const py = midTop - psi * (topH * 0.42);
+          if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+        }
+        ctx.stroke();
+
+        // Nœuds internes sur l'axe
+        ctx.fillStyle = '#ef4444';
+        for (let k = 1; k < w.n; k++) {
+          const nx = padX + (k / w.n) * wellW;
+          ctx.beginPath();
+          ctx.arc(nx, midTop, 4, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Sous-zone inférieure : Densité de probabilité |ψ_n(x)|^2
+        const baseBot = botTop + botH;
+        ctx.strokeStyle = 'rgba(148, 163, 184, 0.2)';
+        ctx.beginPath();
+        ctx.moveTo(padX, baseBot); ctx.lineTo(width - padX, baseBot);
+        ctx.stroke();
+
+        ctx.fillStyle = '#10b981';
+        ctx.fillText(`Densité de probabilité |ψ_${w.n}(x)|²`, padX + 10, botTop + 14);
+
+        ctx.fillStyle = 'rgba(16, 185, 129, 0.22)';
+        ctx.strokeStyle = '#10b981';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(padX, baseBot);
+        for (let i = 0; i <= 200; i++) {
+          const u = i / 200;
+          const prob = Math.pow(Math.sin(w.n * Math.PI * u), 2);
+          const px = padX + u * wellW;
+          const py = baseBot - prob * (botH * 0.85);
+          ctx.lineTo(px, py);
+        }
+        ctx.lineTo(width - padX, baseBot);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        // Particule mesurée ponctuellement
+        if (w.measuredX !== null) {
+          const mx = padX + w.measuredX * wellW;
+          ctx.strokeStyle = '#f59e0b';
+          ctx.setLineDash([4, 4]);
+          ctx.beginPath();
+          ctx.moveTo(mx, padY); ctx.lineTo(mx, height - padY);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          ctx.fillStyle = '#f59e0b';
+          ctx.beginPath();
+          ctx.arc(mx, baseBot - 8, 6, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillText(`Détection : x = ${(w.measuredX * w.L).toFixed(2)} nm`, Math.min(width - 180, mx + 10), botTop + 34);
+        }
+      }
+
+      // --- RENDU 3 : EFFET TUNNEL QUANTIQUE ---
+      function renderTunnel(dt) {
+        const t = state.tunnel;
+        t.pulseX = (t.pulseX + dt * 0.22) % 1.0;
+
+        const padX = 40, padY = 45;
+        const plotW = width - padX * 2;
+        const plotH = height - padY * 2;
+        const baseY = height - padY;
+
+        // Barrière de potentiel centrée à x = 0.5
+        const barrierCenter = padX + plotW * 0.5;
+        const barrierPxW = Math.max(16, (t.a / 1.2) * (plotW * 0.22));
+        const bLeft = barrierCenter - barrierPxW / 2;
+        const bRight = barrierCenter + barrierPxW / 2;
+
+        const maxEnergyScale = 13.0;
+        const bHeightPx = (t.V0 / maxEnergyScale) * plotH;
+        const eHeightPx = (t.E / maxEnergyScale) * plotH;
+
+        // Dessin de la barrière V0
+        ctx.fillStyle = 'rgba(245, 158, 11, 0.16)';
+        ctx.strokeStyle = '#f59e0b';
+        ctx.lineWidth = 2;
+        ctx.fillRect(bLeft, baseY - bHeightPx, barrierPxW, bHeightPx);
+        ctx.strokeRect(bLeft, baseY - bHeightPx, barrierPxW, bHeightPx);
+
+        ctx.fillStyle = '#f59e0b';
+        ctx.font = '12px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText(`Barrière V₀ = ${t.V0.toFixed(1)} eV`, barrierCenter, baseY - bHeightPx - 10);
+
+        // Niveau d'énergie E de la particule
+        const energyY = baseY - eHeightPx;
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
+        ctx.setLineDash([5, 5]);
+        ctx.beginPath();
+        ctx.moveTo(padX, energyY); ctx.lineTo(width - padX, energyY);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.fillStyle = '#38bdf8';
+        ctx.textAlign = 'left';
+        ctx.fillText(`Énergie E = ${t.E.toFixed(1)} eV`, padX + 8, energyY - 8);
+
+        // Calcul de l'onde Re(ψ(x, t)) dans les 3 régions
+        const { T, kappa } = computeTunnelTransmission();
+        const ampTrans = Math.sqrt(T);
+        const ampRefl = Math.sqrt(Math.max(0, 1 - T));
+        const k1 = 18 + t.E * 3.5;
+        const phase = state.timeElapsed * 7;
+
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+
+        const steps = 320;
+        for (let i = 0; i <= steps; i++) {
+          const px = padX + (i / steps) * plotW;
+          let psi = 0;
+          const waveMaxAmp = 42;
+
+          if (px < bLeft) {
+            // Région 1 : Onde incidente + onde réfléchie
+            const u = (px - padX) / plotW;
+            const inc = Math.cos(k1 * u * Math.PI - phase);
+            const refl = ampRefl * Math.cos(-k1 * u * Math.PI - phase);
+            psi = (inc + 0.65 * refl) * 0.65;
+          } else if (px <= bRight) {
+            // Région 2 : Onde évanescente décroissante (ou oscillante si E >= V0)
+            const uIn = (px - bLeft) / barrierPxW;
+            const edgeVal = Math.cos(k1 * ((bLeft - padX) / plotW) * Math.PI - phase);
+            if (t.E < t.V0) {
+              const decay = Math.exp(-kappa * t.a * uIn * 1.4);
+              psi = edgeVal * decay * 0.85;
+            } else {
+              psi = Math.cos(k1 * 0.6 * uIn * Math.PI - phase) * 0.85;
+            }
+          } else {
+            // Région 3 : Onde transmise d'amplitude sqrt(T)
+            const u = (px - bRight) / plotW;
+            psi = ampTrans * Math.cos(k1 * u * Math.PI - phase);
+          }
+
+          const py = energyY - psi * waveMaxAmp;
+          if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+        }
+        ctx.stroke();
+
+        // Légendes des 3 zones
+        ctx.fillStyle = '#94a3b8';
+        ctx.textAlign = 'center';
+        ctx.fillText('Onde incidente + réfléchie', padX + (bLeft - padX) / 2, height - 16);
+        ctx.fillText('Onde évanescente', barrierCenter, height - 16);
+        ctx.fillText(`Onde transmise (${(T * 100).toFixed(1)} %)`, bRight + (width - padX - bRight) / 2, height - 16);
+      }
+
+      // --- RENDU 4 : SPHÈRE DE BLOCH (QUBIT) ---
+      function renderBloch(dt) {
+        const b = state.bloch;
+        // Interpolation fluide des angles
+        b.theta += (b.targetTheta - b.theta) * Math.min(1, dt * 8);
+        b.phi += (b.targetPhi - b.phi) * Math.min(1, dt * 8);
+
+        const cx = width * 0.36;
+        const cy = height * 0.50;
+        const R = Math.min(width * 0.25, height * 0.38);
+
+        // Projection 3D -> 2D isométrique
+        function project3D(x, y, z) {
+          const rotZ = 0.45; // angle de caméra
+          const tiltX = 0.32;
+          const x1 = x * Math.cos(rotZ) - y * Math.sin(rotZ);
+          const y1 = x * Math.sin(rotZ) + y * Math.cos(rotZ);
+          const sx = cx + x1 * R;
+          const sy = cy - z * R * Math.cos(tiltX) + y1 * R * Math.sin(tiltX);
+          return { x: sx, y: sy };
+        }
+
+        // Contour externe de la sphère
+        const grad = ctx.createRadialGradient(cx - R * 0.3, cy - R * 0.3, R * 0.1, cx, cy, R);
+        grad.addColorStop(0, 'rgba(56, 189, 248, 0.12)');
+        grad.addColorStop(1, 'rgba(15, 23, 42, 0.4)');
+        ctx.fillStyle = grad;
+        ctx.strokeStyle = 'rgba(148, 163, 184, 0.3)';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(cx, cy, R, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        // Équateur projeté
+        ctx.strokeStyle = 'rgba(148, 163, 184, 0.25)';
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath();
+        for (let i = 0; i <= 72; i++) {
+          const a = (i / 72) * Math.PI * 2;
+          const pt = project3D(Math.cos(a), Math.sin(a), 0);
+          if (i === 0) ctx.moveTo(pt.x, pt.y); else ctx.lineTo(pt.x, pt.y);
+        }
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Axes X, Y, Z
+        const pOrigin = project3D(0, 0, 0);
+        const pNorth = project3D(0, 0, 1.18);
+        const pSouth = project3D(0, 0, -1.18);
+        const pX = project3D(1.18, 0, 0);
+        const pY = project3D(0, 1.18, 0);
+
+        ctx.strokeStyle = 'rgba(148, 163, 184, 0.35)';
+        ctx.lineWidth = 1;
+        [pNorth, pSouth, pX, pY].forEach(end => {
+          ctx.beginPath();
+          ctx.moveTo(pOrigin.x, pOrigin.y);
+          ctx.lineTo(end.x, end.y);
+          ctx.stroke();
+        });
+
+        // Labels des pôles et axes
+        ctx.fillStyle = '#f1f5f9';
+        ctx.font = 'bold 13px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('|0⟩', pNorth.x, pNorth.y - 8);
+        ctx.fillText('|1⟩', pSouth.x, pSouth.y + 16);
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = '12px monospace';
+        ctx.fillText('|+⟩ (X)', pX.x + 22, pX.y);
+        ctx.fillText('|+i⟩ (Y)', pY.x + 24, pY.y);
+
+        // Vecteur d'état |ψ⟩
+        const vx = Math.sin(b.theta) * Math.cos(b.phi);
+        const vy = Math.sin(b.theta) * Math.sin(b.phi);
+        const vz = Math.cos(b.theta);
+        const pState = project3D(vx, vy, vz);
+
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 3.5;
+        ctx.beginPath();
+        ctx.moveTo(pOrigin.x, pOrigin.y);
+        ctx.lineTo(pState.x, pState.y);
+        ctx.stroke();
+
+        ctx.fillStyle = '#38bdf8';
+        ctx.beginPath();
+        ctx.arc(pState.x, pState.y, 7, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 13px monospace';
+        ctx.fillText('|ψ⟩', pState.x + 16, pState.y - 10);
+
+        // Panneau droit sur le canvas : Barres de probabilité P(|0⟩) et P(|1⟩)
+        const barAreaX = width * 0.68;
+        const barAreaW = width * 0.25;
+        const barMaxH = height * 0.56;
+        const barBaseY = height * 0.78;
+
+        const p0 = Math.pow(Math.cos(b.theta / 2), 2);
+        const p1 = Math.pow(Math.sin(b.theta / 2), 2);
+
+        ctx.fillStyle = 'rgba(17, 24, 39, 0.75)';
+        ctx.strokeStyle = '#26334d';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.roundRect(barAreaX - 16, height * 0.14, barAreaW + 32, height * 0.72, 12);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.fillStyle = '#f1f5f9';
+        ctx.font = 'bold 13px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('Probabilités de mesure', barAreaX + barAreaW / 2, height * 0.20);
+
+        const colW = Math.min(48, barAreaW * 0.34);
+        const x0 = barAreaX + barAreaW * 0.25 - colW / 2;
+        const x1 = barAreaX + barAreaW * 0.75 - colW / 2;
+
+        // Barre |0⟩
+        const h0 = p0 * barMaxH;
+        ctx.fillStyle = '#38bdf8';
+        ctx.fillRect(x0, barBaseY - h0, colW, h0);
+        ctx.fillStyle = '#f1f5f9';
+        ctx.font = 'bold 12px monospace';
+        ctx.fillText('|0⟩', x0 + colW / 2, barBaseY + 18);
+        ctx.fillText(`${(p0 * 100).toFixed(0)}%`, x0 + colW / 2, barBaseY - h0 - 8);
+
+        // Barre |1⟩
+        const h1 = p1 * barMaxH;
+        ctx.fillStyle = '#f59e0b';
+        ctx.fillRect(x1, barBaseY - h1, colW, h1);
+        ctx.fillStyle = '#f1f5f9';
+        ctx.fillText('|1⟩', x1 + colW / 2, barBaseY + 18);
+        ctx.fillText(`${(p1 * 100).toFixed(0)}%`, x1 + colW / 2, barBaseY - h1 - 8);
+      }
+
+      // =========================================================================
+      // BOUCLE D'ANIMATION PRINCIPALE
+      // =========================================================================
+      function mainLoop(now) {
+        const dt = Math.min(0.05, (now - state.lastTime) / 1000);
+        state.lastTime = now;
+        state.timeElapsed += dt * v3.speed;
+        if (v3.running) { v3.progress = Math.min(100, v3.progress + dt * 5 * v3.speed); if (v3.progress >= 100) { v3.running = false; document.getElementById('v3-play').textContent = '▶'; } renderV3Player(); }
+
+        ctx.fillStyle = '#060911';
+        ctx.fillRect(0, 0, width, height);
+
+        if (state.activeModule === 'young') renderYoung(dt);
+        else if (state.activeModule === 'well') renderWell(dt);
+        else if (state.activeModule === 'tunnel') renderTunnel(dt);
+        else if (state.activeModule === 'bloch') renderBloch(dt);
+
+        requestAnimationFrame(mainLoop);
+      }
+
+      // =========================================================================
+      // SURVOL INTERACTIF (INFOBULLES CONTEXTUELLES)
+      // =========================================================================
+      canvas.addEventListener('mousemove', e => {
+        const rect = canvas.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+
+        if (state.activeModule === 'young') {
+          const padY = 28, plotH = height - padY * 2, screenLeft = width * 0.60;
+          if (mx >= screenLeft && my >= padY && my <= padY + plotH) {
+            const normPos = (my - padY) / plotH;
+            const binIdx = Math.min(NUM_BINS - 1, Math.max(0, Math.floor(normPos * NUM_BINS)));
+            state.young.hoverBin = binIdx;
+            const yNorm = normPos * 2 - 1;
+            const yMm = yNorm * SCREEN_HALF_HEIGHT_MM;
+            const prob = youngProbabilityDensity(yNorm) * 100;
+            tooltip.innerHTML = `<strong>Position y :</strong> ${yMm > 0 ? '+' : ''}${yMm.toFixed(1)} mm<br><strong>Impacts :</strong> ${state.young.bins[binIdx]}<br><strong>Probabilité |&psi;|&sup2; :</strong> ${prob.toFixed(1)} %`;
+            tooltip.style.opacity = '1';
+            tooltip.style.left = `${Math.max(12, mx - 200)}px`;
+            tooltip.style.top = `${Math.min(height - 80, Math.max(12, my - 20))}px`;
+          } else {
+            state.young.hoverBin = -1;
+            tooltip.style.opacity = '0';
+          }
+        } else if (state.activeModule === 'well') {
+          const padX = 56, wellW = width - padX * 2;
+          if (mx >= padX && mx <= width - padX) {
+            const u = (mx - padX) / wellW;
+            const xNm = u * state.well.L;
+            const prob = (2 / state.well.L) * Math.pow(Math.sin(state.well.n * Math.PI * u), 2);
+            tooltip.innerHTML = `<strong>Position x :</strong> ${xNm.toFixed(2)} nm<br><strong>Densité |&psi;<sub>${state.well.n}</sub>(x)|&sup2; :</strong> ${prob.toFixed(2)} nm⁻¹`;
+            tooltip.style.opacity = '1';
+            tooltip.style.left = `${Math.min(width - 210, mx + 12)}px`;
+            tooltip.style.top = `${Math.max(12, my - 40)}px`;
+          } else {
+            tooltip.style.opacity = '0';
+          }
+        } else {
+          tooltip.style.opacity = '0';
+        }
+      });
+
+      canvas.addEventListener('mouseleave', () => {
+        state.young.hoverBin = -1;
+        tooltip.style.opacity = '0';
+      });
+
+
+      // =========================================================================
+      // V3 : MISE EN SITUATION, MATERIEL ET PLAYER
+      // =========================================================================
+      const v3Scenes = {
+        young:{title:'Identifier la signature d’un comportement quantique',text:'Le détecteur reçoit une succession d’impacts inexpliqués. Préparez le banc optique, lancez l’acquisition et identifiez les paramètres qui contrôlent la distribution.',role:'Opticien quantique',tools:[['◉','Source monochromatique','λ réglable'],['Ⅱ','Double fente','écartement d'],['▥','Écran détecteur','impacts unitaires'],['⌁','Compteur','histogramme']],steps:['Configurer le montage','Lancer les particules','Comparer les distributions','Conclure sur la cohérence']},
+        well:{title:'Cartographier un état quantifié',text:'Un électron est confiné dans une nanostructure. Choisissez le niveau, observez les nœuds puis reconstituez la densité de probabilité par mesures.',role:'Ingénieur nanophysique',tools:[['▣','Puits infini','largeur L'],['ψ','Générateur d’état','niveau n'],['⌖','Détecteur','position x'],['▥','Histogramme','distribution']],steps:['Choisir n et L','Observer ψ et |ψ|²','Effectuer des mesures','Comparer théorie et données']},
+        tunnel:{title:'Faire franchir une barrière interdite',text:'Une particule arrive sur une barrière plus haute que son énergie. Configurez l’émetteur et la barrière, puis recherchez une transmission mesurable.',role:'Chercheur nanoélectronique',tools:[['≈','Émetteur','énergie E'],['▮','Barrière','V₀ et a'],['↤','Capteur réfléchi','coefficient R'],['↦','Capteur transmis','coefficient T']],steps:['Régler E et V₀','Configurer l’épaisseur','Lancer le paquet','Mesurer T et R']},
+        bloch:{title:'Préparer et mesurer un qubit',text:'Le processeur doit produire une superposition contrôlée. Préparez l’état, composez un circuit et vérifiez statistiquement le résultat.',role:'Opérateur quantique',tools:[['|0⟩','Source de qubit','état initial'],['H','Portes logiques','H X Y Z'],['◯','Sphère de Bloch','état pur'],['▥','Compteur Z','résultats 0/1']],steps:['Préparer |0⟩','Appliquer les portes','Mesurer le qubit','Comparer aux probabilités']}
+      };
+      const v3 = {running:false, progress:0, speed:1};
+      function v3Toast(text){const e=document.getElementById('toast-v3');e.textContent=text;e.classList.add('show');clearTimeout(v3Toast.t);v3Toast.t=setTimeout(()=>e.classList.remove('show'),1700)}
+      function renderV3Scene(){const s=v3Scenes[state.activeModule];document.getElementById('mission-title').textContent=s.title;document.getElementById('mission-text').textContent=s.text;document.getElementById('mission-role').textContent='Rôle · '+s.role;document.getElementById('equipment-bench').innerHTML=s.tools.map((x,i)=>`<div class="tool ${i===0?'active':''}" data-v3-tool="${i}"><div class="tool-icon">${x[0]}</div><div><b>${x[1]}</b><small>${x[2]}</small></div></div>`).join('');document.getElementById('v3-protocol').innerHTML=s.steps.map((x,i)=>`<div class="pstep ${i===0?'current':''}" data-v3-step="${i}"><b>0${i+1}</b>${x}</div>`).join('');document.getElementById('hud-hint').innerHTML='<strong>Consigne</strong> · '+s.steps[0].toLowerCase();renderV3Player()}
+      function renderV3Player(){const p=Math.max(0,Math.min(100,v3.progress)),k=Math.min(3,Math.floor(p/25));document.getElementById('v3-timeline').value=p;document.getElementById('v3-time').textContent='00:'+String((p*.2).toFixed(1)).padStart(4,'0');document.getElementById('v3-phase').textContent=['PRÉPARATION','ACQUISITION','ANALYSE','VALIDATION'][k];document.getElementById('protocol-state').textContent='Étape '+(k+1)+' sur 4';document.getElementById('acq-state').textContent=v3.running?'En cours':'En pause';document.getElementById('quality-state').textContent=p<50?'Données insuffisantes':p<80?'Exploitable':'Bonne';document.getElementById('hud-state').textContent=`t = ${(p*.2).toFixed(2).replace('.',',')} s · ${document.getElementById('v3-phase').textContent.toLowerCase()}`;document.querySelectorAll('.pstep').forEach((e,i)=>e.className='pstep '+(i<k?'done':i===k?'current':''));document.querySelectorAll('.tool').forEach((e,i)=>e.className='tool '+(i<k?'ready':i===k?'active':''))}
+      document.getElementById('v3-play').addEventListener('click',()=>{v3.running=!v3.running;state.young.paused=!v3.running;document.getElementById('v3-play').textContent=v3.running?'Ⅱ':'▶';v3Toast(v3.running?'Acquisition lancée':'Acquisition en pause');renderV3Player()});
+      document.getElementById('v3-step').addEventListener('click',()=>{v3.progress=Math.min(100,v3.progress+5);state.timeElapsed+=.1;renderV3Player()});
+      document.getElementById('v3-rewind').addEventListener('click',()=>{v3.progress=0;state.timeElapsed=0;v3.running=false;state.young.paused=true;document.getElementById('v3-play').textContent='▶';renderV3Player();v3Toast('Expérience remise au début')});
+      document.getElementById('v3-timeline').addEventListener('input',e=>{v3.progress=Number(e.target.value);state.timeElapsed=v3.progress*.2;renderV3Player()});
+      document.getElementById('v3-speed').addEventListener('change',e=>v3.speed=Number(e.target.value));
+      document.getElementById('export-png').addEventListener('click',()=>{const a=document.createElement('a');a.download=`kermiclab-quantique-v3-${state.activeModule}.png`;a.href=canvas.toDataURL('image/png');a.click();v3Toast('Capture PNG exportée')});
+      document.getElementById('fullscreen-v3').addEventListener('click',()=>{if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.()});
+      document.querySelectorAll('.tab-btn').forEach(btn=>btn.addEventListener('click',()=>{v3.progress=0;v3.running=false;document.getElementById('v3-play').textContent='▶';setTimeout(renderV3Scene,0)}));
+
+      // =========================================================================
+      // V4 : MATERIEL INTERACTIF ET MODE GUIDE
+      // =========================================================================
+      const v4 = { installed:{young:new Set(),well:new Set(),tunnel:new Set(),bloch:new Set()}, guideOpen:false, guideStep:0, played:{young:false,well:false,tunnel:false,bloch:false}, analysed:{young:false,well:false,tunnel:false,bloch:false} };
+      const guideCopy = {
+        young:[['Préparer le banc optique','Installez la source, la double fente, l’écran détecteur et le compteur statistique. Chaque clic connecte et calibre un instrument.'],['Lancer l’acquisition','Démarrez le player. Observez les impacts individuels construire progressivement une distribution.'],['Analyser les données','Avancez jusqu’à la phase Analyse puis modifiez λ, d ou la cadence. Comparez l’histogramme et la courbe théorique.'],['Tester la mesure du chemin','Activez le détecteur « Quel-Chemin », observez la disparition des franges puis formulez votre conclusion.']],
+        well:[['Préparer la nanostructure','Installez le puits, le générateur d’état, le détecteur de position et l’histogramme.'],['Choisir un état','Réglez n et L, puis lancez le player pour visualiser la fonction d’onde stationnaire.'],['Effectuer une mesure','Utilisez « Mesurer position » plusieurs fois et examinez où les détections apparaissent.'],['Valider le modèle','Comparez les nœuds de ψ et les zéros de |ψ|², puis expliquez le rôle de n.']],
+        tunnel:[['Assembler le dispositif','Connectez l’émetteur, la barrière et les deux capteurs de réflexion et transmission.'],['Créer un régime tunnel','Réglez E < V₀, puis choisissez l’épaisseur a de la barrière.'],['Lancer le paquet','Cliquez sur « Lancer un paquet d’ondes » puis utilisez le player pour suivre son évolution.'],['Interpréter T et R','Comparez transmission et réflexion, puis augmentez a pour tester l’effet sur T.']],
+        bloch:[['Initialiser le processeur','Connectez la source de qubit, le jeu de portes, la sphère et le compteur de mesure Z.'],['Préparer une superposition','Réinitialisez en |0⟩ puis appliquez H. Le vecteur doit rejoindre l’équateur.'],['Mesurer','Réalisez plusieurs mesures et observez les résultats |0⟩ et |1⟩.'],['Comparer','Recommencez depuis |0⟩ et confrontez les fréquences observées aux probabilités théoriques.']]
+      };
+      const guideTargets=['#equipment-bench','.player','#controls-panel','.panel-section:last-child'];
+      function installedCount(){return v4.installed[state.activeModule].size}
+      function updateBenchConnection(){const n=installedCount(),ready=n===4,bar=document.getElementById('connection-strip');bar.classList.toggle('ready',ready);document.getElementById('connection-label').textContent=ready?'Banc connecté et calibré':`Banc incomplet · ${n}/4 instruments`;document.getElementById('bench-state').textContent=ready?'Prêt pour acquisition':`${n}/4 instruments connectés`;renderGuide()}
+      function bindEquipment(){document.querySelectorAll('.tool').forEach((el,i)=>el.addEventListener('click',()=>{const set=v4.installed[state.activeModule];if(set.has(i)){set.delete(i);el.classList.remove('installed');v3Toast('Instrument déconnecté')}else{set.add(i);el.classList.add('installed','tool-pulse');setTimeout(()=>el.classList.remove('tool-pulse'),700);v3Toast(`${v3Scenes[state.activeModule].tools[i][1]} connecté et calibré`);applyEquipmentEffect(i)}updateBenchConnection()}));v4.installed[state.activeModule].forEach(i=>document.querySelector(`[data-v3-tool="${i}"]`)?.classList.add('installed'));updateBenchConnection()}
+      function applyEquipmentEffect(i){const m=state.activeModule;if(m==='young'){if(i===0){state.young.lambda=520;document.getElementById('slider-lambda').value=520}if(i===1){state.young.d=40;document.getElementById('slider-d').value=40}if(i===2){state.young.impacts=[];state.young.bins.fill(0)}updateYoungMetrics()}else if(m==='well'){if(i===0)state.well.L=1;if(i===1)state.well.n=2;if(i===2)state.well.measuredX=null;updateWellMetrics()}else if(m==='tunnel'){if(i===0)state.tunnel.E=4;if(i===1){state.tunnel.V0=6;state.tunnel.a=.4}updateTunnelMetrics()}else{if(i===0){state.bloch.targetTheta=0;state.bloch.targetPhi=0}if(i===1)state.bloch.lastMeasurement=null;updateBlochMetrics()}}
+      function guideCondition(){const m=state.activeModule;if(v4.guideStep===0)return installedCount()===4;if(v4.guideStep===1)return v4.played[m];if(v4.guideStep===2)return v4.analysed[m]||v3.progress>=50;if(m==='young')return state.young.detectorOn;if(m==='well')return state.well.measuredX!==null;if(m==='tunnel')return state.tunnel.pulseX<.9;if(m==='bloch')return state.bloch.lastMeasurement!==null;return false}
+      function clearSpotlight(){document.querySelectorAll('.spotlight').forEach(e=>e.classList.remove('spotlight'))}
+      function renderGuide(){if(!v4.guideOpen)return;const copy=guideCopy[state.activeModule][v4.guideStep],ok=guideCondition();document.getElementById('guide-progress').innerHTML=[0,1,2,3].map(i=>`<span class="guide-dot ${i<v4.guideStep?'done':i===v4.guideStep?'current':''}"></span>`).join('');document.getElementById('guide-kicker').textContent=`Étape ${v4.guideStep+1} sur 4 · ${v3Scenes[state.activeModule].role}`;document.getElementById('guide-title').textContent=copy[0];document.getElementById('guide-text').textContent=copy[1];const check=document.getElementById('guide-check');check.className='guide-check '+(ok?'ok':'');check.textContent=ok?'✓ Critère rempli. Vous pouvez continuer.':v4.guideStep===0?`Connectez encore ${4-installedCount()} instrument(s).`:v4.guideStep===1?'Lancez le player ou utilisez l’action proposée.':v4.guideStep===2?'Atteignez la phase Analyse ou manipulez les paramètres.':'Réalisez l’observation finale demandée.';document.getElementById('guide-prev').disabled=v4.guideStep===0;document.getElementById('guide-next').disabled=!ok;document.getElementById('guide-next').textContent=v4.guideStep===3?'Terminer ✓':'Suivant →';clearSpotlight();const target=document.querySelector(guideTargets[v4.guideStep]);if(target)target.classList.add('spotlight')}
+      function openGuide(){v4.guideOpen=true;document.getElementById('guide').classList.add('open');document.getElementById('guide-scrim').classList.add('show');document.getElementById('guided-launch').hidden=true;renderGuide()}
+      function closeGuide(){v4.guideOpen=false;document.getElementById('guide').classList.remove('open');document.getElementById('guide-scrim').classList.remove('show');document.getElementById('guided-launch').hidden=false;clearSpotlight()}
+      document.getElementById('guided-launch').addEventListener('click',openGuide);document.getElementById('guide-close').addEventListener('click',closeGuide);document.getElementById('guide-scrim').addEventListener('click',closeGuide);document.getElementById('guide-prev').addEventListener('click',()=>{v4.guideStep=Math.max(0,v4.guideStep-1);renderGuide()});document.getElementById('guide-next').addEventListener('click',()=>{if(!guideCondition())return;if(v4.guideStep===3){v3Toast('Mission guidée terminée');closeGuide()}else{v4.guideStep++;renderGuide()}});
+      document.getElementById('guide-action').addEventListener('click',()=>{const m=state.activeModule;if(v4.guideStep===0){document.querySelectorAll('.tool').forEach((e,i)=>{if(!v4.installed[m].has(i))e.click()})}else if(v4.guideStep===1){if(!v3.running)document.getElementById('v3-play').click();v4.played[m]=true}else if(v4.guideStep===2){v3.progress=Math.max(55,v3.progress);v4.analysed[m]=true;renderV3Player()}else{if(m==='young'&&!state.young.detectorOn)document.getElementById('toggle-detector').click();if(m==='well')document.getElementById('btn-well-measure').click();if(m==='tunnel')document.getElementById('btn-tunnel-pulse').click();if(m==='bloch')document.getElementById('btn-measure-qubit').click()}renderGuide()});
+      document.getElementById('v3-play').addEventListener('click',()=>{v4.played[state.activeModule]=true;renderGuide()});document.querySelectorAll('input[type="range"]').forEach(e=>e.addEventListener('input',()=>{v4.analysed[state.activeModule]=true;renderGuide()}));
+      const originalRenderV3Scene=renderV3Scene;renderV3Scene=()=>{originalRenderV3Scene();setTimeout(()=>{bindEquipment();v4.guideStep=0;renderGuide()},0)};
+      bindEquipment();
+
+      renderV3Scene();
+
+      // Démarrage initial
+      updateUIForModule();
+      requestAnimationFrame(mainLoop);
+    })();
+  </script>
+<button class="guided-launch" id="guided-launch">✦ Mode guidé pas à pas</button><div class="guide-scrim" id="guide-scrim"></div><aside class="guide" id="guide" aria-label="Assistant de protocole"><div class="guide-head"><b>Assistant de mission</b><button id="guide-close" aria-label="Fermer">×</button></div><div class="guide-body"><div class="guide-progress" id="guide-progress"></div><div class="guide-kicker" id="guide-kicker">Étape 1 sur 4</div><h3 class="guide-title" id="guide-title">Préparer le matériel</h3><p class="guide-text" id="guide-text"></p><div class="guide-check" id="guide-check"></div><div class="guide-actions"><button id="guide-prev">← Précédent</button><button class="primary" id="guide-action">Effectuer l’action</button><button id="guide-next">Suivant →</button></div></div></aside><div class="toast-v3" id="toast-v3" role="status" aria-live="polite"></div></body>
+</html>
