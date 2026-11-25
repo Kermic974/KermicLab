@@ -1,0 +1,17 @@
+{
+  "id": "microskill.transversal.initier-une-premiere-petite-action",
+  "type": "microskill",
+  "label": "Initier une première petite action",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "Sample/lab/remediation-tdah.md"
+  },
+  "evidence": [
+    {
+      "ref": "Sample/lab/remediation-tdah.md#commencer",
+      "excerpt": "Commencer par un geste limité, avec le droit de s’arrêter."
+    }
+  ]
+}

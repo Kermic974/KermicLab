@@ -1,0 +1,13 @@
+{
+  "id": "relation.transversal.organisation-attention-teaches-externaliser",
+  "type": "teaches",
+  "source": "notion.transversal.organisation-et-attention",
+  "target": "microskill.transversal.externaliser-les-taches-et-les-pensees",
+  "rationale": "Le labo propose une pratique guidée de cette action ; la pratique ne démontre pas une maîtrise.",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "Sample/lab/remediation-tdah.md"
+  }
+}

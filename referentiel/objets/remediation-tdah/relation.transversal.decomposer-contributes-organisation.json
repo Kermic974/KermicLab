@@ -1,0 +1,13 @@
+{
+  "id": "relation.transversal.decomposer-contributes-organisation",
+  "type": "contributesTo",
+  "source": "microskill.transversal.decomposer-une-tache-en-actions-simples",
+  "target": "skill.transversal.organiser-et-ajuster-son-action",
+  "rationale": "Transformer une tâche large en mini-étapes ordonnées et cochables.",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "Sample/lab/remediation-tdah.md"
+  }
+}

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-QWDT519WImvRXlFqIlJlQNdqgv3h/ljkY3aijlcENTA='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'"><meta name="description" content="Un labo pour adultes : organiser ses tâches, avancer par mini-étapes, adapter ses efforts à son énergie et suivre sa progression localement."><script type="application/json" id="kermiclab-meta">{
+<html lang="fr"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-GSAqrXGTvn3ECcGMbb99ExMKXX3mD69e1Kmk+M14vYA='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'"><meta name="description" content="Un labo pour adultes : organiser ses tâches, avancer par mini-étapes, adapter ses efforts à son énergie et suivre sa progression localement."><script type="application/json" id="kermiclab-meta">{
   "id": "remediation-tdah",
   "titre": "À petits pas — Organisation et attention",
   "sujet": "organisation/remediation-tdah-adulte",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "date": "2026-11-25",
   "langue": "fr",
   "onglets": [
@@ -14,12 +14,399 @@
     "sort",
     "action",
     "review",
-    "journey"
+    "journey",
+    "memo"
+  ],
+  "microskills": [
+    "microskill.transversal.externaliser-les-taches-et-les-pensees",
+    "microskill.transversal.prioriser-selon-son-energie",
+    "microskill.transversal.decomposer-une-tache-en-actions-simples",
+    "microskill.transversal.initier-une-premiere-petite-action",
+    "microskill.transversal.revenir-a-la-tache-apres-une-distraction",
+    "microskill.transversal.alterner-effort-et-recuperation",
+    "microskill.transversal.identifier-un-blocage-et-ajuster-son-action",
+    "microskill.transversal.faire-un-bilan-et-preparer-la-reprise"
   ]
-}</script><meta name="viewport" content="width=device-width,initial-scale=1"><title>À petits pas — Mon espace d’action</title>
+}</script>
+<script type="application/json" id="remediation-microskills">{
+  "version": 1,
+  "notion": "notion.transversal.organisation-et-attention",
+  "skill": "skill.transversal.organiser-et-ajuster-son-action",
+  "microskills": [
+    {
+      "id": "microskill.transversal.externaliser-les-taches-et-les-pensees",
+      "slug": "externaliser",
+      "fichierCanonique": "referentiel/objets/remediation-tdah/microskill.transversal.externaliser-les-taches-et-les-pensees.json",
+      "observable": "Noter les tâches et les idées dans un support unique.",
+      "retenir": "Dépose ce qui occupe ton esprit dans la pochette. Une pensée qui arrive pendant le travail peut être notée, puis laissée de côté pour revenir à l’action.",
+      "pratique": "brain",
+      "contextes": [
+        "home",
+        "brain"
+      ],
+      "signaux": [
+        "depot"
+      ],
+      "connexions": [
+        {
+          "notion": "problemes-a-etapes-cm",
+          "niveau": 0,
+          "microskill": "microskill.mathematiques.schematiser-un-probleme",
+          "fichierCanonique": "referentiel/objets/v0.5/mathematiques/microskill.mathematiques.schematiser-un-probleme.json",
+          "raison": "Mettre les informations utiles sur un support avant de résoudre un problème."
+        }
+      ],
+      "label": "Externaliser les tâches et les pensées",
+      "statut": "draft",
+      "version": 1
+    },
+    {
+      "id": "microskill.transversal.prioriser-selon-son-energie",
+      "slug": "prioriser",
+      "fichierCanonique": "referentiel/objets/remediation-tdah/microskill.transversal.prioriser-selon-son-energie.json",
+      "observable": "Observer son énergie et limiter les priorités de la journée.",
+      "retenir": "Classe les tâches de la plus énergivore à la moins énergivore. Choisis trois priorités au maximum ; avec peu d’énergie, une mini-étape peut suffire.",
+      "pratique": "sort",
+      "contextes": [
+        "home",
+        "sort"
+      ],
+      "signaux": [
+        "energie",
+        "priorite"
+      ],
+      "connexions": [
+        {
+          "notion": "ecrire-et-reecrire-c4",
+          "niveau": 0,
+          "microskill": "microskill.francais.planifier-un-texte-argumentatif",
+          "fichierCanonique": "referentiel/objets/v0.5/francais/microskill.francais.planifier-un-texte-argumentatif.json",
+          "raison": "Organiser un travail d’écriture avant de rédiger."
+        },
+        {
+          "notion": "eps-endurance-et-sante-c4",
+          "niveau": 1,
+          "microskill": "microskill.eps.planifier-un-projet-d-entrainement",
+          "fichierCanonique": "referentiel/objets/v0.5/eps/microskill.eps.planifier-un-projet-d-entrainement.json",
+          "raison": "Dans le contexte de l’EPS, définir un objectif et une progression adaptés ; il s’agit d’un transfert de méthode."
+        }
+      ],
+      "label": "Choisir des priorités selon son énergie",
+      "statut": "draft",
+      "version": 1
+    },
+    {
+      "id": "microskill.transversal.decomposer-une-tache-en-actions-simples",
+      "slug": "decomposer",
+      "fichierCanonique": "referentiel/objets/remediation-tdah/microskill.transversal.decomposer-une-tache-en-actions-simples.json",
+      "observable": "Transformer une tâche large en mini-étapes ordonnées et cochables.",
+      "retenir": "Une case correspond à une action simple : ouvrir le document, écrire le titre, sortir le dossier. Si la tâche reste trop grosse, redécoupe la prochaine étape.",
+      "pratique": "action",
+      "contextes": [
+        "action",
+        "sort"
+      ],
+      "signaux": [
+        "decoupage",
+        "etape"
+      ],
+      "connexions": [
+        {
+          "notion": "problemes-a-etapes-cm",
+          "niveau": 0,
+          "microskill": "microskill.mathematiques.resoudre-un-probleme-a-plusieurs-etapes",
+          "fichierCanonique": "referentiel/objets/v0.5/mathematiques/microskill.mathematiques.resoudre-un-probleme-a-plusieurs-etapes.json",
+          "raison": "Repérer les étapes intermédiaires avant la réponse finale."
+        },
+        {
+          "notion": "algorithmes-programmation-cm",
+          "niveau": 0,
+          "microskill": "microskill.mathematiques.decrire-les-etapes-d-un-algorithme",
+          "fichierCanonique": "referentiel/objets/v0.5/mathematiques/microskill.mathematiques.decrire-les-etapes-d-un-algorithme.json",
+          "raison": "Décrire une suite d’instructions précises dans un ordre utile."
+        }
+      ],
+      "label": "Découper une tâche en actions simples",
+      "statut": "draft",
+      "version": 1
+    },
+    {
+      "id": "microskill.transversal.initier-une-premiere-petite-action",
+      "slug": "commencer",
+      "fichierCanonique": "referentiel/objets/remediation-tdah/microskill.transversal.initier-une-premiere-petite-action.json",
+      "observable": "Commencer par un geste limité, avec le droit de s’arrêter.",
+      "retenir": "Dis-toi : « Je fais seulement la première petite étape. » Lance cinq minutes si cela t’aide. Après ces cinq minutes, tu as le droit d’arrêter.",
+      "pratique": "action",
+      "contextes": [
+        "home",
+        "action"
+      ],
+      "signaux": [
+        "demarrage"
+      ],
+      "connexions": [
+        {
+          "notion": "ecrire-et-reecrire-c4",
+          "niveau": 1,
+          "microskill": "microskill.francais.reecrire-un-texte-pour-l-ameliorer",
+          "fichierCanonique": "referentiel/objets/v0.5/francais/microskill.francais.reecrire-un-texte-pour-l-ameliorer.json",
+          "raison": "Commencer par une première version améliorable ; la réécriture relève ensuite du contenu de français."
+        }
+      ],
+      "label": "Initier une première petite action",
+      "statut": "draft",
+      "version": 1
+    },
+    {
+      "id": "microskill.transversal.revenir-a-la-tache-apres-une-distraction",
+      "slug": "recentrer",
+      "fichierCanonique": "referentiel/objets/remediation-tdah/microskill.transversal.revenir-a-la-tache-apres-une-distraction.json",
+      "observable": "Préparer un espace monotâche et retrouver le fil de l’action.",
+      "retenir": "Garde un seul dossier ouvert, ferme les mails et écarte le téléphone. Si une autre pensée arrive, note-la puis reviens à la tâche.",
+      "pratique": "action",
+      "contextes": [
+        "action",
+        "home"
+      ],
+      "signaux": [
+        "monotache",
+        "distraction",
+        "concentration"
+      ],
+      "connexions": [
+        {
+          "notion": "temps",
+          "niveau": 0,
+          "microskill": "microskill.philosophie.analyser-l-influence-de-l-attention-sur-la-duree-percue",
+          "fichierCanonique": "referentiel/objets/v0.5/philosophie/microskill.philosophie.analyser-l-influence-de-l-attention-sur-la-duree-percue.json",
+          "raison": "Éclairage conceptuel sur l’attention et la durée vécue ; ce lien ne mesure pas l’attention."
+        }
+      ],
+      "label": "Revenir à la tâche après une distraction",
+      "statut": "draft",
+      "version": 1
+    },
+    {
+      "id": "microskill.transversal.alterner-effort-et-recuperation",
+      "slug": "recuperer",
+      "fichierCanonique": "referentiel/objets/remediation-tdah/microskill.transversal.alterner-effort-et-recuperation.json",
+      "observable": "Utiliser les pauses comme repères pour reprendre l’action.",
+      "retenir": "Le plan propose vingt-cinq minutes de travail puis cinq minutes de pause. Après trois cycles, prends une pause plus longue. Se lever, boire, bouger ou regarder au loin peut marquer cette coupure.",
+      "pratique": "action",
+      "contextes": [
+        "action"
+      ],
+      "signaux": [
+        "pause"
+      ],
+      "connexions": [
+        {
+          "notion": "eps-endurance-et-sante-c4",
+          "niveau": 1,
+          "microskill": "microskill.eps.planifier-un-projet-d-entrainement",
+          "fichierCanonique": "referentiel/objets/v0.5/eps/microskill.eps.planifier-un-projet-d-entrainement.json",
+          "raison": "Retrouver, dans un autre contexte, l’idée d’organiser un effort et sa progression. Le labo ne développe ni ne mesure l’endurance sportive."
+        }
+      ],
+      "label": "Alterner effort et récupération",
+      "statut": "draft",
+      "version": 1
+    },
+    {
+      "id": "microskill.transversal.identifier-un-blocage-et-ajuster-son-action",
+      "slug": "ajuster",
+      "fichierCanonique": "referentiel/objets/remediation-tdah/microskill.transversal.identifier-un-blocage-et-ajuster-son-action.json",
+      "observable": "Nommer un ressenti ou un obstacle pour choisir une réponse concrète.",
+      "retenir": "Fatigue : une pause courte. Tâche floue : faire juste le plan. Perfectionnisme : une version imparfaite. Tâche trop grosse : des étapes plus petites. Parle-toi avec bienveillance.",
+      "pratique": "action",
+      "contextes": [
+        "action",
+        "mise-en-situation"
+      ],
+      "signaux": [
+        "ajustement"
+      ],
+      "connexions": [
+        {
+          "notion": "conception-et-prototypage-c4",
+          "niveau": 1,
+          "microskill": "microskill.technologie.planifier-un-test-et-interpreter-ses-resultats",
+          "fichierCanonique": "referentiel/objets/v0.5/technologie/microskill.technologie.planifier-un-test-et-interpreter-ses-resultats.json",
+          "raison": "Observer ce qui bloque, tester une piste et ajuster : une méthode à réinvestir dans un projet technique."
+        }
+      ],
+      "label": "Identifier un blocage et ajuster son prochain pas",
+      "statut": "draft",
+      "version": 1
+    },
+    {
+      "id": "microskill.transversal.faire-un-bilan-et-preparer-la-reprise",
+      "slug": "preparer",
+      "fichierCanonique": "referentiel/objets/remediation-tdah/microskill.transversal.faire-un-bilan-et-preparer-la-reprise.json",
+      "observable": "Faire un bilan simple puis choisir une première tâche pour demain.",
+      "retenir": "Coche ce qui est fait et félicite-toi, même pour une petite avancée. Choisis une seule tâche en premier demain. Les jours moyens comptent ; la régularité prime sur la perfection.",
+      "pratique": "review",
+      "contextes": [
+        "review",
+        "journey"
+      ],
+      "signaux": [
+        "bilan",
+        "demain"
+      ],
+      "connexions": [
+        {
+          "notion": "problemes-a-etapes-cm",
+          "niveau": 1,
+          "microskill": "microskill.mathematiques.verifier-la-vraisemblance-d-un-resultat",
+          "fichierCanonique": "referentiel/objets/v0.5/mathematiques/microskill.mathematiques.verifier-la-vraisemblance-d-un-resultat.json",
+          "raison": "Réinvestir une habitude de vérification, sans confondre tâche cochée et réponse mathématique correcte."
+        },
+        {
+          "notion": "conception-et-prototypage-c4",
+          "niveau": 1,
+          "microskill": "microskill.technologie.ameliorer-un-prototype-apres-un-test-insuffisant",
+          "fichierCanonique": "referentiel/objets/v0.5/technologie/microskill.technologie.ameliorer-un-prototype-apres-un-test-insuffisant.json",
+          "raison": "Reprendre un projet à partir d’un bilan et d’un prochain ajustement."
+        }
+      ],
+      "label": "Reconnaître ses avancées et préparer la reprise",
+      "statut": "draft",
+      "version": 1
+    }
+  ],
+  "notions": [
+    {
+      "id": "problemes-a-etapes-cm",
+      "reference": "notion.mathematiques.problemes-a-etapes-cm",
+      "titre": "Résoudre des problèmes à plusieurs étapes",
+      "niveau": "primaire",
+      "source": "catalogue/problemes-a-etapes-cm/contenu.json",
+      "retenir": [
+        {
+          "index": 0,
+          "titre": "Intuition : lire et faire un schéma",
+          "texte": "Trouver l'inconnue intermédiaire, puis répondre à la question posée."
+        },
+        {
+          "index": 1,
+          "titre": "Choisir l'opération",
+          "texte": "Vérifie avec un ordre de grandeur."
+        }
+      ],
+      "url": "https://kermiclab-api.kermic.workers.dev/maquettes/problemes-a-etapes-cm?lang=fr"
+    },
+    {
+      "id": "ecrire-et-reecrire-c4",
+      "reference": "notion.francais.ecrire-et-reecrire-c4",
+      "titre": "Écrire, argumenter et réécrire au collège",
+      "niveau": "college",
+      "source": "catalogue/ecrire-et-reecrire-c4/contenu.json",
+      "retenir": [
+        {
+          "index": 0,
+          "titre": "Planifier et argumenter",
+          "texte": "Thèse, arguments, exemples."
+        },
+        {
+          "index": 1,
+          "titre": "Réécrire pour améliorer",
+          "texte": "Relire, supprimer, enrichir, corriger."
+        }
+      ],
+      "url": "https://kermiclab-api.kermic.workers.dev/maquettes/ecrire-et-reecrire-c4?lang=fr"
+    },
+    {
+      "id": "eps-endurance-et-sante-c4",
+      "reference": "notion.eps.eps-endurance-et-sante-c4",
+      "titre": "EPS : endurance, force et santé au collège",
+      "niveau": "college",
+      "source": "catalogue/eps-endurance-et-sante-c4/contenu.json",
+      "retenir": [
+        {
+          "index": 0,
+          "titre": "Connaître ses limites",
+          "texte": "FC max ≈ 220 − âge."
+        },
+        {
+          "index": 1,
+          "titre": "Construire son projet",
+          "texte": "Progresser sans se blesser."
+        }
+      ],
+      "url": "https://kermiclab-api.kermic.workers.dev/maquettes/eps-endurance-et-sante-c4?lang=fr"
+    },
+    {
+      "id": "algorithmes-programmation-cm",
+      "reference": "notion.mathematiques.algorithmes-programmation-cm",
+      "titre": "Algorithmes et programmation",
+      "niveau": "primaire",
+      "source": "catalogue/algorithmes-programmation-cm/contenu.json",
+      "retenir": [
+        {
+          "index": 0,
+          "titre": "Intuition : la recette et le robot",
+          "texte": "L'ordre des instructions compte."
+        },
+        {
+          "index": 1,
+          "titre": "Boucles et conditions",
+          "texte": "Une boucle évite de recopier la même instruction."
+        }
+      ],
+      "url": "https://kermiclab-api.kermic.workers.dev/maquettes/algorithmes-programmation-cm?lang=fr"
+    },
+    {
+      "id": "temps",
+      "reference": "notion.philosophie.temps",
+      "titre": "Le temps",
+      "niveau": "terminale",
+      "source": "catalogue/temps/contenu.json",
+      "retenir": [
+        {
+          "index": 0,
+          "titre": "Intuition : avant, maintenant, après",
+          "texte": "Une durée mesurée identique peut être vécue différemment."
+        },
+        {
+          "index": 1,
+          "titre": "Collège : passé, présent et futur",
+          "texte": "Nous avons accès au passé et au futur depuis le présent, par des traces, des souvenirs et des attentes."
+        },
+        {
+          "index": 2,
+          "titre": "Lycée : durée et existence",
+          "texte": "Temps mesuré et durée vécue sont deux approches à distinguer, non deux horloges rivales."
+        }
+      ],
+      "url": "https://kermiclab-api.kermic.workers.dev/maquettes/temps?lang=fr"
+    },
+    {
+      "id": "conception-et-prototypage-c4",
+      "reference": "notion.technologie.conception-et-prototypage-c4",
+      "titre": "Technologie : concevoir, prototyper, tester",
+      "niveau": "college",
+      "source": "catalogue/conception-et-prototypage-c4/contenu.json",
+      "retenir": [
+        {
+          "index": 0,
+          "titre": "Du besoin à la solution",
+          "texte": "Besoin → cahier des charges → solution."
+        },
+        {
+          "index": 1,
+          "titre": "Prototype et test",
+          "texte": "Tester, mesurer, améliorer."
+        }
+      ],
+      "url": "https://kermiclab-api.kermic.workers.dev/maquettes/conception-et-prototypage-c4?lang=fr"
+    }
+  ]
+}</script>
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>À petits pas — Mon espace d’action</title>
 <style>
 :root{--ink:#203d39;--muted:#647772;--green:#326d5c;--pale:#e6eee8;--paper:#fffef9;--line:#dce3da;--orange:#e7ae77}*{box-sizing:border-box}body{margin:0;background:#f2f3eb;color:var(--ink);font:16px/1.5 system-ui,sans-serif}header{padding:30px 5vw 20px;border-bottom:1px solid var(--line);background:var(--paper)}.top,.row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}h1{font:normal 34px Georgia,serif;margin:0}h2{font:normal 27px Georgia,serif;margin:0 0 14px}h3{margin:0 0 10px;font-size:17px}p{margin:8px 0 18px}.muted,small{color:var(--muted)}.tag{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--green)}nav{display:flex;gap:8px;flex-wrap:wrap;padding-top:22px}button,input,select,textarea{font:inherit}button{border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:10px 15px;cursor:pointer;color:var(--ink)}button:hover{border-color:var(--green);background:var(--pale)}button.active,.primary{background:var(--green);color:white;border-color:var(--green)}button:disabled{opacity:.5;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--orange);outline-offset:2px}main{max-width:1150px;padding:30px 24px 70px;margin:auto}.grid{display:grid;grid-template-columns:1.5fr 1fr;gap:22px}.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:25px;margin-bottom:18px}.soft{background:var(--pale)}.hero{padding:30px;background:var(--ink);color:white;border-radius:18px;margin-bottom:24px}.hero p{color:#d9e4db;margin-bottom:0}input:not([type=checkbox]),select,textarea{border:1px solid #c4d0c7;border-radius:9px;padding:10px;background:white;color:var(--ink);max-width:100%}input[type=text],textarea{width:100%}textarea{resize:vertical;min-height:85px}label{display:block;margin:10px 0 5px;font-size:14px}label.check{display:flex;align-items:flex-start;gap:10px;font-size:16px}input[type=checkbox]{width:19px;height:19px;accent-color:var(--green);flex-shrink:0;margin-top:3px}.task{padding:17px 0;border-bottom:1px solid var(--line)}.task:last-child{border:0}.task-title{font-weight:650;overflow-wrap:anywhere}.done{text-decoration:line-through;color:var(--muted)}.tiny{font-size:13px;padding:5px 9px}.steps{margin:10px 0 10px 12px}.timer{font:normal 68px/1.2 Georgia,serif;font-variant-numeric:tabular-nums;text-align:center;margin:20px 0}.center{text-align:center}.empty{padding:20px 0;color:var(--muted)}.hidden{display:none!important}.progress{height:8px;border-radius:9px;background:var(--line);overflow:hidden;margin:15px 0}.progress span{display:block;height:100%;background:var(--green)}footer{max-width:1150px;margin:auto;padding:0 24px 25px;font-size:13px;color:var(--muted)}#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:white;padding:12px 20px;border-radius:12px;z-index:10;max-width:90vw}.tools{display:flex;gap:8px;flex-wrap:wrap}.energy{color:var(--green);font-size:13px}#focusName{font-size:22px;overflow-wrap:anywhere}@media(max-width:750px){.grid{grid-template-columns:1fr}header{padding:24px}h1{font-size:29px}main{padding:20px 16px}.card{padding:20px}nav button{flex:1} .timer{font-size:60px}}@media print{header nav,.tools,button,footer,#toast{display:none!important}body{background:white}.card{break-inside:avoid}main{padding:0}.grid{display:block}.hidden{display:none!important}}
- .xp-number{font:42px Georgia,serif}.badge{padding:10px;border-radius:10px;background:var(--pale);margin:8px 0}.locked{opacity:.65;background:#f1f1eb}.bars{display:flex;gap:5px;height:100px;align-items:end;margin:12px 0}.bar{flex:1;min-width:0;background:var(--green);border-radius:5px 5px 0 0}.bar.zero{background:var(--line)}table{width:100%;border-collapse:collapse;font-size:13px}td,th{text-align:left;padding:7px 4px;border-bottom:1px solid var(--line)}dialog{border:1px solid var(--line);border-radius:18px;padding:25px;width:min(94vw,500px);color:var(--ink)}dialog::backdrop{background:#203d3980}.celebration{position:fixed;right:25px;top:25px;background:#f5d9a9;color:var(--ink);border-radius:18px;padding:20px;z-index:20;box-shadow:0 10px 40px #203d3922;pointer-events:none}@media(prefers-reduced-motion:no-preference){.celebration{animation:pop .3s ease-out}@keyframes pop{from{transform:translateY(-10px);opacity:0}to{transform:none;opacity:1}}} .grid>*{min-width:0}.card{min-width:0}select,textarea,input:not([type=checkbox]){min-width:0}select{width:100%}.grid{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}.tools>*{min-width:0}button{overflow-wrap:anywhere}@media(max-width:750px){.grid{grid-template-columns:minmax(0,1fr)}} </style></head><body>
+ .xp-number{font:42px Georgia,serif}.badge{padding:10px;border-radius:10px;background:var(--pale);margin:8px 0}.locked{opacity:.65;background:#f1f1eb}.bars{display:flex;gap:5px;height:100px;align-items:end;margin:12px 0}.bar{flex:1;min-width:0;background:var(--green);border-radius:5px 5px 0 0}.bar.zero{background:var(--line)}table{width:100%;border-collapse:collapse;font-size:13px}td,th{text-align:left;padding:7px 4px;border-bottom:1px solid var(--line)}dialog{border:1px solid var(--line);border-radius:18px;padding:25px;width:min(94vw,500px);color:var(--ink)}dialog::backdrop{background:#203d3980}.celebration{position:fixed;right:25px;top:25px;background:#f5d9a9;color:var(--ink);border-radius:18px;padding:20px;z-index:20;box-shadow:0 10px 40px #203d3922;pointer-events:none}@media(prefers-reduced-motion:no-preference){.celebration{animation:pop .3s ease-out}@keyframes pop{from{transform:translateY(-10px);opacity:0}to{transform:none;opacity:1}}} .grid>*{min-width:0}.card{min-width:0}select,textarea,input:not([type=checkbox]){min-width:0}select{width:100%}.grid{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}.tools>*{min-width:0}button{overflow-wrap:anywhere}@media(max-width:750px){.grid{grid-template-columns:minmax(0,1fr)}} .memo-competence code{overflow-wrap:anywhere;font-size:13px}.memo-competence{scroll-margin-top:20px}.notion-connexe{border-top:1px solid var(--line);padding:16px 0}.notion-connexe p{margin:10px 0}.notion-connexe a{color:var(--green);text-decoration:underline;overflow-wrap:anywhere}.notion-connexe details{margin-top:10px}summary{cursor:pointer} header nav button{overflow-wrap:normal;word-break:normal}@media(max-width:750px){header nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}header nav button{font-size:14px;padding:10px 8px;min-height:52px}} </style></head><body>
 <header><div class="top"><div><div class="tag">Remédiation cognitive · TDAH adulte</div><h1>À petits pas<span style="color:#9ab29a">.</span></h1></div><div><div id="today"></div><small id="saveStatus">Sauvegarde sur cet appareil</small></div></div><nav aria-label="Navigation principale"><button data-tab="explication">Le plan</button><button data-tab="home" class="active">Aujourd’hui</button><button data-tab="brain">1 · Vider la tête</button><button data-tab="sort">2 · Classer</button><button data-tab="action">3 · Agir</button><button data-tab="review">Bilan du soir</button><button data-tab="journey">✦ Mon parcours</button><button data-tab="mise-en-situation">S’entraîner</button></nav></header>
 <main><section id="explication" class="hidden"><h2>Comprendre mon plan</h2><p>Ce labo d’organisation s’adresse aux adultes. Il reprend le plan de remédiation fourni pour le TDAH adulte. Il ne réalise aucun diagnostic et ne mesure pas une amélioration clinique.</p><div class="card"><h3>Les sept repères</h3><ol><li><strong>Un cerveau externe :</strong> déposer les tâches, les classer selon l’énergie mentale, puis les découper en actions simples.</li><li><strong>Commencer petit :</strong> faire seulement la première étape, avec cinq minutes et le droit d’arrêter.</li><li><strong>Monotâche :</strong> un seul dossier, mails fermés, téléphone écarté. Noter les pensées qui arrivent.</li><li><strong>Un rythme :</strong> 25 minutes de travail, puis 5 minutes de pause. Après trois cycles, une pause plus longue.</li><li><strong>Observer le blocage :</strong> fatigue → pause ; flou → plan ; perfectionnisme → version imparfaite ; tâche trop grosse → redécoupage.</li><li><strong>Clore la journée :</strong> reconnaître les avancées et choisir une seule tâche en premier demain.</li><li><strong>Ne pas surcharger :</strong> trois priorités maximum. La régularité compte, même les jours moyens.</li></ol><button class="primary" data-go="home">Faire mon point de départ</button></div><div class="card soft"><h3>Comment fonctionne la progression ?</h3><p>Une mini-étape distincte donne 10 points, une tâche distincte 20 points, un démarrage de cinq minutes 5 points, un cycle de travail 15 points et une pause terminée 5 points. Les petites quêtes ajoutent 5 ou 10 points. Un niveau représente 100 points.</p><p>Décocher puis recocher une même action ne donne pas de nouveaux points. Les points déjà acquis restent conservés si tu rouvres ou supprimes une tâche. Les étoiles disponibles peuvent être échangées contre tes récompenses personnelles. Les badges restent dans ce labo, sans remontée dans les badges du site.</p><p>Les objectifs, points et conseils sont des ajouts de l’application, pas une évaluation médicale. Avec une énergie basse, la quête quotidienne se limite à une mini-étape.</p><h3>Confidentialité</h3><p>Profil facultatif, tâches, ressentis et bilans restent dans ce navigateur. Aucun envoi réseau. Utilise un pseudo et évite les informations sensibles, surtout sur un appareil partagé. L’export contient les informations que tu as saisies : garde-le dans un endroit privé.</p><p>Pour transférer ta progression du fichier local au site, exporte la sauvegarde dans le fichier puis importe-la ici : chaque origine possède son propre stockage.</p></div></section><section id="mise-en-situation" class="hidden"><h2>Un blocage, un petit pas</h2><p class="muted">Trois situations fictives pour pratiquer le plan, sans saisir de données personnelles.</p><div class="card"><label for="practiceCase">Choisis une situation</label><select id="practiceCase"><option value="flou">Je dois préparer un dossier, mais je ne sais pas par où commencer.</option><option value="perfection">Je réécris le début d’un message pour qu’il soit parfait.</option><option value="fatigue">Je suis fatigué·e après un cycle de travail.</option></select><p>Quelle première réponse essaierais-tu ?</p><div class="tools"><button data-practice="flou">Écrire un plan très simple</button><button data-practice="perfection">Faire un brouillon imparfait</button><button data-practice="fatigue">Prendre une pause courte</button></div><p id="practiceFeedback" aria-live="polite"></p><button data-go="action">Revenir à mon action</button></div></section>
 <section id="home"><div class="hero"><div class="tag" style="color:#c7dac6">Un pas suffit pour commencer</div><h2 style="margin-top:10px">Je fais seulement la première petite étape.</h2><p>Trois priorités maximum. Le reste est du bonus. Les jours moyens comptent aussi.</p></div><div class="grid"><div><div class="card soft"><h3 id="greeting">Mon point de départ</h3><label for="dailyEnergy">Mon énergie aujourd’hui</label><select id="dailyEnergy"><option value="">Je prends un instant pour observer</option><option value="1">Basse · un petit pas suffit</option><option value="2">Moyenne · avancer tranquillement</option><option value="3">Haute · garder un rythme soutenable</option></select><label for="dailyMood">Mon ressenti</label><select id="dailyMood"><option value="">Je choisis si j’en ai envie</option><option>Fatigué·e</option><option>Préoccupé·e</option><option>Neutre</option><option>Serein·e</option><option>Motivé·e</option></select><p id="recommendation"></p><button id="suggestTask" class="primary">Trouver mon prochain petit pas</button></div><div class="card"><h3>Mes petites quêtes du jour</h3><div id="missions"></div><button data-go="journey">Voir mon parcours ✦</button></div><div class="card"><div class="row"><h2>Mes priorités du jour</h2><span id="priorityCount"></span></div><div id="priorities"></div><button data-go="sort">Choisir mes priorités →</button></div><div class="card"><h3>Une pensée arrive ?</h3><p class="muted">Dépose-la ici, puis reviens à ton action.</p><form id="captureForm"><label for="capture">Pensée ou tâche à retrouver</label><input id="capture" required placeholder="Je note pour libérer mon attention…" maxlength="500"><button style="margin-top:10px">Noter dans ma pochette</button></form></div></div><div><div class="card soft"><h3>Mon avancée du jour</h3><div id="stats"></div><p class="muted">Chaque petite étape cochée est une avancée.</p></div><div class="card"><h3>Mon repère pour demain</h3><p id="tomorrowPreview" class="muted"></p><button data-go="review">Préparer demain →</button></div></div></div></section>
@@ -118,5 +505,71 @@ document.querySelectorAll('[data-practice]').forEach(b=>b.onclick=()=>{$('practi
 $('practiceCase').onchange=()=>{$('practiceFeedback').textContent=''};
 $('clearLocal').onclick=()=>{if(!confirm('Effacer toutes les données de ce labo sur cet appareil ? Exporte une sauvegarde avant si tu souhaites les garder.'))return;try{localStorage.removeItem(KEY);location.reload()}catch(e){notify('Le navigateur ne permet pas l’effacement. Utilise ses réglages de stockage.')}};
 $('connexion').hidden=!CONFIG.connexionActive;
+
+
+// Micro-skills partagés : l'activité observée ne constitue pas une évaluation de maîtrise.
+const referencesLabo=JSON.parse($('remediation-microskills').textContent);
+const signauxAutorises=new Set(referencesLabo.microskills.flatMap(m=>m.signaux));
+function pratiquesLabo(){
+ if(!Array.isArray(state.pratiquesMicroSkills))state.pratiquesMicroSkills=[];
+ state.pratiquesMicroSkills=state.pratiquesMicroSkills.filter(p=>p&&validDate(p.jour)&&signauxAutorises.has(p.signal)).slice(-5000);
+ return state.pratiquesMicroSkills;
+}
+const validerSansPratiques=valid;
+valid=function(s){return validerSansPratiques(s)&&(s.pratiquesMicroSkills===undefined||Array.isArray(s.pratiquesMicroSkills)&&s.pratiquesMicroSkills.length<=5000&&s.pratiquesMicroSkills.every(p=>p&&validDate(p.jour)&&signauxAutorises.has(p.signal)))};
+function signalerPratique(signal){
+ const pratiques=pratiquesLabo();if(!signauxAutorises.has(signal)||pratiques.some(p=>p.jour===day()&&p.signal===signal))return;
+ pratiques.push({jour:day(),signal});save();
+}
+function pratiqueCeJour(m){return pratiquesLabo().some(p=>p.jour===day()&&m.signaux.includes(p.signal))}
+enregistrerOnglet({id:'memo',type:'memo',titre:'À retenir',rendu:()=>$('memo'),actif:true});
+const boutonMemo=document.createElement('button');boutonMemo.dataset.tab='memo';boutonMemo.textContent='À retenir';boutonMemo.onclick=()=>go('memo');document.querySelector('header nav').append(boutonMemo);
+const panneauMemo=document.createElement('section');panneauMemo.id='memo';panneauMemo.className='hidden';panneauMemo.innerHTML=`<h2>Mes micro-skills · À retenir</h2><p class="muted">Relie ce que tu pratiques aux repères du plan et aux notions du catalogue. « Pratiqué aujourd’hui » décrit une activité, sans certifier une maîtrise ni une amélioration clinique.</p><div class="card soft"><label for="filtreMicroSkill">Le repère que je veux revoir</label><select id="filtreMicroSkill"><option value="">Tous les repères</option>${referencesLabo.microskills.map(m=>`<option value="${esc(m.id)}">${esc(m.label)}</option>`).join('')}</select><p><small>Références partagées éditoriales, proposées à la relecture. Les liens de proximité permettent un transfert de méthode ; ils ne rendent pas les compétences équivalentes.</small></p></div><div id="listeMicroSkills"></div>`;
+$('home').before(panneauMemo);
+const contexteMicroSkills=document.createElement('section');contexteMicroSkills.id='contexteMicroSkills';contexteMicroSkills.className='card soft';contexteMicroSkills.innerHTML='<h3>Micro-skills mobilisés ici</h3><p class="muted">Un repère à revoir pour soutenir la prochaine petite action.</p><div id="liensMicroSkills" class="tools"></div>';
+document.querySelector('main').insertBefore(contexteMicroSkills,document.querySelector('main > section.card'));
+let ongletCourant='home';
+function rendreMicroSkills(){
+ const filtre=$('filtreMicroSkill').value;
+ $('listeMicroSkills').innerHTML=referencesLabo.microskills.filter(m=>!filtre||m.id===filtre).map(m=>`<article class="card memo-competence" id="retenir-${m.slug}" data-competence="${esc(m.id)}"><div class="row"><h3 tabindex="-1">${esc(m.label)}</h3><span class="energy">${pratiqueCeJour(m)?'✓ Pratiqué aujourd’hui':'À pratiquer à ton rythme'}</span></div><p>${esc(m.retenir)}</p><button class="primary" data-pratiquer="${esc(m.pratique)}">Reprendre la pratique →</button><details style="margin-top:16px"><summary>Référence et action observable</summary><p><code>${esc(m.id)}</code></p><p>${esc(m.observable)}</p><small>Référence éditoriale partagée · ${m.statut==='draft'?'proposition à relire':esc(m.statut)}. Aucun résultat de maîtrise n’est déduit des points du labo.</small></details><h3 style="margin-top:24px">Rebond vers le catalogue</h3>${m.connexions.map(l=>{
+ const n=referencesLabo.notions.find(n=>n.id===l.notion),r=n.retenir[l.niveau];
+ return `<div class="notion-connexe"><strong>${esc(n.titre)}</strong><p class="muted">${esc(l.raison)}</p><p><strong>À retenir · ${esc(r.titre)}</strong><br>${esc(r.texte)}</p><a href="${esc(n.url)}" target="_blank" rel="noopener noreferrer" data-notion-connexe="${esc(n.id)}">Ouvrir la notion complète (en ligne) ↗</a><details><summary>Voir les références</summary><small>${esc(n.reference)}<br>${esc(l.microskill)}<br>Extrait de ${esc(n.source)} · niveau ${l.niveau+1}</small></details></div>`;
+ }).join('')}</article>`).join('');
+ const contextes=ongletCourant==='journey'?referencesLabo.microskills:referencesLabo.microskills.filter(m=>m.contextes.includes(ongletCourant));
+ contexteMicroSkills.classList.toggle('hidden',ongletCourant==='memo'||contextes.length===0);
+ $('liensMicroSkills').innerHTML=contextes.map(m=>`<button data-retenir="${esc(m.id)}">${pratiqueCeJour(m)?'✓ ':''}${esc(m.label)} → À retenir</button>`).join('');
+}
+const changerVueSansReferences=go;
+go=function(id){changerVueSansReferences(id);ongletCourant=id;rendreMicroSkills()};
+const rendreParcoursSansReferences=renderJourney;
+renderJourney=function(){rendreParcoursSansReferences();rendreMicroSkills()};
+function ouvrirRepere(id){
+ const m=referencesLabo.microskills.find(m=>m.id===id);if(!m)return;
+ go('memo');$('filtreMicroSkill').value=id;rendreMicroSkills();
+ const titre=$('retenir-'+m.slug).querySelector('h3');titre.focus();titre.scrollIntoView({block:'start'});
+ try{history.replaceState(null,'','#retenir='+encodeURIComponent(id))}catch{}
+}
+$('filtreMicroSkill').onchange=rendreMicroSkills;
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.retenir)ouvrirRepere(b.dataset.retenir);
+ if(b.dataset.pratiquer){go(b.dataset.pratiquer);document.querySelector('header').scrollIntoView({block:'start'})}
+ if(b.dataset.priority){const t=state.tasks.find(t=>t.id===b.dataset.priority);if(t?.priorities.includes(day()))signalerPratique('priorite')}
+});
+const ajouterSansReference=add;
+add=function(...args){ajouterSansReference(...args);signalerPratique('depot')};
+const capturerSansReference=$('captureForm').onsubmit;
+$('captureForm').onsubmit=e=>{const note=$('capture').value.trim();capturerSansReference(e);if(note)signalerPratique('distraction')};
+const rendreActionSansReferences=renderAction;
+renderAction=function(){rendreActionSansReferences();const form=$('stepForm');if(form){const ajouter=form.onsubmit;form.onsubmit=e=>{const avant=state.tasks.find(t=>t.id===selected)?.steps.length;ajouter(e);if(state.tasks.find(t=>t.id===selected)?.steps.length>avant)signalerPratique('decoupage')}}};
+document.addEventListener('change',e=>{if(e.target.dataset.step&&e.target.checked)signalerPratique('etape');if(e.target.matches('#action .card.soft input[type=checkbox]')&&[...document.querySelectorAll('#action .card.soft input[type=checkbox]')].every(c=>c.checked))signalerPratique('monotache')});
+const enregistrerSeanceSansReferences=recordSession;
+recordSession=function(mode){enregistrerSeanceSansReferences(mode);signalerPratique(mode==='5'?'demarrage':mode==='25'?'concentration':'pause')};
+const ressentirSansReferences=$('feeling').onchange;$('feeling').onchange=()=>{ressentirSansReferences();if($('feeling').value)signalerPratique('ajustement')};
+const energieSansReferences=$('dailyEnergy').onchange;$('dailyEnergy').onchange=()=>{energieSansReferences();if($('dailyEnergy').value)signalerPratique('energie')};
+$('win').addEventListener('input',()=>{if($('reviewDate').value===day()&&$('win').value.trim())signalerPratique('bilan')});
+const demainSansReferences=$('tomorrow').onchange;$('tomorrow').onchange=()=>{demainSansReferences();if($('tomorrow').value)signalerPratique('demain')};
+function ouvrirDepuisAdresse(){const id=new URLSearchParams(location.hash.slice(1)).get('retenir');if(id)ouvrirRepere(id)}
+window.addEventListener('hashchange',ouvrirDepuisAdresse);
+pratiquesLabo();render();ouvrirDepuisAdresse();save();
 
 </script></body></html>

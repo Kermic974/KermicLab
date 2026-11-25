@@ -1,0 +1,262 @@
+{
+  "version": 1,
+  "notion": "notion.transversal.organisation-et-attention",
+  "skill": "skill.transversal.organiser-et-ajuster-son-action",
+  "microskills": [
+    {
+      "id": "microskill.transversal.externaliser-les-taches-et-les-pensees",
+      "slug": "externaliser",
+      "fichierCanonique": "referentiel/objets/remediation-tdah/microskill.transversal.externaliser-les-taches-et-les-pensees.json",
+      "observable": "Noter les tâches et les idées dans un support unique.",
+      "retenir": "Dépose ce qui occupe ton esprit dans la pochette. Une pensée qui arrive pendant le travail peut être notée, puis laissée de côté pour revenir à l’action.",
+      "pratique": "brain",
+      "contextes": [
+        "home",
+        "brain"
+      ],
+      "signaux": [
+        "depot"
+      ],
+      "connexions": [
+        {
+          "notion": "problemes-a-etapes-cm",
+          "niveau": 0,
+          "microskill": "microskill.mathematiques.schematiser-un-probleme",
+          "fichierCanonique": "referentiel/objets/v0.5/mathematiques/microskill.mathematiques.schematiser-un-probleme.json",
+          "raison": "Mettre les informations utiles sur un support avant de résoudre un problème."
+        }
+      ]
+    },
+    {
+      "id": "microskill.transversal.prioriser-selon-son-energie",
+      "slug": "prioriser",
+      "fichierCanonique": "referentiel/objets/remediation-tdah/microskill.transversal.prioriser-selon-son-energie.json",
+      "observable": "Observer son énergie et limiter les priorités de la journée.",
+      "retenir": "Classe les tâches de la plus énergivore à la moins énergivore. Choisis trois priorités au maximum ; avec peu d’énergie, une mini-étape peut suffire.",
+      "pratique": "sort",
+      "contextes": [
+        "home",
+        "sort"
+      ],
+      "signaux": [
+        "energie",
+        "priorite"
+      ],
+      "connexions": [
+        {
+          "notion": "ecrire-et-reecrire-c4",
+          "niveau": 0,
+          "microskill": "microskill.francais.planifier-un-texte-argumentatif",
+          "fichierCanonique": "referentiel/objets/v0.5/francais/microskill.francais.planifier-un-texte-argumentatif.json",
+          "raison": "Organiser un travail d’écriture avant de rédiger."
+        },
+        {
+          "notion": "eps-endurance-et-sante-c4",
+          "niveau": 1,
+          "microskill": "microskill.eps.planifier-un-projet-d-entrainement",
+          "fichierCanonique": "referentiel/objets/v0.5/eps/microskill.eps.planifier-un-projet-d-entrainement.json",
+          "raison": "Dans le contexte de l’EPS, définir un objectif et une progression adaptés ; il s’agit d’un transfert de méthode."
+        }
+      ]
+    },
+    {
+      "id": "microskill.transversal.decomposer-une-tache-en-actions-simples",
+      "slug": "decomposer",
+      "fichierCanonique": "referentiel/objets/remediation-tdah/microskill.transversal.decomposer-une-tache-en-actions-simples.json",
+      "observable": "Transformer une tâche large en mini-étapes ordonnées et cochables.",
+      "retenir": "Une case correspond à une action simple : ouvrir le document, écrire le titre, sortir le dossier. Si la tâche reste trop grosse, redécoupe la prochaine étape.",
+      "pratique": "action",
+      "contextes": [
+        "action",
+        "sort"
+      ],
+      "signaux": [
+        "decoupage",
+        "etape"
+      ],
+      "connexions": [
+        {
+          "notion": "problemes-a-etapes-cm",
+          "niveau": 0,
+          "microskill": "microskill.mathematiques.resoudre-un-probleme-a-plusieurs-etapes",
+          "fichierCanonique": "referentiel/objets/v0.5/mathematiques/microskill.mathematiques.resoudre-un-probleme-a-plusieurs-etapes.json",
+          "raison": "Repérer les étapes intermédiaires avant la réponse finale."
+        },
+        {
+          "notion": "algorithmes-programmation-cm",
+          "niveau": 0,
+          "microskill": "microskill.mathematiques.decrire-les-etapes-d-un-algorithme",
+          "fichierCanonique": "referentiel/objets/v0.5/mathematiques/microskill.mathematiques.decrire-les-etapes-d-un-algorithme.json",
+          "raison": "Décrire une suite d’instructions précises dans un ordre utile."
+        }
+      ]
+    },
+    {
+      "id": "microskill.transversal.initier-une-premiere-petite-action",
+      "slug": "commencer",
+      "fichierCanonique": "referentiel/objets/remediation-tdah/microskill.transversal.initier-une-premiere-petite-action.json",
+      "observable": "Commencer par un geste limité, avec le droit de s’arrêter.",
+      "retenir": "Dis-toi : « Je fais seulement la première petite étape. » Lance cinq minutes si cela t’aide. Après ces cinq minutes, tu as le droit d’arrêter.",
+      "pratique": "action",
+      "contextes": [
+        "home",
+        "action"
+      ],
+      "signaux": [
+        "demarrage"
+      ],
+      "connexions": [
+        {
+          "notion": "ecrire-et-reecrire-c4",
+          "niveau": 1,
+          "microskill": "microskill.francais.reecrire-un-texte-pour-l-ameliorer",
+          "fichierCanonique": "referentiel/objets/v0.5/francais/microskill.francais.reecrire-un-texte-pour-l-ameliorer.json",
+          "raison": "Commencer par une première version améliorable ; la réécriture relève ensuite du contenu de français."
+        }
+      ]
+    },
+    {
+      "id": "microskill.transversal.revenir-a-la-tache-apres-une-distraction",
+      "slug": "recentrer",
+      "fichierCanonique": "referentiel/objets/remediation-tdah/microskill.transversal.revenir-a-la-tache-apres-une-distraction.json",
+      "observable": "Préparer un espace monotâche et retrouver le fil de l’action.",
+      "retenir": "Garde un seul dossier ouvert, ferme les mails et écarte le téléphone. Si une autre pensée arrive, note-la puis reviens à la tâche.",
+      "pratique": "action",
+      "contextes": [
+        "action",
+        "home"
+      ],
+      "signaux": [
+        "monotache",
+        "distraction",
+        "concentration"
+      ],
+      "connexions": [
+        {
+          "notion": "temps",
+          "niveau": 0,
+          "microskill": "microskill.philosophie.analyser-l-influence-de-l-attention-sur-la-duree-percue",
+          "fichierCanonique": "referentiel/objets/v0.5/philosophie/microskill.philosophie.analyser-l-influence-de-l-attention-sur-la-duree-percue.json",
+          "raison": "Éclairage conceptuel sur l’attention et la durée vécue ; ce lien ne mesure pas l’attention."
+        }
+      ]
+    },
+    {
+      "id": "microskill.transversal.alterner-effort-et-recuperation",
+      "slug": "recuperer",
+      "fichierCanonique": "referentiel/objets/remediation-tdah/microskill.transversal.alterner-effort-et-recuperation.json",
+      "observable": "Utiliser les pauses comme repères pour reprendre l’action.",
+      "retenir": "Le plan propose vingt-cinq minutes de travail puis cinq minutes de pause. Après trois cycles, prends une pause plus longue. Se lever, boire, bouger ou regarder au loin peut marquer cette coupure.",
+      "pratique": "action",
+      "contextes": [
+        "action"
+      ],
+      "signaux": [
+        "pause"
+      ],
+      "connexions": [
+        {
+          "notion": "eps-endurance-et-sante-c4",
+          "niveau": 1,
+          "microskill": "microskill.eps.planifier-un-projet-d-entrainement",
+          "fichierCanonique": "referentiel/objets/v0.5/eps/microskill.eps.planifier-un-projet-d-entrainement.json",
+          "raison": "Retrouver, dans un autre contexte, l’idée d’organiser un effort et sa progression. Le labo ne développe ni ne mesure l’endurance sportive."
+        }
+      ]
+    },
+    {
+      "id": "microskill.transversal.identifier-un-blocage-et-ajuster-son-action",
+      "slug": "ajuster",
+      "fichierCanonique": "referentiel/objets/remediation-tdah/microskill.transversal.identifier-un-blocage-et-ajuster-son-action.json",
+      "observable": "Nommer un ressenti ou un obstacle pour choisir une réponse concrète.",
+      "retenir": "Fatigue : une pause courte. Tâche floue : faire juste le plan. Perfectionnisme : une version imparfaite. Tâche trop grosse : des étapes plus petites. Parle-toi avec bienveillance.",
+      "pratique": "action",
+      "contextes": [
+        "action",
+        "mise-en-situation"
+      ],
+      "signaux": [
+        "ajustement"
+      ],
+      "connexions": [
+        {
+          "notion": "conception-et-prototypage-c4",
+          "niveau": 1,
+          "microskill": "microskill.technologie.planifier-un-test-et-interpreter-ses-resultats",
+          "fichierCanonique": "referentiel/objets/v0.5/technologie/microskill.technologie.planifier-un-test-et-interpreter-ses-resultats.json",
+          "raison": "Observer ce qui bloque, tester une piste et ajuster : une méthode à réinvestir dans un projet technique."
+        }
+      ]
+    },
+    {
+      "id": "microskill.transversal.faire-un-bilan-et-preparer-la-reprise",
+      "slug": "preparer",
+      "fichierCanonique": "referentiel/objets/remediation-tdah/microskill.transversal.faire-un-bilan-et-preparer-la-reprise.json",
+      "observable": "Faire un bilan simple puis choisir une première tâche pour demain.",
+      "retenir": "Coche ce qui est fait et félicite-toi, même pour une petite avancée. Choisis une seule tâche en premier demain. Les jours moyens comptent ; la régularité prime sur la perfection.",
+      "pratique": "review",
+      "contextes": [
+        "review",
+        "journey"
+      ],
+      "signaux": [
+        "bilan",
+        "demain"
+      ],
+      "connexions": [
+        {
+          "notion": "problemes-a-etapes-cm",
+          "niveau": 1,
+          "microskill": "microskill.mathematiques.verifier-la-vraisemblance-d-un-resultat",
+          "fichierCanonique": "referentiel/objets/v0.5/mathematiques/microskill.mathematiques.verifier-la-vraisemblance-d-un-resultat.json",
+          "raison": "Réinvestir une habitude de vérification, sans confondre tâche cochée et réponse mathématique correcte."
+        },
+        {
+          "notion": "conception-et-prototypage-c4",
+          "niveau": 1,
+          "microskill": "microskill.technologie.ameliorer-un-prototype-apres-un-test-insuffisant",
+          "fichierCanonique": "referentiel/objets/v0.5/technologie/microskill.technologie.ameliorer-un-prototype-apres-un-test-insuffisant.json",
+          "raison": "Reprendre un projet à partir d’un bilan et d’un prochain ajustement."
+        }
+      ]
+    }
+  ],
+  "notions": [
+    {
+      "id": "problemes-a-etapes-cm",
+      "reference": "notion.mathematiques.problemes-a-etapes-cm",
+      "fichierCanonique": "referentiel/objets/v0.5/mathematiques/notion.mathematiques.problemes-a-etapes-cm.json",
+      "niveau": 1
+    },
+    {
+      "id": "ecrire-et-reecrire-c4",
+      "reference": "notion.francais.ecrire-et-reecrire-c4",
+      "fichierCanonique": "referentiel/objets/v0.5/francais/notion.francais.ecrire-et-reecrire-c4.json",
+      "niveau": 1
+    },
+    {
+      "id": "eps-endurance-et-sante-c4",
+      "reference": "notion.eps.eps-endurance-et-sante-c4",
+      "fichierCanonique": "referentiel/objets/v0.5/eps/notion.eps.eps-endurance-et-sante-c4.json",
+      "niveau": 1
+    },
+    {
+      "id": "algorithmes-programmation-cm",
+      "reference": "notion.mathematiques.algorithmes-programmation-cm",
+      "fichierCanonique": "referentiel/objets/v0.5/mathematiques/notion.mathematiques.algorithmes-programmation-cm.json",
+      "niveau": 0
+    },
+    {
+      "id": "temps",
+      "reference": "notion.philosophie.temps",
+      "fichierCanonique": "referentiel/objets/v0.5/philosophie/notion.philosophie.temps.json",
+      "niveau": 0
+    },
+    {
+      "id": "conception-et-prototypage-c4",
+      "reference": "notion.technologie.conception-et-prototypage-c4",
+      "fichierCanonique": "referentiel/objets/v0.5/technologie/notion.technologie.conception-et-prototypage-c4.json",
+      "niveau": 1
+    }
+  ]
+}

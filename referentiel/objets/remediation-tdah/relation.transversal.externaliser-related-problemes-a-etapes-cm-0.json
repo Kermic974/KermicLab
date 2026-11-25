@@ -1,0 +1,13 @@
+{
+  "id": "relation.transversal.externaliser-related-problemes-a-etapes-cm-0",
+  "type": "relatedTo",
+  "source": "microskill.mathematiques.schematiser-un-probleme",
+  "target": "microskill.transversal.externaliser-les-taches-et-les-pensees",
+  "rationale": "Mettre les informations utiles sur un support avant de résoudre un problème. Relation de proximité, pas équivalence ni validation de la compétence disciplinaire.",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "Sample/lab/remediation-tdah.md"
+  }
+}

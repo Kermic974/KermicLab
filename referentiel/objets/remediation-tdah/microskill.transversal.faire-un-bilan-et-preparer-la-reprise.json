@@ -1,0 +1,17 @@
+{
+  "id": "microskill.transversal.faire-un-bilan-et-preparer-la-reprise",
+  "type": "microskill",
+  "label": "Reconnaître ses avancées et préparer la reprise",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "Sample/lab/remediation-tdah.md"
+  },
+  "evidence": [
+    {
+      "ref": "Sample/lab/remediation-tdah.md#preparer",
+      "excerpt": "Faire un bilan simple puis choisir une première tâche pour demain."
+    }
+  ]
+}

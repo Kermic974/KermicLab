@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- Huit micro-skills transversaux partagés dans le labo À petits pas 1.1.0, avec repères contextuels et rebonds hors ligne vers les mémos de six notions du catalogue.
+
 - Lab « À petits pas » pour adultes : organisation, mini-étapes, cycles de travail, progression et récompenses locales, publié sous `/labs/remediation-tdah/` depuis la section Labs.
 
 - **Chat sur ordinateur peu haut** : le panneau flottant réserve la hauteur de la navigation collante ; à 1 280 × 720, il ne recouvre plus « À propos ». Le mode plein écran conserve sa couverture prévue. / Keep navigation accessible above the floating chat on short desktop screens.

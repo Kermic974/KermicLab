@@ -1,0 +1,13 @@
+{
+  "id": "relation.transversal.preparer-contributes-organisation",
+  "type": "contributesTo",
+  "source": "microskill.transversal.faire-un-bilan-et-preparer-la-reprise",
+  "target": "skill.transversal.organiser-et-ajuster-son-action",
+  "rationale": "Faire un bilan simple puis choisir une première tâche pour demain.",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "Sample/lab/remediation-tdah.md"
+  }
+}

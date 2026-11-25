@@ -1,0 +1,17 @@
+{
+  "id": "microskill.transversal.alterner-effort-et-recuperation",
+  "type": "microskill",
+  "label": "Alterner effort et récupération",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "Sample/lab/remediation-tdah.md"
+  },
+  "evidence": [
+    {
+      "ref": "Sample/lab/remediation-tdah.md#recuperer",
+      "excerpt": "Utiliser les pauses comme repères pour reprendre l’action."
+    }
+  ]
+}

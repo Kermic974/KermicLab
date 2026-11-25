@@ -1,0 +1,13 @@
+{
+  "id": "relation.transversal.ajuster-contributes-organisation",
+  "type": "contributesTo",
+  "source": "microskill.transversal.identifier-un-blocage-et-ajuster-son-action",
+  "target": "skill.transversal.organiser-et-ajuster-son-action",
+  "rationale": "Nommer un ressenti ou un obstacle pour choisir une réponse concrète.",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "Sample/lab/remediation-tdah.md"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "relation.transversal.preparer-related-conception-et-prototypage-c4-1",
+  "type": "relatedTo",
+  "source": "microskill.technologie.ameliorer-un-prototype-apres-un-test-insuffisant",
+  "target": "microskill.transversal.faire-un-bilan-et-preparer-la-reprise",
+  "rationale": "Reprendre un projet à partir d’un bilan et d’un prochain ajustement. Relation de proximité, pas équivalence ni validation de la compétence disciplinaire.",
+  "status": "draft",
+  "version": 1,
+  "provenance": {
+    "type": "editorial",
+    "ref": "Sample/lab/remediation-tdah.md"
+  }
+}
