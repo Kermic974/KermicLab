@@ -161,7 +161,7 @@ test("avatar mobile : panneau borné à l’écran, saisie visible et fil défil
 });
 
 test("chat replié : une réponse en cours arrive sans rouvrir le panneau ni déplacer la page", async () => {
-  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR" });
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 720 } });
   await simulerApi(page);
   let repondre;
   const suite = new Promise((resolve) => { repondre = resolve; });
@@ -188,6 +188,9 @@ test("chat replié : une réponse en cours arrive sans rouvrir le panneau ni dé
   assert.equal(await page.evaluate(() => scrollY), position);
   await page.click("#ouvrir-chat");
   assert.equal(await page.locator("#fil li", { hasText: "Réponse différée." }).isVisible(), true);
+  const barre = await page.locator(".barre-laterale").boundingBox();
+  const chat = await page.locator("#panneau-chat").boundingBox();
+  assert.ok(chat.y >= barre.y + barre.height, "le chat flottant laisse les contrôles de navigation accessibles");
   await page.click(".barre-laterale [data-nav=apropos]");
   await page.click("#apropos [data-nav=aide]");
   await page.keyboard.press("Escape");
