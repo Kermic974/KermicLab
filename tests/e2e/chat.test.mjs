@@ -565,6 +565,10 @@ test("navigation : 6 entrées latérales (Métiers, ADR 0041) (tableau de bord f
   assert.deepEqual(await page.locator("#ecran-labs .outil a").evaluateAll((liens) => liens.map((l) => l.getAttribute("href"))), [
     "cercle/?mode=explore", "cercle/?mode=learn", "cercle/?mode=play", "labs/business-plan/", "labs/experiences/", "labs/systeme-solaire/", "labs/remediation-tdah/"
   ]);
+  await page.click("#lab-atomes [data-lab-notion=atomes-et-molecules]");
+  await page.locator("#bulle-lab[open][data-notion=atomes-et-molecules]").waitFor();
+  assert.equal(await page.locator("#bulle-labs-associes a").getAttribute("href"), "labs/experiences/atomes/");
+  await page.click("#fermer-bulle");
   await page.click("#ecran-labs [data-nav=education]");
   assert.equal(await page.locator("#catalogue").isVisible(), true);
   await page.fill("#recherche-notion", "echecs");
