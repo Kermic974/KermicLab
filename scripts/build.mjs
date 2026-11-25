@@ -132,7 +132,7 @@ await writeFile(`${racine}dist/_redirects`, "/dashboard/* / 301\n/dashboard / 30
 
 // Labs publiés hors catalogue (page autonome, CSP propre en meta, contrôlée par check:pages) : /labs/<id>/.
 // Écrits avant la génération SEO pour recevoir l'adresse canonique et figurer dans le sitemap.
-const LABS_PUBLIES = [{ id: "systeme-solaire", source: "Sample/lab/systeme-solaire.html" }, { id: "business-plan", source: "Sample/lab/business-plan.html" }];
+const LABS_PUBLIES = [{ id: "systeme-solaire", source: "Sample/lab/systeme-solaire.html" }, { id: "business-plan", source: "Sample/lab/business-plan.html" }, { id: "remediation-tdah", source: "Sample/lab/remediation-tdah.html" }];
 for (const lab of LABS_PUBLIES) {
   await mkdir(`${racine}dist/labs/${lab.id}`, { recursive: true });
   await writeFile(`${racine}dist/labs/${lab.id}/index.html`, appliquerCsp(await readFile(`${racine}${lab.source}`, "utf8")));

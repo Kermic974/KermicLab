@@ -15,7 +15,7 @@ if (fichesObsoletes.length) {
 const { sources, pages } = await chargerCatalogue([`${racine}catalogue`, `${racine}catalogue-prive`]);
 const publiees = Object.entries(pages).flatMap(([id, traductions]) =>
   Object.entries(traductions).map(([langue, html]) => ({ fichier: `Worker/${id}/${langue}`, aJour: true, html })));
-const pilotes = await Promise.all(["systeme-solaire", "business-plan"].map(async (id) => {
+const pilotes = await Promise.all(["systeme-solaire", "business-plan", "remediation-tdah"].map(async (id) => {
   const fichier = `${racine}Sample/lab/${id}.html`;
   const html = await readFile(fichier, "utf8");
   return { fichier, aJour: html === appliquerCsp(html), html };

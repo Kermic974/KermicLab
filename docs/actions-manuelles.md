@@ -2,6 +2,12 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Lab À petits pas — adultes
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Relire le labo, puis valider sa fusion après CI verte | Branche maquette/remediation-tdah, [fiche](../Sample/lab/remediation-tdah.md) | AGENTS.md exige la validation humaine du CODEOWNER ; outil d’organisation pour adultes, sans validation clinique | Accord explicite du propriétaire sur la PR ; fusion et déploiement constatés | à faire |
+
 ## Correctif de qualification — chat et navigation
 
 | Action | Où | Pourquoi | Comment confirmer | Statut |
