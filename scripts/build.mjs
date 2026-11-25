@@ -1,3 +1,4 @@
+import { LABS_EXPERIENCES } from "./lib/labs-experiences.mjs";
 import { fileURLToPath } from "node:url";
 // Construit : 1) l'index du catalogue + pages pour le Worker, 2) le site statique dist/ publié sur Cloudflare Pages :
 //    le tableau de bord élève (avec le chat) à la racine et l'application autonome du cercle trigonométrique sous /cercle/.
@@ -133,7 +134,7 @@ await writeFile(`${racine}dist/_redirects`, "/dashboard/* / 301\n/dashboard / 30
 // Labs publiés hors catalogue (page autonome, CSP propre en meta, contrôlée par check:pages) : /labs/<id>/.
 // Écrits avant la génération SEO pour recevoir l'adresse canonique et figurer dans le sitemap.
 const LABS_PUBLIES = [{ id: "systeme-solaire", source: "Sample/lab/systeme-solaire.html" }, { id: "business-plan", source: "Sample/lab/business-plan.html" }];
-for (const lab of LABS_PUBLIES) {
+for (const lab of [...LABS_PUBLIES, ...LABS_EXPERIENCES]) {
   await mkdir(`${racine}dist/labs/${lab.id}`, { recursive: true });
   await writeFile(`${racine}dist/labs/${lab.id}/index.html`, appliquerCsp(await readFile(`${racine}${lab.source}`, "utf8")));
 }

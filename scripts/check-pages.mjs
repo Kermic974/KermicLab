@@ -1,3 +1,4 @@
+import { LABS_EXPERIENCES } from "./lib/labs-experiences.mjs";
 import { fileURLToPath } from "node:url";
 // Contrôle de sécurité des pages HTML du catalogue : CSP stricte à jour, aucun script ou ressource externe,
 // aucun appel réseau, métadonnées et onglets de base présents.
@@ -20,10 +21,15 @@ const pilotes = await Promise.all(["systeme-solaire", "business-plan"].map(async
   const html = await readFile(fichier, "utf8");
   return { fichier, aJour: html === appliquerCsp(html), html };
 }));
+const experiences = await Promise.all(LABS_EXPERIENCES.map(async ({ source }) => {
+  const fichier = racine + source;
+  const html = await readFile(fichier, "utf8");
+  return { fichier, aJour: html === appliquerCsp(html), html, experience: true };
+}));
 const ONGLETS_DE_BASE = ["explication", "application", "mise-en-situation"];
 const erreurs = [];
 
-for (const { fichier, aJour, html } of [...sources, ...publiees, ...pilotes]) {
+for (const { fichier, aJour, html, experience } of [...sources, ...publiees, ...pilotes, ...experiences]) {
   const err = (m) => erreurs.push(`${fichier.replace(racine, "")}: ${m}`);
   if (!aJour) err("page obsolète (hashes CSP ou page générée depuis contenu.json) — lancer `npm run build` et committer");
   const csp = html.match(/<meta http-equiv="Content-Security-Policy" content="([^"]*)"/)?.[1];
@@ -41,7 +47,7 @@ for (const { fichier, aJour, html } of [...sources, ...publiees, ...pilotes]) {
   try {
     const meta = lireMetaHtml(html);
     for (const c of ["id", "titre", "sujet", "version", "date", "onglets"]) if (!meta[c]) err(`métadonnée « ${c} » manquante`);
-    for (const o of ONGLETS_DE_BASE) if (!meta.onglets?.includes(o)) err(`onglet de base « ${o} » manquant`);
+    for (const o of experience ? [] : ONGLETS_DE_BASE) if (!meta.onglets?.includes(o)) err(`onglet de base « ${o} » manquant`);
   } catch (e) { err(e.message); }
 }
 
