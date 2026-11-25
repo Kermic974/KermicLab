@@ -2,6 +2,12 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Lab À petits pas — adultes
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Autoriser la publication du labo adulte après présentation de l’application | [PR #439](https://github.com/Kermic974/KermicLab/pull/439), [fiche](../Sample/lab/remediation-tdah.md) | AGENTS.md exige la validation humaine ; cette autorisation de publication ne constitue pas une validation clinique | Le propriétaire a demandé explicitement « publie en tant que labo dans mon repo KermicLab », puis « livre le labo ». La fusion reste soumise à la CI verte et le déploiement doit être vérifié. | fait |
+
 ## Correctif de qualification — chat et navigation
 
 | Action | Où | Pourquoi | Comment confirmer | Statut |
