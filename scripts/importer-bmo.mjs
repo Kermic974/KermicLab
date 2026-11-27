@@ -60,7 +60,11 @@ async function lireExtrait(chemin) {
 
 const extrait = await lireExtrait(source);
 const cheminMetiers = join(racine, "referentiel/metiers-v0.json");
-const { referentiel, rapport } = appliquerBmo(JSON.parse(await readFile(cheminMetiers, "utf8")), extrait);
+// Familles ROME → métiers BMO (proposition, à relire) et codes parents du ROME 4.0, pour les métiers sans champ `fap`.
+const { familles } = JSON.parse(await readFile(join(racine, "referentiel/regles-bmo.json"), "utf8"));
+const rome = JSON.parse(await readFile(join(racine, "referentiel/sources/france-travail/rome-4.0-v62.json"), "utf8"));
+const parents = new Map(rome.fiches.map((f) => [f.code, f.parent ?? f.code]));
+const { referentiel, rapport } = appliquerBmo(JSON.parse(await readFile(cheminMetiers, "utf8")), extrait, { familles, parentDe: (code) => parents.get(code) ?? code });
 if (appliquer) await writeFile(cheminMetiers, `${JSON.stringify(referentiel, null, 2)}\n`);
 
 const parPalier = Object.groupBy(extrait.metiers, (m) => m.palier);
@@ -68,7 +72,7 @@ const resume = { annee: extrait.annee, metiersBmo: extrait.metiers.length, ...ra
 if (json) console.log(JSON.stringify(resume, null, 2));
 else {
   console.log(`BMO ${resume.annee} : ${resume.metiersBmo} métier(s) BMO ; paliers ${Object.entries(resume.paliers).map(([k, n]) => `${k} ${n}`).join(", ")}.`);
-  console.log(`Référentiel : ${rapport.rattaches} métier(s) rattaché(s) ; sans code BMO : ${rapport.sansFap.length}.`);
+  console.log(`Référentiel : ${rapport.rattaches} métier(s) rattaché(s) (${rapport.parMetier} par leur code BMO, ${rapport.parFamille} par leur famille ROME) ; hors champ de l'enquête : ${rapport.horsChamp.length} ; sans rattachement : ${rapport.sansFap.length}.`);
   if (rapport.inconnus.length) console.log(`Codes BMO inconnus : ${rapport.inconnus.join(", ")}.`);
   if (sortieExtrait) console.log(`Extrait écrit dans ${sortieExtrait}.`);
   if (appliquer) console.log("Perspectives appliquées à referentiel/metiers-v0.json.");

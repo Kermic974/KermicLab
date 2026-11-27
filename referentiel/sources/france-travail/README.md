@@ -23,7 +23,8 @@ Enquête BMO (une par an, au printemps) : `npm run import:bmo -- Base-open-data-
 referentiel/sources/france-travail/bmo-AAAA.json --date AAAA-MM-JJ`, puis
 `npm run import:bmo -- referentiel/sources/france-travail/bmo-AAAA.json --appliquer` ; supprimer l'ancien extrait et
 mettre à jour le test d'alignement (`tests/unit/bmo.test.mjs`). Si la nomenclature des métiers BMO change, revoir les
-champs `fap` du référentiel.
+champs `fap` du référentiel et la table `referentiel/regles-bmo.json` (famille ROME → métier BMO), qu'il faut aussi
+compléter quand une vague apporte une famille ROME absente (le test d'alignement le signale).
 
 API Marché du travail (lot 8, préparé) : `npm run import:marche -- --codes` liste les codes ROME à interroger ;
 enregistrer les réponses JSON de l'indicateur de tension (France) dans un dossier, puis

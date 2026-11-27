@@ -186,21 +186,33 @@ export function lireExtrait(extrait) {
 const pourcent = (n, total) => (total ? Math.round((100 * n) / total) : 0);
 
 /**
- * Enrichit le référentiel des métiers : chaque métier rattaché à un métier BMO (champ `fap`, choisi à la main)
- * reçoit `perspectives` (année, groupe BMO, projets, part difficile et saisonnière en %, palier), recalculé à chaque import.
+ * Enrichit le référentiel des métiers : chaque métier rattaché à un métier BMO reçoit `perspectives` (année, groupe BMO,
+ * projets, part difficile et saisonnière en %, palier, origine), recalculé à chaque import. Le rattachement vient du
+ * champ `fap` du métier (choisi à la main, `origine: "metier"`) ou, à défaut, de la famille ROME de son premier code
+ * (`familles` : code parent → code FAP ou null, `referentiel/regles-bmo.json` ; `parentDe` : code ROME → code parent ;
+ * `origine: "famille"`). `null` dans la table : famille hors champ de l'enquête (concours publics).
  */
-export function appliquerBmo(referentiel, extrait) {
+export function appliquerBmo(referentiel, extrait, { familles = {}, parentDe = (code) => code } = {}) {
   const { parCode } = lireExtrait(extrait);
-  const rapport = { rattaches: 0, sansFap: [], inconnus: [] };
+  const rapport = { rattaches: 0, parMetier: 0, parFamille: 0, horsChamp: [], sansFap: [], inconnus: [] };
   const metiers = referentiel.metiers.map((m) => {
     const { perspectives: _p, ...reste } = m;
-    if (!m.fap) { rapport.sansFap.push(m.id); return reste; }
-    const b = parCode.get(m.fap);
-    if (!b) { rapport.inconnus.push(`${m.id}:${m.fap}`); return reste; }
+    let fap = m.fap;
+    let origine = "metier";
+    if (!fap && m.rome?.length) {
+      const famille = parentDe(m.rome[0]);
+      if (familles[famille] === null) { rapport.horsChamp.push(m.id); return reste; }
+      fap = familles[famille];
+      origine = "famille";
+    }
+    if (!fap) { rapport.sansFap.push(m.id); return reste; }
+    const b = parCode.get(fap);
+    if (!b) { rapport.inconnus.push(`${m.id}:${fap}`); return reste; }
     rapport.rattaches += 1;
+    rapport[origine === "metier" ? "parMetier" : "parFamille"] += 1;
     return {
       ...reste,
-      perspectives: { annee: extrait.annee, groupe: b.nom, projets: b.projets, partDifficile: pourcent(b.difficiles, b.projets), partSaisonnier: pourcent(b.saisonniers, b.projets), palier: b.palier }
+      perspectives: { annee: extrait.annee, groupe: b.nom, projets: b.projets, partDifficile: pourcent(b.difficiles, b.projets), partSaisonnier: pourcent(b.saisonniers, b.projets), palier: b.palier, origine }
     };
   });
   const source = {

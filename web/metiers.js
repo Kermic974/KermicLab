@@ -77,7 +77,10 @@ export function verifierMetiers(donnees, notionsConnues) {
     for (const p of m.proches ?? []) if (p === m.id || !tousLesMetiers.has(p)) erreurs.push(`${m.id} : métier proche inconnu ${p}`);
     if (m.fap !== undefined && !MOTIF_FAP.test(String(m.fap))) erreurs.push(`${m.id} : code BMO (FAP) invalide ${m.fap}`);
     if (m.perspectives !== undefined) {
-      if (m.fap === undefined) erreurs.push(`${m.id} : perspectives sans code BMO`);
+      const origine = m.perspectives.origine ?? "metier";
+      if (!["metier", "famille"].includes(origine)) erreurs.push(`${m.id} : origine des perspectives inconnue ${origine}`);
+      else if (origine === "metier" && m.fap === undefined) erreurs.push(`${m.id} : perspectives sans code BMO`);
+      else if (origine === "famille" && !m.rome?.length) erreurs.push(`${m.id} : perspectives par famille sans code ROME`);
       if (!PALIERS_RECRUTEMENT.includes(m.perspectives.palier)) erreurs.push(`${m.id} : palier de recrutement inconnu ${m.perspectives.palier}`);
     }
     if (m.marche !== undefined && !(Number.isInteger(m.marche.tension) && m.marche.tension >= 1 && m.marche.tension <= 5)) erreurs.push(`${m.id} : tension de recrutement hors de 1 à 5`);
