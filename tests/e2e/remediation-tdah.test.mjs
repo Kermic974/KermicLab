@@ -66,6 +66,51 @@ test("Labo adultes : parcours autonome, points uniques, récompenses, effacement
   await contexte.close();
 });
 
+test("Labo adultes : les suggestions ouvrent et modifient les tâches hors ligne", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { viewport: { width: 390, height: 844 } });
+  await page.goto(`${serveur.url}/labs/remediation-tdah/`);
+  await contexte.setOffline(true);
+  await page.locator("#dailyEnergy").selectOption("2");
+  await page.locator("[data-tab=brain]").click();
+  await page.locator("#title").fill("Préparer le dossier");
+  await page.locator("#addForm button").click();
+  const sauvegarde = () => page.evaluate(() => localStorage.getItem("petits-pas-v1"));
+  const avant = await sauvegarde();
+
+  await page.locator("#brain [data-plan]").click();
+  const proposition = page.locator("#localPlanResults .task");
+  assert.match(await proposition.innerText(), /Préparer le dossier/);
+  assert.equal(await sauvegarde(), avant);
+  await proposition.getByRole("button", { name: "Modifier la tâche" }).click();
+  await page.locator("#taskEditTitle").fill("Tâche non enregistrée");
+  await page.keyboard.press("Escape");
+  assert.equal(await sauvegarde(), avant);
+  await proposition.getByRole("button", { name: "Modifier la tâche" }).click();
+  await page.locator("#taskEditTitle").fill("Préparer le dossier demain");
+  await page.locator("#taskEditEnergy").selectOption("1");
+  await page.getByRole("button", { name: "Enregistrer", exact: true }).click();
+  assert.match(await proposition.innerText(), /Préparer le dossier demain/);
+
+  await proposition.getByRole("button", { name: "Choisir cette priorité" }).click();
+  assert.equal(await page.locator("#priorityCount").innerText(), "1 / 3");
+  await proposition.getByRole("button", { name: "Travailler sur la tâche" }).click();
+  assert.equal(await page.locator("#stepText").evaluate(element => element === document.activeElement), true);
+  await page.locator("#stepText").fill("Ouvrir le dossier");
+  await page.locator("#stepForm button").click();
+  await page.locator("[data-tab=home]").click();
+  await page.locator("#localPlan").click();
+  assert.match(await proposition.innerText(), /Prochaine mini-étape : Ouvrir le dossier/);
+  await proposition.getByRole("button", { name: "Essayer cinq minutes" }).click();
+  assert.equal(await page.locator("#startTimer").innerText(), "Mettre en pause");
+  await contexte.setOffline(false);
+  await page.reload();
+  assert.match(await page.locator("#priorities").innerText(), /Préparer le dossier demain/);
+  await page.locator("#priorities [data-priority]").click();
+  assert.equal(await page.locator("#priorityCount").innerText(), "0 / 3");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
 test("Labo adultes : clavier, mobile et absence de débordement", async () => {
   const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { viewport: { width: 390, height: 844 } });
   await page.goto(`${serveur.url}/labs/remediation-tdah/`);
