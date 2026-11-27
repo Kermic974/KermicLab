@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès. Lot 3 et vague pilote du lot 6 (2026-11-24) : 14 disciplines et 41 métiers ajoutés par un agent, en correspondance « proposition », sans code ROME (apporté par l’import ONISEP). Import ONISEP du 2026-11-24 (extrait referentiel/sources/onisep/ideo-metiers-2026-11-24.json, licence ODbL) : identifiants, codes ROME, niveaux d’accès, domaines et synonymes de 74 métiers. Vague 1 du lot 6 (2026-11-24) : 32 métiers issus des fiches ONISEP (identifiant, niveau et ROME de l’ONISEP), 11 disciplines et notions ajoutées aux disciplines « proposition », préparés par un agent. Vague 2 (santé, social, sport) : 100 métier(s) ONISEP en « proposition ». Vague 3 (arts, culture, artisanat) : 99 métier(s) ONISEP en « proposition ». Vague 4 (environnement, énergies, propreté ; agriculture, animaux) : 123 métier(s) ONISEP en « proposition ». Vague 5 (matières premières, fabrication, industries ; électricité, électronique, robotique) : 112 métier(s) ONISEP en « proposition ». Vague 6 (mécanique ; construction, architecture, travaux publics) : 102 métier(s) ONISEP en « proposition ». Vague 7 (armée, sécurité ; logistique, transport) : 100 métier(s) ONISEP en « proposition ». Vague 8 (sciences ; informatique, Internet) : 115 métier(s) ONISEP en « proposition ». Vague 9 (information-communication, audiovisuel ; lettres, langues, enseignement ; histoire-géographie, psychologie, sociologie) : 95 métier(s) ONISEP en « proposition ».",
+  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès. Lot 3 et vague pilote du lot 6 (2026-11-24) : 14 disciplines et 41 métiers ajoutés par un agent, en correspondance « proposition », sans code ROME (apporté par l’import ONISEP). Import ONISEP du 2026-11-24 (extrait referentiel/sources/onisep/ideo-metiers-2026-11-24.json, licence ODbL) : identifiants, codes ROME, niveaux d’accès, domaines et synonymes de 74 métiers. Vague 1 du lot 6 (2026-11-24) : 32 métiers issus des fiches ONISEP (identifiant, niveau et ROME de l’ONISEP), 11 disciplines et notions ajoutées aux disciplines « proposition », préparés par un agent. Vague 2 (santé, social, sport) : 100 métier(s) ONISEP en « proposition ». Vague 3 (arts, culture, artisanat) : 99 métier(s) ONISEP en « proposition ». Vague 4 (environnement, énergies, propreté ; agriculture, animaux) : 123 métier(s) ONISEP en « proposition ». Vague 5 (matières premières, fabrication, industries ; électricité, électronique, robotique) : 112 métier(s) ONISEP en « proposition ». Vague 6 (mécanique ; construction, architecture, travaux publics) : 102 métier(s) ONISEP en « proposition ». Vague 7 (armée, sécurité ; logistique, transport) : 100 métier(s) ONISEP en « proposition ». Vague 8 (sciences ; informatique, Internet) : 115 métier(s) ONISEP en « proposition ». Vague 9 (information-communication, audiovisuel ; lettres, langues, enseignement ; histoire-géographie, psychologie, sociologie) : 95 métier(s) ONISEP en « proposition ». Vague 10 (économie, droit, politique ; gestion des entreprises, comptabilité) : 90 métier(s) ONISEP en « proposition ».",
   "sources": [
     {
       "nom": "Idéo-Fiches métiers",
@@ -30340,6 +30340,2681 @@
       "synonymes": [
         "chargé de la protection du renseignement",
         "chargée de la protection du renseignement"
+      ]
+    },
+    {
+      "id": "directeur-d-hotel",
+      "nom": "Directeur, directrice d'hôtel",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "langues-vivantes",
+        "communication"
+      ],
+      "gestes": [
+        "Diriger les équipes",
+        "Veiller à la satisfaction des clients",
+        "Gérer le budget"
+      ],
+      "contexte": "Dirige un hôtel et toutes ses équipes.",
+      "correspondance": "proposition",
+      "onisep": "MET.2",
+      "rome": [
+        "G1402"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise",
+        "hôtellerie-restauration, tourisme/hôtellerie",
+        "hôtellerie-restauration, tourisme/tourisme"
+      ],
+      "synonymes": [
+        "gérant/e d'établissement hôtelier",
+        "hôtelier/ère",
+        "directeur d'hôtel",
+        "directrice d'hôtel"
+      ]
+    },
+    {
+      "id": "assistant-commercial",
+      "nom": "Assistant commercial, assistante commerciale",
+      "categorie": "trade",
+      "disciplines": [
+        "communication",
+        "calcul-professionnel",
+        "gestion"
+      ],
+      "gestes": [
+        "Suivre les commandes",
+        "Répondre aux clients",
+        "Préparer devis et factures"
+      ],
+      "contexte": "Aide l’équipe commerciale dans le suivi des clients.",
+      "correspondance": "proposition",
+      "onisep": "MET.28",
+      "rome": [
+        "D1401"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "gestion des entreprises, comptabilité/secrétariat"
+      ],
+      "synonymes": [
+        "secrétaire commercial/e",
+        "assistant commercial",
+        "assistante commerciale"
+      ]
+    },
+    {
+      "id": "controleur-des-douanes",
+      "nom": "Contrôleur, contrôleuse des douanes",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "economie-et-societe",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Contrôler les déclarations",
+        "Vérifier les marchandises",
+        "Lutter contre la fraude"
+      ],
+      "contexte": "Contrôle les marchandises et les déclarations en douane.",
+      "correspondance": "proposition",
+      "onisep": "MET.47",
+      "rome": [
+        "K1505"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "économie, droit, politique/droit public",
+        "armée, sécurité/sécurité, prévention",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "contrôleur/euse des douanes et droits indirects",
+        "contrôleur/euse-programmeur/euse",
+        "douanier/ère",
+        "enquêteur/trice des douanes",
+        "garde-côtes",
+        "contrôleur des douanes",
+        "contrôleuse des douanes"
+      ]
+    },
+    {
+      "id": "auditeur-interne",
+      "nom": "Auditeur, auditrice interne",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "comptabilite",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Analyser les procédures",
+        "Repérer les risques",
+        "Recommander des améliorations"
+      ],
+      "contexte": "Vérifie que l’entreprise fonctionne bien et respecte ses règles.",
+      "correspondance": "proposition",
+      "onisep": "MET.81",
+      "rome": [
+        "M1202"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise",
+        "informatique, Internet/informatique (généralités)"
+      ],
+      "synonymes": [
+        "auditeur/trice financier/ère",
+        "auditeur interne",
+        "auditrice interne"
+      ]
+    },
+    {
+      "id": "juriste-d-entreprise",
+      "nom": "Juriste d'entreprise",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "droit-des-contrats",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Rédiger les contrats",
+        "Conseiller la direction",
+        "Gérer les litiges"
+      ],
+      "contexte": "Conseille une entreprise sur toutes les questions de droit.",
+      "correspondance": "proposition",
+      "onisep": "MET.82",
+      "rome": [
+        "K1903"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/droit social"
+      ],
+      "synonymes": [
+        "juriste d'entreprise"
+      ]
+    },
+    {
+      "id": "juge-des-contentieux-de-la-protection",
+      "nom": "Juge des contentieux de la protection",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "philosophie-ethique",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Écouter les parties",
+        "Appliquer la loi",
+        "Rendre une décision"
+      ],
+      "contexte": "Juge les litiges du quotidien et protège les personnes vulnérables.",
+      "correspondance": "proposition",
+      "onisep": "MET.91",
+      "rome": [
+        "K1904"
+      ],
+      "niveauAcces": "bac+7",
+      "domaines": [
+        "économie, droit, politique/activité judiciaire"
+      ],
+      "synonymes": [
+        "juge d'instance",
+        "juge des tutelles",
+        "magistrat/e",
+        "juge des contentieux de la protection"
+      ]
+    },
+    {
+      "id": "juriste-en-droit-social",
+      "nom": "Juriste en droit social",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "droit-des-contrats",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Appliquer le droit du travail",
+        "Conseiller employeurs et salariés",
+        "Rédiger les contrats"
+      ],
+      "contexte": "Spécialiste des règles qui encadrent le travail.",
+      "correspondance": "proposition",
+      "onisep": "MET.92",
+      "rome": [
+        "K1903"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/droit social"
+      ],
+      "synonymes": [
+        "juriste en droit social"
+      ]
+    },
+    {
+      "id": "collaborateur-de-commissaire-de-justice",
+      "nom": "Collaborateur, collaboratrice de commissaire de justice",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "communication"
+      ],
+      "gestes": [
+        "Préparer les actes",
+        "Suivre les dossiers",
+        "Accueillir le public"
+      ],
+      "contexte": "Aide un commissaire de justice dans son étude.",
+      "correspondance": "proposition",
+      "onisep": "MET.102",
+      "rome": [
+        "K1902"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "économie, droit, politique/activité judiciaire"
+      ],
+      "synonymes": [
+        "clerc assistant/e",
+        "clerc aux procédures",
+        "clerc de commissaire de justice",
+        "clerc expert/e",
+        "clerc gestionnaire",
+        "clerc significateur/trice",
+        "collaborateur de commissaire de justice",
+        "collaboratrice de commissaire de justice"
+      ]
+    },
+    {
+      "id": "administrateur-territorial",
+      "nom": "Administrateur territorial, administratrice territoriale",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Piloter les politiques locales",
+        "Encadrer les services",
+        "Conseiller les élus"
+      ],
+      "contexte": "Cadre dirigeant d’une collectivité territoriale.",
+      "correspondance": "proposition",
+      "onisep": "MET.122",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "économie, droit, politique/droit public",
+        "économie, droit, politique/sciences économiques"
+      ],
+      "synonymes": [
+        "administrateur territorial",
+        "administratrice territoriale"
+      ]
+    },
+    {
+      "id": "referent-handicap",
+      "nom": "Référent, référente handicap",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "droit-et-institutions",
+        "communication"
+      ],
+      "gestes": [
+        "Accueillir les personnes concernées",
+        "Organiser les aménagements",
+        "Sensibiliser les équipes"
+      ],
+      "contexte": "Facilite l’accueil des personnes handicapées dans une entreprise ou une école.",
+      "correspondance": "proposition",
+      "onisep": "MET.134",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "gestion des entreprises, comptabilité/ressources humaines"
+      ],
+      "synonymes": [
+        "responsable diversité",
+        "référent handicap",
+        "référente handicap"
+      ]
+    },
+    {
+      "id": "directeur-de-restaurant",
+      "nom": "Directeur, directrice de restaurant",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "nutrition-alimentation",
+        "communication"
+      ],
+      "gestes": [
+        "Encadrer la salle et la cuisine",
+        "Accueillir les clients",
+        "Gérer le budget"
+      ],
+      "contexte": "Dirige un restaurant.",
+      "correspondance": "proposition",
+      "onisep": "MET.144",
+      "rome": [
+        "G1402"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise",
+        "hôtellerie-restauration, tourisme/hôtellerie",
+        "hôtellerie-restauration, tourisme/restauration"
+      ],
+      "synonymes": [
+        "directeur/trice de la restauration",
+        "exploitant/e de restaurant",
+        "gérant/e de restaurant",
+        "responsable de restaurant",
+        "responsable de restauration dans les collectivités",
+        "restaurateur/trice",
+        "directeur de restaurant",
+        "directrice de restaurant"
+      ]
+    },
+    {
+      "id": "expert-comptable",
+      "nom": "Expert-comptable, experte-comptable",
+      "categorie": "trade",
+      "disciplines": [
+        "comptabilite",
+        "droit-et-institutions",
+        "gestion"
+      ],
+      "gestes": [
+        "Tenir et vérifier les comptes",
+        "Conseiller le chef d’entreprise",
+        "Préparer les déclarations"
+      ],
+      "contexte": "Tient et contrôle les comptes des entreprises et les conseille.",
+      "correspondance": "proposition",
+      "onisep": "MET.149",
+      "rome": [
+        "M1202"
+      ],
+      "niveauAcces": "bac+8",
+      "domaines": [
+        "gestion des entreprises, comptabilité/comptabilité"
+      ],
+      "synonymes": [
+        "expert-comptable",
+        "experte-comptable"
+      ]
+    },
+    {
+      "id": "collaborateur-de-notaire",
+      "nom": "Collaborateur, collaboratrice de notaire",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "droit-des-contrats",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Préparer les actes",
+        "Recevoir les clients",
+        "Suivre les formalités"
+      ],
+      "contexte": "Prépare les dossiers de l’étude notariale.",
+      "correspondance": "proposition",
+      "onisep": "MET.168",
+      "rome": [
+        "K1902"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "économie, droit, politique/droit privé"
+      ],
+      "synonymes": [
+        "clerc de notaire",
+        "clerc rédacteur/trice",
+        "collaborateur de notaire",
+        "collaboratrice de notaire"
+      ]
+    },
+    {
+      "id": "chef-comptable",
+      "nom": "Chef, cheffe comptable",
+      "categorie": "trade",
+      "disciplines": [
+        "comptabilite",
+        "gestion",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Superviser la comptabilité",
+        "Préparer les bilans",
+        "Encadrer l’équipe"
+      ],
+      "contexte": "Dirige le service comptable d’une entreprise.",
+      "correspondance": "proposition",
+      "onisep": "MET.195",
+      "rome": [
+        "M1206"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "gestion des entreprises, comptabilité/comptabilité"
+      ],
+      "synonymes": [
+        "chef comptable",
+        "cheffe comptable"
+      ]
+    },
+    {
+      "id": "responsable-de-la-remuneration",
+      "nom": "Responsable de la rémunération (payroll manager)",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "droit-et-institutions",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Définir la politique salariale",
+        "Analyser les salaires",
+        "Suivre la paie"
+      ],
+      "contexte": "Organise la rémunération des salariés.",
+      "correspondance": "proposition",
+      "onisep": "MET.196",
+      "rome": [
+        "M1203"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "gestion des entreprises, comptabilité/comptabilité",
+        "gestion des entreprises, comptabilité/ressources humaines"
+      ],
+      "synonymes": [
+        "chargé/e de la paie",
+        "gestionnaire de paie",
+        "responsable paie et administration du personnel",
+        "responsable de la rémunération (payroll manager)"
+      ]
+    },
+    {
+      "id": "charge-de-recherche-en-recrutement",
+      "nom": "Chargé, chargée de recherche en recrutement",
+      "categorie": "trade",
+      "disciplines": [
+        "psychologie-sociale",
+        "communication",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Identifier des candidats",
+        "Les contacter",
+        "Préparer les entretiens"
+      ],
+      "contexte": "Recherche les meilleurs candidats pour un poste.",
+      "correspondance": "proposition",
+      "onisep": "MET.209",
+      "rome": [
+        "M1502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "gestion des entreprises, comptabilité/ressources humaines"
+      ],
+      "synonymes": [
+        "assitant/e de recherche en recrutement",
+        "chargé/e de sourcing (recherche) ressources humaines",
+        "chasseur/euse de tête",
+        "chargé de recherche en recrutement",
+        "chargée de recherche en recrutement"
+      ]
+    },
+    {
+      "id": "chef-d-exploitation-d-usine-d-incineration",
+      "nom": "Chef, cheffe d'exploitation d'usine d'incinération",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "energetique",
+        "gestion"
+      ],
+      "gestes": [
+        "Piloter l’usine",
+        "Contrôler les rejets",
+        "Encadrer les équipes"
+      ],
+      "contexte": "Dirige une usine qui brûle les déchets pour produire de l’énergie.",
+      "correspondance": "proposition",
+      "onisep": "MET.226",
+      "rome": [
+        "K2306"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise",
+        "environnement, énergies, propreté/déchets, pollutions et risques",
+        "matières premières, fabrication, industries/génie industriel",
+        "matières premières, fabrication, industries/méthodes industrialisation"
+      ],
+      "synonymes": [
+        "responsable d'exploitation d'usine d'incinération",
+        "responsable d'usine de valorisation énergétique",
+        "chef d'exploitation d'usine d'incinération",
+        "cheffe d'exploitation d'usine d'incinération"
+      ]
+    },
+    {
+      "id": "charge-de-valorisation-de-la-recherche",
+      "nom": "Chargé, chargée de valorisation de la recherche",
+      "categorie": "disc",
+      "disciplines": [
+        "droit-et-institutions",
+        "economie-et-societe",
+        "communication"
+      ],
+      "gestes": [
+        "Repérer les découvertes utiles",
+        "Protéger les inventions",
+        "Trouver des partenaires"
+      ],
+      "contexte": "Aide les laboratoires à transformer leurs découvertes en projets concrets.",
+      "correspondance": "proposition",
+      "onisep": "MET.284",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/droit privé",
+        "lettres, langues, enseignement/enseignement",
+        "matières premières, fabrication, industries/fonction production (généralités)"
+      ],
+      "synonymes": [
+        "chargé/e d'affaires en valorisation",
+        "consultant/e en valorisation de la recherche",
+        "responsable de cellule de valorisation",
+        "valoriseur/trice",
+        "chargé de valorisation de la recherche",
+        "chargée de valorisation de la recherche"
+      ]
+    },
+    {
+      "id": "assistant-de-direction",
+      "nom": "Assistant, assistante de direction",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "expression-ecrite",
+        "communication"
+      ],
+      "gestes": [
+        "Organiser l’agenda",
+        "Préparer les réunions",
+        "Gérer le courrier"
+      ],
+      "contexte": "Assiste un dirigeant dans l’organisation de son travail.",
+      "correspondance": "proposition",
+      "onisep": "MET.319",
+      "rome": [
+        "M1604"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "gestion des entreprises, comptabilité/secrétariat"
+      ],
+      "synonymes": [
+        "assistant de direction",
+        "assistante de direction"
+      ]
+    },
+    {
+      "id": "auxiliaire-veterinaire",
+      "nom": "Auxiliaire vétérinaire",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "communication",
+        "physiologie-humaine"
+      ],
+      "gestes": [
+        "Accueillir les propriétaires",
+        "Assister le vétérinaire",
+        "Préparer le matériel"
+      ],
+      "contexte": "Aide le vétérinaire au cabinet ou à la clinique.",
+      "correspondance": "proposition",
+      "onisep": "MET.323",
+      "rome": [
+        "A1503",
+        "D1210"
+      ],
+      "niveauAcces": "bac+1",
+      "domaines": [
+        "gestion des entreprises, comptabilité/secrétariat",
+        "agriculture, animaux/soins aux animaux"
+      ],
+      "synonymes": [
+        "assistant/e vétérinaire",
+        "auxiliaire spécialisé/e vétérinaire",
+        "auxiliaire vétérinaire qualifié/e",
+        "auxiliaire vétérinaire"
+      ]
+    },
+    {
+      "id": "juriste-en-propriete-intellectuelle",
+      "nom": "Juriste en propriété intellectuelle",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "droit-des-contrats",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Protéger marques et inventions",
+        "Rédiger les dépôts",
+        "Gérer les litiges"
+      ],
+      "contexte": "Protège les créations, les marques et les inventions.",
+      "correspondance": "proposition",
+      "onisep": "MET.333",
+      "rome": [
+        "K1903"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/droit privé"
+      ],
+      "synonymes": [
+        "juriste en propriété intellectuelle"
+      ]
+    },
+    {
+      "id": "charge-de-veille-legislative-et-reglementaire",
+      "nom": "Chargé, chargée de veille législative et réglementaire",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Suivre les nouvelles lois",
+        "Analyser leur impact",
+        "Informer les équipes"
+      ],
+      "contexte": "Surveille l’évolution des lois et règlements.",
+      "correspondance": "proposition",
+      "onisep": "MET.340",
+      "rome": [
+        "K1601"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/droit appliqué",
+        "santé, social, sport/médical"
+      ],
+      "synonymes": [
+        "chargé/e de l'intelligence réglementaire",
+        "chargé/e de veille réglementaire et normative",
+        "chargé de veille législative et réglementaire",
+        "chargée de veille législative et réglementaire"
+      ]
+    },
+    {
+      "id": "credit-manager",
+      "nom": "Credit manager (responsable du crédit)",
+      "categorie": "trade",
+      "disciplines": [
+        "comptabilite",
+        "economie-et-societe",
+        "droit-des-contrats"
+      ],
+      "gestes": [
+        "Évaluer les clients",
+        "Surveiller les paiements",
+        "Recouvrer les impayés"
+      ],
+      "contexte": "Veille à ce que les clients de l’entreprise paient ce qu’ils doivent.",
+      "correspondance": "proposition",
+      "onisep": "MET.458",
+      "rome": [
+        "M1207"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise",
+        "gestion des entreprises, comptabilité/comptabilité",
+        "banque, assurances, immobilier/finances"
+      ],
+      "synonymes": [
+        "credit controller (contrôleur/euse de crédit)",
+        "responsable du crédit client",
+        "responsable gestion du risque client",
+        "credit manager (responsable du crédit)"
+      ]
+    },
+    {
+      "id": "administrateur-de-spectacle",
+      "nom": "Administrateur, administratrice de spectacle",
+      "categorie": "mkt",
+      "disciplines": [
+        "gestion",
+        "droit-des-contrats",
+        "communication"
+      ],
+      "gestes": [
+        "Gérer le budget",
+        "Établir les contrats",
+        "Organiser les tournées"
+      ],
+      "contexte": "Gère l’administration d’une compagnie ou d’un lieu de spectacle.",
+      "correspondance": "proposition",
+      "onisep": "MET.469",
+      "rome": [
+        "L1302"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise",
+        "arts, culture, artisanat/arts du spectacle"
+      ],
+      "synonymes": [
+        "administrateur/trice d'orchestre",
+        "administrateur/trice de compagnie",
+        "administrateur/trice de production",
+        "administrateur/trice de théâtre",
+        "administrateur/trice de tournée",
+        "administrateur de spectacle",
+        "administratrice de spectacle"
+      ]
+    },
+    {
+      "id": "juge-des-enfants",
+      "nom": "Juge des enfants",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-sociale",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Écouter l’enfant et sa famille",
+        "Prendre des mesures de protection",
+        "Juger les mineurs"
+      ],
+      "contexte": "Protège les enfants en danger et juge les mineurs.",
+      "correspondance": "proposition",
+      "onisep": "MET.472",
+      "rome": [
+        "K1904"
+      ],
+      "niveauAcces": "bac+7",
+      "domaines": [
+        "économie, droit, politique/activité judiciaire"
+      ],
+      "synonymes": [
+        "magistrat/e",
+        "juge des enfants"
+      ]
+    },
+    {
+      "id": "controleur-des-finances-publiques",
+      "nom": "Contrôleur, contrôleuse des finances publiques",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "calcul-professionnel",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Contrôler les déclarations",
+        "Calculer les impôts",
+        "Renseigner les usagers"
+      ],
+      "contexte": "Travaille au service des impôts et des finances publiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.515",
+      "rome": [
+        "K1503"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "gestion des entreprises, comptabilité/comptabilité",
+        "économie, droit, politique/droit public"
+      ],
+      "synonymes": [
+        "contrôleur des finances publiques",
+        "contrôleuse des finances publiques"
+      ]
+    },
+    {
+      "id": "secretaire-de-mairie",
+      "nom": "Secrétaire de mairie",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Préparer le conseil municipal",
+        "Gérer l’état civil",
+        "Suivre le budget"
+      ],
+      "contexte": "Organise le fonctionnement administratif d’une petite commune.",
+      "correspondance": "proposition",
+      "onisep": "MET.523",
+      "rome": [
+        "K1404"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "gestion des entreprises, comptabilité/secrétariat"
+      ],
+      "synonymes": [
+        "secrétaire de mairie"
+      ]
+    },
+    {
+      "id": "directeur-de-magasin-a-grande-surface",
+      "nom": "Directeur, directrice de magasin à grande surface",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "economie-et-societe",
+        "communication"
+      ],
+      "gestes": [
+        "Fixer les objectifs",
+        "Encadrer les équipes",
+        "Suivre les résultats"
+      ],
+      "contexte": "Dirige un supermarché ou un hypermarché.",
+      "correspondance": "proposition",
+      "onisep": "MET.542",
+      "rome": [
+        "D1504"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise",
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "directrice de supermarché",
+        "responsable de magasin",
+        "directeur de magasin à grande surface",
+        "directrice de magasin à grande surface"
+      ]
+    },
+    {
+      "id": "directeur-d-agence-bancaire",
+      "nom": "Directeur, directrice d'agence bancaire",
+      "categorie": "trade",
+      "disciplines": [
+        "economie-et-societe",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Encadrer les conseillers",
+        "Développer la clientèle",
+        "Suivre les résultats"
+      ],
+      "contexte": "Dirige une agence bancaire.",
+      "correspondance": "proposition",
+      "onisep": "MET.544",
+      "rome": [
+        "C1207"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise",
+        "banque, assurances, immobilier/banque"
+      ],
+      "synonymes": [
+        "chef/fe d'agence",
+        "chef/fe d'unité d'exploitation",
+        "responsable d'agence",
+        "directeur d'agence bancaire",
+        "directrice d'agence bancaire"
+      ]
+    },
+    {
+      "id": "adjoint-administratif",
+      "nom": "Adjoint administratif, adjointe administrative",
+      "categorie": "services",
+      "disciplines": [
+        "expression-ecrite",
+        "droit-et-institutions",
+        "communication"
+      ],
+      "gestes": [
+        "Accueillir le public",
+        "Traiter les dossiers",
+        "Rédiger courriers et documents"
+      ],
+      "contexte": "Assure les tâches administratives dans un service public.",
+      "correspondance": "proposition",
+      "onisep": "MET.578",
+      "niveauAcces": "sans-diplome",
+      "domaines": [
+        "gestion des entreprises, comptabilité/secrétariat"
+      ],
+      "synonymes": [
+        "adjoint administratif",
+        "adjointe administrative"
+      ]
+    },
+    {
+      "id": "auditeur-externe",
+      "nom": "Auditeur, auditrice externe",
+      "categorie": "trade",
+      "disciplines": [
+        "comptabilite",
+        "analyse-statistique",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Examiner les comptes",
+        "Vérifier les procédures",
+        "Rédiger le rapport"
+      ],
+      "contexte": "Vérifie que les comptes d’une entreprise sont fiables.",
+      "correspondance": "proposition",
+      "onisep": "MET.591",
+      "rome": [
+        "M1402"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise",
+        "informatique, Internet/informatique (généralités)"
+      ],
+      "synonymes": [
+        "assistant/e auditeur/trice",
+        "auditeur/trice junior (débutant/e)",
+        "auditeur externe",
+        "auditrice externe"
+      ]
+    },
+    {
+      "id": "fiscaliste",
+      "nom": "Fiscaliste (conformité et contrôle interne)",
+      "categorie": "trade",
+      "disciplines": [
+        "droit-et-institutions",
+        "comptabilite",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Analyser les règles fiscales",
+        "Vérifier les déclarations",
+        "Conseiller l’entreprise"
+      ],
+      "contexte": "Spécialiste des impôts qui conseille les entreprises.",
+      "correspondance": "proposition",
+      "onisep": "MET.606",
+      "rome": [
+        "K1903"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/droit public"
+      ],
+      "synonymes": [
+        "comptable fiscaliste",
+        "juriste en droit fiscal",
+        "juriste fiscaliste",
+        "responsable fiscal",
+        "responsable juridique et fiscal",
+        "fiscaliste (conformité et contrôle interne)"
+      ]
+    },
+    {
+      "id": "substitut-du-procureur",
+      "nom": "Substitut, substitute du procureur",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Diriger les enquêtes",
+        "Décider des poursuites",
+        "Requérir à l’audience"
+      ],
+      "contexte": "Magistrat qui représente la société devant le tribunal.",
+      "correspondance": "proposition",
+      "onisep": "MET.615",
+      "rome": [
+        "K1904"
+      ],
+      "niveauAcces": "bac+7",
+      "domaines": [
+        "économie, droit, politique/activité judiciaire"
+      ],
+      "synonymes": [
+        "magistrat/e",
+        "substitut du procureur",
+        "substitute du procureur"
+      ]
+    },
+    {
+      "id": "gestionnaire-de-contrats-informatiques",
+      "nom": "Gestionnaire de contrats informatiques",
+      "categorie": "app",
+      "disciplines": [
+        "droit-des-contrats",
+        "informatique",
+        "gestion"
+      ],
+      "gestes": [
+        "Négocier les contrats",
+        "Suivre les licences",
+        "Contrôler les coûts"
+      ],
+      "contexte": "Gère les contrats d’achat de logiciels et de services informatiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.619",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise",
+        "informatique, Internet/informatique (généralités)"
+      ],
+      "synonymes": [
+        "contract manager",
+        "gestionnaire de contrats informatiques"
+      ]
+    },
+    {
+      "id": "secretaire",
+      "nom": "Secrétaire (office-manager)",
+      "categorie": "trade",
+      "disciplines": [
+        "expression-ecrite",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Organiser l’accueil et l’agenda",
+        "Gérer le courrier",
+        "Préparer les documents"
+      ],
+      "contexte": "Organise la vie administrative d’un bureau.",
+      "correspondance": "proposition",
+      "onisep": "MET.670",
+      "rome": [
+        "M1607"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "gestion des entreprises, comptabilité/secrétariat"
+      ],
+      "synonymes": [
+        "assistant/e de direction",
+        "secrétaire de direction",
+        "secrétaire (office-manager)"
+      ]
+    },
+    {
+      "id": "attache-d-administration-de-l-etat",
+      "nom": "Attaché, attachée d'administration de l'État",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Préparer les décisions",
+        "Encadrer une équipe",
+        "Gérer des dossiers"
+      ],
+      "contexte": "Cadre de l’administration de l’État.",
+      "correspondance": "proposition",
+      "onisep": "MET.687",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise",
+        "économie, droit, politique/droit (généralités)",
+        "économie, droit, politique/sciences économiques",
+        "économie, droit, politique/sciences politiques"
+      ],
+      "synonymes": [
+        "attaché d'administration de l'État",
+        "attachée d'administration de l'État"
+      ]
+    },
+    {
+      "id": "directeur-d-hopital",
+      "nom": "Directeur, directrice d'hôpital",
+      "categorie": "health",
+      "disciplines": [
+        "gestion",
+        "droit-et-institutions",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Piloter l’établissement",
+        "Gérer budget et personnel",
+        "Organiser les services"
+      ],
+      "contexte": "Dirige un hôpital.",
+      "correspondance": "proposition",
+      "onisep": "MET.688",
+      "rome": [
+        "K1403"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise",
+        "gestion des entreprises, comptabilité/ressources humaines",
+        "santé, social, sport/santé (généralités)",
+        "économie, droit, politique/sciences économiques"
+      ],
+      "synonymes": [
+        "directeur d'hôpital",
+        "directrice d'hôpital"
+      ]
+    },
+    {
+      "id": "responsable-des-ressources-humaines",
+      "nom": "Responsable des ressources humaines",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "psychologie-sociale",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Recruter",
+        "Gérer les carrières",
+        "Dialoguer avec les représentants du personnel"
+      ],
+      "contexte": "S’occupe des salariés d’une entreprise, du recrutement à la formation.",
+      "correspondance": "proposition",
+      "onisep": "MET.697",
+      "rome": [
+        "M1503"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise",
+        "économie, droit, politique/droit (généralités)",
+        "gestion des entreprises, comptabilité/ressources humaines"
+      ],
+      "synonymes": [
+        "directeur/trice des ressources humaines (DRH)",
+        "responsable administration du personnel, des rémunérations et SIRH",
+        "responsable administration du personnel et paie",
+        "responsable administration RH (ressources humaines)",
+        "responsable du personnel",
+        "responsable des ressources humaines"
+      ]
+    },
+    {
+      "id": "genealogiste",
+      "nom": "Généalogiste",
+      "categorie": "services",
+      "disciplines": [
+        "histoire-contemporaine",
+        "expression-ecrite",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Rechercher dans les archives",
+        "Reconstituer les familles",
+        "Rédiger les arbres"
+      ],
+      "contexte": "Retrouve l’histoire des familles et leurs héritiers.",
+      "correspondance": "proposition",
+      "onisep": "MET.742",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "économie, droit, politique/droit (généralités)",
+        "histoire-géographie, psychologie, sociologie/histoire"
+      ],
+      "synonymes": [
+        "chercheur/se en généalogie",
+        "enquêteur/trice successoral/e",
+        "généalogiste"
+      ]
+    },
+    {
+      "id": "juriste-en-droit-immobilier",
+      "nom": "Juriste en droit immobilier",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "droit-des-contrats",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Rédiger les actes",
+        "Conseiller sur les ventes et locations",
+        "Gérer les litiges"
+      ],
+      "contexte": "Spécialiste du droit des biens immobiliers.",
+      "correspondance": "proposition",
+      "onisep": "MET.749",
+      "rome": [
+        "K1903"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/droit privé"
+      ],
+      "synonymes": [
+        "juriste en droit immobilier"
+      ]
+    },
+    {
+      "id": "greffier-des-tribunaux-de-commerce",
+      "nom": "Greffier, greffière des tribunaux de commerce",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "gestion"
+      ],
+      "gestes": [
+        "Tenir le registre des entreprises",
+        "Assister les juges",
+        "Délivrer les documents"
+      ],
+      "contexte": "Officier public qui tient les registres des entreprises et assiste le tribunal de commerce.",
+      "correspondance": "proposition",
+      "onisep": "MET.750",
+      "rome": [
+        "K1902"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/activité judiciaire"
+      ],
+      "synonymes": [
+        "greffier des tribunaux de commerce",
+        "greffière des tribunaux de commerce"
+      ]
+    },
+    {
+      "id": "responsable-du-recrutement",
+      "nom": "Responsable du recrutement",
+      "categorie": "trade",
+      "disciplines": [
+        "psychologie-sociale",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Définir les besoins",
+        "Organiser les recrutements",
+        "Choisir les candidats"
+      ],
+      "contexte": "Organise l’embauche des salariés.",
+      "correspondance": "proposition",
+      "onisep": "MET.756",
+      "rome": [
+        "M1502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "gestion des entreprises, comptabilité/ressources humaines"
+      ],
+      "synonymes": [
+        "chargé/e de recrutement",
+        "chef/fe du service recrutement",
+        "directeur/trice du recrutement",
+        "responsable du recrutement"
+      ]
+    },
+    {
+      "id": "magistrat",
+      "nom": "Magistrat, magistrate",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "philosophie-ethique",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Étudier les dossiers",
+        "Diriger l’audience",
+        "Rendre la justice"
+      ],
+      "contexte": "Juge les affaires ou représente la société devant les tribunaux.",
+      "correspondance": "proposition",
+      "onisep": "MET.769",
+      "rome": [
+        "K1904"
+      ],
+      "niveauAcces": "bac+7",
+      "domaines": [
+        "économie, droit, politique/activité judiciaire"
+      ],
+      "synonymes": [
+        "juge",
+        "magistrat",
+        "magistrate"
+      ]
+    },
+    {
+      "id": "redacteur-territorial",
+      "nom": "Rédacteur territorial, rédactrice territoriale",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "gestion"
+      ],
+      "gestes": [
+        "Instruire les dossiers",
+        "Rédiger les actes",
+        "Encadrer une équipe"
+      ],
+      "contexte": "Cadre administratif d’une collectivité.",
+      "correspondance": "proposition",
+      "onisep": "MET.776",
+      "niveauAcces": "bac",
+      "domaines": [
+        "gestion des entreprises, comptabilité/secrétariat"
+      ],
+      "synonymes": [
+        "rédacteur territorial",
+        "rédactrice territoriale"
+      ]
+    },
+    {
+      "id": "administrateur-judiciaire",
+      "nom": "Administrateur, administratrice judiciaire",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "comptabilite",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Analyser la situation de l’entreprise",
+        "Proposer un plan de redressement",
+        "Négocier avec les créanciers"
+      ],
+      "contexte": "Aide les entreprises en difficulté à se redresser.",
+      "correspondance": "proposition",
+      "onisep": "MET.792",
+      "rome": [
+        "K1901"
+      ],
+      "niveauAcces": "bac+4",
+      "domaines": [
+        "économie, droit, politique/activité judiciaire",
+        "gestion des entreprises, comptabilité/comptabilité"
+      ],
+      "synonymes": [
+        "administrateur judiciaire",
+        "administratrice judiciaire"
+      ]
+    },
+    {
+      "id": "assistant-de-gestion-en-pme",
+      "nom": "Assistant, assistante de gestion en PME",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "comptabilite",
+        "communication"
+      ],
+      "gestes": [
+        "Suivre les factures",
+        "Gérer les plannings",
+        "Préparer les tableaux de bord"
+      ],
+      "contexte": "Aide le dirigeant d’une petite entreprise dans la gestion quotidienne.",
+      "correspondance": "proposition",
+      "onisep": "MET.797",
+      "rome": [
+        "M1605"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise",
+        "gestion des entreprises, comptabilité/comptabilité"
+      ],
+      "synonymes": [
+        "assistant/e de direction en PME",
+        "secrétaire de direction en PME",
+        "assistant de gestion en PME",
+        "assistante de gestion en PME"
+      ]
+    },
+    {
+      "id": "assistant-en-ressources-humaines",
+      "nom": "Assistant, assistante en ressources humaines",
+      "categorie": "trade",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Préparer les contrats",
+        "Suivre les absences",
+        "Organiser les recrutements"
+      ],
+      "contexte": "Aide le service des ressources humaines.",
+      "correspondance": "proposition",
+      "onisep": "MET.798",
+      "rome": [
+        "M1501"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise",
+        "économie, droit, politique/droit (généralités)",
+        "gestion des entreprises, comptabilité/ressources humaines"
+      ],
+      "synonymes": [
+        "adjoint/e ressources humaines",
+        "assistant/e gestion du personnel",
+        "gestionnaire RH",
+        "assistant en ressources humaines",
+        "assistante en ressources humaines"
+      ]
+    },
+    {
+      "id": "juge-d-instruction",
+      "nom": "Juge d'instruction",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-sociale",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Mener l’enquête",
+        "Entendre les témoins",
+        "Décider de la suite"
+      ],
+      "contexte": "Magistrat qui enquête sur les affaires graves.",
+      "correspondance": "proposition",
+      "onisep": "MET.805",
+      "rome": [
+        "K1904"
+      ],
+      "niveauAcces": "bac+7",
+      "domaines": [
+        "économie, droit, politique/activité judiciaire"
+      ],
+      "synonymes": [
+        "magistrat/e",
+        "juge d'instruction"
+      ]
+    },
+    {
+      "id": "juriste-droit-de-l-environnement",
+      "nom": "Juriste droit de l'environnement",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "environnement",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Analyser les règles environnementales",
+        "Conseiller les projets",
+        "Gérer les litiges"
+      ],
+      "contexte": "Spécialiste du droit qui protège l’environnement.",
+      "correspondance": "proposition",
+      "onisep": "MET.806",
+      "rome": [
+        "K1903"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/droit appliqué"
+      ],
+      "synonymes": [
+        "juriste droit de l'environnement"
+      ]
+    },
+    {
+      "id": "administrateur-de-mission-humanitaire",
+      "nom": "Administrateur, administratrice de mission humanitaire",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "comptabilite",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Gérer budget et personnel",
+        "Préparer les rapports",
+        "Respecter les règles locales"
+      ],
+      "contexte": "Gère l’administration d’une mission humanitaire.",
+      "correspondance": "proposition",
+      "onisep": "MET.816",
+      "niveauAcces": "bac+4",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise",
+        "gestion des entreprises, comptabilité/comptabilité",
+        "santé, social, sport/travail social"
+      ],
+      "synonymes": [
+        "administrateur de mission humanitaire",
+        "administratrice de mission humanitaire"
+      ]
+    },
+    {
+      "id": "mandataire-judiciaire",
+      "nom": "Mandataire judiciaire",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "comptabilite",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Recenser les dettes",
+        "Représenter les créanciers",
+        "Organiser les remboursements"
+      ],
+      "contexte": "Défend les créanciers quand une entreprise est en difficulté.",
+      "correspondance": "proposition",
+      "onisep": "MET.818",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/activité judiciaire",
+        "gestion des entreprises, comptabilité/comptabilité"
+      ],
+      "synonymes": [
+        "mandataire judiciaire"
+      ]
+    },
+    {
+      "id": "secretaire-juridique",
+      "nom": "Secrétaire juridique",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "communication"
+      ],
+      "gestes": [
+        "Préparer les actes",
+        "Gérer les dossiers",
+        "Accueillir les clients"
+      ],
+      "contexte": "Assiste avocats et juristes dans leur travail.",
+      "correspondance": "proposition",
+      "onisep": "MET.819",
+      "rome": [
+        "M1607"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "gestion des entreprises, comptabilité/secrétariat"
+      ],
+      "synonymes": [
+        "assistant/e juridique",
+        "secrétaire juridique"
+      ]
+    },
+    {
+      "id": "commissaire-de-justice",
+      "nom": "Commissaire de justice",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "communication"
+      ],
+      "gestes": [
+        "Signifier les actes",
+        "Faire exécuter les décisions",
+        "Dresser des constats"
+      ],
+      "contexte": "Officier public qui fait appliquer les décisions de justice et dresse des constats.",
+      "correspondance": "proposition",
+      "onisep": "MET.872",
+      "rome": [
+        "K1901"
+      ],
+      "niveauAcces": "bac+7",
+      "domaines": [
+        "économie, droit, politique/activité judiciaire"
+      ],
+      "synonymes": [
+        "commissaire-priseur/euse judiciaire",
+        "huissier/ère de justice",
+        "commissaire de justice"
+      ]
+    },
+    {
+      "id": "secretaire-administratif",
+      "nom": "Secrétaire administratif, secrétaire administrative",
+      "categorie": "services",
+      "disciplines": [
+        "expression-ecrite",
+        "droit-et-institutions",
+        "gestion"
+      ],
+      "gestes": [
+        "Traiter les dossiers",
+        "Rédiger les documents",
+        "Encadrer une petite équipe"
+      ],
+      "contexte": "Assure la gestion administrative dans un service public.",
+      "correspondance": "proposition",
+      "onisep": "MET.891",
+      "rome": [
+        "M1607"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "gestion des entreprises, comptabilité/secrétariat"
+      ],
+      "synonymes": [
+        "secrétaire administratif",
+        "secrétaire administrative"
+      ]
+    },
+    {
+      "id": "charge-d-etudes-ressources-humaines",
+      "nom": "Chargé, chargée d'études ressources humaines",
+      "categorie": "trade",
+      "disciplines": [
+        "analyse-statistique",
+        "psychologie-sociale",
+        "gestion"
+      ],
+      "gestes": [
+        "Analyser les données sociales",
+        "Mener des études",
+        "Proposer des actions"
+      ],
+      "contexte": "Étudie les données du personnel pour guider les décisions.",
+      "correspondance": "proposition",
+      "onisep": "MET.898",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise",
+        "économie, droit, politique/droit (généralités)",
+        "gestion des entreprises, comptabilité/ressources humaines"
+      ],
+      "synonymes": [
+        "chargé/e de reporting (rapport) RH (ressources humaines)",
+        "chargé/e de reporting ressources humaines",
+        "gestionnaire des données sociales",
+        "chargé d'études ressources humaines",
+        "chargée d'études ressources humaines"
+      ]
+    },
+    {
+      "id": "directeur-de-magasin-de-sport",
+      "nom": "Directeur, directrice de magasin de sport",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "education-physique",
+        "communication"
+      ],
+      "gestes": [
+        "Gérer l’équipe de vente",
+        "Organiser le magasin",
+        "Suivre le chiffre d’affaires"
+      ],
+      "contexte": "Dirige un magasin d’articles de sport.",
+      "correspondance": "proposition",
+      "onisep": "MET.953",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "directeur de magasin de sport",
+        "directrice de magasin de sport"
+      ]
+    },
+    {
+      "id": "juriste-international",
+      "nom": "Juriste international, juriste internationale",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "langues-vivantes",
+        "droit-des-contrats"
+      ],
+      "gestes": [
+        "Analyser les droits de plusieurs pays",
+        "Rédiger des contrats internationaux",
+        "Conseiller les entreprises"
+      ],
+      "contexte": "Spécialiste du droit entre les pays.",
+      "correspondance": "proposition",
+      "onisep": "MET.1189",
+      "rome": [
+        "K1903"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/droit international"
+      ],
+      "synonymes": [
+        "juriste international",
+        "juriste internationale"
+      ]
+    },
+    {
+      "id": "juriste-contentieux",
+      "nom": "Juriste contentieux",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "droit-des-contrats",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Analyser le litige",
+        "Préparer les dossiers",
+        "Suivre les procédures"
+      ],
+      "contexte": "Gère les conflits juridiques d’une entreprise.",
+      "correspondance": "proposition",
+      "onisep": "MET.1190",
+      "rome": [
+        "K1903"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/activité judiciaire"
+      ],
+      "synonymes": [
+        "juriste contentieux"
+      ]
+    },
+    {
+      "id": "juriste-droit-des-affaires",
+      "nom": "Juriste droit des affaires",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "droit-des-contrats",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Rédiger les statuts et contrats",
+        "Accompagner les opérations",
+        "Conseiller la direction"
+      ],
+      "contexte": "Conseille les entreprises sur leur vie juridique.",
+      "correspondance": "proposition",
+      "onisep": "MET.1192",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/droit privé"
+      ],
+      "synonymes": [
+        "juriste droit des affaires"
+      ]
+    },
+    {
+      "id": "avocat-d-affaires",
+      "nom": "Avocat, avocate d'affaires",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "droit-des-contrats",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Conseiller les entreprises",
+        "Négocier les contrats",
+        "Défendre les intérêts du client"
+      ],
+      "contexte": "Avocat qui conseille et défend les entreprises.",
+      "correspondance": "proposition",
+      "onisep": "MET.1264",
+      "rome": [
+        "K1903"
+      ],
+      "niveauAcces": "bac+7",
+      "domaines": [
+        "économie, droit, politique/activité judiciaire"
+      ],
+      "synonymes": [
+        "avocat d'affaires",
+        "avocate d'affaires"
+      ]
+    },
+    {
+      "id": "collaborateur-de-cabinet-d-expertise-comptable",
+      "nom": "Collaborateur, collaboratrice de cabinet d'expertise comptable",
+      "categorie": "trade",
+      "disciplines": [
+        "comptabilite",
+        "droit-et-institutions",
+        "gestion"
+      ],
+      "gestes": [
+        "Tenir les comptes des clients",
+        "Préparer les déclarations",
+        "Conseiller les entreprises"
+      ],
+      "contexte": "Gère la comptabilité des clients d’un cabinet.",
+      "correspondance": "proposition",
+      "onisep": "MET.7772",
+      "rome": [
+        "M1202"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "gestion des entreprises, comptabilité/comptabilité"
+      ],
+      "synonymes": [
+        "collaborateur de cabinet d'expertise comptable",
+        "collaboratrice de cabinet d'expertise comptable"
+      ]
+    },
+    {
+      "id": "administrateur-du-senat",
+      "nom": "Administrateur, administratrice du Sénat",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "histoire-contemporaine"
+      ],
+      "gestes": [
+        "Préparer les travaux des sénateurs",
+        "Rédiger des rapports",
+        "Conseiller les commissions"
+      ],
+      "contexte": "Haut fonctionnaire qui prépare le travail des sénateurs.",
+      "correspondance": "proposition",
+      "onisep": "MET.7904",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "économie, droit, politique/droit public",
+        "économie, droit, politique/sciences politiques"
+      ],
+      "synonymes": [
+        "administrateur du Sénat",
+        "administratrice du Sénat"
+      ]
+    },
+    {
+      "id": "administrateur-adjoint-du-senat",
+      "nom": "Administrateur adjoint du Sénat, administratrice adjointe du Sénat",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "gestion"
+      ],
+      "gestes": [
+        "Suivre les textes de loi",
+        "Préparer les dossiers",
+        "Assister les commissions"
+      ],
+      "contexte": "Aide à préparer le travail législatif du Sénat.",
+      "correspondance": "proposition",
+      "onisep": "MET.7905",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "gestion des entreprises, comptabilité/comptabilité",
+        "économie, droit, politique/droit public",
+        "gestion des entreprises, comptabilité/secrétariat"
+      ],
+      "synonymes": [
+        "administrateur adjoint du Sénat",
+        "administratrice adjointe du Sénat"
+      ]
+    },
+    {
+      "id": "ambassadeur",
+      "nom": "Ambassadeur, ambassadrice",
+      "categorie": "services",
+      "disciplines": [
+        "langues-vivantes",
+        "histoire-contemporaine",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Représenter la France",
+        "Négocier avec le pays d’accueil",
+        "Protéger les Français sur place"
+      ],
+      "contexte": "Représente la France dans un pays étranger.",
+      "correspondance": "proposition",
+      "onisep": "MET.7927",
+      "rome": [
+        "K1405"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "économie, droit, politique/sciences économiques",
+        "économie, droit, politique/sciences politiques"
+      ],
+      "synonymes": [
+        "diplomate",
+        "ambassadeur",
+        "ambassadrice"
+      ]
+    },
+    {
+      "id": "prefet",
+      "nom": "Préfet, préfète",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Représenter l’État dans le département",
+        "Garantir la sécurité",
+        "Coordonner les services publics"
+      ],
+      "contexte": "Représente l’État dans un département ou une région.",
+      "correspondance": "proposition",
+      "onisep": "MET.7928",
+      "rome": [
+        "K1405"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/droit public",
+        "économie, droit, politique/sciences économiques",
+        "économie, droit, politique/sciences politiques"
+      ],
+      "synonymes": [
+        "préfet",
+        "préfète"
+      ]
+    },
+    {
+      "id": "delegue-a-la-protection-des-donnees",
+      "nom": "Délégué, déléguée à la protection des données (data protection officer)",
+      "categorie": "app",
+      "disciplines": [
+        "droit-et-institutions",
+        "informatique",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Recenser les données personnelles",
+        "Vérifier le respect du RGPD",
+        "Répondre aux demandes"
+      ],
+      "contexte": "Veille à ce que les données personnelles soient protégées.",
+      "correspondance": "proposition",
+      "onisep": "MET.7932",
+      "rome": [
+        "K1903"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/droit (généralités)",
+        "informatique, Internet/systèmes et réseaux"
+      ],
+      "synonymes": [
+        "délégué à la protection des données (data protection officer)",
+        "déléguée à la protection des données (data protection officer)"
+      ]
+    },
+    {
+      "id": "mandataire-judiciaire-a-la-protection-des-majeurs",
+      "nom": "Mandataire judiciaire à la protection des majeurs",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-sociale",
+        "comptabilite"
+      ],
+      "gestes": [
+        "Gérer le budget de la personne",
+        "L’accompagner dans ses démarches",
+        "Rendre compte au juge"
+      ],
+      "contexte": "Protège les adultes qui ne peuvent plus gérer seuls leurs affaires.",
+      "correspondance": "proposition",
+      "onisep": "MET.7965",
+      "rome": [
+        "K1102"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "économie, droit, politique/activité judiciaire",
+        "santé, social, sport/travail social"
+      ],
+      "synonymes": [
+        "mandataire judiciaire à la protection des majeurs"
+      ]
+    },
+    {
+      "id": "agent-administratif-des-finances-publiques",
+      "nom": "Agent administratif des finances publiques, agente administrative des finances publiques",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Accueillir les usagers",
+        "Traiter les dossiers",
+        "Saisir les informations"
+      ],
+      "contexte": "Traite les dossiers d’impôts et de finances publiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.7986",
+      "niveauAcces": "sans-diplome",
+      "domaines": [
+        "gestion des entreprises, comptabilité/comptabilité",
+        "économie, droit, politique/droit public"
+      ],
+      "synonymes": [
+        "agent administratif des finances publiques",
+        "agente administrative des finances publiques"
+      ]
+    },
+    {
+      "id": "inspecteur-des-finances-publiques",
+      "nom": "Inspecteur, inspectrice des finances publiques",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "comptabilite",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Contrôler les comptes",
+        "Diriger une équipe",
+        "Lutter contre la fraude"
+      ],
+      "contexte": "Cadre qui contrôle les impôts et les finances publiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.7987",
+      "rome": [
+        "K1503"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "gestion des entreprises, comptabilité/comptabilité",
+        "économie, droit, politique/droit public"
+      ],
+      "synonymes": [
+        "inspecteur des finances publiques",
+        "inspectrice des finances publiques"
+      ]
+    },
+    {
+      "id": "charge-de-recrutement-en-agence-d-emploi",
+      "nom": "Chargé, chargée de recrutement en agence d'emploi",
+      "categorie": "trade",
+      "disciplines": [
+        "psychologie-sociale",
+        "communication",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Recevoir les candidats",
+        "Les présenter aux entreprises",
+        "Suivre les missions"
+      ],
+      "contexte": "Met en relation candidats et entreprises.",
+      "correspondance": "proposition",
+      "onisep": "MET.8006",
+      "rome": [
+        "M1502"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "gestion des entreprises, comptabilité/ressources humaines"
+      ],
+      "synonymes": [
+        "chargé/e de sourcing en agence d'emploi",
+        "consultant/e en recrutement en agence d'emploi",
+        "chargé de recrutement en agence d'emploi",
+        "chargée de recrutement en agence d'emploi"
+      ]
+    },
+    {
+      "id": "analyste-criminel",
+      "nom": "Analyste criminel, analyste criminelle",
+      "categorie": "services",
+      "disciplines": [
+        "analyse-statistique",
+        "droit-et-institutions",
+        "informatique"
+      ],
+      "gestes": [
+        "Rassembler les données des enquêtes",
+        "Repérer des liens",
+        "Produire des synthèses"
+      ],
+      "contexte": "Aide les enquêteurs en analysant les informations.",
+      "correspondance": "proposition",
+      "onisep": "MET.8036",
+      "niveauAcces": "bac",
+      "domaines": [
+        "économie, droit, politique/activité judiciaire",
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "sous-officier/ère analyste criminel/le",
+        "analyste criminel",
+        "analyste criminelle"
+      ]
+    },
+    {
+      "id": "conseiller-territorial-des-aps",
+      "nom": "Conseiller territorial des APS (activités physiques et sportives), conseillère territoriale des APS (activités physiques et sportives)",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "gestion",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Développer les activités sportives",
+        "Accompagner les clubs",
+        "Gérer les équipements"
+      ],
+      "contexte": "Développe le sport dans une collectivité.",
+      "correspondance": "proposition",
+      "onisep": "MET.8085",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "économie, droit, politique/sciences politiques",
+        "santé, social, sport/sport"
+      ],
+      "synonymes": [
+        "conseiller territorial des APS (activités physiques et sportives)",
+        "conseillère territoriale des APS (activités physiques et sportives)"
+      ]
+    },
+    {
+      "id": "diplomate",
+      "nom": "Diplomate",
+      "categorie": "services",
+      "disciplines": [
+        "langues-vivantes",
+        "histoire-contemporaine",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Représenter son pays",
+        "Négocier",
+        "Rédiger des analyses"
+      ],
+      "contexte": "Défend les intérêts de la France auprès des autres pays.",
+      "correspondance": "proposition",
+      "onisep": "MET.8090",
+      "rome": [
+        "K1405"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/sciences politiques"
+      ],
+      "synonymes": [
+        "ambassadeur/drice",
+        "secrétaire des affaires étrangères",
+        "diplomate"
+      ]
+    },
+    {
+      "id": "formaliste",
+      "nom": "Formaliste",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "gestion"
+      ],
+      "gestes": [
+        "Préparer les formalités",
+        "Déposer les dossiers",
+        "Suivre les démarches"
+      ],
+      "contexte": "Accomplit les démarches juridiques des entreprises.",
+      "correspondance": "proposition",
+      "onisep": "MET.8095",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "économie, droit, politique/droit appliqué",
+        "économie, droit, politique/droit privé"
+      ],
+      "synonymes": [
+        "formaliste"
+      ]
+    },
+    {
+      "id": "inspecteur-des-fraudes",
+      "nom": "Inspecteur, inspectrice des fraudes",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "chimie-analytique",
+        "nutrition-alimentation"
+      ],
+      "gestes": [
+        "Contrôler les produits",
+        "Vérifier l’étiquetage",
+        "Protéger les consommateurs"
+      ],
+      "contexte": "Protège les consommateurs contre les tromperies.",
+      "correspondance": "proposition",
+      "onisep": "MET.8099",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "économie, droit, politique/droit (généralités)",
+        "économie, droit, politique/sciences économiques"
+      ],
+      "synonymes": [
+        "inspecteur/trice de la concurrence, de la consommation et de la répression des fraudes",
+        "inspecteur/trice de la DGCCRF",
+        "inspecteur des fraudes",
+        "inspectrice des fraudes"
+      ]
+    },
+    {
+      "id": "inspecteur-du-travail",
+      "nom": "Inspecteur, inspectrice du travail",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-sociale",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Contrôler les entreprises",
+        "Faire respecter le droit du travail",
+        "Conseiller employeurs et salariés"
+      ],
+      "contexte": "Veille au respect des règles qui protègent les salariés.",
+      "correspondance": "proposition",
+      "onisep": "MET.8101",
+      "rome": [
+        "K1502"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "économie, droit, politique/droit social"
+      ],
+      "synonymes": [
+        "inspecteur du travail",
+        "inspectrice du travail"
+      ]
+    },
+    {
+      "id": "juriste-du-sport",
+      "nom": "Juriste du sport",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "droit-des-contrats",
+        "education-physique"
+      ],
+      "gestes": [
+        "Rédiger les contrats sportifs",
+        "Conseiller clubs et fédérations",
+        "Gérer les litiges"
+      ],
+      "contexte": "Spécialiste du droit appliqué au sport.",
+      "correspondance": "proposition",
+      "onisep": "MET.8102",
+      "rome": [
+        "K1903"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/droit appliqué"
+      ],
+      "synonymes": [
+        "juriste du sport"
+      ]
+    },
+    {
+      "id": "juriste-nouvelles-technologies",
+      "nom": "Juriste nouvelles technologies",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "informatique",
+        "droit-des-contrats"
+      ],
+      "gestes": [
+        "Analyser les questions numériques",
+        "Rédiger les contrats",
+        "Conseiller les entreprises"
+      ],
+      "contexte": "Spécialiste du droit d’Internet et des technologies.",
+      "correspondance": "proposition",
+      "onisep": "MET.8103",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/droit appliqué"
+      ],
+      "synonymes": [
+        "juriste nouvelles technologies"
+      ]
+    },
+    {
+      "id": "juriste-rgpd",
+      "nom": "Juriste RGPD",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "informatique",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Vérifier la conformité",
+        "Rédiger les politiques",
+        "Former les équipes"
+      ],
+      "contexte": "Veille au respect des règles sur les données personnelles.",
+      "correspondance": "proposition",
+      "onisep": "MET.8104",
+      "rome": [
+        "K1903"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/droit appliqué"
+      ],
+      "synonymes": [
+        "juriste spécialisé/e en protection des données personnelles",
+        "juriste RGPD"
+      ]
+    },
+    {
+      "id": "magistrat-administratif",
+      "nom": "Magistrat administratif, magistrate administrative",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Étudier les recours",
+        "Juger les litiges avec l’administration",
+        "Rédiger les jugements"
+      ],
+      "contexte": "Juge les conflits entre les citoyens et l’administration.",
+      "correspondance": "proposition",
+      "onisep": "MET.8200",
+      "rome": [
+        "K1904"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "économie, droit, politique/activité judiciaire"
+      ],
+      "synonymes": [
+        "juge administratif/ve",
+        "magistrat administratif",
+        "magistrate administrative"
+      ]
+    },
+    {
+      "id": "greffier-administratif",
+      "nom": "Greffier administratif, greffière administrative",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "gestion"
+      ],
+      "gestes": [
+        "Enregistrer les recours",
+        "Préparer les audiences",
+        "Notifier les décisions"
+      ],
+      "contexte": "Assiste les juges des tribunaux administratifs.",
+      "correspondance": "proposition",
+      "onisep": "MET.8201",
+      "rome": [
+        "K1902"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "économie, droit, politique/activité judiciaire"
+      ],
+      "synonymes": [
+        "greffier administratif",
+        "greffière administrative"
+      ]
+    },
+    {
+      "id": "comptable-fonds-d-investissement",
+      "nom": "Comptable fonds d’investissement",
+      "categorie": "trade",
+      "disciplines": [
+        "comptabilite",
+        "economie-et-societe",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Tenir les comptes du fonds",
+        "Calculer les valeurs",
+        "Préparer les rapports"
+      ],
+      "contexte": "Tient la comptabilité de fonds qui placent de l’argent.",
+      "correspondance": "proposition",
+      "onisep": "MET.8211",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "gestion des entreprises, comptabilité/comptabilité",
+        "banque, assurances, immobilier/finances"
+      ],
+      "synonymes": [
+        "analyste comptable fonds",
+        "chargé/e de valorisation",
+        "contrôleur/euse comptable OPC",
+        "comptable fonds d’investissement"
+      ]
+    },
+    {
+      "id": "gestionnaire-reporting",
+      "nom": "Gestionnaire reporting (rapports financiers)",
+      "categorie": "trade",
+      "disciplines": [
+        "comptabilite",
+        "analyse-statistique",
+        "informatique"
+      ],
+      "gestes": [
+        "Rassembler les chiffres",
+        "Préparer les rapports financiers",
+        "Contrôler leur cohérence"
+      ],
+      "contexte": "Prépare les rapports qui suivent les résultats financiers.",
+      "correspondance": "proposition",
+      "onisep": "MET.8212",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "gestion des entreprises, comptabilité/administration de l'entreprise",
+        "banque, assurances, immobilier/finances",
+        "informatique, Internet/systèmes et réseaux"
+      ],
+      "synonymes": [
+        "analyste reporting (rapports financiers)",
+        "chargé/e de reportings (rapports) financiers",
+        "spécialiste reporting (rapport) réglementaire",
+        "gestionnaire reporting (rapports financiers)"
+      ]
+    },
+    {
+      "id": "juriste-gestion-d-actifs",
+      "nom": "Juriste gestion d’actifs",
+      "categorie": "trade",
+      "disciplines": [
+        "droit-et-institutions",
+        "economie-et-societe",
+        "droit-des-contrats"
+      ],
+      "gestes": [
+        "Vérifier la conformité des fonds",
+        "Rédiger les documents",
+        "Suivre la réglementation"
+      ],
+      "contexte": "Spécialiste du droit des placements financiers.",
+      "correspondance": "proposition",
+      "onisep": "MET.8213",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/droit privé"
+      ],
+      "synonymes": [
+        "juriste droit financier",
+        "juriste OPCVM/gestion collective",
+        "juriste réglementation AMF",
+        "juriste gestion d’actifs"
+      ]
+    },
+    {
+      "id": "attache-parlementaire",
+      "nom": "Attaché, attachée parlementaire",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "communication"
+      ],
+      "gestes": [
+        "Préparer les dossiers",
+        "Rédiger notes et discours",
+        "Gérer l’agenda"
+      ],
+      "contexte": "Collaborateur d’un député ou d’un sénateur.",
+      "correspondance": "proposition",
+      "onisep": "MET.8230",
+      "rome": [
+        "K1401"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/sciences politiques"
+      ],
+      "synonymes": [
+        "attaché parlementaire",
+        "attachée parlementaire"
+      ]
+    },
+    {
+      "id": "consultant-en-protection-de-donnees-personnelles",
+      "nom": "Consultant, consultante en protection de données personnelles",
+      "categorie": "app",
+      "disciplines": [
+        "droit-et-institutions",
+        "informatique",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Auditer les traitements",
+        "Proposer des mesures",
+        "Accompagner la mise en conformité"
+      ],
+      "contexte": "Aide les organisations à protéger les données personnelles.",
+      "correspondance": "proposition",
+      "onisep": "MET.8264",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/droit appliqué",
+        "économie, droit, politique/droit privé",
+        "informatique, Internet/informatique (généralités)",
+        "informatique, Internet/systèmes et réseaux"
+      ],
+      "synonymes": [
+        "consultante conformité données personelles",
+        "consultant en protection de données personnelles",
+        "consultante en protection de données personnelles"
+      ]
+    },
+    {
+      "id": "psychologue-criminologue",
+      "nom": "Psychologue criminologue",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "droit-et-institutions",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Évaluer les personnes",
+        "Conseiller la justice",
+        "Accompagner les victimes ou les auteurs"
+      ],
+      "contexte": "Étudie le comportement des auteurs et des victimes pour éclairer la justice.",
+      "correspondance": "proposition",
+      "onisep": "MET.8288",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "économie, droit, politique/activité judiciaire",
+        "histoire-géographie, psychologie, sociologie/psychologie"
+      ],
+      "synonymes": [
+        "analyste comportemental/e",
+        "profiler/euse",
+        "psychocriminologue",
+        "psychologue criminologue"
+      ]
+    },
+    {
+      "id": "auditeur",
+      "nom": "Auditeur, auditrice (douanes)",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "comptabilite",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Contrôler les entreprises",
+        "Vérifier les déclarations",
+        "Rédiger les rapports"
+      ],
+      "contexte": "Contrôle les opérations des entreprises pour les douanes.",
+      "correspondance": "proposition",
+      "onisep": "MET.8305",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "économie, droit, politique/droit public",
+        "armée, sécurité/sécurité, prévention",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "auditeur (douanes)",
+        "auditrice (douanes)"
+      ]
+    },
+    {
+      "id": "cibleur",
+      "nom": "Cibleur, cibleuse",
+      "categorie": "services",
+      "disciplines": [
+        "analyse-statistique",
+        "droit-et-institutions",
+        "informatique"
+      ],
+      "gestes": [
+        "Analyser les données des échanges",
+        "Repérer les envois suspects",
+        "Orienter les contrôles"
+      ],
+      "contexte": "Repère les marchandises à contrôler en priorité pour les douanes.",
+      "correspondance": "proposition",
+      "onisep": "MET.8306",
+      "niveauAcces": "bac",
+      "domaines": [
+        "économie, droit, politique/droit public",
+        "armée, sécurité/sécurité, prévention",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "cibleur",
+        "cibleuse"
+      ]
+    },
+    {
+      "id": "agent-charge-des-poursuites-judiciaires-et-du-contentieux",
+      "nom": "Agent chargé des poursuites judiciaires et du contentieux, agente chargée des poursuites judiciaires et du contentieux",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "comptabilite",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Préparer les poursuites",
+        "Suivre les procédures",
+        "Recouvrer les sommes dues"
+      ],
+      "contexte": "Engage les poursuites pour récupérer les sommes dues à l’État.",
+      "correspondance": "proposition",
+      "onisep": "MET.8308",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "économie, droit, politique/activité judiciaire",
+        "économie, droit, politique/droit public"
+      ],
+      "synonymes": [
+        "agent chargé des poursuites judiciaires et du contentieux",
+        "agente chargée des poursuites judiciaires et du contentieux"
       ]
     }
   ]
