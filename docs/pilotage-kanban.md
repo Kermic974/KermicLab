@@ -2,7 +2,7 @@
 # Kanban de pilotage KermicLab
 
 > **Source de vérité :** issues et labels GitHub de [Kermic974/KermicLab](https://github.com/Kermic974/KermicLab/issues).
-> **Généré le :** 2026-11-18T11:04:07.444Z (UTC) · **Ouvertes :** 51 · **Fermées :** 82.
+> **Généré le :** 2026-11-27T05:40:59.902Z (UTC) · **Ouvertes :** 57 · **Fermées :** 83.
 > Les horizons sont des priorités, pas des statuts d'avancement. Le statut reste « à qualifier » tant qu'aucun label `statut:*` ou `status:*` n'est défini sur l'issue.
 
 ## Synthèse
@@ -13,8 +13,8 @@
 | À faire ensuite | 6 |
 | Sous condition | 17 |
 | Plus tard | 7 |
-| À classer | 5 |
-| **Total** | **51** |
+| À classer | 11 |
+| **Total** | **57** |
 
 ## Tableau Kanban
 
@@ -88,8 +88,14 @@ _Évolutions différées._
 - [#294 — [SEO] Développer l’autorité du domaine et les backlinks qualifiés](https://github.com/Kermic974/KermicLab/issues/294) · à qualifier (pas de statut explicite) · socle · responsable : non assignée
 
 
-### À classer — 5
+### À classer — 11
 
+- [#445 — [idee] index.html 2026-11-27T05:40](https://github.com/Kermic974/KermicLab/issues/445) · à qualifier (pas de statut explicite) · non classé · responsable : non assignée
+- [#444 — [idee] index.html 2026-11-26T15:47](https://github.com/Kermic974/KermicLab/issues/444) · à qualifier (pas de statut explicite) · non classé · responsable : non assignée
+- [#443 — [idee] index.html 2026-11-26T14:35](https://github.com/Kermic974/KermicLab/issues/443) · à qualifier (pas de statut explicite) · non classé · responsable : non assignée
+- [#441 — Relier À petits pas aux micro-skills partagés et aux notions connexes](https://github.com/Kermic974/KermicLab/issues/441) · à qualifier (pas de statut explicite) · non classé · responsable : non assignée
+- [#427 — S7 → S8 → S9 → S10 — livraisons successives et qualification](https://github.com/Kermic974/KermicLab/issues/427) · à qualifier (pas de statut explicite) · non classé · responsable : non assignée
+- [#396 — [idee] index.html 2026-11-19T06:04](https://github.com/Kermic974/KermicLab/issues/396) · à qualifier (pas de statut explicite) · non classé · responsable : non assignée
 - [#384 — S6 — livrer les expériences pédagogiques sur tout le corpus public](https://github.com/Kermic974/KermicLab/issues/384) · à qualifier (pas de statut explicite) · non classé · responsable : non assignée
 - [#382 — Action manuelle : relire les prérequis hors maths et les liens jeux → notions, compléter le catalogue privé](https://github.com/Kermic974/KermicLab/issues/382) · à qualifier (pas de statut explicite) · referentiel · responsable : non assignée
 - [#381 — Action manuelle : valider l'ADR 0032 (gamification unifiée et synchronisation de la maîtrise)](https://github.com/Kermic974/KermicLab/issues/381) · à qualifier (pas de statut explicite) · non classé · responsable : non assignée
@@ -98,6 +104,7 @@ _Évolutions différées._
 
 ## Issues terminées
 
+- [#437 — Publier le labo adulte À petits pas (organisation et attention)](https://github.com/Kermic974/KermicLab/issues/437) · à qualifier (pas de statut explicite) · non classé · responsable : non assignée
 - [#356 — Action manuelle : valider l'ADR 0030 et trancher l'accord parental pour les moins de 15 ans](https://github.com/Kermic974/KermicLab/issues/356) · à qualifier (pas de statut explicite) · non classé · responsable : non assignée
 - [#348 — [Référentiel] S4 v0.5 · Histoire](https://github.com/Kermic974/KermicLab/issues/348) · à qualifier (pas de statut explicite) · referentiel · responsable : non assignée
 - [#347 — [Référentiel] S4 v0.5 · Philosophie](https://github.com/Kermic974/KermicLab/issues/347) · à qualifier (pas de statut explicite) · referentiel · responsable : non assignée
@@ -127,10 +134,9 @@ _Évolutions différées._
 - [#276 — Épique : blog kermiclab.online, un article par jour](https://github.com/Kermic974/KermicLab/issues/276) · à qualifier (pas de statut explicite) · non classé · responsable : non assignée
 - [#261 — [Qualité] Automatiser les tests de fumée après déploiement en production](https://github.com/Kermic974/KermicLab/issues/261) · à qualifier (pas de statut explicite) · socle · responsable : non assignée
 - [#257 — [Référentiel] S4 · Migration incrémentale par discipline (suivi)](https://github.com/Kermic974/KermicLab/issues/257) · à qualifier (pas de statut explicite) · referentiel · responsable : non assignée
-- [#256 — [Référentiel] S4 · Projection V0 et migration pilote](https://github.com/Kermic974/KermicLab/issues/256) · à qualifier (pas de statut explicite) · referentiel · responsable : non assignée
 
 
-_52 autres issues fermées non affichées._
+_53 autres issues fermées non affichées._
 
 
 ## Règles de synchronisation
