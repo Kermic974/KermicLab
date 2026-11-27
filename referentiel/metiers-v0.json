@@ -36,6 +36,16 @@
         "transitions",
         "proches"
       ]
+    },
+    {
+      "nom": "Enquête Besoins en main-d'œuvre 2026",
+      "producteur": "France Travail",
+      "licence": "Licence Ouverte 2.0",
+      "url": "https://www.data.gouv.fr/datasets/enquete-besoins-en-main-doeuvre-bmo",
+      "date": "2026-04-21",
+      "champs": [
+        "perspectives"
+      ]
     }
   ],
   "categories": [
@@ -678,6 +688,7 @@
       "rome": [
         "E1206"
       ],
+      "fap": "U1X82",
       "contextes": [
         "300779",
         "300799",
@@ -690,7 +701,15 @@
       ],
       "proches": [
         "content-strategist"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Graphistes, dessinateurs, stylistes, décorateurs et créateurs de supports de communication visuelle",
+        "projets": 3755,
+        "partDifficile": 20,
+        "partSaisonnier": 22,
+        "palier": "moyen"
+      }
     },
     {
       "id": "data-analyst",
@@ -720,6 +739,7 @@
       "synonymes": [
         "data analyst (analyste de données)"
       ],
+      "fap": "M2X90",
       "contextes": [
         "300799",
         "300806",
@@ -734,7 +754,15 @@
       ],
       "transitions": [
         "numerique"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Ingénieurs et cadres d'étude, recherche et développement en informatique et télécom",
+        "projets": 18127,
+        "partDifficile": 57,
+        "partSaisonnier": 1,
+        "palier": "fort"
+      }
     },
     {
       "id": "developpeur-web",
@@ -767,6 +795,7 @@
         "développeur informatique",
         "développeuse informatique"
       ],
+      "fap": "M1X80",
       "contextes": [
         "300806",
         "300809",
@@ -781,7 +810,15 @@
       ],
       "proches": [
         "designer-ux-ui"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Techniciens d'étude et de développement en informatique",
+        "projets": 9331,
+        "partDifficile": 43,
+        "partSaisonnier": 2,
+        "palier": "fort"
+      }
     },
     {
       "id": "architecte-cloud",
@@ -811,6 +848,7 @@
         "ingénieur cloud computing (informatique en nuage)",
         "ingénieure cloud computing (informatique en nuage)"
       ],
+      "fap": "M2X93",
       "contextes": [
         "300799",
         "300809",
@@ -828,7 +866,15 @@
       "proches": [
         "developpeur-web",
         "designer-ux-ui"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Experts et consultants en systèmes d'information",
+        "projets": 4758,
+        "partDifficile": 45,
+        "partSaisonnier": 0,
+        "palier": "moyen"
+      }
     },
     {
       "id": "ebeniste",
@@ -861,6 +907,7 @@
         "restaurateur/trice de meubles anciens",
         "ébéniste"
       ],
+      "fap": "F1X30",
       "contextes": [
         "38055",
         "300778",
@@ -878,7 +925,15 @@
       "proches": [
         "restaurateur-d-oeuvres-d-art",
         "menuisier-agenceur"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Ouvriers de la réalisation d'ouvrages décoratifs et meubles en bois",
+        "projets": 465,
+        "partDifficile": 66,
+        "partSaisonnier": 4,
+        "palier": "faible"
+      }
     },
     {
       "id": "ceramiste",
@@ -908,6 +963,7 @@
         "potier/ère",
         "céramiste"
       ],
+      "fap": "K0X30",
       "contextes": [
         "300789",
         "300794",
@@ -923,7 +979,15 @@
       ],
       "proches": [
         "restaurateur-d-oeuvres-d-art"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Artisans et ouvriers artisanaux",
+        "projets": 1216,
+        "partDifficile": 41,
+        "partSaisonnier": 7,
+        "palier": "faible"
+      }
     },
     {
       "id": "maroquinier",
@@ -952,6 +1016,7 @@
         "maroquinier",
         "maroquinière"
       ],
+      "fap": "F0X30",
       "contextes": [
         "38055",
         "300794",
@@ -965,7 +1030,15 @@
         "405348",
         "490503",
         "490504"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Ouvriers, techniciens et agents de maîtrise en traitement du cuir",
+        "projets": 1828,
+        "partDifficile": 56,
+        "partSaisonnier": 5,
+        "palier": "faible"
+      }
     },
     {
       "id": "menuisier-agenceur",
@@ -998,6 +1071,7 @@
         "menuisier",
         "menuisière"
       ],
+      "fap": "B2X38",
       "contextes": [
         "38055",
         "300778",
@@ -1018,7 +1092,15 @@
         "charge-daffaires",
         "charpentier",
         "ebeniste"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Ouvriers qualifiés en menuiserie et en agencement du BTP",
+        "projets": 9045,
+        "partDifficile": 70,
+        "partSaisonnier": 7,
+        "palier": "fort"
+      }
     },
     {
       "id": "acheteur-industriel",
@@ -1050,6 +1132,7 @@
         "acheteur",
         "acheteuse"
       ],
+      "fap": "R4X90",
       "contextes": [
         "300799",
         "300816",
@@ -1072,7 +1155,15 @@
         "comptable",
         "charge-daffaires",
         "resp-logistique"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Cadres commerciaux, acheteurs et cadres de la mercatique",
+        "projets": 6326,
+        "partDifficile": 30,
+        "partSaisonnier": 1,
+        "palier": "moyen"
+      }
     },
     {
       "id": "charge-daffaires",
@@ -1092,6 +1183,7 @@
       "rome": [
         "D1407"
       ],
+      "fap": "R4X91",
       "contextes": [
         "300779",
         "300817",
@@ -1102,7 +1194,15 @@
         "403095",
         "403103",
         "403107"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Technico-commerciaux",
+        "projets": 9260,
+        "partDifficile": 44,
+        "partSaisonnier": 0,
+        "palier": "fort"
+      }
     },
     {
       "id": "resp-logistique",
@@ -1134,6 +1234,7 @@
         "ingénieur logistique",
         "ingénieure logistique"
       ],
+      "fap": "J6X92",
       "contextes": [
         "23376",
         "23378",
@@ -1150,7 +1251,15 @@
       ],
       "transitions": [
         "ecologique"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Cadres de la logistique",
+        "projets": 494,
+        "partDifficile": 43,
+        "partSaisonnier": 6,
+        "palier": "faible"
+      }
     },
     {
       "id": "controleur-gestion",
@@ -1182,12 +1291,21 @@
         "contrôleur de gestion",
         "contrôleuse de gestion"
       ],
+      "fap": "L5X90",
       "contextes": [
         "403095",
         "403103",
         "403104",
         "403107"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Cadres administratifs, comptables et financiers (hors juristes)",
+        "projets": 8524,
+        "partDifficile": 33,
+        "partSaisonnier": 3,
+        "palier": "fort"
+      }
     },
     {
       "id": "content-strategist",
@@ -1216,6 +1334,7 @@
         "concepteur-rédacteur",
         "conceptrice-rédactrice"
       ],
+      "fap": "U0X90",
       "contextes": [
         "300779",
         "300799",
@@ -1235,7 +1354,15 @@
       ],
       "proches": [
         "designer-ux-ui"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Cadres de la communication",
+        "projets": 1220,
+        "partDifficile": 26,
+        "partSaisonnier": 2,
+        "palier": "faible"
+      }
     },
     {
       "id": "traffic-manager",
@@ -1265,6 +1392,7 @@
         "responsable gestion de trafic web",
         "traffic manager (responsable de la promotion en ligne)"
       ],
+      "fap": "R3X83",
       "contextes": [
         "300779",
         "403020",
@@ -1281,7 +1409,15 @@
       ],
       "proches": [
         "designer-ux-ui"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Professions intermédiaires du marketing et des services commerciaux (hors achats)",
+        "projets": 2783,
+        "partDifficile": 27,
+        "partSaisonnier": 15,
+        "palier": "moyen"
+      }
     },
     {
       "id": "brand-manager",
@@ -1312,6 +1448,7 @@
         "chef de produit marketing (mercatique)",
         "cheffe de produit marketing (mercatique)"
       ],
+      "fap": "R4X90",
       "contextes": [
         "300779",
         "300806",
@@ -1326,7 +1463,15 @@
       ],
       "proches": [
         "traffic-manager"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Cadres commerciaux, acheteurs et cadres de la mercatique",
+        "projets": 6326,
+        "partDifficile": 30,
+        "partSaisonnier": 1,
+        "palier": "moyen"
+      }
     },
     {
       "id": "community-builder",
@@ -1360,6 +1505,7 @@
         "community manager (animateur de communauté en ligne)",
         "community manager (animatrice de communauté en ligne)"
       ],
+      "fap": "U0X80",
       "contextes": [
         "300799",
         "300805",
@@ -1375,7 +1521,15 @@
       ],
       "proches": [
         "content-strategist"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Assistants de la communication",
+        "projets": 4126,
+        "partDifficile": 19,
+        "partSaisonnier": 27,
+        "palier": "moyen"
+      }
     },
     {
       "id": "ing-biomedical",
@@ -1406,6 +1560,7 @@
         "ingénieur biomédical",
         "ingénieure biomédicale"
       ],
+      "fap": "N1X90",
       "contextes": [
         "38055",
         "300779",
@@ -1423,7 +1578,15 @@
       "proches": [
         "ingenieur-mecanique",
         "biologiste-de-lenvironnement"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Ingénieurs et cadres d'étude, recherche et développement (industrie)",
+        "projets": 10948,
+        "partDifficile": 47,
+        "partSaisonnier": 2,
+        "palier": "fort"
+      }
     },
     {
       "id": "eco-concepteur",
@@ -1459,6 +1622,7 @@
         "ingénieur éco-concepteur",
         "ingénieure éco-conceptrice"
       ],
+      "fap": "N1X90",
       "contextes": [
         "38055",
         "300779",
@@ -1476,7 +1640,15 @@
       "proches": [
         "ingenieur-mecanique",
         "biologiste-de-lenvironnement"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Ingénieurs et cadres d'étude, recherche et développement (industrie)",
+        "projets": 10948,
+        "partDifficile": 47,
+        "partSaisonnier": 2,
+        "palier": "fort"
+      }
     },
     {
       "id": "geometre-topographe",
@@ -1506,6 +1678,7 @@
       "synonymes": [
         "géomètre-topographe"
       ],
+      "fap": "B6X70",
       "contextes": [
         "38055",
         "300779",
@@ -1514,7 +1687,15 @@
       ],
       "proches": [
         "geologue"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Géomètres",
+        "projets": 464,
+        "partDifficile": 84,
+        "partSaisonnier": 3,
+        "palier": "faible"
+      }
     },
     {
       "id": "ingenieur-genie-civil",
@@ -1546,6 +1727,7 @@
         "ingénieur du BTP",
         "ingénieure du BTP"
       ],
+      "fap": "B7X92",
       "contextes": [
         "38055",
         "300779",
@@ -1561,7 +1743,15 @@
         "eco-concepteur",
         "ingenieur-mecanique",
         "biologiste-de-lenvironnement"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Ingénieurs du bâtiment et des travaux publics, chefs de chantier et conducteurs de travaux (cadres)",
+        "projets": 6478,
+        "partDifficile": 62,
+        "partSaisonnier": 2,
+        "palier": "moyen"
+      }
     },
     {
       "id": "technicien-de-laboratoire",
@@ -1598,6 +1788,7 @@
         "technicien chimiste",
         "technicienne chimiste"
       ],
+      "fap": "N0X70",
       "contextes": [
         "23380",
         "38055",
@@ -1627,7 +1818,15 @@
       "proches": [
         "charge-daffaires",
         "technicien-de-laboratoire-medical"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Techniciens d'étude, recherche et développement",
+        "projets": 4349,
+        "partDifficile": 44,
+        "partSaisonnier": 7,
+        "palier": "moyen"
+      }
     },
     {
       "id": "biologiste-de-lenvironnement",
@@ -1659,6 +1858,7 @@
         "écologue",
         "biologiste en environnement"
       ],
+      "fap": "N1X91",
       "contextes": [
         "23380",
         "38055",
@@ -1677,7 +1877,15 @@
         "ingenieur-mecanique",
         "journaliste-scientifique",
         "journaliste"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Chercheurs (sauf industrie et enseignement supérieur)",
+        "projets": 1050,
+        "partDifficile": 41,
+        "partSaisonnier": 20,
+        "palier": "faible"
+      }
     },
     {
       "id": "agronome",
@@ -1708,6 +1916,7 @@
         "ingénieur/e agronome",
         "agronome"
       ],
+      "fap": "A2X90",
       "contextes": [
         "300779",
         "300783",
@@ -1731,7 +1940,15 @@
         "eco-concepteur",
         "ingenieur-mecanique",
         "biologiste-de-lenvironnement"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Ingénieurs, cadres techniques de l'agriculture",
+        "projets": 681,
+        "partDifficile": 25,
+        "partSaisonnier": 18,
+        "palier": "faible"
+      }
     },
     {
       "id": "urbaniste",
@@ -1846,6 +2063,7 @@
       "rome": [
         "E1106"
       ],
+      "fap": "U0X92",
       "contextes": [
         "300779",
         "300799",
@@ -1861,7 +2079,15 @@
       ],
       "transitions": [
         "numerique"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Journalistes et cadres de l'édition",
+        "projets": 997,
+        "partDifficile": 30,
+        "partSaisonnier": 9,
+        "palier": "faible"
+      }
     },
     {
       "id": "analyste-des-risques",
@@ -1896,6 +2122,7 @@
         "manager de risques (risk manager)",
         "manageuse de risques (risk manager)"
       ],
+      "fap": "QAX01",
       "contextes": [
         "300806",
         "403103",
@@ -1903,7 +2130,15 @@
       ],
       "proches": [
         "data-analyst"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Experts de la finance",
+        "projets": 871,
+        "partDifficile": 49,
+        "partSaisonnier": 1,
+        "palier": "faible"
+      }
     },
     {
       "id": "mediateur-scientifique",
@@ -1988,6 +2223,7 @@
         "docteur en médecine",
         "médecin généraliste"
       ],
+      "fap": "V2X90",
       "contextes": [
         "38126",
         "300778",
@@ -1998,7 +2234,15 @@
         "300806",
         "300809",
         "403102"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Médecins",
+        "projets": 8465,
+        "partDifficile": 78,
+        "partSaisonnier": 3,
+        "palier": "fort"
+      }
     },
     {
       "id": "infirmier",
@@ -2028,6 +2272,7 @@
         "infirmier",
         "infirmière"
       ],
+      "fap": "V1X80",
       "contextes": [
         "23376",
         "38055",
@@ -2048,7 +2293,15 @@
       ],
       "proches": [
         "manipulateur-en-electroradiologie-medicale"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Infirmiers et sages-femmes",
+        "projets": 36491,
+        "partDifficile": 60,
+        "partSaisonnier": 9,
+        "palier": "fort"
+      }
     },
     {
       "id": "aide-soignant",
@@ -2080,6 +2333,7 @@
         "aide-soignant",
         "aide-soignante"
       ],
+      "fap": "V0X60",
       "contextes": [
         "23376",
         "38055",
@@ -2103,7 +2357,15 @@
         "auxiliaire-de-puericulture",
         "infirmier",
         "ambulancier"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Aides-soignants",
+        "projets": 61987,
+        "partDifficile": 57,
+        "partSaisonnier": 18,
+        "palier": "fort"
+      }
     },
     {
       "id": "pharmacien",
@@ -2135,6 +2397,7 @@
         "pharmacien d'officine",
         "pharmacienne d'officine"
       ],
+      "fap": "V2X93",
       "contextes": [
         "23376",
         "23380",
@@ -2154,7 +2417,15 @@
         "513694",
         "513695",
         "513696"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Pharmaciens",
+        "projets": 3420,
+        "partDifficile": 58,
+        "partSaisonnier": 13,
+        "palier": "moyen"
+      }
     },
     {
       "id": "sage-femme",
@@ -2185,6 +2456,7 @@
         "maïeuticien",
         "sage-femme"
       ],
+      "fap": "V1X80",
       "contextes": [
         "23376",
         "38126",
@@ -2202,7 +2474,15 @@
         "infirmier",
         "auxiliaire-de-puericulture",
         "aide-soignant"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Infirmiers et sages-femmes",
+        "projets": 36491,
+        "partDifficile": 60,
+        "partSaisonnier": 9,
+        "palier": "fort"
+      }
     },
     {
       "id": "kinesitherapeute",
@@ -2233,6 +2513,7 @@
         "physiothérapeute",
         "masseur-kinésithérapeute"
       ],
+      "fap": "V3X80",
       "contextes": [
         "38126",
         "300779",
@@ -2244,7 +2525,15 @@
         "403102",
         "403103",
         "403104"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Autres professionnels para-médicaux",
+        "projets": 6236,
+        "partDifficile": 67,
+        "partSaisonnier": 7,
+        "palier": "moyen"
+      }
     },
     {
       "id": "dentiste",
@@ -2275,6 +2564,7 @@
         "chirurgien-dentiste",
         "chirurgienne-dentiste"
       ],
+      "fap": "V2X91",
       "contextes": [
         "23376",
         "38126",
@@ -2287,7 +2577,15 @@
         "403019",
         "403102",
         "403103"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Dentistes",
+        "projets": 999,
+        "partDifficile": 72,
+        "partSaisonnier": 4,
+        "palier": "faible"
+      }
     },
     {
       "id": "technicien-de-laboratoire-medical",
@@ -2322,6 +2620,7 @@
         "technicien d'analyses biomédicales",
         "technicienne d'analyses biomédicales"
       ],
+      "fap": "V3X70",
       "contextes": [
         "23376",
         "23380",
@@ -2338,7 +2637,15 @@
       "proches": [
         "ambulancier",
         "technicien-de-laboratoire"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Techniciens médicaux et préparateurs",
+        "projets": 7237,
+        "partDifficile": 58,
+        "partSaisonnier": 10,
+        "palier": "fort"
+      }
     },
     {
       "id": "manipulateur-en-electroradiologie-medicale",
@@ -2370,6 +2677,7 @@
         "manipulateur d'électroradiologie médicale",
         "manipulatrice d'électroradiologie médicale"
       ],
+      "fap": "V3X70",
       "contextes": [
         "23376",
         "38055",
@@ -2388,7 +2696,15 @@
       ],
       "proches": [
         "kinesitherapeute"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Techniciens médicaux et préparateurs",
+        "projets": 7237,
+        "partDifficile": 58,
+        "partSaisonnier": 10,
+        "palier": "fort"
+      }
     },
     {
       "id": "psychologue",
@@ -2417,6 +2733,7 @@
       "synonymes": [
         "psychologue"
       ],
+      "fap": "V3X90",
       "contextes": [
         "23376",
         "38126",
@@ -2432,7 +2749,15 @@
         "403104",
         "405285",
         "405349"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Psychologues, psychothérapeutes",
+        "projets": 3785,
+        "partDifficile": 53,
+        "partSaisonnier": 5,
+        "palier": "moyen"
+      }
     },
     {
       "id": "boulanger",
@@ -2464,6 +2789,7 @@
         "boulanger",
         "boulangère"
       ],
+      "fap": "S0X42",
       "contextes": [
         "23376",
         "300795",
@@ -2477,7 +2803,15 @@
       "proches": [
         "vendeur-conseil",
         "patissier"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Boulangers, pâtissiers",
+        "projets": 14465,
+        "partDifficile": 53,
+        "partSaisonnier": 17,
+        "palier": "fort"
+      }
     },
     {
       "id": "patissier",
@@ -2512,6 +2846,7 @@
         "pâtissier",
         "pâtissière"
       ],
+      "fap": "S0X42",
       "contextes": [
         "23376",
         "23380",
@@ -2525,7 +2860,15 @@
       ],
       "proches": [
         "boulanger"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Boulangers, pâtissiers",
+        "projets": 14465,
+        "partDifficile": 53,
+        "partSaisonnier": 17,
+        "palier": "fort"
+      }
     },
     {
       "id": "cuisinier",
@@ -2555,6 +2898,7 @@
         "chef de cuisine",
         "cheffe de cuisine"
       ],
+      "fap": "S1X40",
       "contextes": [
         "23376",
         "38055",
@@ -2569,7 +2913,15 @@
       ],
       "proches": [
         "patissier"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Cuisiniers",
+        "projets": 51475,
+        "partDifficile": 57,
+        "partSaisonnier": 48,
+        "palier": "fort"
+      }
     },
     {
       "id": "fleuriste",
@@ -2646,6 +2998,7 @@
         "coiffeur",
         "coiffeuse"
       ],
+      "fap": "T0X60",
       "contextes": [
         "23376",
         "300778",
@@ -2656,7 +3009,15 @@
         "403103",
         "403106",
         "405307"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Coiffeurs, esthéticiens",
+        "projets": 14579,
+        "partDifficile": 67,
+        "partSaisonnier": 12,
+        "palier": "fort"
+      }
     },
     {
       "id": "electricien-du-batiment",
@@ -2692,6 +3053,7 @@
         "électricien installateur",
         "électricienne installatrice"
       ],
+      "fap": "B2X32",
       "contextes": [
         "38055",
         "300778",
@@ -2706,7 +3068,15 @@
       ],
       "transitions": [
         "ecologique"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Ouvriers en électricité du bâtiment",
+        "projets": 10795,
+        "partDifficile": 62,
+        "partSaisonnier": 5,
+        "palier": "fort"
+      }
     },
     {
       "id": "plombier-chauffagiste",
@@ -2739,6 +3109,7 @@
         "plombier",
         "plombière"
       ],
+      "fap": "B2X33",
       "contextes": [
         "23374",
         "23376",
@@ -2755,7 +3126,15 @@
       ],
       "transitions": [
         "ecologique"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Plombiers chauffagistes",
+        "projets": 10888,
+        "partDifficile": 67,
+        "partSaisonnier": 6,
+        "palier": "fort"
+      }
     },
     {
       "id": "macon",
@@ -2786,6 +3165,7 @@
         "maçon",
         "maçonne"
       ],
+      "fap": "B1X31",
       "contextes": [
         "38055",
         "300782",
@@ -2798,7 +3178,15 @@
       ],
       "transitions": [
         "ecologique"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Maçons qualifiés",
+        "projets": 14557,
+        "partDifficile": 70,
+        "partSaisonnier": 7,
+        "palier": "fort"
+      }
     },
     {
       "id": "charpentier",
@@ -2830,6 +3218,7 @@
         "charpentier bois",
         "charpentière bois"
       ],
+      "fap": "B1X33",
       "contextes": [
         "38055",
         "300782",
@@ -2842,7 +3231,15 @@
       ],
       "transitions": [
         "ecologique"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Charpentiers (métal et bois)",
+        "projets": 6102,
+        "partDifficile": 74,
+        "partSaisonnier": 8,
+        "palier": "moyen"
+      }
     },
     {
       "id": "mecanicien-automobile",
@@ -2874,6 +3271,7 @@
         "technicien automobile",
         "technicienne automobile"
       ],
+      "fap": "G0B41",
       "contextes": [
         "23374",
         "38055",
@@ -2887,7 +3285,15 @@
       ],
       "transitions": [
         "ecologique"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Ouvriers mécaniciens de véhicules",
+        "projets": 19495,
+        "partDifficile": 72,
+        "partSaisonnier": 5,
+        "palier": "fort"
+      }
     },
     {
       "id": "soudeur",
@@ -2918,6 +3324,7 @@
         "soudeur",
         "soudeuse"
       ],
+      "fap": "D1X33",
       "contextes": [
         "38055",
         "126450",
@@ -2937,7 +3344,15 @@
       ],
       "proches": [
         "technicien-de-maintenance-industrielle"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Soudeurs",
+        "projets": 4722,
+        "partDifficile": 69,
+        "partSaisonnier": 8,
+        "palier": "moyen"
+      }
     },
     {
       "id": "technicien-de-maintenance-industrielle",
@@ -2974,6 +3389,7 @@
         "technicien de maintenance industrielle",
         "technicienne de maintenance industrielle"
       ],
+      "fap": "G1X72",
       "contextes": [
         "38055",
         "126450",
@@ -2993,7 +3409,15 @@
       ],
       "proches": [
         "charge-daffaires"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Techniciens et agents de maîtrise en maintenance générale et mécanique industrielle",
+        "projets": 3495,
+        "partDifficile": 72,
+        "partSaisonnier": 3,
+        "palier": "moyen"
+      }
     },
     {
       "id": "ingenieur-mecanique",
@@ -3024,6 +3448,7 @@
         "ingénieur en mécanique",
         "ingénieure en mécanique"
       ],
+      "fap": "N1X90",
       "contextes": [
         "23381",
         "23382",
@@ -3052,7 +3477,15 @@
         "ing-biomedical",
         "eco-concepteur",
         "acheteur-industriel"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Ingénieurs et cadres d'étude, recherche et développement (industrie)",
+        "projets": 10948,
+        "partDifficile": 47,
+        "partSaisonnier": 2,
+        "palier": "fort"
+      }
     },
     {
       "id": "pilote-de-ligne",
@@ -3083,6 +3516,7 @@
         "officier/ère pilote de ligne-copilote (First officer)",
         "pilote de ligne"
       ],
+      "fap": "J6X91",
       "contextes": [
         "23377",
         "300779",
@@ -3092,7 +3526,15 @@
         "300816",
         "403103",
         "511474"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Personnels techniques navigants de l’aviation",
+        "projets": 200,
+        "partDifficile": 51,
+        "partSaisonnier": 49,
+        "palier": "faible"
+      }
     },
     {
       "id": "technicien-reseaux",
@@ -3114,6 +3556,7 @@
         "M1816"
       ],
       "niveauAcces": "bac+2",
+      "fap": "M1X81",
       "contextes": [
         "23376",
         "126450",
@@ -3124,7 +3567,15 @@
       ],
       "transitions": [
         "numerique"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Techniciens de production, d'exploitation, d'installation, et de maintenance, support et services aux utilisateurs en informatique",
+        "projets": 7667,
+        "partDifficile": 48,
+        "partSaisonnier": 4,
+        "palier": "fort"
+      }
     },
     {
       "id": "traducteur-interprete",
@@ -3158,6 +3609,7 @@
         "traducteur-interprète",
         "traductrice-interprète"
       ],
+      "fap": "U0X81",
       "contextes": [
         "300799",
         "300806",
@@ -3172,7 +3624,15 @@
       ],
       "proches": [
         "professeur-de-sciences"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Interprètes",
+        "projets": 172,
+        "partDifficile": 67,
+        "partSaisonnier": 52,
+        "palier": "faible"
+      }
     },
     {
       "id": "journaliste",
@@ -3203,6 +3663,7 @@
         "journaliste scientifique",
         "journaliste"
       ],
+      "fap": "U0X92",
       "contextes": [
         "300779",
         "300799",
@@ -3218,7 +3679,15 @@
       ],
       "transitions": [
         "numerique"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Journalistes et cadres de l'édition",
+        "projets": 997,
+        "partDifficile": 30,
+        "partSaisonnier": 9,
+        "palier": "faible"
+      }
     },
     {
       "id": "ingenieur-du-son",
@@ -3254,6 +3723,7 @@
         "ingénieur du son",
         "ingénieure du son"
       ],
+      "fap": "U1X80",
       "contextes": [
         "300779",
         "300783",
@@ -3265,7 +3735,15 @@
         "403106",
         "512375",
         "512383"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Professionnels des spectacles",
+        "projets": 28833,
+        "partDifficile": 10,
+        "partSaisonnier": 31,
+        "palier": "fort"
+      }
     },
     {
       "id": "musicien",
@@ -3296,6 +3774,7 @@
         "musicien",
         "musicienne"
       ],
+      "fap": "U1X91",
       "contextes": [
         "23376",
         "300779",
@@ -3310,7 +3789,15 @@
       "proches": [
         "professeur-de-musique",
         "professeur-de-sciences"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Artistes (musique, danse, spectacles)",
+        "projets": 51022,
+        "partDifficile": 6,
+        "partSaisonnier": 29,
+        "palier": "fort"
+      }
     },
     {
       "id": "restaurateur-d-oeuvres-d-art",
@@ -3533,6 +4020,7 @@
         "guide-conférencier",
         "guide-conférencière"
       ],
+      "fap": "J5X81",
       "contextes": [
         "23376",
         "300779",
@@ -3548,7 +4036,15 @@
         "journaliste-scientifique",
         "journaliste",
         "professeur-de-sciences"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Techniciens et agents de maîtrise du tourisme",
+        "projets": 454,
+        "partDifficile": 25,
+        "partSaisonnier": 37,
+        "palier": "faible"
+      }
     },
     {
       "id": "avocat",
@@ -3581,6 +4077,7 @@
         "avocat",
         "avocate"
       ],
+      "fap": "L5X91",
       "contextes": [
         "300779",
         "300799",
@@ -3592,7 +4089,15 @@
         "403103",
         "405348",
         "405349"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Juristes et avocats",
+        "projets": 2886,
+        "partDifficile": 38,
+        "partSaisonnier": 6,
+        "palier": "moyen"
+      }
     },
     {
       "id": "greffier",
@@ -3703,6 +4208,7 @@
         "éducateur sportif",
         "éducatrice sportive"
       ],
+      "fap": "V5X82",
       "contextes": [
         "23376",
         "300779",
@@ -3717,7 +4223,15 @@
       ],
       "proches": [
         "professeur-de-sciences"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Sportifs et animateurs sportifs",
+        "projets": 22247,
+        "partDifficile": 45,
+        "partSaisonnier": 61,
+        "palier": "fort"
+      }
     },
     {
       "id": "archeologue",
@@ -3795,6 +4309,7 @@
         "ingénieur/e géologue",
         "géologue"
       ],
+      "fap": "B7X91",
       "contextes": [
         "23380",
         "38055",
@@ -3814,7 +4329,15 @@
         "journaliste-scientifique",
         "journaliste",
         "biologiste-de-lenvironnement"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Cadres des études BTP, des études géologiques, du métré de la construction et du contrôle et diagnostic technique du BTP",
+        "projets": 1424,
+        "partDifficile": 63,
+        "partSaisonnier": 2,
+        "palier": "faible"
+      }
     },
     {
       "id": "meteorologue",
@@ -3895,6 +4418,7 @@
         "agriculteur",
         "agricultrice"
       ],
+      "fap": "A0X40",
       "contextes": [
         "300779",
         "300783",
@@ -3909,7 +4433,15 @@
       ],
       "transitions": [
         "ecologique"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Agriculteurs",
+        "projets": 81938,
+        "partDifficile": 41,
+        "partSaisonnier": 83,
+        "palier": "fort"
+      }
     },
     {
       "id": "jardinier-paysagiste",
@@ -3942,6 +4474,7 @@
         "ouvrier paysagiste",
         "ouvrière paysagiste"
       ],
+      "fap": "A1X41",
       "contextes": [
         "23374",
         "38055",
@@ -3959,7 +4492,15 @@
       ],
       "transitions": [
         "ecologique"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Jardiniers des espaces verts et naturels",
+        "projets": 30695,
+        "partDifficile": 41,
+        "partSaisonnier": 29,
+        "palier": "fort"
+      }
     },
     {
       "id": "veterinaire",
@@ -3988,6 +4529,7 @@
       "synonymes": [
         "vétérinaire"
       ],
+      "fap": "V2X92",
       "contextes": [
         "23376",
         "38126",
@@ -4007,7 +4549,15 @@
       ],
       "proches": [
         "biologiste-de-lenvironnement"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Vétérinaires",
+        "projets": 1471,
+        "partDifficile": 74,
+        "partSaisonnier": 9,
+        "palier": "faible"
+      }
     },
     {
       "id": "dieteticien",
@@ -4037,6 +4587,7 @@
         "diététicien",
         "diététicienne"
       ],
+      "fap": "V3X80",
       "contextes": [
         "38126",
         "300806",
@@ -4050,7 +4601,15 @@
       "proches": [
         "journaliste-scientifique",
         "journaliste"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Autres professionnels para-médicaux",
+        "projets": 6236,
+        "partDifficile": 67,
+        "partSaisonnier": 7,
+        "palier": "moyen"
+      }
     },
     {
       "id": "opticien-lunetier",
@@ -4080,6 +4639,7 @@
         "opticien-lunetier",
         "opticienne-lunetière"
       ],
+      "fap": "V3X71",
       "contextes": [
         "23374",
         "300806",
@@ -4092,7 +4652,15 @@
       ],
       "proches": [
         "ingenieur-mecanique"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Spécialistes de l'appareillage médical",
+        "projets": 2551,
+        "partDifficile": 59,
+        "partSaisonnier": 4,
+        "palier": "moyen"
+      }
     },
     {
       "id": "ambulancier",
@@ -4174,6 +4742,7 @@
         "auxiliaire-puériculteur/trice",
         "auxiliaire de puériculture"
       ],
+      "fap": "T2B60",
       "contextes": [
         "23376",
         "38126",
@@ -4192,7 +4761,15 @@
       "proches": [
         "aide-soignant",
         "sage-femme"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Assistants maternels, auxiliaires de puériculture, assistants familiaux et gardes à domicile",
+        "projets": 23609,
+        "partDifficile": 49,
+        "partSaisonnier": 6,
+        "palier": "fort"
+      }
     },
     {
       "id": "comptable",
@@ -4224,6 +4801,7 @@
         "comptable unique",
         "comptable"
       ],
+      "fap": "L4X81",
       "contextes": [
         "300799",
         "300806",
@@ -4239,7 +4817,15 @@
       ],
       "proches": [
         "analyste-des-risques"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Techniciens et agents de maîtrise des services financiers ou comptables",
+        "projets": 3339,
+        "partDifficile": 42,
+        "partSaisonnier": 4,
+        "palier": "moyen"
+      }
     },
     {
       "id": "conseiller-bancaire",
@@ -4261,6 +4847,7 @@
         "C1206"
       ],
       "niveauAcces": "bac+2",
+      "fap": "QCX01",
       "contextes": [
         "23374",
         "300779",
@@ -4272,7 +4859,15 @@
         "403020",
         "403103",
         "405348"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Employés et techniciens commerciaux de la banque",
+        "projets": 5000,
+        "partDifficile": 18,
+        "partSaisonnier": 0,
+        "palier": "moyen"
+      }
     },
     {
       "id": "vendeur-conseil",
@@ -4310,6 +4905,7 @@
         "vendeur en magasin",
         "vendeuse en magasin"
       ],
+      "fap": "R1X62",
       "contextes": [
         "23376",
         "300783",
@@ -4322,7 +4918,15 @@
         "403103",
         "405307",
         "490503"
-      ]
+      ],
+      "perspectives": {
+        "annee": 2026,
+        "groupe": "Vendeurs en habillement et accessoires, articles de luxe, de sport, de loisirs et culturels",
+        "projets": 28353,
+        "partDifficile": 28,
+        "partSaisonnier": 47,
+        "palier": "fort"
+      }
     }
   ],
   "contextesTravail": [

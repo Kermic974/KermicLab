@@ -15,6 +15,9 @@ export const NIVEAUX_ACCES = Object.freeze(["sans-diplome", "cap", "bac", "bac+1
 // écologique, métier transformé par le numérique.
 export const TRANSITIONS = Object.freeze(["ecologique", "numerique"]);
 export const MAX_PROCHES = 5;
+// Paliers de recrutement de l'enquête BMO (ADR 0043, lot 9) : tiers du nombre de projets parmi tous les métiers BMO.
+export const PALIERS_RECRUTEMENT = Object.freeze(["faible", "moyen", "fort"]);
+const MOTIF_FAP = /^[A-Z][0-9A-Z][A-Z]\d{2}$/;
 const MOTIF_ONISEP = /^MET\.\d+$/;
 const MOTIF_ROME = /^[A-N]\d{4}$/;
 const MOTIF_DATE = /^\d{4}-\d{2}-\d{2}$/;
@@ -72,6 +75,11 @@ export function verifierMetiers(donnees, notionsConnues) {
     for (const t of m.transitions ?? []) if (!TRANSITIONS.includes(t)) erreurs.push(`${m.id} : transition inconnue ${t}`);
     if ((m.proches ?? []).length > MAX_PROCHES) erreurs.push(`${m.id} : plus de ${MAX_PROCHES} métiers proches`);
     for (const p of m.proches ?? []) if (p === m.id || !tousLesMetiers.has(p)) erreurs.push(`${m.id} : métier proche inconnu ${p}`);
+    if (m.fap !== undefined && !MOTIF_FAP.test(String(m.fap))) erreurs.push(`${m.id} : code BMO (FAP) invalide ${m.fap}`);
+    if (m.perspectives !== undefined) {
+      if (m.fap === undefined) erreurs.push(`${m.id} : perspectives sans code BMO`);
+      if (!PALIERS_RECRUTEMENT.includes(m.perspectives.palier)) erreurs.push(`${m.id} : palier de recrutement inconnu ${m.perspectives.palier}`);
+    }
   }
   return erreurs;
 }
@@ -104,6 +112,7 @@ export function couvertureMetiers(donnees, notionsDuReferentiel) {
     avecNiveau: donnees.metiers.filter((m) => m.niveauAcces).length,
     avecContextes: donnees.metiers.filter((m) => m.contextes?.length).length,
     avecProches: donnees.metiers.filter((m) => m.proches?.length).length,
+    avecPerspectives: donnees.metiers.filter((m) => m.perspectives).length,
     correspondances: { metiers: compter(donnees.metiers), disciplines: compter(donnees.disciplines) },
     notions: { reliees: Object.values(parMatiere).reduce((s, m) => s + m.reliees, 0), total, parMatiere }
   };

@@ -17,6 +17,7 @@
     "check:artefacts": "node scripts/check-artefacts.mjs",
     "import:onisep": "node scripts/importer-onisep.mjs",
     "import:rome": "node scripts/importer-rome.mjs",
+    "import:bmo": "node scripts/importer-bmo.mjs",
     "test": "node --test \"tests/unit/*.test.mjs\"",
     "test:e2e": "node --test --test-concurrency=1 \"tests/e2e/*.test.mjs\"",
     "test:captures": "KERMICLAB_CAPTURES=captures node --test --test-concurrency=1 \"tests/e2e/*.test.mjs\"",

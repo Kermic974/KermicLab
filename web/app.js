@@ -6680,6 +6680,15 @@ function rendreDetailMetiers(actifs) {
   if (selection.type !== "metier" && selection.type !== "geste") blocs.append(bloc("metiersBlocMetiers", pastilles([...actifs.metiers], "metier", (id) => carte.metiers.get(id).nom)));
   blocs.append(bloc("metiersBlocDisciplines", pastilles(disciplines, "discipline", (id) => carte.disciplines.get(id).nom)));
   if (metier) blocs.append(bloc("metiersBlocGestes", pastilles(metier.gestes.map((g) => `${metier.id}::${g}`), "geste", (id) => id.split("::")[1])));
+  // Enquête BMO de France Travail (ADR 0043, lot 9) : perspectives de recrutement du groupe de métiers, France entière.
+  const perspectives = metier?.perspectives;
+  if (perspectives) {
+    const nombre = new Intl.NumberFormat(document.documentElement.lang || "fr").format(perspectives.projets);
+    blocs.append(bloc("metiersBlocPerspectives",
+      element("p", { classe: `metiers-palier ${perspectives.palier}`, cle: `metiersPalier_${perspectives.palier}` }),
+      element("p", { classe: "petit", texte: t("metiersPerspectivesChiffres", { annee: perspectives.annee, projets: nombre, difficile: perspectives.partDifficile, groupe: perspectives.groupe }) }),
+      element("p", { classe: "doux petit", cle: "metiersPerspectivesPrudence" })));
+  }
   // ROME 4.0 de France Travail (ADR 0043) : conditions de travail et métiers proches (mobilités).
   const conditions = metier ? metiers.contextesParType(carte, metier) : [];
   if (conditions.length) {

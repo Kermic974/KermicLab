@@ -214,6 +214,55 @@
             "items": {
               "$ref": "#/$defs/identifiant"
             }
+          },
+          "fap": {
+            "type": "string",
+            "description": "Métier de l’enquête BMO de France Travail (code FAP 2021), choisi à la main : rattachement à relire.",
+            "pattern": "^[A-Z][0-9A-Z][A-Z]\\d{2}$"
+          },
+          "perspectives": {
+            "type": "object",
+            "description": "Perspectives de recrutement dérivées de l’enquête BMO (npm run import:bmo), France entière.",
+            "required": [
+              "annee",
+              "groupe",
+              "projets",
+              "partDifficile",
+              "partSaisonnier",
+              "palier"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "annee": {
+                "type": "integer",
+                "minimum": 2000
+              },
+              "groupe": {
+                "type": "string",
+                "minLength": 1
+              },
+              "projets": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "partDifficile": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "partSaisonnier": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "palier": {
+                "enum": [
+                  "faible",
+                  "moyen",
+                  "fort"
+                ]
+              }
+            }
           }
         }
       }

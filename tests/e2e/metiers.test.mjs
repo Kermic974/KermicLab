@@ -79,8 +79,16 @@ test("métiers : anneaux, filtres, chaîne d'un métier, notions KermicLab et gr
   await page.locator("#metiers-liste [data-metier=boulanger]").click();
   const texteBoulanger = await detail.textContent();
   for (const attendu of ["Niveau d'accès minimum : CAP", "Fiche proposée, en cours de relecture."]) assert.ok(texteBoulanger.includes(attendu), attendu);
+  // Enquête BMO (ADR 0043, lot 9) : perspectives de recrutement du groupe de métiers et source.
+  const perspectivesBoulanger = donnees.metiers.find((m) => m.id === "boulanger").perspectives;
+  if (perspectivesBoulanger) {
+    assert.ok(texteBoulanger.includes("Perspectives de recrutement"));
+    assert.equal(await detail.locator(`.metiers-palier.${perspectivesBoulanger.palier}`).count(), 1);
+    assert.ok(texteBoulanger.includes(`« ${perspectivesBoulanger.groupe} »`), "groupe de métiers BMO cité");
+  }
   assert.match(await page.locator("#metiers-sources").textContent(), /Onisep, « Idéo-Fiches métiers » .*licence ODbL/, "attribution exigée par la licence");
   assert.match(await page.locator("#metiers-sources").textContent(), /France Travail, « ROME 4\.0 \(version \d+\) » .*Licence Ouverte/, "attribution du ROME");
+  assert.match(await page.locator("#metiers-sources").textContent(), /France Travail, « Enquête Besoins en main-d'œuvre \d{4} »/, "attribution de la BMO");
   const boulanger = donnees.metiers.find((m) => m.id === "boulanger");
   if (boulanger.proches?.length) {
     await detail.locator(".metiers-bloc", { hasText: "Métiers proches" }).locator(".metiers-pastille.metier").first().click();
