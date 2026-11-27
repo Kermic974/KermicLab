@@ -46,3 +46,19 @@ d'usage des plateformes (rien sur les notions ; plusieurs vont contre le princip
   le texte rattaché est donc l'ancien. À signaler au producteur (action manuelle).
 - Les taux sont nationaux (ligne « NATIONAL » du jeu régional), population « Ensemble », dernière année disponible.
   Les compétences changent d'intitulé d'une année à l'autre : la table de correspondance vise la dernière année.
+
+## Signalement au producteur du jeu « programmes » (prêt à envoyer)
+
+À envoyer par le formulaire de contact de la page du jeu
+[fr-en-programmes-enseignement-premier-degre](https://data.education.gouv.fr/explore/dataset/fr-en-programmes-enseignement-premier-degre/)
+(et de `fr-en-programmes-enseignement-2nd-degre`) :
+
+> Bonjour,
+>
+> Nous réutilisons les jeux « Programmes d'enseignement du premier degré » et « Programmes d'enseignement du second
+> degré » (Licence Ouverte 2.0). Les textes les plus récents qu'ils contiennent sont entrés en vigueur à la rentrée 2020
+> (2021 pour quelques lignes). Il manque notamment les programmes de cycles 1 à 3 publiés en 2024 (français et
+> mathématiques, entrés en vigueur à la rentrée 2025) et le programme d'enseignement moral et civique de 2024, et les
+> textes qu'ils remplacent apparaissent encore comme en vigueur (champ « abrogé à la rentrée » vide).
+>
+> Une mise à jour est-elle prévue ? Merci pour la mise à disposition de ces données.

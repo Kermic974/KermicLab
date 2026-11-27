@@ -153,6 +153,33 @@ test("professeur : profil, classe, lien d'invitation, adhésion de l'élève ave
   }
 });
 
+test("professeur (démo) : repères nationaux réels publiés par le build à côté des notions à revoir (ADR 0044)", async () => {
+  const session = await appareil(null);
+  const { page, erreurs } = session;
+  // Catalogue de notions du primaire visées par les évaluations nationales ; le fichier de repères n'est pas simulé.
+  const notions = ["calcul-mental-cm", "addition-c2", "problemes-c2", "accords-cm", "conjugaison-cm", "fractions-cm"]
+    .map((id) => ({ id, titre: id, version: "1.0.0", niveau: "primaire", matiere: "mathematiques" }));
+  await page.route(`${api}/api/catalogue`, (r) => r.fulfill({ contentType: "application/json", headers: { "access-control-allow-origin": "*" }, body: JSON.stringify({ notions }) }));
+  const { reperes } = JSON.parse(await readFile(`${racine}dist/reperes-nationaux.json`, "utf8"));
+  await page.goto(`${serveur.url}/?demo=contributions#contributions`);
+  await page.locator("#dialogue-pseudo[open]").waitFor();
+  await page.fill("#pseudo", "Démo");
+  await page.click("#formulaire-pseudo button[type=submit]");
+  await page.click("#contrib-demo-prof");
+  await page.locator("#contrib-tableau").waitFor({ state: "visible" });
+  await page.evaluate(() => { location.hash = "#eleves"; });
+  await page.locator("#eleves-a-revoir", { hasText: "repère national" }).waitFor();
+  const texteARevoir = await page.locator("#eleves-a-revoir").textContent();
+  const vus = [...texteARevoir.matchAll(/([a-z0-9-]+) \(\d+\) — repère national (CP|CE1|CE2|CM1|CM2) : ([\d,]+) %/g)];
+  assert.ok(vus.length > 0, texteARevoir);
+  for (const [, id, niveau, taux] of vus) {
+    assert.equal(niveau, reperes[id].niveau, id);
+    assert.equal(Number(taux.replace(",", ".")), reperes[id].taux, id);
+  }
+  assert.deepEqual(erreurs, []);
+  await session.contexte.close();
+});
+
 test("professeur (démo) : « Tester les rôles → Prof » ouvre Mes classes et Mes élèves sans appel au Worker", async () => {
   const session = await appareil(null, { viewport: { width: 390, height: 844 } });
   const { page, erreurs, appelsProf } = session;
