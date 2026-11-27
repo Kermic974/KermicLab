@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès. Lot 3 et vague pilote du lot 6 (2026-11-24) : 14 disciplines et 41 métiers ajoutés par un agent, en correspondance « proposition », sans code ROME (apporté par l’import ONISEP). Import ONISEP du 2026-11-24 (extrait referentiel/sources/onisep/ideo-metiers-2026-11-24.json, licence ODbL) : identifiants, codes ROME, niveaux d’accès, domaines et synonymes de 74 métiers. Vague 1 du lot 6 (2026-11-24) : 32 métiers issus des fiches ONISEP (identifiant, niveau et ROME de l’ONISEP), 11 disciplines et notions ajoutées aux disciplines « proposition », préparés par un agent. Vague 2 (santé, social, sport) : 100 métier(s) ONISEP en « proposition ». Vague 3 (arts, culture, artisanat) : 99 métier(s) ONISEP en « proposition ». Vague 4 (environnement, énergies, propreté ; agriculture, animaux) : 123 métier(s) ONISEP en « proposition ». Vague 5 (matières premières, fabrication, industries ; électricité, électronique, robotique) : 112 métier(s) ONISEP en « proposition ». Vague 6 (mécanique ; construction, architecture, travaux publics) : 102 métier(s) ONISEP en « proposition ». Vague 7 (armée, sécurité ; logistique, transport) : 100 métier(s) ONISEP en « proposition ». Vague 8 (sciences ; informatique, Internet) : 115 métier(s) ONISEP en « proposition ».",
+  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès. Lot 3 et vague pilote du lot 6 (2026-11-24) : 14 disciplines et 41 métiers ajoutés par un agent, en correspondance « proposition », sans code ROME (apporté par l’import ONISEP). Import ONISEP du 2026-11-24 (extrait referentiel/sources/onisep/ideo-metiers-2026-11-24.json, licence ODbL) : identifiants, codes ROME, niveaux d’accès, domaines et synonymes de 74 métiers. Vague 1 du lot 6 (2026-11-24) : 32 métiers issus des fiches ONISEP (identifiant, niveau et ROME de l’ONISEP), 11 disciplines et notions ajoutées aux disciplines « proposition », préparés par un agent. Vague 2 (santé, social, sport) : 100 métier(s) ONISEP en « proposition ». Vague 3 (arts, culture, artisanat) : 99 métier(s) ONISEP en « proposition ». Vague 4 (environnement, énergies, propreté ; agriculture, animaux) : 123 métier(s) ONISEP en « proposition ». Vague 5 (matières premières, fabrication, industries ; électricité, électronique, robotique) : 112 métier(s) ONISEP en « proposition ». Vague 6 (mécanique ; construction, architecture, travaux publics) : 102 métier(s) ONISEP en « proposition ». Vague 7 (armée, sécurité ; logistique, transport) : 100 métier(s) ONISEP en « proposition ». Vague 8 (sciences ; informatique, Internet) : 115 métier(s) ONISEP en « proposition ». Vague 9 (information-communication, audiovisuel ; lettres, langues, enseignement ; histoire-géographie, psychologie, sociologie) : 95 métier(s) ONISEP en « proposition ».",
   "sources": [
     {
       "nom": "Idéo-Fiches métiers",
@@ -27470,6 +27470,2876 @@
       "synonymes": [
         "architecte infrastructure sécurisée",
         "architecte en cybersécurité"
+      ]
+    },
+    {
+      "id": "chef-de-publicite",
+      "nom": "Chef, cheffe de publicité",
+      "categorie": "mkt",
+      "disciplines": [
+        "communication",
+        "marketing-digital",
+        "gestion"
+      ],
+      "gestes": [
+        "Comprendre les besoins de l’annonceur",
+        "Coordonner la campagne",
+        "Suivre le budget"
+      ],
+      "contexte": "Fait le lien entre une agence de publicité et ses clients.",
+      "correspondance": "proposition",
+      "onisep": "MET.8",
+      "rome": [
+        "E1401"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "information-communication, audiovisuel/journalisme, édition, publicité"
+      ],
+      "synonymes": [
+        "chef/fe de publicité (en agence)",
+        "chef/fe de publicité support (en régie)",
+        "responsable de la communication externe (chez l'annonceur)",
+        "responsable de la publicité (chez un distributeur)",
+        "chef de publicité",
+        "cheffe de publicité"
+      ]
+    },
+    {
+      "id": "responsable-de-formation",
+      "nom": "Responsable de formation",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "psychologie-cognitive",
+        "communication"
+      ],
+      "gestes": [
+        "Recenser les besoins",
+        "Organiser les formations",
+        "Évaluer les résultats"
+      ],
+      "contexte": "Organise les formations des salariés d’une entreprise.",
+      "correspondance": "proposition",
+      "onisep": "MET.30",
+      "rome": [
+        "M1502"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "lettres, langues, enseignement/enseignement"
+      ],
+      "synonymes": [
+        "chef/fe de projet formation",
+        "conseiller/ère en formation",
+        "consultant/e en formation",
+        "directeur/trice de la formation",
+        "responsable formation insertion",
+        "responsable de formation"
+      ]
+    },
+    {
+      "id": "secretaire-de-redaction",
+      "nom": "Secrétaire de rédaction",
+      "categorie": "mkt",
+      "disciplines": [
+        "expression-ecrite",
+        "linguistique",
+        "design-graphique"
+      ],
+      "gestes": [
+        "Relire et corriger les articles",
+        "Organiser la mise en page",
+        "Respecter les délais"
+      ],
+      "contexte": "Prépare les articles d’un journal avant leur publication.",
+      "correspondance": "proposition",
+      "onisep": "MET.46",
+      "rome": [
+        "E1106"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "information-communication, audiovisuel/journalisme, édition, publicité"
+      ],
+      "synonymes": [
+        "secrétaire de rédaction"
+      ]
+    },
+    {
+      "id": "charge-de-communication-interne",
+      "nom": "Chargé, chargée de communication interne",
+      "categorie": "mkt",
+      "disciplines": [
+        "communication",
+        "expression-ecrite",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Informer les salariés",
+        "Animer les outils internes",
+        "Organiser des événements"
+      ],
+      "contexte": "Fait circuler l’information à l’intérieur d’une organisation.",
+      "correspondance": "proposition",
+      "onisep": "MET.66",
+      "rome": [
+        "E1103"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/communication"
+      ],
+      "synonymes": [
+        "assistant/e de communication",
+        "chargé/e d'information et de communication",
+        "chargé/e de communication interne et intranet",
+        "corporate communication director",
+        "chargé de communication interne",
+        "chargée de communication interne"
+      ]
+    },
+    {
+      "id": "secretaire-d-edition",
+      "nom": "Secrétaire d'édition",
+      "categorie": "mkt",
+      "disciplines": [
+        "expression-ecrite",
+        "litterature-et-culture",
+        "design-graphique"
+      ],
+      "gestes": [
+        "Suivre la fabrication du livre",
+        "Relire les épreuves",
+        "Coordonner auteurs et graphistes"
+      ],
+      "contexte": "Prépare les livres avant leur impression.",
+      "correspondance": "proposition",
+      "onisep": "MET.67",
+      "rome": [
+        "E1105"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "information-communication, audiovisuel/journalisme, édition, publicité"
+      ],
+      "synonymes": [
+        "assistant/e d'édition",
+        "secrétaire d'édition"
+      ]
+    },
+    {
+      "id": "geographe",
+      "nom": "Géographe",
+      "categorie": "disc",
+      "disciplines": [
+        "geographie",
+        "amenagement-du-territoire",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Observer un territoire",
+        "Analyser des cartes et des données",
+        "Proposer des aménagements"
+      ],
+      "contexte": "Étudie les territoires et la façon dont les humains les habitent.",
+      "correspondance": "proposition",
+      "onisep": "MET.73",
+      "rome": [
+        "M1808"
+      ],
+      "niveauAcces": "bac+8",
+      "domaines": [
+        "histoire-géographie, psychologie, sociologie/géographie"
+      ],
+      "synonymes": [
+        "géographe"
+      ]
+    },
+    {
+      "id": "mediateur-familial",
+      "nom": "Médiateur familial, médiatrice familiale",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "droit-et-institutions",
+        "communication"
+      ],
+      "gestes": [
+        "Recevoir les membres de la famille",
+        "Faciliter le dialogue",
+        "Aider à trouver des accords"
+      ],
+      "contexte": "Aide les familles en conflit à renouer le dialogue.",
+      "correspondance": "proposition",
+      "onisep": "MET.89",
+      "rome": [
+        "K1101"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "histoire-géographie, psychologie, sociologie/psychologie",
+        "santé, social, sport/travail social"
+      ],
+      "synonymes": [
+        "médiateur familial",
+        "médiatrice familiale"
+      ]
+    },
+    {
+      "id": "responsable-de-laboratoire-de-recherche",
+      "nom": "Responsable de laboratoire de recherche",
+      "categorie": "disc",
+      "disciplines": [
+        "gestion",
+        "analyse-statistique",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Définir les axes de recherche",
+        "Encadrer les chercheurs",
+        "Chercher des financements"
+      ],
+      "contexte": "Dirige une équipe de chercheurs.",
+      "correspondance": "proposition",
+      "onisep": "MET.109",
+      "rome": [
+        "K2402"
+      ],
+      "niveauAcces": "bac+8",
+      "domaines": [
+        "lettres, langues, enseignement/enseignement"
+      ],
+      "synonymes": [
+        "chercheur/euse expert/e",
+        "directeur/trice de recherche",
+        "responsable d'unité de recherche",
+        "responsable de service scientifique",
+        "responsable de laboratoire de recherche"
+      ]
+    },
+    {
+      "id": "localisateur",
+      "nom": "Localisateur, localisatrice",
+      "categorie": "mkt",
+      "disciplines": [
+        "langues-vivantes",
+        "linguistique",
+        "informatique"
+      ],
+      "gestes": [
+        "Traduire les textes d’un jeu ou d’un logiciel",
+        "Adapter à la culture du pays",
+        "Tester le résultat"
+      ],
+      "contexte": "Adapte jeux vidéo et logiciels à d’autres langues et cultures.",
+      "correspondance": "proposition",
+      "onisep": "MET.114",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "lettres, langues, enseignement/langues",
+        "information-communication, audiovisuel/multimédia"
+      ],
+      "synonymes": [
+        "chargé/e de localisation",
+        "chef/fe de projet localisation",
+        "localisation manager",
+        "traducteur/trice localisateur/trice",
+        "localisateur",
+        "localisatrice"
+      ]
+    },
+    {
+      "id": "directeur-de-bibliotheque-mediatheque",
+      "nom": "Directeur, directrice de bibliothèque-médiathèque",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "litterature-et-culture",
+        "communication"
+      ],
+      "gestes": [
+        "Définir le projet de l’établissement",
+        "Gérer budget et équipe",
+        "Développer les animations"
+      ],
+      "contexte": "Dirige une bibliothèque ou une médiathèque.",
+      "correspondance": "proposition",
+      "onisep": "MET.136",
+      "rome": [
+        "K1601"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "information-communication, audiovisuel/bibliothèque, documentation"
+      ],
+      "synonymes": [
+        "bibliothécaire",
+        "conservateur/trice de bibliothèque-médiathèque",
+        "directeur/trice d'un réseau de bibliothèques-médiathèques",
+        "directeur/trice d’un service commun de documentation",
+        "responsable d'une bibliothèque au sein d'un réseau",
+        "directeur de bibliothèque-médiathèque",
+        "directrice de bibliothèque-médiathèque"
+      ]
+    },
+    {
+      "id": "serigraphe",
+      "nom": "Sérigraphe",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "chimie-des-materiaux",
+        "design-graphique"
+      ],
+      "gestes": [
+        "Préparer l’écran",
+        "Choisir et mélanger les encres",
+        "Imprimer sur le support"
+      ],
+      "contexte": "Imprime des motifs sur tissu, papier ou objets.",
+      "correspondance": "proposition",
+      "onisep": "MET.176",
+      "rome": [
+        "E1301"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "information-communication, audiovisuel/industries graphiques"
+      ],
+      "synonymes": [
+        "imprimeur/euse sérigraphe",
+        "sérigraphe"
+      ]
+    },
+    {
+      "id": "assistant-realisateur",
+      "nom": "Assistant réalisateur, assistante réalisatrice",
+      "categorie": "mkt",
+      "disciplines": [
+        "gestion",
+        "communication",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Préparer le plan de tournage",
+        "Coordonner l’équipe",
+        "Gérer le plateau"
+      ],
+      "contexte": "Organise le tournage pour le réalisateur.",
+      "correspondance": "proposition",
+      "onisep": "MET.178",
+      "rome": [
+        "L1304"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "assistant réalisateur",
+        "assistante réalisatrice"
+      ]
+    },
+    {
+      "id": "demographe",
+      "nom": "Démographe",
+      "categorie": "disc",
+      "disciplines": [
+        "analyse-statistique",
+        "geographie",
+        "sociologie"
+      ],
+      "gestes": [
+        "Collecter les données de population",
+        "Analyser naissances et migrations",
+        "Faire des projections"
+      ],
+      "contexte": "Étudie l’évolution des populations.",
+      "correspondance": "proposition",
+      "onisep": "MET.179",
+      "rome": [
+        "K2401"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "histoire-géographie, psychologie, sociologie/sciences sociales"
+      ],
+      "synonymes": [
+        "chargé/e d'études en démographie",
+        "démographe"
+      ]
+    },
+    {
+      "id": "sociologue",
+      "nom": "Sociologue",
+      "categorie": "disc",
+      "disciplines": [
+        "sociologie",
+        "analyse-statistique",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Mener des enquêtes",
+        "Analyser les comportements collectifs",
+        "Publier les résultats"
+      ],
+      "contexte": "Étudie le fonctionnement de la société.",
+      "correspondance": "proposition",
+      "onisep": "MET.180",
+      "rome": [
+        "K2401"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "histoire-géographie, psychologie, sociologie/sciences sociales"
+      ],
+      "synonymes": [
+        "chargé/e d'études en sociologie",
+        "chercheur/euse en sociologie",
+        "sociologue"
+      ]
+    },
+    {
+      "id": "charge-de-production",
+      "nom": "Chargé, chargée de production",
+      "categorie": "mkt",
+      "disciplines": [
+        "gestion",
+        "communication",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Organiser le projet",
+        "Gérer le budget",
+        "Coordonner les équipes"
+      ],
+      "contexte": "Organise la fabrication d’un film, d’une émission ou d’un spectacle.",
+      "correspondance": "proposition",
+      "onisep": "MET.193",
+      "rome": [
+        "L1302"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "chargé de production",
+        "chargée de production"
+      ]
+    },
+    {
+      "id": "regisseur-general-cinema",
+      "nom": "Régisseur général cinéma, régisseuse générale cinéma",
+      "categorie": "mkt",
+      "disciplines": [
+        "gestion",
+        "amenagement-du-territoire",
+        "communication"
+      ],
+      "gestes": [
+        "Repérer les lieux",
+        "Organiser la logistique",
+        "Gérer les autorisations"
+      ],
+      "contexte": "Organise la logistique d’un tournage.",
+      "correspondance": "proposition",
+      "onisep": "MET.194",
+      "rome": [
+        "L1509"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "régisseur/euse de films",
+        "régisseur général cinéma",
+        "régisseuse générale cinéma"
+      ]
+    },
+    {
+      "id": "journaliste-radio-et-tv",
+      "nom": "Journaliste radio et TV",
+      "categorie": "mkt",
+      "disciplines": [
+        "expression-ecrite",
+        "communication",
+        "histoire-contemporaine"
+      ],
+      "gestes": [
+        "Enquêter et vérifier",
+        "Préparer le reportage",
+        "Présenter à l’antenne"
+      ],
+      "contexte": "Informe le public à la radio ou à la télévision.",
+      "correspondance": "proposition",
+      "onisep": "MET.253",
+      "rome": [
+        "E1106"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "information-communication, audiovisuel/journalisme, édition, publicité"
+      ],
+      "synonymes": [
+        "journaliste radio et TV"
+      ]
+    },
+    {
+      "id": "cadreur",
+      "nom": "Cadreur, cadreuse",
+      "categorie": "mkt",
+      "disciplines": [
+        "optique",
+        "arts-plastiques",
+        "communication"
+      ],
+      "gestes": [
+        "Choisir les cadrages",
+        "Manier la caméra",
+        "Suivre l’action"
+      ],
+      "contexte": "Filme les images d’un film, d’une émission ou d’un reportage.",
+      "correspondance": "proposition",
+      "onisep": "MET.262",
+      "rome": [
+        "L1505"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel",
+        "information-communication, audiovisuel/journalisme, édition, publicité"
+      ],
+      "synonymes": [
+        "cameraman/woman (opérateur/trice de prise de vues)",
+        "cadreur",
+        "cadreuse"
+      ]
+    },
+    {
+      "id": "chef-de-fabrication-des-industries-graphiques",
+      "nom": "Chef, cheffe de fabrication des industries graphiques",
+      "categorie": "btp",
+      "disciplines": [
+        "design-graphique",
+        "gestion",
+        "chimie-des-materiaux"
+      ],
+      "gestes": [
+        "Choisir papier et impression",
+        "Planifier la fabrication",
+        "Contrôler la qualité"
+      ],
+      "contexte": "Organise l’impression des livres, magazines et emballages.",
+      "correspondance": "proposition",
+      "onisep": "MET.273",
+      "rome": [
+        "E1303"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/industries graphiques"
+      ],
+      "synonymes": [
+        "chef/fe de fabrication en imprimerie",
+        "chef de fabrication des industries graphiques",
+        "cheffe de fabrication des industries graphiques"
+      ]
+    },
+    {
+      "id": "psychanalyste",
+      "nom": "Psychanalyste",
+      "categorie": "health",
+      "disciplines": [
+        "psychologie-sociale",
+        "psychologie-cognitive",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Écouter le patient",
+        "L’aider à comprendre son histoire",
+        "Accompagner dans la durée"
+      ],
+      "contexte": "Accompagne des personnes en les aidant à mettre des mots sur ce qu’elles vivent.",
+      "correspondance": "proposition",
+      "onisep": "MET.279",
+      "rome": [
+        "K1104"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "histoire-géographie, psychologie, sociologie/psychologie"
+      ],
+      "synonymes": [
+        "analyste",
+        "psychothérapeute",
+        "psychanalyste"
+      ]
+    },
+    {
+      "id": "formateur-d-adultes",
+      "nom": "Formateur, formatrice d'adultes",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-cognitive",
+        "communication",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Préparer les séances",
+        "Animer la formation",
+        "Évaluer les acquis"
+      ],
+      "contexte": "Forme des adultes à un métier ou à de nouvelles compétences.",
+      "correspondance": "proposition",
+      "onisep": "MET.292",
+      "rome": [
+        "K2111"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "lettres, langues, enseignement/enseignement"
+      ],
+      "synonymes": [
+        "animateur/trice de formation",
+        "consultant/e en formation",
+        "professeur/e en centre de formation pour adultes",
+        "formateur d'adultes",
+        "formatrice d'adultes"
+      ]
+    },
+    {
+      "id": "secretaire-des-affaires-etrangeres",
+      "nom": "Secrétaire des Affaires étrangères",
+      "categorie": "services",
+      "disciplines": [
+        "langues-vivantes",
+        "droit-et-institutions",
+        "histoire-contemporaine"
+      ],
+      "gestes": [
+        "Préparer des dossiers",
+        "Représenter la France",
+        "Rédiger des notes"
+      ],
+      "contexte": "Travaille pour le ministère des Affaires étrangères, en France ou à l’étranger.",
+      "correspondance": "proposition",
+      "onisep": "MET.301",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "lettres, langues, enseignement/langues",
+        "économie, droit, politique/sciences économiques",
+        "économie, droit, politique/sciences politiques"
+      ],
+      "synonymes": [
+        "attaché/e d'ambassade",
+        "secrétaire d'ambassade",
+        "secrétaire des Affaires étrangères"
+      ]
+    },
+    {
+      "id": "charge-des-relations-publiques",
+      "nom": "Chargé, chargée des relations publiques",
+      "categorie": "mkt",
+      "disciplines": [
+        "communication",
+        "expression-ecrite",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Soigner l’image de l’organisation",
+        "Organiser des événements",
+        "Entretenir les contacts"
+      ],
+      "contexte": "Construit de bonnes relations entre une organisation et le public.",
+      "correspondance": "proposition",
+      "onisep": "MET.314",
+      "rome": [
+        "E1103"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "information-communication, audiovisuel/communication"
+      ],
+      "synonymes": [
+        "chargé/e de communication",
+        "conseiller/ère en relations publiques",
+        "responsable des relations externes",
+        "chargé des relations publiques",
+        "chargée des relations publiques"
+      ]
+    },
+    {
+      "id": "mixeur-son",
+      "nom": "Mixeur, mixeuse son",
+      "categorie": "mkt",
+      "disciplines": [
+        "acoustique",
+        "musique",
+        "informatique"
+      ],
+      "gestes": [
+        "Équilibrer les sons",
+        "Ajouter effets et musique",
+        "Finaliser la bande son"
+      ],
+      "contexte": "Mélange voix, musique et bruitages d’un film.",
+      "correspondance": "proposition",
+      "onisep": "MET.315",
+      "rome": [
+        "L1507"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "mixeur son",
+        "mixeuse son"
+      ]
+    },
+    {
+      "id": "audio-descripteur",
+      "nom": "Audio-descripteur, audio-descriptrice",
+      "categorie": "mkt",
+      "disciplines": [
+        "expression-ecrite",
+        "litterature-et-culture",
+        "communication"
+      ],
+      "gestes": [
+        "Visionner le film",
+        "Écrire la description des images",
+        "L’enregistrer"
+      ],
+      "contexte": "Décrit les images d’un film pour les personnes aveugles ou malvoyantes.",
+      "correspondance": "proposition",
+      "onisep": "MET.327",
+      "rome": [
+        "L1203"
+      ],
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel",
+        "lettres, langues, enseignement/lettres, linguistique"
+      ],
+      "synonymes": [
+        "auteur/rice audiodescripteur/trice",
+        "audio-descripteur",
+        "audio-descriptrice"
+      ]
+    },
+    {
+      "id": "redacteur-on-line",
+      "nom": "Rédacteur, rédactrice on line (en ligne)",
+      "categorie": "mkt",
+      "disciplines": [
+        "expression-ecrite",
+        "marketing-digital",
+        "informatique"
+      ],
+      "gestes": [
+        "Rechercher l’information",
+        "Écrire pour le web",
+        "Optimiser la visibilité"
+      ],
+      "contexte": "Écrit des textes pour les sites Internet.",
+      "correspondance": "proposition",
+      "onisep": "MET.334",
+      "rome": [
+        "E1103"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "information-communication, audiovisuel/journalisme, édition, publicité"
+      ],
+      "synonymes": [
+        "animateur/trice web",
+        "cyberjournaliste",
+        "journaliste multimédia",
+        "journaliste on line (en ligne)",
+        "journaliste web",
+        "rédacteur on line (en ligne)",
+        "rédactrice on line (en ligne)"
+      ]
+    },
+    {
+      "id": "traducteur-technique",
+      "nom": "Traducteur, traductrice technique",
+      "categorie": "mkt",
+      "disciplines": [
+        "langues-vivantes",
+        "linguistique",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Comprendre le document",
+        "Traduire avec précision",
+        "Utiliser les bons termes"
+      ],
+      "contexte": "Traduit des documents techniques, juridiques ou scientifiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.354",
+      "rome": [
+        "E1108"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "lettres, langues, enseignement/langues"
+      ],
+      "synonymes": [
+        "traducteur technique",
+        "traductrice technique"
+      ]
+    },
+    {
+      "id": "redacteur-technique",
+      "nom": "Rédacteur, rédactrice technique",
+      "categorie": "mkt",
+      "disciplines": [
+        "expression-ecrite",
+        "informatique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Comprendre le produit",
+        "Rédiger les modes d’emploi",
+        "Illustrer et vérifier"
+      ],
+      "contexte": "Écrit les notices et documentations techniques.",
+      "correspondance": "proposition",
+      "onisep": "MET.360",
+      "rome": [
+        "H1207"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "lettres, langues, enseignement/langues"
+      ],
+      "synonymes": [
+        "rédacteur technique",
+        "rédactrice technique"
+      ]
+    },
+    {
+      "id": "psychologue-de-l-education-nationale-specialite-education-developpement-et-apprentissages",
+      "nom": "Psychologue de l'Éducation nationale spécialité éducation, développement et apprentissages",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-cognitive",
+        "psychologie-sociale",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Observer et évaluer les élèves",
+        "Conseiller les familles et enseignants",
+        "Proposer des aides"
+      ],
+      "contexte": "Aide les élèves de l’école primaire qui rencontrent des difficultés.",
+      "correspondance": "proposition",
+      "onisep": "MET.361",
+      "rome": [
+        "K2112"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "histoire-géographie, psychologie, sociologie/psychologie"
+      ],
+      "synonymes": [
+        "psychologue de l'Éducation nationale spécialité éducation, développement et apprentissages"
+      ]
+    },
+    {
+      "id": "journaliste-sportif",
+      "nom": "Journaliste sportif, journaliste sportive",
+      "categorie": "mkt",
+      "disciplines": [
+        "expression-ecrite",
+        "education-physique",
+        "communication"
+      ],
+      "gestes": [
+        "Suivre les compétitions",
+        "Interviewer les sportifs",
+        "Écrire ou commenter"
+      ],
+      "contexte": "Raconte et analyse l’actualité du sport.",
+      "correspondance": "proposition",
+      "onisep": "MET.385",
+      "rome": [
+        "E1106"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "information-communication, audiovisuel/journalisme, édition, publicité"
+      ],
+      "synonymes": [
+        "journaliste sportif",
+        "journaliste sportive"
+      ]
+    },
+    {
+      "id": "ergonome-du-sport",
+      "nom": "Ergonome du sport",
+      "categorie": "disc",
+      "disciplines": [
+        "physiologie-humaine",
+        "education-physique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Observer le geste sportif",
+        "Analyser le matériel",
+        "Proposer des améliorations"
+      ],
+      "contexte": "Adapte matériel et pratiques au corps des sportifs.",
+      "correspondance": "proposition",
+      "onisep": "MET.392",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "histoire-géographie, psychologie, sociologie/psychologie",
+        "santé, social, sport/sport"
+      ],
+      "synonymes": [
+        "ergonome du sport"
+      ]
+    },
+    {
+      "id": "operateur-prepresse",
+      "nom": "Opérateur, opératrice prépresse",
+      "categorie": "mkt",
+      "disciplines": [
+        "design-graphique",
+        "informatique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Préparer les fichiers",
+        "Contrôler couleurs et mise en page",
+        "Envoyer à l’impression"
+      ],
+      "contexte": "Prépare les documents avant leur impression.",
+      "correspondance": "proposition",
+      "onisep": "MET.406",
+      "rome": [
+        "E1306"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "information-communication, audiovisuel/industries graphiques"
+      ],
+      "synonymes": [
+        "opérateur/trice PAO",
+        "opérateur/trice photocomposition",
+        "opérateur/trice système texte-images",
+        "opérateur prépresse",
+        "opératrice prépresse"
+      ]
+    },
+    {
+      "id": "ethnologue",
+      "nom": "Ethnologue",
+      "categorie": "disc",
+      "disciplines": [
+        "sociologie",
+        "histoire-contemporaine",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Vivre auprès d’un groupe",
+        "Observer ses coutumes",
+        "Écrire ses analyses"
+      ],
+      "contexte": "Étudie les cultures et les modes de vie des sociétés.",
+      "correspondance": "proposition",
+      "onisep": "MET.414",
+      "rome": [
+        "K2401"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "histoire-géographie, psychologie, sociologie/sciences sociales"
+      ],
+      "synonymes": [
+        "anthropologue",
+        "ethnographe",
+        "ethnologue"
+      ]
+    },
+    {
+      "id": "scripte",
+      "nom": "Scripte",
+      "categorie": "mkt",
+      "disciplines": [
+        "expression-ecrite",
+        "litterature-et-culture",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Noter chaque prise",
+        "Veiller à la continuité",
+        "Faire le lien avec le montage"
+      ],
+      "contexte": "Veille à la cohérence de chaque scène pendant un tournage.",
+      "correspondance": "proposition",
+      "onisep": "MET.421",
+      "rome": [
+        "L1304"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "script-boy/girl (scripte garçon/fille)",
+        "scripte"
+      ]
+    },
+    {
+      "id": "professeur-de-lycee-professionnel",
+      "nom": "Professeur, professeure de lycée professionnel",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-cognitive",
+        "expression-ecrite",
+        "gestion"
+      ],
+      "gestes": [
+        "Préparer les cours et ateliers",
+        "Accompagner les stages",
+        "Évaluer les élèves"
+      ],
+      "contexte": "Enseigne dans un lycée professionnel, souvent une matière générale et un métier.",
+      "correspondance": "proposition",
+      "onisep": "MET.431",
+      "rome": [
+        "K2109"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "lettres, langues, enseignement/enseignement"
+      ],
+      "synonymes": [
+        "professeur de lycée professionnel",
+        "professeure de lycée professionnel"
+      ]
+    },
+    {
+      "id": "acheteur-d-espaces-publicitaires",
+      "nom": "Acheteur, acheteuse d'espaces publicitaires",
+      "categorie": "mkt",
+      "disciplines": [
+        "marketing-digital",
+        "economie-et-societe",
+        "communication"
+      ],
+      "gestes": [
+        "Choisir les médias",
+        "Négocier les prix",
+        "Suivre les campagnes"
+      ],
+      "contexte": "Achète les emplacements où passeront les publicités.",
+      "correspondance": "proposition",
+      "onisep": "MET.432",
+      "rome": [
+        "E1402"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/journalisme, édition, publicité",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "acheteur/euse d'e-pub",
+        "acheteur/euse médias",
+        "média-acheteur/euse",
+        "acheteur d'espaces publicitaires",
+        "acheteuse d'espaces publicitaires"
+      ]
+    },
+    {
+      "id": "linguiste",
+      "nom": "Linguiste",
+      "categorie": "disc",
+      "disciplines": [
+        "linguistique",
+        "langues-vivantes",
+        "litterature-et-culture"
+      ],
+      "gestes": [
+        "Étudier une langue",
+        "Analyser ses règles",
+        "Publier des travaux"
+      ],
+      "contexte": "Étudie le fonctionnement des langues.",
+      "correspondance": "proposition",
+      "onisep": "MET.449",
+      "rome": [
+        "K2401"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "lettres, langues, enseignement/lettres, linguistique"
+      ],
+      "synonymes": [
+        "chercheur/euse en linguistique",
+        "linguiste"
+      ]
+    },
+    {
+      "id": "bruiteur",
+      "nom": "Bruiteur, bruiteuse",
+      "categorie": "mkt",
+      "disciplines": [
+        "acoustique",
+        "arts-plastiques",
+        "musique"
+      ],
+      "gestes": [
+        "Regarder la scène",
+        "Créer les bruits avec des objets",
+        "Les enregistrer"
+      ],
+      "contexte": "Recrée les bruits d’un film en studio.",
+      "correspondance": "proposition",
+      "onisep": "MET.467",
+      "rome": [
+        "L1507"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "bruiteur",
+        "bruiteuse"
+      ]
+    },
+    {
+      "id": "charge-de-projet-evenementiel",
+      "nom": "Chargé, chargée de projet événementiel",
+      "categorie": "mkt",
+      "disciplines": [
+        "gestion",
+        "communication",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Concevoir l’événement",
+        "Trouver les prestataires",
+        "Coordonner le jour J"
+      ],
+      "contexte": "Organise salons, festivals et événements.",
+      "correspondance": "proposition",
+      "onisep": "MET.473",
+      "rome": [
+        "E1107"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "information-communication, audiovisuel/communication"
+      ],
+      "synonymes": [
+        "chargé/e de communication événementielle",
+        "chef/fe de projet éveénementiel",
+        "chargé de projet événementiel",
+        "chargée de projet événementiel"
+      ]
+    },
+    {
+      "id": "realisateur-de-films",
+      "nom": "Réalisateur, réalisatrice de films",
+      "categorie": "mkt",
+      "disciplines": [
+        "arts-plastiques",
+        "litterature-et-culture",
+        "communication"
+      ],
+      "gestes": [
+        "Écrire ou choisir le scénario",
+        "Diriger le tournage",
+        "Superviser le montage"
+      ],
+      "contexte": "Dirige la création d’un film.",
+      "correspondance": "proposition",
+      "onisep": "MET.476",
+      "rome": [
+        "L1304"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "réalisateur de films",
+        "réalisatrice de films"
+      ]
+    },
+    {
+      "id": "ecrivain-public",
+      "nom": "Écrivain public, écrivaine publique",
+      "categorie": "services",
+      "disciplines": [
+        "expression-ecrite",
+        "droit-et-institutions",
+        "communication"
+      ],
+      "gestes": [
+        "Écouter la demande",
+        "Rédiger courriers et documents",
+        "Aider aux démarches"
+      ],
+      "contexte": "Aide les personnes à écrire lettres et documents.",
+      "correspondance": "proposition",
+      "onisep": "MET.477",
+      "rome": [
+        "E1102"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "lettres, langues, enseignement/lettres, linguistique"
+      ],
+      "synonymes": [
+        "écrivain public",
+        "écrivaine public"
+      ]
+    },
+    {
+      "id": "technicien-realisateur-radio",
+      "nom": "Technicien réalisateur radio, technicienne réalisatrice radio",
+      "categorie": "mkt",
+      "disciplines": [
+        "acoustique",
+        "informatique",
+        "musique"
+      ],
+      "gestes": [
+        "Régler les micros et la console",
+        "Lancer sons et musiques",
+        "Veiller à la qualité du son"
+      ],
+      "contexte": "Assure la technique d’une émission de radio.",
+      "correspondance": "proposition",
+      "onisep": "MET.506",
+      "rome": [
+        "L1508"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "technicien/ne d'antenne",
+        "technicien/ne opérateur/trice son",
+        "technicien/ne radio",
+        "technicien réalisateur radio",
+        "technicienne réalisatrice radio"
+      ]
+    },
+    {
+      "id": "nettoyeur-web",
+      "nom": "Nettoyeur, nettoyeuse Web",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "droit-et-institutions",
+        "communication"
+      ],
+      "gestes": [
+        "Rechercher les contenus gênants",
+        "Demander leur suppression",
+        "Conseiller sur l’image en ligne"
+      ],
+      "contexte": "Aide des personnes ou des entreprises à protéger leur réputation sur Internet.",
+      "correspondance": "proposition",
+      "onisep": "MET.520",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/communication",
+        "commerce, marketing, vente/marketing, vente",
+        "information-communication, audiovisuel/multimédia"
+      ],
+      "synonymes": [
+        "webcleaner",
+        "nettoyeur Web",
+        "nettoyeuse Web"
+      ]
+    },
+    {
+      "id": "professeur-de-sport",
+      "nom": "Professeur, professeure de sport",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "physiologie-humaine",
+        "gestion"
+      ],
+      "gestes": [
+        "Encadrer des activités sportives",
+        "Former des éducateurs",
+        "Accompagner les clubs"
+      ],
+      "contexte": "Développe le sport auprès des clubs et des collectivités.",
+      "correspondance": "proposition",
+      "onisep": "MET.522",
+      "rome": [
+        "G1204"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "lettres, langues, enseignement/enseignement",
+        "santé, social, sport/sport"
+      ],
+      "synonymes": [
+        "professeur de sport",
+        "professeure de sport"
+      ]
+    },
+    {
+      "id": "maquettiste",
+      "nom": "Maquettiste",
+      "categorie": "mkt",
+      "disciplines": [
+        "design-graphique",
+        "arts-plastiques",
+        "informatique"
+      ],
+      "gestes": [
+        "Organiser textes et images",
+        "Choisir la typographie",
+        "Préparer la mise en page"
+      ],
+      "contexte": "Met en page journaux, magazines et livres.",
+      "correspondance": "proposition",
+      "onisep": "MET.536",
+      "rome": [
+        "E1205"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "information-communication, audiovisuel/industries graphiques"
+      ],
+      "synonymes": [
+        "graphiste-maquettiste",
+        "infographiste-maquettiste",
+        "maquettiste numérique",
+        "maquettiste PAO",
+        "rédacteur/trice graphiste",
+        "maquettiste"
+      ]
+    },
+    {
+      "id": "charge-d-etudes-en-marketing",
+      "nom": "Chargé, chargée d'études en marketing (mercatique)",
+      "categorie": "trade",
+      "disciplines": [
+        "analyse-statistique",
+        "marketing-digital",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Concevoir des enquêtes",
+        "Analyser les résultats",
+        "Recommander des actions"
+      ],
+      "contexte": "Étudie les clients et le marché pour guider les décisions.",
+      "correspondance": "proposition",
+      "onisep": "MET.540",
+      "rome": [
+        "M1403"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "information-communication, audiovisuel/journalisme, édition, publicité",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "chargé/e d'études de marché",
+        "chargé/e d'études qualitatives ou quantitatives",
+        "chargé/e de mission marketing (mercatique)",
+        "consultant/e marketing (mercatique)",
+        "chargé d'études en marketing (mercatique)",
+        "chargée d'études en marketing (mercatique)"
+      ]
+    },
+    {
+      "id": "concepteur-multimedia",
+      "nom": "Concepteur, conceptrice multimédia",
+      "categorie": "mkt",
+      "disciplines": [
+        "informatique",
+        "design-graphique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Imaginer le contenu",
+        "Associer textes, sons et images",
+        "Tester l’expérience"
+      ],
+      "contexte": "Crée des contenus qui mêlent textes, images, sons et vidéos.",
+      "correspondance": "proposition",
+      "onisep": "MET.564",
+      "rome": [
+        "E1104"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/multimédia"
+      ],
+      "synonymes": [
+        "concepteur/trice-réalisateur/trice multimédia",
+        "concepteur multimédia",
+        "conceptrice multimédia"
+      ]
+    },
+    {
+      "id": "animateur-de-radio-et-de-television",
+      "nom": "Animateur, animatrice de radio et de télévision",
+      "categorie": "mkt",
+      "disciplines": [
+        "communication",
+        "expression-ecrite",
+        "litterature-et-culture"
+      ],
+      "gestes": [
+        "Préparer l’émission",
+        "Animer en direct",
+        "Interviewer les invités"
+      ],
+      "contexte": "Présente et anime des émissions de radio ou de télévision.",
+      "correspondance": "proposition",
+      "onisep": "MET.582",
+      "rome": [
+        "L1103"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel",
+        "information-communication, audiovisuel/journalisme, édition, publicité"
+      ],
+      "synonymes": [
+        "animateur de radio et de télévision",
+        "animatrice de radio et de télévision"
+      ]
+    },
+    {
+      "id": "iconographe",
+      "nom": "Iconographe",
+      "categorie": "mkt",
+      "disciplines": [
+        "arts-plastiques",
+        "histoire-de-l-art",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Rechercher les images",
+        "Négocier les droits",
+        "Proposer une sélection"
+      ],
+      "contexte": "Choisit les images qui illustrent livres, magazines et sites.",
+      "correspondance": "proposition",
+      "onisep": "MET.583",
+      "rome": [
+        "K1601"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel",
+        "information-communication, audiovisuel/bibliothèque, documentation",
+        "information-communication, audiovisuel/industries graphiques",
+        "information-communication, audiovisuel/technologies de l'information"
+      ],
+      "synonymes": [
+        "photothécaire",
+        "iconographe"
+      ]
+    },
+    {
+      "id": "reporter-photographe",
+      "nom": "Reporter-photographe, reportrice-photographe",
+      "categorie": "mkt",
+      "disciplines": [
+        "optique",
+        "arts-plastiques",
+        "communication"
+      ],
+      "gestes": [
+        "Couvrir un événement",
+        "Prendre les photos",
+        "Les légender et les envoyer"
+      ],
+      "contexte": "Raconte l’actualité en images.",
+      "correspondance": "proposition",
+      "onisep": "MET.586",
+      "rome": [
+        "E1106"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "photographe",
+        "photographe de presse",
+        "photo-journaliste",
+        "reporter-photographe",
+        "reportrice-photographe"
+      ]
+    },
+    {
+      "id": "formateur-en-informatique",
+      "nom": "Formateur, formatrice en informatique",
+      "categorie": "services",
+      "disciplines": [
+        "informatique",
+        "psychologie-cognitive",
+        "communication"
+      ],
+      "gestes": [
+        "Préparer les supports",
+        "Animer les sessions",
+        "Accompagner les stagiaires"
+      ],
+      "contexte": "Apprend aux adultes à utiliser les outils informatiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.593",
+      "rome": [
+        "K2111"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "lettres, langues, enseignement/enseignement",
+        "informatique, Internet/informatique (généralités)"
+      ],
+      "synonymes": [
+        "formateur en informatique",
+        "formatrice en informatique"
+      ]
+    },
+    {
+      "id": "directeur-des-effets-speciaux",
+      "nom": "Directeur, directrice des effets spéciaux",
+      "categorie": "mkt",
+      "disciplines": [
+        "informatique",
+        "arts-plastiques",
+        "optique"
+      ],
+      "gestes": [
+        "Concevoir les effets",
+        "Encadrer l’équipe",
+        "Superviser les tournages"
+      ],
+      "contexte": "Imagine et dirige les effets spéciaux d’un film.",
+      "correspondance": "proposition",
+      "onisep": "MET.609",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "directeur des effets spéciaux",
+        "directrice des effets spéciaux"
+      ]
+    },
+    {
+      "id": "designer-sonore",
+      "nom": "Designer, designeuse sonore",
+      "categorie": "mkt",
+      "disciplines": [
+        "acoustique",
+        "musique",
+        "informatique"
+      ],
+      "gestes": [
+        "Créer des ambiances sonores",
+        "Enregistrer et transformer des sons",
+        "Les intégrer au projet"
+      ],
+      "contexte": "Crée les sons et ambiances des films, jeux et lieux.",
+      "correspondance": "proposition",
+      "onisep": "MET.621",
+      "rome": [
+        "L1507"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "audio designer",
+        "concepteur/trice sonore",
+        "illustrateur/trice sonore",
+        "sound designer (concepteur/trice de son)",
+        "designer sonore",
+        "designeuse sonore"
+      ]
+    },
+    {
+      "id": "psychologue-de-l-education-nationale-specialite-education-developpement-et-conseil-en-orientation-scolaire-et-professionnelle",
+      "nom": "Psychologue de l'éducation nationale spécialité éducation, développement et conseil en orientation scolaire et professionnelle",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-cognitive",
+        "psychologie-sociale",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Recevoir les élèves",
+        "Les aider à construire leur projet",
+        "Informer sur les formations"
+      ],
+      "contexte": "Aide les collégiens et lycéens à choisir leur orientation.",
+      "correspondance": "proposition",
+      "onisep": "MET.634",
+      "rome": [
+        "K2112"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "lettres, langues, enseignement/enseignement",
+        "histoire-géographie, psychologie, sociologie/psychologie"
+      ],
+      "synonymes": [
+        "COP",
+        "psychologue de l'éducation nationale spécialité éducation, développement et conseil en orientation scolaire et professionnelle"
+      ]
+    },
+    {
+      "id": "ludothecaire",
+      "nom": "Ludothécaire",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-cognitive",
+        "communication",
+        "litterature-et-culture"
+      ],
+      "gestes": [
+        "Choisir et prêter les jeux",
+        "Animer des séances de jeu",
+        "Conseiller les familles"
+      ],
+      "contexte": "Fait jouer petits et grands dans une ludothèque.",
+      "correspondance": "proposition",
+      "onisep": "MET.639",
+      "rome": [
+        "K1601"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "information-communication, audiovisuel/bibliothèque, documentation"
+      ],
+      "synonymes": [
+        "animateur/trice de ludothèque",
+        "ludothécaire"
+      ]
+    },
+    {
+      "id": "directeur-de-communication",
+      "nom": "Directeur, directrice de communication",
+      "categorie": "mkt",
+      "disciplines": [
+        "communication",
+        "gestion",
+        "marketing-digital"
+      ],
+      "gestes": [
+        "Définir la stratégie",
+        "Gérer l’image de l’organisation",
+        "Encadrer l’équipe"
+      ],
+      "contexte": "Dirige toute la communication d’une organisation.",
+      "correspondance": "proposition",
+      "onisep": "MET.650",
+      "rome": [
+        "E1103"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "information-communication, audiovisuel/communication"
+      ],
+      "synonymes": [
+        "responsable communication",
+        "directeur de communication",
+        "directrice de communication"
+      ]
+    },
+    {
+      "id": "chef-monteur",
+      "nom": "Chef monteur, cheffe monteuse",
+      "categorie": "mkt",
+      "disciplines": [
+        "arts-plastiques",
+        "informatique",
+        "litterature-et-culture"
+      ],
+      "gestes": [
+        "Visionner les images",
+        "Assembler les plans",
+        "Donner le rythme au film"
+      ],
+      "contexte": "Monte les images pour raconter l’histoire du film.",
+      "correspondance": "proposition",
+      "onisep": "MET.656",
+      "rome": [
+        "L1507"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "monteur/euse",
+        "chef monteur",
+        "cheffe monteuse"
+      ]
+    },
+    {
+      "id": "charge-d-etudes-media",
+      "nom": "Chargé, chargée d'études média",
+      "categorie": "mkt",
+      "disciplines": [
+        "analyse-statistique",
+        "marketing-digital",
+        "communication"
+      ],
+      "gestes": [
+        "Mesurer les audiences",
+        "Analyser les données",
+        "Conseiller les annonceurs"
+      ],
+      "contexte": "Étudie les audiences des médias.",
+      "correspondance": "proposition",
+      "onisep": "MET.657",
+      "rome": [
+        "E1402"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "information-communication, audiovisuel/journalisme, édition, publicité",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "médiaplanneur/euse",
+        "responsable de plan média",
+        "webplanneur/euse",
+        "chargé d'études média",
+        "chargée d'études média"
+      ]
+    },
+    {
+      "id": "journaliste-reporter-d-images",
+      "nom": "Journaliste reporter d'images",
+      "categorie": "mkt",
+      "disciplines": [
+        "optique",
+        "expression-ecrite",
+        "communication"
+      ],
+      "gestes": [
+        "Filmer le reportage",
+        "Interviewer les témoins",
+        "Monter le sujet"
+      ],
+      "contexte": "Filme et raconte l’actualité en images.",
+      "correspondance": "proposition",
+      "onisep": "MET.677",
+      "rome": [
+        "E1106"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "information-communication, audiovisuel/journalisme, édition, publicité"
+      ],
+      "synonymes": [
+        "journaliste de presse audiovisuelle",
+        "JRI",
+        "reporter cameraman",
+        "journaliste reporter d'images"
+      ]
+    },
+    {
+      "id": "editeur",
+      "nom": "Éditeur, éditrice",
+      "categorie": "mkt",
+      "disciplines": [
+        "litterature-et-culture",
+        "expression-ecrite",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Choisir les manuscrits",
+        "Accompagner les auteurs",
+        "Préparer la publication"
+      ],
+      "contexte": "Sélectionne et publie des livres.",
+      "correspondance": "proposition",
+      "onisep": "MET.678",
+      "rome": [
+        "E1105"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "information-communication, audiovisuel/journalisme, édition, publicité"
+      ],
+      "synonymes": [
+        "directeur/trice éditorial/e",
+        "directeur/trice littéraire",
+        "responsable d'édition",
+        "responsable éditorial/e",
+        "éditeur",
+        "éditrice"
+      ]
+    },
+    {
+      "id": "enseignant-de-la-conduite-automobile-et-de-la-securite-routiere",
+      "nom": "Enseignant, enseignante de la conduite automobile et de la sécurité routière",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-cognitive",
+        "mecanique"
+      ],
+      "gestes": [
+        "Enseigner le code de la route",
+        "Accompagner en voiture",
+        "Préparer à l’examen"
+      ],
+      "contexte": "Apprend à conduire en toute sécurité.",
+      "correspondance": "proposition",
+      "onisep": "MET.680",
+      "rome": [
+        "K2110"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "lettres, langues, enseignement/enseignement",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "instructeur/trice en conduite de véhicule à moteur",
+        "moniteur/trice d'auto-école",
+        "enseignant de la conduite automobile et de la sécurité routière",
+        "enseignante de la conduite automobile et de la sécurité routière"
+      ]
+    },
+    {
+      "id": "chef-de-projet-multimedia",
+      "nom": "Chef, cheffe de projet multimédia",
+      "categorie": "mkt",
+      "disciplines": [
+        "gestion",
+        "informatique",
+        "design-graphique"
+      ],
+      "gestes": [
+        "Définir le projet",
+        "Coordonner les créatifs et développeurs",
+        "Suivre les délais"
+      ],
+      "contexte": "Pilote la création de projets numériques.",
+      "correspondance": "proposition",
+      "onisep": "MET.696",
+      "rome": [
+        "M1803"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "information-communication, audiovisuel/multimédia"
+      ],
+      "synonymes": [
+        "chef/fe de projet fonctionnel",
+        "chef/fe de projet web",
+        "chef de projet multimédia",
+        "cheffe de projet multimédia"
+      ]
+    },
+    {
+      "id": "perchman",
+      "nom": "Perchman, perchwoman (perchiste)",
+      "categorie": "mkt",
+      "disciplines": [
+        "acoustique",
+        "education-physique",
+        "communication"
+      ],
+      "gestes": [
+        "Placer le micro",
+        "Suivre les acteurs",
+        "Contrôler la qualité du son"
+      ],
+      "contexte": "Tient la perche qui capte le son pendant un tournage.",
+      "correspondance": "proposition",
+      "onisep": "MET.746",
+      "rome": [
+        "L1508"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "perchman (perchiste)",
+        "perchwoman (perchiste)"
+      ]
+    },
+    {
+      "id": "scenariste",
+      "nom": "Scénariste",
+      "categorie": "mkt",
+      "disciplines": [
+        "litterature-et-culture",
+        "expression-ecrite",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Imaginer l’histoire",
+        "Écrire les scènes et dialogues",
+        "Réécrire avec l’équipe"
+      ],
+      "contexte": "Écrit les histoires des films et des séries.",
+      "correspondance": "proposition",
+      "onisep": "MET.754",
+      "rome": [
+        "E1102"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "auteur de fictions",
+        "auteur de films",
+        "scénariste"
+      ]
+    },
+    {
+      "id": "directeur-de-la-photographie",
+      "nom": "Directeur, directrice de la photographie",
+      "categorie": "mkt",
+      "disciplines": [
+        "optique",
+        "arts-plastiques",
+        "physique"
+      ],
+      "gestes": [
+        "Choisir la lumière",
+        "Décider des cadrages",
+        "Diriger l’équipe image"
+      ],
+      "contexte": "Crée l’ambiance visuelle d’un film.",
+      "correspondance": "proposition",
+      "onisep": "MET.755",
+      "rome": [
+        "L1505"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "chef/fe opérateur/trice de prise de vue",
+        "directeur/trice photo",
+        "directeur de la photographie",
+        "directrice de la photographie"
+      ]
+    },
+    {
+      "id": "enseignant-specialise",
+      "nom": "Enseignant spécialisé, enseignante spécialisée",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-cognitive",
+        "psychologie-sociale",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Adapter son enseignement",
+        "Suivre chaque élève",
+        "Travailler avec les familles"
+      ],
+      "contexte": "Enseigne à des élèves en situation de handicap ou en difficulté.",
+      "correspondance": "proposition",
+      "onisep": "MET.766",
+      "rome": [
+        "K2109"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "lettres, langues, enseignement/enseignement",
+        "santé, social, sport/travail social"
+      ],
+      "synonymes": [
+        "enseignant spécialisé",
+        "enseignante spécialisée"
+      ]
+    },
+    {
+      "id": "veilleur-strategique",
+      "nom": "Veilleur, veilleuse stratégique",
+      "categorie": "trade",
+      "disciplines": [
+        "expression-ecrite",
+        "economie-et-societe",
+        "informatique"
+      ],
+      "gestes": [
+        "Surveiller l’information",
+        "Analyser les tendances",
+        "Alerter les décideurs"
+      ],
+      "contexte": "Surveille l’actualité d’un secteur pour aider une entreprise à anticiper.",
+      "correspondance": "proposition",
+      "onisep": "MET.788",
+      "rome": [
+        "K1601"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "information-communication, audiovisuel/bibliothèque, documentation"
+      ],
+      "synonymes": [
+        "expert/e en veille concurrentielle",
+        "expert/e en veille stratégique",
+        "veilleur stratégique",
+        "veilleuse stratégique"
+      ]
+    },
+    {
+      "id": "chef-de-projet-communication-digitale",
+      "nom": "Chef, cheffe de projet communication digitale",
+      "categorie": "mkt",
+      "disciplines": [
+        "marketing-digital",
+        "communication",
+        "informatique"
+      ],
+      "gestes": [
+        "Définir la stratégie en ligne",
+        "Piloter les contenus",
+        "Analyser les résultats"
+      ],
+      "contexte": "Organise la communication d’une organisation sur Internet.",
+      "correspondance": "proposition",
+      "onisep": "MET.802",
+      "rome": [
+        "E1103"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "information-communication, audiovisuel/communication",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "chargé/e de communication digitale",
+        "consultant/e digital/e",
+        "chef de projet communication digitale",
+        "cheffe de projet communication digitale"
+      ]
+    },
+    {
+      "id": "attache-de-presse",
+      "nom": "Attaché, attachée de presse",
+      "categorie": "mkt",
+      "disciplines": [
+        "communication",
+        "expression-ecrite",
+        "litterature-et-culture"
+      ],
+      "gestes": [
+        "Rédiger les communiqués",
+        "Contacter les journalistes",
+        "Organiser des rencontres"
+      ],
+      "contexte": "Fait parler d’une personne, d’une œuvre ou d’une entreprise dans les médias.",
+      "correspondance": "proposition",
+      "onisep": "MET.879",
+      "rome": [
+        "E1103"
+      ],
+      "niveauAcces": "bac+4",
+      "domaines": [
+        "information-communication, audiovisuel/communication"
+      ],
+      "synonymes": [
+        "chargé/e des relations extérieures",
+        "chargé/e des relations presse",
+        "chargé/e des relations publiques",
+        "attaché de presse",
+        "attachée de presse"
+      ]
+    },
+    {
+      "id": "enseignant-chercheur",
+      "nom": "Enseignant-chercheur, enseignante-chercheuse",
+      "categorie": "services",
+      "disciplines": [
+        "expression-ecrite",
+        "psychologie-cognitive",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Donner des cours à l’université",
+        "Mener des recherches",
+        "Encadrer les étudiants"
+      ],
+      "contexte": "Enseigne à l’université et fait de la recherche.",
+      "correspondance": "proposition",
+      "onisep": "MET.880",
+      "rome": [
+        "K2108"
+      ],
+      "niveauAcces": "bac+8",
+      "domaines": [
+        "lettres, langues, enseignement/enseignement",
+        "matières premières, fabrication, industries/fonction production (généralités)"
+      ],
+      "synonymes": [
+        "chercheur/euse",
+        "enseignant/e en université",
+        "maître de conférences",
+        "professeur/e des universités",
+        "enseignant-chercheur",
+        "enseignante-chercheuse"
+      ]
+    },
+    {
+      "id": "photographe",
+      "nom": "Photographe",
+      "categorie": "craft",
+      "disciplines": [
+        "optique",
+        "arts-plastiques",
+        "informatique"
+      ],
+      "gestes": [
+        "Préparer la séance",
+        "Prendre les photos",
+        "Retoucher les images"
+      ],
+      "contexte": "Réalise des photographies pour des clients ou des projets artistiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.883",
+      "rome": [
+        "E1201"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "assistant/e photographe",
+        "opérateur/trice photographe",
+        "photographe"
+      ]
+    },
+    {
+      "id": "ergonome",
+      "nom": "Ergonome",
+      "categorie": "disc",
+      "disciplines": [
+        "physiologie-humaine",
+        "psychologie-cognitive",
+        "mecanique"
+      ],
+      "gestes": [
+        "Observer le travail",
+        "Repérer les difficultés",
+        "Proposer des améliorations"
+      ],
+      "contexte": "Adapte les postes et outils de travail aux personnes.",
+      "correspondance": "proposition",
+      "onisep": "MET.884",
+      "rome": [
+        "M1402"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "histoire-géographie, psychologie, sociologie/psychologie"
+      ],
+      "synonymes": [
+        "ergonome"
+      ]
+    },
+    {
+      "id": "professeur-documentaliste",
+      "nom": "Professeur-documentaliste, professeure-documentaliste",
+      "categorie": "services",
+      "disciplines": [
+        "litterature-et-culture",
+        "informatique",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Gérer le CDI",
+        "Former à la recherche d’information",
+        "Animer des projets"
+      ],
+      "contexte": "Enseigne la recherche d’information et gère le CDI du collège ou du lycée.",
+      "correspondance": "proposition",
+      "onisep": "MET.890",
+      "rome": [
+        "K2107"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "information-communication, audiovisuel/bibliothèque, documentation",
+        "lettres, langues, enseignement/enseignement"
+      ],
+      "synonymes": [
+        "professeur-documentaliste",
+        "professeure-documentaliste"
+      ]
+    },
+    {
+      "id": "redacteur-en-chef",
+      "nom": "Rédacteur, rédactrice en chef",
+      "categorie": "mkt",
+      "disciplines": [
+        "expression-ecrite",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Choisir les sujets",
+        "Diriger les journalistes",
+        "Valider les contenus"
+      ],
+      "contexte": "Dirige la rédaction d’un journal ou d’une émission.",
+      "correspondance": "proposition",
+      "onisep": "MET.901",
+      "rome": [
+        "E1106"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "information-communication, audiovisuel/journalisme, édition, publicité"
+      ],
+      "synonymes": [
+        "rédacteur en chef",
+        "rédactrice en chef"
+      ]
+    },
+    {
+      "id": "interprete-francais",
+      "nom": "Interprète français (langue des signes française)",
+      "categorie": "services",
+      "disciplines": [
+        "linguistique",
+        "langues-vivantes",
+        "communication"
+      ],
+      "gestes": [
+        "Traduire en langue des signes",
+        "Rester fidèle au message",
+        "S’adapter à la situation"
+      ],
+      "contexte": "Traduit entre le français et la langue des signes.",
+      "correspondance": "proposition",
+      "onisep": "MET.7744",
+      "rome": [
+        "E1108"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "lettres, langues, enseignement/langues",
+        "lettres, langues, enseignement/lettres, linguistique"
+      ],
+      "synonymes": [
+        "interprète français / LSF (langue des signes française)"
+      ]
+    },
+    {
+      "id": "documentariste",
+      "nom": "Documentariste",
+      "categorie": "mkt",
+      "disciplines": [
+        "histoire-contemporaine",
+        "arts-plastiques",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Choisir un sujet",
+        "Enquêter et filmer",
+        "Construire le récit"
+      ],
+      "contexte": "Réalise des films documentaires sur le monde réel.",
+      "correspondance": "proposition",
+      "onisep": "MET.7813",
+      "rome": [
+        "L1304"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "réalisateur/trice de documentaire",
+        "documentariste"
+      ]
+    },
+    {
+      "id": "animateur-de-site-web",
+      "nom": "Animateur, animatrice de site Web",
+      "categorie": "app",
+      "disciplines": [
+        "communication",
+        "informatique",
+        "marketing-digital"
+      ],
+      "gestes": [
+        "Publier les contenus",
+        "Animer la communauté",
+        "Analyser la fréquentation"
+      ],
+      "contexte": "Fait vivre un site Internet et sa communauté.",
+      "correspondance": "proposition",
+      "onisep": "MET.7814",
+      "rome": [
+        "E1101"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "information-communication, audiovisuel/communication"
+      ],
+      "synonymes": [
+        "animateur/trice de communauté",
+        "chargé/e des relations avec les internautes",
+        "animateur de site Web",
+        "animatrice de site Web"
+      ]
+    },
+    {
+      "id": "chef-d-etablissement-scolaire",
+      "nom": "Chef, cheffe d'établissement scolaire",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "droit-et-institutions",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Diriger le collège ou le lycée",
+        "Encadrer les équipes",
+        "Travailler avec les familles"
+      ],
+      "contexte": "Dirige un collège ou un lycée.",
+      "correspondance": "proposition",
+      "onisep": "MET.7832",
+      "rome": [
+        "K2103"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "lettres, langues, enseignement/enseignement",
+        "gestion des entreprises, comptabilité/ressources humaines"
+      ],
+      "synonymes": [
+        "personnel de direction",
+        "principal/e de collège",
+        "proviseur de lycée",
+        "chef d'établissement scolaire",
+        "cheffe d'établissement scolaire"
+      ]
+    },
+    {
+      "id": "influenceur",
+      "nom": "Influenceur, influenceuse",
+      "categorie": "mkt",
+      "disciplines": [
+        "communication",
+        "marketing-digital",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Créer du contenu",
+        "Animer sa communauté",
+        "Travailler avec des marques en toute transparence"
+      ],
+      "contexte": "Publie des contenus suivis par un large public sur les réseaux sociaux.",
+      "correspondance": "proposition",
+      "onisep": "MET.7836",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/communication"
+      ],
+      "synonymes": [
+        "influenceur",
+        "influenceuse"
+      ]
+    },
+    {
+      "id": "interprete-de-l-ecrit",
+      "nom": "Interprète de l'écrit",
+      "categorie": "services",
+      "disciplines": [
+        "linguistique",
+        "expression-ecrite",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Lire avec la personne sourde",
+        "Expliquer en langue des signes",
+        "Rédiger en français"
+      ],
+      "contexte": "Aide les personnes sourdes à comprendre et rédiger des écrits.",
+      "correspondance": "proposition",
+      "onisep": "MET.7898",
+      "rome": [
+        "E1108"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "lettres, langues, enseignement/langues"
+      ],
+      "synonymes": [
+        "sous-titreur/euse en direct",
+        "transcripteur/trice",
+        "interprète de l'écrit"
+      ]
+    },
+    {
+      "id": "codeur-en-lfpc",
+      "nom": "Codeur, codeuse en LfPC (langue française parlée complétée)",
+      "categorie": "services",
+      "disciplines": [
+        "linguistique",
+        "communication",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Coder la parole avec les mains",
+        "Accompagner l’élève en classe",
+        "S’adapter au rythme"
+      ],
+      "contexte": "Rend la parole visible pour des personnes sourdes grâce à des gestes.",
+      "correspondance": "proposition",
+      "onisep": "MET.7899",
+      "rome": [
+        "E1108"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "lettres, langues, enseignement/langues"
+      ],
+      "synonymes": [
+        "opérateur/trice (visio) codeur/euse",
+        "opérateur/trice-codeur/euse",
+        "professionnel/le de l'accessibilité pour les personnes sourdes et malentendantes",
+        "professionnel/le de l'accessibilité pour les personnes sourdes ou malentendantes",
+        "codeur en LfPC (langue française parlée complétée)",
+        "codeuse en LfPC (langue française parlée complétée)"
+      ]
+    },
+    {
+      "id": "traducteur-francais-ecrit",
+      "nom": "Traducteur français écrit",
+      "categorie": "mkt",
+      "disciplines": [
+        "langues-vivantes",
+        "expression-ecrite",
+        "linguistique"
+      ],
+      "gestes": [
+        "Traduire des textes en français",
+        "Respecter le sens",
+        "Relire et corriger"
+      ],
+      "contexte": "Traduit des textes écrits vers le français.",
+      "correspondance": "proposition",
+      "onisep": "MET.7902",
+      "rome": [
+        "E1108"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "lettres, langues, enseignement/langues",
+        "lettres, langues, enseignement/lettres, linguistique"
+      ],
+      "synonymes": [
+        "traductaire",
+        "traducteur français écrit / LSF",
+        "traductrice français écrit / LSF"
+      ]
+    },
+    {
+      "id": "intermediateur-lsf",
+      "nom": "Intermédiateur, intermédiatrice LSF",
+      "categorie": "services",
+      "disciplines": [
+        "linguistique",
+        "communication",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Faciliter la compréhension",
+        "Reformuler les échanges",
+        "Accompagner la personne"
+      ],
+      "contexte": "Facilite la communication entre personnes sourdes et entendantes.",
+      "correspondance": "proposition",
+      "onisep": "MET.7903",
+      "rome": [
+        "E1108"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "lettres, langues, enseignement/langues",
+        "lettres, langues, enseignement/lettres, linguistique"
+      ],
+      "synonymes": [
+        "médiateur/trice intralinguistique et interculturel/le LSF-français",
+        "intermédiateur LSF",
+        "intermédiatrice LSF"
+      ]
+    },
+    {
+      "id": "technicien-photo",
+      "nom": "Technicien, technicienne photo",
+      "categorie": "craft",
+      "disciplines": [
+        "optique",
+        "chimie-des-materiaux",
+        "informatique"
+      ],
+      "gestes": [
+        "Préparer le matériel",
+        "Développer et tirer",
+        "Retoucher les images"
+      ],
+      "contexte": "Réalise les travaux techniques en laboratoire photo.",
+      "correspondance": "proposition",
+      "onisep": "MET.7947",
+      "rome": [
+        "E1203"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "photographe technicien/ne",
+        "technicien photo",
+        "technicienne photo"
+      ]
+    },
+    {
+      "id": "charge-de-post-production",
+      "nom": "Chargé, chargée de post-production",
+      "categorie": "mkt",
+      "disciplines": [
+        "gestion",
+        "informatique",
+        "communication"
+      ],
+      "gestes": [
+        "Organiser montage et mixage",
+        "Suivre le budget",
+        "Livrer le film"
+      ],
+      "contexte": "Organise l’étape après le tournage d’un film.",
+      "correspondance": "proposition",
+      "onisep": "MET.7984",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "chargé de post-production",
+        "chargée de post-production"
+      ]
+    },
+    {
+      "id": "concepteur-pedagogique-multimodal",
+      "nom": "Concepteur, conceptrice pédagogique multimodal",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-cognitive",
+        "informatique",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Analyser les objectifs",
+        "Concevoir les contenus",
+        "Créer des parcours en ligne"
+      ],
+      "contexte": "Conçoit des formations en ligne ou mêlant plusieurs supports.",
+      "correspondance": "proposition",
+      "onisep": "MET.8007",
+      "rome": [
+        "K2111"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "lettres, langues, enseignement/enseignement"
+      ],
+      "synonymes": [
+        "chef/fe de projet en ingénierie pédagogique multimodale",
+        "concepteur/trice e-learning (cyberformation)",
+        "concepteur/trice pédagogique multimédia de la formation digitale",
+        "ingénieur/e pédagogique",
+        "learning experience designer (concepteur/trice d'expériences d'apprentissage)",
+        "concepteur pédagogique multimodal",
+        "conceptrice pédagogique multimodal"
+      ]
+    },
+    {
+      "id": "e-sportif",
+      "nom": "E-sportif (joueur de sport électronique), e-sportive (joueuse de sport électronique)",
+      "categorie": "mkt",
+      "disciplines": [
+        "informatique",
+        "education-physique",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "S’entraîner aux jeux",
+        "Travailler la stratégie en équipe",
+        "Participer aux compétitions"
+      ],
+      "contexte": "Joueur professionnel de jeux vidéo en compétition.",
+      "correspondance": "proposition",
+      "onisep": "MET.8094",
+      "niveauAcces": "sans-diplome",
+      "domaines": [
+        "information-communication, audiovisuel/multimédia",
+        "santé, social, sport/sport"
+      ],
+      "synonymes": [
+        "athlète du numérique",
+        "cyber-athlète",
+        "gameur/euse",
+        "joueur/euse professionnel/le",
+        "pro-gamer/euse (joueur/euse professionnel/le)",
+        "e-sportif (joueur de sport électronique)",
+        "e-sportive (joueuse de sport électronique)"
+      ]
+    },
+    {
+      "id": "agent-de-bibliotheque-mediatheque",
+      "nom": "Agent, agente de bibliothèque-médiathèque",
+      "categorie": "services",
+      "disciplines": [
+        "litterature-et-culture",
+        "communication",
+        "informatique"
+      ],
+      "gestes": [
+        "Accueillir le public",
+        "Ranger et prêter les documents",
+        "Participer aux animations"
+      ],
+      "contexte": "Accueille les lecteurs et gère les documents d’une bibliothèque.",
+      "correspondance": "proposition",
+      "onisep": "MET.8176",
+      "rome": [
+        "K1601"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "information-communication, audiovisuel/bibliothèque, documentation"
+      ],
+      "synonymes": [
+        "adjoint/e du patrimoine",
+        "adjoint/e d’accueil, de surveillance et de magasinage, spécialité bibliothèques",
+        "agent/e d'accueil en bibliothèque-médiathèque",
+        "agent/e polyvalent/e de bibliothèque-médiathèque",
+        "magasinier/ère des bibliothèques",
+        "agent de bibliothèque-médiathèque",
+        "agente de bibliothèque-médiathèque"
+      ]
+    },
+    {
+      "id": "charge-d-orientation-et-d-insertion-profesionnelle",
+      "nom": "Chargé, chargée d'orientation et d'insertion professionnelle",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "economie-et-societe",
+        "communication"
+      ],
+      "gestes": [
+        "Recevoir les étudiants",
+        "Les aider à construire leur projet",
+        "Organiser des rencontres avec les entreprises"
+      ],
+      "contexte": "Aide les étudiants à s’orienter et à trouver un emploi.",
+      "correspondance": "proposition",
+      "onisep": "MET.8191",
+      "rome": [
+        "K2112"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "information-communication, audiovisuel/bibliothèque, documentation",
+        "histoire-géographie, psychologie, sociologie/psychologie",
+        "histoire-géographie, psychologie, sociologie/sciences sociales",
+        "santé, social, sport/travail social"
+      ],
+      "synonymes": [
+        "chargé d'orientation et d'insertion professionnelle",
+        "chargée d'orientation et d'insertion professionnelle"
+      ]
+    },
+    {
+      "id": "enseignant-referent-a-la-scolarisation-des-eleves-en-situation-de-handicap",
+      "nom": "Enseignant référent à la scolarisation des élèves en situation de handicap, enseignante référente à la scolarisation des élèves en situation de handicap",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-cognitive",
+        "droit-et-institutions",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Suivre le parcours des élèves",
+        "Réunir les équipes",
+        "Conseiller les familles"
+      ],
+      "contexte": "Accompagne la scolarité des élèves en situation de handicap.",
+      "correspondance": "proposition",
+      "onisep": "MET.8193",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "lettres, langues, enseignement/enseignement"
+      ],
+      "synonymes": [
+        "enseignant référent à la scolarisation des élèves en situation de handicap",
+        "enseignante référente à la scolarisation des élèves en situation de handicap"
+      ]
+    },
+    {
+      "id": "professeur-ressource",
+      "nom": "Professeur, professeure ressource",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-cognitive",
+        "expression-ecrite",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Conseiller les collègues",
+        "Adapter les supports",
+        "Suivre des élèves"
+      ],
+      "contexte": "Enseignant qui aide ses collègues à accueillir des élèves à besoins particuliers.",
+      "correspondance": "proposition",
+      "onisep": "MET.8194",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "lettres, langues, enseignement/enseignement"
+      ],
+      "synonymes": [
+        "professeur ressource",
+        "professeure ressource"
+      ]
+    },
+    {
+      "id": "professeur-de-langue-des-signes-francaise",
+      "nom": "Professeur, professeure de langue des signes française (LSF)",
+      "categorie": "services",
+      "disciplines": [
+        "linguistique",
+        "langues-vivantes",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Préparer les cours",
+        "Enseigner la LSF",
+        "Évaluer les progrès"
+      ],
+      "contexte": "Enseigne la langue des signes française.",
+      "correspondance": "proposition",
+      "onisep": "MET.8195",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "lettres, langues, enseignement/enseignement",
+        "lettres, langues, enseignement/lettres, linguistique"
+      ],
+      "synonymes": [
+        "professeur de langue des signes française (LSF)",
+        "professeure de langue des signes française (LSF)"
+      ]
+    },
+    {
+      "id": "superviseur-de-production-virtuelle",
+      "nom": "Superviseur, superviseure de production virtuelle",
+      "categorie": "mkt",
+      "disciplines": [
+        "informatique",
+        "optique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Préparer les décors virtuels",
+        "Synchroniser caméras et écrans",
+        "Encadrer l’équipe"
+      ],
+      "contexte": "Supervise les tournages où les décors sont créés numériquement.",
+      "correspondance": "proposition",
+      "onisep": "MET.8209",
+      "niveauAcces": "bac+4",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "superviseur/e VP",
+        "superviseur de production virtuelle",
+        "superviseure de production virtuelle"
+      ]
+    },
+    {
+      "id": "pilote-de-drone",
+      "nom": "Pilote de drone",
+      "categorie": "mkt",
+      "disciplines": [
+        "optique",
+        "informatique",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Préparer le vol",
+        "Piloter le drone",
+        "Traiter les images"
+      ],
+      "contexte": "Filme ou inspecte des lieux avec un drone.",
+      "correspondance": "proposition",
+      "onisep": "MET.8228",
+      "domaines": [
+        "information-communication, audiovisuel/audiovisuel",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "pilote de drone"
+      ]
+    },
+    {
+      "id": "charge-de-la-protection-du-renseignement",
+      "nom": "Chargé, chargée de la protection du renseignement",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "informatique",
+        "communication"
+      ],
+      "gestes": [
+        "Identifier les informations sensibles",
+        "Former les personnes",
+        "Vérifier les règles"
+      ],
+      "contexte": "Protège les informations sensibles d’une organisation.",
+      "correspondance": "proposition",
+      "onisep": "MET.8314",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "information-communication, audiovisuel/bibliothèque, documentation",
+        "armée, sécurité/défense publique",
+        "économie, droit, politique/droit (généralités)",
+        "économie, droit, politique/sciences politiques"
+      ],
+      "synonymes": [
+        "chargé de la protection du renseignement",
+        "chargée de la protection du renseignement"
       ]
     }
   ]
