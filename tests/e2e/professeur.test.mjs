@@ -156,6 +156,10 @@ test("professeur : profil, classe, lien d'invitation, adhésion de l'élève ave
 test("professeur (démo) : « Tester les rôles → Prof » ouvre Mes classes et Mes élèves sans appel au Worker", async () => {
   const session = await appareil(null, { viewport: { width: 390, height: 844 } });
   const { page, erreurs, appelsProf } = session;
+  // Repère national (ADR 0044) : le catalogue simulé n'a que des notions de collège ; on fournit un repère pour « fractions ».
+  await page.route("**/reperes-nationaux.json*", (r) => r.fulfill({ contentType: "application/json", body: JSON.stringify({
+    reperes: { fractions: { taux: 58, niveau: "CM2", competence: "Placer un nombre sur une ligne graduée", annee: "2025" } }
+  }) }));
   await page.goto(`${serveur.url}/?demo=contributions#contributions`);
   await page.locator("#dialogue-pseudo[open]").waitFor();
   await page.fill("#pseudo", "Démo");
@@ -194,6 +198,9 @@ test("professeur (démo) : « Tester les rôles → Prof » ouvre Mes classes et
   await page.locator("#eleves-contenu").waitFor();
   assert.equal(await page.locator("#eleves-filtre").inputValue(), "demo-classe-4b");
   assert.equal(await page.locator("[data-eleve]").count(), 4);
+  // Repère national (ADR 0044) : les notions à revoir visées par une évaluation nationale portent son taux.
+  await page.locator("#eleves-a-revoir", { hasText: "repère national" }).waitFor();
+  assert.match(await page.locator("#eleves-a-revoir").textContent(), /Les fractions \(\d+\) — repère national CM2 : 58 %/);
   // Le profil professeur est dans l'écran Profil.
   await page.click('.nav-mobile [data-nav="profil"]');
   await page.locator("#profil-prof").waitFor();
