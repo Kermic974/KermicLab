@@ -1,5 +1,5 @@
 # À petits pas V2.2 — cadrage et reprise Codex
-Statut : proposition à implémenter, PR draft. Public : adultes TDAH. Outil non médical, sans diagnostic ni promesse thérapeutique.
+Statut : première intégration locale en PR brouillon. La section « Reprise de la PR #451 » décrit le périmètre retenu après le cadrage initial. Public : adultes TDAH. Outil non médical, sans diagnostic ni promesse thérapeutique.
 ## Contexte
 Capitaliser sur #448 (harness local) et #449 (profils Haiku/Opus), fusionnées. Examiner AGENTS.md, sources du lab, générateurs officiels, référentiel UX, catalogue et tests avant modification. Préserver les micro-skills et notions existants, les sauvegardes et les parcours sans IA. Vérifier les éventuelles dépendances à #442.
 ## P0 — assistance contextuelle
@@ -28,3 +28,16 @@ Créer une maquette HTML autonome V2.2 sur données fictives cohérentes, sans a
 - [ ] Exécuter les commandes lint/build/test et contrôles CI documentés par le dépôt; consigner résultats et limites, ne pas déclarer un test iOS réel sans l'avoir effectué.
 ## Passage de relais
 Codex : auditer l'existant, proposer un plan et identifier les fichiers exacts, puis implémenter le prototype P0 par commits ciblés sur cette branche. Préserver les changements concurrents; ne pas fusionner, déployer ou modifier les autres PR. Garder la PR draft jusqu'à validation humaine. Le cadrage ne constitue pas une implémentation ni une validation clinique. La maquette V2.1 de conversation n'est pas incluse dans ce commit; reconstruire la V2.2 à partir des exigences ci-dessus et des sources du dépôt.
+
+## Reprise de la PR #451
+
+Le propriétaire a demandé d’intégrer les données KermicLab. Cette tranche adapte directement le labo issu de #450 sur la branche de la PR. Le plan et la reprise utilisent les tâches, mini-étapes et priorités du navigateur. Le build embarque les champs publics `aRetenir` de `problemes-a-etapes-cm` et `algorithmes-programmation-cm` dans le plan du labo. La sauvegarde conserve la clé `petits-pas-v1` et la version de schéma 1, avec les propriétés optionnelles `reprise` et `pochetteNotes`.
+
+- [x] Petit pas selon le temps et l’énergie, alternative, refus et minuteur facultatif.
+- [x] Tri modifiable, validation explicite, reprise persistante et suppression.
+- [x] Liens internes sans JavaScript, recette hors ligne et vérification de la sauvegarde ancienne.
+- [x] Réutilisation de repères issus des contenus publics vérifiés au build.
+- [ ] Valider le parcours en aperçu et coordonner l’intégration des micro-skills de #442.
+- [ ] Arbitrer et implémenter une éventuelle inférence Haiku ou Opus, avec consentement et contrat serveur.
+
+La navigation du labo reprend les onglets existants. Les modes donnent un repère facultatif. Le tri et les recommandations utilisent des règles locales. Aucun suivi UX généré n’est modifié, car les sources qu’il surveille restent identiques.

@@ -149,3 +149,78 @@ test("Labo adultes : cibles tactiles et navigation responsive", async () => {
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
+
+test("Labo adultes : décharge validée, petit pas et reprise issus des données locales", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { viewport: { width: 375, height: 820 } });
+  try {
+    await page.goto(`${serveur.url}/labs/remediation-tdah/`);
+    await contexte.setOffline(true);
+    await page.locator("[data-tab=brain]").click();
+    await page.locator("#dechargeTexte").fill("Préparer le dossier\nIdée : faire un classeur\nPréparer le dossier");
+    await page.getByRole("button", { name: "Préparer le tri" }).click();
+    assert.equal(await page.evaluate(() => state.tasks.length), 0);
+    assert.equal(await page.locator("#dechargeLignes [data-garder]").last().isChecked(), false);
+    await page.locator("#dechargeLignes [data-texte]").first().fill("Préparer le dossier KermicLab");
+    await page.getByRole("button", { name: "Enregistrer la sélection" }).click();
+    assert.equal(await page.evaluate(() => state.tasks.length), 1);
+    assert.match(await page.locator("#pochetteNotes").innerText(), /faire un classeur/);
+    await page.locator("[data-tab=home]").click();
+    await page.locator("#dailyEnergy").selectOption("1");
+    await page.locator("#tempsDisponible").selectOption("2");
+    await page.locator("#suggestTask").click();
+    assert.match(await page.locator("#pasSuggestion").innerText(), /Aucune tâche/);
+    await page.locator("#dailyEnergy").selectOption("2");
+    assert.match(await page.locator("#pasSuggestion").innerText(), /dossier KermicLab.*2 min/);
+    await page.locator("#ouvrirPetitPas").click();
+    assert.equal(await page.locator("#clock").innerText(), "02:00");
+    await page.locator("#stepText").fill("Ouvrir la pochette");
+    await page.locator("#stepForm button").click();
+    await page.locator("#blocageRapide").click();
+    await page.locator("#feeling").selectOption("flou");
+    assert.match(await page.locator("#advice").innerText(), /première ligne/);
+    await page.locator("#pauseReprise").click();
+    assert.match(await page.locator("#repriseTexte").innerText(), /Ouvrir la pochette/);
+    await contexte.setOffline(false);
+    await page.reload();
+    assert.match(await page.locator("#repriseTexte").innerText(), /Ouvrir la pochette/);
+    await page.locator("#repriseOuvrir").click();
+    assert.match(await page.locator("#focusName").innerText(), /dossier KermicLab/);
+    await page.locator("[data-tab=home]").click();
+    await page.locator("#repriseOublier").click();
+    await page.reload();
+    assert.equal(await page.locator("#repriseLocale").isVisible(), false);
+    assert.deepEqual(erreurs, []);
+  } finally {
+    await contexte.close();
+  }
+});
+
+test("Labo adultes : les neuf espaces sont accessibles sans JavaScript", async () => {
+  const contexte = await nav.newContext({ javaScriptEnabled: false });
+  try {
+    const page = await contexte.newPage();
+    await page.goto(`${serveur.url}/labs/remediation-tdah/`);
+    const liens = page.getByRole("navigation", { name: "Navigation sans JavaScript" }).getByRole("link");
+    assert.equal(await liens.count(), 9);
+    for (const lien of await liens.all()) {
+      const ancre = await lien.getAttribute("href");
+      assert.equal(await page.locator(ancre).isVisible(), true, ancre);
+    }
+  } finally {
+    await contexte.close();
+  }
+});
+
+test("Labo adultes : les repères embarqués proviennent des notions publiques", async () => {
+  const contexte = await nav.newContext();
+  try {
+    const page = await contexte.newPage();
+    await page.goto(`${serveur.url}/labs/remediation-tdah/`);
+    await contexte.setOffline(true);
+    await page.locator("[data-tab=explication]").click();
+    assert.match(await page.locator('[data-notion="problemes-a-etapes-cm"]').innerText(), /inconnue intermédiaire/);
+    assert.match(await page.locator('[data-notion="algorithmes-programmation-cm"]').innerText(), /ordre des instructions/);
+  } finally {
+    await contexte.close();
+  }
+});
