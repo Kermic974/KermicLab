@@ -118,3 +118,12 @@ test("bmo : l'extrait versionné et le référentiel sont alignés", async () =>
   for (const m of metiers.metiers) if (m.fap) assert.ok(parCode.has(m.fap), `${m.id} : ${m.fap} absent de la BMO`);
   assert.deepEqual(appliquerBmo(metiers, vrai).referentiel.metiers, metiers.metiers, "perspectives à jour (npm run import:bmo -- <extrait> --appliquer)");
 });
+
+test("bmo : lecture xlsx en temps linéaire, même sur un fichier piégé (pas de retour arrière polynomial)", () => {
+  const piege = "<sheet " + "name=\"x\" ".repeat(40000);
+  const relations = "<Relationship " + "Id=\"r\" ".repeat(40000);
+  const classeurPiege = zip({ "xl/workbook.xml": `<workbook>${piege}</workbook>`, "xl/_rels/workbook.xml.rels": relations, "xl/sharedStrings.xml": "<sst>" + "<si><t>".repeat(20000) });
+  const debut = performance.now();
+  assert.throws(() => lireFeuille(classeurPiege, "BMO_2026_open_data"), /feuille introuvable/);
+  assert.ok(performance.now() - debut < 2000, "lecture bornée");
+});

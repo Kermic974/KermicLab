@@ -43,24 +43,76 @@ const texteXml = (s) => s.replace(/&(amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);/gi, 
 /** Index d'une référence de colonne (« A » → 0, « AB » → 27). */
 const colonne = (ref) => [...ref.replace(/\d+/g, "")].reduce((n, c) => n * 26 + c.charCodeAt(0) - 64, 0) - 1;
 
+// Analyse XML volontairement simple et linéaire (pas d'expressions régulières à quantificateurs concurrents, sujettes
+// au retour arrière polynomial sur un fichier malformé) : une balise est repérée par « <nom », close au premier « > »,
+// et ses attributs sont lus un à un.
+const MOTIF_ATTRIBUT = /([\w:.-]+)="([^"]*)"/g;
+
+/** Attributs d'une balise ouvrante (texte entre `<nom` et `>`), par nom, valeurs décodées. */
+function attributs(texte) {
+  return Object.fromEntries([...texte.matchAll(MOTIF_ATTRIBUT)].map(([, cle, valeur]) => [cle, texteXml(valeur)]));
+}
+
+/**
+ * Éléments `<nom …>…</nom>` (ou `<nom …/>`) d'un texte XML, parcourus d'un seul passage : `[{ attributs, contenu }]`.
+ * Chaque recherche reprend après l'élément précédent ; un élément sans fermeture arrête le parcours (fichier tronqué).
+ */
+function elements(xml, nom) {
+  const resultat = [];
+  const ouverture = `<${nom}`;
+  const fermeture = `</${nom}>`;
+  let i = xml.indexOf(ouverture);
+  while (i >= 0) {
+    const suivant = xml[i + ouverture.length];
+    if (suivant !== " " && suivant !== ">" && suivant !== "/" && suivant !== "\t" && suivant !== "\n" && suivant !== "\r") {
+      i = xml.indexOf(ouverture, i + ouverture.length);
+      continue;
+    }
+    const fin = xml.indexOf(">", i + ouverture.length);
+    if (fin < 0) break;
+    const interieur = xml.slice(i + ouverture.length, fin);
+    if (interieur.endsWith("/")) {
+      resultat.push({ attributs: attributs(interieur), contenu: "" });
+      i = xml.indexOf(ouverture, fin + 1);
+      continue;
+    }
+    const ferme = xml.indexOf(fermeture, fin + 1);
+    if (ferme < 0) break;
+    resultat.push({ attributs: attributs(interieur), contenu: xml.slice(fin + 1, ferme) });
+    i = xml.indexOf(ouverture, ferme + fermeture.length);
+  }
+  return resultat;
+}
+
+/** Texte d'un élément de chaîne (`<si>`, `<is>`) : concaténation de ses `<t>`. */
+const texteDe = (xml) => elements(xml, "t").map((e) => texteXml(e.contenu)).join("");
+
+/** Noms des feuilles d'un classeur xlsx, dans l'ordre. */
+export function feuillesDuClasseur(octets) {
+  const xml = lireZip(octets).get("xl/workbook.xml")?.toString("utf8") ?? "";
+  return elements(xml, "sheet").map((e) => e.attributs.name).filter(Boolean);
+}
+
 /** Lignes (tableaux de chaînes) de la feuille `nom` d'un classeur xlsx. */
 export function lireFeuille(octets, nom) {
   const zip = lireZip(octets);
   const lire = (chemin) => zip.get(chemin)?.toString("utf8") ?? "";
-  const partages = [...lire("xl/sharedStrings.xml").matchAll(/<si>([\s\S]*?)<\/si>/g)]
-    .map(([, si]) => texteXml([...si.matchAll(/<t[^>]*>([\s\S]*?)<\/t>/g)].map((t) => t[1]).join("")));
-  const feuille = [...lire("xl/workbook.xml").matchAll(/<sheet [^>]*name="([^"]*)"[^>]*r:id="([^"]*)"/g)].find(([, n]) => texteXml(n) === nom);
+  const chaines = lire("xl/sharedStrings.xml");
+  const partages = elements(chaines, "si").map((e) => texteDe(e.contenu));
+  const feuille = elements(lire("xl/workbook.xml"), "sheet").find((e) => e.attributs.name === nom);
   if (!feuille) throw new Error(`feuille introuvable : ${nom}`);
-  const cible = [...lire("xl/_rels/workbook.xml.rels").matchAll(/<Relationship [^>]*Id="([^"]*)"[^>]*Target="([^"]*)"/g)].find(([, id]) => id === feuille[2])?.[2];
-  const xml = lire(`xl/${cible.replace(/^\/?xl\//, "")}`);
+  const relation = elements(lire("xl/_rels/workbook.xml.rels"), "Relationship").find((e) => e.attributs.Id === feuille.attributs["r:id"]);
+  if (!relation?.attributs.Target) throw new Error(`feuille sans fichier associé : ${nom}`);
+  const xml = lire(`xl/${relation.attributs.Target.replace(/^\/?xl\//, "")}`);
   const lignes = [];
-  for (const [, contenu] of xml.matchAll(/<row[^>]*>([\s\S]*?)<\/row>/g)) {
+  for (const rangee of elements(xml, "row")) {
     const ligne = [];
-    for (const [, attributs, interieur = ""] of contenu.matchAll(/<c ([^>]*?)(?:\/>|>([\s\S]*?)<\/c>)/g)) {
-      const ref = /r="([A-Z]+\d+)"/.exec(attributs)?.[1];
-      const type = /t="([a-zA-Z]+)"/.exec(attributs)?.[1];
-      const v = /<v>([\s\S]*?)<\/v>/.exec(interieur)?.[1] ?? /<t[^>]*>([\s\S]*?)<\/t>/.exec(interieur)?.[1] ?? "";
-      ligne[ref ? colonne(ref) : ligne.length] = type === "s" ? partages[Number(v)] : texteXml(v);
+    for (const cellule of elements(rangee.contenu, "c")) {
+      const { r: ref, t: type } = cellule.attributs;
+      const [valeur] = elements(cellule.contenu, "v");
+      const brut = valeur ? texteXml(valeur.contenu) : texteDe(cellule.contenu);
+      const index = /^[A-Z]+\d+$/.test(ref ?? "") ? colonne(ref) : ligne.length;
+      ligne[index] = type === "s" ? partages[Number(brut)] : brut;
     }
     lignes.push(Array.from(ligne, (x) => x ?? ""));
   }

@@ -12,7 +12,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { basename, dirname, extname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { agregerBmo, appliquerBmo, extraitCompact, FORMAT_EXTRAIT, lireFeuille, lireZip } from "./lib/bmo.mjs";
+import { agregerBmo, appliquerBmo, extraitCompact, feuillesDuClasseur, FORMAT_EXTRAIT, lireFeuille } from "./lib/bmo.mjs";
 
 const racine = join(dirname(fileURLToPath(import.meta.url)), "..");
 const args = process.argv.slice(2);
@@ -46,7 +46,7 @@ async function lireExtrait(chemin) {
     if (extrait?.format !== FORMAT_EXTRAIT) { console.error(`${chemin} : ce n'est pas un extrait BMO (format ${extrait?.format}).`); process.exit(1); }
     return extrait;
   }
-  const feuilles = [...lireZip(octets).get("xl/workbook.xml").toString("utf8").matchAll(/<sheet [^>]*name="([^"]*)"/g)].map((m) => m[1]);
+  const feuilles = feuillesDuClasseur(octets);
   const nom = nomFeuille ?? feuilles.find((f) => /^BMO_\d{4}_open_data$/i.test(f)) ?? feuilles.find((f) => /BMO/i.test(f));
   if (!nom) { console.error(`${chemin} : feuille BMO introuvable (feuilles : ${feuilles.join(", ")}).`); process.exit(1); }
   const extrait = extraitCompact(agregerBmo(lireFeuille(octets, nom)), { date, source: `${basename(chemin)} (feuille ${nom})` });
