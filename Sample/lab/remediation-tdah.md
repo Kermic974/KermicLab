@@ -1,6 +1,6 @@
 # À petits pas — Organisation et attention
 
-Version 1.0.0, 25 novembre 2026. Labo destiné aux adultes, préparé pour /labs/remediation-tdah/.
+Version 1.0.1, 27 novembre 2026. Labo destiné aux adultes, préparé pour /labs/remediation-tdah/.
 
 Application HTML autonome adaptée du plan de remédiation cognitive TDAH adulte fourni par le propriétaire. La source PDF personnelle n’est pas publiée. Aucun diagnostic, score clinique ni promesse de traitement. Les points et badges reconnaissent l’utilisation de l’outil.
 
@@ -19,3 +19,7 @@ Points attribués une fois par identifiant de tâche ou d’étape, même après
 La liste LABS_PUBLIES de scripts/build.mjs copie la page dans dist/labs/remediation-tdah/index.html. La carte Labs est traduite en français et en anglais ; le labo est en français. Métadonnées KermicLab et CSP à hashes, aucune ressource externe. La page est ajoutée à check:pages.
 
 Avant fusion : CI verte et validation du propriétaire conformément à AGENTS.md, avec relecture du contenu destiné aux adultes.
+
+## Ergonomie V1.0.1
+
+Navigation en grille adaptative, étapes principales pleine largeur sur mobile, cibles tactiles de 48 px de hauteur, champs pleine largeur, focus contrasté et respect du mouvement réduit. Stockage et moteur inchangés. La recette Playwright couvre 320, 375, 390, 430, 768 et 1280 px ; VoiceOver et validation humaine restent à effectuer.
