@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès. Lot 3 et vague pilote du lot 6 (2026-11-24) : 14 disciplines et 41 métiers ajoutés par un agent, en correspondance « proposition », sans code ROME (apporté par l’import ONISEP). Import ONISEP du 2026-11-24 (extrait referentiel/sources/onisep/ideo-metiers-2026-11-24.json, licence ODbL) : identifiants, codes ROME, niveaux d’accès, domaines et synonymes de 74 métiers. Vague 1 du lot 6 (2026-11-24) : 32 métiers issus des fiches ONISEP (identifiant, niveau et ROME de l’ONISEP), 11 disciplines et notions ajoutées aux disciplines « proposition », préparés par un agent. Vague 2 (santé, social, sport) : 100 métier(s) ONISEP en « proposition ». Vague 3 (arts, culture, artisanat) : 99 métier(s) ONISEP en « proposition ». Vague 4 (environnement, énergies, propreté ; agriculture, animaux) : 123 métier(s) ONISEP en « proposition ». Vague 5 (matières premières, fabrication, industries ; électricité, électronique, robotique) : 112 métier(s) ONISEP en « proposition ». Vague 6 (mécanique ; construction, architecture, travaux publics) : 102 métier(s) ONISEP en « proposition ». Vague 7 (armée, sécurité ; logistique, transport) : 100 métier(s) ONISEP en « proposition ».",
+  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès. Lot 3 et vague pilote du lot 6 (2026-11-24) : 14 disciplines et 41 métiers ajoutés par un agent, en correspondance « proposition », sans code ROME (apporté par l’import ONISEP). Import ONISEP du 2026-11-24 (extrait referentiel/sources/onisep/ideo-metiers-2026-11-24.json, licence ODbL) : identifiants, codes ROME, niveaux d’accès, domaines et synonymes de 74 métiers. Vague 1 du lot 6 (2026-11-24) : 32 métiers issus des fiches ONISEP (identifiant, niveau et ROME de l’ONISEP), 11 disciplines et notions ajoutées aux disciplines « proposition », préparés par un agent. Vague 2 (santé, social, sport) : 100 métier(s) ONISEP en « proposition ». Vague 3 (arts, culture, artisanat) : 99 métier(s) ONISEP en « proposition ». Vague 4 (environnement, énergies, propreté ; agriculture, animaux) : 123 métier(s) ONISEP en « proposition ». Vague 5 (matières premières, fabrication, industries ; électricité, électronique, robotique) : 112 métier(s) ONISEP en « proposition ». Vague 6 (mécanique ; construction, architecture, travaux publics) : 102 métier(s) ONISEP en « proposition ». Vague 7 (armée, sécurité ; logistique, transport) : 100 métier(s) ONISEP en « proposition ». Vague 8 (sciences ; informatique, Internet) : 115 métier(s) ONISEP en « proposition ».",
   "sources": [
     {
       "nom": "Idéo-Fiches métiers",
@@ -23892,6 +23892,3584 @@
       ],
       "synonymes": [
         "analyste numérique"
+      ]
+    },
+    {
+      "id": "ingenieur-systeme",
+      "nom": "Ingénieur, ingénieure système",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "electricite-electronique",
+        "logique-mathematique"
+      ],
+      "gestes": [
+        "Concevoir l’architecture du système",
+        "Intégrer matériel et logiciel",
+        "Valider le fonctionnement"
+      ],
+      "contexte": "Conçoit des systèmes complexes en assemblant matériel et logiciel.",
+      "correspondance": "proposition",
+      "onisep": "MET.13",
+      "rome": [
+        "M1802"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/systèmes et réseaux"
+      ],
+      "synonymes": [
+        "ingénieur/e système d'exploitation",
+        "responsable système",
+        "ingénieur système",
+        "ingénieure système"
+      ]
+    },
+    {
+      "id": "administrateur-de-base-de-donnees",
+      "nom": "Administrateur, administratrice de base de données",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "logique-mathematique",
+        "reseaux"
+      ],
+      "gestes": [
+        "Organiser les données",
+        "Garantir leur sécurité",
+        "Optimiser les performances"
+      ],
+      "contexte": "Gère les bases de données d’une organisation.",
+      "correspondance": "proposition",
+      "onisep": "MET.14",
+      "rome": [
+        "M1801"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "informatique, Internet/bases de données",
+        "informatique, Internet/informatique (généralités)",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "database administrator (DBA)",
+        "ingénieur/e en base de données",
+        "responsable de base de données",
+        "administrateur de base de données",
+        "administratrice de base de données"
+      ]
+    },
+    {
+      "id": "gestionnaire-de-parc-informatique",
+      "nom": "Gestionnaire de parc informatique",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "reseaux",
+        "gestion"
+      ],
+      "gestes": [
+        "Installer les postes",
+        "Suivre le matériel et les licences",
+        "Dépanner les utilisateurs"
+      ],
+      "contexte": "Gère les ordinateurs et logiciels d’une entreprise.",
+      "correspondance": "proposition",
+      "onisep": "MET.15",
+      "rome": [
+        "M1810"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/informatique (généralités)",
+        "matières premières, fabrication, industries/maintenance, qualité",
+        "informatique, Internet/systèmes et réseaux"
+      ],
+      "synonymes": [
+        "responsable de parc micro-informatique",
+        "responsable micro-réseaux (réseaux locaux)",
+        "gestionnaire de parc informatique"
+      ]
+    },
+    {
+      "id": "zoologiste",
+      "nom": "Zoologiste",
+      "categorie": "disc",
+      "disciplines": [
+        "biologie",
+        "biologie-cellulaire-genetique",
+        "environnement"
+      ],
+      "gestes": [
+        "Observer les animaux",
+        "Mener des études",
+        "Publier les résultats"
+      ],
+      "contexte": "Étudie les animaux, leur comportement et leur évolution.",
+      "correspondance": "proposition",
+      "onisep": "MET.48",
+      "rome": [
+        "K2402"
+      ],
+      "niveauAcces": "bac+8",
+      "domaines": [
+        "sciences/biologie",
+        "environnement, énergies, propreté/environnement (généralités)"
+      ],
+      "synonymes": [
+        "biologiste animalier/ère",
+        "chercheur/euse en biologie animale",
+        "écologue",
+        "entomologiste",
+        "éthologue",
+        "ornithologue",
+        "primatologue",
+        "zoologiste"
+      ]
+    },
+    {
+      "id": "formulateur",
+      "nom": "Formulateur, formulatrice",
+      "categorie": "disc",
+      "disciplines": [
+        "chimie-analytique",
+        "chimie-des-materiaux",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Choisir les ingrédients",
+        "Mettre au point la formule",
+        "Tester la stabilité"
+      ],
+      "contexte": "Invente les recettes des cosmétiques, peintures ou produits d’entretien.",
+      "correspondance": "proposition",
+      "onisep": "MET.80",
+      "rome": [
+        "H1505"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "sciences/chimie"
+      ],
+      "synonymes": [
+        "formulateur",
+        "formulatrice"
+      ]
+    },
+    {
+      "id": "testeur-en-informatique",
+      "nom": "Testeur, testeuse en informatique",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "logique-mathematique",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Écrire les scénarios de test",
+        "Tester le logiciel",
+        "Signaler les anomalies"
+      ],
+      "contexte": "Vérifie que les logiciels fonctionnent sans bug.",
+      "correspondance": "proposition",
+      "onisep": "MET.84",
+      "rome": [
+        "M1805"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "informatique, Internet/développement, programmation, logiciel",
+        "informatique, Internet/informatique (généralités)",
+        "informatique, Internet/informatique de gestion",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "chasseur/euse de bugs (bogues)",
+        "testeur/euse de logiciels",
+        "testeur/euse informatique",
+        "testeur/euse qualité",
+        "testeur en informatique",
+        "testeuse en informatique"
+      ]
+    },
+    {
+      "id": "professeur-de-maths-ou-de-physique-chimie",
+      "nom": "Professeur de maths ou de physique-chimie, professeure de mathématiques ou de physique-chimie",
+      "categorie": "services",
+      "disciplines": [
+        "mathematiques-appliquees",
+        "physique",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Préparer les cours",
+        "Faire faire des exercices et expériences",
+        "Évaluer les élèves"
+      ],
+      "contexte": "Enseigne les mathématiques ou la physique-chimie au collège et au lycée.",
+      "correspondance": "proposition",
+      "onisep": "MET.85",
+      "rome": [
+        "K2107"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/chimie",
+        "lettres, langues, enseignement/enseignement",
+        "sciences/mathématiques",
+        "sciences/physique"
+      ],
+      "synonymes": [
+        "enseignant/e en mathématiques",
+        "enseignante en physique-chimie",
+        "professeur de maths ou de physique-chimie",
+        "professeure de mathématiques ou de physique-chimie"
+      ]
+    },
+    {
+      "id": "ingenieur-brevets",
+      "nom": "Ingénieur, ingénieure brevets",
+      "categorie": "disc",
+      "disciplines": [
+        "droit-et-institutions",
+        "physique",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Analyser une invention",
+        "Rédiger le brevet",
+        "Défendre les droits"
+      ],
+      "contexte": "Protège les inventions en rédigeant et défendant les brevets.",
+      "correspondance": "proposition",
+      "onisep": "MET.95",
+      "rome": [
+        "H1206"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/biologie",
+        "économie, droit, politique/droit privé"
+      ],
+      "synonymes": [
+        "consultant/e en propriété industrielle",
+        "ingénieur/e en propriété industrielle",
+        "juriste brevets",
+        "responsable en propriété industrielle",
+        "responsable portefeuille de brevets",
+        "ingénieur brevets",
+        "ingénieure brevets"
+      ]
+    },
+    {
+      "id": "geologue-modelisateur",
+      "nom": "Géologue modélisateur, géologue modélisatrice",
+      "categorie": "disc",
+      "disciplines": [
+        "geologie",
+        "informatique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Collecter les données du sous-sol",
+        "Construire un modèle 3D",
+        "Estimer les ressources"
+      ],
+      "contexte": "Modélise le sous-sol sur ordinateur.",
+      "correspondance": "proposition",
+      "onisep": "MET.105",
+      "rome": [
+        "F1105"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "géologue modélisateur",
+        "géologue modélisatrice"
+      ]
+    },
+    {
+      "id": "ingenieur-hydrogeomorphologue",
+      "nom": "Ingénieur, ingénieure hydrogéomorphologue",
+      "categorie": "disc",
+      "disciplines": [
+        "sciences-de-la-terre",
+        "geologie",
+        "environnement"
+      ],
+      "gestes": [
+        "Étudier les rivières",
+        "Comprendre l’érosion",
+        "Proposer des aménagements"
+      ],
+      "contexte": "Étudie la forme des cours d’eau et leur évolution.",
+      "correspondance": "proposition",
+      "onisep": "MET.106",
+      "rome": [
+        "M1808"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "ingénieur/e d'études en hydrogéomorphologie",
+        "ingénieur hydrogéomorphologue",
+        "ingénieure hydrogéomorphologue"
+      ]
+    },
+    {
+      "id": "ingenieur-analogicien",
+      "nom": "Ingénieur analogicien, ingénieure analogicienne",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "physique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Concevoir des circuits analogiques",
+        "Simuler et mesurer",
+        "Améliorer les performances"
+      ],
+      "contexte": "Conçoit des circuits électroniques qui traitent des signaux continus.",
+      "correspondance": "proposition",
+      "onisep": "MET.125",
+      "rome": [
+        "H1206"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/développement, programmation, logiciel",
+        "électricité, électronique, robotique/électronique"
+      ],
+      "synonymes": [
+        "ingénieur/e composants analogiques",
+        "ingénieur/e électronicien/ne analogique",
+        "ingénieur/e en électronique analogique",
+        "ingénieur analogicien",
+        "ingénieure analogicienne"
+      ]
+    },
+    {
+      "id": "biostatisticien",
+      "nom": "Biostatisticien, biostatisticienne",
+      "categorie": "disc",
+      "disciplines": [
+        "analyse-statistique",
+        "biologie",
+        "informatique"
+      ],
+      "gestes": [
+        "Concevoir le plan d’analyse",
+        "Traiter les données",
+        "Interpréter les résultats"
+      ],
+      "contexte": "Analyse les données des études médicales ou biologiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.126",
+      "rome": [
+        "K2402"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/biologie",
+        "informatique, Internet/informatique (généralités)",
+        "sciences/mathématiques"
+      ],
+      "synonymes": [
+        "responsable data management",
+        "responsable de l'exploitation et de l'analyse des données cliniques",
+        "biostatisticien",
+        "biostatisticienne"
+      ]
+    },
+    {
+      "id": "hacker-ethique",
+      "nom": "Hacker, hackeuse (pirate informatique) éthique",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "reseaux",
+        "logique-mathematique"
+      ],
+      "gestes": [
+        "Rechercher les failles",
+        "Tester la sécurité avec autorisation",
+        "Proposer des corrections"
+      ],
+      "contexte": "Teste la sécurité des systèmes informatiques, avec l’accord de leurs propriétaires, pour les protéger.",
+      "correspondance": "proposition",
+      "onisep": "MET.133",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "informatique, Internet/systèmes et réseaux"
+      ],
+      "synonymes": [
+        "pentester/euse",
+        "hacker (pirate informatique) éthique",
+        "hackeuse (pirate informatique) éthique"
+      ]
+    },
+    {
+      "id": "documentaliste",
+      "nom": "Documentaliste",
+      "categorie": "services",
+      "disciplines": [
+        "expression-ecrite",
+        "informatique",
+        "litterature-et-culture"
+      ],
+      "gestes": [
+        "Rechercher et sélectionner l’information",
+        "Classer les documents",
+        "Aider les usagers"
+      ],
+      "contexte": "Organise et partage l’information dans un centre de documentation.",
+      "correspondance": "proposition",
+      "onisep": "MET.172",
+      "rome": [
+        "K1601"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "informatique, Internet/bases de données",
+        "information-communication, audiovisuel/bibliothèque, documentation",
+        "information-communication, audiovisuel/technologies de l'information"
+      ],
+      "synonymes": [
+        "bibliothécaire-documentaliste",
+        "chargé/e d'études documentaires",
+        "documentaliste scientifique",
+        "technicien/ne de la documentation",
+        "documentaliste"
+      ]
+    },
+    {
+      "id": "bio-informaticien",
+      "nom": "Bio-informaticien, bio-informaticienne",
+      "categorie": "disc",
+      "disciplines": [
+        "informatique",
+        "biologie-cellulaire-genetique",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Programmer des outils d’analyse",
+        "Traiter les données génétiques",
+        "Collaborer avec les biologistes"
+      ],
+      "contexte": "Utilise l’informatique pour analyser les données du vivant.",
+      "correspondance": "proposition",
+      "onisep": "MET.201",
+      "rome": [
+        "H1206"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/biologie"
+      ],
+      "synonymes": [
+        "bio-informaticien",
+        "bio-informaticienne"
+      ]
+    },
+    {
+      "id": "chef-de-projet-informatique",
+      "nom": "Chef, cheffe de projet informatique",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Recueillir les besoins",
+        "Planifier le projet",
+        "Coordonner l’équipe"
+      ],
+      "contexte": "Pilote la création d’un logiciel ou d’un système informatique.",
+      "correspondance": "proposition",
+      "onisep": "MET.203",
+      "rome": [
+        "M1803"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/informatique (généralités)"
+      ],
+      "synonymes": [
+        "chef de projet informatique",
+        "cheffe de projet informatique"
+      ]
+    },
+    {
+      "id": "ingenieur-technico-commercial-en-informatique",
+      "nom": "Ingénieur technico-commercial en informatique, ingénieure technico-commerciale en informatique",
+      "categorie": "trade",
+      "disciplines": [
+        "informatique",
+        "communication",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Comprendre les besoins du client",
+        "Proposer une solution",
+        "Négocier la vente"
+      ],
+      "contexte": "Vend des solutions informatiques en apportant des conseils techniques.",
+      "correspondance": "proposition",
+      "onisep": "MET.204",
+      "rome": [
+        "D1407"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/informatique (généralités)",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "ingénieur technico-commercial en informatique",
+        "ingénieure technico-commerciale en informatique"
+      ]
+    },
+    {
+      "id": "consultant-en-systemes-d-information",
+      "nom": "Consultant, consultante en systèmes d'information",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Analyser l’organisation",
+        "Proposer des améliorations",
+        "Accompagner le projet"
+      ],
+      "contexte": "Conseille les entreprises sur leurs outils informatiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.212",
+      "rome": [
+        "M1806"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/informatique (généralités)"
+      ],
+      "synonymes": [
+        "consultant/e en organisation des systèmes d'information",
+        "consultant en systèmes d'information",
+        "consultante en systèmes d'information"
+      ]
+    },
+    {
+      "id": "chef-de-produit-technique-en-informatique",
+      "nom": "Chef de produit technique en informatique",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "marketing-digital",
+        "gestion"
+      ],
+      "gestes": [
+        "Définir le produit",
+        "Suivre son développement",
+        "Former les équipes"
+      ],
+      "contexte": "Fait évoluer un produit informatique selon les besoins des clients.",
+      "correspondance": "proposition",
+      "onisep": "MET.229",
+      "rome": [
+        "M1703"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/informatique (généralités)",
+        "commerce, marketing, vente/marketing, vente",
+        "électricité, électronique, robotique/télécommunications"
+      ],
+      "synonymes": [
+        "ingénieur/e marketing produit",
+        "ingénieur/e produit",
+        "product manager (chef/fe de produit)",
+        "responsable produit",
+        "chef de produit technique en informatique"
+      ]
+    },
+    {
+      "id": "statisticien-en-analyse-sensorielle",
+      "nom": "Statisticien, statisticienne en analyse sensorielle",
+      "categorie": "disc",
+      "disciplines": [
+        "analyse-statistique",
+        "nutrition-alimentation",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Organiser les dégustations",
+        "Analyser les réponses",
+        "Conseiller le développement"
+      ],
+      "contexte": "Analyse ce que les gens ressentent en goûtant ou en sentant un produit.",
+      "correspondance": "proposition",
+      "onisep": "MET.230",
+      "rome": [
+        "M1403"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/mathématiques"
+      ],
+      "synonymes": [
+        "ingénieur/e d'études en analyse sensorielle",
+        "statisticien en analyse sensorielle",
+        "statisticienne en analyse sensorielle"
+      ]
+    },
+    {
+      "id": "hydrobiologiste",
+      "nom": "Hydrobiologiste",
+      "categorie": "disc",
+      "disciplines": [
+        "biologie",
+        "environnement",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Prélever dans les milieux aquatiques",
+        "Identifier les espèces",
+        "Évaluer la qualité de l’eau"
+      ],
+      "contexte": "Étudie la vie dans les rivières, les lacs et la mer.",
+      "correspondance": "proposition",
+      "onisep": "MET.232",
+      "rome": [
+        "K2402"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/biologie",
+        "environnement, énergies, propreté/environnement (généralités)",
+        "environnement, énergies, propreté/gestion de l'eau"
+      ],
+      "synonymes": [
+        "hydrobiologiste"
+      ]
+    },
+    {
+      "id": "ingenieur-en-electronique-numerique",
+      "nom": "Ingénieur, ingénieure en électronique numérique",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "informatique",
+        "logique-mathematique"
+      ],
+      "gestes": [
+        "Concevoir des circuits numériques",
+        "Programmer les composants",
+        "Tester et valider"
+      ],
+      "contexte": "Conçoit l’électronique numérique des appareils.",
+      "correspondance": "proposition",
+      "onisep": "MET.243",
+      "rome": [
+        "H1206",
+        "H2502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/développement, programmation, logiciel",
+        "électricité, électronique, robotique/électronique",
+        "informatique, Internet/informatique (généralités)",
+        "électricité, électronique, robotique/télécommunications"
+      ],
+      "synonymes": [
+        "ingénieur/e composants",
+        "ingénieur/e électronicien/ne numérique",
+        "ingénieur/e en électronique et technologies numériques",
+        "ingénieur en électronique numérique",
+        "ingénieure en électronique numérique"
+      ]
+    },
+    {
+      "id": "ingenieur-systemes-embarques",
+      "nom": "Ingénieur, ingénieure systèmes embarqués",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "electricite-electronique",
+        "logique-mathematique"
+      ],
+      "gestes": [
+        "Concevoir le logiciel embarqué",
+        "Le tester sur le matériel",
+        "Optimiser la consommation"
+      ],
+      "contexte": "Programme l’informatique cachée dans les objets, voitures ou avions.",
+      "correspondance": "proposition",
+      "onisep": "MET.244",
+      "rome": [
+        "H1206",
+        "H2502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/développement, programmation, logiciel",
+        "électricité, électronique, robotique/électronique",
+        "électricité, électronique, robotique/télécommunications"
+      ],
+      "synonymes": [
+        "architecte systèmes embarqués",
+        "ingénieur/e électronique embarquée",
+        "ingénieur/e électronique logiciel embarqué",
+        "ingénieur systèmes embarqués",
+        "ingénieure systèmes embarqués"
+      ]
+    },
+    {
+      "id": "ingenieur-realite-virtuelle",
+      "nom": "Ingénieur, ingénieure réalité virtuelle",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "optique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Concevoir l’environnement virtuel",
+        "Programmer les interactions",
+        "Tester avec les utilisateurs"
+      ],
+      "contexte": "Crée des expériences en réalité virtuelle.",
+      "correspondance": "proposition",
+      "onisep": "MET.245",
+      "rome": [
+        "M1805"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/développement, programmation, logiciel",
+        "matières premières, fabrication, industries/études et développement",
+        "informatique, Internet/informatique (généralités)"
+      ],
+      "synonymes": [
+        "ingénieur réalité virtuelle",
+        "ingénieure réalité virtuelle"
+      ]
+    },
+    {
+      "id": "technicien-biologiste",
+      "nom": "Technicien, technicienne biologiste",
+      "categorie": "disc",
+      "disciplines": [
+        "biologie",
+        "chimie-analytique",
+        "biologie-cellulaire-genetique"
+      ],
+      "gestes": [
+        "Préparer les échantillons",
+        "Réaliser les analyses",
+        "Noter les résultats"
+      ],
+      "contexte": "Réalise des analyses biologiques en laboratoire.",
+      "correspondance": "proposition",
+      "onisep": "MET.288",
+      "rome": [
+        "H1210",
+        "H1503"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "sciences/biologie",
+        "environnement, énergies, propreté/déchets, pollutions et risques",
+        "santé, social, sport/santé (généralités)"
+      ],
+      "synonymes": [
+        "technicien/ne de laboratoire",
+        "technicien biologiste",
+        "technicienne biologiste"
+      ]
+    },
+    {
+      "id": "operateur-de-raffinerie",
+      "nom": "Opérateur, opératrice de raffinerie",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-analytique",
+        "mecanique",
+        "energetique"
+      ],
+      "gestes": [
+        "Surveiller les installations",
+        "Ajuster les réglages",
+        "Faire des prélèvements"
+      ],
+      "contexte": "Fait fonctionner les installations qui transforment le pétrole.",
+      "correspondance": "proposition",
+      "onisep": "MET.305",
+      "rome": [
+        "H2701"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "sciences/chimie",
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "opérateur de raffinerie",
+        "opératrice de raffinerie"
+      ]
+    },
+    {
+      "id": "animalier-de-laboratoire",
+      "nom": "Animalier, animalière de laboratoire",
+      "categorie": "disc",
+      "disciplines": [
+        "biologie",
+        "physiologie-humaine",
+        "environnement"
+      ],
+      "gestes": [
+        "Soigner les animaux",
+        "Veiller à leur bien-être",
+        "Respecter les règles éthiques"
+      ],
+      "contexte": "Prend soin des animaux utilisés en recherche, dans le respect de règles strictes.",
+      "correspondance": "proposition",
+      "onisep": "MET.320",
+      "rome": [
+        "A1408"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "sciences/biologie",
+        "agriculture, animaux/soins aux animaux"
+      ],
+      "synonymes": [
+        "technicien/ne animalier/ère de laboratoire",
+        "animalier de laboratoire",
+        "animalière de laboratoire"
+      ]
+    },
+    {
+      "id": "consultant-saas",
+      "nom": "Consultant, consultante SaaS (logiciel à la demande)",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Analyser les besoins",
+        "Paramétrer le logiciel en ligne",
+        "Former les utilisateurs"
+      ],
+      "contexte": "Installe et adapte des logiciels en ligne pour les entreprises.",
+      "correspondance": "proposition",
+      "onisep": "MET.328",
+      "rome": [
+        "M1806"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/informatique (généralités)"
+      ],
+      "synonymes": [
+        "consultant SaaS (logiciel à la demande)",
+        "consultante SaaS (logiciel à la demande)"
+      ]
+    },
+    {
+      "id": "geologue-minier",
+      "nom": "Géologue minier, géologue minière",
+      "categorie": "disc",
+      "disciplines": [
+        "geologie",
+        "chimie-analytique",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Rechercher les gisements",
+        "Estimer les réserves",
+        "Suivre l’exploitation"
+      ],
+      "contexte": "Recherche les minerais dans le sous-sol.",
+      "correspondance": "proposition",
+      "onisep": "MET.337",
+      "rome": [
+        "F1105"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "chargé/e de recherche en géologie minière",
+        "ingénieur/e en géologie minière",
+        "géologue minier",
+        "géologue minière"
+      ]
+    },
+    {
+      "id": "consultant-web-analytique",
+      "nom": "Consultant, consultante web analytique",
+      "categorie": "app",
+      "disciplines": [
+        "analyse-statistique",
+        "informatique",
+        "marketing-digital"
+      ],
+      "gestes": [
+        "Mesurer l’audience des sites",
+        "Analyser les parcours",
+        "Recommander des améliorations"
+      ],
+      "contexte": "Analyse comment les internautes utilisent un site.",
+      "correspondance": "proposition",
+      "onisep": "MET.338",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "informatique, Internet/bases de données",
+        "informatique, Internet/développement, programmation, logiciel",
+        "commerce, marketing, vente/marketing, vente",
+        "sciences/mathématiques",
+        "information-communication, audiovisuel/multimédia"
+      ],
+      "synonymes": [
+        "consultant web analytique",
+        "consultante web analytique"
+      ]
+    },
+    {
+      "id": "conseiller-en-genetique",
+      "nom": "Conseiller, conseillère en génétique",
+      "categorie": "health",
+      "disciplines": [
+        "biologie-cellulaire-genetique",
+        "psychologie-sociale",
+        "physiologie-humaine"
+      ],
+      "gestes": [
+        "Expliquer les résultats génétiques",
+        "Accompagner les familles",
+        "Travailler avec les médecins"
+      ],
+      "contexte": "Informe et accompagne les familles concernées par une maladie génétique.",
+      "correspondance": "proposition",
+      "onisep": "MET.341",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/biologie",
+        "santé, social, sport/santé (généralités)"
+      ],
+      "synonymes": [
+        "conseiller en génétique",
+        "conseillère en génétique"
+      ]
+    },
+    {
+      "id": "responsable-de-laboratoire-de-controle-en-chimie",
+      "nom": "Responsable de laboratoire de contrôle en chimie",
+      "categorie": "disc",
+      "disciplines": [
+        "chimie-analytique",
+        "gestion",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Organiser les analyses",
+        "Valider les résultats",
+        "Encadrer l’équipe"
+      ],
+      "contexte": "Dirige un laboratoire qui contrôle la qualité des produits chimiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.355",
+      "rome": [
+        "H1501"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/chimie"
+      ],
+      "synonymes": [
+        "responsable de laboratoire d'analyse industrielle",
+        "responsable de laboratoire de contrôle en chimie"
+      ]
+    },
+    {
+      "id": "physicien-medical",
+      "nom": "Physicien médical, physicienne médicale",
+      "categorie": "health",
+      "disciplines": [
+        "physique",
+        "physiologie-humaine",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Calculer les doses de rayons",
+        "Contrôler les appareils",
+        "Garantir la sécurité des patients"
+      ],
+      "contexte": "Veille à la bonne utilisation des rayonnements à l’hôpital.",
+      "correspondance": "proposition",
+      "onisep": "MET.366",
+      "rome": [
+        "H1206"
+      ],
+      "niveauAcces": "bac+7",
+      "domaines": [
+        "sciences/physique",
+        "santé, social, sport/santé (généralités)"
+      ],
+      "synonymes": [
+        "radiophysicien/ne médical/e",
+        "physicien médical",
+        "physicienne médicale"
+      ]
+    },
+    {
+      "id": "ingenieur-environnement-et-risques-industriels",
+      "nom": "Ingénieur, ingénieure environnement et risques industriels",
+      "categorie": "btp",
+      "disciplines": [
+        "environnement",
+        "chimie-analytique",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Évaluer les risques",
+        "Proposer des mesures de prévention",
+        "Suivre la réglementation"
+      ],
+      "contexte": "Prévient les accidents et la pollution dans l’industrie.",
+      "correspondance": "proposition",
+      "onisep": "MET.368",
+      "rome": [
+        "H1302"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/biologie",
+        "sciences/chimie",
+        "environnement, énergies, propreté/environnement (généralités)",
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "ingénieur/e HSE (hygiène, sécurité, environnement)",
+        "ingénieur/e sécurité, environnement, prévention",
+        "responsable environnement sur site industriel",
+        "ingénieur environnement et risques industriels",
+        "ingénieure environnement et risques industriels"
+      ]
+    },
+    {
+      "id": "pedologue",
+      "nom": "Pédologue",
+      "categorie": "disc",
+      "disciplines": [
+        "geologie",
+        "agronomie-vegetale",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Étudier les sols",
+        "Faire des prélèvements",
+        "Cartographier"
+      ],
+      "contexte": "Étudie les sols et leur fertilité.",
+      "correspondance": "proposition",
+      "onisep": "MET.369",
+      "rome": [
+        "F1105"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "ingénieur/e d'études en pédologie",
+        "ingénieur/e pédologue",
+        "pédologue"
+      ]
+    },
+    {
+      "id": "ecotoxicologue",
+      "nom": "Écotoxicologue",
+      "categorie": "disc",
+      "disciplines": [
+        "chimie-analytique",
+        "biologie",
+        "environnement"
+      ],
+      "gestes": [
+        "Mesurer les polluants",
+        "Étudier leurs effets sur le vivant",
+        "Conseiller les décideurs"
+      ],
+      "contexte": "Étudie les effets des pollutions sur les êtres vivants.",
+      "correspondance": "proposition",
+      "onisep": "MET.372",
+      "rome": [
+        "K2402"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/biologie",
+        "sciences/chimie",
+        "environnement, énergies, propreté/environnement (généralités)"
+      ],
+      "synonymes": [
+        "chercheur/euse en écotoxicologie",
+        "écotoxicologue-chimiste réglementaire",
+        "ingénieur/e en écotoxicologie",
+        "toxicologue",
+        "écotoxicologue"
+      ]
+    },
+    {
+      "id": "oceanologue",
+      "nom": "Océanologue",
+      "categorie": "disc",
+      "disciplines": [
+        "sciences-de-la-terre",
+        "biologie",
+        "physique"
+      ],
+      "gestes": [
+        "Mener des campagnes en mer",
+        "Analyser les données",
+        "Étudier les océans"
+      ],
+      "contexte": "Étudie les océans, leur vie et leur rôle dans le climat.",
+      "correspondance": "proposition",
+      "onisep": "MET.413",
+      "rome": [
+        "K2402"
+      ],
+      "niveauAcces": "bac+8",
+      "domaines": [
+        "sciences/biologie",
+        "environnement, énergies, propreté/environnement (généralités)",
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "chercheur/euse en biologie marine",
+        "océanographe",
+        "océanologue"
+      ]
+    },
+    {
+      "id": "webmestre",
+      "nom": "Webmestre (administrateur de site), webmestre (administratrice de site)",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "design-graphique",
+        "communication"
+      ],
+      "gestes": [
+        "Mettre à jour le site",
+        "Surveiller son fonctionnement",
+        "Améliorer sa visibilité"
+      ],
+      "contexte": "Gère et fait vivre un site Internet.",
+      "correspondance": "proposition",
+      "onisep": "MET.422",
+      "rome": [
+        "E1104"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "informatique, Internet/développement, programmation, logiciel",
+        "information-communication, audiovisuel/multimédia",
+        "informatique, Internet/systèmes et réseaux"
+      ],
+      "synonymes": [
+        "webmaster",
+        "webmestre éditorial/e",
+        "webmestre technique",
+        "webmestre (administrateur de site)",
+        "webmestre (administratrice de site)"
+      ]
+    },
+    {
+      "id": "botaniste",
+      "nom": "Botaniste",
+      "categorie": "disc",
+      "disciplines": [
+        "biologie",
+        "agronomie-vegetale",
+        "environnement"
+      ],
+      "gestes": [
+        "Observer et identifier les plantes",
+        "Constituer des herbiers",
+        "Étudier leur évolution"
+      ],
+      "contexte": "Étudie les plantes.",
+      "correspondance": "proposition",
+      "onisep": "MET.424",
+      "rome": [
+        "K2402"
+      ],
+      "niveauAcces": "bac+8",
+      "domaines": [
+        "sciences/biologie",
+        "environnement, énergies, propreté/environnement (généralités)"
+      ],
+      "synonymes": [
+        "chercheur/euse en botanique",
+        "botaniste"
+      ]
+    },
+    {
+      "id": "parfumeur",
+      "nom": "Parfumeur, parfumeuse",
+      "categorie": "craft",
+      "disciplines": [
+        "chimie-analytique",
+        "arts-plastiques",
+        "biologie"
+      ],
+      "gestes": [
+        "Sentir et mémoriser les odeurs",
+        "Composer le parfum",
+        "Ajuster la formule"
+      ],
+      "contexte": "Crée des parfums en assemblant des senteurs.",
+      "correspondance": "proposition",
+      "onisep": "MET.440",
+      "rome": [
+        "H1505"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "sciences/chimie"
+      ],
+      "synonymes": [
+        "aromaticien/ne",
+        "créateur/trice parfumeur/euse",
+        "nez",
+        "parfumeur",
+        "parfumeuse"
+      ]
+    },
+    {
+      "id": "expert-en-securite-informatique",
+      "nom": "Expert, experte en sécurité informatique",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "reseaux",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Analyser les risques",
+        "Mettre en place les protections",
+        "Réagir aux attaques"
+      ],
+      "contexte": "Protège les systèmes informatiques contre les attaques.",
+      "correspondance": "proposition",
+      "onisep": "MET.459",
+      "rome": [
+        "M1802"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/systèmes et réseaux"
+      ],
+      "synonymes": [
+        "analyste en cybersécurité",
+        "expert/e en cybersécurité",
+        "expert/e en sécurité des systèmes d'information",
+        "ingénieur/e en cybersécurité",
+        "responsable sécurité informatique",
+        "expert en sécurité informatique",
+        "experte en sécurité informatique"
+      ]
+    },
+    {
+      "id": "econometre-statisticien",
+      "nom": "Économètre statisticien, économètre statisticienne",
+      "categorie": "disc",
+      "disciplines": [
+        "analyse-statistique",
+        "economie-et-societe",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Construire des modèles",
+        "Analyser des données économiques",
+        "Faire des prévisions"
+      ],
+      "contexte": "Utilise les statistiques pour comprendre et prévoir l’économie.",
+      "correspondance": "proposition",
+      "onisep": "MET.468",
+      "rome": [
+        "M1403"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/mathématiques",
+        "économie, droit, politique/sciences économiques"
+      ],
+      "synonymes": [
+        "économétricien/ne",
+        "économiste statisticien/ne",
+        "spécialiste en économétrie",
+        "statisticien/ne en économie",
+        "économètre statisticien",
+        "économètre statisticienne"
+      ]
+    },
+    {
+      "id": "geochimiste",
+      "nom": "Géochimiste",
+      "categorie": "disc",
+      "disciplines": [
+        "geologie",
+        "chimie-analytique",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Prélever roches et eaux",
+        "Analyser leur composition",
+        "Interpréter les résultats"
+      ],
+      "contexte": "Étudie la composition chimique des roches et des eaux.",
+      "correspondance": "proposition",
+      "onisep": "MET.475",
+      "rome": [
+        "F1105"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/chimie",
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "géochimiste"
+      ]
+    },
+    {
+      "id": "architecte-des-systemes-d-information",
+      "nom": "Architecte des systèmes d'information",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "reseaux",
+        "gestion"
+      ],
+      "gestes": [
+        "Concevoir l’architecture",
+        "Choisir les technologies",
+        "Veiller à la cohérence"
+      ],
+      "contexte": "Organise l’ensemble des outils informatiques d’une entreprise.",
+      "correspondance": "proposition",
+      "onisep": "MET.478",
+      "rome": [
+        "M1806"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/systèmes et réseaux"
+      ],
+      "synonymes": [
+        "architecte SI",
+        "urbaniste du système d'information",
+        "architecte des systèmes d'information"
+      ]
+    },
+    {
+      "id": "responsable-de-plateforme-biotechnologique",
+      "nom": "Responsable de plateforme biotechnologique",
+      "categorie": "disc",
+      "disciplines": [
+        "biologie-cellulaire-genetique",
+        "biologie",
+        "gestion"
+      ],
+      "gestes": [
+        "Gérer les équipements",
+        "Organiser les expériences",
+        "Former les utilisateurs"
+      ],
+      "contexte": "Dirige une plateforme d’équipements de pointe en biologie.",
+      "correspondance": "proposition",
+      "onisep": "MET.486",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/biologie"
+      ],
+      "synonymes": [
+        "ingénieur/e biologiste en plateforme scientifique",
+        "responsable de plateforme biotechnologique"
+      ]
+    },
+    {
+      "id": "responsable-biometrie",
+      "nom": "Responsable biométrie",
+      "categorie": "disc",
+      "disciplines": [
+        "analyse-statistique",
+        "biologie",
+        "gestion"
+      ],
+      "gestes": [
+        "Concevoir les plans d’étude",
+        "Analyser les données",
+        "Encadrer les statisticiens"
+      ],
+      "contexte": "Dirige l’analyse statistique des études de santé.",
+      "correspondance": "proposition",
+      "onisep": "MET.487",
+      "rome": [
+        "M1802"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/biologie",
+        "sciences/mathématiques"
+      ],
+      "synonymes": [
+        "directeur/trice biométrie",
+        "head of biometry",
+        "responsable biostatistique et data-management",
+        "responsable gestion de bases de données",
+        "statistician manager",
+        "responsable biométrie"
+      ]
+    },
+    {
+      "id": "chef-de-projet-web-mobile",
+      "nom": "Chef, cheffe de projet web-mobile",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "gestion",
+        "design-graphique"
+      ],
+      "gestes": [
+        "Définir le projet",
+        "Coordonner les développeurs",
+        "Suivre la mise en ligne"
+      ],
+      "contexte": "Pilote la création de sites et d’applications mobiles.",
+      "correspondance": "proposition",
+      "onisep": "MET.490",
+      "rome": [
+        "M1805"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/développement, programmation, logiciel",
+        "information-communication, audiovisuel/multimédia"
+      ],
+      "synonymes": [
+        "responsable de projet Internet mobile",
+        "chef de projet web-mobile",
+        "cheffe de projet web-mobile"
+      ]
+    },
+    {
+      "id": "ingenieur-procedes-en-chimie",
+      "nom": "Ingénieur, ingénieure procédés en chimie",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-analytique",
+        "chimie-des-materiaux",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Concevoir le procédé",
+        "Optimiser la production",
+        "Garantir la sécurité"
+      ],
+      "contexte": "Met au point la fabrication des produits chimiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.502",
+      "rome": [
+        "H2502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/chimie",
+        "matières premières, fabrication, industries/fabrication, productique",
+        "matières premières, fabrication, industries/matériaux",
+        "matières premières, fabrication, industries/méthodes industrialisation"
+      ],
+      "synonymes": [
+        "concepteur/trice en génie des procédés chimiques",
+        "ingénieur/e génie des procédés",
+        "ingénieur/e industrialisation",
+        "ingénieur/e procédés de fabrication",
+        "ingénieur/e process méthodes",
+        "ingénieur procédés en chimie",
+        "ingénieure procédés en chimie"
+      ]
+    },
+    {
+      "id": "coloriste",
+      "nom": "Coloriste (papier-carton)",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-analytique",
+        "optique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Analyser la couleur demandée",
+        "Préparer la formule",
+        "Contrôler la teinte"
+      ],
+      "contexte": "Met au point les couleurs des papiers et cartons.",
+      "correspondance": "proposition",
+      "onisep": "MET.507",
+      "niveauAcces": "bac",
+      "domaines": [
+        "sciences/chimie",
+        "matières premières, fabrication, industries/papier, carton"
+      ],
+      "synonymes": [
+        "coloriste industriel/le",
+        "technicien/ne coloriste",
+        "coloriste (papier-carton)"
+      ]
+    },
+    {
+      "id": "data-scientist",
+      "nom": "Data scientist (expert en mégadonnées), data scientist (experte en mégadonnées)",
+      "categorie": "app",
+      "disciplines": [
+        "analyse-statistique",
+        "informatique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Collecter et nettoyer les données",
+        "Construire des modèles",
+        "Présenter les résultats"
+      ],
+      "contexte": "Fait parler de grandes quantités de données.",
+      "correspondance": "proposition",
+      "onisep": "MET.512",
+      "rome": [
+        "M1403"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/informatique (généralités)",
+        "sciences/mathématiques"
+      ],
+      "synonymes": [
+        "ingénieur/e big data (mégadonnées)",
+        "ingénieur/e data scientist (expert/e en mégadonnées)",
+        "data scientist (expert en mégadonnées)",
+        "data scientist (experte en mégadonnées)"
+      ]
+    },
+    {
+      "id": "architecte-reseaux",
+      "nom": "Architecte réseaux",
+      "categorie": "app",
+      "disciplines": [
+        "reseaux",
+        "informatique",
+        "electricite-electronique"
+      ],
+      "gestes": [
+        "Concevoir le réseau",
+        "Choisir les équipements",
+        "Garantir la sécurité"
+      ],
+      "contexte": "Conçoit les réseaux informatiques des organisations.",
+      "correspondance": "proposition",
+      "onisep": "MET.551",
+      "rome": [
+        "M1802"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/systèmes et réseaux",
+        "électricité, électronique, robotique/télécommunications"
+      ],
+      "synonymes": [
+        "architecte réseaux de télécoms",
+        "architecte réseaux"
+      ]
+    },
+    {
+      "id": "technicien-de-maintenance-en-informatique",
+      "nom": "Technicien, technicienne de maintenance en informatique",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "electricite-electronique",
+        "reseaux"
+      ],
+      "gestes": [
+        "Diagnostiquer la panne",
+        "Remplacer les composants",
+        "Installer les logiciels"
+      ],
+      "contexte": "Répare et entretient ordinateurs et réseaux.",
+      "correspondance": "proposition",
+      "onisep": "MET.554",
+      "rome": [
+        "I1401"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "informatique, Internet/informatique (généralités)",
+        "matières premières, fabrication, industries/maintenance, qualité",
+        "informatique, Internet/systèmes et réseaux"
+      ],
+      "synonymes": [
+        "assistant/e technique clientèle",
+        "assistant/e utilisateur/trice",
+        "technicien/ne de maintenance en micro-informatique",
+        "technicien/ne support utilisateur",
+        "technicien de maintenance en informatique",
+        "technicienne de maintenance en informatique"
+      ]
+    },
+    {
+      "id": "chercheur-en-chimie",
+      "nom": "Chercheur, chercheuse en chimie",
+      "categorie": "disc",
+      "disciplines": [
+        "chimie-analytique",
+        "chimie-des-materiaux",
+        "physique"
+      ],
+      "gestes": [
+        "Concevoir des expériences",
+        "Synthétiser des molécules",
+        "Publier les résultats"
+      ],
+      "contexte": "Invente de nouvelles molécules et de nouveaux matériaux.",
+      "correspondance": "proposition",
+      "onisep": "MET.590",
+      "rome": [
+        "K2402"
+      ],
+      "niveauAcces": "bac+8",
+      "domaines": [
+        "sciences/chimie",
+        "matières premières, fabrication, industries/matériaux",
+        "santé, social, sport/médical",
+        "matières premières, fabrication, industries/plasturgie"
+      ],
+      "synonymes": [
+        "chargé/e de recherche en chimie",
+        "chimiste",
+        "enseignant/e-chercheur/euse en chimie",
+        "chercheur en chimie",
+        "chercheuse en chimie"
+      ]
+    },
+    {
+      "id": "ingenieur-de-la-police-technique-et-scientifique",
+      "nom": "Ingénieur, ingénieure de la police technique et scientifique",
+      "categorie": "services",
+      "disciplines": [
+        "chimie-analytique",
+        "biologie-cellulaire-genetique",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Analyser les traces",
+        "Diriger le laboratoire",
+        "Rédiger les rapports"
+      ],
+      "contexte": "Analyse les indices pour aider les enquêtes.",
+      "correspondance": "proposition",
+      "onisep": "MET.598",
+      "rome": [
+        "K2402"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/biologie",
+        "sciences/chimie",
+        "informatique, Internet/informatique (généralités)",
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "ingénieur/e de la PTS",
+        "ingénieur de la police technique et scientifique",
+        "ingénieure de la police technique et scientifique"
+      ]
+    },
+    {
+      "id": "architecte-produit-industriel",
+      "nom": "Architecte produit industriel",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "gestion"
+      ],
+      "gestes": [
+        "Définir l’architecture du produit",
+        "Coordonner les équipes",
+        "Arbitrer les choix techniques"
+      ],
+      "contexte": "Organise la conception d’un produit industriel complexe.",
+      "correspondance": "proposition",
+      "onisep": "MET.611",
+      "rome": [
+        "H1206"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/informatique (généralités)",
+        "sciences/mathématiques",
+        "électricité, électronique, robotique/télécommunications"
+      ],
+      "synonymes": [
+        "architecte produit industriel"
+      ]
+    },
+    {
+      "id": "data-manager",
+      "nom": "Data manager (gestionnaire des données)",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "analyse-statistique",
+        "gestion"
+      ],
+      "gestes": [
+        "Organiser les données",
+        "Vérifier leur qualité",
+        "Mettre en place les règles"
+      ],
+      "contexte": "Veille à la qualité et à l’organisation des données d’une entreprise.",
+      "correspondance": "proposition",
+      "onisep": "MET.613",
+      "rome": [
+        "M1802"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "informatique, Internet/informatique (généralités)",
+        "sciences/mathématiques"
+      ],
+      "synonymes": [
+        "data manager (gestionnaire des données)"
+      ]
+    },
+    {
+      "id": "charge-des-methodes-outils-et-qualite-en-informatique",
+      "nom": "Chargé, chargée des méthodes outils et qualité en informatique",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "gestion",
+        "logique-mathematique"
+      ],
+      "gestes": [
+        "Définir les méthodes",
+        "Choisir les outils",
+        "Contrôler la qualité"
+      ],
+      "contexte": "Améliore la façon dont les équipes informatiques travaillent.",
+      "correspondance": "proposition",
+      "onisep": "MET.618",
+      "rome": [
+        "M1802"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/informatique (généralités)",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "ingénieur/e méthodes outils et qualité en informatique",
+        "chargé des méthodes outils et qualité en informatique",
+        "chargée des méthodes outils et qualité en informatique"
+      ]
+    },
+    {
+      "id": "consultant-informatique",
+      "nom": "Consultant, consultante informatique",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Analyser les besoins",
+        "Proposer des solutions",
+        "Accompagner la mise en œuvre"
+      ],
+      "contexte": "Conseille les entreprises sur leurs projets informatiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.622",
+      "rome": [
+        "M1806"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/informatique (généralités)"
+      ],
+      "synonymes": [
+        "consultant/e IT",
+        "consultant informatique",
+        "consultante informatique"
+      ]
+    },
+    {
+      "id": "specialiste-de-l-accessibilite-numerique",
+      "nom": "Spécialiste de l'accessibilité numérique",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "design-graphique",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Auditer un site",
+        "Proposer des corrections",
+        "Former les équipes"
+      ],
+      "contexte": "Rend les sites et applications utilisables par tous, y compris les personnes handicapées.",
+      "correspondance": "proposition",
+      "onisep": "MET.623",
+      "rome": [
+        "M1806"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/développement, programmation, logiciel",
+        "informatique, Internet/informatique (généralités)",
+        "histoire-géographie, psychologie, sociologie/psychologie"
+      ],
+      "synonymes": [
+        "consultant/e en accessibilité numérique",
+        "expert/e accessibilité numérique",
+        "spécialiste de l'accessibilité numérique"
+      ]
+    },
+    {
+      "id": "consultant-en-conduite-de-changement",
+      "nom": "Consultant, consultante en conduite de changement",
+      "categorie": "trade",
+      "disciplines": [
+        "psychologie-sociale",
+        "communication",
+        "gestion"
+      ],
+      "gestes": [
+        "Analyser l’impact du changement",
+        "Préparer la communication",
+        "Accompagner les équipes"
+      ],
+      "contexte": "Aide les salariés à adopter de nouvelles organisations ou de nouveaux outils.",
+      "correspondance": "proposition",
+      "onisep": "MET.624",
+      "rome": [
+        "M1402"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/biologie",
+        "sciences/chimie",
+        "informatique, Internet/informatique (généralités)",
+        "gestion des entreprises, comptabilité/ressources humaines",
+        "économie, droit, politique/sciences économiques"
+      ],
+      "synonymes": [
+        "conseiller/ère en organisation",
+        "consultant/e en accompagnement du changement",
+        "consultant/e en organisation",
+        "ingénieur/e conduite du changement",
+        "ingénieur/e en organisation",
+        "consultant en conduite de changement",
+        "consultante en conduite de changement"
+      ]
+    },
+    {
+      "id": "statisticien-industriel",
+      "nom": "Statisticien industriel, statisticienne industrielle",
+      "categorie": "btp",
+      "disciplines": [
+        "analyse-statistique",
+        "mathematiques-appliquees",
+        "gestion"
+      ],
+      "gestes": [
+        "Analyser les données de production",
+        "Repérer les dérives",
+        "Améliorer la qualité"
+      ],
+      "contexte": "Utilise les statistiques pour améliorer la production.",
+      "correspondance": "proposition",
+      "onisep": "MET.627",
+      "rome": [
+        "M1403"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/mathématiques"
+      ],
+      "synonymes": [
+        "ingénieur/e d'études statistiques",
+        "statisticien industriel",
+        "statisticienne industrielle"
+      ]
+    },
+    {
+      "id": "responsable-de-fabrication-en-chimie",
+      "nom": "Responsable de fabrication en chimie",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-analytique",
+        "gestion",
+        "chimie-des-materiaux"
+      ],
+      "gestes": [
+        "Planifier la production",
+        "Encadrer les équipes",
+        "Garantir la sécurité"
+      ],
+      "contexte": "Dirige la fabrication dans une usine chimique.",
+      "correspondance": "proposition",
+      "onisep": "MET.628",
+      "rome": [
+        "H1206"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/chimie"
+      ],
+      "synonymes": [
+        "chef/fe d'atelier",
+        "responsable d'atelier de production",
+        "responsable d'un secteur de production (pharmacie)",
+        "responsable de fabrication en chimie"
+      ]
+    },
+    {
+      "id": "ingenieur-de-recherche",
+      "nom": "Ingénieur, ingénieure de recherche (papiers-cartons)",
+      "categorie": "disc",
+      "disciplines": [
+        "chimie-des-materiaux",
+        "science-des-materiaux",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Concevoir des essais",
+        "Tester de nouveaux procédés",
+        "Rédiger les résultats"
+      ],
+      "contexte": "Invente de nouveaux papiers et cartons.",
+      "correspondance": "proposition",
+      "onisep": "MET.638",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/chimie",
+        "matières premières, fabrication, industries/papier, carton"
+      ],
+      "synonymes": [
+        "chercheur/se (papiers-cartons)",
+        "ingénieur/e en recherche et développement (papiers-cartons)",
+        "ingénieur/e modélisation (papiers-cartons)",
+        "ingénieur/re conception (papiers-cartons)",
+        "ingénieur de recherche (papiers-cartons)",
+        "ingénieure de recherche (papiers-cartons)"
+      ]
+    },
+    {
+      "id": "administrateur-de-reseaux",
+      "nom": "Administrateur, administratrice de réseaux",
+      "categorie": "app",
+      "disciplines": [
+        "reseaux",
+        "informatique",
+        "electricite-electronique"
+      ],
+      "gestes": [
+        "Installer et configurer",
+        "Surveiller le réseau",
+        "Assurer la sécurité"
+      ],
+      "contexte": "Fait fonctionner le réseau informatique d’une organisation.",
+      "correspondance": "proposition",
+      "onisep": "MET.665",
+      "rome": [
+        "M1801"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "informatique, Internet/systèmes et réseaux",
+        "électricité, électronique, robotique/télécommunications"
+      ],
+      "synonymes": [
+        "gestionnaire réseaux",
+        "manager/euse réseaux",
+        "network administrator",
+        "responsable réseaux",
+        "administrateur de réseaux",
+        "administratrice de réseaux"
+      ]
+    },
+    {
+      "id": "charge-d-etudes-economiques",
+      "nom": "Chargé, chargée d'études économiques",
+      "categorie": "trade",
+      "disciplines": [
+        "economie-et-societe",
+        "analyse-statistique",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Collecter les données",
+        "Analyser les tendances",
+        "Rédiger des notes"
+      ],
+      "contexte": "Analyse la situation économique pour éclairer les décisions.",
+      "correspondance": "proposition",
+      "onisep": "MET.667",
+      "rome": [
+        "M1403"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/mathématiques",
+        "économie, droit, politique/sciences économiques"
+      ],
+      "synonymes": [
+        "économiste d'entreprise",
+        "chargé d'études économiques",
+        "chargée d'études économiques"
+      ]
+    },
+    {
+      "id": "ingenieur-papetier",
+      "nom": "Ingénieur papetier, ingénieure papetière",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-des-materiaux",
+        "mecanique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Concevoir les procédés",
+        "Optimiser la production",
+        "Développer de nouveaux papiers"
+      ],
+      "contexte": "Organise la fabrication du papier.",
+      "correspondance": "proposition",
+      "onisep": "MET.675",
+      "rome": [
+        "H1206"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/chimie",
+        "matières premières, fabrication, industries/papier, carton"
+      ],
+      "synonymes": [
+        "ingénieur papetier",
+        "ingénieure papetière"
+      ]
+    },
+    {
+      "id": "chercheur-en-biologie",
+      "nom": "Chercheur, chercheuse en biologie",
+      "categorie": "disc",
+      "disciplines": [
+        "biologie",
+        "biologie-cellulaire-genetique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Formuler une question",
+        "Mener des expériences",
+        "Publier les résultats"
+      ],
+      "contexte": "Étudie le fonctionnement du vivant.",
+      "correspondance": "proposition",
+      "onisep": "MET.699",
+      "rome": [
+        "K2402"
+      ],
+      "niveauAcces": "bac+8",
+      "domaines": [
+        "sciences/biologie"
+      ],
+      "synonymes": [
+        "biologiste",
+        "enseignant/e-chercheur/euse",
+        "chercheur en biologie",
+        "chercheuse en biologie"
+      ]
+    },
+    {
+      "id": "gestionnaire-de-donnees-cliniques",
+      "nom": "Gestionnaire de données cliniques",
+      "categorie": "health",
+      "disciplines": [
+        "analyse-statistique",
+        "informatique",
+        "physiologie-humaine"
+      ],
+      "gestes": [
+        "Préparer les bases de données",
+        "Vérifier les données",
+        "Préparer l’analyse"
+      ],
+      "contexte": "Gère les données recueillies pendant les essais de médicaments.",
+      "correspondance": "proposition",
+      "onisep": "MET.700",
+      "rome": [
+        "M1802"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/biologie",
+        "informatique, Internet/informatique (généralités)",
+        "sciences/mathématiques"
+      ],
+      "synonymes": [
+        "data manager (gestionnaire des données) en recherche clinique",
+        "data manager (gestionnaire des données) santé",
+        "gestionnaire de données biomédicales",
+        "gestionnaire de données cliniques"
+      ]
+    },
+    {
+      "id": "microbiologiste",
+      "nom": "Microbiologiste",
+      "categorie": "disc",
+      "disciplines": [
+        "biologie",
+        "biologie-cellulaire-genetique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Cultiver les microbes",
+        "Les identifier",
+        "Étudier leurs effets"
+      ],
+      "contexte": "Étudie les bactéries, virus et champignons microscopiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.701",
+      "rome": [
+        "K2402"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/biologie",
+        "environnement, énergies, propreté/environnement (généralités)"
+      ],
+      "synonymes": [
+        "chercheur/euse en microbiologie",
+        "enseignant/e-chercheur/euse en microbiologie",
+        "ingénieur/e de recherche en microbiologie",
+        "microbiologiste"
+      ]
+    },
+    {
+      "id": "histologiste",
+      "nom": "Histologiste",
+      "categorie": "disc",
+      "disciplines": [
+        "biologie",
+        "optique",
+        "physiologie-humaine"
+      ],
+      "gestes": [
+        "Préparer les tissus",
+        "Les observer au microscope",
+        "Interpréter les images"
+      ],
+      "contexte": "Étudie les tissus des êtres vivants au microscope.",
+      "correspondance": "proposition",
+      "onisep": "MET.702",
+      "rome": [
+        "J1201"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/biologie"
+      ],
+      "synonymes": [
+        "chercheur/euse en histologie",
+        "enseignant/e-chercheur/euse en histologie",
+        "ingénieur/e de recherche en histologie",
+        "histologiste"
+      ]
+    },
+    {
+      "id": "ingenieur-logiciel",
+      "nom": "Ingénieur, ingénieure logiciel",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "logique-mathematique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Concevoir le logiciel",
+        "Programmer et tester",
+        "Faire évoluer le code"
+      ],
+      "contexte": "Conçoit et développe des logiciels.",
+      "correspondance": "proposition",
+      "onisep": "MET.707",
+      "rome": [
+        "M1805"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/développement, programmation, logiciel"
+      ],
+      "synonymes": [
+        "ingénieur/e développement logiciel",
+        "ingénieur/e en génie logiciel",
+        "ingénieur/e études et développement",
+        "ingénieur logiciel",
+        "ingénieure logiciel"
+      ]
+    },
+    {
+      "id": "geotechnicien",
+      "nom": "Géotechnicien, géotechnicienne",
+      "categorie": "btp",
+      "disciplines": [
+        "geologie",
+        "science-des-materiaux",
+        "physique"
+      ],
+      "gestes": [
+        "Étudier le sol",
+        "Réaliser des sondages",
+        "Conseiller pour les fondations"
+      ],
+      "contexte": "Étudie les sols avant la construction des bâtiments.",
+      "correspondance": "proposition",
+      "onisep": "MET.709",
+      "rome": [
+        "F1105"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "ingénieur/e en géotechnique",
+        "ingénieur/e géotechnicien/ne",
+        "géotechnicien",
+        "géotechnicienne"
+      ]
+    },
+    {
+      "id": "bacteriologiste",
+      "nom": "Bactériologiste",
+      "categorie": "disc",
+      "disciplines": [
+        "biologie",
+        "biologie-cellulaire-genetique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Cultiver les bactéries",
+        "Les identifier",
+        "Tester les antibiotiques"
+      ],
+      "contexte": "Étudie les bactéries.",
+      "correspondance": "proposition",
+      "onisep": "MET.716",
+      "rome": [
+        "K2402"
+      ],
+      "niveauAcces": "bac+8",
+      "domaines": [
+        "sciences/biologie",
+        "environnement, énergies, propreté/environnement (généralités)"
+      ],
+      "synonymes": [
+        "chercheur/euse en bactériologie",
+        "enseignant/e-chercheur/euse en bactériologie",
+        "ingénieur/e de recherche en bactériologie",
+        "bactériologiste"
+      ]
+    },
+    {
+      "id": "administrateur-de-logiciels-de-laboratoire",
+      "nom": "Administrateur, administratrice de logiciels de laboratoire",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "chimie-analytique",
+        "gestion"
+      ],
+      "gestes": [
+        "Installer les logiciels",
+        "Former les utilisateurs",
+        "Assurer la maintenance"
+      ],
+      "contexte": "Gère les logiciels des laboratoires d’analyse.",
+      "correspondance": "proposition",
+      "onisep": "MET.717",
+      "rome": [
+        "M1810"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "informatique, Internet/informatique (généralités)",
+        "matières premières, fabrication, industries/maintenance, qualité",
+        "informatique, Internet/systèmes et réseaux"
+      ],
+      "synonymes": [
+        "administrateur de logiciels de laboratoire",
+        "administratrice de logiciels de laboratoire"
+      ]
+    },
+    {
+      "id": "architecte-web",
+      "nom": "Architecte web",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "reseaux",
+        "logique-mathematique"
+      ],
+      "gestes": [
+        "Concevoir la structure du site",
+        "Choisir les technologies",
+        "Garantir les performances"
+      ],
+      "contexte": "Conçoit l’organisation technique des sites web.",
+      "correspondance": "proposition",
+      "onisep": "MET.718",
+      "rome": [
+        "M1802",
+        "M1805"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/développement, programmation, logiciel",
+        "information-communication, audiovisuel/multimédia"
+      ],
+      "synonymes": [
+        "architecte J2EE (Java 2 Enterprise et Edition)",
+        "architecte solution web",
+        "architecte web"
+      ]
+    },
+    {
+      "id": "cryptologue",
+      "nom": "Cryptologue",
+      "categorie": "app",
+      "disciplines": [
+        "mathematiques-appliquees",
+        "logique-mathematique",
+        "informatique"
+      ],
+      "gestes": [
+        "Concevoir des codes secrets",
+        "Analyser leur solidité",
+        "Protéger les communications"
+      ],
+      "contexte": "Protège les informations grâce aux mathématiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.720",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/systèmes et réseaux"
+      ],
+      "synonymes": [
+        "cryptanalyste",
+        "cryptographe",
+        "déchiffreur/euse",
+        "ingénieur/e cryptologue",
+        "cryptologue"
+      ]
+    },
+    {
+      "id": "ingenieur-support",
+      "nom": "Ingénieur, ingénieure support",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "communication",
+        "logique-mathematique"
+      ],
+      "gestes": [
+        "Analyser les problèmes signalés",
+        "Trouver une solution",
+        "Former les clients"
+      ],
+      "contexte": "Aide les clients à résoudre les problèmes techniques.",
+      "correspondance": "proposition",
+      "onisep": "MET.727",
+      "rome": [
+        "H1101",
+        "I1401"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/informatique (généralités)",
+        "matières premières, fabrication, industries/maintenance, qualité",
+        "informatique, Internet/systèmes et réseaux",
+        "électricité, électronique, robotique/télécommunications"
+      ],
+      "synonymes": [
+        "ingénieur/e support applicatif",
+        "ingénieur/e support technique",
+        "ingénieur support",
+        "ingénieure support"
+      ]
+    },
+    {
+      "id": "specialiste-des-affaires-reglementaires-en-chimie",
+      "nom": "Spécialiste des affaires réglementaires en chimie",
+      "categorie": "disc",
+      "disciplines": [
+        "chimie-analytique",
+        "droit-et-institutions",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Suivre la réglementation",
+        "Préparer les dossiers",
+        "Conseiller les équipes"
+      ],
+      "contexte": "Veille à ce que les produits chimiques respectent les règles.",
+      "correspondance": "proposition",
+      "onisep": "MET.736",
+      "rome": [
+        "H1502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/biologie",
+        "sciences/chimie",
+        "économie, droit, politique/droit (généralités)"
+      ],
+      "synonymes": [
+        "chargé/e d'affaires réglementaires",
+        "ingénieur/e homologation",
+        "ingénieur/e normalisation",
+        "ingénieur/e réglementation",
+        "responsable des enregistrements",
+        "spécialiste des affaires réglementaires en chimie"
+      ]
+    },
+    {
+      "id": "ingenieur-chimiste-en-developpement-analytique",
+      "nom": "Ingénieur, ingénieure chimiste en développement analytique",
+      "categorie": "disc",
+      "disciplines": [
+        "chimie-analytique",
+        "analyse-statistique",
+        "physique"
+      ],
+      "gestes": [
+        "Mettre au point des méthodes d’analyse",
+        "Les valider",
+        "Former les techniciens"
+      ],
+      "contexte": "Invente des méthodes pour analyser les produits.",
+      "correspondance": "proposition",
+      "onisep": "MET.738",
+      "rome": [
+        "H2502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/chimie"
+      ],
+      "synonymes": [
+        "ingénieur/e de laboratoire",
+        "ingénieur/e de recherche en analyse chimique",
+        "ingénieur chimiste en développement analytique",
+        "ingénieure chimiste en développement analytique"
+      ]
+    },
+    {
+      "id": "responsable-des-ouvrages-hydroelectriques",
+      "nom": "Responsable des ouvrages hydroélectriques",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "sciences-de-la-terre",
+        "mecanique"
+      ],
+      "gestes": [
+        "Surveiller les barrages",
+        "Planifier la maintenance",
+        "Garantir la sécurité"
+      ],
+      "contexte": "Gère les barrages et centrales qui produisent de l’électricité avec l’eau.",
+      "correspondance": "proposition",
+      "onisep": "MET.739",
+      "rome": [
+        "H2502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/physique"
+      ],
+      "synonymes": [
+        "responsable d'exploitation des sites hydrauliques",
+        "responsable des ouvrages hydroélectriques"
+      ]
+    },
+    {
+      "id": "geophysicien",
+      "nom": "Géophysicien, géophysicienne",
+      "categorie": "disc",
+      "disciplines": [
+        "physique",
+        "geologie",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Mesurer les propriétés du sous-sol",
+        "Traiter les données",
+        "Interpréter les résultats"
+      ],
+      "contexte": "Étudie l’intérieur de la Terre avec des méthodes physiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.773",
+      "rome": [
+        "F1105"
+      ],
+      "niveauAcces": "bac+8",
+      "domaines": [
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "géophysicien",
+        "géophysicienne"
+      ]
+    },
+    {
+      "id": "hotliner",
+      "nom": "Hotliner (téléassistant en informatique), hotlineuse (téléassistante en informatique)",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "communication",
+        "logique-mathematique"
+      ],
+      "gestes": [
+        "Répondre aux appels",
+        "Diagnostiquer à distance",
+        "Guider l’utilisateur"
+      ],
+      "contexte": "Aide par téléphone les utilisateurs en difficulté avec l’informatique.",
+      "correspondance": "proposition",
+      "onisep": "MET.799",
+      "rome": [
+        "I1401"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "informatique, Internet/informatique (généralités)",
+        "matières premières, fabrication, industries/maintenance, qualité",
+        "informatique, Internet/systèmes et réseaux"
+      ],
+      "synonymes": [
+        "chargé/e de support client",
+        "téléconseiller/ère",
+        "hotliner (téléassistant en informatique)",
+        "hotlineuse (téléassistante en informatique)"
+      ]
+    },
+    {
+      "id": "chercheur-en-physique",
+      "nom": "Chercheur, chercheuse en physique",
+      "categorie": "disc",
+      "disciplines": [
+        "physique",
+        "mathematiques-appliquees",
+        "optique"
+      ],
+      "gestes": [
+        "Formuler une hypothèse",
+        "Mener des expériences ou des calculs",
+        "Publier les résultats"
+      ],
+      "contexte": "Étudie la matière, l’énergie et l’univers.",
+      "correspondance": "proposition",
+      "onisep": "MET.800",
+      "rome": [
+        "K2402"
+      ],
+      "niveauAcces": "bac+8",
+      "domaines": [
+        "sciences/physique"
+      ],
+      "synonymes": [
+        "physicien/ne",
+        "chercheur en physique",
+        "chercheuse en physique"
+      ]
+    },
+    {
+      "id": "biologiste-medical",
+      "nom": "Biologiste médical, biologiste médicale",
+      "categorie": "health",
+      "disciplines": [
+        "biologie",
+        "physiologie-humaine",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Superviser les analyses",
+        "Interpréter les résultats",
+        "Conseiller les médecins"
+      ],
+      "contexte": "Dirige un laboratoire d’analyses médicales.",
+      "correspondance": "proposition",
+      "onisep": "MET.812",
+      "rome": [
+        "J1201"
+      ],
+      "niveauAcces": "bac+9",
+      "domaines": [
+        "sciences/biologie",
+        "santé, social, sport/médical"
+      ],
+      "synonymes": [
+        "pharmacien/ne biologiste médical/e",
+        "biologiste médical",
+        "biologiste médicale"
+      ]
+    },
+    {
+      "id": "chercheur-en-biologie-du-sport",
+      "nom": "Chercheur, chercheuse en biologie du sport",
+      "categorie": "disc",
+      "disciplines": [
+        "physiologie-humaine",
+        "education-physique",
+        "biologie"
+      ],
+      "gestes": [
+        "Étudier le corps à l’effort",
+        "Mener des expériences",
+        "Conseiller les sportifs"
+      ],
+      "contexte": "Étudie comment le corps réagit au sport.",
+      "correspondance": "proposition",
+      "onisep": "MET.820",
+      "rome": [
+        "K2402"
+      ],
+      "niveauAcces": "bac+8",
+      "domaines": [
+        "sciences/biologie",
+        "santé, social, sport/médical"
+      ],
+      "synonymes": [
+        "biologiste du sport",
+        "enseignant/e-chercheur/euse en biologie du sport",
+        "médecin chercheur/euse en biologie du sport",
+        "chercheur en biologie du sport",
+        "chercheuse en biologie du sport"
+      ]
+    },
+    {
+      "id": "neurobiologiste",
+      "nom": "Neurobiologiste",
+      "categorie": "disc",
+      "disciplines": [
+        "physiologie-humaine",
+        "biologie",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Étudier le système nerveux",
+        "Mener des expériences",
+        "Publier les résultats"
+      ],
+      "contexte": "Étudie le cerveau et les nerfs.",
+      "correspondance": "proposition",
+      "onisep": "MET.824",
+      "rome": [
+        "K2402"
+      ],
+      "niveauAcces": "bac+8",
+      "domaines": [
+        "sciences/biologie",
+        "santé, social, sport/médical"
+      ],
+      "synonymes": [
+        "chercheur/euse en neurologie",
+        "enseignant/e-chercheur/euse en neurobiologie",
+        "neurobiologiste"
+      ]
+    },
+    {
+      "id": "ingenieur-technico-commercial-en-chimie",
+      "nom": "Ingénieur technico-commercial en chimie, ingénieure technico-commerciale en chimie",
+      "categorie": "trade",
+      "disciplines": [
+        "chimie-analytique",
+        "communication",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Présenter les produits",
+        "Conseiller techniquement",
+        "Négocier"
+      ],
+      "contexte": "Vend des produits chimiques en conseillant les clients.",
+      "correspondance": "proposition",
+      "onisep": "MET.826",
+      "rome": [
+        "D1407"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/chimie",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "attaché/e technico-commercial en chimie",
+        "chargé/e d'affaires en chimie",
+        "ingénieur/e d'affaires en chimie",
+        "ingénieur/e des ventes en chimie",
+        "technico-commercial/e en chimie",
+        "ingénieur technico-commercial en chimie",
+        "ingénieure technico-commerciale en chimie"
+      ]
+    },
+    {
+      "id": "coordonnateur-d-etudes-cliniques",
+      "nom": "Coordonnateur, coordonnatrice d'études cliniques",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "gestion",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Organiser l’étude",
+        "Suivre les patients inclus",
+        "Recueillir les données"
+      ],
+      "contexte": "Organise le déroulement d’une étude médicale à l’hôpital.",
+      "correspondance": "proposition",
+      "onisep": "MET.827",
+      "rome": [
+        "H1206"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/biologie",
+        "santé, social, sport/médical"
+      ],
+      "synonymes": [
+        "ARC coordinateur / trice",
+        "clinical trial manager",
+        "coordinateur / trice prestataires et rapports d'études cliniques",
+        "responsable monitoring études cliniques",
+        "coordonnateur d'études cliniques",
+        "coordonnatrice d'études cliniques"
+      ]
+    },
+    {
+      "id": "redacteur-medical",
+      "nom": "Rédacteur médical, rédactrice médicale",
+      "categorie": "mkt",
+      "disciplines": [
+        "expression-ecrite",
+        "physiologie-humaine",
+        "biologie"
+      ],
+      "gestes": [
+        "Lire les études",
+        "Rédiger des documents",
+        "Adapter au public"
+      ],
+      "contexte": "Écrit des textes sur la santé pour les médecins ou le grand public.",
+      "correspondance": "proposition",
+      "onisep": "MET.828",
+      "rome": [
+        "H1207"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/biologie",
+        "santé, social, sport/médical"
+      ],
+      "synonymes": [
+        "concepteur/trice-rédacteur/trice médical/e",
+        "medical writer",
+        "rédacteur médical",
+        "rédactrice médicale"
+      ]
+    },
+    {
+      "id": "ingenieur-production-dans-les-biotechnologies",
+      "nom": "Ingénieur, ingénieure production dans les biotechnologies",
+      "categorie": "btp",
+      "disciplines": [
+        "biologie-cellulaire-genetique",
+        "chimie-analytique",
+        "gestion"
+      ],
+      "gestes": [
+        "Organiser la production",
+        "Contrôler la qualité",
+        "Améliorer les procédés"
+      ],
+      "contexte": "Organise la fabrication de produits issus du vivant, comme des vaccins.",
+      "correspondance": "proposition",
+      "onisep": "MET.843",
+      "rome": [
+        "H2502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/biologie",
+        "matières premières, fabrication, industries/méthodes industrialisation"
+      ],
+      "synonymes": [
+        "responsable fabrication en biotechnologies",
+        "responsable production en biotechnologies",
+        "ingénieur production dans les biotechnologies",
+        "ingénieure production dans les biotechnologies"
+      ]
+    },
+    {
+      "id": "architecte-big-data",
+      "nom": "Architecte big data (mégadonnées)",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "reseaux",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Concevoir les infrastructures de données",
+        "Choisir les technologies",
+        "Garantir la performance"
+      ],
+      "contexte": "Conçoit les systèmes qui stockent et traitent d’énormes quantités de données.",
+      "correspondance": "proposition",
+      "onisep": "MET.848",
+      "rome": [
+        "M1806"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/bases de données",
+        "sciences/mathématiques",
+        "informatique, Internet/systèmes et réseaux"
+      ],
+      "synonymes": [
+        "architecte big data  (mégadonnées)",
+        "architecte big data (mégadonnées)"
+      ]
+    },
+    {
+      "id": "technicien-de-police-technique-et-scientifique",
+      "nom": "Technicien, technicienne de police technique et scientifique",
+      "categorie": "services",
+      "disciplines": [
+        "chimie-analytique",
+        "biologie",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Relever les traces",
+        "Photographier la scène",
+        "Analyser en laboratoire"
+      ],
+      "contexte": "Recherche et analyse les indices pour les enquêtes.",
+      "correspondance": "proposition",
+      "onisep": "MET.892",
+      "rome": [
+        "H1210"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "sciences/biologie",
+        "sciences/chimie",
+        "informatique, Internet/informatique (généralités)",
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "technicien/ne en identification criminelle",
+        "technicien de police technique et scientifique",
+        "technicienne de police technique et scientifique"
+      ]
+    },
+    {
+      "id": "hydrologue",
+      "nom": "Hydrologue",
+      "categorie": "disc",
+      "disciplines": [
+        "sciences-de-la-terre",
+        "physique",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Mesurer les débits",
+        "Étudier les crues",
+        "Prévoir les ressources en eau"
+      ],
+      "contexte": "Étudie l’eau des rivières et son cycle.",
+      "correspondance": "proposition",
+      "onisep": "MET.912",
+      "rome": [
+        "F1105"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "ingénieur/e hydrologue",
+        "hydrologue"
+      ]
+    },
+    {
+      "id": "consultant-en-informatique-decisionnelle",
+      "nom": "Consultant, consultante en informatique décisionnelle",
+      "categorie": "app",
+      "disciplines": [
+        "analyse-statistique",
+        "informatique",
+        "gestion"
+      ],
+      "gestes": [
+        "Recueillir les besoins",
+        "Construire les tableaux de bord",
+        "Former les utilisateurs"
+      ],
+      "contexte": "Aide les entreprises à prendre des décisions grâce à leurs données.",
+      "correspondance": "proposition",
+      "onisep": "MET.916",
+      "rome": [
+        "M1806"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/informatique (généralités)"
+      ],
+      "synonymes": [
+        "consultant/e décisionnel/le",
+        "consultant/e en business intelligence",
+        "responsable big data (mégadonnées)",
+        "consultant en informatique décisionnelle",
+        "consultante en informatique décisionnelle"
+      ]
+    },
+    {
+      "id": "anatomiste",
+      "nom": "Anatomiste",
+      "categorie": "disc",
+      "disciplines": [
+        "physiologie-humaine",
+        "biologie",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Étudier la structure du corps",
+        "Enseigner",
+        "Mener des recherches"
+      ],
+      "contexte": "Étudie la structure du corps humain ou animal.",
+      "correspondance": "proposition",
+      "onisep": "MET.921",
+      "niveauAcces": "bac+9",
+      "domaines": [
+        "sciences/biologie",
+        "santé, social, sport/médical"
+      ],
+      "synonymes": [
+        "chercheur/euse en médecine spécialiste de l'anatomie",
+        "anatomiste"
+      ]
+    },
+    {
+      "id": "paleontologue",
+      "nom": "Paléontologue",
+      "categorie": "disc",
+      "disciplines": [
+        "geologie",
+        "biologie",
+        "biologie-cellulaire-genetique"
+      ],
+      "gestes": [
+        "Fouiller les sites",
+        "Étudier les fossiles",
+        "Reconstituer l’histoire du vivant"
+      ],
+      "contexte": "Étudie les fossiles pour comprendre l’évolution de la vie.",
+      "correspondance": "proposition",
+      "onisep": "MET.929",
+      "rome": [
+        "K2401"
+      ],
+      "niveauAcces": "bac+8",
+      "domaines": [
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "chercheur/euse en paléontologie",
+        "enseignant/e-chercheur/euse en paléontologie",
+        "paléontologue"
+      ]
+    },
+    {
+      "id": "ingenieur-mathematicien",
+      "nom": "Ingénieur mathématicien, ingénieure mathématicienne",
+      "categorie": "disc",
+      "disciplines": [
+        "mathematiques-appliquees",
+        "logique-mathematique",
+        "informatique"
+      ],
+      "gestes": [
+        "Modéliser un problème",
+        "Développer des algorithmes",
+        "Valider les résultats"
+      ],
+      "contexte": "Résout des problèmes concrets grâce aux mathématiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.931",
+      "rome": [
+        "K2402"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/mathématiques"
+      ],
+      "synonymes": [
+        "ingénieur/e calcul",
+        "ingénieur/e en mathématiques appliquées",
+        "ingénieur/e en mathématiques et modélisation",
+        "ingénieur mathématicien",
+        "ingénieure mathématicienne"
+      ]
+    },
+    {
+      "id": "statisticien-en-geomarketing",
+      "nom": "Statisticien, statisticienne en géomarketing",
+      "categorie": "trade",
+      "disciplines": [
+        "analyse-statistique",
+        "amenagement-du-territoire",
+        "marketing-digital"
+      ],
+      "gestes": [
+        "Analyser les données d’un territoire",
+        "Cartographier les clients",
+        "Conseiller l’implantation"
+      ],
+      "contexte": "Utilise les statistiques et les cartes pour choisir où ouvrir un magasin.",
+      "correspondance": "proposition",
+      "onisep": "MET.932",
+      "rome": [
+        "M1403"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/mathématiques"
+      ],
+      "synonymes": [
+        "statisticien en géomarketing",
+        "statisticienne en géomarketing"
+      ]
+    },
+    {
+      "id": "enseignant-en-activite-physique-adaptee",
+      "nom": "Enseignant, enseignante en activité physique adaptée",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "physiologie-humaine",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Évaluer les capacités",
+        "Adapter les activités",
+        "Suivre les progrès"
+      ],
+      "contexte": "Fait pratiquer une activité physique adaptée à des personnes malades ou handicapées.",
+      "correspondance": "proposition",
+      "onisep": "MET.937",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "sciences/biologie",
+        "santé, social, sport/sport"
+      ],
+      "synonymes": [
+        "animateur/trice en activité physique adaptée",
+        "éducateur/trice médico-sportif",
+        "professeur/e en activité physique adaptée",
+        "enseignant en activité physique adaptée",
+        "enseignante en activité physique adaptée"
+      ]
+    },
+    {
+      "id": "technicien-en-traitement-des-materiaux",
+      "nom": "Technicien, technicienne en traitement des matériaux",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "physique"
+      ],
+      "gestes": [
+        "Préparer les pièces",
+        "Réaliser le traitement",
+        "Contrôler la qualité"
+      ],
+      "contexte": "Traite les matériaux pour améliorer leurs propriétés.",
+      "correspondance": "proposition",
+      "onisep": "MET.942",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "sciences/chimie",
+        "sciences/physique",
+        "mécanique/travail des métaux"
+      ],
+      "synonymes": [
+        "technicien en traitement des matériaux",
+        "technicienne en traitement des matériaux"
+      ]
+    },
+    {
+      "id": "responsable-de-laboratoire-de-controle-en-biologie",
+      "nom": "Responsable de laboratoire de contrôle en biologie",
+      "categorie": "disc",
+      "disciplines": [
+        "biologie",
+        "gestion",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Organiser les analyses",
+        "Valider les résultats",
+        "Encadrer l’équipe"
+      ],
+      "contexte": "Dirige un laboratoire qui contrôle la qualité de produits biologiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.946",
+      "rome": [
+        "H1501"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/biologie"
+      ],
+      "synonymes": [
+        "chef/fe de service contrôle analytique",
+        "responsable de laboratoire de contrôle analytique",
+        "responsable de laboratoire de contrôle microbiologie",
+        "responsable de laboratoire de contrôle radiologie",
+        "responsable de laboratoire de contrôle en biologie"
+      ]
+    },
+    {
+      "id": "aide-chimiste",
+      "nom": "Aide-chimiste",
+      "categorie": "disc",
+      "disciplines": [
+        "chimie-analytique",
+        "chimie-des-materiaux",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Préparer le matériel",
+        "Réaliser des manipulations simples",
+        "Ranger et nettoyer"
+      ],
+      "contexte": "Aide les chimistes dans leurs travaux de laboratoire.",
+      "correspondance": "proposition",
+      "onisep": "MET.952",
+      "rome": [
+        "H1503"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "sciences/chimie"
+      ],
+      "synonymes": [
+        "agent/e de laboratoire",
+        "aide de laboratoire",
+        "laborantin/e",
+        "préparateur/trice laborantin/e",
+        "aide-chimiste"
+      ]
+    },
+    {
+      "id": "specialiste-en-shiatsu",
+      "nom": "Spécialiste en shiatsu",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "psychologie-sociale",
+        "education-physique"
+      ],
+      "gestes": [
+        "Écouter la personne",
+        "Pratiquer des pressions avec les doigts",
+        "Proposer une séance de détente"
+      ],
+      "contexte": "Propose des séances de détente par pressions sur le corps, inspirées d’une pratique japonaise.",
+      "correspondance": "proposition",
+      "onisep": "MET.7767",
+      "rome": [
+        "K1103"
+      ],
+      "domaines": [
+        "sciences/biologie"
+      ],
+      "synonymes": [
+        "praticien/ne de shiatsu",
+        "spécialiste en shiatsu"
+      ]
+    },
+    {
+      "id": "astronaute",
+      "nom": "Astronaute",
+      "categorie": "disc",
+      "disciplines": [
+        "physique",
+        "physiologie-humaine",
+        "education-physique"
+      ],
+      "gestes": [
+        "S’entraîner intensément",
+        "Réaliser des expériences dans l’espace",
+        "Entretenir la station"
+      ],
+      "contexte": "Voyage dans l’espace pour mener des missions scientifiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.7835",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "sciences/sciences de l'univers"
+      ],
+      "synonymes": [
+        "cosmonaute",
+        "spationaute",
+        "astronaute"
+      ]
+    },
+    {
+      "id": "technicien-de-maintenance-meteo-et-climat",
+      "nom": "Technicien, technicienne de maintenance météo et climat",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "sciences-de-la-terre",
+        "physique"
+      ],
+      "gestes": [
+        "Installer les capteurs",
+        "Entretenir les stations",
+        "Vérifier les mesures"
+      ],
+      "contexte": "Entretient les instruments qui mesurent le temps et le climat.",
+      "correspondance": "proposition",
+      "onisep": "MET.7934",
+      "niveauAcces": "bac",
+      "domaines": [
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "technicien de maintenance météo et climat",
+        "technicienne de maintenance météo et climat"
+      ]
+    },
+    {
+      "id": "product-owner",
+      "nom": "Product owner (responsable de produit numérique)",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Recueillir les besoins",
+        "Prioriser les fonctionnalités",
+        "Valider le travail livré"
+      ],
+      "contexte": "Définit ce qu’un produit numérique doit faire et dans quel ordre.",
+      "correspondance": "proposition",
+      "onisep": "MET.7958",
+      "rome": [
+        "M1806"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/informatique (généralités)"
+      ],
+      "synonymes": [
+        "coach agile",
+        "product owner (responsable de produit numérique)"
+      ]
+    },
+    {
+      "id": "scrum-master",
+      "nom": "Scrum master (animateur d'équipe Agile), scrum master (animatrice d'équipe Agile)",
+      "categorie": "app",
+      "disciplines": [
+        "gestion",
+        "psychologie-sociale",
+        "communication"
+      ],
+      "gestes": [
+        "Animer les réunions d’équipe",
+        "Lever les obstacles",
+        "Améliorer l’organisation"
+      ],
+      "contexte": "Aide une équipe de développement à bien travailler ensemble.",
+      "correspondance": "proposition",
+      "onisep": "MET.7959",
+      "rome": [
+        "M1805"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/informatique (généralités)"
+      ],
+      "synonymes": [
+        "scrum master (animateur d'équipe Agile)",
+        "scrum master (animatrice d'équipe Agile)"
+      ]
+    },
+    {
+      "id": "technicien-de-recherche-en-biologie",
+      "nom": "Technicien, technicienne de recherche en biologie",
+      "categorie": "disc",
+      "disciplines": [
+        "biologie",
+        "biologie-cellulaire-genetique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Préparer les expériences",
+        "Réaliser les manipulations",
+        "Noter les résultats"
+      ],
+      "contexte": "Réalise les expériences des laboratoires de recherche en biologie.",
+      "correspondance": "proposition",
+      "onisep": "MET.8064",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "sciences/biologie",
+        "santé, social, sport/médical"
+      ],
+      "synonymes": [
+        "technicien de recherche en biologie",
+        "technicienne de recherche en biologie"
+      ]
+    },
+    {
+      "id": "technico-commercial-en-biologie",
+      "nom": "Technico-commercial, technico-commerciale en biologie",
+      "categorie": "trade",
+      "disciplines": [
+        "biologie",
+        "communication",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Présenter le matériel de laboratoire",
+        "Conseiller les clients",
+        "Négocier"
+      ],
+      "contexte": "Vend du matériel et des produits pour les laboratoires.",
+      "correspondance": "proposition",
+      "onisep": "MET.8065",
+      "rome": [
+        "D1407"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "sciences/biologie",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "technico-commercial en biologie",
+        "technico-commerciale en biologie"
+      ]
+    },
+    {
+      "id": "coloriste-8082",
+      "nom": "Coloriste (textile)",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-analytique",
+        "optique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Analyser la couleur demandée",
+        "Préparer les teintures",
+        "Contrôler le résultat"
+      ],
+      "contexte": "Met au point les couleurs des tissus.",
+      "correspondance": "proposition",
+      "onisep": "MET.8082",
+      "rome": [
+        "H1201"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "sciences/chimie",
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "coloriste (textile)"
+      ]
+    },
+    {
+      "id": "horairiste",
+      "nom": "Horairiste",
+      "categorie": "btp",
+      "disciplines": [
+        "mathematiques-appliquees",
+        "amenagement-du-territoire",
+        "informatique"
+      ],
+      "gestes": [
+        "Construire les horaires",
+        "Optimiser les rotations",
+        "Ajuster aux contraintes"
+      ],
+      "contexte": "Conçoit les horaires des trains, bus ou avions.",
+      "correspondance": "proposition",
+      "onisep": "MET.8096",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "informatique, Internet/informatique (généralités)",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "horairiste"
+      ]
+    },
+    {
+      "id": "ingenieur-machine-learning",
+      "nom": "Ingénieur, ingénieure machine learning (apprentissage automatique)",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "analyse-statistique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Préparer les données",
+        "Entraîner les modèles",
+        "Évaluer et améliorer"
+      ],
+      "contexte": "Conçoit des programmes qui apprennent à partir des données.",
+      "correspondance": "proposition",
+      "onisep": "MET.8232",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/bases de données",
+        "informatique, Internet/développement, programmation, logiciel",
+        "informatique, Internet/informatique (généralités)"
+      ],
+      "synonymes": [
+        "ingénieur machine learning (apprentissage automatique)",
+        "ingénieure machine learning (apprentissage automatique)"
+      ]
+    },
+    {
+      "id": "gestionnaire-de-crise-cyber",
+      "nom": "Gestionnaire de crise cyber",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Coordonner la réponse",
+        "Informer les décideurs",
+        "Organiser le retour à la normale"
+      ],
+      "contexte": "Dirige la réaction d’une organisation pendant une cyberattaque.",
+      "correspondance": "proposition",
+      "onisep": "MET.8261",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/systèmes et réseaux"
+      ],
+      "synonymes": [
+        "chef/fe de  cellule de crise cyber",
+        "pilote de crise cybersécurité",
+        "gestionnaire de crise cyber"
+      ]
+    },
+    {
+      "id": "analyste-soc",
+      "nom": "Analyste SOC",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "reseaux",
+        "logique-mathematique"
+      ],
+      "gestes": [
+        "Surveiller les alertes",
+        "Analyser les incidents",
+        "Réagir rapidement"
+      ],
+      "contexte": "Surveille en continu la sécurité informatique d’une organisation.",
+      "correspondance": "proposition",
+      "onisep": "MET.8262",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "informatique, Internet/systèmes et réseaux"
+      ],
+      "synonymes": [
+        "analyste cybersécurité (SOC)",
+        "analyste détection d’incidents",
+        "analyste SOC"
+      ]
+    },
+    {
+      "id": "architecte-en-cybersecurite",
+      "nom": "Architecte en cybersécurité",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "reseaux",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Concevoir la protection des systèmes",
+        "Choisir les solutions",
+        "Vérifier la conformité"
+      ],
+      "contexte": "Conçoit la sécurité des systèmes informatiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.8263",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "informatique, Internet/systèmes et réseaux"
+      ],
+      "synonymes": [
+        "architecte infrastructure sécurisée",
+        "architecte en cybersécurité"
       ]
     }
   ]
