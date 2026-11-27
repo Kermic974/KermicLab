@@ -74,7 +74,7 @@ Règles :
 | 3 | Rattachement métier → disciplines → notions : règles ROME → disciplines (`referentiel/regles-metiers.json`, préfixe le plus long, trois disciplines au plus), appliquées aux candidats de l'import (`disciplinesProposees`) ; 14 nouvelles disciplines (langues vivantes, sciences du sport, musique, mécanique, électricité, nutrition, expression écrite, calcul professionnel, droit, histoire de l'art, agronomie, physiologie, chimie analytique, géologie). Les propositions sont préparées par un agent dans la PR (aucun appel de modèle à l'exécution) et restent en `proposition` jusqu'à la relecture humaine | Fait (règles et disciplines à relire) |
 | 4 | Alimenter le graphe : couche « métiers » dans `dist/referentiel-graphe.json` (nœuds `metier.<id>`, reliés aux notions de leurs disciplines, libellés publiés), indicateurs (`metiers`, `notionsAvecMetier`, « notions sans métier » par discipline, `notionsDemandees`), plus court chemin notion ↔ métier ; back-office : case « Métiers » (masquée par défaut), légende, détails d'un métier, tuiles, classement des notions les plus demandées | Fait (`tests/unit/graphe-referentiel.test.mjs`, `tests/e2e/backoffice.test.mjs`) |
 | 5 | Passage à l'échelle de l'écran : filtre par niveau d'accès (niveaux présents seulement), recherche étendue aux synonymes, domaines et codes ROME (synonymes repris de l'ONISEP), anneaux limités aux métiers du filtre au-delà de 120 métiers (`metiersDesAnneaux`, disposition recalculée), liste par pages de 50 (« Afficher plus »), niveau d'accès et statut « Fiche proposée, en cours de relecture » dans le détail | Fait (`tests/unit/metiers.test.mjs`, `tests/e2e/metiers.test.mjs`) |
-| 6 | Montée en charge par vagues. **Pilote** : 41 métiers et 3 familles. **Vague 1** : 32 métiers issus des fiches ONISEP (sport, musique, langues, lettres, histoire, géographie, statistiques, droit, social, sciences), 11 nouvelles disciplines et notions ajoutées aux disciplines « proposition » (calcul professionnel, expression écrite, langues, droit, physiologie…). **Cible atteinte** : chaque matière mobilisée par au moins 7 métiers, 78 % des notions reliées. Les 1 032 autres fiches ONISEP restent des candidats pour enrichir l'offre de métiers, une PR par domaine | Fait (cible atteinte) ; vagues complémentaires facultatives |
+| 6 | Montée en charge par vagues. **Pilote** : 41 métiers et 3 familles. **Vague 1** : 32 métiers issus des fiches ONISEP (sport, musique, langues, lettres, histoire, géographie, statistiques, droit, social, sciences), 11 nouvelles disciplines et notions ajoutées aux disciplines « proposition » (calcul professionnel, expression écrite, langues, droit, physiologie…). **Cible atteinte** : chaque matière mobilisée par au moins 7 métiers, 78 % des notions reliées. Vagues complémentaires 2 à 11 : 1 020 fiches ONISEP de plus (voir « Vagues complémentaires ») | Fait ; 12 fiches écartées à arbitrer |
 
 Chaque lot : `npm run ci` vert, cette fiche et `docs/actions-manuelles.md` à jour, validation du CODEOWNER.
 
@@ -117,12 +117,13 @@ pas atteint ; la mesure est refaite à chaque vague.
 | 2 | santé, social, sport | 100 | Fait (100 retenus ; 211 métiers, graphe 308 Ko) |
 | 3 | arts, culture, artisanat | 99 | Fait (99 retenus ; 310 métiers, graphe 345 Ko) |
 | 4 | environnement, énergies ; agriculture, animaux | 123 | Fait (123 retenus ; 433 métiers, graphe 399 Ko) |
-| 5 | matières premières, industries ; électricité, électronique | 112 | À faire |
-| 6 | mécanique ; construction, travaux publics | 102 | À faire |
-| 7 | armée, sécurité ; logistique, transport | 112 | À faire |
-| 8 | sciences ; informatique, Internet | 115 | À faire |
-| 9 | information-communication ; lettres, langues, enseignement ; histoire-géographie, psychologie | 95 | À faire |
-| 10 | économie, droit ; gestion ; banque, assurance ; commerce ; hôtellerie, tourisme | 174 | À faire (à scinder si besoin) |
+| 5 | matières premières, industries ; électricité, électronique | 112 | Fait (112 retenus) |
+| 6 | mécanique ; construction, travaux publics | 102 | Fait (102 retenus) |
+| 7 | armée, sécurité ; logistique, transport | 112 | Fait (100 retenus ; 12 métiers de combat armé écartés, à arbitrer en relecture) |
+| 8 | sciences ; informatique, Internet | 115 | Fait (115 retenus) |
+| 9 | information-communication ; lettres, langues, enseignement ; histoire-géographie, psychologie | 95 | Fait (95 retenus) |
+| 10 | économie, droit ; gestion, comptabilité | 90 | Fait (90 retenus) |
+| 11 | commerce ; banque, assurance ; hôtellerie, tourisme | 84 | Fait (84 retenus ; 1 131 métiers, graphe 724 Ko, `dist/metiers.json` 1 Mo) |
 
 ## Format v2 en bref
 
