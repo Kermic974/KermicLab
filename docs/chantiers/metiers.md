@@ -116,7 +116,7 @@ pas atteint ; la mesure est refaite à chaque vague.
 | 0 | Outillage (`vague:metiers`, repli par domaine, tests, essai à pleine échelle) | — | Fait |
 | 2 | santé, social, sport | 100 | Fait (100 retenus ; 211 métiers, graphe 308 Ko) |
 | 3 | arts, culture, artisanat | 99 | Fait (99 retenus ; 310 métiers, graphe 345 Ko) |
-| 4 | environnement, énergies ; agriculture, animaux | 123 | À faire |
+| 4 | environnement, énergies ; agriculture, animaux | 123 | Fait (123 retenus ; 433 métiers, graphe 399 Ko) |
 | 5 | matières premières, industries ; électricité, électronique | 112 | À faire |
 | 6 | mécanique ; construction, travaux publics | 102 | À faire |
 | 7 | armée, sécurité ; logistique, transport | 112 | À faire |

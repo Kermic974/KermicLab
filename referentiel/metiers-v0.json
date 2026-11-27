@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès. Lot 3 et vague pilote du lot 6 (2026-11-24) : 14 disciplines et 41 métiers ajoutés par un agent, en correspondance « proposition », sans code ROME (apporté par l’import ONISEP). Import ONISEP du 2026-11-24 (extrait referentiel/sources/onisep/ideo-metiers-2026-11-24.json, licence ODbL) : identifiants, codes ROME, niveaux d’accès, domaines et synonymes de 74 métiers. Vague 1 du lot 6 (2026-11-24) : 32 métiers issus des fiches ONISEP (identifiant, niveau et ROME de l’ONISEP), 11 disciplines et notions ajoutées aux disciplines « proposition », préparés par un agent. Vague 2 (santé, social, sport) : 100 métier(s) ONISEP en « proposition ». Vague 3 (arts, culture, artisanat) : 99 métier(s) ONISEP en « proposition ».",
+  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès. Lot 3 et vague pilote du lot 6 (2026-11-24) : 14 disciplines et 41 métiers ajoutés par un agent, en correspondance « proposition », sans code ROME (apporté par l’import ONISEP). Import ONISEP du 2026-11-24 (extrait referentiel/sources/onisep/ideo-metiers-2026-11-24.json, licence ODbL) : identifiants, codes ROME, niveaux d’accès, domaines et synonymes de 74 métiers. Vague 1 du lot 6 (2026-11-24) : 32 métiers issus des fiches ONISEP (identifiant, niveau et ROME de l’ONISEP), 11 disciplines et notions ajoutées aux disciplines « proposition », préparés par un agent. Vague 2 (santé, social, sport) : 100 métier(s) ONISEP en « proposition ». Vague 3 (arts, culture, artisanat) : 99 métier(s) ONISEP en « proposition ». Vague 4 (environnement, énergies, propreté ; agriculture, animaux) : 123 métier(s) ONISEP en « proposition ».",
   "sources": [
     {
       "nom": "Idéo-Fiches métiers",
@@ -10400,6 +10400,3808 @@
       "synonymes": [
         "designer en horlogerie",
         "designeuse en horlogerie"
+      ]
+    },
+    {
+      "id": "palefrenier",
+      "nom": "Palefrenier, palefrenière",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "nutrition-alimentation",
+        "education-physique"
+      ],
+      "gestes": [
+        "Nourrir et abreuver les chevaux",
+        "Nettoyer les box",
+        "Surveiller la santé des animaux"
+      ],
+      "contexte": "S’occupe chaque jour des chevaux dans une écurie.",
+      "correspondance": "proposition",
+      "onisep": "MET.19",
+      "rome": [
+        "A1403"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "agriculture, animaux/élevage, aquaculture",
+        "agriculture, animaux/soins aux animaux"
+      ],
+      "synonymes": [
+        "soigneur/euse d'équidés",
+        "palefrenier",
+        "palefrenière"
+      ]
+    },
+    {
+      "id": "econome-de-flux",
+      "nom": "Économe de flux",
+      "categorie": "nature",
+      "disciplines": [
+        "energetique",
+        "environnement",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Mesurer les consommations d’eau et d’énergie",
+        "Proposer des économies",
+        "Suivre les résultats"
+      ],
+      "contexte": "Aide un bâtiment ou une collectivité à consommer moins d’eau et d’énergie.",
+      "correspondance": "proposition",
+      "onisep": "MET.60",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "conseiller/ère en énergie",
+        "énergéticien/ne",
+        "gestionnaire de flux",
+        "gestionnaire de l'énergie",
+        "économe de flux"
+      ]
+    },
+    {
+      "id": "ingenieur-en-genie-climatique",
+      "nom": "Ingénieur, ingénieure en génie climatique",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "physique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Calculer les besoins en chaleur et en froid",
+        "Concevoir les installations",
+        "Suivre les chantiers"
+      ],
+      "contexte": "Conçoit le chauffage, la ventilation et la climatisation des bâtiments.",
+      "correspondance": "proposition",
+      "onisep": "MET.61",
+      "rome": [
+        "F1106"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/énergies",
+        "construction, architecture, travaux publics/équipement technique"
+      ],
+      "synonymes": [
+        "ingénieur en génie climatique",
+        "ingénieure en génie climatique"
+      ]
+    },
+    {
+      "id": "apiculteur",
+      "nom": "Apiculteur, apicultrice",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "agronomie-vegetale",
+        "environnement"
+      ],
+      "gestes": [
+        "Installer et visiter les ruches",
+        "Surveiller la santé des abeilles",
+        "Récolter le miel"
+      ],
+      "contexte": "Élève des abeilles et récolte leur miel.",
+      "correspondance": "proposition",
+      "onisep": "MET.70",
+      "rome": [
+        "A1408"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "agriculture, animaux/élevage, aquaculture"
+      ],
+      "synonymes": [
+        "exploitant/e apicole",
+        "producteur/trice de miel",
+        "apiculteur",
+        "apicultrice"
+      ]
+    },
+    {
+      "id": "garde",
+      "nom": "Garde (chasse, pêche, littoral, rivière, parcs nationaux)",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "biologie",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Surveiller un espace naturel",
+        "Informer le public",
+        "Constater les infractions"
+      ],
+      "contexte": "Protège la nature et la faune d’un parc, d’une rivière ou du littoral.",
+      "correspondance": "proposition",
+      "onisep": "MET.71",
+      "rome": [
+        "A1204"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "environnement, énergies, propreté/déchets, pollutions et risques",
+        "environnement, énergies, propreté/environnement (généralités)",
+        "environnement, énergies, propreté/protection des espaces naturels"
+      ],
+      "synonymes": [
+        "agent/e technique de l'environnement",
+        "écogarde",
+        "garde champêtre",
+        "garde-moniteur/trice d'espaces naturels",
+        "technicien/ne de l'environnement",
+        "garde (chasse, pêche, littoral, rivière, parcs nationaux)"
+      ]
+    },
+    {
+      "id": "chef-de-cultures-legumieres",
+      "nom": "Chef, cheffe de cultures légumières",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "biologie",
+        "gestion"
+      ],
+      "gestes": [
+        "Planifier les semis",
+        "Suivre la croissance des légumes",
+        "Organiser la récolte"
+      ],
+      "contexte": "Dirige la production de légumes dans une exploitation.",
+      "correspondance": "proposition",
+      "onisep": "MET.76",
+      "rome": [
+        "A1414"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "agriculture, animaux/cultures"
+      ],
+      "synonymes": [
+        "chef de cultures légumières",
+        "cheffe de cultures légumières"
+      ]
+    },
+    {
+      "id": "technicien-de-maintenance-en-genie-climatique",
+      "nom": "Technicien, technicienne de maintenance en génie climatique",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "electricite-electronique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Diagnostiquer une panne",
+        "Entretenir chaudières et climatiseurs",
+        "Régler les installations"
+      ],
+      "contexte": "Entretient et répare les équipements de chauffage et de climatisation.",
+      "correspondance": "proposition",
+      "onisep": "MET.83",
+      "rome": [
+        "I1306",
+        "I1308"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "environnement, énergies, propreté/énergies",
+        "construction, architecture, travaux publics/équipement technique",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "chauffagiste",
+        "climaticien/ne",
+        "dépanneur/euse en installations climatiques",
+        "technicien/ne de maintenance de pompes à chaleur",
+        "technicien/ne de maintenance en chauffage et climatisation",
+        "technicien de maintenance en génie climatique",
+        "technicienne de maintenance en génie climatique"
+      ]
+    },
+    {
+      "id": "aquaculteur",
+      "nom": "Aquaculteur, aquacultrice",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "environnement",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Nourrir poissons ou coquillages",
+        "Surveiller la qualité de l’eau",
+        "Récolter et trier"
+      ],
+      "contexte": "Élève des poissons, des huîtres ou des moules.",
+      "correspondance": "proposition",
+      "onisep": "MET.90",
+      "rome": [
+        "A1404"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "agriculture, animaux/élevage, aquaculture"
+      ],
+      "synonymes": [
+        "agent/e aquacole",
+        "employé/e d'élevage aquacole",
+        "responsable d'élevage aquacole",
+        "technicien/ne d'élevage aquacole",
+        "aquaculteur",
+        "aquacultrice"
+      ]
+    },
+    {
+      "id": "developpeur-rural-humanitaire",
+      "nom": "Développeur rural humanitaire, développeuse rurale humanitaire",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "amenagement-du-territoire",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Étudier les besoins d’un village",
+        "Monter des projets agricoles",
+        "Former les habitants"
+      ],
+      "contexte": "Aide des communautés à développer leur agriculture et leurs ressources.",
+      "correspondance": "proposition",
+      "onisep": "MET.100",
+      "rome": [
+        "K1802"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "agriculture, animaux/développement agricole",
+        "économie, droit, politique/sciences économiques"
+      ],
+      "synonymes": [
+        "développeur rural humanitaire",
+        "développeuse rurale humanitaire"
+      ]
+    },
+    {
+      "id": "ingenieur-en-experimentation-et-production-vegetales",
+      "nom": "Ingénieur, ingénieure en expérimentation et production végétales",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "biologie-cellulaire-genetique",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Concevoir des essais en champ",
+        "Analyser les résultats",
+        "Proposer de nouvelles variétés ou pratiques"
+      ],
+      "contexte": "Teste de nouvelles façons de cultiver les plantes.",
+      "correspondance": "proposition",
+      "onisep": "MET.103",
+      "rome": [
+        "H2502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "agriculture, animaux/agriculture (généralités)",
+        "sciences/biologie",
+        "agriculture, animaux/cultures"
+      ],
+      "synonymes": [
+        "chercheur/euse en agronomie spécialisé en production végétale",
+        "enseignant/e-chercheur/euse en production végétale",
+        "ingénieur/e agronome en production végétale",
+        "ingénieur en expérimentation et production végétales",
+        "ingénieure en expérimentation et production végétales"
+      ]
+    },
+    {
+      "id": "charge-d-affaires-en-genie-climatique",
+      "nom": "Chargé, chargée d'affaires en génie climatique",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Étudier la demande du client",
+        "Chiffrer le projet",
+        "Suivre le chantier"
+      ],
+      "contexte": "Vend et pilote des projets de chauffage et de climatisation.",
+      "correspondance": "proposition",
+      "onisep": "MET.107",
+      "rome": [
+        "F1106"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/énergies",
+        "construction, architecture, travaux publics/équipement technique"
+      ],
+      "synonymes": [
+        "chargé/e d'affaires en génie thermique et climatique",
+        "ingénieur/e d'affaires en génie climatique",
+        "responsable grands comptes en génie climatique",
+        "chargé d'affaires en génie climatique",
+        "chargée d'affaires en génie climatique"
+      ]
+    },
+    {
+      "id": "conducteur-de-travaux-en-entreprise-de-travaux-agricoles",
+      "nom": "Conducteur, conductrice de travaux en entreprise de travaux agricoles",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "mecanique",
+        "gestion"
+      ],
+      "gestes": [
+        "Planifier les chantiers agricoles",
+        "Organiser les équipes et les machines",
+        "Contrôler le travail"
+      ],
+      "contexte": "Organise les travaux réalisés avec des machines chez les agriculteurs.",
+      "correspondance": "proposition",
+      "onisep": "MET.116",
+      "rome": [
+        "A1416"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "agriculture, animaux/agriculture (généralités)"
+      ],
+      "synonymes": [
+        "conducteur de travaux en entreprise de travaux agricoles",
+        "conductrice de travaux en entreprise de travaux agricoles"
+      ]
+    },
+    {
+      "id": "cavalier-d-entrainement",
+      "nom": "Cavalier, cavalière d'entraînement (lad-jockey, lad-driver)",
+      "categorie": "nature",
+      "disciplines": [
+        "education-physique",
+        "biologie",
+        "physique"
+      ],
+      "gestes": [
+        "Monter les chevaux à l’entraînement",
+        "Observer leur forme",
+        "Préparer les courses"
+      ],
+      "contexte": "Entraîne les chevaux de course chaque matin.",
+      "correspondance": "proposition",
+      "onisep": "MET.155",
+      "rome": [
+        "L1401"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "agriculture, animaux/soins aux animaux",
+        "santé, social, sport/sport"
+      ],
+      "synonymes": [
+        "cavalier d'entraînement (lad-jockey, lad-driver)",
+        "cavalière d'entraînement (lad-jockey, lad-driver)"
+      ]
+    },
+    {
+      "id": "ingenieur-forestier",
+      "nom": "Ingénieur forestier, ingénieure forestière",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "environnement",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Inventorier la forêt",
+        "Planifier les coupes et plantations",
+        "Protéger la biodiversité"
+      ],
+      "contexte": "Gère les forêts pour produire du bois tout en les préservant.",
+      "correspondance": "proposition",
+      "onisep": "MET.156",
+      "rome": [
+        "A1303"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/environnement (généralités)",
+        "agriculture, animaux/forêt"
+      ],
+      "synonymes": [
+        "aménagiste",
+        "chargé/e de sylviculture",
+        "expert/e forestier/ère",
+        "gestionnaire de patrimoine forestier",
+        "responsable d'unité (territoriale, de production)",
+        "responsable des aménagements forestiers",
+        "ingénieur forestier",
+        "ingénieure forestière"
+      ]
+    },
+    {
+      "id": "horticulteur",
+      "nom": "Horticulteur, horticultrice",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "biologie",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Semer et bouturer",
+        "Soigner les plantes en serre",
+        "Préparer les commandes"
+      ],
+      "contexte": "Cultive des fleurs et des plantes d’ornement.",
+      "correspondance": "proposition",
+      "onisep": "MET.157",
+      "rome": [
+        "A1414"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "agriculture, animaux/cultures",
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "ouvrier/ère horticole",
+        "horticulteur",
+        "horticultrice"
+      ]
+    },
+    {
+      "id": "paysagiste",
+      "nom": "Paysagiste",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "geometrie",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Étudier le site",
+        "Dessiner le projet",
+        "Suivre l’aménagement"
+      ],
+      "contexte": "Conçoit des jardins, des parcs et des espaces verts.",
+      "correspondance": "proposition",
+      "onisep": "MET.158",
+      "rome": [
+        "A1303"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/aménagement paysager"
+      ],
+      "synonymes": [
+        "architecte paysagiste",
+        "concepteur/trice paysagiste",
+        "conseiller/ère paysagiste",
+        "ingénieur/e paysagiste",
+        "paysagiste-conseil",
+        "paysagiste"
+      ]
+    },
+    {
+      "id": "technicien-d-exploitation-du-reseau-gaz",
+      "nom": "Technicien, technicienne d'exploitation du réseau gaz",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "mecanique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Surveiller le réseau",
+        "Intervenir sur les installations",
+        "Garantir la sécurité"
+      ],
+      "contexte": "Veille au bon fonctionnement du réseau qui transporte le gaz.",
+      "correspondance": "proposition",
+      "onisep": "MET.169",
+      "rome": [
+        "H2701"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "technicien/ne d'exploitation des ouvrages gaz",
+        "technicien d'exploitation du réseau gaz",
+        "technicienne d'exploitation du réseau gaz"
+      ]
+    },
+    {
+      "id": "ingenieur-petrolier",
+      "nom": "Ingénieur pétrolier, ingénieure pétrolière",
+      "categorie": "btp",
+      "disciplines": [
+        "geologie",
+        "energetique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Étudier les gisements",
+        "Concevoir l’extraction",
+        "Suivre la production"
+      ],
+      "contexte": "Organise l’extraction du pétrole et du gaz du sous-sol.",
+      "correspondance": "proposition",
+      "onisep": "MET.184",
+      "rome": [
+        "H1302"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "ingénieur pétrolier",
+        "ingénieure pétrolière"
+      ]
+    },
+    {
+      "id": "technicien-paysagiste",
+      "nom": "Technicien, technicienne paysagiste",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "geometrie",
+        "gestion"
+      ],
+      "gestes": [
+        "Préparer les plans d’aménagement",
+        "Organiser les chantiers",
+        "Choisir les végétaux"
+      ],
+      "contexte": "Prépare et suit la création de jardins et d’espaces verts.",
+      "correspondance": "proposition",
+      "onisep": "MET.197",
+      "rome": [
+        "A1203"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "environnement, énergies, propreté/aménagement paysager"
+      ],
+      "synonymes": [
+        "chef/fe d'équipe en entretien de jardins",
+        "chef/fe d'équipe paysagiste",
+        "chef/fe de chantier paysagiste",
+        "technicien paysagiste",
+        "technicienne paysagiste"
+      ]
+    },
+    {
+      "id": "maraicher",
+      "nom": "Maraîcher, maraîchère",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "biologie",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Préparer la terre",
+        "Planter et entretenir",
+        "Vendre la récolte"
+      ],
+      "contexte": "Cultive des légumes pour les vendre.",
+      "correspondance": "proposition",
+      "onisep": "MET.200",
+      "rome": [
+        "A1414"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "agriculture, animaux/cultures"
+      ],
+      "synonymes": [
+        "maraîcher",
+        "maraîchère"
+      ]
+    },
+    {
+      "id": "climatologue",
+      "nom": "Climatologue",
+      "categorie": "disc",
+      "disciplines": [
+        "sciences-de-la-terre",
+        "analyse-statistique",
+        "physique"
+      ],
+      "gestes": [
+        "Analyser des données climatiques",
+        "Faire tourner des modèles",
+        "Publier les résultats"
+      ],
+      "contexte": "Étudie le climat et son évolution.",
+      "correspondance": "proposition",
+      "onisep": "MET.223",
+      "rome": [
+        "K2402"
+      ],
+      "niveauAcces": "bac+8",
+      "domaines": [
+        "environnement, énergies, propreté/environnement (généralités)",
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "chercheur/euse en climatologie",
+        "climatologue"
+      ]
+    },
+    {
+      "id": "ingenieur-forage",
+      "nom": "Ingénieur, ingénieure forage",
+      "categorie": "btp",
+      "disciplines": [
+        "geologie",
+        "mecanique",
+        "energetique"
+      ],
+      "gestes": [
+        "Préparer le programme de forage",
+        "Superviser les opérations",
+        "Garantir la sécurité"
+      ],
+      "contexte": "Dirige le creusement de puits pour l’eau, l’énergie ou les mines.",
+      "correspondance": "proposition",
+      "onisep": "MET.224",
+      "rome": [
+        "F1203"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "ingénieur/e forage puits",
+        "ingénieur forage",
+        "ingénieure forage"
+      ]
+    },
+    {
+      "id": "ingenieur-analyste-de-l-air",
+      "nom": "Ingénieur, ingénieure analyste de l'air",
+      "categorie": "nature",
+      "disciplines": [
+        "chimie-analytique",
+        "environnement",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Mesurer la pollution de l’air",
+        "Analyser les échantillons",
+        "Proposer des solutions"
+      ],
+      "contexte": "Surveille la qualité de l’air et cherche à la protéger.",
+      "correspondance": "proposition",
+      "onisep": "MET.225",
+      "rome": [
+        "H1501"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/déchets, pollutions et risques",
+        "environnement, énergies, propreté/environnement (généralités)"
+      ],
+      "synonymes": [
+        "chargé/e d'études en qualité de l'air",
+        "ingénieur/e de recherche en analyse de l'air",
+        "ingénieur/e en environnement atmosphérique",
+        "ingénieur/e qualité de l'air",
+        "ingénieur analyste de l'air",
+        "ingénieure analyste de l'air"
+      ]
+    },
+    {
+      "id": "animateur-de-bassin-versant",
+      "nom": "Animateur, animatrice de bassin versant",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "amenagement-du-territoire",
+        "communication"
+      ],
+      "gestes": [
+        "Rencontrer les acteurs de l’eau",
+        "Monter des actions de protection",
+        "Suivre la qualité des rivières"
+      ],
+      "contexte": "Coordonne la protection de l’eau sur un territoire.",
+      "correspondance": "proposition",
+      "onisep": "MET.227",
+      "rome": [
+        "A1303"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/environnement (généralités)",
+        "environnement, énergies, propreté/gestion de l'eau"
+      ],
+      "synonymes": [
+        "animateur/trice agricole de bassin versant",
+        "chargé/e de mission milieux aquatiques",
+        "chef/fe de projet rivière et milieux aquatiques",
+        "coordonnateur/trice de bassin versant",
+        "technicien/ne de bassin versant",
+        "animateur de bassin versant",
+        "animatrice de bassin versant"
+      ]
+    },
+    {
+      "id": "pepinieriste",
+      "nom": "Pépiniériste",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "biologie",
+        "biologie-cellulaire-genetique"
+      ],
+      "gestes": [
+        "Semer et greffer",
+        "Élever les jeunes arbres",
+        "Conseiller les clients"
+      ],
+      "contexte": "Produit et vend de jeunes arbres et arbustes.",
+      "correspondance": "proposition",
+      "onisep": "MET.233",
+      "rome": [
+        "A1414"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "agriculture, animaux/cultures"
+      ],
+      "synonymes": [
+        "ouvrier/ère pépiniériste",
+        "pépiniériste"
+      ]
+    },
+    {
+      "id": "conseiller-d-elevage",
+      "nom": "Conseiller, conseillère d'élevage",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "nutrition-alimentation",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Visiter les élevages",
+        "Analyser les résultats",
+        "Conseiller sur l’alimentation des animaux"
+      ],
+      "contexte": "Aide les éleveurs à améliorer leur élevage.",
+      "correspondance": "proposition",
+      "onisep": "MET.234",
+      "rome": [
+        "A1301"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "agriculture, animaux/développement agricole",
+        "agriculture, animaux/élevage, aquaculture"
+      ],
+      "synonymes": [
+        "technicien/ne d'élevage",
+        "conseiller d'élevage",
+        "conseillère d'élevage"
+      ]
+    },
+    {
+      "id": "employe-d-elevage",
+      "nom": "Employé, employée d'élevage",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "nutrition-alimentation",
+        "agronomie-vegetale"
+      ],
+      "gestes": [
+        "Nourrir les animaux",
+        "Nettoyer les bâtiments",
+        "Surveiller la santé du troupeau"
+      ],
+      "contexte": "S’occupe des animaux dans une exploitation d’élevage.",
+      "correspondance": "proposition",
+      "onisep": "MET.250",
+      "rome": [
+        "A1407",
+        "A1409",
+        "A1410",
+        "A1411"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "agriculture, animaux/élevage, aquaculture"
+      ],
+      "synonymes": [
+        "agent/e d'élevage",
+        "ouvrier/ère d'exploitation agricole",
+        "employé d'élevage",
+        "employée d'élevage"
+      ]
+    },
+    {
+      "id": "monteur-en-installations-thermiques-et-climatiques",
+      "nom": "Monteur, monteuse en installations thermiques et climatiques",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "mecanique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Lire les plans",
+        "Poser tuyaux et appareils",
+        "Mettre en service"
+      ],
+      "contexte": "Installe le chauffage, la ventilation et la climatisation.",
+      "correspondance": "proposition",
+      "onisep": "MET.264",
+      "rome": [
+        "F1603"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "environnement, énergies, propreté/énergies",
+        "construction, architecture, travaux publics/équipement technique",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "chauffagiste",
+        "installateur/trice de pompes à chaleur",
+        "installateur/trice en chauffage et climatisation",
+        "monteur/euse en chauffage et climatisation",
+        "monteur/euse en installations climatiques",
+        "monteur en installations thermiques et climatiques",
+        "monteuse en installations thermiques et climatiques"
+      ]
+    },
+    {
+      "id": "conseiller-agricole",
+      "nom": "Conseiller, conseillère agricole",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "economie-et-societe",
+        "communication"
+      ],
+      "gestes": [
+        "Analyser une exploitation",
+        "Proposer des améliorations",
+        "Animer des réunions d’agriculteurs"
+      ],
+      "contexte": "Conseille les agriculteurs sur leurs cultures et leur gestion.",
+      "correspondance": "proposition",
+      "onisep": "MET.265",
+      "rome": [
+        "A1301"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "agriculture, animaux/développement agricole"
+      ],
+      "synonymes": [
+        "conseiller/ère d'entreprise agricole",
+        "conseiller agricole",
+        "conseillère agricole"
+      ]
+    },
+    {
+      "id": "technicien-forestier",
+      "nom": "Technicien forestier, technicienne forestière",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "environnement",
+        "geometrie"
+      ],
+      "gestes": [
+        "Repérer et marquer les arbres",
+        "Organiser les coupes",
+        "Surveiller la santé de la forêt"
+      ],
+      "contexte": "Gère au quotidien une partie de forêt.",
+      "correspondance": "proposition",
+      "onisep": "MET.290",
+      "rome": [
+        "A1301"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "environnement, énergies, propreté/environnement (généralités)",
+        "agriculture, animaux/forêt"
+      ],
+      "synonymes": [
+        "conseiller/ère forestier/ère",
+        "technicien forestier",
+        "technicienne forestière"
+      ]
+    },
+    {
+      "id": "technicien-en-traitement-des-dechets",
+      "nom": "Technicien, technicienne en traitement des déchets",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "chimie-analytique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Contrôler les déchets entrants",
+        "Piloter les installations de tri",
+        "Respecter les normes"
+      ],
+      "contexte": "Fait fonctionner un centre de traitement des déchets.",
+      "correspondance": "proposition",
+      "onisep": "MET.294",
+      "rome": [
+        "K2306"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/déchets, pollutions et risques"
+      ],
+      "synonymes": [
+        "recycleur/euse",
+        "technicien/ne gestion des déchets",
+        "technicien en traitement des déchets",
+        "technicienne en traitement des déchets"
+      ]
+    },
+    {
+      "id": "chef-de-projet-eolien",
+      "nom": "Chef, cheffe de projet éolien",
+      "categorie": "nature",
+      "disciplines": [
+        "energetique",
+        "amenagement-du-territoire",
+        "gestion"
+      ],
+      "gestes": [
+        "Trouver un site",
+        "Mener les études et les autorisations",
+        "Suivre la construction"
+      ],
+      "contexte": "Développe des parcs d’éoliennes.",
+      "correspondance": "proposition",
+      "onisep": "MET.302",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "chef de projet éolien",
+        "cheffe de projet éolien"
+      ]
+    },
+    {
+      "id": "ingenieur-recherche-et-developpement-en-energies-renouvelables",
+      "nom": "Ingénieur, ingénieure recherche et développement en énergies renouvelables",
+      "categorie": "disc",
+      "disciplines": [
+        "energetique",
+        "physique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Concevoir des prototypes",
+        "Mener des essais",
+        "Améliorer le rendement"
+      ],
+      "contexte": "Invente et améliore les technologies d’énergie renouvelable.",
+      "correspondance": "proposition",
+      "onisep": "MET.303",
+      "rome": [
+        "H1206"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "chef/fe de projet énergies renouvelables",
+        "ingénieur recherche et développement en énergies renouvelables",
+        "ingénieure recherche et développement en énergies renouvelables"
+      ]
+    },
+    {
+      "id": "ingenieur-gaz",
+      "nom": "Ingénieur, ingénieure gaz",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "chimie-analytique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Concevoir les installations",
+        "Optimiser le réseau",
+        "Veiller à la sécurité"
+      ],
+      "contexte": "Conçoit et améliore les installations qui transportent et utilisent le gaz.",
+      "correspondance": "proposition",
+      "onisep": "MET.304",
+      "rome": [
+        "F1203"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "ingénieur/e mouvements de gaz",
+        "ingnénieur/e anticorrosion",
+        "ingénieur gaz",
+        "ingénieure gaz"
+      ]
+    },
+    {
+      "id": "technicien-d-exploitation-de-l-eau",
+      "nom": "Technicien, technicienne d'exploitation de l'eau (industrie papiers cartons)",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-analytique",
+        "environnement",
+        "mecanique"
+      ],
+      "gestes": [
+        "Surveiller le traitement de l’eau",
+        "Faire des analyses",
+        "Entretenir les équipements"
+      ],
+      "contexte": "Gère l’eau utilisée dans une usine, par exemple de papier.",
+      "correspondance": "proposition",
+      "onisep": "MET.321",
+      "rome": [
+        "K2306"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/gestion de l'eau"
+      ],
+      "synonymes": [
+        "assistant/e fluides",
+        "chargé/e du traitement de l'eau",
+        "technicien/ne de traitement des eaux",
+        "technicien d'exploitation de l'eau (industrie papiers cartons)",
+        "technicienne d'exploitation de l'eau (industrie papiers cartons)"
+      ]
+    },
+    {
+      "id": "ingenieur-hydroecologue",
+      "nom": "Ingénieur, ingénieure hydroécologue",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "biologie",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Étudier les milieux aquatiques",
+        "Évaluer l’impact des aménagements",
+        "Proposer des restaurations"
+      ],
+      "contexte": "Protège et restaure les rivières, les lacs et les zones humides.",
+      "correspondance": "proposition",
+      "onisep": "MET.349",
+      "rome": [
+        "A1303"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/environnement (généralités)",
+        "environnement, énergies, propreté/gestion de l'eau"
+      ],
+      "synonymes": [
+        "hydroécologue",
+        "ingénieur hydroécologue",
+        "ingénieure hydroécologue"
+      ]
+    },
+    {
+      "id": "chef-de-station-de-traitement-des-eaux",
+      "nom": "Chef, cheffe de station de traitement des eaux",
+      "categorie": "nature",
+      "disciplines": [
+        "chimie-analytique",
+        "environnement",
+        "gestion"
+      ],
+      "gestes": [
+        "Piloter la station",
+        "Contrôler la qualité de l’eau",
+        "Encadrer l’équipe"
+      ],
+      "contexte": "Dirige une usine qui rend l’eau potable ou qui nettoie les eaux usées.",
+      "correspondance": "proposition",
+      "onisep": "MET.350",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/gestion de l'eau"
+      ],
+      "synonymes": [
+        "chef/fe d'exploitation de station de traitement d'eau",
+        "chef/fe de station d'épuration",
+        "responsable d'une station de traitement ou d'épuration des eaux",
+        "responsable de station d'épuration",
+        "responsable de station de traitement des eaux",
+        "responsable de station de traitement ou d'épuration des eaux",
+        "chef de station de traitement des eaux",
+        "cheffe de station de traitement des eaux"
+      ]
+    },
+    {
+      "id": "responsable-d-elevage-agricole",
+      "nom": "Responsable d'élevage agricole",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "gestion",
+        "nutrition-alimentation"
+      ],
+      "gestes": [
+        "Organiser le travail de l’élevage",
+        "Suivre la santé et la reproduction",
+        "Gérer les coûts"
+      ],
+      "contexte": "Dirige un élevage d’animaux.",
+      "correspondance": "proposition",
+      "onisep": "MET.362",
+      "rome": [
+        "A1407",
+        "A1409",
+        "A1410",
+        "A1411"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "agriculture, animaux/élevage, aquaculture"
+      ],
+      "synonymes": [
+        "chef/fe d'élevage",
+        "éleveur/se",
+        "responsable d'atelier de production animale",
+        "responsable d'exploitation agricole",
+        "responsable d'élevage agricole"
+      ]
+    },
+    {
+      "id": "chef-de-projet-sites-et-sols-pollues",
+      "nom": "Chef, cheffe de projet sites et sols pollués",
+      "categorie": "nature",
+      "disciplines": [
+        "chimie-analytique",
+        "geologie",
+        "environnement"
+      ],
+      "gestes": [
+        "Diagnostiquer la pollution",
+        "Choisir la méthode de dépollution",
+        "Suivre les travaux"
+      ],
+      "contexte": "Dépollue des terrains contaminés par d’anciennes activités.",
+      "correspondance": "proposition",
+      "onisep": "MET.367",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/déchets, pollutions et risques",
+        "environnement, énergies, propreté/environnement (généralités)",
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "chef/fe de projet modélisation polluants",
+        "chef/fe de projet travaux de dépollution",
+        "ingénieur/e dépollution",
+        "ingénieur/e environnement spécialisé/e en dépollution",
+        "ingénieur/e sites et sols pollués",
+        "ingénieur/e technico-commercial sites et sols pollués",
+        "chef de projet sites et sols pollués",
+        "cheffe de projet sites et sols pollués"
+      ]
+    },
+    {
+      "id": "technicien-de-maintenance-eolienne",
+      "nom": "Technicien, technicienne de maintenance éolienne",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "energetique"
+      ],
+      "gestes": [
+        "Grimper dans l’éolienne",
+        "Contrôler les pièces",
+        "Réparer les pannes"
+      ],
+      "contexte": "Entretient et répare les éoliennes.",
+      "correspondance": "proposition",
+      "onisep": "MET.383",
+      "rome": [
+        "I1304"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "technicien de maintenance éolienne",
+        "technicienne de maintenance éolienne"
+      ]
+    },
+    {
+      "id": "conseiller-en-developpement-rural",
+      "nom": "Conseiller, conseillère en développement rural",
+      "categorie": "nature",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "economie-et-societe",
+        "agronomie-vegetale"
+      ],
+      "gestes": [
+        "Accompagner les porteurs de projets",
+        "Monter des dossiers de financement",
+        "Animer le territoire"
+      ],
+      "contexte": "Aide les campagnes à développer leurs activités.",
+      "correspondance": "proposition",
+      "onisep": "MET.386",
+      "rome": [
+        "K1802"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/aménagement du territoire",
+        "agriculture, animaux/développement agricole"
+      ],
+      "synonymes": [
+        "agent/e de développement rural",
+        "conseiller en développement rural",
+        "conseillère en développement rural"
+      ]
+    },
+    {
+      "id": "technicien-frigoriste",
+      "nom": "Technicien, technicienne frigoriste",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "physique",
+        "electricite-electronique"
+      ],
+      "gestes": [
+        "Installer les équipements de froid",
+        "Contrôler les fluides",
+        "Dépanner"
+      ],
+      "contexte": "Installe et répare les installations frigorifiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.390",
+      "rome": [
+        "I1306"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "technicien/ne froid commercial",
+        "technicien/ne froid embarqué",
+        "technicien/ne froid industriel",
+        "technicien frigoriste",
+        "technicienne frigoriste"
+      ]
+    },
+    {
+      "id": "technicien-en-energies-renouvelables",
+      "nom": "Technicien, technicienne en énergies renouvelables",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "electricite-electronique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Installer des panneaux ou des pompes à chaleur",
+        "Mettre en service",
+        "Assurer la maintenance"
+      ],
+      "contexte": "Installe et entretient des équipements d’énergie renouvelable.",
+      "correspondance": "proposition",
+      "onisep": "MET.391",
+      "rome": [
+        "I1304"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "technicien en énergies renouvelables",
+        "technicienne en énergies renouvelables"
+      ]
+    },
+    {
+      "id": "professeur-dans-l-enseignement-agricole",
+      "nom": "Professeur, professeure dans l'enseignement agricole",
+      "categorie": "services",
+      "disciplines": [
+        "agronomie-vegetale",
+        "biologie",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Préparer des cours",
+        "Encadrer des travaux pratiques",
+        "Accompagner les stages"
+      ],
+      "contexte": "Enseigne dans un lycée agricole.",
+      "correspondance": "proposition",
+      "onisep": "MET.423",
+      "rome": [
+        "K2109"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "agriculture, animaux/agriculture (généralités)",
+        "lettres, langues, enseignement/enseignement"
+      ],
+      "synonymes": [
+        "enseignant/e en lycée agricole",
+        "professeur dans l'enseignement agricole",
+        "professeure dans l'enseignement agricole"
+      ]
+    },
+    {
+      "id": "ingenieur-environnement",
+      "nom": "Ingénieur, ingénieure environnement",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "chimie-analytique",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Évaluer l’impact d’un projet",
+        "Proposer des solutions moins polluantes",
+        "Suivre la réglementation"
+      ],
+      "contexte": "Aide les entreprises à réduire leur impact sur l’environnement.",
+      "correspondance": "proposition",
+      "onisep": "MET.433",
+      "rome": [
+        "H1302"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/déchets, pollutions et risques",
+        "environnement, énergies, propreté/environnement (généralités)",
+        "environnement, énergies, propreté/gestion de l'eau",
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "chargé/e d'études environnement",
+        "ingénieur/e écologue",
+        "responsable du développement durable",
+        "responsable en environnement",
+        "responsable environnement sur site industriel",
+        "ingénieur environnement",
+        "ingénieure environnement"
+      ]
+    },
+    {
+      "id": "conseiller-energie",
+      "nom": "Conseiller, conseillère énergie",
+      "categorie": "nature",
+      "disciplines": [
+        "energetique",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Analyser les factures et les logements",
+        "Proposer des travaux",
+        "Informer sur les aides"
+      ],
+      "contexte": "Aide les particuliers à consommer moins d’énergie.",
+      "correspondance": "proposition",
+      "onisep": "MET.442",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/énergies",
+        "construction, architecture, travaux publics/équipement technique"
+      ],
+      "synonymes": [
+        "conseiller/ère en maîtrise de l'énergie",
+        "conseiller/ère espace info-énergie",
+        "conseiller/ère info-énergie",
+        "conseiller énergie",
+        "conseillère énergie"
+      ]
+    },
+    {
+      "id": "geothermicien",
+      "nom": "Géothermicien, géothermicienne",
+      "categorie": "disc",
+      "disciplines": [
+        "geologie",
+        "energetique",
+        "physique"
+      ],
+      "gestes": [
+        "Étudier le sous-sol",
+        "Concevoir l’installation",
+        "Suivre le forage"
+      ],
+      "contexte": "Utilise la chaleur du sous-sol pour produire de l’énergie.",
+      "correspondance": "proposition",
+      "onisep": "MET.443",
+      "rome": [
+        "F1105"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "géothermicien",
+        "géothermicienne"
+      ]
+    },
+    {
+      "id": "entraineur-de-chevaux",
+      "nom": "Entraîneur, entraîneuse de chevaux",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "education-physique",
+        "nutrition-alimentation"
+      ],
+      "gestes": [
+        "Programmer l’entraînement",
+        "Observer chaque cheval",
+        "Choisir les courses"
+      ],
+      "contexte": "Prépare des chevaux pour la compétition.",
+      "correspondance": "proposition",
+      "onisep": "MET.471",
+      "rome": [
+        "L1401"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "agriculture, animaux/soins aux animaux"
+      ],
+      "synonymes": [
+        "entraîneur de chevaux",
+        "entraîneuse de chevaux"
+      ]
+    },
+    {
+      "id": "charge-de-recherche-et-developpement-dechets",
+      "nom": "Chargé, chargée de recherche et développement déchets",
+      "categorie": "nature",
+      "disciplines": [
+        "chimie-analytique",
+        "environnement",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Tester de nouveaux procédés",
+        "Analyser les matières",
+        "Proposer des filières de recyclage"
+      ],
+      "contexte": "Cherche de nouvelles façons de recycler et valoriser les déchets.",
+      "correspondance": "proposition",
+      "onisep": "MET.485",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/déchets, pollutions et risques"
+      ],
+      "synonymes": [
+        "chargé/e R&D déchets",
+        "ingénieur/e d'études en gestion des déchets",
+        "ingénieur/e R&D déchets",
+        "chargé de recherche et développement déchets",
+        "chargée de recherche et développement déchets"
+      ]
+    },
+    {
+      "id": "ingenieur-combustion-et-bruleurs",
+      "nom": "Ingénieur, ingénieure combustion et brûleurs",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "chimie-analytique",
+        "physique"
+      ],
+      "gestes": [
+        "Concevoir des brûleurs",
+        "Mesurer les rejets",
+        "Améliorer le rendement"
+      ],
+      "contexte": "Conçoit des systèmes qui brûlent les combustibles en polluant moins.",
+      "correspondance": "proposition",
+      "onisep": "MET.488",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/énergies",
+        "sciences/physique"
+      ],
+      "synonymes": [
+        "chargé/e d'ingénierie chaudières et brûleurs",
+        "ingénieur/e conception thermique et combustion",
+        "ingénieur/e études et conception combustion",
+        "ingénieur/e recherche et développement (R&D) chaudières et brûleurs",
+        "ingénieur combustion et brûleurs",
+        "ingénieure combustion et brûleurs"
+      ]
+    },
+    {
+      "id": "ingenieur-efficacite-energetique-du-batiment",
+      "nom": "Ingénieur, ingénieure efficacité énergétique du bâtiment",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "physique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Faire le bilan énergétique",
+        "Proposer des travaux",
+        "Suivre les gains"
+      ],
+      "contexte": "Réduit la consommation d’énergie des bâtiments.",
+      "correspondance": "proposition",
+      "onisep": "MET.500",
+      "rome": [
+        "F1106"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/énergies",
+        "construction, architecture, travaux publics/génie civil, construction (généralités)"
+      ],
+      "synonymes": [
+        "ingénieur/e-conseil en énergie",
+        "ingénieur/e d'études en efficacité énergétique",
+        "ingénieur/e en génie climatique et thermique",
+        "ingénieur/e en génie thermique et énergétique",
+        "ingénieur efficacité énergétique du bâtiment",
+        "ingénieure efficacité énergétique du bâtiment"
+      ]
+    },
+    {
+      "id": "agent-d-exploitation-de-l-eau",
+      "nom": "Agent, agente d'exploitation de l'eau",
+      "categorie": "nature",
+      "disciplines": [
+        "chimie-analytique",
+        "environnement",
+        "mecanique"
+      ],
+      "gestes": [
+        "Surveiller les installations",
+        "Faire des prélèvements",
+        "Entretenir le réseau"
+      ],
+      "contexte": "Veille au bon fonctionnement des installations d’eau potable ou d’assainissement.",
+      "correspondance": "proposition",
+      "onisep": "MET.509",
+      "rome": [
+        "K2301"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "environnement, énergies, propreté/gestion de l'eau"
+      ],
+      "synonymes": [
+        "agent/e d'entretien des réseaux d'eau potable et d'assainissement",
+        "agent/e d'exploitation en station d'épuration",
+        "agent/e d'exploitation et d'assainissement",
+        "agent/e de la qualité de l'eau",
+        "agent/e de réseau d'eau",
+        "fontainier/ère",
+        "agent d'exploitation de l'eau",
+        "agente d'exploitation de l'eau"
+      ]
+    },
+    {
+      "id": "ingenieur-en-chef-territorial",
+      "nom": "Ingénieur en chef territorial, ingénieure en chef territoriale",
+      "categorie": "services",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "gestion",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Piloter les services techniques",
+        "Gérer de grands projets",
+        "Conseiller les élus"
+      ],
+      "contexte": "Dirige les services techniques d’une grande collectivité.",
+      "correspondance": "proposition",
+      "onisep": "MET.518",
+      "rome": [
+        "K1404"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/aménagement du territoire",
+        "environnement, énergies, propreté/environnement (généralités)",
+        "environnement, énergies, propreté/urbanisme"
+      ],
+      "synonymes": [
+        "ingénieur en chef territorial",
+        "ingénieure en chef territoriale"
+      ]
+    },
+    {
+      "id": "toiletteur-d-animaux",
+      "nom": "Toiletteur, toiletteuse d'animaux",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "communication",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Laver et sécher l’animal",
+        "Tondre et couper",
+        "Conseiller le propriétaire"
+      ],
+      "contexte": "Prend soin du pelage des chiens et des chats.",
+      "correspondance": "proposition",
+      "onisep": "MET.559",
+      "rome": [
+        "A1503"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "agriculture, animaux/soins aux animaux"
+      ],
+      "synonymes": [
+        "toiletteur/euse canin",
+        "toiletteur d'animaux",
+        "toiletteuse d'animaux"
+      ]
+    },
+    {
+      "id": "agent-de-proprete-et-d-hygiene",
+      "nom": "Agent, agente de propreté et d'hygiène",
+      "categorie": "services",
+      "disciplines": [
+        "chimie-analytique",
+        "environnement",
+        "physiologie-humaine"
+      ],
+      "gestes": [
+        "Nettoyer les locaux",
+        "Utiliser les bons produits",
+        "Respecter l’hygiène"
+      ],
+      "contexte": "Nettoie et désinfecte bureaux, hôpitaux ou écoles.",
+      "correspondance": "proposition",
+      "onisep": "MET.562",
+      "rome": [
+        "K2204"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "environnement, énergies, propreté/propreté"
+      ],
+      "synonymes": [
+        "agent/e d'entretien et de propreté",
+        "agent/e de service",
+        "technicien/ne d'entretien",
+        "agent de propreté et d'hygiène",
+        "agente de propreté et d'hygiène"
+      ]
+    },
+    {
+      "id": "agent-de-proprete-urbaine",
+      "nom": "Agent, agente de propreté urbaine",
+      "categorie": "services",
+      "disciplines": [
+        "environnement",
+        "chimie-analytique",
+        "education-physique"
+      ],
+      "gestes": [
+        "Nettoyer les rues",
+        "Vider les poubelles publiques",
+        "Conduire les engins de nettoyage"
+      ],
+      "contexte": "Garde la ville propre.",
+      "correspondance": "proposition",
+      "onisep": "MET.588",
+      "rome": [
+        "K2303"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "environnement, énergies, propreté/déchets, pollutions et risques",
+        "environnement, énergies, propreté/propreté"
+      ],
+      "synonymes": [
+        "agent/e d'assainissement",
+        "agent/e de collecte",
+        "agent/e de nettoiement",
+        "agent/e de salubrité",
+        "éboueur/euse",
+        "agent de propreté urbaine",
+        "agente de propreté urbaine"
+      ]
+    },
+    {
+      "id": "ingenieur-frigoriste",
+      "nom": "Ingénieur, ingénieure frigoriste",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "physique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Concevoir des systèmes de froid",
+        "Choisir les fluides",
+        "Optimiser la consommation"
+      ],
+      "contexte": "Conçoit les installations frigorifiques des magasins et des usines.",
+      "correspondance": "proposition",
+      "onisep": "MET.603",
+      "rome": [
+        "H1206"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "ingénieur/e-conseil",
+        "ingénieur/e d'affaires",
+        "ingénieur/e d'études",
+        "ingénieur/e froid industriel",
+        "ingénieur/e maintenance",
+        "ingénieur frigoriste",
+        "ingénieure frigoriste"
+      ]
+    },
+    {
+      "id": "hydrogeologue",
+      "nom": "Hydrogéologue",
+      "categorie": "disc",
+      "disciplines": [
+        "geologie",
+        "sciences-de-la-terre",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Étudier les nappes d’eau souterraines",
+        "Diriger des forages",
+        "Protéger les ressources"
+      ],
+      "contexte": "Recherche et protège l’eau du sous-sol.",
+      "correspondance": "proposition",
+      "onisep": "MET.607",
+      "rome": [
+        "F1105"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/environnement (généralités)",
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "ingénieur/e hydrogéologue",
+        "hydrogéologue"
+      ]
+    },
+    {
+      "id": "charge-d-etudes-naturalistes",
+      "nom": "Chargé, chargée d'études naturalistes",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "environnement",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Inventorier faune et flore",
+        "Rédiger des rapports",
+        "Conseiller les aménageurs"
+      ],
+      "contexte": "Recense les espèces vivantes d’un site avant des travaux.",
+      "correspondance": "proposition",
+      "onisep": "MET.610",
+      "rome": [
+        "A1303"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/environnement (généralités)",
+        "environnement, énergies, propreté/protection des espaces naturels"
+      ],
+      "synonymes": [
+        "assistant/e d'études en environnement",
+        "chargé/e d'études de préservation du patrimoine naturel",
+        "chargé/e d'études scientifiques sur les espaces et les milieux naturels",
+        "chargé/e de gestion écologique",
+        "chargé d'études naturalistes",
+        "chargée d'études naturalistes"
+      ]
+    },
+    {
+      "id": "charge-d-etudes-en-valorisation-agricole-des-dechets",
+      "nom": "Chargé, chargée d'études en valorisation agricole des déchets",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "chimie-analytique",
+        "environnement"
+      ],
+      "gestes": [
+        "Analyser les boues et composts",
+        "Organiser l’épandage",
+        "Respecter la réglementation"
+      ],
+      "contexte": "Organise le retour au sol de certains déchets comme engrais.",
+      "correspondance": "proposition",
+      "onisep": "MET.616",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "agriculture, animaux/agriculture (généralités)",
+        "environnement, énergies, propreté/déchets, pollutions et risques"
+      ],
+      "synonymes": [
+        "chargé/e de mission pour la valorisation agricole",
+        "chargé/e de valorisation agricole des déchets",
+        "ingénieur/e biogaz",
+        "ingénieur/e méthanisation",
+        "chargé d'études en valorisation agricole des déchets",
+        "chargée d'études en valorisation agricole des déchets"
+      ]
+    },
+    {
+      "id": "ingenieur-process-aval",
+      "nom": "Ingénieur, ingénieure process aval",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-analytique",
+        "energetique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Concevoir les unités de traitement",
+        "Optimiser la production",
+        "Veiller à la sécurité"
+      ],
+      "contexte": "Améliore les procédés qui transforment le pétrole ou le gaz.",
+      "correspondance": "proposition",
+      "onisep": "MET.617",
+      "rome": [
+        "H1302"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "ingénieur/e procédés",
+        "ingénieur/e procédés pétrole et gaz",
+        "ingénieur/e procédés raffinage",
+        "ingénieur process aval",
+        "ingénieure process aval"
+      ]
+    },
+    {
+      "id": "halieute",
+      "nom": "Halieute",
+      "categorie": "disc",
+      "disciplines": [
+        "biologie",
+        "analyse-statistique",
+        "environnement"
+      ],
+      "gestes": [
+        "Étudier les populations de poissons",
+        "Analyser les captures",
+        "Conseiller la gestion de la pêche"
+      ],
+      "contexte": "Étudie les ressources de la mer pour une pêche durable.",
+      "correspondance": "proposition",
+      "onisep": "MET.620",
+      "rome": [
+        "A1303"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "agriculture, animaux/agriculture (généralités)",
+        "sciences/biologie",
+        "environnement, énergies, propreté/environnement (généralités)"
+      ],
+      "synonymes": [
+        "biologiste marin/e",
+        "enseignant/e-chercheur/euse en halieutique",
+        "ingénieur/e de recherche en halieutique",
+        "halieute"
+      ]
+    },
+    {
+      "id": "expert-bilan-carbone",
+      "nom": "Expert, experte bilan carbone",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "energetique",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Mesurer les émissions de gaz à effet de serre",
+        "Identifier les leviers",
+        "Proposer un plan d’action"
+      ],
+      "contexte": "Aide les organisations à réduire leur empreinte carbone.",
+      "correspondance": "proposition",
+      "onisep": "MET.632",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/déchets, pollutions et risques",
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "analyste bilan carbone",
+        "chargé/e de mission plan climat",
+        "consultant/e bilan carbone",
+        "consultant/e en diagnostic de gaz à effet de serre",
+        "ingénieur/e bilan carbone",
+        "expert bilan carbone",
+        "experte bilan carbone"
+      ]
+    },
+    {
+      "id": "technicien-en-experimentation-et-production-vegetales",
+      "nom": "Technicien, technicienne en expérimentation et production végétales",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "analyse-statistique",
+        "biologie"
+      ],
+      "gestes": [
+        "Mettre en place les essais",
+        "Relever les mesures",
+        "Analyser les résultats"
+      ],
+      "contexte": "Réalise des essais de culture en champ ou en serre.",
+      "correspondance": "proposition",
+      "onisep": "MET.642",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "agriculture, animaux/agriculture (généralités)",
+        "sciences/biologie",
+        "agriculture, animaux/cultures"
+      ],
+      "synonymes": [
+        "technicien en expérimentation et production végétales",
+        "technicienne en expérimentation et production végétales"
+      ]
+    },
+    {
+      "id": "matelot-a-la-peche",
+      "nom": "Matelot, matelote à la pêche",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "education-physique",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Préparer les filets",
+        "Trier le poisson",
+        "Entretenir le bateau"
+      ],
+      "contexte": "Travaille à bord d’un bateau de pêche.",
+      "correspondance": "proposition",
+      "onisep": "MET.674",
+      "rome": [
+        "N3102"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "agriculture, animaux/pêche",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "marin/e-pêcheur/se",
+        "matelot à la pêche",
+        "matelote à la pêche"
+      ]
+    },
+    {
+      "id": "marechal-ferrant",
+      "nom": "Maréchal-ferrant, maréchale-ferrante",
+      "categorie": "craft",
+      "disciplines": [
+        "biologie",
+        "science-des-materiaux",
+        "mecanique"
+      ],
+      "gestes": [
+        "Parer le sabot",
+        "Forger le fer",
+        "Ferrer le cheval"
+      ],
+      "contexte": "Soigne les pieds des chevaux et pose leurs fers.",
+      "correspondance": "proposition",
+      "onisep": "MET.682",
+      "rome": [
+        "A1502"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "agriculture, animaux/soins aux animaux"
+      ],
+      "synonymes": [
+        "maréchal-ferrant",
+        "maréchale-ferrante"
+      ]
+    },
+    {
+      "id": "teinturier-blanchisseur",
+      "nom": "Teinturier-blanchisseur, teinturière-blanchisseuse",
+      "categorie": "craft",
+      "disciplines": [
+        "chimie-analytique",
+        "science-des-materiaux",
+        "communication"
+      ],
+      "gestes": [
+        "Trier le linge",
+        "Choisir le traitement",
+        "Détacher et repasser"
+      ],
+      "contexte": "Nettoie et entretient vêtements et textiles.",
+      "correspondance": "proposition",
+      "onisep": "MET.694",
+      "rome": [
+        "D1205"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "environnement, énergies, propreté/propreté",
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "blanchisseur/euse artisanal/e",
+        "blanchisseur/euse industriel/le",
+        "employé/e de pressing",
+        "responsable de pressing",
+        "teinturier-blanchisseur",
+        "teinturière-blanchisseuse"
+      ]
+    },
+    {
+      "id": "volcanologue",
+      "nom": "Volcanologue",
+      "categorie": "disc",
+      "disciplines": [
+        "geologie",
+        "sciences-de-la-terre",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Observer les volcans sur le terrain",
+        "Mesurer gaz et séismes",
+        "Prévoir les éruptions"
+      ],
+      "contexte": "Étudie les volcans pour comprendre et prévoir les éruptions.",
+      "correspondance": "proposition",
+      "onisep": "MET.703",
+      "rome": [
+        "F1105"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/environnement (généralités)",
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "chercheur/euse en volcanologie",
+        "vulcanologue",
+        "volcanologue"
+      ]
+    },
+    {
+      "id": "bucheron",
+      "nom": "Bûcheron, bûcheronne",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "education-physique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Abattre les arbres",
+        "Couper en billes",
+        "Entretenir la tronçonneuse"
+      ],
+      "contexte": "Coupe les arbres en forêt.",
+      "correspondance": "proposition",
+      "onisep": "MET.705",
+      "rome": [
+        "A1201"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "agriculture, animaux/forêt"
+      ],
+      "synonymes": [
+        "bûcheron",
+        "bûcheronne"
+      ]
+    },
+    {
+      "id": "responsable-de-reseau-eau-potable",
+      "nom": "Responsable de réseau eau potable",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "gestion",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Gérer le réseau",
+        "Programmer les travaux",
+        "Garantir la qualité"
+      ],
+      "contexte": "Organise la distribution de l’eau potable.",
+      "correspondance": "proposition",
+      "onisep": "MET.724",
+      "rome": [
+        "K2306"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "environnement, énergies, propreté/gestion de l'eau",
+        "sciences/physique"
+      ],
+      "synonymes": [
+        "chef/fe d'inspection du réseau eau potable",
+        "chef/fe de réseau eau potable",
+        "responsable d'exploitation eau potable",
+        "responsable de réseau eau potable"
+      ]
+    },
+    {
+      "id": "ingenieur-fluides-energies-reseaux-environnement",
+      "nom": "Ingénieur, ingénieure fluides, énergies, réseaux, environnement",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "physique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Concevoir les réseaux d’un bâtiment",
+        "Calculer les consommations",
+        "Choisir des solutions durables"
+      ],
+      "contexte": "Conçoit les réseaux d’eau, d’air et d’énergie des bâtiments.",
+      "correspondance": "proposition",
+      "onisep": "MET.725",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/énergies",
+        "environnement, énergies, propreté/environnement (généralités)",
+        "sciences/physique"
+      ],
+      "synonymes": [
+        "ingénieur/e fluides et environnement",
+        "ingénieur/e fluides et utilités",
+        "responsable de la qualité des fluides et des conséquences sur l'environnement",
+        "ingénieur fluides, énergies, réseaux, environnement",
+        "ingénieure fluides, énergies, réseaux, environnement"
+      ]
+    },
+    {
+      "id": "rudologue",
+      "nom": "Rudologue",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "chimie-analytique",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Étudier les déchets produits",
+        "Proposer des solutions de réduction",
+        "Organiser le tri"
+      ],
+      "contexte": "Spécialiste des déchets qui aide à en produire moins.",
+      "correspondance": "proposition",
+      "onisep": "MET.726",
+      "rome": [
+        "H1206"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/déchets, pollutions et risques"
+      ],
+      "synonymes": [
+        "consultant/e gestion des déchets",
+        "ingénieur/e en gestion des déchets",
+        "ingénieur/e rudologue",
+        "responsable prévention des déchets",
+        "rudologue"
+      ]
+    },
+    {
+      "id": "ingenieur-radioprotection",
+      "nom": "Ingénieur, ingénieure radioprotection",
+      "categorie": "disc",
+      "disciplines": [
+        "physique",
+        "energetique",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Mesurer les rayonnements",
+        "Former les travailleurs",
+        "Définir les règles de sécurité"
+      ],
+      "contexte": "Protège les personnes des rayonnements ionisants.",
+      "correspondance": "proposition",
+      "onisep": "MET.737",
+      "rome": [
+        "H1302"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/énergies",
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "ingénieur/e radioprotection environnement",
+        "ingénieur/e sécurité nucléaire",
+        "radioprotectionniste",
+        "ingénieur radioprotection",
+        "ingénieure radioprotection"
+      ]
+    },
+    {
+      "id": "conducteur-d-engins-forestiers-de-recolte-en-entreprises-de-travaux-forestiers",
+      "nom": "Conducteur, conductrice d'engins forestiers de récolte en entreprises de travaux forestiers",
+      "categorie": "nature",
+      "disciplines": [
+        "mecanique",
+        "agronomie-vegetale",
+        "environnement"
+      ],
+      "gestes": [
+        "Conduire l’abatteuse",
+        "Abattre et façonner les arbres",
+        "Entretenir la machine"
+      ],
+      "contexte": "Récolte le bois en forêt avec de grosses machines.",
+      "correspondance": "proposition",
+      "onisep": "MET.741",
+      "rome": [
+        "A1101"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "agriculture, animaux/forêt"
+      ],
+      "synonymes": [
+        "débardeur/se",
+        "pilote d'abatteuse",
+        "pilote de machines de bûcheronnage en entreprises de travaux forestiers",
+        "conducteur d'engins forestiers de récolte en entreprises de travaux forestiers",
+        "conductrice d'engins forestiers de récolte en entreprises de travaux forestiers"
+      ]
+    },
+    {
+      "id": "technicien-de-mesure-de-la-pollution",
+      "nom": "Technicien, technicienne de mesure de la pollution",
+      "categorie": "nature",
+      "disciplines": [
+        "chimie-analytique",
+        "environnement",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Installer les capteurs",
+        "Prélever des échantillons",
+        "Analyser les mesures"
+      ],
+      "contexte": "Mesure la pollution de l’air, de l’eau ou des sols.",
+      "correspondance": "proposition",
+      "onisep": "MET.747",
+      "rome": [
+        "H1303"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/déchets, pollutions et risques"
+      ],
+      "synonymes": [
+        "technicien/ne de la qualité de l'air",
+        "technicien de mesure de la pollution",
+        "technicienne de mesure de la pollution"
+      ]
+    },
+    {
+      "id": "conseiller-en-environnement",
+      "nom": "Conseiller, conseillère en environnement",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "communication",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Faire un diagnostic",
+        "Proposer des actions",
+        "Sensibiliser le public"
+      ],
+      "contexte": "Aide entreprises et collectivités à mieux protéger l’environnement.",
+      "correspondance": "proposition",
+      "onisep": "MET.774",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/aménagement du territoire",
+        "environnement, énergies, propreté/déchets, pollutions et risques",
+        "environnement, énergies, propreté/environnement (généralités)",
+        "environnement, énergies, propreté/gestion de l'eau",
+        "environnement, énergies, propreté/protection des espaces naturels"
+      ],
+      "synonymes": [
+        "écoconseiller/ère",
+        "conseiller en environnement",
+        "conseillère en environnement"
+      ]
+    },
+    {
+      "id": "technicien-petrolier",
+      "nom": "Technicien pétrolier, technicienne pétrolière",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-analytique",
+        "mecanique",
+        "energetique"
+      ],
+      "gestes": [
+        "Surveiller les installations",
+        "Réaliser des mesures",
+        "Assurer la maintenance"
+      ],
+      "contexte": "Participe à l’extraction ou au raffinage du pétrole.",
+      "correspondance": "proposition",
+      "onisep": "MET.777",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "technicien/ne d'exploitation pétrolière",
+        "technicien/ne pétrole",
+        "technicien pétrolier",
+        "technicienne pétrolière"
+      ]
+    },
+    {
+      "id": "agent-arboricole",
+      "nom": "Agent, agente arboricole",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "biologie",
+        "environnement"
+      ],
+      "gestes": [
+        "Planter et tailler les arbres fruitiers",
+        "Protéger les vergers",
+        "Récolter les fruits"
+      ],
+      "contexte": "S’occupe des arbres fruitiers dans un verger.",
+      "correspondance": "proposition",
+      "onisep": "MET.793",
+      "rome": [
+        "A1405"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "agriculture, animaux/cultures"
+      ],
+      "synonymes": [
+        "agent/e d'arboriculture fruitière",
+        "arboriculteur/trice",
+        "agent arboricole",
+        "agente arboricole"
+      ]
+    },
+    {
+      "id": "patron-pecheur",
+      "nom": "Patron pêcheur, patronne pêcheuse",
+      "categorie": "nature",
+      "disciplines": [
+        "sciences-de-la-terre",
+        "gestion",
+        "biologie"
+      ],
+      "gestes": [
+        "Diriger le bateau",
+        "Choisir les zones de pêche",
+        "Vendre le poisson"
+      ],
+      "contexte": "Dirige un bateau de pêche et son équipage.",
+      "correspondance": "proposition",
+      "onisep": "MET.801",
+      "rome": [
+        "A1406"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "agriculture, animaux/pêche",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "capitaine de pêche",
+        "marin/e-pêcheur/euse",
+        "patron/ne de pêche",
+        "patron pêcheur",
+        "patronne pêcheuse"
+      ]
+    },
+    {
+      "id": "ingenieur-reservoir",
+      "nom": "Ingénieur, ingénieure réservoir",
+      "categorie": "btp",
+      "disciplines": [
+        "geologie",
+        "mathematiques-appliquees",
+        "physique"
+      ],
+      "gestes": [
+        "Modéliser le gisement",
+        "Estimer les réserves",
+        "Optimiser la production"
+      ],
+      "contexte": "Étudie les réservoirs souterrains de pétrole, de gaz ou de chaleur.",
+      "correspondance": "proposition",
+      "onisep": "MET.821",
+      "rome": [
+        "F1105"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "ingénieur/e de recherche en ingénierie de réservoir",
+        "ingénieur réservoir",
+        "ingénieure réservoir"
+      ]
+    },
+    {
+      "id": "responsable-de-reseau-d-assainissement",
+      "nom": "Responsable de réseau d'assainissement",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "gestion",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Gérer le réseau d’égouts",
+        "Programmer l’entretien",
+        "Respecter les normes"
+      ],
+      "contexte": "Organise la collecte et le traitement des eaux usées.",
+      "correspondance": "proposition",
+      "onisep": "MET.822",
+      "rome": [
+        "K2302"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "environnement, énergies, propreté/gestion de l'eau",
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "chef/fe de réseau assainissement",
+        "responsable d'exploitation assainissement",
+        "responsable de réseau d'assainissement"
+      ]
+    },
+    {
+      "id": "glaciologue",
+      "nom": "Glaciologue",
+      "categorie": "disc",
+      "disciplines": [
+        "sciences-de-la-terre",
+        "geologie",
+        "physique"
+      ],
+      "gestes": [
+        "Mesurer les glaciers",
+        "Analyser les carottes de glace",
+        "Étudier l’évolution du climat"
+      ],
+      "contexte": "Étudie les glaciers et ce qu’ils disent du climat.",
+      "correspondance": "proposition",
+      "onisep": "MET.829",
+      "rome": [
+        "F1105"
+      ],
+      "niveauAcces": "bac+8",
+      "domaines": [
+        "environnement, énergies, propreté/environnement (généralités)",
+        "sciences/sciences de la Terre"
+      ],
+      "synonymes": [
+        "chercheur/euse en glaciologie",
+        "glaciologue"
+      ]
+    },
+    {
+      "id": "inseminateur",
+      "nom": "Inséminateur, inséminatrice",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie-cellulaire-genetique",
+        "biologie",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Choisir les reproducteurs",
+        "Réaliser l’insémination",
+        "Suivre les résultats"
+      ],
+      "contexte": "Organise la reproduction des animaux d’élevage.",
+      "correspondance": "proposition",
+      "onisep": "MET.831",
+      "rome": [
+        "A1303"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "agriculture, animaux/élevage, aquaculture",
+        "agriculture, animaux/soins aux animaux"
+      ],
+      "synonymes": [
+        "inséminateur",
+        "inséminatrice"
+      ]
+    },
+    {
+      "id": "gardien-d-immeubles",
+      "nom": "Gardien, gardienne d'immeubles",
+      "categorie": "services",
+      "disciplines": [
+        "communication",
+        "droit-et-institutions",
+        "environnement"
+      ],
+      "gestes": [
+        "Accueillir les habitants",
+        "Entretenir les parties communes",
+        "Signaler les problèmes"
+      ],
+      "contexte": "Veille au bon état d’un immeuble et accueille ses habitants.",
+      "correspondance": "proposition",
+      "onisep": "MET.837",
+      "rome": [
+        "K2501"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "environnement, énergies, propreté/propreté",
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "concierge",
+        "gardien d'immeubles",
+        "gardienne d'immeubles"
+      ]
+    },
+    {
+      "id": "controleur-de-performances",
+      "nom": "Contrôleur, contrôleuse de performances",
+      "categorie": "nature",
+      "disciplines": [
+        "analyse-statistique",
+        "biologie",
+        "agronomie-vegetale"
+      ],
+      "gestes": [
+        "Peser et mesurer les animaux",
+        "Prélever le lait",
+        "Enregistrer les données"
+      ],
+      "contexte": "Mesure les performances des animaux d’élevage.",
+      "correspondance": "proposition",
+      "onisep": "MET.865",
+      "rome": [
+        "A1302"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "agriculture, animaux/élevage, aquaculture"
+      ],
+      "synonymes": [
+        "contrôleur/euse de croissance",
+        "contrôleur/euse laitier/ère",
+        "contrôleur de performances",
+        "contrôleuse de performances"
+      ]
+    },
+    {
+      "id": "technicien-thermicien",
+      "nom": "Technicien thermicien, technicienne thermicienne",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "physique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Calculer les besoins en chaleur",
+        "Dimensionner les installations",
+        "Réaliser des diagnostics"
+      ],
+      "contexte": "Étudie les besoins de chauffage et de froid des bâtiments.",
+      "correspondance": "proposition",
+      "onisep": "MET.873",
+      "rome": [
+        "I1308"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "technicien/ne génie climatique et thermique",
+        "thermicien/ne",
+        "technicien thermicien",
+        "technicienne thermicienne"
+      ]
+    },
+    {
+      "id": "charge-hse",
+      "nom": "Chargé, chargée HSE (hygiène sécurité environnement)",
+      "categorie": "nature",
+      "disciplines": [
+        "droit-et-institutions",
+        "environnement",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Repérer les risques",
+        "Former le personnel",
+        "Contrôler les règles"
+      ],
+      "contexte": "Veille à l’hygiène, à la sécurité et à l’environnement dans une entreprise.",
+      "correspondance": "proposition",
+      "onisep": "MET.878",
+      "rome": [
+        "H1302"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/propreté",
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "agent/e de prévention",
+        "animateur/trice sécurité",
+        "chef/fe du service qualité hygiène sécurité (QSE)",
+        "conseiller/ère en prévention",
+        "conseiller/ère qualité hygiène environnement (QSE)",
+        "consultant/e qualité sécurité environnement (QSE)",
+        "ingénieur/e préventrice santé sécurité",
+        "ingénieur/e qualité hygiène sécurité environnement (QHSE)",
+        "responsable HSE (hygiène sécurité environnement)",
+        "responsable hygiène sécurité environnement (HSE)",
+        "responsable santé sécurité",
+        "chargé HSE (hygiène sécurité environnement)",
+        "chargée HSE (hygiène sécurité environnement)"
+      ]
+    },
+    {
+      "id": "agent-de-developpement-des-energies-renouvelables",
+      "nom": "Agent, agente de développement des énergies renouvelables",
+      "categorie": "nature",
+      "disciplines": [
+        "energetique",
+        "amenagement-du-territoire",
+        "communication"
+      ],
+      "gestes": [
+        "Informer les habitants",
+        "Monter des projets locaux",
+        "Suivre les installations"
+      ],
+      "contexte": "Développe les énergies renouvelables sur un territoire.",
+      "correspondance": "proposition",
+      "onisep": "MET.893",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/énergies",
+        "construction, architecture, travaux publics/équipement technique"
+      ],
+      "synonymes": [
+        "chargé/e de mission énergies renouvelables",
+        "responsable énergie",
+        "agent de développement des énergies renouvelables",
+        "agente de développement des énergies renouvelables"
+      ]
+    },
+    {
+      "id": "ingenieur-en-energie-solaire",
+      "nom": "Ingénieur, ingénieure en énergie solaire",
+      "categorie": "nature",
+      "disciplines": [
+        "energetique",
+        "physique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Concevoir des centrales solaires",
+        "Calculer la production",
+        "Suivre l’installation"
+      ],
+      "contexte": "Conçoit des installations qui produisent de l’énergie avec le soleil.",
+      "correspondance": "proposition",
+      "onisep": "MET.894",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "chef/fe de projet centrale solaire",
+        "ingénieur/e d'études en solaire photovoltaïque",
+        "ingénieur/e projet solaire",
+        "ingénieur en énergie solaire",
+        "ingénieure en énergie solaire"
+      ]
+    },
+    {
+      "id": "technicien-d-intervention-clientele-gaz",
+      "nom": "Technicien, technicienne d'intervention clientèle gaz",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "chimie-analytique",
+        "communication"
+      ],
+      "gestes": [
+        "Mettre en service les compteurs",
+        "Contrôler les installations",
+        "Intervenir en cas de fuite"
+      ],
+      "contexte": "Intervient chez les clients pour le gaz, en toute sécurité.",
+      "correspondance": "proposition",
+      "onisep": "MET.895",
+      "niveauAcces": "bac",
+      "domaines": [
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "technicien/ne d'intervention clientèle",
+        "technicien d'intervention clientèle gaz",
+        "technicienne d'intervention clientèle gaz"
+      ]
+    },
+    {
+      "id": "elagueur",
+      "nom": "Élagueur, élagueuse",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "education-physique",
+        "biologie"
+      ],
+      "gestes": [
+        "Grimper dans les arbres",
+        "Tailler et couper les branches",
+        "Sécuriser le chantier"
+      ],
+      "contexte": "Taille et soigne les arbres en hauteur.",
+      "correspondance": "proposition",
+      "onisep": "MET.900",
+      "rome": [
+        "A1201"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "environnement, énergies, propreté/aménagement paysager"
+      ],
+      "synonymes": [
+        "arboriste-élagueur/se",
+        "arboriste-grimpeur/se",
+        "éhouppeur/se",
+        "élagueur/se taille douce",
+        "grimpeur/se-élagueur/se",
+        "élagueur",
+        "élagueuse"
+      ]
+    },
+    {
+      "id": "ouvrier-agricole",
+      "nom": "Ouvrier, ouvrière agricole",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "mecanique",
+        "biologie"
+      ],
+      "gestes": [
+        "Préparer les sols",
+        "Conduire le tracteur",
+        "Récolter"
+      ],
+      "contexte": "Participe aux travaux des champs ou de l’élevage.",
+      "correspondance": "proposition",
+      "onisep": "MET.903",
+      "rome": [
+        "A1416"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "agriculture, animaux/cultures",
+        "agriculture, animaux/élevage, aquaculture"
+      ],
+      "synonymes": [
+        "salarié/e agricole",
+        "ouvrier agricole",
+        "ouvrière agricole"
+      ]
+    },
+    {
+      "id": "soigneur-d-animaux",
+      "nom": "Soigneur, soigneuse d'animaux",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "nutrition-alimentation",
+        "environnement"
+      ],
+      "gestes": [
+        "Nourrir les animaux",
+        "Nettoyer les enclos",
+        "Observer leur comportement"
+      ],
+      "contexte": "S’occupe des animaux dans un zoo ou un parc.",
+      "correspondance": "proposition",
+      "onisep": "MET.905",
+      "rome": [
+        "A1501"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "agriculture, animaux/soins aux animaux"
+      ],
+      "synonymes": [
+        "gardien/ne de zoo",
+        "soigneur/euse animalier/ère",
+        "soigneur d'animaux",
+        "soigneuse d'animaux"
+      ]
+    },
+    {
+      "id": "responsable-de-la-collecte-des-dechets-menagers",
+      "nom": "Responsable de la collecte des déchets ménagers",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "gestion",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Organiser les tournées",
+        "Encadrer les équipes",
+        "Améliorer le tri"
+      ],
+      "contexte": "Organise le ramassage des déchets d’une ville.",
+      "correspondance": "proposition",
+      "onisep": "MET.906",
+      "rome": [
+        "K2302"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "environnement, énergies, propreté/déchets, pollutions et risques"
+      ],
+      "synonymes": [
+        "responsable déchets ménagers",
+        "responsable de service déchets ménagers",
+        "responsable technique de la gestion des déchets ménagers",
+        "responsable de la collecte des déchets ménagers"
+      ]
+    },
+    {
+      "id": "agent-de-developpement-local",
+      "nom": "Agent, agente de développement local",
+      "categorie": "services",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "economie-et-societe",
+        "communication"
+      ],
+      "gestes": [
+        "Rencontrer les acteurs locaux",
+        "Monter des projets",
+        "Chercher des financements"
+      ],
+      "contexte": "Fait vivre et développe un territoire.",
+      "correspondance": "proposition",
+      "onisep": "MET.922",
+      "rome": [
+        "K1802"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "environnement, énergies, propreté/aménagement du territoire",
+        "santé, social, sport/travail social"
+      ],
+      "synonymes": [
+        "animateur/trice de développement",
+        "agent de développement local",
+        "agente de développement local"
+      ]
+    },
+    {
+      "id": "developpeur-economique",
+      "nom": "Développeur, développeuse économique",
+      "categorie": "services",
+      "disciplines": [
+        "economie-et-societe",
+        "amenagement-du-territoire",
+        "communication"
+      ],
+      "gestes": [
+        "Accueillir les entreprises",
+        "Monter des projets d’implantation",
+        "Animer le réseau économique"
+      ],
+      "contexte": "Attire et accompagne les entreprises sur un territoire.",
+      "correspondance": "proposition",
+      "onisep": "MET.923",
+      "rome": [
+        "K1802"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/aménagement du territoire"
+      ],
+      "synonymes": [
+        "chargé/e de développement territorial",
+        "chargé/e de mission économique",
+        "développeur économique",
+        "développeuse économique"
+      ]
+    },
+    {
+      "id": "responsable-de-site-de-traitement-des-dechets",
+      "nom": "Responsable de site de traitement des déchets",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "gestion",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Piloter le site",
+        "Encadrer les équipes",
+        "Respecter les normes"
+      ],
+      "contexte": "Dirige un site qui trie, recycle ou élimine les déchets.",
+      "correspondance": "proposition",
+      "onisep": "MET.927",
+      "rome": [
+        "K2306"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "environnement, énergies, propreté/déchets, pollutions et risques"
+      ],
+      "synonymes": [
+        "responsable d'exploitation de site éco-industriel",
+        "responsable d'exploitation et de traitement des déchets",
+        "responsable de site de traitement des déchets"
+      ]
+    },
+    {
+      "id": "chef-de-projet-biodiversite",
+      "nom": "Chef, cheffe de projet biodiversité",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "environnement",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Diagnostiquer un site",
+        "Monter des actions de protection",
+        "Suivre les résultats"
+      ],
+      "contexte": "Protège et restaure la nature sur un territoire.",
+      "correspondance": "proposition",
+      "onisep": "MET.944",
+      "rome": [
+        "A1303"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/environnement (généralités)",
+        "environnement, énergies, propreté/protection des espaces naturels"
+      ],
+      "synonymes": [
+        "chargé/e d'études en biodiversité",
+        "chargé/e de mission biodiversité",
+        "chef/fe de projet écologie et biodiversité",
+        "chef/fe de projet écologue",
+        "ingénieur/e écologue",
+        "référent/e biodiversité",
+        "responsable de pôle biodiversité",
+        "chef de projet biodiversité",
+        "cheffe de projet biodiversité"
+      ]
+    },
+    {
+      "id": "consultant-green-it",
+      "nom": "Consultant, consultante green IT (écotechniques de l'information et de la communication)",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "environnement",
+        "energetique"
+      ],
+      "gestes": [
+        "Mesurer l’impact du numérique",
+        "Proposer des pratiques sobres",
+        "Accompagner le changement"
+      ],
+      "contexte": "Aide les entreprises à réduire l’impact environnemental de leur informatique.",
+      "correspondance": "proposition",
+      "onisep": "MET.945",
+      "rome": [
+        "M1402"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/déchets, pollutions et risques",
+        "informatique, Internet/informatique (généralités)"
+      ],
+      "synonymes": [
+        "consultant green IT (écotechniques de l'information et de la communication)",
+        "consultante green IT (écotechniques de l'information et de la communication)"
+      ]
+    },
+    {
+      "id": "educateur-canin",
+      "nom": "Éducateur canin, éducatrice canine",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "psychologie-sociale",
+        "communication"
+      ],
+      "gestes": [
+        "Observer le chien",
+        "Apprendre les ordres de base",
+        "Conseiller le maître"
+      ],
+      "contexte": "Éduque les chiens et conseille leurs propriétaires.",
+      "correspondance": "proposition",
+      "onisep": "MET.964",
+      "rome": [
+        "A1408"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "agriculture, animaux/soins aux animaux"
+      ],
+      "synonymes": [
+        "conseiller/ère en éducation canine",
+        "éducateur/trice de chiens",
+        "éducateur canin",
+        "éducatrice canine"
+      ]
+    },
+    {
+      "id": "educateur-de-chiens-guides-d-aveugles",
+      "nom": "Éducateur de chiens guides d'aveugles",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "psychologie-sociale",
+        "communication"
+      ],
+      "gestes": [
+        "Éduquer le chien",
+        "Le tester en ville",
+        "Former le futur maître"
+      ],
+      "contexte": "Prépare des chiens à guider des personnes aveugles.",
+      "correspondance": "proposition",
+      "onisep": "MET.7817",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "agriculture, animaux/soins aux animaux"
+      ],
+      "synonymes": [
+        "moniteur/trice de chiens guides d'aveugles",
+        "éducateur de chiens guides d'aveugles"
+      ]
+    },
+    {
+      "id": "agent-valoriste",
+      "nom": "Agent, agente valoriste",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "science-des-materiaux",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Trier les objets collectés",
+        "Réparer ou démonter",
+        "Préparer la revente"
+      ],
+      "contexte": "Donne une seconde vie aux objets dans une recyclerie.",
+      "correspondance": "proposition",
+      "onisep": "MET.7818",
+      "rome": [
+        "K2304"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "environnement, énergies, propreté/déchets, pollutions et risques"
+      ],
+      "synonymes": [
+        "agent/e de revalorisation",
+        "agent/e polyvalente de réemploi",
+        "agent/e valoriste des biens de consommation courante",
+        "opérateur/trice de tri et valorisation",
+        "opérateur/trice de tri manuel",
+        "agent valoriste",
+        "agente valoriste"
+      ]
+    },
+    {
+      "id": "technicien-valoriste",
+      "nom": "Technicien valoriste",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "science-des-materiaux",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Analyser les flux de déchets",
+        "Organiser le tri",
+        "Trouver des débouchés"
+      ],
+      "contexte": "Organise la récupération et la revente des matières recyclables.",
+      "correspondance": "proposition",
+      "onisep": "MET.7837",
+      "rome": [
+        "K2304"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "environnement, énergies, propreté/déchets, pollutions et risques"
+      ],
+      "synonymes": [
+        "technicien/ne de réemploi et de réutilisation",
+        "technicien valoriste"
+      ]
+    },
+    {
+      "id": "berger",
+      "nom": "Berger, bergère",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "agronomie-vegetale",
+        "environnement"
+      ],
+      "gestes": [
+        "Garder le troupeau",
+        "Soigner les animaux",
+        "Conduire les bêtes en estive"
+      ],
+      "contexte": "Garde et soigne un troupeau de moutons ou de chèvres.",
+      "correspondance": "proposition",
+      "onisep": "MET.7915",
+      "rome": [
+        "A1410"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "agriculture, animaux/élevage, aquaculture"
+      ],
+      "synonymes": [
+        "chevrier/ère",
+        "conducteur/trice de troupeau",
+        "gardien/ne de troupeau",
+        "berger",
+        "bergère"
+      ]
+    },
+    {
+      "id": "technicien-eco-concepteur",
+      "nom": "Technicien éco-concepteur, technicienne éco-conceptrice",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "science-des-materiaux",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Analyser le cycle de vie d’un produit",
+        "Proposer des matériaux durables",
+        "Réduire les déchets"
+      ],
+      "contexte": "Conçoit des produits qui respectent davantage l’environnement.",
+      "correspondance": "proposition",
+      "onisep": "MET.7955",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/environnement (généralités)",
+        "matières premières, fabrication, industries/fonction production (généralités)",
+        "matières premières, fabrication, industries/matériaux"
+      ],
+      "synonymes": [
+        "technicien éco-concepteur",
+        "technicienne éco-conceptrice"
+      ]
+    },
+    {
+      "id": "technicien-forage",
+      "nom": "Technicien, technicienne forage",
+      "categorie": "btp",
+      "disciplines": [
+        "geologie",
+        "mecanique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Installer la foreuse",
+        "Conduire le forage",
+        "Relever les données"
+      ],
+      "contexte": "Réalise des forages pour l’eau, l’énergie ou les études de sol.",
+      "correspondance": "proposition",
+      "onisep": "MET.7956",
+      "rome": [
+        "F1401"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "technicien forage",
+        "technicienne forage"
+      ]
+    },
+    {
+      "id": "ingenieur-projet-hydrogene",
+      "nom": "Ingénieur, ingénieure projet hydrogène",
+      "categorie": "nature",
+      "disciplines": [
+        "energetique",
+        "chimie-analytique",
+        "gestion"
+      ],
+      "gestes": [
+        "Concevoir l’installation",
+        "Coordonner les partenaires",
+        "Suivre les essais"
+      ],
+      "contexte": "Développe des projets qui produisent ou utilisent l’hydrogène.",
+      "correspondance": "proposition",
+      "onisep": "MET.7962",
+      "rome": [
+        "H2502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "ingénieur projet hydrogène",
+        "ingénieure projet hydrogène"
+      ]
+    },
+    {
+      "id": "agent-machiniste",
+      "nom": "Agent, agente machiniste",
+      "categorie": "services",
+      "disciplines": [
+        "mecanique",
+        "environnement",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Conduire la balayeuse",
+        "Nettoyer les voies",
+        "Entretenir l’engin"
+      ],
+      "contexte": "Nettoie les rues avec des machines.",
+      "correspondance": "proposition",
+      "onisep": "MET.8005",
+      "rome": [
+        "K2204"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "environnement, énergies, propreté/propreté"
+      ],
+      "synonymes": [
+        "agent/e d'entretien machiniste",
+        "agent/e machiniste en propreté",
+        "agent machiniste",
+        "agente machiniste"
+      ]
+    },
+    {
+      "id": "laveur-de-vitres",
+      "nom": "Laveur, laveuse de vitres",
+      "categorie": "services",
+      "disciplines": [
+        "chimie-analytique",
+        "education-physique",
+        "environnement"
+      ],
+      "gestes": [
+        "Préparer le matériel",
+        "Nettoyer les surfaces vitrées",
+        "Travailler en hauteur en sécurité"
+      ],
+      "contexte": "Nettoie les vitres des bâtiments.",
+      "correspondance": "proposition",
+      "onisep": "MET.8008",
+      "rome": [
+        "K2202"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "environnement, énergies, propreté/propreté"
+      ],
+      "synonymes": [
+        "laveur de vitres",
+        "laveuse de vitres"
+      ]
+    },
+    {
+      "id": "responsable-d-approvisionnement-en-exploitations-forestieres",
+      "nom": "Responsable d'approvisionnement en exploitations forestières",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "gestion",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Acheter les coupes de bois",
+        "Organiser l’exploitation",
+        "Livrer les scieries"
+      ],
+      "contexte": "Achète le bois en forêt et organise son transport vers les usines.",
+      "correspondance": "proposition",
+      "onisep": "MET.8009",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "agriculture, animaux/forêt",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "approvisionneur/euse en exploitations forestières",
+        "ingénieur/e en achat et approvisionnement bois",
+        "responsable d'approvisionnement en exploitations forestières"
+      ]
+    },
+    {
+      "id": "technicien-en-prevention-des-risques-industriels",
+      "nom": "Technicien, technicienne en prévention des risques industriels",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-analytique",
+        "droit-et-institutions",
+        "environnement"
+      ],
+      "gestes": [
+        "Analyser les risques",
+        "Contrôler les installations",
+        "Former le personnel"
+      ],
+      "contexte": "Prévient les accidents dans les usines.",
+      "correspondance": "proposition",
+      "onisep": "MET.8034",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/déchets, pollutions et risques",
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "technicien en prévention des risques industriels",
+        "technicienne en prévention des risques industriels"
+      ]
+    },
+    {
+      "id": "cerealier",
+      "nom": "Céréalier, céréalière",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "chimie-analytique",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Préparer les sols",
+        "Semer et traiter",
+        "Récolter et stocker le grain"
+      ],
+      "contexte": "Cultive du blé, du maïs ou d’autres céréales.",
+      "correspondance": "proposition",
+      "onisep": "MET.8073",
+      "rome": [
+        "A1416"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "agriculture, animaux/agriculture (généralités)",
+        "agriculture, animaux/cultures"
+      ],
+      "synonymes": [
+        "producteur/trice de céréales",
+        "céréalier",
+        "céréalière"
+      ]
+    },
+    {
+      "id": "charge-d-etudes-en-risques-naturels",
+      "nom": "Chargé, chargée d'études en risques naturels",
+      "categorie": "nature",
+      "disciplines": [
+        "geologie",
+        "sciences-de-la-terre",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Cartographier les risques",
+        "Analyser les données",
+        "Conseiller les collectivités"
+      ],
+      "contexte": "Étudie les inondations, glissements de terrain ou séismes pour protéger la population.",
+      "correspondance": "proposition",
+      "onisep": "MET.8074",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/déchets, pollutions et risques"
+      ],
+      "synonymes": [
+        "chargé d'études en risques naturels",
+        "chargée d'études en risques naturels"
+      ]
+    },
+    {
+      "id": "charge-d-etudes-plu",
+      "nom": "Chargé, chargée d'études PLU (ou PLUI)",
+      "categorie": "services",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "droit-et-institutions",
+        "environnement"
+      ],
+      "gestes": [
+        "Analyser le territoire",
+        "Rédiger les règles d’urbanisme",
+        "Concerter les habitants"
+      ],
+      "contexte": "Prépare les règles qui organisent les constructions d’une commune.",
+      "correspondance": "proposition",
+      "onisep": "MET.8075",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/aménagement du territoire",
+        "environnement, énergies, propreté/urbanisme"
+      ],
+      "synonymes": [
+        "chargé d'études PLU (ou PLUI)",
+        "chargée d'études PLU (ou PLUI)"
+      ]
+    },
+    {
+      "id": "chef-de-silo",
+      "nom": "Chef, cheffe de silo",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "chimie-analytique",
+        "gestion"
+      ],
+      "gestes": [
+        "Réceptionner les grains",
+        "Contrôler la qualité",
+        "Gérer le stockage"
+      ],
+      "contexte": "Gère le stockage des céréales dans un silo.",
+      "correspondance": "proposition",
+      "onisep": "MET.8080",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "agriculture, animaux/agriculture (généralités)",
+        "agriculture, animaux/cultures"
+      ],
+      "synonymes": [
+        "responsable de silo",
+        "silotier/ère",
+        "chef de silo",
+        "cheffe de silo"
+      ]
+    },
+    {
+      "id": "ingenieur-social",
+      "nom": "Ingénieur social, ingénieure sociale",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "economie-et-societe",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Analyser les besoins sociaux",
+        "Concevoir des projets",
+        "Évaluer les politiques"
+      ],
+      "contexte": "Conçoit et évalue des actions sociales sur un territoire.",
+      "correspondance": "proposition",
+      "onisep": "MET.8097",
+      "niveauAcces": "bac+7",
+      "domaines": [
+        "environnement, énergies, propreté/aménagement du territoire",
+        "santé, social, sport/travail social"
+      ],
+      "synonymes": [
+        "ingénieur social",
+        "ingénieure sociale"
+      ]
+    },
+    {
+      "id": "inspecteur-des-installations-classees",
+      "nom": "Inspecteur, inspectrice des installations classées",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "chimie-analytique",
+        "environnement"
+      ],
+      "gestes": [
+        "Inspecter les usines",
+        "Vérifier les règles",
+        "Rédiger les rapports"
+      ],
+      "contexte": "Contrôle les sites industriels qui peuvent présenter des risques.",
+      "correspondance": "proposition",
+      "onisep": "MET.8100",
+      "rome": [
+        "H1302"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/déchets, pollutions et risques",
+        "environnement, énergies, propreté/environnement (généralités)"
+      ],
+      "synonymes": [
+        "inspecteur des installations classées",
+        "inspectrice des installations classées"
+      ]
+    },
+    {
+      "id": "responsable-de-service-urbanisme",
+      "nom": "Responsable de service urbanisme",
+      "categorie": "services",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "droit-et-institutions",
+        "gestion"
+      ],
+      "gestes": [
+        "Instruire les permis de construire",
+        "Préparer les projets d’aménagement",
+        "Conseiller les élus"
+      ],
+      "contexte": "Dirige le service qui organise l’urbanisme d’une commune.",
+      "correspondance": "proposition",
+      "onisep": "MET.8116",
+      "rome": [
+        "K1802"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/urbanisme"
+      ],
+      "synonymes": [
+        "responsable de service urbanisme"
+      ]
+    },
+    {
+      "id": "responsable-des-espaces-verts",
+      "nom": "Responsable des espaces verts",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "gestion",
+        "environnement"
+      ],
+      "gestes": [
+        "Planifier l’entretien",
+        "Encadrer les jardiniers",
+        "Choisir les plantations"
+      ],
+      "contexte": "Dirige l’entretien des parcs et jardins d’une ville.",
+      "correspondance": "proposition",
+      "onisep": "MET.8117",
+      "rome": [
+        "A1203"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/aménagement paysager",
+        "environnement, énergies, propreté/environnement (généralités)"
+      ],
+      "synonymes": [
+        "directeur/trice espaces verts et biodiversité",
+        "responsable des espaces verts"
+      ]
+    },
+    {
+      "id": "responsable-rse",
+      "nom": "Responsable RSE (responsabilité sociétale des entreprises)",
+      "categorie": "trade",
+      "disciplines": [
+        "environnement",
+        "economie-et-societe",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Faire un état des lieux",
+        "Fixer des objectifs",
+        "Suivre les engagements"
+      ],
+      "contexte": "Aide une entreprise à agir de façon plus responsable envers l’environnement et la société.",
+      "correspondance": "proposition",
+      "onisep": "MET.8119",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "environnement, énergies, propreté/déchets, pollutions et risques"
+      ],
+      "synonymes": [
+        "responsable RSE (responsabilité sociétale des entreprises)"
+      ]
+    },
+    {
+      "id": "technicien-d-exploitation-de-l-eau-8120",
+      "nom": "Technicien d'exploitation de l'eau",
+      "categorie": "nature",
+      "disciplines": [
+        "chimie-analytique",
+        "environnement",
+        "mecanique"
+      ],
+      "gestes": [
+        "Surveiller les installations",
+        "Analyser l’eau",
+        "Réaliser l’entretien"
+      ],
+      "contexte": "Fait fonctionner une usine d’eau potable ou d’épuration.",
+      "correspondance": "proposition",
+      "onisep": "MET.8120",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/gestion de l'eau"
+      ],
+      "synonymes": [
+        "technicien d'exploitation de l'eau",
+        "technicienne d'exploitation de l'eau"
+      ]
+    },
+    {
+      "id": "technicien-de-riviere",
+      "nom": "Technicien, technicienne de rivière",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "biologie",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Surveiller les berges",
+        "Organiser les travaux d’entretien",
+        "Sensibiliser les riverains"
+      ],
+      "contexte": "Entretient et protège les rivières.",
+      "correspondance": "proposition",
+      "onisep": "MET.8121",
+      "rome": [
+        "A1204"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "environnement, énergies, propreté/environnement (généralités)",
+        "environnement, énergies, propreté/gestion de l'eau"
+      ],
+      "synonymes": [
+        "technicien de rivière",
+        "technicienne de rivière"
+      ]
+    },
+    {
+      "id": "educateur-de-chiens-d-assistance",
+      "nom": "Éducateur, éducatrice de chiens d'assistance",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "psychologie-sociale",
+        "communication"
+      ],
+      "gestes": [
+        "Apprendre au chien des gestes d’aide",
+        "Tester en situation",
+        "Former la personne aidée"
+      ],
+      "contexte": "Éduque des chiens qui aident des personnes en situation de handicap.",
+      "correspondance": "proposition",
+      "onisep": "MET.8184",
+      "niveauAcces": "bac",
+      "domaines": [
+        "agriculture, animaux/soins aux animaux"
+      ],
+      "synonymes": [
+        "éducateur de chiens d'assistance",
+        "éducatrice de chiens d'assistance"
       ]
     }
   ]

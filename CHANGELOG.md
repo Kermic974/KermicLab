@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Espace Métiers, vague 4 « environnement, énergies ; agriculture, animaux »** (chantier Métiers) : 123 métiers ONISEP de plus (énergies renouvelables, eau, déchets, climat, forêt, élevage, soins aux animaux…), en « proposition ». 433 métiers. / Careers wave 4: 123 environment, energy, farming and animal careers.
+
 - **Espace Métiers, vague 3 « arts, culture, artisanat »** (chantier Métiers) : 99 métiers ONISEP de plus (métiers d'art, spectacle, design, mode, joaillerie, jeu vidéo…), gestes et contexte rédigés par KermicLab, en « proposition ». 310 métiers. / Careers wave 3: 99 arts, culture and crafts careers.
 
 - **Espace Métiers, vague 2 « santé, social, sport »** (chantier Métiers) : 100 métiers ONISEP de plus (soins, rééducation, médecine, sport, travail social, petite enfance…), avec gestes et contexte rédigés par KermicLab, en « proposition ». 211 métiers au total. / Careers wave 2: 100 health, social and sport careers.
