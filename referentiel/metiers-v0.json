@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès. Lot 3 et vague pilote du lot 6 (2026-11-24) : 14 disciplines et 41 métiers ajoutés par un agent, en correspondance « proposition », sans code ROME (apporté par l’import ONISEP). Import ONISEP du 2026-11-24 (extrait referentiel/sources/onisep/ideo-metiers-2026-11-24.json, licence ODbL) : identifiants, codes ROME, niveaux d’accès, domaines et synonymes de 74 métiers. Vague 1 du lot 6 (2026-11-24) : 32 métiers issus des fiches ONISEP (identifiant, niveau et ROME de l’ONISEP), 11 disciplines et notions ajoutées aux disciplines « proposition », préparés par un agent. Vague 2 (santé, social, sport) : 100 métier(s) ONISEP en « proposition ».",
+  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès. Lot 3 et vague pilote du lot 6 (2026-11-24) : 14 disciplines et 41 métiers ajoutés par un agent, en correspondance « proposition », sans code ROME (apporté par l’import ONISEP). Import ONISEP du 2026-11-24 (extrait referentiel/sources/onisep/ideo-metiers-2026-11-24.json, licence ODbL) : identifiants, codes ROME, niveaux d’accès, domaines et synonymes de 74 métiers. Vague 1 du lot 6 (2026-11-24) : 32 métiers issus des fiches ONISEP (identifiant, niveau et ROME de l’ONISEP), 11 disciplines et notions ajoutées aux disciplines « proposition », préparés par un agent. Vague 2 (santé, social, sport) : 100 métier(s) ONISEP en « proposition ». Vague 3 (arts, culture, artisanat) : 99 métier(s) ONISEP en « proposition ».",
   "sources": [
     {
       "nom": "Idéo-Fiches métiers",
@@ -7371,6 +7371,3035 @@
       "synonymes": [
         "agent territorial spécialisé des écoles maternelles",
         "agente territoriale spécialisée des écoles maternelles"
+      ]
+    },
+    {
+      "id": "designer-graphique",
+      "nom": "Designer, designeuse graphique",
+      "categorie": "mkt",
+      "disciplines": [
+        "design-graphique",
+        "arts-plastiques",
+        "communication"
+      ],
+      "gestes": [
+        "Imaginer une identité visuelle",
+        "Choisir couleurs et typographies",
+        "Préparer les fichiers pour l’impression ou l’écran"
+      ],
+      "contexte": "Crée les images, logos et mises en page qui transmettent un message.",
+      "correspondance": "proposition",
+      "onisep": "MET.5",
+      "rome": [
+        "E1205"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "information-communication, audiovisuel/industries graphiques"
+      ],
+      "synonymes": [
+        "dessinateur/trice-maquettiste",
+        "graphiste 2D",
+        "graphiste-illustrateur/trice",
+        "infographiste",
+        "designer graphique",
+        "designeuse graphique"
+      ]
+    },
+    {
+      "id": "styliste",
+      "nom": "Styliste",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "science-des-materiaux",
+        "histoire-de-l-art"
+      ],
+      "gestes": [
+        "Dessiner une collection",
+        "Choisir tissus et couleurs",
+        "Suivre la réalisation des prototypes"
+      ],
+      "contexte": "Imagine des vêtements et des accessoires pour une marque ou une maison de couture.",
+      "correspondance": "proposition",
+      "onisep": "MET.25",
+      "rome": [
+        "B1805"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "créateur/trice de mode",
+        "créateur/trice textile",
+        "designeur/euse textile",
+        "dessinateur/trice de mode",
+        "styliste"
+      ]
+    },
+    {
+      "id": "bronzier",
+      "nom": "Bronzier, bronzière",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Préparer le moule",
+        "Couler le bronze",
+        "Ciseler et patiner la pièce"
+      ],
+      "contexte": "Fabrique et restaure des objets d’art et de décoration en bronze.",
+      "correspondance": "proposition",
+      "onisep": "MET.62",
+      "rome": [
+        "B1601"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art"
+      ],
+      "synonymes": [
+        "ciseleur/euse en bronze",
+        "monteur/euse en bronze",
+        "restaurateur/trice de bronzes",
+        "tourneur/euse sur bronze",
+        "bronzier",
+        "bronzière"
+      ]
+    },
+    {
+      "id": "encadreur",
+      "nom": "Encadreur, encadreuse",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "geometrie",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Choisir la baguette et le passe-partout",
+        "Couper et assembler le cadre",
+        "Protéger l’œuvre sous verre"
+      ],
+      "contexte": "Met en valeur et protège des œuvres et des documents dans un cadre.",
+      "correspondance": "proposition",
+      "onisep": "MET.63",
+      "rome": [
+        "H2208"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art"
+      ],
+      "synonymes": [
+        "encadreur",
+        "encadreuse"
+      ]
+    },
+    {
+      "id": "accessoiriste",
+      "nom": "Accessoiriste",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "histoire-de-l-art",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Trouver ou fabriquer les objets d’une scène",
+        "Préparer les accessoires avant chaque prise",
+        "Ranger et entretenir le stock"
+      ],
+      "contexte": "Fournit et prépare les objets utilisés sur scène ou sur un tournage.",
+      "correspondance": "proposition",
+      "onisep": "MET.69",
+      "rome": [
+        "L1503"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle",
+        "information-communication, audiovisuel/audiovisuel",
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "accessoiriste-constructeur/trice",
+        "accessoiriste de plateau",
+        "accessoiriste en effets spéciaux",
+        "chef/fe accessoiriste",
+        "régisseur/euse accessoiriste",
+        "technicien/ne décorateur/trice",
+        "accessoiriste"
+      ]
+    },
+    {
+      "id": "metteur-en-scene",
+      "nom": "Metteur, metteuse en scène",
+      "categorie": "craft",
+      "disciplines": [
+        "litterature-et-culture",
+        "arts-plastiques",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Choisir la façon de raconter l’histoire",
+        "Diriger les comédiens",
+        "Coordonner décors, lumières et sons"
+      ],
+      "contexte": "Donne vie à une pièce de théâtre ou à un spectacle en dirigeant toute l’équipe.",
+      "correspondance": "proposition",
+      "onisep": "MET.86",
+      "rome": [
+        "L1301"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle"
+      ],
+      "synonymes": [
+        "metteur en scène",
+        "metteuse en scène"
+      ]
+    },
+    {
+      "id": "createur-textile",
+      "nom": "Créateur, créatrice textile",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "science-des-materiaux",
+        "chimie-des-materiaux"
+      ],
+      "gestes": [
+        "Inventer des motifs",
+        "Tester les fibres et les couleurs",
+        "Réaliser des échantillons"
+      ],
+      "contexte": "Conçoit des tissus et des motifs pour la mode ou la décoration.",
+      "correspondance": "proposition",
+      "onisep": "MET.97",
+      "rome": [
+        "B1805"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art"
+      ],
+      "synonymes": [
+        "designeur/euse textile",
+        "créateur textile",
+        "créatrice textile"
+      ]
+    },
+    {
+      "id": "vitrailliste",
+      "nom": "Vitrailliste",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "histoire-de-l-art",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Dessiner la maquette du vitrail",
+        "Couper et peindre le verre",
+        "Assembler les pièces au plomb"
+      ],
+      "contexte": "Crée et restaure des vitraux pour les églises, les maisons et les bâtiments.",
+      "correspondance": "proposition",
+      "onisep": "MET.99",
+      "rome": [
+        "B1602"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "matières premières, fabrication, industries/verre"
+      ],
+      "synonymes": [
+        "maître/esse verrier/ière",
+        "vitrailliste"
+      ]
+    },
+    {
+      "id": "maquilleur-artistique",
+      "nom": "Maquilleur, maquilleuse artistique",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "chimie-des-materiaux",
+        "physiologie-humaine"
+      ],
+      "gestes": [
+        "Lire le scénario ou le projet",
+        "Créer un maquillage ou un personnage",
+        "Retoucher entre les prises"
+      ],
+      "contexte": "Maquille les artistes pour la scène, le cinéma ou la photo, parfois avec des effets spéciaux.",
+      "correspondance": "proposition",
+      "onisep": "MET.110",
+      "rome": [
+        "L1501"
+      ],
+      "niveauAcces": "bac+1",
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle",
+        "information-communication, audiovisuel/audiovisuel",
+        "santé, social, sport/esthétique"
+      ],
+      "synonymes": [
+        "makeup artist (artiste maquillage)",
+        "maquilleur/se-perruquier/ère",
+        "maquilleur/se professionnel/le",
+        "maquilleur artistique",
+        "maquilleuse artistique"
+      ]
+    },
+    {
+      "id": "critique-d-art",
+      "nom": "Critique d'art",
+      "categorie": "mkt",
+      "disciplines": [
+        "histoire-de-l-art",
+        "expression-ecrite",
+        "litterature-et-culture"
+      ],
+      "gestes": [
+        "Visiter expositions et ateliers",
+        "Analyser une œuvre",
+        "Rédiger un article"
+      ],
+      "contexte": "Présente et commente les œuvres d’art dans la presse ou dans des livres.",
+      "correspondance": "proposition",
+      "onisep": "MET.112",
+      "rome": [
+        "E1106"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts plastiques",
+        "histoire-géographie, psychologie, sociologie/histoire",
+        "arts, culture, artisanat/histoire de l'art"
+      ],
+      "synonymes": [
+        "écrivain/e",
+        "journaliste",
+        "critique d'art"
+      ]
+    },
+    {
+      "id": "tapissier-d-ameublement",
+      "nom": "Tapissier, tapissière d'ameublement",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "arts-plastiques",
+        "geometrie"
+      ],
+      "gestes": [
+        "Démonter et regarnir un siège",
+        "Tendre et clouer le tissu",
+        "Conseiller sur les matières"
+      ],
+      "contexte": "Garnit et recouvre fauteuils, canapés et rideaux.",
+      "correspondance": "proposition",
+      "onisep": "MET.177",
+      "rome": [
+        "B1806"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art"
+      ],
+      "synonymes": [
+        "tapissier/ère décoratrice",
+        "tapissier d'ameublement",
+        "tapissière d'ameublement"
+      ]
+    },
+    {
+      "id": "machiniste-constructeur-ou-machiniste-plateau",
+      "nom": "Machiniste-constructeur, machiniste-constructrice ou machiniste plateau",
+      "categorie": "craft",
+      "disciplines": [
+        "mecanique",
+        "science-des-materiaux",
+        "geometrie"
+      ],
+      "gestes": [
+        "Construire les éléments de décor",
+        "Monter et démonter sur scène",
+        "Changer les décors pendant le spectacle"
+      ],
+      "contexte": "Construit et déplace les décors d’un spectacle ou d’un tournage.",
+      "correspondance": "proposition",
+      "onisep": "MET.187",
+      "rome": [
+        "L1506"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle",
+        "matières premières, fabrication, industries/bois"
+      ],
+      "synonymes": [
+        "machiniste-constructeur/trice",
+        "machiniste de plateau",
+        "technicien/ne plateau",
+        "machiniste-constructeur ou machiniste plateau",
+        "machiniste-constructrice ou machiniste plateau"
+      ]
+    },
+    {
+      "id": "brodeur",
+      "nom": "Brodeur, brodeuse",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "science-des-materiaux",
+        "histoire-de-l-art"
+      ],
+      "gestes": [
+        "Reporter le motif sur le tissu",
+        "Broder à la main ou à la machine",
+        "Choisir fils, perles et paillettes"
+      ],
+      "contexte": "Décore des tissus avec des motifs brodés pour la mode ou l’ameublement.",
+      "correspondance": "proposition",
+      "onisep": "MET.188",
+      "rome": [
+        "B1804"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "brodeur",
+        "brodeuse"
+      ]
+    },
+    {
+      "id": "agent-artistique",
+      "nom": "Agent, agente artistique",
+      "categorie": "trade",
+      "disciplines": [
+        "droit-et-institutions",
+        "economie-et-societe",
+        "communication"
+      ],
+      "gestes": [
+        "Repérer des talents",
+        "Négocier les contrats",
+        "Gérer l’agenda de l’artiste"
+      ],
+      "contexte": "Représente des artistes et les aide à trouver du travail.",
+      "correspondance": "proposition",
+      "onisep": "MET.214",
+      "rome": [
+        "L1303"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/activités culturelles"
+      ],
+      "synonymes": [
+        "impresario",
+        "manageur/euse",
+        "tourneur/euse",
+        "agent artistique",
+        "agente artistique"
+      ]
+    },
+    {
+      "id": "concepteur-designer-packaging",
+      "nom": "Concepteur, conceptrice designer packaging (emballage)",
+      "categorie": "craft",
+      "disciplines": [
+        "design-produit",
+        "design-graphique",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Étudier le produit et son public",
+        "Dessiner l’emballage",
+        "Tester la forme et les matériaux"
+      ],
+      "contexte": "Crée les emballages des produits, pratiques et agréables à regarder.",
+      "correspondance": "proposition",
+      "onisep": "MET.239",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques"
+      ],
+      "synonymes": [
+        "concepteur/trice d'emballage",
+        "concepteur/trice packaging (emballage)",
+        "concepteur/trice PLV",
+        "designer/euse packaging (emballage)",
+        "concepteur designer packaging (emballage)",
+        "conceptrice designer packaging (emballage)"
+      ]
+    },
+    {
+      "id": "realisateur-3d",
+      "nom": "Réalisateur, réalisatrice 3D",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "arts-plastiques",
+        "geometrie"
+      ],
+      "gestes": [
+        "Modéliser les objets et les décors",
+        "Régler lumières et caméras virtuelles",
+        "Calculer les images finales"
+      ],
+      "contexte": "Fabrique des images et des films en trois dimensions sur ordinateur.",
+      "correspondance": "proposition",
+      "onisep": "MET.252",
+      "rome": [
+        "L1304"
+      ],
+      "niveauAcces": "bac+4",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "information-communication, audiovisuel/audiovisuel",
+        "information-communication, audiovisuel/multimédia"
+      ],
+      "synonymes": [
+        "réalisateur 3D",
+        "réalisatrice 3D"
+      ]
+    },
+    {
+      "id": "decorateur-d-interieur",
+      "nom": "Décorateur, décoratrice d'intérieur",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "geometrie",
+        "design-produit"
+      ],
+      "gestes": [
+        "Écouter les envies du client",
+        "Proposer couleurs, meubles et lumières",
+        "Suivre les travaux"
+      ],
+      "contexte": "Aménage et décore les pièces d’une maison ou d’un lieu.",
+      "correspondance": "proposition",
+      "onisep": "MET.257",
+      "rome": [
+        "F1102"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "arts, culture, artisanat/arts appliqués"
+      ],
+      "synonymes": [
+        "concepteur/trice d'espaces intérieurs",
+        "designeur/euse d'intérieur",
+        "décorateur d'intérieur",
+        "décoratrice d'intérieur"
+      ]
+    },
+    {
+      "id": "architecte-d-interieur",
+      "nom": "Architecte d'intérieur",
+      "categorie": "craft",
+      "disciplines": [
+        "geometrie",
+        "arts-plastiques",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Dessiner les plans d’aménagement",
+        "Choisir les matériaux",
+        "Coordonner les artisans"
+      ],
+      "contexte": "Réorganise et aménage l’intérieur des bâtiments.",
+      "correspondance": "proposition",
+      "onisep": "MET.258",
+      "rome": [
+        "F1102"
+      ],
+      "niveauAcces": "bac+4",
+      "domaines": [
+        "arts, culture, artisanat/arts appliqués"
+      ],
+      "synonymes": [
+        "designer/euse d'espace intérieur",
+        "architecte d'intérieur"
+      ]
+    },
+    {
+      "id": "decorateur-scenographe",
+      "nom": "Décorateur-scénographe, décoratrice-scénographe",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "geometrie",
+        "histoire-de-l-art"
+      ],
+      "gestes": [
+        "Imaginer l’espace du spectacle",
+        "Réaliser la maquette du décor",
+        "Suivre la construction"
+      ],
+      "contexte": "Conçoit les décors d’un spectacle, d’une exposition ou d’un film.",
+      "correspondance": "proposition",
+      "onisep": "MET.261",
+      "rome": [
+        "L1503"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts appliqués",
+        "arts, culture, artisanat/arts du spectacle",
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "chef/fe décorateur/trice",
+        "scénographe",
+        "décorateur-scénographe",
+        "décoratrice-scénographe"
+      ]
+    },
+    {
+      "id": "enseignant-d-art",
+      "nom": "Enseignant, enseignante d'art",
+      "categorie": "services",
+      "disciplines": [
+        "arts-plastiques",
+        "histoire-de-l-art",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Préparer des ateliers de création",
+        "Montrer les techniques",
+        "Accompagner chaque élève"
+      ],
+      "contexte": "Enseigne le dessin, la peinture ou la sculpture dans une école ou un atelier.",
+      "correspondance": "proposition",
+      "onisep": "MET.277",
+      "rome": [
+        "K2105"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts plastiques",
+        "lettres, langues, enseignement/enseignement"
+      ],
+      "synonymes": [
+        "professeur/e en arts appliqués",
+        "professeur/e en arts plastiques",
+        "enseignant d'art",
+        "enseignante d'art"
+      ]
+    },
+    {
+      "id": "tailleur-de-pierre",
+      "nom": "Tailleur, tailleuse de pierre",
+      "categorie": "btp",
+      "disciplines": [
+        "geometrie",
+        "science-des-materiaux",
+        "histoire-de-l-art"
+      ],
+      "gestes": [
+        "Lire le plan de la pièce",
+        "Tailler la pierre au ciseau ou à la machine",
+        "Poser et ajuster les blocs"
+      ],
+      "contexte": "Taille la pierre pour construire ou restaurer des bâtiments.",
+      "correspondance": "proposition",
+      "onisep": "MET.295",
+      "rome": [
+        "F1612"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "arts, culture, artisanat/restauration d'art"
+      ],
+      "synonymes": [
+        "tailleur de pierre",
+        "tailleuse de pierre"
+      ]
+    },
+    {
+      "id": "eclairagiste",
+      "nom": "Éclairagiste",
+      "categorie": "craft",
+      "disciplines": [
+        "optique",
+        "electricite-electronique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Lire le projet du spectacle",
+        "Choisir et régler les projecteurs",
+        "Programmer les effets de lumière"
+      ],
+      "contexte": "Crée la lumière d’un spectacle, d’un film ou d’un bâtiment.",
+      "correspondance": "proposition",
+      "onisep": "MET.307",
+      "rome": [
+        "L1504"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle"
+      ],
+      "synonymes": [
+        "concepteur/trice lumière",
+        "créateur/trice lumière",
+        "éclairagiste"
+      ]
+    },
+    {
+      "id": "orfevre",
+      "nom": "Orfèvre",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Mettre en forme le métal",
+        "Assembler et souder les pièces",
+        "Polir et ciseler"
+      ],
+      "contexte": "Fabrique et restaure des objets en métal précieux, comme les couverts ou les plats.",
+      "correspondance": "proposition",
+      "onisep": "MET.310",
+      "rome": [
+        "B1603"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art"
+      ],
+      "synonymes": [
+        "orfèvre"
+      ]
+    },
+    {
+      "id": "disc-jockey",
+      "nom": "Disc-jockey (disque-jockey)",
+      "categorie": "craft",
+      "disciplines": [
+        "musique",
+        "acoustique",
+        "electricite-electronique"
+      ],
+      "gestes": [
+        "Sélectionner les morceaux",
+        "Enchaîner les titres en rythme",
+        "Faire danser le public"
+      ],
+      "contexte": "Choisit et mixe la musique pendant les soirées et les événements.",
+      "correspondance": "proposition",
+      "onisep": "MET.339",
+      "rome": [
+        "L1101"
+      ],
+      "niveauAcces": "sans-diplome",
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle"
+      ],
+      "synonymes": [
+        "disc-jockey (disque-jockey)"
+      ]
+    },
+    {
+      "id": "regisseur-lumiere",
+      "nom": "Régisseur, régisseuse lumière",
+      "categorie": "craft",
+      "disciplines": [
+        "electricite-electronique",
+        "optique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Installer les projecteurs",
+        "Programmer la console",
+        "Envoyer les effets pendant le spectacle"
+      ],
+      "contexte": "Prépare et pilote les lumières d’un spectacle.",
+      "correspondance": "proposition",
+      "onisep": "MET.359",
+      "rome": [
+        "L1504"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle"
+      ],
+      "synonymes": [
+        "technicien/ne éclairagiste",
+        "technicien/ne lumière",
+        "régisseur lumière",
+        "régisseuse lumière"
+      ]
+    },
+    {
+      "id": "architecte-du-patrimoine",
+      "nom": "Architecte du patrimoine",
+      "categorie": "btp",
+      "disciplines": [
+        "histoire-de-l-art",
+        "geometrie",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Étudier l’histoire du bâtiment",
+        "Faire le diagnostic",
+        "Diriger la restauration"
+      ],
+      "contexte": "Restaure les monuments et bâtiments anciens en respectant leur histoire.",
+      "correspondance": "proposition",
+      "onisep": "MET.374",
+      "rome": [
+        "F1101"
+      ],
+      "niveauAcces": "bac+7",
+      "domaines": [
+        "arts, culture, artisanat/activités culturelles",
+        "construction, architecture, travaux publics/architecture",
+        "arts, culture, artisanat/restauration d'art",
+        "construction, architecture, travaux publics/travaux publics"
+      ],
+      "synonymes": [
+        "architecte des Monuments historiques",
+        "architecte du patrimoine"
+      ]
+    },
+    {
+      "id": "responsable-de-casting",
+      "nom": "Responsable de casting (régisseur de distribution), responsable de casting (régisseuse de distribution)",
+      "categorie": "craft",
+      "disciplines": [
+        "litterature-et-culture",
+        "psychologie-sociale",
+        "communication"
+      ],
+      "gestes": [
+        "Lire le scénario",
+        "Organiser les auditions",
+        "Proposer des acteurs au réalisateur"
+      ],
+      "contexte": "Cherche les acteurs qui joueront les rôles d’un film ou d’une série.",
+      "correspondance": "proposition",
+      "onisep": "MET.382",
+      "rome": [
+        "L1303"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle",
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "directeur/trice de casting",
+        "responsable de casting (régisseur de distribution)",
+        "responsable de casting (régisseuse de distribution)"
+      ]
+    },
+    {
+      "id": "sculpteur-sur-bois",
+      "nom": "Sculpteur, sculptrice sur bois",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "science-des-materiaux",
+        "histoire-de-l-art"
+      ],
+      "gestes": [
+        "Choisir le bois",
+        "Dégrossir puis sculpter",
+        "Finir et protéger la pièce"
+      ],
+      "contexte": "Sculpte le bois pour créer ou restaurer des objets et des décors.",
+      "correspondance": "proposition",
+      "onisep": "MET.394",
+      "rome": [
+        "H2208"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art"
+      ],
+      "synonymes": [
+        "sculpteur/trice ornemaniste sur bois",
+        "sculpteur sur bois",
+        "sculptrice sur bois"
+      ]
+    },
+    {
+      "id": "antiquaire",
+      "nom": "Antiquaire",
+      "categorie": "trade",
+      "disciplines": [
+        "histoire-de-l-art",
+        "economie-et-societe",
+        "communication"
+      ],
+      "gestes": [
+        "Chercher et acheter des objets anciens",
+        "Estimer leur valeur",
+        "Conseiller les clients"
+      ],
+      "contexte": "Achète et vend des meubles et objets anciens.",
+      "correspondance": "proposition",
+      "onisep": "MET.395",
+      "rome": [
+        "D1201"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/commerce de l'art",
+        "histoire-géographie, psychologie, sociologie/histoire",
+        "arts, culture, artisanat/histoire de l'art"
+      ],
+      "synonymes": [
+        "antiquaire"
+      ]
+    },
+    {
+      "id": "attache-territorial",
+      "nom": "Attaché territorial, attachée territoriale",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Préparer des dossiers",
+        "Gérer un budget",
+        "Suivre des projets de la collectivité"
+      ],
+      "contexte": "Cadre d’une commune ou d’un département qui gère des projets publics.",
+      "correspondance": "proposition",
+      "onisep": "MET.441",
+      "rome": [
+        "K1404"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/activités culturelles",
+        "environnement, énergies, propreté/aménagement du territoire",
+        "économie, droit, politique/droit public",
+        "matières premières, fabrication, industries/génie industriel",
+        "gestion des entreprises, comptabilité/ressources humaines",
+        "économie, droit, politique/sciences économiques",
+        "santé, social, sport/travail social",
+        "environnement, énergies, propreté/urbanisme"
+      ],
+      "synonymes": [
+        "attaché territorial",
+        "attachée territoriale"
+      ]
+    },
+    {
+      "id": "animateur-du-patrimoine",
+      "nom": "Animateur, animatrice du patrimoine",
+      "categorie": "services",
+      "disciplines": [
+        "histoire-de-l-art",
+        "histoire-contemporaine",
+        "communication"
+      ],
+      "gestes": [
+        "Préparer des visites",
+        "Animer des ateliers",
+        "Faire découvrir l’histoire d’une ville"
+      ],
+      "contexte": "Fait découvrir le patrimoine d’une ville ou d’un territoire au public.",
+      "correspondance": "proposition",
+      "onisep": "MET.445",
+      "rome": [
+        "G1102"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/activités culturelles",
+        "hôtellerie-restauration, tourisme/tourisme"
+      ],
+      "synonymes": [
+        "animateur/trice de l'architecture et du patrimoine",
+        "médiateur/trice du patrimoine",
+        "animateur du patrimoine",
+        "animatrice du patrimoine"
+      ]
+    },
+    {
+      "id": "costumier",
+      "nom": "Costumier, costumière",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "science-des-materiaux",
+        "histoire-de-l-art"
+      ],
+      "gestes": [
+        "Étudier les personnages",
+        "Couper et coudre les costumes",
+        "Faire les retouches pendant les répétitions"
+      ],
+      "contexte": "Fabrique et entretient les costumes des spectacles et des films.",
+      "correspondance": "proposition",
+      "onisep": "MET.446",
+      "rome": [
+        "L1502"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle",
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "assistant/e costumier/ère",
+        "concepteur/trice de costumes",
+        "costumier/ère de scène",
+        "costumier/ère-réalisateur/trice",
+        "couturier/ère spectacle",
+        "créateur/trice de costumes",
+        "costumier",
+        "costumière"
+      ]
+    },
+    {
+      "id": "webdesigner",
+      "nom": "Webdesigner, webdesigneuse",
+      "categorie": "app",
+      "disciplines": [
+        "design-graphique",
+        "informatique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Dessiner les pages d’un site",
+        "Choisir images et couleurs",
+        "Penser la navigation"
+      ],
+      "contexte": "Conçoit l’apparence des sites et des applications.",
+      "correspondance": "proposition",
+      "onisep": "MET.450",
+      "rome": [
+        "E1205"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "information-communication, audiovisuel/multimédia"
+      ],
+      "synonymes": [
+        "designer/euse d'interfaces Web",
+        "directeur/trice artistique Web",
+        "webdesigner",
+        "webdesigneuse"
+      ]
+    },
+    {
+      "id": "regisseur-de-spectacles",
+      "nom": "Régisseur, régisseuse de spectacles",
+      "categorie": "craft",
+      "disciplines": [
+        "gestion",
+        "electricite-electronique",
+        "communication"
+      ],
+      "gestes": [
+        "Préparer la fiche technique",
+        "Coordonner les équipes techniques",
+        "Veiller au bon déroulement"
+      ],
+      "contexte": "Organise la partie technique d’un spectacle, du montage au démontage.",
+      "correspondance": "proposition",
+      "onisep": "MET.452",
+      "rome": [
+        "L1509"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle"
+      ],
+      "synonymes": [
+        "régisseur/euse général/e cinéma",
+        "responsable technique",
+        "régisseur de spectacles",
+        "régisseuse de spectacles"
+      ]
+    },
+    {
+      "id": "staffeur-ornemaniste",
+      "nom": "Staffeur-ornemaniste, staffeuse-ornemaniste",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "arts-plastiques",
+        "geometrie"
+      ],
+      "gestes": [
+        "Réaliser un moule",
+        "Couler le plâtre",
+        "Poser les moulures et ornements"
+      ],
+      "contexte": "Fabrique et pose des décors en plâtre comme les moulures et les rosaces.",
+      "correspondance": "proposition",
+      "onisep": "MET.456",
+      "rome": [
+        "F1601"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "construction, architecture, travaux publics/finition"
+      ],
+      "synonymes": [
+        "staffeur/euse",
+        "staffeur/euse-stucateur/trice",
+        "stucateur/trice",
+        "staffeur-ornemaniste",
+        "staffeuse-ornemaniste"
+      ]
+    },
+    {
+      "id": "mosaiste-d-art",
+      "nom": "Mosaïste d'art",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "geometrie",
+        "histoire-de-l-art"
+      ],
+      "gestes": [
+        "Dessiner le motif",
+        "Tailler les tesselles",
+        "Poser et jointoyer la mosaïque"
+      ],
+      "contexte": "Crée et restaure des mosaïques avec de petits morceaux de pierre ou de verre.",
+      "correspondance": "proposition",
+      "onisep": "MET.514",
+      "rome": [
+        "F1612"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "construction, architecture, travaux publics/finition"
+      ],
+      "synonymes": [
+        "mosaïste d'art"
+      ]
+    },
+    {
+      "id": "graveur-sur-metal",
+      "nom": "Graveur, graveuse sur métal",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "science-des-materiaux",
+        "geometrie"
+      ],
+      "gestes": [
+        "Reporter le dessin sur le métal",
+        "Graver au burin ou à la machine",
+        "Contrôler la finesse du trait"
+      ],
+      "contexte": "Grave des motifs, des textes ou des décors sur des objets en métal.",
+      "correspondance": "proposition",
+      "onisep": "MET.533",
+      "rome": [
+        "B1303"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "arts, culture, artisanat/arts plastiques"
+      ],
+      "synonymes": [
+        "graveur sur métal",
+        "graveuse sur métal"
+      ]
+    },
+    {
+      "id": "directeur-artistique",
+      "nom": "Directeur, directrice artistique",
+      "categorie": "mkt",
+      "disciplines": [
+        "design-graphique",
+        "communication",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Définir le style d’un projet",
+        "Encadrer graphistes et photographes",
+        "Présenter les idées au client"
+      ],
+      "contexte": "Imagine et dirige la création visuelle d’une campagne ou d’un magazine.",
+      "correspondance": "proposition",
+      "onisep": "MET.537",
+      "rome": [
+        "E1104"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "information-communication, audiovisuel/journalisme, édition, publicité"
+      ],
+      "synonymes": [
+        "directeur artistique",
+        "directrice artistique"
+      ]
+    },
+    {
+      "id": "modeliste",
+      "nom": "Modéliste",
+      "categorie": "craft",
+      "disciplines": [
+        "geometrie",
+        "science-des-materiaux",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Traduire le dessin en patron",
+        "Réaliser le prototype",
+        "Ajuster les tailles"
+      ],
+      "contexte": "Transforme le dessin d’un vêtement en patron prêt à être fabriqué.",
+      "correspondance": "proposition",
+      "onisep": "MET.552",
+      "rome": [
+        "H1205"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "modéliste"
+      ]
+    },
+    {
+      "id": "verrier-au-chalumeau",
+      "nom": "Verrier, verrière au chalumeau",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "physique"
+      ],
+      "gestes": [
+        "Chauffer le verre à la flamme",
+        "Façonner la pièce",
+        "Refroidir lentement l’objet"
+      ],
+      "contexte": "Façonne le verre à la flamme pour créer des objets ou des pièces de laboratoire.",
+      "correspondance": "proposition",
+      "onisep": "MET.560",
+      "rome": [
+        "B1602"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "matières premières, fabrication, industries/verre"
+      ],
+      "synonymes": [
+        "souffleur/euse de verre au chalumeau",
+        "verrier au chalumeau",
+        "verrière au chalumeau"
+      ]
+    },
+    {
+      "id": "designer-industriel",
+      "nom": "Designer industriel, designeuse industrielle",
+      "categorie": "btp",
+      "disciplines": [
+        "design-produit",
+        "science-des-materiaux",
+        "mecanique"
+      ],
+      "gestes": [
+        "Étudier les usages",
+        "Dessiner et modéliser l’objet",
+        "Travailler avec les ingénieurs"
+      ],
+      "contexte": "Imagine des objets du quotidien, beaux et faciles à utiliser.",
+      "correspondance": "proposition",
+      "onisep": "MET.568",
+      "rome": [
+        "H1204"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques"
+      ],
+      "synonymes": [
+        "concepteur/trice de produits industriels",
+        "designer/euse",
+        "designer/euse produit",
+        "modeleur/euse Design 3D",
+        "designer industriel",
+        "designeuse industrielle"
+      ]
+    },
+    {
+      "id": "responsable-de-projets-culturels",
+      "nom": "Responsable de projets culturels",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "communication",
+        "histoire-de-l-art"
+      ],
+      "gestes": [
+        "Monter un projet culturel",
+        "Trouver des financements",
+        "Communiquer auprès du public"
+      ],
+      "contexte": "Organise des festivals, expositions ou spectacles.",
+      "correspondance": "proposition",
+      "onisep": "MET.580",
+      "rome": [
+        "K1802"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/activités culturelles",
+        "histoire-géographie, psychologie, sociologie/histoire",
+        "arts, culture, artisanat/histoire de l'art"
+      ],
+      "synonymes": [
+        "chargé/e du développement culturel",
+        "chef/fe de projets culturels",
+        "directeur/trice de festival",
+        "médiateur/trice culturel/le",
+        "organisateur/trice d'événements",
+        "responsable de projets culturels"
+      ]
+    },
+    {
+      "id": "relieur-doreur",
+      "nom": "Relieur-doreur, relieuse-doreuse",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "science-des-materiaux",
+        "histoire-de-l-art"
+      ],
+      "gestes": [
+        "Coudre les cahiers du livre",
+        "Fabriquer la couverture",
+        "Dorer les titres et décors"
+      ],
+      "contexte": "Relie et décore des livres à la main.",
+      "correspondance": "proposition",
+      "onisep": "MET.581",
+      "rome": [
+        "B1402"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "information-communication, audiovisuel/industries graphiques"
+      ],
+      "synonymes": [
+        "relieur/euse à la main",
+        "relieur/euse d'art",
+        "relieur/euse papeterie",
+        "relieur/euse-restaurateur/trice",
+        "relieur-doreur",
+        "relieuse-doreuse"
+      ]
+    },
+    {
+      "id": "auteur-compositeur-interprete",
+      "nom": "Auteur-compositeur-interprète, autrice-compositrice-interprète",
+      "categorie": "craft",
+      "disciplines": [
+        "musique",
+        "litterature-et-culture",
+        "acoustique"
+      ],
+      "gestes": [
+        "Écrire des paroles",
+        "Composer la musique",
+        "Chanter sur scène et en studio"
+      ],
+      "contexte": "Écrit, compose et chante ses propres chansons.",
+      "correspondance": "proposition",
+      "onisep": "MET.584",
+      "rome": [
+        "L1202"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle"
+      ],
+      "synonymes": [
+        "instrumentiste-chanteur/euse",
+        "auteur-compositeur-interprète",
+        "autrice-compositrice-interprète"
+      ]
+    },
+    {
+      "id": "chef-d-orchestre",
+      "nom": "Chef, cheffe d'orchestre",
+      "categorie": "craft",
+      "disciplines": [
+        "musique",
+        "acoustique",
+        "histoire-de-l-art"
+      ],
+      "gestes": [
+        "Étudier la partition",
+        "Diriger les répétitions",
+        "Guider les musiciens pendant le concert"
+      ],
+      "contexte": "Dirige un orchestre pour qu’il joue ensemble.",
+      "correspondance": "proposition",
+      "onisep": "MET.601",
+      "rome": [
+        "L1202"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle"
+      ],
+      "synonymes": [
+        "chef d'orchestre",
+        "cheffe d'orchestre"
+      ]
+    },
+    {
+      "id": "horloger",
+      "nom": "Horloger, horlogère",
+      "categorie": "craft",
+      "disciplines": [
+        "mecanique",
+        "physique",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Démonter un mouvement",
+        "Réparer et régler les pièces",
+        "Contrôler la précision"
+      ],
+      "contexte": "Répare, entretient et fabrique des montres et des horloges.",
+      "correspondance": "proposition",
+      "onisep": "MET.605",
+      "rome": [
+        "B1604"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "mécanique/mécanique (généralités)"
+      ],
+      "synonymes": [
+        "horloger/ère-réparateur/trice",
+        "horloger/ère-restaurateur/trice",
+        "horloger/ère-rhabilleur/euse",
+        "opérateur/trice en horlogerie",
+        "restaurateur/trice de montres de collection",
+        "horloger",
+        "horlogère"
+      ]
+    },
+    {
+      "id": "choregraphe",
+      "nom": "Chorégraphe",
+      "categorie": "craft",
+      "disciplines": [
+        "education-physique",
+        "musique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Imaginer les mouvements",
+        "Faire répéter les danseurs",
+        "Accorder danse et musique"
+      ],
+      "contexte": "Crée des danses pour des spectacles, des films ou des clips.",
+      "correspondance": "proposition",
+      "onisep": "MET.608",
+      "rome": [
+        "L1201"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle"
+      ],
+      "synonymes": [
+        "chorégraphe"
+      ]
+    },
+    {
+      "id": "commissaire-priseur",
+      "nom": "Commissaire-priseur, commissaire-priseuse (ventes volontaires)",
+      "categorie": "trade",
+      "disciplines": [
+        "histoire-de-l-art",
+        "droit-et-institutions",
+        "communication"
+      ],
+      "gestes": [
+        "Estimer des objets",
+        "Préparer le catalogue de vente",
+        "Diriger les enchères"
+      ],
+      "contexte": "Organise et dirige les ventes aux enchères.",
+      "correspondance": "proposition",
+      "onisep": "MET.673",
+      "rome": [
+        "K1901"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "arts, culture, artisanat/commerce de l'art",
+        "économie, droit, politique/droit (généralités)",
+        "économie, droit, politique/droit privé"
+      ],
+      "synonymes": [
+        "commissaire-priseur (ventes volontaires)",
+        "commissaire-priseuse (ventes volontaires)"
+      ]
+    },
+    {
+      "id": "bijoutier",
+      "nom": "Bijoutier, bijoutière",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "arts-plastiques",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Dessiner le bijou",
+        "Façonner le métal",
+        "Monter et polir la pièce"
+      ],
+      "contexte": "Fabrique, répare et vend des bijoux.",
+      "correspondance": "proposition",
+      "onisep": "MET.681",
+      "rome": [
+        "B1603"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art"
+      ],
+      "synonymes": [
+        "bijoutier/ère fantaisie",
+        "enfileur/euse de perles",
+        "modéliste-maquettiste en bijouterie",
+        "bijoutier",
+        "bijoutière"
+      ]
+    },
+    {
+      "id": "dessinateur-de-bd",
+      "nom": "Dessinateur, dessinatrice de BD",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "litterature-et-culture",
+        "design-graphique"
+      ],
+      "gestes": [
+        "Écrire le découpage",
+        "Dessiner les planches",
+        "Mettre en couleur"
+      ],
+      "contexte": "Raconte des histoires en dessins pour la bande dessinée.",
+      "correspondance": "proposition",
+      "onisep": "MET.693",
+      "rome": [
+        "E1205"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "arts, culture, artisanat/arts plastiques"
+      ],
+      "synonymes": [
+        "bédéiste",
+        "mangaka",
+        "dessinateur de BD",
+        "dessinatrice de BD"
+      ]
+    },
+    {
+      "id": "modeleur-3d",
+      "nom": "Modeleur, modeleuse 3D",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "geometrie",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Modéliser formes et volumes",
+        "Appliquer textures et matières",
+        "Préparer le modèle pour l’animation"
+      ],
+      "contexte": "Crée sur ordinateur des personnages et objets en trois dimensions.",
+      "correspondance": "proposition",
+      "onisep": "MET.743",
+      "rome": [
+        "E1205"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques"
+      ],
+      "synonymes": [
+        "modeleur 3D",
+        "modeleuse 3D"
+      ]
+    },
+    {
+      "id": "animateur-2d-et-3d",
+      "nom": "Animateur, animatrice 2D et 3D",
+      "categorie": "app",
+      "disciplines": [
+        "arts-plastiques",
+        "informatique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Étudier le mouvement",
+        "Animer les personnages image par image",
+        "Synchroniser avec le son"
+      ],
+      "contexte": "Donne vie aux personnages des dessins animés et des jeux vidéo.",
+      "correspondance": "proposition",
+      "onisep": "MET.778",
+      "rome": [
+        "L1510"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "animateur/trice de dessin animé",
+        "animateur/trice en images de synthèse",
+        "infographiste",
+        "animateur 2D et 3D",
+        "animatrice 2D et 3D"
+      ]
+    },
+    {
+      "id": "artiste-de-cirque",
+      "nom": "Artiste de cirque",
+      "categorie": "craft",
+      "disciplines": [
+        "education-physique",
+        "physiologie-humaine",
+        "musique"
+      ],
+      "gestes": [
+        "S’entraîner chaque jour",
+        "Créer un numéro",
+        "Se produire sur la piste"
+      ],
+      "contexte": "Présente des numéros d’acrobatie, de jonglage ou de clown.",
+      "correspondance": "proposition",
+      "onisep": "MET.779",
+      "rome": [
+        "L1204"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle",
+        "santé, social, sport/sport"
+      ],
+      "synonymes": [
+        "circassien/ne",
+        "artiste de cirque"
+      ]
+    },
+    {
+      "id": "illustrateur",
+      "nom": "Illustrateur, illustratrice",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "litterature-et-culture",
+        "design-graphique"
+      ],
+      "gestes": [
+        "Lire le texte à illustrer",
+        "Faire des croquis",
+        "Réaliser l’illustration finale"
+      ],
+      "contexte": "Dessine des images pour des livres, des affiches ou des sites.",
+      "correspondance": "proposition",
+      "onisep": "MET.780",
+      "rome": [
+        "B1101"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "arts, culture, artisanat/arts plastiques"
+      ],
+      "synonymes": [
+        "dessinateur/trice",
+        "illustrateur",
+        "illustratrice"
+      ]
+    },
+    {
+      "id": "ferronnier-d-art",
+      "nom": "Ferronnier, ferronnière d'art",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "arts-plastiques",
+        "geometrie"
+      ],
+      "gestes": [
+        "Chauffer le métal à la forge",
+        "Façonner et souder",
+        "Poser la pièce"
+      ],
+      "contexte": "Forge des grilles, rampes et objets décoratifs en fer.",
+      "correspondance": "proposition",
+      "onisep": "MET.781",
+      "rome": [
+        "B1601"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art"
+      ],
+      "synonymes": [
+        "ferronnier d'art",
+        "ferronnière d'art"
+      ]
+    },
+    {
+      "id": "integrateur-web",
+      "nom": "Intégrateur, intégratrice web",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "design-graphique",
+        "logique-mathematique"
+      ],
+      "gestes": [
+        "Transformer la maquette en pages web",
+        "Vérifier l’affichage sur tous les écrans",
+        "Corriger les erreurs"
+      ],
+      "contexte": "Construit les pages d’un site à partir de la maquette du designer.",
+      "correspondance": "proposition",
+      "onisep": "MET.789",
+      "rome": [
+        "E1205",
+        "M1805"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "informatique, Internet/développement, programmation, logiciel",
+        "information-communication, audiovisuel/multimédia"
+      ],
+      "synonymes": [
+        "développeur(euse) front-end (interface utilisateur)",
+        "intégrateur web",
+        "intégratrice web"
+      ]
+    },
+    {
+      "id": "concepteur-de-niveaux-de-jeu-web",
+      "nom": "Concepteur, conceptrice de niveaux de jeu Web",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "logique-mathematique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Imaginer le parcours du joueur",
+        "Placer obstacles et récompenses",
+        "Tester et ajuster la difficulté"
+      ],
+      "contexte": "Conçoit les niveaux d’un jeu pour qu’il soit amusant à parcourir.",
+      "correspondance": "proposition",
+      "onisep": "MET.823",
+      "rome": [
+        "E1104"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "information-communication, audiovisuel/multimédia"
+      ],
+      "synonymes": [
+        "concepteur de niveaux de jeu Web",
+        "conceptrice de niveaux de jeu Web"
+      ]
+    },
+    {
+      "id": "producteur",
+      "nom": "Producteur, productrice",
+      "categorie": "mkt",
+      "disciplines": [
+        "economie-et-societe",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Choisir les projets",
+        "Trouver le financement",
+        "Suivre la fabrication jusqu’à la sortie"
+      ],
+      "contexte": "Finance et organise la réalisation de films, de disques ou de spectacles.",
+      "correspondance": "proposition",
+      "onisep": "MET.833",
+      "rome": [
+        "L1302"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle",
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "producteur",
+        "productrice"
+      ]
+    },
+    {
+      "id": "facteur-d-instruments",
+      "nom": "Facteur, factrice d'instruments",
+      "categorie": "craft",
+      "disciplines": [
+        "musique",
+        "acoustique",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Choisir les matériaux",
+        "Fabriquer et assembler",
+        "Régler le son de l’instrument"
+      ],
+      "contexte": "Fabrique et répare des instruments de musique.",
+      "correspondance": "proposition",
+      "onisep": "MET.859",
+      "rome": [
+        "B1501"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "arts, culture, artisanat/arts du spectacle",
+        "matières premières, fabrication, industries/bois",
+        "arts, culture, artisanat/restauration d'art"
+      ],
+      "synonymes": [
+        "facteur/trice instrumental/e",
+        "restaurateur/trice d'instruments",
+        "facteur d'instruments",
+        "factrice d'instruments"
+      ]
+    },
+    {
+      "id": "souffleur-de-verre",
+      "nom": "Souffleur, souffleuse de verre",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Cueillir le verre en fusion",
+        "Souffler et façonner",
+        "Laisser refroidir lentement"
+      ],
+      "contexte": "Façonne le verre en le soufflant pour créer des objets.",
+      "correspondance": "proposition",
+      "onisep": "MET.874",
+      "rome": [
+        "B1602"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "matières premières, fabrication, industries/verre"
+      ],
+      "synonymes": [
+        "cristallier/ère",
+        "souffleur/euse de verre à la canne",
+        "verrier/ère",
+        "verrier/ère à la main",
+        "souffleur de verre",
+        "souffleuse de verre"
+      ]
+    },
+    {
+      "id": "concepteur-de-jeux-video",
+      "nom": "Concepteur, conceptrice de jeux vidéo",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "litterature-et-culture",
+        "logique-mathematique"
+      ],
+      "gestes": [
+        "Imaginer les règles du jeu",
+        "Écrire le document de conception",
+        "Tester avec des joueurs"
+      ],
+      "contexte": "Invente l’univers et les règles d’un jeu vidéo.",
+      "correspondance": "proposition",
+      "onisep": "MET.885",
+      "rome": [
+        "E1104"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "information-communication, audiovisuel/multimédia"
+      ],
+      "synonymes": [
+        "créateur/trice de jeux vidéo",
+        "game designer",
+        "scénariste multimédia",
+        "concepteur de jeux vidéo",
+        "conceptrice de jeux vidéo"
+      ]
+    },
+    {
+      "id": "modiste",
+      "nom": "Modiste",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "science-des-materiaux",
+        "histoire-de-l-art"
+      ],
+      "gestes": [
+        "Dessiner le chapeau",
+        "Mettre en forme le feutre ou la paille",
+        "Décorer et finir"
+      ],
+      "contexte": "Crée et fabrique des chapeaux.",
+      "correspondance": "proposition",
+      "onisep": "MET.897",
+      "rome": [
+        "B1801"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "chapelier/ère",
+        "modiste"
+      ]
+    },
+    {
+      "id": "cascadeur",
+      "nom": "Cascadeur, cascadeuse",
+      "categorie": "craft",
+      "disciplines": [
+        "education-physique",
+        "physiologie-humaine",
+        "mecanique"
+      ],
+      "gestes": [
+        "Préparer la cascade",
+        "S’entraîner et se protéger",
+        "Réaliser la scène en sécurité"
+      ],
+      "contexte": "Réalise les scènes dangereuses d’un film à la place des acteurs.",
+      "correspondance": "proposition",
+      "onisep": "MET.914",
+      "rome": [
+        "L1203"
+      ],
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle",
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "cascadeur",
+        "cascadeuse"
+      ]
+    },
+    {
+      "id": "directeur-de-creation",
+      "nom": "Directeur, directrice de création",
+      "categorie": "mkt",
+      "disciplines": [
+        "communication",
+        "design-graphique",
+        "marketing-digital"
+      ],
+      "gestes": [
+        "Fixer la direction créative",
+        "Animer les équipes",
+        "Présenter les campagnes"
+      ],
+      "contexte": "Dirige les équipes qui inventent les publicités et les campagnes.",
+      "correspondance": "proposition",
+      "onisep": "MET.917",
+      "rome": [
+        "E1401"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "information-communication, audiovisuel/journalisme, édition, publicité"
+      ],
+      "synonymes": [
+        "chef/fe de création artistique",
+        "responsable de conception",
+        "directeur de création",
+        "directrice de création"
+      ]
+    },
+    {
+      "id": "agent-de-developpement-touristique",
+      "nom": "Agent, agente de développement touristique",
+      "categorie": "services",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Étudier les atouts d’un territoire",
+        "Monter des projets touristiques",
+        "Travailler avec les acteurs locaux"
+      ],
+      "contexte": "Développe le tourisme d’une région ou d’une ville.",
+      "correspondance": "proposition",
+      "onisep": "MET.919",
+      "rome": [
+        "G1102"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "arts, culture, artisanat/activités culturelles",
+        "environnement, énergies, propreté/aménagement du territoire",
+        "hôtellerie-restauration, tourisme/tourisme"
+      ],
+      "synonymes": [
+        "chargé/e de développement touristique",
+        "chef/fe de projet touristique",
+        "développeur/euse touristique",
+        "agent de développement touristique",
+        "agente de développement touristique"
+      ]
+    },
+    {
+      "id": "designer-d-interaction",
+      "nom": "Designer, designeuse d'interaction",
+      "categorie": "app",
+      "disciplines": [
+        "design-graphique",
+        "psychologie-cognitive",
+        "informatique"
+      ],
+      "gestes": [
+        "Observer les usagers",
+        "Imaginer les interactions",
+        "Tester des prototypes"
+      ],
+      "contexte": "Conçoit la façon dont on utilise un écran, un objet ou un service.",
+      "correspondance": "proposition",
+      "onisep": "MET.928",
+      "rome": [
+        "E1205"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "information-communication, audiovisuel/multimédia"
+      ],
+      "synonymes": [
+        "designer d'interaction",
+        "designeuse d'interaction"
+      ]
+    },
+    {
+      "id": "ux-designer",
+      "nom": "UX designer (concepteur de l'expérience utilisateur), UX designer (conceptrice de l'expérience utilisateur)",
+      "categorie": "app",
+      "disciplines": [
+        "psychologie-cognitive",
+        "design-graphique",
+        "informatique"
+      ],
+      "gestes": [
+        "Interroger les utilisateurs",
+        "Dessiner les parcours",
+        "Tester et améliorer"
+      ],
+      "contexte": "Rend un site ou une application simple et agréable à utiliser.",
+      "correspondance": "proposition",
+      "onisep": "MET.936",
+      "rome": [
+        "E1205"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques"
+      ],
+      "synonymes": [
+        "UX designer (concepteur de l'expérience utilisateur)",
+        "UX designer (conceptrice de l'expérience utilisateur)"
+      ]
+    },
+    {
+      "id": "truqueur-truquiste",
+      "nom": "Truqueur, truqueuse (truquiste)",
+      "categorie": "craft",
+      "disciplines": [
+        "informatique",
+        "arts-plastiques",
+        "optique"
+      ],
+      "gestes": [
+        "Préparer les effets spéciaux",
+        "Assembler images et trucages",
+        "Vérifier le rendu final"
+      ],
+      "contexte": "Crée les effets spéciaux et les trucages des films.",
+      "correspondance": "proposition",
+      "onisep": "MET.959",
+      "rome": [
+        "L1507"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "information-communication, audiovisuel/audiovisuel"
+      ],
+      "synonymes": [
+        "truqueur, truquiste",
+        "truqueuse, truquiste"
+      ]
+    },
+    {
+      "id": "polisseur-en-bijouterie-joaillerie-ou-en-orfevrerie",
+      "nom": "Polisseur, polisseuse en bijouterie, joaillerie ou en orfèvrerie",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "arts-plastiques",
+        "physique"
+      ],
+      "gestes": [
+        "Préparer la surface",
+        "Polir à la machine ou à la main",
+        "Contrôler l’éclat"
+      ],
+      "contexte": "Donne leur éclat final aux bijoux et aux objets précieux.",
+      "correspondance": "proposition",
+      "onisep": "MET.1106",
+      "rome": [
+        "B1603"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art"
+      ],
+      "synonymes": [
+        "polisseur en bijouterie, joaillerie ou en orfèvrerie",
+        "polisseuse en bijouterie, joaillerie ou en orfèvrerie"
+      ]
+    },
+    {
+      "id": "lapidaire",
+      "nom": "Lapidaire",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "optique"
+      ],
+      "gestes": [
+        "Observer la pierre",
+        "Tailler les facettes",
+        "Polir et contrôler"
+      ],
+      "contexte": "Taille et polit les pierres précieuses.",
+      "correspondance": "proposition",
+      "onisep": "MET.1176",
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art"
+      ],
+      "synonymes": [
+        "lapidaire"
+      ]
+    },
+    {
+      "id": "sertisseur",
+      "nom": "Sertisseur, sertisseuse",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "arts-plastiques",
+        "geometrie"
+      ],
+      "gestes": [
+        "Préparer l’emplacement",
+        "Fixer la pierre dans le métal",
+        "Vérifier la tenue"
+      ],
+      "contexte": "Fixe les pierres précieuses sur les bijoux.",
+      "correspondance": "proposition",
+      "onisep": "MET.1178",
+      "rome": [
+        "B1603"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art"
+      ],
+      "synonymes": [
+        "sertisseur",
+        "sertisseuse"
+      ]
+    },
+    {
+      "id": "musicien-intervenant",
+      "nom": "Musicien intervenant, musicienne intervenante",
+      "categorie": "services",
+      "disciplines": [
+        "musique",
+        "psychologie-cognitive",
+        "acoustique"
+      ],
+      "gestes": [
+        "Préparer des ateliers musicaux",
+        "Faire chanter et jouer les élèves",
+        "Monter un projet avec l’enseignant"
+      ],
+      "contexte": "Fait découvrir la musique dans les écoles.",
+      "correspondance": "proposition",
+      "onisep": "MET.7815",
+      "rome": [
+        "K2105"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts du spectacle",
+        "lettres, langues, enseignement/enseignement"
+      ],
+      "synonymes": [
+        "assistant/e spécialisé/e d'enseignement artistique",
+        "dumiste",
+        "intervenant/e en éveil musical",
+        "musicien/ne enseignant/e",
+        "musicien/ne médiateur/trice",
+        "musicien intervenant",
+        "musicienne intervenante"
+      ]
+    },
+    {
+      "id": "artiste-graffeur-professionnel",
+      "nom": "Artiste graffeur professionnel, artiste graffeuse professionnelle",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "design-graphique",
+        "histoire-de-l-art"
+      ],
+      "gestes": [
+        "Répondre à une commande",
+        "Préparer le mur",
+        "Peindre à la bombe"
+      ],
+      "contexte": "Peint des fresques sur des murs, à la demande de villes ou d’entreprises.",
+      "correspondance": "proposition",
+      "onisep": "MET.7834",
+      "rome": [
+        "B1101"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "arts, culture, artisanat/arts plastiques"
+      ],
+      "synonymes": [
+        "artiste graffeur professionnel",
+        "artiste graffeuse professionnelle"
+      ]
+    },
+    {
+      "id": "ui-designer",
+      "nom": "UI designer (concepteur d'interface utilisateur), UI designer (conceptrice d'interface utilisateur)",
+      "categorie": "app",
+      "disciplines": [
+        "design-graphique",
+        "informatique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Dessiner les écrans",
+        "Choisir boutons et icônes",
+        "Préparer une charte pour les développeurs"
+      ],
+      "contexte": "Conçoit l’apparence des écrans d’une application.",
+      "correspondance": "proposition",
+      "onisep": "MET.7901",
+      "rome": [
+        "E1205"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques"
+      ],
+      "synonymes": [
+        "UI designer (concepteur d'interface utilisateur)",
+        "UI designer (conceptrice d'interface utilisateur)"
+      ]
+    },
+    {
+      "id": "campaniste",
+      "nom": "Campaniste",
+      "categorie": "craft",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "acoustique"
+      ],
+      "gestes": [
+        "Installer les cloches",
+        "Entretenir les mécanismes",
+        "Régler les horloges d’édifices"
+      ],
+      "contexte": "Installe et entretient les cloches et les horloges des clochers.",
+      "correspondance": "proposition",
+      "onisep": "MET.7913",
+      "rome": [
+        "B1604"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "électricité, électronique, robotique/électronique",
+        "électricité, électronique, robotique/électrotechnique"
+      ],
+      "synonymes": [
+        "campaniste"
+      ]
+    },
+    {
+      "id": "sculpteur-ornemaniste-sur-pierre",
+      "nom": "Sculpteur, sculptrice ornemaniste sur pierre",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "science-des-materiaux",
+        "histoire-de-l-art"
+      ],
+      "gestes": [
+        "Dessiner l’ornement",
+        "Sculpter la pierre",
+        "Restaurer les décors anciens"
+      ],
+      "contexte": "Sculpte les décors en pierre des monuments.",
+      "correspondance": "proposition",
+      "onisep": "MET.7914",
+      "rome": [
+        "F1612"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "matières premières, fabrication, industries/mines et carrières",
+        "arts, culture, artisanat/restauration d'art"
+      ],
+      "synonymes": [
+        "sculpteur ornemaniste sur pierre",
+        "sculptrice ornemaniste sur pierre"
+      ]
+    },
+    {
+      "id": "decorateur-sur-verre",
+      "nom": "Décorateur, décoratrice sur verre",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "science-des-materiaux",
+        "chimie-des-materiaux"
+      ],
+      "gestes": [
+        "Dessiner le décor",
+        "Peindre ou graver le verre",
+        "Cuire la pièce"
+      ],
+      "contexte": "Décore des objets en verre par la peinture ou la gravure.",
+      "correspondance": "proposition",
+      "onisep": "MET.7937",
+      "rome": [
+        "B1302"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "arts, culture, artisanat/arts plastiques"
+      ],
+      "synonymes": [
+        "verrier/ère décorateur/trice",
+        "décorateur sur verre",
+        "décoratrice sur verre"
+      ]
+    },
+    {
+      "id": "rentrayeur-de-tapis-et-tapisserie",
+      "nom": "Rentrayeur, rentrayeuse de tapis et tapisserie",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "science-des-materiaux",
+        "histoire-de-l-art"
+      ],
+      "gestes": [
+        "Analyser l’usure",
+        "Reprendre les fils",
+        "Nettoyer et consolider"
+      ],
+      "contexte": "Restaure des tapis et des tapisseries anciens.",
+      "correspondance": "proposition",
+      "onisep": "MET.7939",
+      "rome": [
+        "B1804"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "arts, culture, artisanat/restauration d'art",
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "rentrayeur de tapis et tapisserie",
+        "rentrayeuse de tapis et tapisserie"
+      ]
+    },
+    {
+      "id": "fleuriste-de-mode",
+      "nom": "Fleuriste de mode",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "science-des-materiaux",
+        "chimie-des-materiaux"
+      ],
+      "gestes": [
+        "Dessiner la fleur",
+        "Couper et teindre les tissus",
+        "Assembler les pétales"
+      ],
+      "contexte": "Fabrique des fleurs en tissu pour la haute couture.",
+      "correspondance": "proposition",
+      "onisep": "MET.7940",
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "arts, culture, artisanat/arts graphiques"
+      ],
+      "synonymes": [
+        "fleuriste en fleurs artificielles",
+        "fleuriste de mode"
+      ]
+    },
+    {
+      "id": "archetier",
+      "nom": "Archetier, archetière",
+      "categorie": "craft",
+      "disciplines": [
+        "musique",
+        "science-des-materiaux",
+        "acoustique"
+      ],
+      "gestes": [
+        "Choisir le bois",
+        "Façonner la baguette",
+        "Monter le crin et régler l’archet"
+      ],
+      "contexte": "Fabrique et répare les archets des violons et violoncelles.",
+      "correspondance": "proposition",
+      "onisep": "MET.7941",
+      "rome": [
+        "B1501"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "arts, culture, artisanat/arts du spectacle",
+        "matières premières, fabrication, industries/bois",
+        "arts, culture, artisanat/restauration d'art"
+      ],
+      "synonymes": [
+        "archetier",
+        "archetière"
+      ]
+    },
+    {
+      "id": "vannier",
+      "nom": "Vannier, vannière",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "science-des-materiaux",
+        "geometrie"
+      ],
+      "gestes": [
+        "Préparer l’osier",
+        "Tresser la forme",
+        "Finir et renforcer l’objet"
+      ],
+      "contexte": "Fabrique des paniers et des objets tressés.",
+      "correspondance": "proposition",
+      "onisep": "MET.7942",
+      "rome": [
+        "B1401"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art"
+      ],
+      "synonymes": [
+        "vannier",
+        "vannière"
+      ]
+    },
+    {
+      "id": "fondeur-de-cloches",
+      "nom": "Fondeur, fondeuse de cloches",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "acoustique",
+        "chimie-des-materiaux"
+      ],
+      "gestes": [
+        "Préparer le moule",
+        "Couler le métal",
+        "Accorder la cloche"
+      ],
+      "contexte": "Fabrique des cloches en coulant du métal.",
+      "correspondance": "proposition",
+      "onisep": "MET.7944",
+      "rome": [
+        "B1601"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "mécanique/travail des métaux"
+      ],
+      "synonymes": [
+        "fondeur de cloches",
+        "fondeuse de cloches"
+      ]
+    },
+    {
+      "id": "operateur-en-signaletique",
+      "nom": "Opérateur, opératrice en signalétique",
+      "categorie": "craft",
+      "disciplines": [
+        "design-graphique",
+        "science-des-materiaux",
+        "geometrie"
+      ],
+      "gestes": [
+        "Préparer les fichiers",
+        "Découper et imprimer",
+        "Poser panneaux et enseignes"
+      ],
+      "contexte": "Fabrique et pose les panneaux, enseignes et décors d’information.",
+      "correspondance": "proposition",
+      "onisep": "MET.7945",
+      "rome": [
+        "E1306"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques"
+      ],
+      "synonymes": [
+        "opérateur en signalétique",
+        "opératrice en signalétique"
+      ]
+    },
+    {
+      "id": "technicien-de-bureau-d-etudes-et-des-methodes",
+      "nom": "Technicien de bureau d'études et des méthodes (mode)",
+      "categorie": "craft",
+      "disciplines": [
+        "calcul-professionnel",
+        "geometrie",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Mettre au point le patron",
+        "Organiser la fabrication",
+        "Calculer les temps et les coûts"
+      ],
+      "contexte": "Prépare la fabrication en série des vêtements.",
+      "correspondance": "proposition",
+      "onisep": "MET.8068",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "technicien de bureau d'études et/ou des méthodes (mode)",
+        "technicienne de bureau d'études et/ou des méthodes (mode)"
+      ]
+    },
+    {
+      "id": "chef-de-projet-developpement",
+      "nom": "Chef, cheffe de projet développement (mode)",
+      "categorie": "craft",
+      "disciplines": [
+        "gestion",
+        "science-des-materiaux",
+        "communication"
+      ],
+      "gestes": [
+        "Planifier la collection",
+        "Coordonner les équipes",
+        "Suivre les délais et les coûts"
+      ],
+      "contexte": "Pilote le développement d’une collection de mode, de l’idée à la production.",
+      "correspondance": "proposition",
+      "onisep": "MET.8076",
+      "rome": [
+        "H1205"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "chef de projet développement (mode)",
+        "cheffe de projet développement (mode)"
+      ]
+    },
+    {
+      "id": "chef-de-produit-marketing-mode",
+      "nom": "Chef, cheffe de produit marketing (mercatique) mode",
+      "categorie": "trade",
+      "disciplines": [
+        "marketing-digital",
+        "economie-et-societe",
+        "communication"
+      ],
+      "gestes": [
+        "Étudier les tendances",
+        "Définir l’offre",
+        "Lancer les produits"
+      ],
+      "contexte": "Définit les produits d’une marque de mode et leur lancement.",
+      "correspondance": "proposition",
+      "onisep": "MET.8077",
+      "rome": [
+        "M1703"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "chef de produit marketing (mercatique) mode",
+        "cheffe de produit marketing (mercatique) mode"
+      ]
+    },
+    {
+      "id": "designer-d-objets-sportifs",
+      "nom": "Designer, designeuse d'objets sportifs",
+      "categorie": "craft",
+      "disciplines": [
+        "design-produit",
+        "education-physique",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Étudier les besoins des sportifs",
+        "Dessiner l’objet",
+        "Tester les prototypes"
+      ],
+      "contexte": "Conçoit des équipements de sport efficaces et confortables.",
+      "correspondance": "proposition",
+      "onisep": "MET.8087",
+      "rome": [
+        "H1204"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques"
+      ],
+      "synonymes": [
+        "designer d'objets sportifs",
+        "designeuse d'objets sportifs"
+      ]
+    },
+    {
+      "id": "designer-d-objet-de-mode",
+      "nom": "Designer, designeuse d'objet de mode",
+      "categorie": "craft",
+      "disciplines": [
+        "design-produit",
+        "arts-plastiques",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Imaginer accessoires et objets",
+        "Choisir les matières",
+        "Suivre les prototypes"
+      ],
+      "contexte": "Crée sacs, chaussures et accessoires de mode.",
+      "correspondance": "proposition",
+      "onisep": "MET.8088",
+      "rome": [
+        "H1204"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques"
+      ],
+      "synonymes": [
+        "designer/euse produit mode",
+        "designer d'objet de mode",
+        "designeuse d'objet de mode"
+      ]
+    },
+    {
+      "id": "directeur-de-collection-de-mode",
+      "nom": "Directeur, directrice de collection de mode",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Fixer l’esprit de la collection",
+        "Encadrer les stylistes",
+        "Valider les pièces"
+      ],
+      "contexte": "Dirige la création des collections d’une maison de mode.",
+      "correspondance": "proposition",
+      "onisep": "MET.8092",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques"
+      ],
+      "synonymes": [
+        "directeur de collection de mode",
+        "directrice de collection de mode"
+      ]
+    },
+    {
+      "id": "redacteur-de-mode",
+      "nom": "Rédacteur, rédactrice de mode",
+      "categorie": "mkt",
+      "disciplines": [
+        "expression-ecrite",
+        "communication",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Suivre les défilés",
+        "Rédiger articles et légendes",
+        "Préparer des séances photo"
+      ],
+      "contexte": "Écrit sur la mode dans un magazine ou sur un site.",
+      "correspondance": "proposition",
+      "onisep": "MET.8109",
+      "rome": [
+        "E1106"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "information-communication, audiovisuel/journalisme, édition, publicité"
+      ],
+      "synonymes": [
+        "rédacteur de mode",
+        "rédactrice de mode"
+      ]
+    },
+    {
+      "id": "responsable-de-bureau-d-etudes-et-des-methodes",
+      "nom": "Responsable de bureau d'études et des méthodes (textile)",
+      "categorie": "craft",
+      "disciplines": [
+        "gestion",
+        "calcul-professionnel",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Encadrer l’équipe technique",
+        "Optimiser la fabrication",
+        "Contrôler la qualité"
+      ],
+      "contexte": "Dirige l’équipe qui prépare la fabrication des textiles.",
+      "correspondance": "proposition",
+      "onisep": "MET.8111",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "responsable de bureau d'études et/ou des méthodes (textile)"
+      ]
+    },
+    {
+      "id": "responsable-de-marque",
+      "nom": "Responsable de marque",
+      "categorie": "trade",
+      "disciplines": [
+        "marketing-digital",
+        "communication",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Définir l’image de la marque",
+        "Suivre les ventes",
+        "Lancer des campagnes"
+      ],
+      "contexte": "Fait grandir une marque et veille à son image.",
+      "correspondance": "proposition",
+      "onisep": "MET.8113",
+      "rome": [
+        "M1703"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "responsable de marque"
+      ]
+    },
+    {
+      "id": "responsable-de-production",
+      "nom": "Responsable de production (mode)",
+      "categorie": "craft",
+      "disciplines": [
+        "gestion",
+        "calcul-professionnel",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Planifier la fabrication",
+        "Choisir les ateliers",
+        "Contrôler qualité et délais"
+      ],
+      "contexte": "Organise la fabrication des collections de mode.",
+      "correspondance": "proposition",
+      "onisep": "MET.8115",
+      "rome": [
+        "H2505"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "responsable de production (mode)"
+      ]
+    },
+    {
+      "id": "joaillier",
+      "nom": "Joaillier, joaillière",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "arts-plastiques",
+        "geometrie"
+      ],
+      "gestes": [
+        "Dessiner le bijou",
+        "Monter la structure en métal précieux",
+        "Préparer le sertissage"
+      ],
+      "contexte": "Fabrique des bijoux ornés de pierres précieuses.",
+      "correspondance": "proposition",
+      "onisep": "MET.8208",
+      "rome": [
+        "B1603"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art"
+      ],
+      "synonymes": [
+        "joaillier",
+        "joaillière"
+      ]
+    },
+    {
+      "id": "polisseur-en-horlogerie",
+      "nom": "Polisseur, polisseuse en horlogerie",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "mecanique",
+        "physique"
+      ],
+      "gestes": [
+        "Préparer les pièces",
+        "Polir avec précision",
+        "Contrôler l’état de surface"
+      ],
+      "contexte": "Donne leur finition aux boîtiers et pièces des montres.",
+      "correspondance": "proposition",
+      "onisep": "MET.8221",
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "mécanique/mécanique (généralités)"
+      ],
+      "synonymes": [
+        "polisseur en horlogerie",
+        "polisseuse en horlogerie"
+      ]
+    },
+    {
+      "id": "concepteur-numerique-en-bijouterie-joaillerie",
+      "nom": "Concepteur, conceptrice numérique en bijouterie-joaillerie",
+      "categorie": "craft",
+      "disciplines": [
+        "informatique",
+        "geometrie",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Modéliser le bijou en 3D",
+        "Préparer l’impression du modèle",
+        "Travailler avec l’atelier"
+      ],
+      "contexte": "Conçoit des bijoux sur ordinateur avant leur fabrication.",
+      "correspondance": "proposition",
+      "onisep": "MET.8222",
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "arts, culture, artisanat/arts graphiques"
+      ],
+      "synonymes": [
+        "modéliste-maquettiste en bijouterie",
+        "concepteur numérique en bijouterie-joaillerie",
+        "conceptrice numérique en bijouterie-joaillerie"
+      ]
+    },
+    {
+      "id": "monteur-assembleur-en-bijouterie",
+      "nom": "Monteur-assembleur, monteuse-assembleuse en bijouterie",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Préparer les éléments",
+        "Assembler et souder",
+        "Contrôler la solidité"
+      ],
+      "contexte": "Assemble les différentes parties d’un bijou.",
+      "correspondance": "proposition",
+      "onisep": "MET.8223",
+      "rome": [
+        "B1603"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art"
+      ],
+      "synonymes": [
+        "monteur-assembleur en bijouterie",
+        "monteuse-assembleuse en bijouterie"
+      ]
+    },
+    {
+      "id": "designer-en-bijouterie-joaillerie",
+      "nom": "Designer, designeuse en bijouterie, joaillerie",
+      "categorie": "craft",
+      "disciplines": [
+        "arts-plastiques",
+        "design-produit",
+        "histoire-de-l-art"
+      ],
+      "gestes": [
+        "Rechercher des idées",
+        "Dessiner les bijoux",
+        "Suivre la fabrication"
+      ],
+      "contexte": "Imagine des bijoux et des collections de joaillerie.",
+      "correspondance": "proposition",
+      "onisep": "MET.8224",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/artisanat d'art",
+        "arts, culture, artisanat/arts graphiques"
+      ],
+      "synonymes": [
+        "designer en bijouterie, joaillerie",
+        "designeuse en bijouterie, joaillerie"
+      ]
+    },
+    {
+      "id": "designer-en-horlogerie",
+      "nom": "Designer, designeuse en horlogerie",
+      "categorie": "craft",
+      "disciplines": [
+        "design-produit",
+        "mecanique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Imaginer la forme de la montre",
+        "Choisir matières et couleurs",
+        "Travailler avec les horlogers"
+      ],
+      "contexte": "Dessine l’apparence des montres.",
+      "correspondance": "proposition",
+      "onisep": "MET.8225",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "arts, culture, artisanat/arts graphiques",
+        "mécanique/mécanique (généralités)"
+      ],
+      "synonymes": [
+        "designer en horlogerie",
+        "designeuse en horlogerie"
       ]
     }
   ]
