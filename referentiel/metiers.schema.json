@@ -263,6 +263,26 @@
                 ]
               }
             }
+          },
+          "marche": {
+            "type": "object",
+            "description": "Tension de recrutement (API Marché du travail de France Travail, niveau France), dérivée par npm run import:marche : tranche de 1 (très faible) à 5 (très élevée).",
+            "required": [
+              "tension",
+              "periode"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "tension": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 5
+              },
+              "periode": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
           }
         }
       }

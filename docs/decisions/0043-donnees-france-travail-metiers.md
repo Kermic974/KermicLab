@@ -55,8 +55,13 @@
 - Lot 9 livré : enquête BMO 2026 (217 métiers BMO) ; 66 métiers sur 79 rattachés par un code FAP choisi par l'agent
   (30 `fort`, 19 `moyen`, 17 `faible`), 13 sans rattachement (concours publics ou équivalent incertain). Le détail
   d'un métier affiche ses perspectives de recrutement.
-- Lot 8 (API Marché du travail) en attente d'un compte francetravail.io : il ajoutera la tension et les salaires par
-  code ROME, plus précis que les groupes BMO.
+- Lot 8 (API Marché du travail) **préparé sans données** (2026-11-27) : `npm run import:marche`
+  (`scripts/importer-marche.mjs`, `scripts/lib/marche.mjs`) lit des réponses JSON enregistrées depuis la console de
+  francetravail.io (aucune adresse de service devinée, aucun identifiant dans le dépôt), en extrait la tension
+  (indicateur `PERSP_2`, cinq tranches, niveau France, par code ROME) et la range dans le champ `marche`
+  (`tension` 1 à 5, `periode`), affichée dans le bloc « Perspectives de recrutement ». La forme des réponses est
+  supposée (documentation inaccessible depuis l'environnement) : toute réponse différente est refusée avec un message
+  clair, et le code s'ajuste au premier fichier réel. Tests sur réponses factices, marquées comme telles.
 - Les vagues du lot 6 disposent des compétences et savoirs du ROME pour chaque candidat (`--candidats`), aide à la
   formulation des disciplines et des gestes, toujours relue par un humain.
 - L'extrait ROME pèse environ 3 Mo (compétences et savoirs de 1 923 fiches) ; une fiche par ligne garde des diffs

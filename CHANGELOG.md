@@ -4,6 +4,8 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Espace Métiers : import de la tension de recrutement préparé** (ADR 0043, lot 8) : `npm run import:marche` lit les réponses de l'API « Marché du travail » de France Travail enregistrées depuis francetravail.io et affichera, dans les perspectives d'un métier, sa difficulté à recruter (de très faible à très élevée). Aucune donnée réelle tant que le compte francetravail.io n'est pas créé. / Careers space: labour market API import prepared (hiring difficulty), pending a francetravail.io account.
+
 - **Espace Métiers : perspectives de recrutement** (ADR 0043, lot 9) : l'enquête « Besoins en main-d'œuvre » 2026 de France Travail (`npm run import:bmo`, Licence Ouverte) indique pour 66 métiers si les employeurs prévoient beaucoup, moyennement ou peu de recrutements, avec le nombre de projets en France et la part jugée difficile, pour le groupe de métiers concerné. Rattachements métier → groupe BMO à relire. / Careers space: hiring outlook from France Travail's labour needs survey.
 
 - **Espace Métiers : données du ROME 4.0 de France Travail** (ADR 0043) : les 79 métiers sont rattachés au ROME 4.0 (version 62) par un extrait daté et versionné (`npm run import:rome`, Licence Ouverte). Le détail d'un métier montre s'il relève de la transition écologique ou numérique, ses conditions de travail (horaires, lieux, statuts) et des métiers proches cliquables. 13 codes ROME sont précisés, 7 ajoutés (à relire). Plan des lots suivants : tension de recrutement (API Marché du travail) et enquête BMO. / Careers space: France Travail ROME 4.0 data (working conditions, green and digital transitions, related jobs).

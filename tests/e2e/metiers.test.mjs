@@ -128,3 +128,24 @@ test("métiers : mobile (390 px), sans débordement horizontal, détail lisible"
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
+
+test("métiers (lot 8, données factices) : tension de recrutement de l'API Marché du travail dans les perspectives", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
+  await preparer(page);
+  // Aucune donnée réelle n'est encore importée (compte francetravail.io requis) : la tension est injectée dans la réponse.
+  await page.route(/\/metiers(\.[0-9a-f]+)?\.json(\?.*)?$/, async (route) => {
+    const reponse = await route.fetch();
+    const d = await reponse.json();
+    for (const m of d.metiers) if (m.id === "boulanger") m.marche = { tension: 5, periode: "2026-T3" };
+    await route.fulfill({ response: reponse, json: d });
+  });
+  await page.goto(`${serveur.url}#metiers`);
+  await page.locator("#metiers-liste .metiers-item").first().waitFor();
+  await page.fill("#metiers-recherche", "boulanger");
+  await page.locator("#metiers-liste [data-metier=boulanger]").click();
+  const detail = page.locator("#metiers-detail");
+  await detail.waitFor({ state: "visible" });
+  assert.equal(await detail.locator(".metiers-tension").textContent(), "Difficulté à recruter (2026-T3) : très élevée.");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});

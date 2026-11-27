@@ -25,6 +25,12 @@ referentiel/sources/france-travail/bmo-AAAA.json --date AAAA-MM-JJ`, puis
 mettre à jour le test d'alignement (`tests/unit/bmo.test.mjs`). Si la nomenclature des métiers BMO change, revoir les
 champs `fap` du référentiel.
 
+API Marché du travail (lot 8, préparé) : `npm run import:marche -- --codes` liste les codes ROME à interroger ;
+enregistrer les réponses JSON de l'indicateur de tension (France) dans un dossier, puis
+`npm run import:marche -- <dossier> --extrait referentiel/sources/france-travail/marche-AAAA-TN.json --date AAAA-MM-JJ`
+et `npm run import:marche -- <extrait> --appliquer`. Si une réponse est refusée (« réponse non reconnue »), adapter
+`normaliserReponse` (`scripts/lib/marche.mjs`) et son test à la forme réelle.
+
 - Les fichiers du ROME sont en Latin-1 avec quelques chaînes doublement encodées : `decoderRome` les remet en UTF-8.
 - Les définitions et textes d'accès des fiches ne sont pas repris. Les fichiers téléchargés ne sont pas versionnés ;
   la CI ne télécharge rien.

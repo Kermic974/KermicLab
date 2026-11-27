@@ -6682,11 +6682,15 @@ function rendreDetailMetiers(actifs) {
   if (metier) blocs.append(bloc("metiersBlocGestes", pastilles(metier.gestes.map((g) => `${metier.id}::${g}`), "geste", (id) => id.split("::")[1])));
   // Enquête BMO de France Travail (ADR 0043, lot 9) : perspectives de recrutement du groupe de métiers, France entière.
   const perspectives = metier?.perspectives;
+  // API Marché du travail (lot 8) : tension de recrutement du code ROME, de 1 (très faible) à 5 (très élevée).
+  const tension = metier?.marche ? element("p", { classe: "petit metiers-tension", texte: t("metiersTension", { niveau: t(`metiersTension_${metier.marche.tension}`), periode: metier.marche.periode }) }) : null;
+  if (tension && !perspectives) blocs.append(bloc("metiersBlocPerspectives", tension, element("p", { classe: "doux petit", cle: "metiersTensionSource" })));
   if (perspectives) {
     const nombre = new Intl.NumberFormat(document.documentElement.lang || "fr").format(perspectives.projets);
     blocs.append(bloc("metiersBlocPerspectives",
       element("p", { classe: `metiers-palier ${perspectives.palier}`, cle: `metiersPalier_${perspectives.palier}` }),
       element("p", { classe: "petit", texte: t("metiersPerspectivesChiffres", { annee: perspectives.annee, projets: nombre, difficile: perspectives.partDifficile, groupe: perspectives.groupe }) }),
+      ...(tension ? [tension] : []),
       element("p", { classe: "doux petit", cle: "metiersPerspectivesPrudence" })));
   }
   // ROME 4.0 de France Travail (ADR 0043) : conditions de travail et métiers proches (mobilités).

@@ -80,6 +80,7 @@ export function verifierMetiers(donnees, notionsConnues) {
       if (m.fap === undefined) erreurs.push(`${m.id} : perspectives sans code BMO`);
       if (!PALIERS_RECRUTEMENT.includes(m.perspectives.palier)) erreurs.push(`${m.id} : palier de recrutement inconnu ${m.perspectives.palier}`);
     }
+    if (m.marche !== undefined && !(Number.isInteger(m.marche.tension) && m.marche.tension >= 1 && m.marche.tension <= 5)) erreurs.push(`${m.id} : tension de recrutement hors de 1 à 5`);
   }
   return erreurs;
 }
@@ -113,6 +114,7 @@ export function couvertureMetiers(donnees, notionsDuReferentiel) {
     avecContextes: donnees.metiers.filter((m) => m.contextes?.length).length,
     avecProches: donnees.metiers.filter((m) => m.proches?.length).length,
     avecPerspectives: donnees.metiers.filter((m) => m.perspectives).length,
+    avecTension: donnees.metiers.filter((m) => m.marche).length,
     correspondances: { metiers: compter(donnees.metiers), disciplines: compter(donnees.disciplines) },
     notions: { reliees: Object.values(parMatiere).reduce((s, m) => s + m.reliees, 0), total, parMatiere }
   };
