@@ -1,6 +1,6 @@
 # À petits pas — Organisation et attention
 
-Version 1.1.0, 27 novembre 2026. Labo destiné aux adultes, préparé pour /labs/remediation-tdah/.
+Version 2.2.0, 27 novembre 2026. Labo destiné aux adultes, préparé pour /labs/remediation-tdah/.
 
 Application HTML autonome adaptée du plan de remédiation cognitive TDAH adulte fourni par le propriétaire. La source PDF personnelle n’est pas publiée. Aucun diagnostic, score clinique ni promesse de traitement. Les points et badges reconnaissent l’utilisation de l’outil.
 
@@ -25,3 +25,9 @@ Avant fusion : CI verte et validation du propriétaire conformément à AGENTS.m
 ## Ergonomie V1.0.1
 
 Navigation en grille adaptative, étapes principales pleine largeur sur mobile, cibles tactiles de 48 px de hauteur, champs pleine largeur, focus contrasté et respect du mouvement réduit. Stockage et moteur inchangés. La recette Playwright couvre 320, 375, 390, 430, 768 et 1280 px ; VoiceOver et validation humaine restent à effectuer.
+
+## Assistance contextuelle V2.2
+
+Le petit pas utilise les tâches et priorités enregistrées, l’énergie déclarée et le temps disponible. L’ouverture d’une suggestion prépare le minuteur sans le lancer. La décharge mentale propose un tri à corriger ou annuler avant sauvegarde. Les tâches retenues rejoignent la pochette existante. Les autres entrées restent dans la même sauvegarde locale. On peut mémoriser puis oublier un point de reprise.
+
+Le build embarque deux repères publics, issus des notions « Résoudre des problèmes à plusieurs étapes » et « Algorithmes et programmation ». Les profils Haiku et Opus sont des réglages préparatoires de la #449. Les suggestions V2.2 suivent des règles locales.
