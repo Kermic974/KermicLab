@@ -80,3 +80,27 @@ test("Labo adultes : clavier, mobile et absence de débordement", async () => {
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
+
+test("Labo adultes : cibles tactiles et navigation responsive", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url);
+  await page.goto(`${serveur.url}/labs/remediation-tdah/`);
+  for (const width of [320, 375, 390, 430, 768, 1280]) {
+    await page.setViewportSize({ width, height: 844 });
+    for (const tab of ["home", "brain", "sort", "action", "review", "journey", "explication", "mise-en-situation"]) {
+      const bouton = page.locator(`[data-tab="${tab}"]`);
+      await bouton.click();
+      assert.equal(await bouton.getAttribute("aria-current"), "page");
+      assert.equal(await page.locator(`#${tab}`).isVisible(), true);
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `${width}px : ${tab}`);
+      const taille = await bouton.boundingBox();
+      assert.ok(taille.height >= 48 && taille.width >= 44, `Cible tactile ${tab} à ${width}px`);
+      assert.ok(taille.height <= 80, `Libellé compact ${tab} à ${width}px`);
+    }
+  }
+  await page.locator("[data-tab=brain]").click();
+  assert.ok((await page.locator("#title").boundingBox()).height >= 48);
+  await page.keyboard.press("Tab");
+  assert.equal(await page.evaluate(() => document.activeElement.matches(":focus-visible")), true);
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
