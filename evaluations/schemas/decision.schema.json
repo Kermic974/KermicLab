@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kermiclab.online/s7/decision.schema.json",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "primitives.schema.json#/$defs/recordBase"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "primitives.schema.json#/$defs/decisionId"
+        },
+        "recordType": {
+          "const": "decision"
+        },
+        "submissionId": {
+          "$ref": "primitives.schema.json#/$defs/submissionId"
+        },
+        "criterionId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*(?![\\s\\S])"
+        },
+        "definition": {
+          "$ref": "primitives.schema.json#/$defs/evaluation"
+        },
+        "experience": {
+          "$ref": "primitives.schema.json#/$defs/experience"
+        },
+        "method": {
+          "$ref": "primitives.schema.json#/$defs/method"
+        },
+        "state": {
+          "enum": [
+            "proposed",
+            "confirmed",
+            "revised",
+            "invalidated"
+          ]
+        },
+        "outcome": {
+          "enum": [
+            "success",
+            "failure",
+            "partial",
+            "absent",
+            "indeterminate"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 1000,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "primitives.schema.json#/$defs/observationId"
+          }
+        },
+        "diagnostic": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "state",
+            "matches"
+          ],
+          "properties": {
+            "state": {
+              "enum": [
+                "indeterminate",
+                "matched",
+                "ambiguous"
+              ]
+            },
+            "matches": {
+              "type": "array",
+              "minItems": 0,
+              "maxItems": 100,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "maxLength": 200,
+                "pattern": "^[a-zA-Z][a-zA-Z0-9._:-]*(?![\\s\\S])"
+              }
+            }
+          }
+        },
+        "producer": {
+          "enum": [
+            "local-evaluator",
+            "client-assertion",
+            "human"
+          ]
+        },
+        "actorRef": {
+          "type": "string",
+          "maxLength": 100,
+          "pattern": "^reviewer\\.[a-z0-9]+(?:-[a-z0-9]+)*(?![\\s\\S])"
+        },
+        "reason": {
+          "enum": [
+            "automatic-correction",
+            "awaiting-confirmation",
+            "manual-review",
+            "ambiguous-evidence",
+            "missing-response",
+            "partial-response",
+            "revision",
+            "invalidation",
+            "legacy-incomplete"
+          ]
+        },
+        "replayability": {
+          "enum": [
+            "synthetic",
+            "input-not-retained",
+            "human-judgment",
+            "legacy-incomplete"
+          ]
+        },
+        "score": {
+          "type": "number",
+          "minimum": -1000000000,
+          "maximum": 1000000000
+        },
+        "supersedes": {
+          "$ref": "primitives.schema.json#/$defs/decisionId"
+        },
+        "reviewMethod": {
+          "$ref": "primitives.schema.json#/$defs/method"
+        }
+      },
+      "required": [
+        "id",
+        "recordType",
+        "submissionId",
+        "criterionId",
+        "definition",
+        "experience",
+        "method",
+        "state",
+        "outcome",
+        "evidence",
+        "diagnostic",
+        "producer",
+        "reason",
+        "replayability"
+      ]
+    },
+    {
+      "if": {
+        "properties": {
+          "producer": {
+            "const": "human"
+          }
+        },
+        "required": [
+          "producer"
+        ]
+      },
+      "then": {
+        "required": [
+          "actorRef",
+          "reviewMethod"
+        ]
+      },
+      "else": {
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "actorRef"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "reviewMethod"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "enum": [
+              "revised",
+              "invalidated"
+            ]
+          }
+        },
+        "required": [
+          "state"
+        ]
+      },
+      "then": {
+        "required": [
+          "supersedes"
+        ]
+      }
+    }
+  ],
+  "unevaluatedProperties": false
+}

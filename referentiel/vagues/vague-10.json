@@ -1,0 +1,1541 @@
+{
+  "version": 1,
+  "vague": 10,
+  "domaines": [
+    "économie, droit, politique",
+    "gestion des entreprises, comptabilité"
+  ],
+  "source": "Ideo-Fiches metiers.xml + 5fa5949243f97.csv (2026-11-24), licence ODbL 1.0",
+  "metiers": [
+    {
+      "onisep": "MET.2",
+      "id": "directeur-d-hotel",
+      "nom": "Directeur, directrice d'hôtel",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "langues-vivantes",
+        "communication"
+      ],
+      "gestes": [
+        "Diriger les équipes",
+        "Veiller à la satisfaction des clients",
+        "Gérer le budget"
+      ],
+      "contexte": "Dirige un hôtel et toutes ses équipes."
+    },
+    {
+      "onisep": "MET.28",
+      "id": "assistant-commercial",
+      "nom": "Assistant commercial, assistante commerciale",
+      "categorie": "trade",
+      "disciplines": [
+        "communication",
+        "calcul-professionnel",
+        "gestion"
+      ],
+      "gestes": [
+        "Suivre les commandes",
+        "Répondre aux clients",
+        "Préparer devis et factures"
+      ],
+      "contexte": "Aide l’équipe commerciale dans le suivi des clients."
+    },
+    {
+      "onisep": "MET.47",
+      "id": "controleur-des-douanes",
+      "nom": "Contrôleur, contrôleuse des douanes",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "economie-et-societe",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Contrôler les déclarations",
+        "Vérifier les marchandises",
+        "Lutter contre la fraude"
+      ],
+      "contexte": "Contrôle les marchandises et les déclarations en douane."
+    },
+    {
+      "onisep": "MET.81",
+      "id": "auditeur-interne",
+      "nom": "Auditeur, auditrice interne",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "comptabilite",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Analyser les procédures",
+        "Repérer les risques",
+        "Recommander des améliorations"
+      ],
+      "contexte": "Vérifie que l’entreprise fonctionne bien et respecte ses règles."
+    },
+    {
+      "onisep": "MET.82",
+      "id": "juriste-d-entreprise",
+      "nom": "Juriste d'entreprise",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "droit-des-contrats",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Rédiger les contrats",
+        "Conseiller la direction",
+        "Gérer les litiges"
+      ],
+      "contexte": "Conseille une entreprise sur toutes les questions de droit."
+    },
+    {
+      "onisep": "MET.91",
+      "id": "juge-des-contentieux-de-la-protection",
+      "nom": "Juge des contentieux de la protection",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "philosophie-ethique",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Écouter les parties",
+        "Appliquer la loi",
+        "Rendre une décision"
+      ],
+      "contexte": "Juge les litiges du quotidien et protège les personnes vulnérables."
+    },
+    {
+      "onisep": "MET.92",
+      "id": "juriste-en-droit-social",
+      "nom": "Juriste en droit social",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "droit-des-contrats",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Appliquer le droit du travail",
+        "Conseiller employeurs et salariés",
+        "Rédiger les contrats"
+      ],
+      "contexte": "Spécialiste des règles qui encadrent le travail."
+    },
+    {
+      "onisep": "MET.102",
+      "id": "collaborateur-de-commissaire-de-justice",
+      "nom": "Collaborateur, collaboratrice de commissaire de justice",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "communication"
+      ],
+      "gestes": [
+        "Préparer les actes",
+        "Suivre les dossiers",
+        "Accueillir le public"
+      ],
+      "contexte": "Aide un commissaire de justice dans son étude."
+    },
+    {
+      "onisep": "MET.122",
+      "id": "administrateur-territorial",
+      "nom": "Administrateur territorial, administratrice territoriale",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Piloter les politiques locales",
+        "Encadrer les services",
+        "Conseiller les élus"
+      ],
+      "contexte": "Cadre dirigeant d’une collectivité territoriale."
+    },
+    {
+      "onisep": "MET.134",
+      "id": "referent-handicap",
+      "nom": "Référent, référente handicap",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "droit-et-institutions",
+        "communication"
+      ],
+      "gestes": [
+        "Accueillir les personnes concernées",
+        "Organiser les aménagements",
+        "Sensibiliser les équipes"
+      ],
+      "contexte": "Facilite l’accueil des personnes handicapées dans une entreprise ou une école."
+    },
+    {
+      "onisep": "MET.144",
+      "id": "directeur-de-restaurant",
+      "nom": "Directeur, directrice de restaurant",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "nutrition-alimentation",
+        "communication"
+      ],
+      "gestes": [
+        "Encadrer la salle et la cuisine",
+        "Accueillir les clients",
+        "Gérer le budget"
+      ],
+      "contexte": "Dirige un restaurant."
+    },
+    {
+      "onisep": "MET.149",
+      "id": "expert-comptable",
+      "nom": "Expert-comptable, experte-comptable",
+      "categorie": "trade",
+      "disciplines": [
+        "comptabilite",
+        "droit-et-institutions",
+        "gestion"
+      ],
+      "gestes": [
+        "Tenir et vérifier les comptes",
+        "Conseiller le chef d’entreprise",
+        "Préparer les déclarations"
+      ],
+      "contexte": "Tient et contrôle les comptes des entreprises et les conseille."
+    },
+    {
+      "onisep": "MET.168",
+      "id": "collaborateur-de-notaire",
+      "nom": "Collaborateur, collaboratrice de notaire",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "droit-des-contrats",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Préparer les actes",
+        "Recevoir les clients",
+        "Suivre les formalités"
+      ],
+      "contexte": "Prépare les dossiers de l’étude notariale."
+    },
+    {
+      "onisep": "MET.195",
+      "id": "chef-comptable",
+      "nom": "Chef, cheffe comptable",
+      "categorie": "trade",
+      "disciplines": [
+        "comptabilite",
+        "gestion",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Superviser la comptabilité",
+        "Préparer les bilans",
+        "Encadrer l’équipe"
+      ],
+      "contexte": "Dirige le service comptable d’une entreprise."
+    },
+    {
+      "onisep": "MET.196",
+      "id": "responsable-de-la-remuneration",
+      "nom": "Responsable de la rémunération (payroll manager)",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "droit-et-institutions",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Définir la politique salariale",
+        "Analyser les salaires",
+        "Suivre la paie"
+      ],
+      "contexte": "Organise la rémunération des salariés."
+    },
+    {
+      "onisep": "MET.209",
+      "id": "charge-de-recherche-en-recrutement",
+      "nom": "Chargé, chargée de recherche en recrutement",
+      "categorie": "trade",
+      "disciplines": [
+        "psychologie-sociale",
+        "communication",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Identifier des candidats",
+        "Les contacter",
+        "Préparer les entretiens"
+      ],
+      "contexte": "Recherche les meilleurs candidats pour un poste."
+    },
+    {
+      "onisep": "MET.226",
+      "id": "chef-d-exploitation-d-usine-d-incineration",
+      "nom": "Chef, cheffe d'exploitation d'usine d'incinération",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "energetique",
+        "gestion"
+      ],
+      "gestes": [
+        "Piloter l’usine",
+        "Contrôler les rejets",
+        "Encadrer les équipes"
+      ],
+      "contexte": "Dirige une usine qui brûle les déchets pour produire de l’énergie."
+    },
+    {
+      "onisep": "MET.284",
+      "id": "charge-de-valorisation-de-la-recherche",
+      "nom": "Chargé, chargée de valorisation de la recherche",
+      "categorie": "disc",
+      "disciplines": [
+        "droit-et-institutions",
+        "economie-et-societe",
+        "communication"
+      ],
+      "gestes": [
+        "Repérer les découvertes utiles",
+        "Protéger les inventions",
+        "Trouver des partenaires"
+      ],
+      "contexte": "Aide les laboratoires à transformer leurs découvertes en projets concrets."
+    },
+    {
+      "onisep": "MET.319",
+      "id": "assistant-de-direction",
+      "nom": "Assistant, assistante de direction",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "expression-ecrite",
+        "communication"
+      ],
+      "gestes": [
+        "Organiser l’agenda",
+        "Préparer les réunions",
+        "Gérer le courrier"
+      ],
+      "contexte": "Assiste un dirigeant dans l’organisation de son travail."
+    },
+    {
+      "onisep": "MET.323",
+      "id": "auxiliaire-veterinaire",
+      "nom": "Auxiliaire vétérinaire",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "communication",
+        "physiologie-humaine"
+      ],
+      "gestes": [
+        "Accueillir les propriétaires",
+        "Assister le vétérinaire",
+        "Préparer le matériel"
+      ],
+      "contexte": "Aide le vétérinaire au cabinet ou à la clinique."
+    },
+    {
+      "onisep": "MET.333",
+      "id": "juriste-en-propriete-intellectuelle",
+      "nom": "Juriste en propriété intellectuelle",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "droit-des-contrats",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Protéger marques et inventions",
+        "Rédiger les dépôts",
+        "Gérer les litiges"
+      ],
+      "contexte": "Protège les créations, les marques et les inventions."
+    },
+    {
+      "onisep": "MET.340",
+      "id": "charge-de-veille-legislative-et-reglementaire",
+      "nom": "Chargé, chargée de veille législative et réglementaire",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Suivre les nouvelles lois",
+        "Analyser leur impact",
+        "Informer les équipes"
+      ],
+      "contexte": "Surveille l’évolution des lois et règlements."
+    },
+    {
+      "onisep": "MET.458",
+      "id": "credit-manager",
+      "nom": "Credit manager (responsable du crédit)",
+      "categorie": "trade",
+      "disciplines": [
+        "comptabilite",
+        "economie-et-societe",
+        "droit-des-contrats"
+      ],
+      "gestes": [
+        "Évaluer les clients",
+        "Surveiller les paiements",
+        "Recouvrer les impayés"
+      ],
+      "contexte": "Veille à ce que les clients de l’entreprise paient ce qu’ils doivent."
+    },
+    {
+      "onisep": "MET.469",
+      "id": "administrateur-de-spectacle",
+      "nom": "Administrateur, administratrice de spectacle",
+      "categorie": "mkt",
+      "disciplines": [
+        "gestion",
+        "droit-des-contrats",
+        "communication"
+      ],
+      "gestes": [
+        "Gérer le budget",
+        "Établir les contrats",
+        "Organiser les tournées"
+      ],
+      "contexte": "Gère l’administration d’une compagnie ou d’un lieu de spectacle."
+    },
+    {
+      "onisep": "MET.472",
+      "id": "juge-des-enfants",
+      "nom": "Juge des enfants",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-sociale",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Écouter l’enfant et sa famille",
+        "Prendre des mesures de protection",
+        "Juger les mineurs"
+      ],
+      "contexte": "Protège les enfants en danger et juge les mineurs."
+    },
+    {
+      "onisep": "MET.515",
+      "id": "controleur-des-finances-publiques",
+      "nom": "Contrôleur, contrôleuse des finances publiques",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "calcul-professionnel",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Contrôler les déclarations",
+        "Calculer les impôts",
+        "Renseigner les usagers"
+      ],
+      "contexte": "Travaille au service des impôts et des finances publiques."
+    },
+    {
+      "onisep": "MET.523",
+      "id": "secretaire-de-mairie",
+      "nom": "Secrétaire de mairie",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Préparer le conseil municipal",
+        "Gérer l’état civil",
+        "Suivre le budget"
+      ],
+      "contexte": "Organise le fonctionnement administratif d’une petite commune."
+    },
+    {
+      "onisep": "MET.542",
+      "id": "directeur-de-magasin-a-grande-surface",
+      "nom": "Directeur, directrice de magasin à grande surface",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "economie-et-societe",
+        "communication"
+      ],
+      "gestes": [
+        "Fixer les objectifs",
+        "Encadrer les équipes",
+        "Suivre les résultats"
+      ],
+      "contexte": "Dirige un supermarché ou un hypermarché."
+    },
+    {
+      "onisep": "MET.544",
+      "id": "directeur-d-agence-bancaire",
+      "nom": "Directeur, directrice d'agence bancaire",
+      "categorie": "trade",
+      "disciplines": [
+        "economie-et-societe",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Encadrer les conseillers",
+        "Développer la clientèle",
+        "Suivre les résultats"
+      ],
+      "contexte": "Dirige une agence bancaire."
+    },
+    {
+      "onisep": "MET.578",
+      "id": "adjoint-administratif",
+      "nom": "Adjoint administratif, adjointe administrative",
+      "categorie": "services",
+      "disciplines": [
+        "expression-ecrite",
+        "droit-et-institutions",
+        "communication"
+      ],
+      "gestes": [
+        "Accueillir le public",
+        "Traiter les dossiers",
+        "Rédiger courriers et documents"
+      ],
+      "contexte": "Assure les tâches administratives dans un service public."
+    },
+    {
+      "onisep": "MET.591",
+      "id": "auditeur-externe",
+      "nom": "Auditeur, auditrice externe",
+      "categorie": "trade",
+      "disciplines": [
+        "comptabilite",
+        "analyse-statistique",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Examiner les comptes",
+        "Vérifier les procédures",
+        "Rédiger le rapport"
+      ],
+      "contexte": "Vérifie que les comptes d’une entreprise sont fiables."
+    },
+    {
+      "onisep": "MET.606",
+      "id": "fiscaliste",
+      "nom": "Fiscaliste (conformité et contrôle interne)",
+      "categorie": "trade",
+      "disciplines": [
+        "droit-et-institutions",
+        "comptabilite",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Analyser les règles fiscales",
+        "Vérifier les déclarations",
+        "Conseiller l’entreprise"
+      ],
+      "contexte": "Spécialiste des impôts qui conseille les entreprises."
+    },
+    {
+      "onisep": "MET.615",
+      "id": "substitut-du-procureur",
+      "nom": "Substitut, substitute du procureur",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Diriger les enquêtes",
+        "Décider des poursuites",
+        "Requérir à l’audience"
+      ],
+      "contexte": "Magistrat qui représente la société devant le tribunal."
+    },
+    {
+      "onisep": "MET.619",
+      "id": "gestionnaire-de-contrats-informatiques",
+      "nom": "Gestionnaire de contrats informatiques",
+      "categorie": "app",
+      "disciplines": [
+        "droit-des-contrats",
+        "informatique",
+        "gestion"
+      ],
+      "gestes": [
+        "Négocier les contrats",
+        "Suivre les licences",
+        "Contrôler les coûts"
+      ],
+      "contexte": "Gère les contrats d’achat de logiciels et de services informatiques."
+    },
+    {
+      "onisep": "MET.670",
+      "id": "secretaire",
+      "nom": "Secrétaire (office-manager)",
+      "categorie": "trade",
+      "disciplines": [
+        "expression-ecrite",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Organiser l’accueil et l’agenda",
+        "Gérer le courrier",
+        "Préparer les documents"
+      ],
+      "contexte": "Organise la vie administrative d’un bureau."
+    },
+    {
+      "onisep": "MET.687",
+      "id": "attache-d-administration-de-l-etat",
+      "nom": "Attaché, attachée d'administration de l'État",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Préparer les décisions",
+        "Encadrer une équipe",
+        "Gérer des dossiers"
+      ],
+      "contexte": "Cadre de l’administration de l’État."
+    },
+    {
+      "onisep": "MET.688",
+      "id": "directeur-d-hopital",
+      "nom": "Directeur, directrice d'hôpital",
+      "categorie": "health",
+      "disciplines": [
+        "gestion",
+        "droit-et-institutions",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Piloter l’établissement",
+        "Gérer budget et personnel",
+        "Organiser les services"
+      ],
+      "contexte": "Dirige un hôpital."
+    },
+    {
+      "onisep": "MET.697",
+      "id": "responsable-des-ressources-humaines",
+      "nom": "Responsable des ressources humaines",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "psychologie-sociale",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Recruter",
+        "Gérer les carrières",
+        "Dialoguer avec les représentants du personnel"
+      ],
+      "contexte": "S’occupe des salariés d’une entreprise, du recrutement à la formation."
+    },
+    {
+      "onisep": "MET.742",
+      "id": "genealogiste",
+      "nom": "Généalogiste",
+      "categorie": "services",
+      "disciplines": [
+        "histoire-contemporaine",
+        "expression-ecrite",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Rechercher dans les archives",
+        "Reconstituer les familles",
+        "Rédiger les arbres"
+      ],
+      "contexte": "Retrouve l’histoire des familles et leurs héritiers."
+    },
+    {
+      "onisep": "MET.749",
+      "id": "juriste-en-droit-immobilier",
+      "nom": "Juriste en droit immobilier",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "droit-des-contrats",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Rédiger les actes",
+        "Conseiller sur les ventes et locations",
+        "Gérer les litiges"
+      ],
+      "contexte": "Spécialiste du droit des biens immobiliers."
+    },
+    {
+      "onisep": "MET.750",
+      "id": "greffier-des-tribunaux-de-commerce",
+      "nom": "Greffier, greffière des tribunaux de commerce",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "gestion"
+      ],
+      "gestes": [
+        "Tenir le registre des entreprises",
+        "Assister les juges",
+        "Délivrer les documents"
+      ],
+      "contexte": "Officier public qui tient les registres des entreprises et assiste le tribunal de commerce."
+    },
+    {
+      "onisep": "MET.756",
+      "id": "responsable-du-recrutement",
+      "nom": "Responsable du recrutement",
+      "categorie": "trade",
+      "disciplines": [
+        "psychologie-sociale",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Définir les besoins",
+        "Organiser les recrutements",
+        "Choisir les candidats"
+      ],
+      "contexte": "Organise l’embauche des salariés."
+    },
+    {
+      "onisep": "MET.769",
+      "id": "magistrat",
+      "nom": "Magistrat, magistrate",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "philosophie-ethique",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Étudier les dossiers",
+        "Diriger l’audience",
+        "Rendre la justice"
+      ],
+      "contexte": "Juge les affaires ou représente la société devant les tribunaux."
+    },
+    {
+      "onisep": "MET.776",
+      "id": "redacteur-territorial",
+      "nom": "Rédacteur territorial, rédactrice territoriale",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "gestion"
+      ],
+      "gestes": [
+        "Instruire les dossiers",
+        "Rédiger les actes",
+        "Encadrer une équipe"
+      ],
+      "contexte": "Cadre administratif d’une collectivité."
+    },
+    {
+      "onisep": "MET.792",
+      "id": "administrateur-judiciaire",
+      "nom": "Administrateur, administratrice judiciaire",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "comptabilite",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Analyser la situation de l’entreprise",
+        "Proposer un plan de redressement",
+        "Négocier avec les créanciers"
+      ],
+      "contexte": "Aide les entreprises en difficulté à se redresser."
+    },
+    {
+      "onisep": "MET.797",
+      "id": "assistant-de-gestion-en-pme",
+      "nom": "Assistant, assistante de gestion en PME",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "comptabilite",
+        "communication"
+      ],
+      "gestes": [
+        "Suivre les factures",
+        "Gérer les plannings",
+        "Préparer les tableaux de bord"
+      ],
+      "contexte": "Aide le dirigeant d’une petite entreprise dans la gestion quotidienne."
+    },
+    {
+      "onisep": "MET.798",
+      "id": "assistant-en-ressources-humaines",
+      "nom": "Assistant, assistante en ressources humaines",
+      "categorie": "trade",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Préparer les contrats",
+        "Suivre les absences",
+        "Organiser les recrutements"
+      ],
+      "contexte": "Aide le service des ressources humaines."
+    },
+    {
+      "onisep": "MET.805",
+      "id": "juge-d-instruction",
+      "nom": "Juge d'instruction",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-sociale",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Mener l’enquête",
+        "Entendre les témoins",
+        "Décider de la suite"
+      ],
+      "contexte": "Magistrat qui enquête sur les affaires graves."
+    },
+    {
+      "onisep": "MET.806",
+      "id": "juriste-droit-de-l-environnement",
+      "nom": "Juriste droit de l'environnement",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "environnement",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Analyser les règles environnementales",
+        "Conseiller les projets",
+        "Gérer les litiges"
+      ],
+      "contexte": "Spécialiste du droit qui protège l’environnement."
+    },
+    {
+      "onisep": "MET.816",
+      "id": "administrateur-de-mission-humanitaire",
+      "nom": "Administrateur, administratrice de mission humanitaire",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "comptabilite",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Gérer budget et personnel",
+        "Préparer les rapports",
+        "Respecter les règles locales"
+      ],
+      "contexte": "Gère l’administration d’une mission humanitaire."
+    },
+    {
+      "onisep": "MET.818",
+      "id": "mandataire-judiciaire",
+      "nom": "Mandataire judiciaire",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "comptabilite",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Recenser les dettes",
+        "Représenter les créanciers",
+        "Organiser les remboursements"
+      ],
+      "contexte": "Défend les créanciers quand une entreprise est en difficulté."
+    },
+    {
+      "onisep": "MET.819",
+      "id": "secretaire-juridique",
+      "nom": "Secrétaire juridique",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "communication"
+      ],
+      "gestes": [
+        "Préparer les actes",
+        "Gérer les dossiers",
+        "Accueillir les clients"
+      ],
+      "contexte": "Assiste avocats et juristes dans leur travail."
+    },
+    {
+      "onisep": "MET.872",
+      "id": "commissaire-de-justice",
+      "nom": "Commissaire de justice",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "communication"
+      ],
+      "gestes": [
+        "Signifier les actes",
+        "Faire exécuter les décisions",
+        "Dresser des constats"
+      ],
+      "contexte": "Officier public qui fait appliquer les décisions de justice et dresse des constats."
+    },
+    {
+      "onisep": "MET.891",
+      "id": "secretaire-administratif",
+      "nom": "Secrétaire administratif, secrétaire administrative",
+      "categorie": "services",
+      "disciplines": [
+        "expression-ecrite",
+        "droit-et-institutions",
+        "gestion"
+      ],
+      "gestes": [
+        "Traiter les dossiers",
+        "Rédiger les documents",
+        "Encadrer une petite équipe"
+      ],
+      "contexte": "Assure la gestion administrative dans un service public."
+    },
+    {
+      "onisep": "MET.898",
+      "id": "charge-d-etudes-ressources-humaines",
+      "nom": "Chargé, chargée d'études ressources humaines",
+      "categorie": "trade",
+      "disciplines": [
+        "analyse-statistique",
+        "psychologie-sociale",
+        "gestion"
+      ],
+      "gestes": [
+        "Analyser les données sociales",
+        "Mener des études",
+        "Proposer des actions"
+      ],
+      "contexte": "Étudie les données du personnel pour guider les décisions."
+    },
+    {
+      "onisep": "MET.953",
+      "id": "directeur-de-magasin-de-sport",
+      "nom": "Directeur, directrice de magasin de sport",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "education-physique",
+        "communication"
+      ],
+      "gestes": [
+        "Gérer l’équipe de vente",
+        "Organiser le magasin",
+        "Suivre le chiffre d’affaires"
+      ],
+      "contexte": "Dirige un magasin d’articles de sport."
+    },
+    {
+      "onisep": "MET.1189",
+      "id": "juriste-international",
+      "nom": "Juriste international, juriste internationale",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "langues-vivantes",
+        "droit-des-contrats"
+      ],
+      "gestes": [
+        "Analyser les droits de plusieurs pays",
+        "Rédiger des contrats internationaux",
+        "Conseiller les entreprises"
+      ],
+      "contexte": "Spécialiste du droit entre les pays."
+    },
+    {
+      "onisep": "MET.1190",
+      "id": "juriste-contentieux",
+      "nom": "Juriste contentieux",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "droit-des-contrats",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Analyser le litige",
+        "Préparer les dossiers",
+        "Suivre les procédures"
+      ],
+      "contexte": "Gère les conflits juridiques d’une entreprise."
+    },
+    {
+      "onisep": "MET.1192",
+      "id": "juriste-droit-des-affaires",
+      "nom": "Juriste droit des affaires",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "droit-des-contrats",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Rédiger les statuts et contrats",
+        "Accompagner les opérations",
+        "Conseiller la direction"
+      ],
+      "contexte": "Conseille les entreprises sur leur vie juridique."
+    },
+    {
+      "onisep": "MET.1264",
+      "id": "avocat-d-affaires",
+      "nom": "Avocat, avocate d'affaires",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "droit-des-contrats",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Conseiller les entreprises",
+        "Négocier les contrats",
+        "Défendre les intérêts du client"
+      ],
+      "contexte": "Avocat qui conseille et défend les entreprises."
+    },
+    {
+      "onisep": "MET.7772",
+      "id": "collaborateur-de-cabinet-d-expertise-comptable",
+      "nom": "Collaborateur, collaboratrice de cabinet d'expertise comptable",
+      "categorie": "trade",
+      "disciplines": [
+        "comptabilite",
+        "droit-et-institutions",
+        "gestion"
+      ],
+      "gestes": [
+        "Tenir les comptes des clients",
+        "Préparer les déclarations",
+        "Conseiller les entreprises"
+      ],
+      "contexte": "Gère la comptabilité des clients d’un cabinet."
+    },
+    {
+      "onisep": "MET.7904",
+      "id": "administrateur-du-senat",
+      "nom": "Administrateur, administratrice du Sénat",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "histoire-contemporaine"
+      ],
+      "gestes": [
+        "Préparer les travaux des sénateurs",
+        "Rédiger des rapports",
+        "Conseiller les commissions"
+      ],
+      "contexte": "Haut fonctionnaire qui prépare le travail des sénateurs."
+    },
+    {
+      "onisep": "MET.7905",
+      "id": "administrateur-adjoint-du-senat",
+      "nom": "Administrateur adjoint du Sénat, administratrice adjointe du Sénat",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "gestion"
+      ],
+      "gestes": [
+        "Suivre les textes de loi",
+        "Préparer les dossiers",
+        "Assister les commissions"
+      ],
+      "contexte": "Aide à préparer le travail législatif du Sénat."
+    },
+    {
+      "onisep": "MET.7927",
+      "id": "ambassadeur",
+      "nom": "Ambassadeur, ambassadrice",
+      "categorie": "services",
+      "disciplines": [
+        "langues-vivantes",
+        "histoire-contemporaine",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Représenter la France",
+        "Négocier avec le pays d’accueil",
+        "Protéger les Français sur place"
+      ],
+      "contexte": "Représente la France dans un pays étranger."
+    },
+    {
+      "onisep": "MET.7928",
+      "id": "prefet",
+      "nom": "Préfet, préfète",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Représenter l’État dans le département",
+        "Garantir la sécurité",
+        "Coordonner les services publics"
+      ],
+      "contexte": "Représente l’État dans un département ou une région."
+    },
+    {
+      "onisep": "MET.7932",
+      "id": "delegue-a-la-protection-des-donnees",
+      "nom": "Délégué, déléguée à la protection des données (data protection officer)",
+      "categorie": "app",
+      "disciplines": [
+        "droit-et-institutions",
+        "informatique",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Recenser les données personnelles",
+        "Vérifier le respect du RGPD",
+        "Répondre aux demandes"
+      ],
+      "contexte": "Veille à ce que les données personnelles soient protégées."
+    },
+    {
+      "onisep": "MET.7965",
+      "id": "mandataire-judiciaire-a-la-protection-des-majeurs",
+      "nom": "Mandataire judiciaire à la protection des majeurs",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-sociale",
+        "comptabilite"
+      ],
+      "gestes": [
+        "Gérer le budget de la personne",
+        "L’accompagner dans ses démarches",
+        "Rendre compte au juge"
+      ],
+      "contexte": "Protège les adultes qui ne peuvent plus gérer seuls leurs affaires."
+    },
+    {
+      "onisep": "MET.7986",
+      "id": "agent-administratif-des-finances-publiques",
+      "nom": "Agent administratif des finances publiques, agente administrative des finances publiques",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Accueillir les usagers",
+        "Traiter les dossiers",
+        "Saisir les informations"
+      ],
+      "contexte": "Traite les dossiers d’impôts et de finances publiques."
+    },
+    {
+      "onisep": "MET.7987",
+      "id": "inspecteur-des-finances-publiques",
+      "nom": "Inspecteur, inspectrice des finances publiques",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "comptabilite",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Contrôler les comptes",
+        "Diriger une équipe",
+        "Lutter contre la fraude"
+      ],
+      "contexte": "Cadre qui contrôle les impôts et les finances publiques."
+    },
+    {
+      "onisep": "MET.8006",
+      "id": "charge-de-recrutement-en-agence-d-emploi",
+      "nom": "Chargé, chargée de recrutement en agence d'emploi",
+      "categorie": "trade",
+      "disciplines": [
+        "psychologie-sociale",
+        "communication",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Recevoir les candidats",
+        "Les présenter aux entreprises",
+        "Suivre les missions"
+      ],
+      "contexte": "Met en relation candidats et entreprises."
+    },
+    {
+      "onisep": "MET.8036",
+      "id": "analyste-criminel",
+      "nom": "Analyste criminel, analyste criminelle",
+      "categorie": "services",
+      "disciplines": [
+        "analyse-statistique",
+        "droit-et-institutions",
+        "informatique"
+      ],
+      "gestes": [
+        "Rassembler les données des enquêtes",
+        "Repérer des liens",
+        "Produire des synthèses"
+      ],
+      "contexte": "Aide les enquêteurs en analysant les informations."
+    },
+    {
+      "onisep": "MET.8085",
+      "id": "conseiller-territorial-des-aps",
+      "nom": "Conseiller territorial des APS (activités physiques et sportives), conseillère territoriale des APS (activités physiques et sportives)",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "gestion",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Développer les activités sportives",
+        "Accompagner les clubs",
+        "Gérer les équipements"
+      ],
+      "contexte": "Développe le sport dans une collectivité."
+    },
+    {
+      "onisep": "MET.8090",
+      "id": "diplomate",
+      "nom": "Diplomate",
+      "categorie": "services",
+      "disciplines": [
+        "langues-vivantes",
+        "histoire-contemporaine",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Représenter son pays",
+        "Négocier",
+        "Rédiger des analyses"
+      ],
+      "contexte": "Défend les intérêts de la France auprès des autres pays."
+    },
+    {
+      "onisep": "MET.8095",
+      "id": "formaliste",
+      "nom": "Formaliste",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "gestion"
+      ],
+      "gestes": [
+        "Préparer les formalités",
+        "Déposer les dossiers",
+        "Suivre les démarches"
+      ],
+      "contexte": "Accomplit les démarches juridiques des entreprises."
+    },
+    {
+      "onisep": "MET.8099",
+      "id": "inspecteur-des-fraudes",
+      "nom": "Inspecteur, inspectrice des fraudes",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "chimie-analytique",
+        "nutrition-alimentation"
+      ],
+      "gestes": [
+        "Contrôler les produits",
+        "Vérifier l’étiquetage",
+        "Protéger les consommateurs"
+      ],
+      "contexte": "Protège les consommateurs contre les tromperies."
+    },
+    {
+      "onisep": "MET.8101",
+      "id": "inspecteur-du-travail",
+      "nom": "Inspecteur, inspectrice du travail",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-sociale",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Contrôler les entreprises",
+        "Faire respecter le droit du travail",
+        "Conseiller employeurs et salariés"
+      ],
+      "contexte": "Veille au respect des règles qui protègent les salariés."
+    },
+    {
+      "onisep": "MET.8102",
+      "id": "juriste-du-sport",
+      "nom": "Juriste du sport",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "droit-des-contrats",
+        "education-physique"
+      ],
+      "gestes": [
+        "Rédiger les contrats sportifs",
+        "Conseiller clubs et fédérations",
+        "Gérer les litiges"
+      ],
+      "contexte": "Spécialiste du droit appliqué au sport."
+    },
+    {
+      "onisep": "MET.8103",
+      "id": "juriste-nouvelles-technologies",
+      "nom": "Juriste nouvelles technologies",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "informatique",
+        "droit-des-contrats"
+      ],
+      "gestes": [
+        "Analyser les questions numériques",
+        "Rédiger les contrats",
+        "Conseiller les entreprises"
+      ],
+      "contexte": "Spécialiste du droit d’Internet et des technologies."
+    },
+    {
+      "onisep": "MET.8104",
+      "id": "juriste-rgpd",
+      "nom": "Juriste RGPD",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "informatique",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Vérifier la conformité",
+        "Rédiger les politiques",
+        "Former les équipes"
+      ],
+      "contexte": "Veille au respect des règles sur les données personnelles."
+    },
+    {
+      "onisep": "MET.8200",
+      "id": "magistrat-administratif",
+      "nom": "Magistrat administratif, magistrate administrative",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Étudier les recours",
+        "Juger les litiges avec l’administration",
+        "Rédiger les jugements"
+      ],
+      "contexte": "Juge les conflits entre les citoyens et l’administration."
+    },
+    {
+      "onisep": "MET.8201",
+      "id": "greffier-administratif",
+      "nom": "Greffier administratif, greffière administrative",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "gestion"
+      ],
+      "gestes": [
+        "Enregistrer les recours",
+        "Préparer les audiences",
+        "Notifier les décisions"
+      ],
+      "contexte": "Assiste les juges des tribunaux administratifs."
+    },
+    {
+      "onisep": "MET.8211",
+      "id": "comptable-fonds-d-investissement",
+      "nom": "Comptable fonds d’investissement",
+      "categorie": "trade",
+      "disciplines": [
+        "comptabilite",
+        "economie-et-societe",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Tenir les comptes du fonds",
+        "Calculer les valeurs",
+        "Préparer les rapports"
+      ],
+      "contexte": "Tient la comptabilité de fonds qui placent de l’argent."
+    },
+    {
+      "onisep": "MET.8212",
+      "id": "gestionnaire-reporting",
+      "nom": "Gestionnaire reporting (rapports financiers)",
+      "categorie": "trade",
+      "disciplines": [
+        "comptabilite",
+        "analyse-statistique",
+        "informatique"
+      ],
+      "gestes": [
+        "Rassembler les chiffres",
+        "Préparer les rapports financiers",
+        "Contrôler leur cohérence"
+      ],
+      "contexte": "Prépare les rapports qui suivent les résultats financiers."
+    },
+    {
+      "onisep": "MET.8213",
+      "id": "juriste-gestion-d-actifs",
+      "nom": "Juriste gestion d’actifs",
+      "categorie": "trade",
+      "disciplines": [
+        "droit-et-institutions",
+        "economie-et-societe",
+        "droit-des-contrats"
+      ],
+      "gestes": [
+        "Vérifier la conformité des fonds",
+        "Rédiger les documents",
+        "Suivre la réglementation"
+      ],
+      "contexte": "Spécialiste du droit des placements financiers."
+    },
+    {
+      "onisep": "MET.8230",
+      "id": "attache-parlementaire",
+      "nom": "Attaché, attachée parlementaire",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "communication"
+      ],
+      "gestes": [
+        "Préparer les dossiers",
+        "Rédiger notes et discours",
+        "Gérer l’agenda"
+      ],
+      "contexte": "Collaborateur d’un député ou d’un sénateur."
+    },
+    {
+      "onisep": "MET.8264",
+      "id": "consultant-en-protection-de-donnees-personnelles",
+      "nom": "Consultant, consultante en protection de données personnelles",
+      "categorie": "app",
+      "disciplines": [
+        "droit-et-institutions",
+        "informatique",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Auditer les traitements",
+        "Proposer des mesures",
+        "Accompagner la mise en conformité"
+      ],
+      "contexte": "Aide les organisations à protéger les données personnelles."
+    },
+    {
+      "onisep": "MET.8288",
+      "id": "psychologue-criminologue",
+      "nom": "Psychologue criminologue",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "droit-et-institutions",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Évaluer les personnes",
+        "Conseiller la justice",
+        "Accompagner les victimes ou les auteurs"
+      ],
+      "contexte": "Étudie le comportement des auteurs et des victimes pour éclairer la justice."
+    },
+    {
+      "onisep": "MET.8305",
+      "id": "auditeur",
+      "nom": "Auditeur, auditrice (douanes)",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "comptabilite",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Contrôler les entreprises",
+        "Vérifier les déclarations",
+        "Rédiger les rapports"
+      ],
+      "contexte": "Contrôle les opérations des entreprises pour les douanes."
+    },
+    {
+      "onisep": "MET.8306",
+      "id": "cibleur",
+      "nom": "Cibleur, cibleuse",
+      "categorie": "services",
+      "disciplines": [
+        "analyse-statistique",
+        "droit-et-institutions",
+        "informatique"
+      ],
+      "gestes": [
+        "Analyser les données des échanges",
+        "Repérer les envois suspects",
+        "Orienter les contrôles"
+      ],
+      "contexte": "Repère les marchandises à contrôler en priorité pour les douanes."
+    },
+    {
+      "onisep": "MET.8308",
+      "id": "agent-charge-des-poursuites-judiciaires-et-du-contentieux",
+      "nom": "Agent chargé des poursuites judiciaires et du contentieux, agente chargée des poursuites judiciaires et du contentieux",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "comptabilite",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Préparer les poursuites",
+        "Suivre les procédures",
+        "Recouvrer les sommes dues"
+      ],
+      "contexte": "Engage les poursuites pour récupérer les sommes dues à l’État."
+    }
+  ]
+}

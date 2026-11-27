@@ -1,0 +1,33 @@
+# À petits pas — Organisation et attention
+
+Version 2.2.0, 27 novembre 2026. Labo destiné aux adultes, préparé pour /labs/remediation-tdah/.
+
+Application HTML autonome adaptée du plan de remédiation cognitive TDAH adulte fourni par le propriétaire. La source PDF personnelle n’est pas publiée. Aucun diagnostic, score clinique ni promesse de traitement. Les points et badges reconnaissent l’utilisation de l’outil.
+
+## Parcours
+
+Le plan, dépôt des tâches, classement par énergie, trois priorités maximum, mini-étapes, initiation de cinq minutes, cycles 25/5 avec pause longue après trois cycles, aide au blocage, bilan du soir, choix de demain, mises en situation fictives et progression sur quatorze jours. Profil facultatif et objectif adaptable à l’énergie déclarée. La pause longue de quinze minutes est un réglage proposé, sa durée n’est pas fixée dans le plan.
+
+## Données et progression
+
+Depuis Aujourd’hui, Vider la tête ou Classer, l’assistant local propose des tâches selon l’énergie déclarée. Chaque suggestion affiche la prochaine mini-étape enregistrée, quand il y en a une. On peut choisir ou retirer une priorité, modifier le titre et l’énergie, ouvrir les mini-étapes ou démarrer cinq minutes. Les suggestions se calculent dans le navigateur. Seules les actions validées modifient les tâches.
+
+Stockage local uniquement (clé petits-pas-v1), sans compte ni réseau. Les tâches, ressentis et bilans peuvent contenir des informations privées : ne pas en saisir sur un appareil partagé. Export JSON et import de sauvegardes de la version autonome ; effacement local disponible. Le passage du fichier local au site nécessite un export/import volontaire. Aucun profil réel ni sauvegarde utilisateur n’est versionné.
+
+Points attribués une fois par identifiant de tâche ou d’étape, même après réouverture. Les points acquis restent conservés après suppression. Les quêtes quotidiennes et séances terminées apportent des points supplémentaires ; chaque niveau représente 100 points. Les étoiles dépensées n’abaissent pas le niveau. Pas de série punitive. Les trophées restent dans le labo.
+
+## Publication et contrôle
+
+La liste LABS_PUBLIES de scripts/build.mjs copie la page dans dist/labs/remediation-tdah/index.html. La carte Labs est traduite en français et en anglais ; le labo est en français. Métadonnées KermicLab et CSP à hashes, aucune ressource externe. La page est ajoutée à check:pages.
+
+Avant fusion : CI verte et validation du propriétaire conformément à AGENTS.md, avec relecture du contenu destiné aux adultes.
+
+## Ergonomie V1.0.1
+
+Navigation en grille adaptative, étapes principales pleine largeur sur mobile, cibles tactiles de 48 px de hauteur, champs pleine largeur, focus contrasté et respect du mouvement réduit. Stockage et moteur inchangés. La recette Playwright couvre 320, 375, 390, 430, 768 et 1280 px ; VoiceOver et validation humaine restent à effectuer.
+
+## Assistance contextuelle V2.2
+
+Le petit pas utilise les tâches et priorités enregistrées, l’énergie déclarée et le temps disponible. L’ouverture d’une suggestion prépare le minuteur sans le lancer. La décharge mentale propose un tri à corriger ou annuler avant sauvegarde. Les tâches retenues rejoignent la pochette existante. Les autres entrées restent dans la même sauvegarde locale. On peut mémoriser puis oublier un point de reprise.
+
+Le build embarque deux repères publics, issus des notions « Résoudre des problèmes à plusieurs étapes » et « Algorithmes et programmation ». Les profils Haiku et Opus sont des réglages préparatoires de la #449. Les suggestions V2.2 suivent des règles locales.

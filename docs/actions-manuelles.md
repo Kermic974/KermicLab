@@ -2,6 +2,28 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Lab À petits pas — adultes
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Autoriser la publication du labo adulte après présentation de l’application | [PR #439](https://github.com/Kermic974/KermicLab/pull/439), [fiche](../Sample/lab/remediation-tdah.md) | AGENTS.md exige la validation humaine ; cette autorisation de publication ne constitue pas une validation clinique | Le propriétaire a demandé explicitement « publie en tant que labo dans mon repo KermicLab », puis « livre le labo ». La fusion reste soumise à la CI verte et le déploiement doit être vérifié. | fait |
+
+## Correctif de qualification — chat et navigation
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Relire et fusionner le correctif du chevauchement chat/navigation après CI verte | Branche `fix/chat-navigation-hauteur`, suivi [#427](https://github.com/Kermic974/KermicLab/issues/427) | Blocage reproduit à 1 280 × 720 pendant la qualification du pilote S6 ; revue du CODEOWNER requise par AGENTS.md | CI au SHA final, revue/fusion humaines constatées ; pilote resynchronisé et test du parcours rejoué | à faire |
+
+## Adoption S7 et livraisons S7 → S10
+
+Suivi : [#427](https://github.com/Kermic974/KermicLab/issues/427). [Chaîne de livraison](evaluation/livraison-s7-s10.md).
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Examiner les décisions D7-1 à D7-8 et adopter le contrat S7 par revue/fusion après CI verte | [ADR 0043](decisions/0043-adoption-evaluation-s7.md), [S7 v1.0.0](referentiel/normes/S7-v1.0.0.md), [PR #428](https://github.com/Kermic974/KermicLab/pull/428) | Validation humaine requise par AGENTS.md ; aucune reconstruction fictive de faits V0 | Fusion humaine constatée à `3e504246`, CI GitHub verte ; Windows : 1 034 tests unitaires et 1 207 tests navigateur réussis, un ignoré | fait |
+| Relire les critères, cibles, diagnostics et limites du pilote S7 avant qualification publique | [Matrice S7-01 à S7-20](referentiel/normes/S7-v1.0.0.md), dépendance [S6 #384](https://github.com/Kermic974/KermicLab/issues/384) | Un PASS structurel ne valide ni la justesse pédagogique ni les affirmations clientes | Revue humaine consignée avec version/périmètre ; aucun champ relue rempli par l'agent | à faire |
+| Revoir et fusionner le lot S7-B après CI verte | PR liée au [suivi #427](https://github.com/Kermic974/KermicLab/issues/427), [contrats et limites](evaluation/contrats-s7.md) | CODEOWNER requis par AGENTS.md ; les schémas, correcteur et rapports ne sont pas encore branchés sur les pages | Fusion humaine constatée sur main, puis lot d'intégration et qualification publics | à faire |
+
 ## Espace Métiers (chantier Métiers)
 
 Plan : [chantier Métiers](chantiers/metiers.md), [ADR 0042](decisions/0042-referentiel-metiers-onisep.md), [ADR 0043](decisions/0043-donnees-france-travail-metiers.md).
@@ -12,14 +34,7 @@ Plan : [chantier Métiers](chantiers/metiers.md), [ADR 0042](decisions/0042-refe
 | Accepter la licence ODbL des données ONISEP | [ADR 0042 §2](decisions/0042-referentiel-metiers-onisep.md), `referentiel/sources/onisep/README.md` | La licence est l'ODbL (et non Etalab) : attribution obligatoire (en place) et partage à l'identique des bases dérivées publiées (`metiers-v0.json`, `dist/metiers.json`) | Décision notée dans l'ADR 0042 ; sinon retirer les champs ONISEP avant publication | à faire |
 | Vérifier les 21 correspondances métier ↔ fiche ONISEP choisies par l'agent | `referentiel/metiers-v0.json` (champ `onisep`), liste dans le chantier Métiers | Rapprochements non exacts (ex. « Resp. logistique » → ingénieur logistique, « Content Strategist » → concepteur-rédacteur) | Correspondances confirmées ou corrigées par une PR | à faire |
 | Valider l'ADR 0042 (format v2, import ONISEP) | [ADR 0042](decisions/0042-referentiel-metiers-onisep.md) | Décision de structure des données et de source externe | ADR passée au statut accepté | à faire |
-| Récupérer le ROME 4.0 et la BMO en données ouvertes | data.gouv.fr ; hôtes `api.francetravail.fr`, `www.francetravail.org`, `dares.travail-emploi.gouv.fr`, `data.dares.travail-emploi.gouv.fr` ajoutés au réseau de l'environnement cloud KermicLab | Lots 7 et 9 du chantier | Extraits `rome-4.0-v62.json` et `bmo-2026.json` versionnés dans `referentiel/sources/france-travail/` | fait |
-| Valider l'ADR 0043 (données de France Travail) | [ADR 0043](decisions/0043-donnees-france-travail-metiers.md) | Choix des sources, affichage des débouchés à un public mineur | ADR passée au statut accepté | à faire |
-| Vérifier les 7 codes ROME choisis par l'agent et les 13 codes précisés | `referentiel/metiers-v0.json` (champ `rome`), liste dans le chantier Métiers (lot 7) | Métiers sans code ONISEP (ex. « Chargé d'affaires » → D1407 technico-commercial) ; les métiers proches et conditions de travail en découlent | Codes confirmés ou corrigés par une PR, puis `npm run import:rome -- <extrait> --appliquer` | à faire |
-| Créer une application sur francetravail.io et s'abonner à l'API Marché du travail | [francetravail.io](https://francetravail.io/produits-partages/catalogue) | Lot 8 : tension de recrutement, salaires proposés, par métier | Identifiant et secret enregistrés hors du dépôt (secret d'environnement), hôtes `francetravail.io`, `api.francetravail.io` et `entreprise.francetravail.fr` autorisés | à faire |
-| Lire les conditions d'utilisation de francetravail.io | [francetravail.io](https://francetravail.io) | Réutilisation publique d'indicateurs dérivés dans un service en partie payant ; attribution exigée | Décision notée dans l'ADR 0043 | à faire |
-| Vérifier les 66 rattachements métier → code BMO (FAP) choisis par l'agent | `referentiel/metiers-v0.json` (champ `fap`), liste du lot 9 dans le chantier Métiers | Rattachements faits à la main (ex. « Data Analyst » → groupe des ingénieurs informatiques M2X90) ; ils fixent les perspectives affichées | Codes confirmés ou corrigés par une PR, puis `npm run import:bmo -- <extrait> --appliquer` | à faire |
-| Télécharger la table de passage FAP 2021 ↔ ROME (facultatif) | [DARES, nomenclature des FAP 2021](https://dares.travail-emploi.gouv.fr/donnees/la-nomenclature-des-familles-professionnelles-2021) | Contrôle croisé des rattachements BMO ; le site de la DARES bloque les téléchargements automatisés | Fichier déposé dans le chat ou dans `referentiel/sources/france-travail/` | à faire |
-| Relire les 79 associations métier → disciplines (38 de la V5, 41 de la vague pilote), les 26 disciplines « proposition » et les règles ROME | `referentiel/metiers-v0.json`, `referentiel/regles-metiers.json` | Associations reprises de la maquette V5 ou proposées par un agent (gestes, niveaux d'accès, notions) ; public mineur | Champs `correspondance: "validee"` et `relue` renseignés par un humain | à faire |
+| Relire les 1 131 associations métier → disciplines (38 de la V5, 41 de la vague pilote, 32 de la vague 1, 1 020 des vagues complémentaires 2 à 11), les gestes et contextes rédigés par l'agent, les 37 disciplines « proposition » et les règles ROME ; arbitrer les 12 métiers de combat écartés (`referentiel/vagues/vague-07.json`, champ `exclu`) et les métiers sensibles retenus (armurier, démineur, thanatopracteur, conseiller funéraire) | `referentiel/metiers-v0.json`, `referentiel/vagues/`, `referentiel/regles-metiers.json` | Contenus préparés par un agent ; public mineur | Champs `correspondance: "validee"` et `relue` renseignés par un humain ; décision sur les métiers écartés notée dans le chantier | à faire |
 
 ## Relecture humaine vérifiable (ADR 0039)
 

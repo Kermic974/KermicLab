@@ -48,6 +48,17 @@ CONSERVATION_TELEMETRIE_JOURS = "90"  # 7 à 365
 ASSISTANT_UTILISATEURS_ACTIF = "true" # assistant IA de l'écran Utilisateurs (ADR 0035) : propose, l'administrateur applique
 MODELE_ASSISTANT = "custom/haiku"     # alias de modèle AI Gateway de l'assistant
 MAX_TOKENS_ASSISTANT = "2000"         # 500 à 4000 tokens par proposition
+# À petits pas : configuration uniquement, aucun appel distant activé.
+PETITS_PAS_IA_ACTIF = "false"
+PETITS_PAS_OPUS_ACTIF = "false"
+MODELE_PETITS_PAS_HAIKU = "custom/haiku"
+MODELE_PETITS_PAS_OPUS = "custom/opus-5-5"
+MAX_TOKENS_PETITS_PAS_HAIKU = "1500"
+MAX_TOKENS_PETITS_PAS_OPUS = "8000"
+MAX_ENTREE_PETITS_PAS_HAIKU = "6000"
+MAX_ENTREE_PETITS_PAS_OPUS = "24000"
+PETITS_PAS_PLANS_HAIKU_JOUR = "5"
+PETITS_PAS_PLANS_OPUS_JOUR = "2"
 # INSTRUCTIONS_TUTEUR, INSTRUCTIONS_CADRAGE, INSTRUCTIONS_DEFI, INSTRUCTIONS_CAHIERS : instructions complémentaires
 # des harness (2000 caractères), vides par défaut, saisies dans le back-office.
 # Hors registre

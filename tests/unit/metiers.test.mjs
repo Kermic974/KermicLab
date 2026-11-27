@@ -23,7 +23,7 @@ const projection = {
   competences: { "microskill.maths.calculer-une-moyenne": "calculer-une-moyenne" },
   fiches: { stats: { competences: ["calculer-une-moyenne"] }, volumes: { competences: [] } }
 };
-const donnees = enrichirMetiers(source, projection, new Map([["stats", "Statistiques descriptives"]]));
+const donnees = enrichirMetiers(source, projection, new Map([["stats", "Statistiques descriptives"]]), new Map([["microskill.maths.calculer-une-moyenne", "Calculer une moyenne pondérée"]]));
 const carte = preparerCarte(donnees);
 
 test("métiers : validation des identifiants, catégories, disciplines et notions", () => {
@@ -64,7 +64,8 @@ test("métiers : indicateurs de couverture, au total et par matière", () => {
 });
 
 test("métiers : enrichissement par les titres du catalogue et les MicroSkills réelles", () => {
-  assert.deepEqual(donnees.notions["notion.maths.stats"], { slug: "stats", titre: "Statistiques descriptives", microskills: ["microskill.maths.calculer-une-moyenne"] });
+  assert.deepEqual(donnees.notions["notion.maths.stats"], { slug: "stats", titre: "Statistiques descriptives", microskills: [{ id: "microskill.maths.calculer-une-moyenne", libelle: "Calculer une moyenne pondérée" }] });
+  assert.equal(enrichirMetiers(source, projection).notions["notion.maths.stats"].microskills[0].libelle, "Calculer une moyenne", "sans libellé canonique : le slug lisible");
   assert.equal(donnees.notions["notion.maths.volumes"].titre, "Volumes", "sans titre du catalogue : libellé du slug");
   assert.equal(Object.keys(donnees.notions).length, 2, "une notion citée deux fois n'est enrichie qu'une fois");
 });

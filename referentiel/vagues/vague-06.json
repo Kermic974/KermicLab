@@ -1,0 +1,1745 @@
+{
+  "version": 1,
+  "vague": 6,
+  "domaines": [
+    "mécanique",
+    "construction, architecture, travaux publics"
+  ],
+  "source": "Ideo-Fiches metiers.xml + 5fa5949243f97.csv (2026-11-24), licence ODbL 1.0",
+  "metiers": [
+    {
+      "onisep": "MET.10",
+      "id": "peintre-en-batiment",
+      "nom": "Peintre en bâtiment",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-des-materiaux",
+        "calcul-professionnel",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Préparer les murs",
+        "Appliquer peintures et enduits",
+        "Poser papiers peints et revêtements"
+      ],
+      "contexte": "Peint et décore les murs et les façades des bâtiments."
+    },
+    {
+      "onisep": "MET.22",
+      "id": "mecanicien-et-technicien-moto",
+      "nom": "Mécanicien et technicien moto, mécanicienne et technicienne moto",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "physique"
+      ],
+      "gestes": [
+        "Diagnostiquer la panne",
+        "Réparer moteur et freins",
+        "Régler et essayer la moto"
+      ],
+      "contexte": "Entretient et répare les motos et les scooters."
+    },
+    {
+      "onisep": "MET.23",
+      "id": "mecanicien-d-entretien-d-avion",
+      "nom": "Mécanicien, mécanicienne d'entretien d'avion",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "physique"
+      ],
+      "gestes": [
+        "Inspecter l’avion",
+        "Remplacer les pièces",
+        "Signer les contrôles"
+      ],
+      "contexte": "Entretient les avions pour qu’ils volent en toute sécurité."
+    },
+    {
+      "onisep": "MET.26",
+      "id": "conducteur-de-travaux",
+      "nom": "Conducteur, conductrice de travaux",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "calcul-professionnel",
+        "geometrie"
+      ],
+      "gestes": [
+        "Planifier le chantier",
+        "Coordonner les entreprises",
+        "Suivre le budget"
+      ],
+      "contexte": "Dirige un ou plusieurs chantiers de construction."
+    },
+    {
+      "onisep": "MET.27",
+      "id": "conducteur-d-engins-de-travaux-publics",
+      "nom": "Conducteur, conductrice d'engins de travaux publics",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "geometrie",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Conduire pelles et bulldozers",
+        "Terrasser selon le plan",
+        "Entretenir l’engin"
+      ],
+      "contexte": "Conduit les grosses machines des chantiers."
+    },
+    {
+      "onisep": "MET.37",
+      "id": "conducteur-de-machines-a-papier",
+      "nom": "Conducteur, conductrice de machines à papier",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "chimie-des-materiaux",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Régler la machine",
+        "Surveiller la production",
+        "Contrôler la qualité du papier"
+      ],
+      "contexte": "Pilote les machines qui fabriquent le papier."
+    },
+    {
+      "onisep": "MET.49",
+      "id": "constructeur-de-reseaux-de-canalisations",
+      "nom": "Constructeur, constructrice de réseaux de canalisations",
+      "categorie": "btp",
+      "disciplines": [
+        "geometrie",
+        "calcul-professionnel",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Creuser les tranchées",
+        "Poser les canalisations",
+        "Contrôler l’étanchéité"
+      ],
+      "contexte": "Pose les tuyaux qui transportent l’eau, le gaz ou les eaux usées."
+    },
+    {
+      "onisep": "MET.55",
+      "id": "etancheiste",
+      "nom": "Étanchéiste",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "geometrie"
+      ],
+      "gestes": [
+        "Préparer le support",
+        "Poser les membranes",
+        "Vérifier l’étanchéité"
+      ],
+      "contexte": "Rend les toits et terrasses étanches à la pluie."
+    },
+    {
+      "onisep": "MET.57",
+      "id": "informaticien-industriel",
+      "nom": "Informaticien industriel, informaticienne industrielle",
+      "categorie": "btp",
+      "disciplines": [
+        "informatique",
+        "electricite-electronique",
+        "logique-mathematique"
+      ],
+      "gestes": [
+        "Programmer les automates",
+        "Superviser les lignes",
+        "Dépanner les systèmes"
+      ],
+      "contexte": "Programme les ordinateurs et automates qui pilotent les usines."
+    },
+    {
+      "onisep": "MET.68",
+      "id": "carrossier",
+      "nom": "Carrossier, carrossière",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "science-des-materiaux",
+        "geometrie"
+      ],
+      "gestes": [
+        "Débosseler",
+        "Remplacer les éléments",
+        "Préparer la peinture"
+      ],
+      "contexte": "Répare la carrosserie des véhicules."
+    },
+    {
+      "onisep": "MET.78",
+      "id": "facadier",
+      "nom": "Façadier, façadière",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "geometrie"
+      ],
+      "gestes": [
+        "Préparer la façade",
+        "Poser enduits et isolants",
+        "Finir et décorer"
+      ],
+      "contexte": "Rénove et embellit les façades des bâtiments."
+    },
+    {
+      "onisep": "MET.117",
+      "id": "technicien-prototypiste-en-agroequipement",
+      "nom": "Technicien, technicienne prototypiste en agroéquipement",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "agronomie-vegetale",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Fabriquer le prototype",
+        "Tester la machine",
+        "Proposer des améliorations"
+      ],
+      "contexte": "Fabrique et teste les premiers modèles de machines agricoles."
+    },
+    {
+      "onisep": "MET.118",
+      "id": "formateur-technique-en-agroequipement",
+      "nom": "Formateur, formatrice technique en agroéquipement",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "agronomie-vegetale",
+        "communication"
+      ],
+      "gestes": [
+        "Préparer les formations",
+        "Montrer les réglages des machines",
+        "Évaluer les stagiaires"
+      ],
+      "contexte": "Forme les utilisateurs et les techniciens aux machines agricoles."
+    },
+    {
+      "onisep": "MET.124",
+      "id": "ingenieur-etudes-et-developpement-en-logiciels-de-simulation",
+      "nom": "Ingénieur, ingénieure études et développement en logiciels de simulation",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "mathematiques-appliquees",
+        "physique"
+      ],
+      "gestes": [
+        "Modéliser un phénomène",
+        "Programmer la simulation",
+        "Valider les résultats"
+      ],
+      "contexte": "Développe des logiciels qui simulent le comportement des objets."
+    },
+    {
+      "onisep": "MET.148",
+      "id": "serrurier-metallier",
+      "nom": "Serrurier-métallier, serrurière-métallière",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "mecanique"
+      ],
+      "gestes": [
+        "Mesurer et découper le métal",
+        "Souder et assembler",
+        "Poser portes et grilles"
+      ],
+      "contexte": "Fabrique et pose des ouvrages en métal comme les portails et les escaliers."
+    },
+    {
+      "onisep": "MET.160",
+      "id": "operateur-sur-machine-a-commande-numerique",
+      "nom": "Opérateur, opératrice sur machine à commande numérique",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "calcul-professionnel",
+        "informatique"
+      ],
+      "gestes": [
+        "Charger le programme",
+        "Régler la machine",
+        "Contrôler les pièces"
+      ],
+      "contexte": "Fabrique des pièces avec des machines pilotées par ordinateur."
+    },
+    {
+      "onisep": "MET.161",
+      "id": "architecte",
+      "nom": "Architecte",
+      "categorie": "btp",
+      "disciplines": [
+        "geometrie",
+        "arts-plastiques",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Rencontrer le client",
+        "Dessiner le projet",
+        "Suivre le chantier"
+      ],
+      "contexte": "Conçoit des bâtiments et veille à leur construction."
+    },
+    {
+      "onisep": "MET.162",
+      "id": "constructeur-en-ouvrages-d-art",
+      "nom": "Constructeur, constructrice en ouvrages d'art",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Coffrer et ferrailler",
+        "Couler le béton",
+        "Construire ponts et tunnels"
+      ],
+      "contexte": "Construit des ponts, des tunnels et des murs de soutènement."
+    },
+    {
+      "onisep": "MET.199",
+      "id": "vendeur-conseil-en-materiel-agricole",
+      "nom": "Vendeur, vendeuse conseil en matériel agricole",
+      "categorie": "trade",
+      "disciplines": [
+        "agronomie-vegetale",
+        "mecanique",
+        "communication"
+      ],
+      "gestes": [
+        "Comprendre les besoins de l’agriculteur",
+        "Présenter les machines",
+        "Négocier la vente"
+      ],
+      "contexte": "Vend et conseille du matériel agricole."
+    },
+    {
+      "onisep": "MET.211",
+      "id": "ingenieur-production-en-aeronautique",
+      "nom": "Ingénieur, ingénieure production en aéronautique",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "gestion",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Organiser la fabrication",
+        "Améliorer les procédés",
+        "Garantir la qualité"
+      ],
+      "contexte": "Organise la fabrication des avions et de leurs pièces."
+    },
+    {
+      "onisep": "MET.231",
+      "id": "ingenieur-integration-satellite",
+      "nom": "Ingénieur, ingénieure intégration satellite",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "physique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Assembler les équipements",
+        "Préparer les tests",
+        "Vérifier le fonctionnement"
+      ],
+      "contexte": "Assemble et teste les satellites avant leur lancement."
+    },
+    {
+      "onisep": "MET.263",
+      "id": "couvreur",
+      "nom": "Couvreur, couvreuse",
+      "categorie": "btp",
+      "disciplines": [
+        "geometrie",
+        "science-des-materiaux",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Poser la charpente de toit",
+        "Couvrir de tuiles ou d’ardoises",
+        "Travailler en hauteur en sécurité"
+      ],
+      "contexte": "Pose et répare les toitures."
+    },
+    {
+      "onisep": "MET.274",
+      "id": "conducteur-de-machines-a-imprimer",
+      "nom": "Conducteur, conductrice de machines à imprimer",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "chimie-des-materiaux",
+        "design-graphique"
+      ],
+      "gestes": [
+        "Préparer la machine",
+        "Régler couleurs et papier",
+        "Surveiller le tirage"
+      ],
+      "contexte": "Imprime journaux, livres et emballages."
+    },
+    {
+      "onisep": "MET.275",
+      "id": "economiste-de-la-construction",
+      "nom": "Économiste de la construction",
+      "categorie": "btp",
+      "disciplines": [
+        "calcul-professionnel",
+        "geometrie",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Estimer le coût du projet",
+        "Rédiger les descriptifs",
+        "Suivre les dépenses"
+      ],
+      "contexte": "Calcule et contrôle le coût des constructions."
+    },
+    {
+      "onisep": "MET.287",
+      "id": "conducteur-de-machines-agricoles",
+      "nom": "Conducteur, conductrice de machines agricoles",
+      "categorie": "nature",
+      "disciplines": [
+        "mecanique",
+        "agronomie-vegetale",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Préparer la machine",
+        "Réaliser les travaux des champs",
+        "Entretenir le matériel"
+      ],
+      "contexte": "Conduit tracteurs et moissonneuses."
+    },
+    {
+      "onisep": "MET.296",
+      "id": "charpentier-metallique",
+      "nom": "Charpentier, charpentière métallique",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "mecanique"
+      ],
+      "gestes": [
+        "Lire les plans",
+        "Assembler les poutres",
+        "Monter la structure"
+      ],
+      "contexte": "Construit les structures en métal des bâtiments."
+    },
+    {
+      "onisep": "MET.297",
+      "id": "controleur-technique-automobile",
+      "nom": "Contrôleur, contrôleuse technique automobile",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "physique",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Contrôler les points de sécurité",
+        "Mesurer les émissions",
+        "Remettre le procès-verbal"
+      ],
+      "contexte": "Vérifie que les véhicules sont sûrs et conformes."
+    },
+    {
+      "onisep": "MET.318",
+      "id": "faconnier-des-industries-graphiques",
+      "nom": "Façonnier, façonnière des industries graphiques",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "geometrie",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Plier et couper",
+        "Assembler et relier",
+        "Contrôler les finitions"
+      ],
+      "contexte": "Donne leur forme finale aux documents imprimés."
+    },
+    {
+      "onisep": "MET.322",
+      "id": "miroitier",
+      "nom": "Miroitier, miroitière",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "optique"
+      ],
+      "gestes": [
+        "Mesurer et couper le verre",
+        "Façonner les bords",
+        "Poser miroirs et vitrages"
+      ],
+      "contexte": "Découpe et pose le verre et les miroirs."
+    },
+    {
+      "onisep": "MET.324",
+      "id": "mecanicien-de-maintenance-des-materiels-agricoles-ou-d-espaces-verts",
+      "nom": "Mécanicien, mécanicienne de maintenance des matériels agricoles ou d'espaces verts",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "agronomie-vegetale"
+      ],
+      "gestes": [
+        "Diagnostiquer la panne",
+        "Réparer les machines",
+        "Effectuer l’entretien"
+      ],
+      "contexte": "Répare tracteurs et matériels d’espaces verts."
+    },
+    {
+      "onisep": "MET.326",
+      "id": "ingenieur-en-automatisme",
+      "nom": "Ingénieur, ingénieure en automatisme",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "informatique",
+        "logique-mathematique"
+      ],
+      "gestes": [
+        "Concevoir les automatismes",
+        "Programmer les systèmes",
+        "Mettre en service"
+      ],
+      "contexte": "Conçoit les systèmes qui font fonctionner des machines toutes seules."
+    },
+    {
+      "onisep": "MET.348",
+      "id": "charge-d-affaires-en-genie-mecanique",
+      "nom": "Chargé, chargée d'affaires en génie mécanique",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Comprendre le besoin du client",
+        "Chiffrer la solution",
+        "Piloter le projet"
+      ],
+      "contexte": "Vend et pilote des projets mécaniques."
+    },
+    {
+      "onisep": "MET.370",
+      "id": "ingenieur-essais",
+      "nom": "Ingénieur, ingénieure essais",
+      "categorie": "btp",
+      "disciplines": [
+        "physique",
+        "analyse-statistique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Concevoir les essais",
+        "Mesurer et analyser",
+        "Valider le produit"
+      ],
+      "contexte": "Teste les produits pour vérifier qu’ils fonctionnent comme prévu."
+    },
+    {
+      "onisep": "MET.371",
+      "id": "aerodynamicien",
+      "nom": "Aérodynamicien, aérodynamicienne",
+      "categorie": "disc",
+      "disciplines": [
+        "physique",
+        "mathematiques-appliquees",
+        "mecanique"
+      ],
+      "gestes": [
+        "Modéliser l’écoulement de l’air",
+        "Faire des essais en soufflerie",
+        "Améliorer les formes"
+      ],
+      "contexte": "Étudie comment l’air glisse autour des avions, voitures ou bâtiments."
+    },
+    {
+      "onisep": "MET.404",
+      "id": "electronicien-automobile",
+      "nom": "Électronicien, électronicienne automobile",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "informatique"
+      ],
+      "gestes": [
+        "Diagnostiquer l’électronique du véhicule",
+        "Réparer les systèmes",
+        "Mettre à jour les logiciels"
+      ],
+      "contexte": "Répare l’électronique des voitures."
+    },
+    {
+      "onisep": "MET.405",
+      "id": "agenceur-de-cuisines-et-salles-de-bains",
+      "nom": "Agenceur, agenceuse de cuisines et salles de bains",
+      "categorie": "btp",
+      "disciplines": [
+        "geometrie",
+        "design-produit",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Mesurer la pièce",
+        "Dessiner l’aménagement",
+        "Poser les meubles"
+      ],
+      "contexte": "Conçoit et installe cuisines et salles de bains."
+    },
+    {
+      "onisep": "MET.430",
+      "id": "mecanicien-en-engins-de-travaux-publics",
+      "nom": "Mécanicien, mécanicienne en engins de travaux publics",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "physique"
+      ],
+      "gestes": [
+        "Diagnostiquer",
+        "Réparer l’hydraulique et les moteurs",
+        "Entretenir les engins"
+      ],
+      "contexte": "Répare les machines des chantiers."
+    },
+    {
+      "onisep": "MET.435",
+      "id": "carreleur-mosaiste",
+      "nom": "Carreleur-mosaïste, carreleuse-mosaïste",
+      "categorie": "btp",
+      "disciplines": [
+        "geometrie",
+        "calcul-professionnel",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Préparer le support",
+        "Poser carrelage et mosaïque",
+        "Réaliser les joints"
+      ],
+      "contexte": "Pose carrelages et mosaïques."
+    },
+    {
+      "onisep": "MET.437",
+      "id": "cordiste",
+      "nom": "Cordiste",
+      "categorie": "btp",
+      "disciplines": [
+        "education-physique",
+        "physique",
+        "mecanique"
+      ],
+      "gestes": [
+        "S’équiper et s’encorder",
+        "Travailler suspendu",
+        "Réaliser les travaux en hauteur"
+      ],
+      "contexte": "Travaille suspendu à des cordes sur les façades ou les falaises."
+    },
+    {
+      "onisep": "MET.438",
+      "id": "chef-de-chantier",
+      "nom": "Chef, cheffe de chantier",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "geometrie",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Organiser le travail des équipes",
+        "Contrôler la qualité",
+        "Veiller à la sécurité"
+      ],
+      "contexte": "Dirige les ouvriers sur le chantier."
+    },
+    {
+      "onisep": "MET.455",
+      "id": "dessinateur-projeteur",
+      "nom": "Dessinateur-projeteur, dessinatrice-projeteuse",
+      "categorie": "btp",
+      "disciplines": [
+        "geometrie",
+        "informatique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Dessiner les plans",
+        "Modéliser en 3D",
+        "Adapter aux contraintes"
+      ],
+      "contexte": "Réalise les plans des bâtiments ou des machines."
+    },
+    {
+      "onisep": "MET.460",
+      "id": "ingenieur-en-metrologie",
+      "nom": "Ingénieur, ingénieure en métrologie",
+      "categorie": "btp",
+      "disciplines": [
+        "physique",
+        "analyse-statistique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Définir les méthodes de mesure",
+        "Étalonner les instruments",
+        "Garantir la précision"
+      ],
+      "contexte": "S’assure que les mesures faites dans l’entreprise sont justes."
+    },
+    {
+      "onisep": "MET.462",
+      "id": "technicien-en-metrologie",
+      "nom": "Technicien, technicienne en métrologie",
+      "categorie": "btp",
+      "disciplines": [
+        "physique",
+        "calcul-professionnel",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Étalonner les instruments",
+        "Mesurer les pièces",
+        "Rédiger les certificats"
+      ],
+      "contexte": "Vérifie et règle les instruments de mesure."
+    },
+    {
+      "onisep": "MET.491",
+      "id": "ingenieur-de-maintenance-industrielle",
+      "nom": "Ingénieur, ingénieure de maintenance industrielle",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "gestion"
+      ],
+      "gestes": [
+        "Planifier la maintenance",
+        "Analyser les pannes",
+        "Encadrer les techniciens"
+      ],
+      "contexte": "Organise l’entretien des machines d’une usine."
+    },
+    {
+      "onisep": "MET.492",
+      "id": "ingenieur-qualite-moteur",
+      "nom": "Ingénieur, ingénieure qualité moteur",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "analyse-statistique",
+        "physique"
+      ],
+      "gestes": [
+        "Analyser les défauts",
+        "Mettre en place des contrôles",
+        "Améliorer la fiabilité"
+      ],
+      "contexte": "Garantit la qualité des moteurs produits."
+    },
+    {
+      "onisep": "MET.498",
+      "id": "charge-d-etudes-de-prix",
+      "nom": "Chargé, chargée d'études de prix",
+      "categorie": "btp",
+      "disciplines": [
+        "calcul-professionnel",
+        "geometrie",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Lire le dossier",
+        "Calculer les quantités",
+        "Établir le prix"
+      ],
+      "contexte": "Calcule le prix d’un chantier avant de répondre à un appel d’offres."
+    },
+    {
+      "onisep": "MET.527",
+      "id": "serrurier-depanneur",
+      "nom": "Serrurier dépanneur, serrurière dépanneuse",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Ouvrir une porte bloquée",
+        "Changer une serrure",
+        "Conseiller sur la sécurité"
+      ],
+      "contexte": "Intervient quand une porte est bloquée ou une serrure cassée."
+    },
+    {
+      "onisep": "MET.528",
+      "id": "technicien-en-mecanique",
+      "nom": "Technicien, technicienne en mécanique",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "geometrie",
+        "physique"
+      ],
+      "gestes": [
+        "Concevoir et modifier des pièces",
+        "Réaliser des essais",
+        "Suivre la fabrication"
+      ],
+      "contexte": "Participe à la conception et à la fabrication de pièces mécaniques."
+    },
+    {
+      "onisep": "MET.538",
+      "id": "platrier",
+      "nom": "Plâtrier, plâtrière",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Monter les cloisons",
+        "Enduire les murs",
+        "Poser les faux plafonds"
+      ],
+      "contexte": "Monte les cloisons et prépare les murs intérieurs."
+    },
+    {
+      "onisep": "MET.550",
+      "id": "technicien-de-forge",
+      "nom": "Technicien, technicienne de forge",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "mecanique",
+        "physique"
+      ],
+      "gestes": [
+        "Chauffer le métal",
+        "Le forger à la presse",
+        "Contrôler les pièces"
+      ],
+      "contexte": "Fabrique des pièces de métal en les déformant à chaud."
+    },
+    {
+      "onisep": "MET.553",
+      "id": "technicien-de-fabrication-de-mobilier-et-de-menuiserie",
+      "nom": "Technicien, technicienne de fabrication de mobilier et de menuiserie",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "mecanique"
+      ],
+      "gestes": [
+        "Préparer la fabrication",
+        "Régler les machines",
+        "Contrôler la qualité"
+      ],
+      "contexte": "Organise la fabrication de meubles et menuiseries."
+    },
+    {
+      "onisep": "MET.574",
+      "id": "technicien-d-essais",
+      "nom": "Technicien, technicienne d'essais",
+      "categorie": "btp",
+      "disciplines": [
+        "physique",
+        "mecanique",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Préparer le banc d’essai",
+        "Mesurer les résultats",
+        "Rédiger le rapport"
+      ],
+      "contexte": "Réalise les tests des produits."
+    },
+    {
+      "onisep": "MET.575",
+      "id": "ajusteur-monteur",
+      "nom": "Ajusteur-monteur, ajusteuse-monteuse",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "geometrie",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Ajuster les pièces",
+        "Assembler les ensembles",
+        "Contrôler le montage"
+      ],
+      "contexte": "Assemble avec précision les pièces des machines ou des avions."
+    },
+    {
+      "onisep": "MET.576",
+      "id": "chaudronnier",
+      "nom": "Chaudronnier, chaudronnière",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "mecanique"
+      ],
+      "gestes": [
+        "Tracer et découper la tôle",
+        "Former et souder",
+        "Assembler les ensembles"
+      ],
+      "contexte": "Fabrique des pièces en métal à partir de tôles."
+    },
+    {
+      "onisep": "MET.595",
+      "id": "decolleteur",
+      "nom": "Décolleteur, décolleteuse",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "calcul-professionnel",
+        "geometrie"
+      ],
+      "gestes": [
+        "Régler le tour",
+        "Lancer la production",
+        "Contrôler les pièces"
+      ],
+      "contexte": "Fabrique en série de petites pièces de métal très précises."
+    },
+    {
+      "onisep": "MET.596",
+      "id": "mecanicien-marine-navigant",
+      "nom": "Mécanicien, mécanicienne marine navigant",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "energetique"
+      ],
+      "gestes": [
+        "Surveiller les moteurs du navire",
+        "Réaliser l’entretien",
+        "Réparer en mer"
+      ],
+      "contexte": "Fait fonctionner les machines d’un bateau."
+    },
+    {
+      "onisep": "MET.648",
+      "id": "assistant-en-architecture",
+      "nom": "Assistant, assistante en architecture",
+      "categorie": "btp",
+      "disciplines": [
+        "geometrie",
+        "informatique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Dessiner les plans",
+        "Préparer les dossiers",
+        "Suivre les échanges"
+      ],
+      "contexte": "Aide l’architecte à préparer et suivre les projets."
+    },
+    {
+      "onisep": "MET.658",
+      "id": "solier-moquettiste",
+      "nom": "Solier-moquettiste, solière-moquettiste",
+      "categorie": "btp",
+      "disciplines": [
+        "geometrie",
+        "science-des-materiaux",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Préparer le sol",
+        "Poser moquettes et revêtements",
+        "Réaliser les finitions"
+      ],
+      "contexte": "Pose les revêtements de sol souples."
+    },
+    {
+      "onisep": "MET.683",
+      "id": "officier-de-l-armee-de-l-air",
+      "nom": "Officier, officière de l'armée de l'air",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "physique",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Commander une unité",
+        "Préparer les missions",
+        "Former les équipes"
+      ],
+      "contexte": "Encadre des équipes dans l’armée de l’Air et de l’Espace."
+    },
+    {
+      "onisep": "MET.685",
+      "id": "mecanicien-bateaux",
+      "nom": "Mécanicien, mécanicienne bateaux",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "physique"
+      ],
+      "gestes": [
+        "Diagnostiquer le moteur",
+        "Réparer et entretenir",
+        "Hiverner les bateaux"
+      ],
+      "contexte": "Entretient et répare les moteurs de bateaux."
+    },
+    {
+      "onisep": "MET.686",
+      "id": "mecanicien-outilleur",
+      "nom": "Mécanicien-outilleur, mécanicienne-outilleuse",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "geometrie",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Lire le plan de l’outil",
+        "Usiner les pièces",
+        "Assembler et régler"
+      ],
+      "contexte": "Fabrique les outils et moules utilisés dans les usines."
+    },
+    {
+      "onisep": "MET.690",
+      "id": "militaire-technicien-de-l-air",
+      "nom": "Militaire technicien de l'air (MTA), militaire technicienne de l'air (MTA)",
+      "categorie": "services",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "education-physique"
+      ],
+      "gestes": [
+        "Entretenir les équipements",
+        "Préparer les avions",
+        "Assurer un soutien technique"
+      ],
+      "contexte": "Technicien de l’armée de l’Air et de l’Espace."
+    },
+    {
+      "onisep": "MET.698",
+      "id": "grutier",
+      "nom": "Grutier, grutière",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "physique",
+        "geometrie"
+      ],
+      "gestes": [
+        "Vérifier la grue",
+        "Lever et déplacer les charges",
+        "Communiquer avec le sol"
+      ],
+      "contexte": "Conduit la grue sur les chantiers."
+    },
+    {
+      "onisep": "MET.728",
+      "id": "ingenieur-en-acoustique",
+      "nom": "Ingénieur, ingénieure en acoustique",
+      "categorie": "btp",
+      "disciplines": [
+        "acoustique",
+        "physique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Mesurer le bruit",
+        "Concevoir des solutions",
+        "Améliorer le son"
+      ],
+      "contexte": "Réduit le bruit et améliore la qualité du son."
+    },
+    {
+      "onisep": "MET.732",
+      "id": "technicien-demonstrateur-en-materiel-agricole",
+      "nom": "Technicien démonstrateur en matériel agricole, technicienne démonstratrice en matériel agricole",
+      "categorie": "trade",
+      "disciplines": [
+        "agronomie-vegetale",
+        "mecanique",
+        "communication"
+      ],
+      "gestes": [
+        "Préparer les démonstrations",
+        "Présenter les machines",
+        "Former les clients"
+      ],
+      "contexte": "Montre aux agriculteurs comment utiliser les machines."
+    },
+    {
+      "onisep": "MET.740",
+      "id": "conducteur-de-machine-onduleuse",
+      "nom": "Conducteur, conductrice de machine onduleuse",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "science-des-materiaux",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Régler la machine",
+        "Surveiller la fabrication du carton",
+        "Contrôler la qualité"
+      ],
+      "contexte": "Fabrique du carton ondulé dans une usine."
+    },
+    {
+      "onisep": "MET.752",
+      "id": "energeticien",
+      "nom": "Énergéticien, énergéticienne",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "physique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Analyser les consommations",
+        "Proposer des économies",
+        "Suivre les installations"
+      ],
+      "contexte": "Optimise l’utilisation de l’énergie dans les bâtiments ou les usines."
+    },
+    {
+      "onisep": "MET.759",
+      "id": "technicien-en-automatisme",
+      "nom": "Technicien, technicienne en automatisme",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "informatique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Installer les automates",
+        "Programmer les séquences",
+        "Dépanner"
+      ],
+      "contexte": "Installe et règle les systèmes automatiques."
+    },
+    {
+      "onisep": "MET.760",
+      "id": "ingenieur-en-aeronautique",
+      "nom": "Ingénieur, ingénieure en aéronautique",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "physique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Concevoir des avions ou des pièces",
+        "Calculer les performances",
+        "Suivre les essais"
+      ],
+      "contexte": "Conçoit les avions et hélicoptères de demain."
+    },
+    {
+      "onisep": "MET.761",
+      "id": "ingenieur-en-construction-navale",
+      "nom": "Ingénieur, ingénieure en construction navale",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "physique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Concevoir le navire",
+        "Calculer la structure",
+        "Suivre la construction"
+      ],
+      "contexte": "Conçoit et fait construire des navires."
+    },
+    {
+      "onisep": "MET.796",
+      "id": "pilote-de-ligne-automatisee",
+      "nom": "Pilote de ligne automatisée",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "informatique"
+      ],
+      "gestes": [
+        "Démarrer la ligne",
+        "Surveiller les automates",
+        "Intervenir en cas d’arrêt"
+      ],
+      "contexte": "Pilote une ligne de production automatique."
+    },
+    {
+      "onisep": "MET.813",
+      "id": "roboticien",
+      "nom": "Roboticien, roboticienne",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "informatique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Concevoir le robot",
+        "Programmer ses mouvements",
+        "Tester et améliorer"
+      ],
+      "contexte": "Conçoit et programme des robots."
+    },
+    {
+      "onisep": "MET.864",
+      "id": "architecte-naval",
+      "nom": "Architecte naval, architecte navale",
+      "categorie": "btp",
+      "disciplines": [
+        "mathematiques-appliquees",
+        "physique",
+        "geometrie"
+      ],
+      "gestes": [
+        "Dessiner le bateau",
+        "Calculer flottaison et stabilité",
+        "Suivre la construction"
+      ],
+      "contexte": "Conçoit des bateaux."
+    },
+    {
+      "onisep": "MET.886",
+      "id": "expert-automobile",
+      "nom": "Expert, experte automobile",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "droit-et-institutions",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Examiner le véhicule",
+        "Évaluer les dégâts",
+        "Rédiger le rapport"
+      ],
+      "contexte": "Évalue les dommages d’un véhicule après un accident."
+    },
+    {
+      "onisep": "MET.902",
+      "id": "bim-manager",
+      "nom": "BIM manager (responsable modélisation des données du bâtiment), BIM manageuse (responsable modélisation des données du bâtiment)",
+      "categorie": "btp",
+      "disciplines": [
+        "informatique",
+        "geometrie",
+        "gestion"
+      ],
+      "gestes": [
+        "Organiser la maquette numérique",
+        "Coordonner les intervenants",
+        "Contrôler les données"
+      ],
+      "contexte": "Pilote la maquette numérique partagée d’un projet de construction."
+    },
+    {
+      "onisep": "MET.904",
+      "id": "constructeur-de-routes-et-d-amenagements-urbains",
+      "nom": "Constructeur, constructrice de routes et d'aménagements urbains",
+      "categorie": "btp",
+      "disciplines": [
+        "geometrie",
+        "science-des-materiaux",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Préparer le terrain",
+        "Poser les couches de la route",
+        "Aménager trottoirs et places"
+      ],
+      "contexte": "Construit routes, trottoirs et places."
+    },
+    {
+      "onisep": "MET.908",
+      "id": "hydraulicien",
+      "nom": "Hydraulicien, hydraulicienne",
+      "categorie": "btp",
+      "disciplines": [
+        "physique",
+        "sciences-de-la-terre",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Étudier les écoulements d’eau",
+        "Dimensionner les ouvrages",
+        "Prévenir les inondations"
+      ],
+      "contexte": "Conçoit des ouvrages qui gèrent l’eau : barrages, canaux, digues."
+    },
+    {
+      "onisep": "MET.910",
+      "id": "diagnostiqueur-immobilier",
+      "nom": "Diagnostiqueur, diagnostiqueuse immobilier",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "droit-et-institutions",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Inspecter le logement",
+        "Mesurer la performance énergétique",
+        "Rédiger les diagnostics"
+      ],
+      "contexte": "Contrôle l’état d’un logement avant sa vente ou sa location."
+    },
+    {
+      "onisep": "MET.920",
+      "id": "ingenieur-maintenance-aeronautique",
+      "nom": "Ingénieur, ingénieure maintenance aéronautique",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "gestion"
+      ],
+      "gestes": [
+        "Planifier l’entretien des avions",
+        "Analyser les incidents",
+        "Encadrer les techniciens"
+      ],
+      "contexte": "Organise la maintenance d’une flotte d’avions."
+    },
+    {
+      "onisep": "MET.930",
+      "id": "programmiste",
+      "nom": "Programmiste",
+      "categorie": "btp",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "gestion",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Analyser les besoins",
+        "Définir le programme du bâtiment",
+        "Conseiller le maître d’ouvrage"
+      ],
+      "contexte": "Définit les besoins avant qu’un bâtiment soit dessiné."
+    },
+    {
+      "onisep": "MET.933",
+      "id": "ingenieur-d-affaires-en-genie-electrique",
+      "nom": "Ingénieur, ingénieure d'affaires en génie électrique",
+      "categorie": "trade",
+      "disciplines": [
+        "electricite-electronique",
+        "communication",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Comprendre le besoin",
+        "Proposer une solution",
+        "Piloter le contrat"
+      ],
+      "contexte": "Vend et pilote des projets d’installations électriques."
+    },
+    {
+      "onisep": "MET.935",
+      "id": "ingenieur-recherche-et-developpement-en-agroequipement",
+      "nom": "Ingénieur, ingénieure recherche et développement en agroéquipement",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "agronomie-vegetale",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Imaginer de nouvelles machines",
+        "Concevoir et simuler",
+        "Tester au champ"
+      ],
+      "contexte": "Invente les machines agricoles de demain."
+    },
+    {
+      "onisep": "MET.943",
+      "id": "ingenieur-en-construction-automobile",
+      "nom": "Ingénieur, ingénieure en construction automobile",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "mathematiques-appliquees",
+        "physique"
+      ],
+      "gestes": [
+        "Concevoir les pièces",
+        "Simuler et tester",
+        "Préparer la fabrication"
+      ],
+      "contexte": "Conçoit les voitures et leurs équipements."
+    },
+    {
+      "onisep": "MET.947",
+      "id": "ingenieur-structures",
+      "nom": "Ingénieur, ingénieure structures",
+      "categorie": "btp",
+      "disciplines": [
+        "mathematiques-appliquees",
+        "physique",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Calculer les efforts",
+        "Dimensionner la structure",
+        "Vérifier la sécurité"
+      ],
+      "contexte": "Calcule la structure des bâtiments et des ponts pour qu’ils tiennent."
+    },
+    {
+      "onisep": "MET.948",
+      "id": "mecatronicien",
+      "nom": "Mécatronicien, mécatronicienne",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "informatique"
+      ],
+      "gestes": [
+        "Assembler mécanique et électronique",
+        "Programmer le système",
+        "Dépanner"
+      ],
+      "contexte": "Travaille sur des systèmes mêlant mécanique, électronique et informatique."
+    },
+    {
+      "onisep": "MET.7764",
+      "id": "technicien-de-maintenance-des-materiels-agricoles-ou-d-espaces-verts",
+      "nom": "Technicien, technicienne de maintenance des matériels agricoles ou d'espaces verts",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "agronomie-vegetale"
+      ],
+      "gestes": [
+        "Diagnostiquer avec l’ordinateur",
+        "Réparer et régler",
+        "Conseiller les clients"
+      ],
+      "contexte": "Assure la maintenance des machines agricoles modernes."
+    },
+    {
+      "onisep": "MET.7766",
+      "id": "chercheur-en-robotique-medicale",
+      "nom": "Chercheur, chercheuse en robotique médicale",
+      "categorie": "disc",
+      "disciplines": [
+        "electricite-electronique",
+        "informatique",
+        "physiologie-humaine"
+      ],
+      "gestes": [
+        "Concevoir des robots d’assistance",
+        "Faire des expériences",
+        "Publier les résultats"
+      ],
+      "contexte": "Invente des robots qui aident les chirurgiens ou les patients."
+    },
+    {
+      "onisep": "MET.7776",
+      "id": "poseur-de-voies-ferrees",
+      "nom": "Poseur de voies ferrées",
+      "categorie": "btp",
+      "disciplines": [
+        "geometrie",
+        "mecanique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Poser rails et traverses",
+        "Régler la voie",
+        "Entretenir le réseau"
+      ],
+      "contexte": "Construit et entretient les voies de chemin de fer."
+    },
+    {
+      "onisep": "MET.7778",
+      "id": "prepose-au-tir",
+      "nom": "Préposé au tir",
+      "categorie": "btp",
+      "disciplines": [
+        "geologie",
+        "physique",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Préparer le plan de tir",
+        "Placer les charges en sécurité",
+        "Contrôler la zone"
+      ],
+      "contexte": "Prépare et réalise les tirs de mine dans les carrières et les chantiers, avec des règles de sécurité strictes."
+    },
+    {
+      "onisep": "MET.7917",
+      "id": "monteur-echafaudeur",
+      "nom": "Monteur-échafaudeur, monteuse-échafaudeuse",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "geometrie",
+        "education-physique"
+      ],
+      "gestes": [
+        "Monter l’échafaudage",
+        "Vérifier sa stabilité",
+        "Démonter en sécurité"
+      ],
+      "contexte": "Monte les échafaudages qui permettent de travailler en hauteur."
+    },
+    {
+      "onisep": "MET.7926",
+      "id": "armurier",
+      "nom": "Armurier, armurière",
+      "categorie": "craft",
+      "disciplines": [
+        "mecanique",
+        "science-des-materiaux",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Entretenir et réparer les mécanismes",
+        "Contrôler la sécurité",
+        "Respecter une réglementation stricte"
+      ],
+      "contexte": "Entretient et répare des armes de chasse, de sport ou de service, sous une réglementation stricte."
+    },
+    {
+      "onisep": "MET.7931",
+      "id": "technicien-bim-modeleu",
+      "nom": "Technicien, technicienne BIM modeleur (modélisation des données du bâtiment)",
+      "categorie": "btp",
+      "disciplines": [
+        "informatique",
+        "geometrie",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Modéliser le bâtiment",
+        "Mettre à jour la maquette",
+        "Extraire les plans"
+      ],
+      "contexte": "Construit la maquette numérique d’un bâtiment."
+    },
+    {
+      "onisep": "MET.7951",
+      "id": "demolisseur",
+      "nom": "Démolisseur, démolisseuse",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "science-des-materiaux",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Préparer le chantier",
+        "Démonter et démolir",
+        "Trier les déchets"
+      ],
+      "contexte": "Démolit les bâtiments en sécurité et trie les matériaux."
+    },
+    {
+      "onisep": "MET.7957",
+      "id": "conducteur-d-engins-de-damage",
+      "nom": "Conducteur, conductrice d'engins de damage",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "sciences-de-la-terre",
+        "physique"
+      ],
+      "gestes": [
+        "Préparer les pistes",
+        "Conduire la dameuse",
+        "Surveiller la neige"
+      ],
+      "contexte": "Prépare les pistes de ski avec des engins."
+    },
+    {
+      "onisep": "MET.7968",
+      "id": "chef-d-equipe-tp",
+      "nom": "Chef, cheffe d'équipe TP (travaux publics)",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "geometrie",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Organiser les tâches",
+        "Encadrer l’équipe",
+        "Veiller à la sécurité"
+      ],
+      "contexte": "Encadre une équipe sur un chantier de travaux publics."
+    },
+    {
+      "onisep": "MET.7995",
+      "id": "manager-de-proximite",
+      "nom": "Manager, manageuse de proximité",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "psychologie-sociale",
+        "communication"
+      ],
+      "gestes": [
+        "Animer l’équipe",
+        "Suivre les résultats",
+        "Résoudre les difficultés"
+      ],
+      "contexte": "Encadre au quotidien une équipe de terrain."
+    },
+    {
+      "onisep": "MET.7996",
+      "id": "manager-d-unite-operationnelle",
+      "nom": "Manager, manageuse d'unité opérationnelle",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "economie-et-societe",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Piloter l’activité",
+        "Gérer le budget",
+        "Encadrer les managers"
+      ],
+      "contexte": "Dirige une unité de production ou de service."
+    },
+    {
+      "onisep": "MET.8000",
+      "id": "mecanicien-reparateur-de-vehicules-industriels",
+      "nom": "Mécanicien-réparateur, mécanicienne-réparatrice de véhicules industriels",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "physique"
+      ],
+      "gestes": [
+        "Diagnostiquer camions et bus",
+        "Réparer les systèmes",
+        "Assurer l’entretien"
+      ],
+      "contexte": "Entretient et répare camions, bus et cars."
+    },
+    {
+      "onisep": "MET.8071",
+      "id": "architecte-ingenieur",
+      "nom": "Architecte-ingénieur, architecte-ingénieure",
+      "categorie": "btp",
+      "disciplines": [
+        "geometrie",
+        "mathematiques-appliquees",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Concevoir le bâtiment",
+        "Calculer sa structure",
+        "Coordonner le projet"
+      ],
+      "contexte": "Allie architecture et ingénierie pour concevoir des bâtiments."
+    },
+    {
+      "onisep": "MET.8114",
+      "id": "responsable-de-parc-automobile",
+      "nom": "Responsable de parc automobile",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "mecanique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Gérer les véhicules",
+        "Organiser l’entretien",
+        "Suivre les coûts"
+      ],
+      "contexte": "Gère les véhicules d’une entreprise ou d’une collectivité."
+    },
+    {
+      "onisep": "MET.8186",
+      "id": "conseiller-technique-en-accessibilite",
+      "nom": "Conseiller, conseillère technique en accessibilité",
+      "categorie": "btp",
+      "disciplines": [
+        "geometrie",
+        "droit-et-institutions",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Diagnostiquer les lieux",
+        "Proposer des aménagements",
+        "Vérifier les règles"
+      ],
+      "contexte": "Rend les bâtiments accessibles aux personnes handicapées."
+    },
+    {
+      "onisep": "MET.8231",
+      "id": "technicien-d-etude-de-prix-en-cabinet-d-economiste-de-la-construction",
+      "nom": "Technicien, technicienne d’étude de prix en cabinet d’économiste de la construction",
+      "categorie": "btp",
+      "disciplines": [
+        "calcul-professionnel",
+        "geometrie",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Calculer les quantités",
+        "Chiffrer les ouvrages",
+        "Préparer les devis"
+      ],
+      "contexte": "Calcule le coût des travaux de construction."
+    }
+  ]
+}

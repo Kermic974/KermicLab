@@ -120,9 +120,10 @@ export function couvertureMetiers(donnees, notionsDuReferentiel) {
 
 /**
  * Données publiées : le fichier source enrichi, pour chaque notion citée, du titre du catalogue et des MicroSkills
- * réelles du référentiel (`projection.fiches[slug].competences`, identifiants canoniques de `projection.competences`).
+ * réelles du référentiel (`projection.fiches[slug].competences`, identifiants canoniques de `projection.competences`),
+ * chacune avec son libellé (`libelles` : identifiant → `label` des objets canoniques ; à défaut, le slug lisible).
  */
-export function enrichirMetiers(donnees, projection, titres = new Map()) {
+export function enrichirMetiers(donnees, projection, titres = new Map(), libelles = new Map()) {
   const slugDe = new Map(Object.entries(projection.notions ?? {}).map(([slug, id]) => [id, slug]));
   const idCompetence = new Map(Object.entries(projection.competences ?? {}).map(([id, slug]) => [slug, id]));
   const notions = {};
@@ -132,7 +133,10 @@ export function enrichirMetiers(donnees, projection, titres = new Map()) {
     notions[id] = {
       slug,
       titre: titres.get(slug) ?? libelleSlug(slug),
-      microskills: (projection.fiches?.[slug]?.competences ?? []).map((c) => idCompetence.get(c) ?? c)
+      microskills: (projection.fiches?.[slug]?.competences ?? []).map((c) => {
+        const id = idCompetence.get(c) ?? c;
+        return { id, libelle: libelles.get(id) ?? libelleSlug(id) };
+      })
     };
   }
   return { ...donnees, notions };

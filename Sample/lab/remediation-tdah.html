@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-neRvi47i5Gd8ClaqF0X1cysRFA+ka1XVGu3ZYQXbiqQ='; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'"><meta name="description" content="Un labo pour adultes : organiser ses tâches, avancer par mini-étapes, adapter ses efforts à son énergie et suivre sa progression localement."><script type="application/json" id="kermiclab-meta">{
+  "id": "remediation-tdah",
+  "titre": "À petits pas — Organisation et attention",
+  "sujet": "organisation/remediation-tdah-adulte",
+  "version": "2.2.0",
+  "date": "2026-11-27",
+  "langue": "fr",
+  "onglets": [
+    "explication",
+    "application",
+    "mise-en-situation",
+    "brain",
+    "sort",
+    "action",
+    "review",
+    "journey"
+  ]
+}</script><meta name="viewport" content="width=device-width,initial-scale=1"><title>À petits pas — Mon espace d’action</title>
+<style>
+#pasContextuel strong,#repriseLocale,#dechargePropositions{overflow-wrap:anywhere}
+#blocageRapide{margin-top:12px}
+#dechargePropositions fieldset{min-width:0;margin:12px 0;border:1px solid var(--line);border-radius:10px}
+#dechargePropositions fieldset .check{display:flex}
+
+#taskEditor{width:min(480px,calc(100% - 32px));border:1px solid var(--line);border-radius:16px;padding:20px;background:var(--paper);color:var(--ink)}
+#taskEditor::backdrop{background:#203d3966}
+#localPlanResults .task{overflow-wrap:anywhere}
+:root{--ink:#203d39;--muted:#647772;--green:#326d5c;--pale:#e6eee8;--paper:#fffef9;--line:#dce3da;--orange:#e7ae77}*{box-sizing:border-box}body{margin:0;background:#f2f3eb;color:var(--ink);font:16px/1.5 system-ui,sans-serif}header{padding:30px 5vw 20px;border-bottom:1px solid var(--line);background:var(--paper)}.top,.row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}h1{font:normal 34px Georgia,serif;margin:0}h2{font:normal 27px Georgia,serif;margin:0 0 14px}h3{margin:0 0 10px;font-size:17px}p{margin:8px 0 18px}.muted,small{color:var(--muted)}.tag{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--green)}nav{display:flex;gap:8px;flex-wrap:wrap;padding-top:22px}button,input,select,textarea{font:inherit}button{border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:10px 15px;cursor:pointer;color:var(--ink)}button:hover{border-color:var(--green);background:var(--pale)}button.active,.primary{background:var(--green);color:white;border-color:var(--green)}button:disabled{opacity:.5;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--orange);outline-offset:2px}main{max-width:1150px;padding:30px 24px 70px;margin:auto}.grid{display:grid;grid-template-columns:1.5fr 1fr;gap:22px}.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:25px;margin-bottom:18px}.soft{background:var(--pale)}.hero{padding:30px;background:var(--ink);color:white;border-radius:18px;margin-bottom:24px}.hero p{color:#d9e4db;margin-bottom:0}input:not([type=checkbox]),select,textarea{border:1px solid #c4d0c7;border-radius:9px;padding:10px;background:white;color:var(--ink);max-width:100%}input[type=text],textarea{width:100%}textarea{resize:vertical;min-height:85px}label{display:block;margin:10px 0 5px;font-size:14px}label.check{display:flex;align-items:flex-start;gap:10px;font-size:16px}input[type=checkbox]{width:19px;height:19px;accent-color:var(--green);flex-shrink:0;margin-top:3px}.task{padding:17px 0;border-bottom:1px solid var(--line)}.task:last-child{border:0}.task-title{font-weight:650;overflow-wrap:anywhere}.done{text-decoration:line-through;color:var(--muted)}.tiny{font-size:13px;padding:5px 9px}.steps{margin:10px 0 10px 12px}.timer{font:normal 68px/1.2 Georgia,serif;font-variant-numeric:tabular-nums;text-align:center;margin:20px 0}.center{text-align:center}.empty{padding:20px 0;color:var(--muted)}.hidden{display:none!important}.progress{height:8px;border-radius:9px;background:var(--line);overflow:hidden;margin:15px 0}.progress span{display:block;height:100%;background:var(--green)}footer{max-width:1150px;margin:auto;padding:0 24px 25px;font-size:13px;color:var(--muted)}#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:white;padding:12px 20px;border-radius:12px;z-index:10;max-width:90vw}.tools{display:flex;gap:8px;flex-wrap:wrap}.energy{color:var(--green);font-size:13px}#focusName{font-size:22px;overflow-wrap:anywhere}@media(max-width:750px){.grid{grid-template-columns:1fr}header{padding:24px}h1{font-size:29px}main{padding:20px 16px}.card{padding:20px}nav button{flex:1} .timer{font-size:60px}}@media print{header nav,.tools,button,footer,#toast{display:none!important}body{background:white}.card{break-inside:avoid}main{padding:0}.grid{display:block}.hidden{display:none!important}}
+ .xp-number{font:42px Georgia,serif}.badge{padding:10px;border-radius:10px;background:var(--pale);margin:8px 0}.locked{opacity:.65;background:#f1f1eb}.bars{display:flex;gap:5px;height:100px;align-items:end;margin:12px 0}.bar{flex:1;min-width:0;background:var(--green);border-radius:5px 5px 0 0}.bar.zero{background:var(--line)}table{width:100%;border-collapse:collapse;font-size:13px}td,th{text-align:left;padding:7px 4px;border-bottom:1px solid var(--line)}dialog{border:1px solid var(--line);border-radius:18px;padding:25px;width:min(94vw,500px);color:var(--ink)}dialog::backdrop{background:#203d3980}.celebration{position:fixed;right:25px;top:25px;background:#f5d9a9;color:var(--ink);border-radius:18px;padding:20px;z-index:20;box-shadow:0 10px 40px #203d3922;pointer-events:none}@media(prefers-reduced-motion:no-preference){.celebration{animation:pop .3s ease-out}@keyframes pop{from{transform:translateY(-10px);opacity:0}to{transform:none;opacity:1}}} .grid>*{min-width:0}.card{min-width:0}select,textarea,input:not([type=checkbox]){min-width:0}select{width:100%}.grid{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}.tools>*{min-width:0}button{overflow-wrap:anywhere}@media(max-width:750px){.grid{grid-template-columns:minmax(0,1fr)}} 
+/* Confort tactile et reflow : aucune modification du moteur ni du stockage. */
+button{min-height:48px;min-width:44px;overflow-wrap:normal;white-space:normal}
+button.tiny{min-height:48px;padding:8px 12px}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+button.active:hover,.primary:hover{background:#285648;color:white}
+nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));max-width:1150px;margin-inline:auto}
+nav button{min-width:0;padding:10px 8px;line-height:1.35}
+nav button.active{font-weight:700}
+input:not([type=checkbox]):not([type=file]),select,textarea{min-height:48px;width:100%;font-size:16px}
+label.check{min-height:48px;align-items:center;cursor:pointer}
+label.check input{width:24px;height:24px;margin:0}
+.tools{gap:10px}
+.row>*{min-width:0;max-width:100%}
+#addForm .row>div{flex:1 1 180px}
+@media(max-width:750px){
+ header{padding:16px}nav{padding-top:14px;grid-template-columns:repeat(2,minmax(0,1fr))}
+ nav button[data-tab=brain],nav button[data-tab=sort],nav button[data-tab=action],nav button[data-tab=mise-en-situation]{grid-column:1/-1}
+ nav button[data-tab=brain],nav button[data-tab=sort],nav button[data-tab=action]{text-align:left;padding-inline:16px}
+ main{padding:16px 12px 40px}.card{padding:16px}.hero{padding:20px}
+ #addForm .row{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+ #addForm button,.card .primary{width:100%}
+ .tools>*{flex:1 1 140px}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media print{header nav{display:none!important}}
+</style></head><body>
+<header><div class="top"><div><div class="tag">Remédiation cognitive · TDAH adulte</div><h1>À petits pas<span style="color:#9ab29a">.</span></h1></div><div><div id="today"></div><small id="saveStatus">Sauvegarde sur cet appareil</small></div></div><nav aria-label="Navigation principale"><button data-tab="explication">Le plan</button><button data-tab="home" class="active" aria-current="page">Aujourd’hui</button><button data-tab="brain">1 · Vider la tête</button><button data-tab="sort">2 · Classer</button><button data-tab="action">3 · Agir</button><button data-tab="review">Bilan du soir</button><button data-tab="journey">✦ Mon parcours</button><button data-tab="mise-en-situation">S’entraîner</button></nav><button type="button" id="blocageRapide">Je suis bloqué·e</button></header>
+<noscript><style>main>section.hidden{display:block!important}header nav,header #blocageRapide{display:none}</style>
+<nav aria-label="Navigation sans JavaScript"><a href="#home">Aujourd’hui</a> · <a href="#brain">Pochette</a> · <a href="#action">Agir</a> · <a href="#aideBlocage">Blocage</a> · <a href="#repriseLocale">Reprise</a> · <a href="#explication">Stratégies</a> · <a href="#journey">Mon parcours</a> · <a href="#review">Bilan</a> · <a href="#donneesLocales">Données locales</a></nav>
+<p>Active JavaScript pour accéder à tes données enregistrées et interagir avec le labo.</p></noscript>
+<main><section id="explication" class="hidden"><h2>Comprendre mon plan</h2><!-- petits-pas:reperes-catalogue --><p>Ce labo d’organisation s’adresse aux adultes. Il reprend le plan de remédiation fourni pour le TDAH adulte. Il ne réalise aucun diagnostic et ne mesure pas une amélioration clinique.</p><div class="card"><h3>Les sept repères</h3><ol><li><strong>Un cerveau externe :</strong> déposer les tâches, les classer selon l’énergie mentale, puis les découper en actions simples.</li><li><strong>Commencer petit :</strong> faire seulement la première étape, avec cinq minutes et le droit d’arrêter.</li><li><strong>Monotâche :</strong> un seul dossier, mails fermés, téléphone écarté. Noter les pensées qui arrivent.</li><li><strong>Un rythme :</strong> 25 minutes de travail, puis 5 minutes de pause. Après trois cycles, une pause plus longue.</li><li><strong>Observer le blocage :</strong> fatigue → pause ; flou → plan ; perfectionnisme → version imparfaite ; tâche trop grosse → redécoupage.</li><li><strong>Clore la journée :</strong> reconnaître les avancées et choisir une seule tâche en premier demain.</li><li><strong>Ne pas surcharger :</strong> trois priorités maximum. La régularité compte, même les jours moyens.</li></ol><button class="primary" data-go="home">Faire mon point de départ</button></div><div class="card soft"><h3>Comment fonctionne la progression ?</h3><p>Une mini-étape distincte donne 10 points, une tâche distincte 20 points, un démarrage de cinq minutes 5 points, un cycle de travail 15 points et une pause terminée 5 points. Les petites quêtes ajoutent 5 ou 10 points. Un niveau représente 100 points.</p><p>Décocher puis recocher une même action ne donne pas de nouveaux points. Les points déjà acquis restent conservés si tu rouvres ou supprimes une tâche. Les étoiles disponibles peuvent être échangées contre tes récompenses personnelles. Les badges restent dans ce labo, sans remontée dans les badges du site.</p><p>Les objectifs, points et conseils sont des ajouts de l’application, pas une évaluation médicale. Avec une énergie basse, la quête quotidienne se limite à une mini-étape.</p><h3>Confidentialité</h3><p>Profil facultatif, tâches, ressentis et bilans restent dans ce navigateur. Aucun envoi réseau. Utilise un pseudo et évite les informations sensibles, surtout sur un appareil partagé. L’export contient les informations que tu as saisies : garde-le dans un endroit privé.</p><p>Pour transférer ta progression du fichier local au site, exporte la sauvegarde dans le fichier puis importe-la ici : chaque origine possède son propre stockage.</p></div></section><section id="mise-en-situation" class="hidden"><h2>Un blocage, un petit pas</h2><p class="muted">Trois situations fictives pour pratiquer le plan, sans saisir de données personnelles.</p><div class="card"><label for="practiceCase">Choisis une situation</label><select id="practiceCase"><option value="flou">Je dois préparer un dossier, mais je ne sais pas par où commencer.</option><option value="perfection">Je réécris le début d’un message pour qu’il soit parfait.</option><option value="fatigue">Je suis fatigué·e après un cycle de travail.</option></select><p>Quelle première réponse essaierais-tu ?</p><div class="tools"><button data-practice="flou">Écrire un plan très simple</button><button data-practice="perfection">Faire un brouillon imparfait</button><button data-practice="fatigue">Prendre une pause courte</button></div><p id="practiceFeedback" aria-live="polite"></p><button data-go="action">Revenir à mon action</button></div></section>
+<section id="home"><div class="hero"><div class="tag" style="color:#c7dac6">Un pas suffit pour commencer</div><h2 style="margin-top:10px">Je fais seulement la première petite étape.</h2><p>Trois priorités maximum. Le reste est du bonus. Les jours moyens comptent aussi.</p></div><div class="grid"><div><div class="card soft"><h3 id="greeting">Mon point de départ</h3><label for="dailyEnergy">Mon énergie aujourd’hui</label><select id="dailyEnergy"><option value="">Je prends un instant pour observer</option><option value="1">Basse · un petit pas suffit</option><option value="2">Moyenne · avancer tranquillement</option><option value="3">Haute · garder un rythme soutenable</option></select><label for="dailyMood">Mon ressenti</label><select id="dailyMood"><option value="">Je choisis si j’en ai envie</option><option>Fatigué·e</option><option>Préoccupé·e</option><option>Neutre</option><option>Serein·e</option><option>Motivé·e</option></select><p id="recommendation"></p><label for="tempsDisponible">Combien de temps as-tu ?</label>
+<select id="tempsDisponible"><option value="2">2 minutes</option><option value="5" selected>5 minutes</option><option value="15">15 minutes</option><option value="30">30 minutes</option></select>
+<button id="suggestTask" class="primary">Trouver mon prochain petit pas</button>
+<p id="modeSuggere"></p><details><summary>Choisir un mode pour ce moment</summary>
+<label for="modeContexte">Mode de travail</label><select id="modeContexte"><option value="">Aucun mode</option><option>Douceur</option><option>Focus</option><option>Organisation</option><option>Récupération</option></select><p id="modeConseil" role="status"></p></details>
+<div id="pasContextuel" hidden>
+<p id="pasSuggestion" role="status"></p>
+<div class="tools"><button id="ouvrirPetitPas" type="button">Ouvrir la tâche</button><button id="autrePetitPas" type="button">Autre proposition</button><button id="ignorerPetitPas" type="button">Ignorer</button></div>
+</div></div><div class="card soft"><h3>Mon assistant local</h3><p>Propose des priorités selon ton énergie, sans envoyer tes données. Tu choisis ce qui est ajouté.</p><div class="tools"><button id="localPlan">Proposer un plan</button><button id="localPlanDismiss">Ignorer</button></div><p id="localPlanStatus" role="status"></p><div id="localPlanResults"></div></div><div class="card" id="repriseLocale">
+<h3>Reprendre là où j’en étais</h3><p id="repriseTexte"></p>
+<div class="tools"><button id="repriseOuvrir" type="button">Reprendre</button><button id="repriseOublier" type="button">Oublier ce point de reprise</button></div>
+</div><div class="card"><h3>Mes petites quêtes du jour</h3><div id="missions"></div><button data-go="journey">Voir mon parcours ✦</button></div><div class="card"><div class="row"><h2>Mes priorités du jour</h2><span id="priorityCount"></span></div><div id="priorities"></div><button data-go="sort">Choisir mes priorités →</button></div><div class="card"><h3>Une pensée arrive ?</h3><p class="muted">Dépose-la ici, puis reviens à ton action.</p><form id="captureForm"><label for="capture">Pensée ou tâche à retrouver</label><input id="capture" required placeholder="Je note pour libérer mon attention…" maxlength="500"><button style="margin-top:10px">Noter dans ma pochette</button></form></div></div><div><div class="card soft"><h3>Mon avancée du jour</h3><div id="stats"></div><p class="muted">Chaque petite étape cochée est une avancée.</p></div><div class="card"><h3>Mon repère pour demain</h3><p id="tomorrowPreview" class="muted"></p><button data-go="review">Préparer demain →</button></div></div></div></section>
+<section id="brain" class="hidden"><h2>Page 1 · Vider la tête</h2><p class="muted">Tout au même endroit : pas besoin de trier tout de suite.</p><div class="card"><form id="addForm"><label for="title">Une tâche ou une idée</label><input id="title" required maxlength="500" placeholder="Qu’est-ce qui occupe mon esprit ?"><div class="row"><div><label for="domain">Dimension de vie</label><select id="domain"><option>Pro</option><option>Administratif</option><option>Finances</option><option>Famille</option><option>Loisirs / santé</option><option>Autre</option></select></div><div><label for="energy">Énergie mentale nécessaire</label><select id="energy"><option value="3">Forte</option><option value="2" selected>Moyenne</option><option value="1">Faible</option></select></div><button class="primary" style="align-self:end">Ajouter à ma pochette</button></div></form></div><div class="card"><h3>Décharger ce qui m’occupe</h3>
+<form id="dechargeForm"><label for="dechargeTexte">Une pensée par ligne</label><textarea id="dechargeTexte" maxlength="6000" required placeholder="Ex. : Préparer le dossier&#10;Idée : essai de rangement"></textarea><button type="submit">Préparer le tri</button></form>
+<p id="dechargeStatut" role="status"></p>
+<form id="dechargePropositions" hidden><div id="dechargeLignes"></div><div class="tools"><button type="submit" class="primary">Enregistrer la sélection</button><button type="button" id="dechargeAnnuler">Annuler</button></div></form>
+<ul id="pochetteNotes"></ul>
+</div><div class="card"><div class="row"><h3>Ma pochette</h3><button data-plan type="button">M’aider à choisir une tâche</button><label>Afficher <select id="filter"><option value="all">Tout</option><option>Pro</option><option>Administratif</option><option>Finances</option><option>Famille</option><option>Loisirs / santé</option><option>Autre</option></select></label></div><div id="inbox"></div></div></section>
+<section id="sort" class="hidden"><h2>Page 2 · Classer selon l’énergie</h2><p class="muted">De la plus énergivore à la moins énergivore. On priorise l’énergie mentale, pas l’envie.</p><div class="card soft">Choisis au maximum <strong>3 priorités par jour</strong>. Tu peux ajuster l’énergie de chaque tâche.</div><button data-plan type="button">M’aider à choisir une priorité</button><div class="card" id="sorted"></div></section>
+<section id="action" class="hidden"><h2>Page 3 · Une case, une action simple</h2><p class="muted">Découpe une tâche en mini-étapes : ouvrir le document, écrire le titre, sortir le dossier…</p><div class="grid"><div class="card"><label for="taskSelect">La tâche à avancer</label><select id="taskSelect" style="width:100%"></select><div id="actionDetails"></div><button id="pauseReprise" type="button">Garder mon point de reprise</button></div><div><div class="card soft"><h3>Mon espace monotâche</h3><p id="focusName">Choisis une tâche pour commencer.</p><label class="check"><input type="checkbox">Un seul dossier ouvert</label><label class="check"><input type="checkbox">Mails fermés</label><label class="check"><input type="checkbox">Téléphone écarté</label><label for="timerMode">Mon rythme</label><select id="timerMode"><option value="5" selected>Démarrage · 5 min</option><option value="2">Démarrage · 2 min</option><option value="15">Essai · 15 min</option><option value="25">Travail · 25 min</option><option value="break">Pause · 5 min</option><option value="long">Pause longue · 15 min (réglable)</option></select><label for="longMinutes">Durée de la pause longue (minutes)</label><input id="longMinutes" type="number" min="1" max="120" value="15"><div class="timer" id="clock" role="timer" aria-label="Temps restant">05:00</div><div class="tools" style="justify-content:center"><button class="primary" id="startTimer">Démarrer</button><button id="resetTimer">Réinitialiser</button></div><p class="center" id="cycles">0 / 3 cycles de travail</p><p id="timerMessage" class="muted" aria-live="polite">Après 5 minutes, tu as le droit d’arrêter.</p></div><div class="card" id="aideBlocage"><h3>Je suis bloqué·e</h3><label for="feeling">Qu’est-ce que je ressens là ?</label><select id="feeling" style="width:100%"><option value="">Choisir un ressenti</option><option value="fatigue">Fatigue</option><option value="flou">Tâche floue</option><option value="perfection">Perfectionnisme</option><option value="grosse">Tâche trop grosse</option></select><p id="advice" role="status" aria-live="polite"></p></div></div></div></section>
+<section id="review" class="hidden"><h2>Fin de journée · Je reconnais mes avancées</h2><p class="muted">La régularité compte davantage qu’une journée parfaite.</p><div class="grid"><div class="card"><label for="reviewDate">Jour du bilan</label><input type="date" id="reviewDate"><div id="reviewStats"></div><label for="win">Je me félicite pour…</label><textarea id="win" placeholder="Même une toute petite avancée."></textarea><label for="note">Ce que je retiens / comment je me sens</label><textarea id="note" placeholder="Sans jugement, simplement ce que j’observe."></textarea><p><small>Le bilan se sauvegarde automatiquement.</small></p></div><div><div class="card soft"><h3>Une seule tâche en premier demain</h3><label for="tomorrow">Mon premier pas de demain</label><select id="tomorrow" style="width:100%"></select><p class="muted">Moins de réflexion au réveil, un démarrage plus facile.</p></div><div class="card"><h3>Mes bilans précédents</h3><div id="history"></div></div></div></div></section>
+<section id="journey" class="hidden"><h2>Mon parcours, à mon rythme</h2><p class="muted">Des points pour reconnaître tes efforts. Aucune pénalité, aucune série perdue.</p><div class="grid"><div><div class="card"><h3>Mon profil</h3><label for="nickname">Comment t’appeler ?</label><input id="nickname" maxlength="60" placeholder="Un pseudo, si tu le souhaites"><label for="personalGoal">Ce que je souhaite rendre plus facile</label><input id="personalGoal" maxlength="300" placeholder="Ex. : démarrer mes démarches sans attendre"><label for="dailyTarget">Mon objectif de mini-étapes par jour</label><select id="dailyTarget"><option value="1">1 · Tout doucement</option><option value="2">2 · Un petit élan</option><option value="3">3 · Mon rythme régulier</option><option value="5">5 · Quand j’ai de l’énergie</option></select><label class="check"><input id="celebrate" type="checkbox">Afficher les petites célébrations</label></div><div class="card"><h3>Mes 14 derniers jours</h3><div id="activityChart"></div><p id="insights" class="muted"></p><div id="activityTable"></div></div><div class="card"><h3>Mon journal d’efforts</h3><div id="eventList"></div></div></div><div><div class="card soft"><h3>Ma progression</h3><div id="level"></div><div id="badges"></div></div><div class="card"><h3>Mes récompenses personnelles</h3><p class="muted">Choisis des plaisirs simples. Les points cumulés restent acquis ; les étoiles servent à débloquer tes récompenses.</p><form id="rewardForm"><label for="rewardTitle">Une récompense qui me fait plaisir</label><input id="rewardTitle" required maxlength="120" placeholder="Ex. : un moment lecture"><label for="rewardCost">Coût en étoiles</label><input id="rewardCost" type="number" min="10" max="10000" step="10" value="50" required><button style="margin-top:10px">Créer ma récompense</button></form><div id="rewardList"></div></div></div></div></section><section class="card" style="margin-top:24px"><div class="row"><div><h3 id="donneesLocales">Mes données, avec moi</h3><small>Sans compte, sans connexion, sans envoi de données.</small></div><div class="tools"><button id="export">Exporter une sauvegarde</button><button id="importBtn">Importer</button><button id="print">Imprimer cette vue</button><button id="clearLocal">Effacer mes données locales</button><button id="connexion" hidden>Se connecter</button></div></div><input type="file" id="importFile" accept="application/json,.json" hidden><p class="muted" style="font-size:13px;margin-bottom:0">Les données restent dans ce navigateur. Exporte régulièrement une sauvegarde, notamment avant de déplacer le fichier ou de changer de navigateur.</p></section>
+</main><dialog id="taskEditor" aria-labelledby="taskEditorHeading"><form id="taskEditForm">
+<h2 id="taskEditorHeading">Modifier la tâche</h2>
+<label for="taskEditTitle">Titre de la tâche</label><input id="taskEditTitle" required maxlength="500" autofocus>
+<label for="taskEditEnergy">Énergie nécessaire</label><select id="taskEditEnergy"><option value="1">Faible</option><option value="2">Moyenne</option><option value="3">Forte</option></select>
+<div class="tools" style="margin-top:12px"><button class="primary">Enregistrer</button><button type="button" id="taskEditCancel">Annuler</button></div>
+</form></dialog><footer>Adapté du plan « Remédiation Cognitive - TDAH Adulte » fourni. La pause longue de 15 minutes est un réglage proposé par l’application ; sa durée n’est pas précisée dans le plan. Outil personnel d’organisation et de suivi.</footer><div id="toast" role="status" class="hidden"></div>
+<script>
+'use strict';
+const KEY='petits-pas-v1', $=id=>document.getElementById(id), day=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}, esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const CONFIG={connexionActive:false};
+const registreOnglets=[];
+function enregistrerOnglet(onglet){if(registreOnglets.some(o=>o.id===onglet.id))throw Error('Onglet déjà déclaré');registreOnglets.push(onglet)}
+[['explication','explication','Le plan'],['home','application','Aujourd’hui'],['brain','organisation','Vider la tête'],['sort','organisation','Classer'],['action','action','Agir'],['review','bilan','Bilan du soir'],['journey','progression','Mon parcours'],['mise-en-situation','mise-en-situation','S’entraîner']].forEach(([id,type,titre])=>enregistrerOnglet({id,type,titre,rendu:()=>$(id),actif:true}));
+const stockage={local:{lire:cle=>localStorage.getItem(cle),ecrire:(cle,valeur)=>localStorage.setItem(cle,valeur)},distant:{lire:()=>null,ecrire:()=>false}};
+let toastTimeout;
+let extensionReady=false;let state={version:1,tasks:[],days:{},tomorrows:{}}, selected='',currentDay=day();
+try{const saved=stockage.local.lire(KEY);if(saved){const parsed=JSON.parse(saved);if(!valid(parsed))throw Error();state=parsed}}catch(e){notify('Sauvegarde inaccessible : exporte tes données avant de fermer cette page.');}
+function validDate(value){return typeof value==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(value)}
+function validerDonneesContextuelles(sauvegarde) {
+  const { reprise, pochetteNotes } = sauvegarde;
+  return (reprise === undefined || (reprise && typeof reprise.tache === 'string' &&
+    (reprise.etape === null || typeof reprise.etape === 'string'))) &&
+    (pochetteNotes === undefined || (Array.isArray(pochetteNotes) && pochetteNotes.length <= 2000 &&
+      pochetteNotes.every(note => note && typeof note.titre === 'string' &&
+        note.titre.trim() && note.titre.length <= 500 &&
+        ['idée', 'préoccupation', 'échéance'].includes(note.categorie))));
+}
+function valid(s){return s&&s.version===1&&Array.isArray(s.tasks)&&s.tasks.length<=2000&&s.tasks.every(t=>t&&typeof t.id==='string'&&/^[a-zA-Z0-9-]{1,100}$/.test(t.id)&&typeof t.title==='string'&&t.title.length<=500&&typeof t.domain==='string'&&[1,2,3].includes(t.energy)&&Array.isArray(t.priorities)&&t.priorities.every(validDate)&&Array.isArray(t.steps)&&t.steps.every(x=>x&&typeof x.id==='string'&&/^[a-zA-Z0-9-]{1,100}$/.test(x.id)&&typeof x.text==='string'&&x.text.length<=500&&(x.done===null||validDate(x.done)))&&(t.done===null||validDate(t.done)))&&new Set(s.tasks.map(t=>t.id)).size===s.tasks.length&&validerDonneesContextuelles(s)&&s.days&&typeof s.days==='object'&&!Array.isArray(s.days)&&Object.keys(s.days).every(validDate)&&Object.values(s.days).every(v=>v&&typeof v.win==='string'&&typeof v.note==='string')&&s.tomorrows&&typeof s.tomorrows==='object'&&!Array.isArray(s.tomorrows)&&Object.keys(s.tomorrows).every(validDate)&&Object.values(s.tomorrows).every(v=>typeof v==='string')}
+function daily(d=day()){if(!Object.hasOwn(state.days,d))state.days[d]={win:'',note:''};return state.days[d]}
+function save(){if(extensionReady)renderJourney();try{stockage.local.ecrire(KEY,JSON.stringify(state));$('saveStatus').textContent='✓ Sauvegardé sur cet appareil'}catch(e){$('saveStatus').textContent='⚠ Sauvegarde impossible — exporter';notify('Le stockage est indisponible ou plein. Exporte une sauvegarde pour conserver tes données.')}}
+function notify(s){$('toast').textContent=s;$('toast').classList.remove('hidden');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>$('toast').classList.add('hidden'),6000)}
+function uid(){return typeof crypto.randomUUID==='function'?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2)}
+function creerTache(title, domain = 'Autre', energy = 2) {
+  return { id: uid(), title, domain, energy, priorities: [], steps: [], done: null };
+}
+function add(title,domain='Autre',energy=2){state.tasks.push(creerTache(title,domain,energy));save();render()}
+function go(tab){if(tab==='home'||tab==='brain') afficherContexte();registreOnglets.forEach(o=>$(o.id).classList.toggle('hidden',o.id!==tab));document.querySelectorAll('[data-tab]').forEach(b=>{b.classList.toggle('active',b.dataset.tab===tab);b.setAttribute('aria-current',b.dataset.tab===tab?'page':'false')})}
+document.querySelectorAll('[data-tab],[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.tab||b.dataset.go));
+$('addForm').onsubmit=e=>{e.preventDefault();const title=$('title').value.trim();if(!title)return;add(title,$('domain').value,Number($('energy').value));$('title').value='';$('title').focus()};
+$('captureForm').onsubmit=e=>{e.preventDefault();const title=$('capture').value.trim();if(!title)return;add(title);$('capture').value='';notify('Pensée notée. Tu peux revenir à ton action.')};
+let tacheEditee;
+let boutonEdition;
+function ouvrirEdition(tache, bouton) {
+  tacheEditee = tache;
+  boutonEdition = bouton;
+  $('taskEditTitle').value = tache.title;
+  $('taskEditEnergy').value = tache.energy;
+  $('taskEditor').showModal();
+}
+$('taskEditCancel').onclick = () => $('taskEditor').close();
+$('taskEditor').addEventListener('close', () => {
+  if (boutonEdition?.isConnected) boutonEdition.focus();
+  else document.querySelector('[data-tab][aria-current="page"]').focus();
+});
+$('taskEditForm').onsubmit = evenement => {
+  evenement.preventDefault();
+  const titre = $('taskEditTitle').value.trim();
+  if (!titre) { $('taskEditTitle').focus(); return; }
+  if (state.tasks.includes(tacheEditee)) {
+    tacheEditee.title = titre;
+    tacheEditee.energy = Number($('taskEditEnergy').value);
+    save();
+    render();
+    if ($('localPlanResults').hasChildNodes()) afficherPlanLocal();
+    notify('Tâche modifiée.');
+  }
+  $('taskEditor').close();
+};
+const energyName={1:'Faible',2:'Moyenne',3:'Forte'};
+function taskRow(t,mode){return `<div class="task"><div class="row"><span class="task-title ${t.done?'done':''}">${esc(t.title)}</span><span class="energy">${esc(t.domain)} · ${energyName[t.energy]}</span></div><div class="tools" style="margin-top:10px">${mode==='sort'?`<label style="margin:0">Énergie <select data-energy="${t.id}" aria-label="Énergie de ${esc(t.title)}">${[3,2,1].map(n=>`<option value="${n}" ${t.energy===n?'selected':''}>${energyName[n]}</option>`).join('')}</select></label>` : ''}<button class="tiny ${t.priorities.includes(day())?'primary':''}" data-priority="${t.id}" ${t.done&&!t.priorities.includes(day())?'disabled':''}>${t.priorities.includes(day())?'Retirer des priorités':'☆ Choisir pour aujourd’hui'}</button><button class="tiny" data-edit="${t.id}">Modifier</button><button class="tiny" data-open="${t.id}">Mini-étapes →</button><button class="tiny" data-done="${t.id}">${t.done?'Rouvrir':'Terminer la tâche'}</button>${mode==='brain'?`<button class="tiny" data-delete="${t.id}">Supprimer</button>`:''}</div></div>`}
+function stats(d){return {tasks:state.tasks.filter(t=>t.done===d).length,steps:state.tasks.reduce((n,t)=>n+t.steps.filter(s=>s.done===d).length,0)}}
+function render(){if(extensionReady)renderJourney();const today=day(), ps=state.tasks.filter(t=>t.priorities.includes(today));$('today').textContent=new Date().toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'});$('priorityCount').textContent=ps.length+' / 3';$('priorities').innerHTML=ps.length?ps.map(t=>taskRow(t,'home')).join(''):'<p class="empty">Choisis une première tâche. Tu n’as pas besoin de remplir les trois places.</p>';const st=stats(today),done=ps.filter(t=>t.done).length;$('stats').innerHTML=`<strong>${st.steps} mini-étape${st.steps>1?'s':''} cochée${st.steps>1?'s':''}</strong><div class="progress"><span style="width:${ps.length?done/ps.length*100:0}%"></span></div><small>${done} / ${ps.length} priorités terminées · ${st.tasks} tâches terminées aujourd’hui</small>`;
+const filter=$('filter').value;$('inbox').innerHTML=state.tasks.filter(t=>filter==='all'||t.domain===filter).map(t=>taskRow(t,'brain')).join('')||'<p class="empty">La place est libre. Dépose ici ta première idée.</p>';$('sorted').innerHTML=[...state.tasks].filter(t=>!t.done).sort((a,b)=>b.energy-a.energy).map(t=>taskRow(t,'sort')).join('')||'<p class="empty">Aucune tâche en attente. Ajoute une idée dans « Vider la tête ».</p>';
+if(!state.tasks.some(t=>t.id===selected))selected=state.tasks.find(t=>!t.done)?.id||state.tasks[0]?.id||'';$('taskSelect').innerHTML=state.tasks.length?state.tasks.map(t=>`<option value="${t.id}" ${selected===t.id?'selected':''}>${t.done?'✓ ':''}${esc(t.title)}</option>`).join(''):'<option value="">Aucune tâche pour le moment</option>';renderAction();const d=$('reviewDate').value||today;const r=daily(d);$('win').value=r.win;$('note').value=r.note;const rs=stats(d);$('reviewStats').innerHTML=`<p><strong>${rs.steps} mini-étapes et ${rs.tasks} tâches terminées ce jour.</strong></p>`;const next=tomorrowDate();$('tomorrow').innerHTML='<option value="">Je choisirai plus tard</option>'+state.tasks.filter(t=>!t.done).map(t=>`<option value="${t.id}" ${state.tomorrows[next]===t.id?'selected':''}>${esc(t.title)}</option>`).join('');const tt=state.tasks.find(t=>t.id===state.tomorrows[next]);$('tomorrowPreview').textContent=tt?tt.title:'Une seule tâche à choisir pour faciliter le démarrage.';$('history').innerHTML=Object.keys(state.days).filter(d=>state.days[d].win||state.days[d].note).sort().reverse().slice(0,14).map(d=>`<button class="tiny" data-history="${d}" style="margin:3px">${esc(d)}</button>`).join('')||'<p class="muted">Tes bilans apparaîtront ici.</p>'}
+function tomorrowDate(){const d=new Date();d.setDate(d.getDate()+1);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function renderAction(){const t=state.tasks.find(t=>t.id===selected);$('pauseReprise').disabled=!t||Boolean(t.done);$('focusName').textContent=t?t.title:'Choisis une tâche pour commencer.';$('actionDetails').innerHTML=t?`<div class="steps">${t.steps.map(s=>`<label class="check"><input type="checkbox" data-step="${s.id}" ${s.done?'checked':''}><span class="${s.done?'done':''}">${esc(s.text)}</span></label>`).join('')||'<p class="empty">Quelle est la toute première petite action ?</p>'}</div><form id="stepForm"><label for="stepText">Ajouter une mini-étape</label><input id="stepText" required maxlength="500" placeholder="Ex. : ouvrir le document"><button style="margin-top:10px">Ajouter cette étape</button></form><button type="button" data-edit="${t.id}" style="margin-top:20px">Modifier la tâche</button><button data-done="${t.id}" class="primary" style="margin-top:20px">${t.done?'Rouvrir la tâche':'Marquer la tâche terminée'}</button>`:'<p class="empty">Ajoute d’abord une tâche dans ta pochette.</p>';if($('stepForm'))$('stepForm').onsubmit=e=>{e.preventDefault();const text=$('stepText').value.trim();if(!text)return;t.steps.push({id:uid(),text,done:null});save();render();$('stepText').focus()}}
+$('taskSelect').onchange=()=>{selected=$('taskSelect').value;renderAction()};$('filter').onchange=render;
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const id=b.dataset.edit||b.dataset.open||b.dataset.done||b.dataset.delete||b.dataset.priority;const t=state.tasks.find(t=>t.id===id);if(t){if(b.dataset.edit){ouvrirEdition(t,b);return}if(b.dataset.open){selected=id;renderAction();$('taskSelect').value=id;go('action');return}if(b.dataset.done){if(!t.done&&t.steps.some(s=>!s.done)&&!confirm('Certaines mini-étapes ne sont pas cochées. Terminer tout de même la tâche ?'))return;t.done=t.done?null:day();if(t.done)award('task:'+t.id,20,'Tâche terminée')}if(b.dataset.delete){if(!confirm('Supprimer cette tâche et ses mini-étapes ?'))return;state.tasks=state.tasks.filter(x=>x.id!==id)}if(b.dataset.priority){const d=day();if(t.priorities.includes(d))t.priorities=t.priorities.filter(x=>x!==d);else{if(state.tasks.filter(x=>x.priorities.includes(d)).length>=3){notify('Trois priorités suffisent pour aujourd’hui. Retire-en une pour changer.');return}t.priorities.push(d)}}save();render()}if(b.dataset.history){$('reviewDate').value=b.dataset.history;render()}});
+document.addEventListener('change',e=>{if(e.target.dataset.energy){state.tasks.find(t=>t.id===e.target.dataset.energy).energy=Number(e.target.value);save();render()}if(e.target.dataset.step){const t=state.tasks.find(t=>t.id===selected),s=t.steps.find(s=>s.id===e.target.dataset.step);s.done=e.target.checked?day():null;if(s.done)award('step:'+s.id,10,'Mini-étape cochée');save();render()}});
+$('reviewDate').value=day();$('reviewDate').onchange=render;['win','note'].forEach(id=>$(id).oninput=()=>{daily($('reviewDate').value||day())[id]=$(id).value;save()});$('tomorrow').onchange=()=>{state.tomorrows[tomorrowDate()]=$('tomorrow').value;save();render()};$('feeling').onchange=()=>{$('advice').textContent={fatigue:'Une pause courte : se lever, boire, bouger, regarder au loin.',flou:'Faire juste le plan. Quelle serait la première ligne ?',perfection:'Faire une version imparfaite. Elle pourra être améliorée ensuite.',grosse:'Redécouper en plus petites étapes. Une case = une action simple.'}[$('feeling').value]||''};
+let remaining=300,endAt=0,running=false,cycles=0;function duration(){const m=$('timerMode').value;return (m==='break'?5:m==='long'?Math.max(1,Math.min(120,Number($('longMinutes').value)||15)):Number(m))*60}function paintClock(){$('clock').textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0');$('startTimer').textContent=running?'Mettre en pause':'Démarrer'}function resetTimer(){running=false;remaining=duration();paintClock()}$('timerMode').onchange=()=>{resetTimer();$('timerMessage').textContent=$('timerMode').value==='5'?'Après 5 minutes, tu as le droit d’arrêter.':'Une seule chose à la fois.'};$('longMinutes').onchange=()=>{if($('timerMode').value==='long')resetTimer()};$('resetTimer').onclick=resetTimer;$('startTimer').onclick=()=>{if(running){remaining=Math.max(0,Math.ceil((endAt-Date.now())/1000));running=false}else{if(remaining<=0)remaining=duration();endAt=Date.now()+remaining*1000;running=true}paintClock()};setInterval(()=>{if(day()!==currentDay){currentDay=day();render()}if(!running)return;remaining=Math.max(0,Math.ceil((endAt-Date.now())/1000));paintClock();if(remaining===0){running=false;const m=$('timerMode').value;recordSession(m);let msg;if(m==='25'){cycles++;$('cycles').textContent=cycles+' / 3 cycles de travail';const long=cycles>=3;msg=long?'Trois cycles terminés. Prends une pause plus longue.':'Cycle terminé. Prends 5 minutes de pause.';$('timerMode').value=long?'long':'break';if(long)cycles=0}else if(['2','5','15'].includes(m)){msg='Les '+m+' minutes sont écoulées. Tu peux arrêter ou poursuivre avec un cycle de travail.';$('timerMode').value='25'}else{msg='Pause terminée. Reprends quand tu te sens prêt·e.';$('timerMode').value='25';$('cycles').textContent=cycles+' / 3 cycles de travail'}$('timerMessage').textContent=msg;notify(msg);remaining=duration();paintClock()}},500);
+$('export').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='petits-pas-sauvegarde-'+day()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};$('importBtn').onclick=()=>$('importFile').click();$('importFile').onchange=async()=>{const f=$('importFile').files[0];if(!f)return;try{if(f.size>5*1024*1024)throw Error();const s=JSON.parse(await f.text());if(!valid(s))throw Error();if(confirm('Remplacer les données actuelles par cette sauvegarde ? Exporte-les d’abord si tu souhaites les conserver.')){state=s;save();render();notify('Sauvegarde importée.')}}catch(e){notify('Fichier non reconnu. Choisis une sauvegarde JSON exportée par cette application.')}finally{$('importFile').value=''}};$('print').onclick=()=>window.print();render();
+
+// Personalized progress is stored alongside the original tasks, without erasing them.
+function ensureExtras(){
+if(!state.profile||typeof state.profile!=='object')state.profile={};
+state.profile={name:'',goal:'',target:2,celebrate:true,...state.profile};
+if(![1,2,3,5].includes(Number(state.profile.target)))state.profile.target=2;
+if(!Array.isArray(state.events))state.events=[];
+if(!Array.isArray(state.rewards))state.rewards=[];
+if(!state.checkins||typeof state.checkins!=='object')state.checkins={};
+}
+ensureExtras();
+// Give existing achievements their initial credit once; keys prevent repeated points.
+function creditPastAchievements(){
+for(const t of state.tasks){if(t.done&&!state.events.some(e=>e.key==='task:'+t.id))state.events.push({key:'task:'+t.id,date:t.done,xp:20,label:'Tâche terminée'});for(const s of t.steps)if(s.done&&!state.events.some(e=>e.key==='step:'+s.id))state.events.push({key:'step:'+s.id,date:s.done,xp:10,label:'Mini-étape cochée'})}
+}
+creditPastAchievements();
+const originalValid=valid;
+valid=function(s){return originalValid(s)&&(!s.events||Array.isArray(s.events)&&s.events.every(e=>e&&typeof e.key==='string'&&typeof e.date==='string'&&Number.isFinite(e.xp)&&e.xp>=0&&typeof e.label==='string')&&new Set(s.events.map(e=>e.key)).size===s.events.length)&&(!s.rewards||Array.isArray(s.rewards)&&s.rewards.every(r=>r&&typeof r.id==='string'&&typeof r.title==='string'&&Number.isFinite(r.cost)&&r.cost>=10&&Array.isArray(r.claimed)&&r.claimed.every(d=>typeof d==='string')))&&(!s.checkins||typeof s.checkins==='object'&&!Array.isArray(s.checkins)&&Object.values(s.checkins).every(c=>c&&[0,1,2,3].includes(c.energy)&&typeof c.mood==='string'))&&(!s.profile||typeof s.profile==='object'&&typeof s.profile.name==='string'&&typeof s.profile.goal==='string'&&[1,2,3,5].includes(Number(s.profile.target))&&typeof s.profile.celebrate==='boolean')};
+function totalXP(){return state.events.reduce((n,e)=>n+e.xp,0)}
+function balance(){return totalXP()-state.rewards.reduce((n,r)=>n+r.cost*r.claimed.length,0)}
+function award(key,xp,label){ensureExtras();if(state.events.some(e=>e.key===key))return;state.events.push({key,date:day(),xp,label});if(state.profile.celebrate){const el=document.createElement('div');el.className='celebration';el.setAttribute('role','status');el.textContent='✦ +'+xp+' points · '+label;document.body.append(el);setTimeout(()=>el.remove(),3000)}}
+function recordSession(mode){if(!extensionReady)return;const label=mode==='25'?'Cycle de travail terminé':['2','5','15'].includes(mode)?'Démarrage de '+mode+' minutes terminé':'Pause respectée';award('session:'+uid(),mode==='25'?15:5,label);save()}
+function checkin(){ensureExtras();if(!Object.hasOwn(state.checkins,day()))state.checkins[day()]={energy:0,mood:''};return state.checkins[day()]}
+function dateAgo(n){const d=new Date();d.setDate(d.getDate()-n);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function renderJourney(){ensureExtras();const p=state.profile,c=checkin();$('nickname').value=p.name;$('personalGoal').value=p.goal;$('dailyTarget').value=p.target;$('celebrate').checked=p.celebrate;$('dailyEnergy').value=c.energy||'';$('dailyMood').value=c.mood;$('greeting').textContent=p.name?'Bonjour '+p.name+' · comment ça va ?':'Mon point de départ';
+const target=c.energy===1?1:Number(p.target);const steps=stats(day()).steps;
+const msgs={0:'Observe ton énergie pour adapter ton prochain pas.',1:'Aujourd’hui, une seule mini-étape suffit. Tu peux commencer par 5 minutes, puis faire le point.',2:'Un démarrage de 5 minutes peut aider. Garde une seule tâche ouverte.',3:'Tu as de l’élan : garde les pauses et la limite de trois priorités.'};$('recommendation').textContent=msgs[c.energy]+(p.goal?' Ton intention : '+p.goal:'');
+const missions=[{key:'checkin',label:'Observer mon énergie',done:c.energy>0,xp:5},{key:'steps',label:'Cocher '+target+' mini-étape'+(target>1?'s':''),done:steps>=target,xp:10},{key:'review',label:'Reconnaître une avancée dans mon bilan',done:!!daily().win.trim(),xp:10}];
+for(const m of missions)if(m.done)award('mission:'+day()+':'+m.key,m.xp,m.label);
+$('missions').innerHTML=missions.map(m=>`<p>${m.done?'✓':'○'} ${esc(m.label)} <small>· ${m.xp} points${state.events.some(e=>e.key==='mission:'+day()+':'+m.key)?' acquis':''}</small></p>`).join('');
+const xp=totalXP(),lv=Math.floor(xp/100)+1,progress=xp%100;$('level').innerHTML=`<div class="xp-number">Niveau ${lv}</div><p>${xp} points cumulés · <strong>${balance()} étoiles disponibles</strong></p><div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}" aria-label="Progression vers le niveau suivant"><span style="width:${progress}%"></span></div><small>${100-progress} points jusqu’au prochain niveau. Un point gagné = une étoile.</small>`;
+const activeDays=new Set(state.events.map(e=>e.date));const badges=[['🌱 Premier pas',state.events.some(e=>e.key.startsWith('step:')),'Cocher une mini-étape'],['🧩 Petit à petit',state.events.filter(e=>e.key.startsWith('step:')).length>=10,'Cocher 10 mini-étapes distinctes'],['⏳ Je me lance',state.events.some(e=>e.label==='Démarrage de 5 minutes terminé'),'Terminer un démarrage de 5 minutes'],['🍃 Je récupère',state.events.some(e=>e.label==='Pause respectée'),'Terminer une pause'],['📅 Je reviens',activeDays.size>=3,'Avancer sur 3 jours, consécutifs ou non'],['💛 Bienveillance',state.events.some(e=>e.key.endsWith(':review')),'Écrire une avancée dans le bilan']];$('badges').innerHTML=badges.map(([name,ok,desc])=>`<div class="badge ${ok?'':'locked'}"><strong>${ok?'✓ ':''}${name}</strong><br><small>${desc}${ok?' · obtenu':''}</small></div>`).join('');
+const dates=Array.from({length:14},(_,i)=>dateAgo(13-i));const rows=dates.map(d=>({d,steps:state.events.filter(e=>e.date===d&&e.key.startsWith('step:')).length,minutes:state.events.filter(e=>e.date===d&&e.key.startsWith('session:')).reduce((n,e)=>n+(e.label==='Cycle de travail terminé'?25:e.label==='Démarrage de 5 minutes terminé'?5:0),0),xp:state.events.filter(e=>e.date===d).reduce((n,e)=>n+e.xp,0)}));const max=Math.max(1,...rows.map(r=>r.xp));$('activityChart').innerHTML='<div class="bars" aria-hidden="true">'+rows.map(r=>`<div title="${r.d} : ${r.xp} points" class="bar ${r.xp?'':'zero'}" style="height:${Math.max(4,r.xp/max*100)}%"></div>`).join('')+'</div><small>Points gagnés par jour · détail accessible ci-dessous</small>';
+$('activityTable').innerHTML='<details><summary>Voir les données des 14 jours</summary><table><thead><tr><th>Date</th><th>Étapes</th><th>Focus (min)</th><th>Points</th></tr></thead><tbody>'+rows.map(r=>`<tr><td>${r.d.slice(8)}/${r.d.slice(5,7)}</td><td>${r.steps}</td><td>${r.minutes}</td><td>${r.xp}</td></tr>`).join('')+'</tbody></table></details>';
+const active=rows.filter(r=>r.xp>0).length,mins=rows.reduce((n,r)=>n+r.minutes,0);$('insights').textContent=`${active} jour${active>1?'s':''} avec des efforts reconnus sur 14 · ${mins} minutes de séances de concentration terminées. `+(active?'Tu peux reprendre à ton rythme, même après une pause.':'Ton parcours commence avec le prochain petit pas.');
+$('eventList').innerHTML=[...state.events].reverse().slice(0,20).map(e=>`<div class="task"><strong>+${e.xp}</strong> · ${esc(e.label)}<br><small>${esc(e.date)}</small></div>`).join('')||'<p class="empty">Tes efforts apparaîtront ici.</p>';
+$('rewardList').innerHTML=state.rewards.map(r=>`<div class="task"><strong>${esc(r.title)}</strong><p><small>${r.cost} étoiles · obtenue ${r.claimed.length} fois</small></p><button data-claim="${esc(r.id)}" ${balance()<r.cost?'disabled':''}>${balance()<r.cost?'Encore '+(r.cost-balance())+' étoiles':'M’offrir cette récompense'}</button></div>`).join('');
+}
+['nickname','personalGoal','dailyTarget','celebrate'].forEach(id=>$(id).onchange=()=>{state.profile.name=$('nickname').value.trim();state.profile.goal=$('personalGoal').value.trim();state.profile.target=Number($('dailyTarget').value);state.profile.celebrate=$('celebrate').checked;save()});
+['dailyEnergy','dailyMood'].forEach(id=>$(id).onchange=()=>{const c=checkin();c.energy=Number($('dailyEnergy').value);c.mood=$('dailyMood').value;save()});
+
+$('rewardForm').onsubmit=e=>{e.preventDefault();const title=$('rewardTitle').value.trim(),cost=Number($('rewardCost').value);if(!title||cost<10||cost>10000||cost%10)return;state.rewards.push({id:uid(),title,cost,claimed:[]});$('rewardTitle').value='';save()};
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.claim){const r=state.rewards.find(r=>r.id===b.dataset.claim);if(!r||balance()<r.cost)return;if(!confirm('Utiliser '+r.cost+' étoiles pour « '+r.title+' » ?'))return;r.claimed.push(day());save();notify('Récompense obtenue. Profite de ce moment !')}if(b.dataset.edit){const t=state.tasks.find(t=>t.id===b.dataset.edit);if(!t)return;editing=t.id;$('editTitle').value=t.title;$('editDomain').value=t.domain;$('editEnergy').value=t.energy;$('editDialog').showModal()}});
+let editing='';const dialog=document.createElement('dialog');dialog.id='editDialog';dialog.innerHTML=`<form id="editForm"><h2>Modifier ma tâche</h2><label for="editTitle">Titre</label><input id="editTitle" required maxlength="500"><label for="editDomain">Dimension de vie</label><select id="editDomain">${['Pro','Administratif','Finances','Famille','Loisirs / santé','Autre'].map(d=>'<option>'+d+'</option>').join('')}</select><label for="editEnergy">Énergie mentale</label><select id="editEnergy"><option value="1">Faible</option><option value="2">Moyenne</option><option value="3">Forte</option></select><div class="tools" style="margin-top:20px"><button class="primary">Enregistrer</button><button type="button" id="cancelEdit">Annuler</button></div></form>`;document.body.append(dialog);$('cancelEdit').onclick=()=>dialog.close();$('editForm').onsubmit=e=>{e.preventDefault();const t=state.tasks.find(t=>t.id===editing),title=$('editTitle').value.trim();if(!t||!title)return;t.title=title;t.domain=$('editDomain').value;t.energy=Number($('editEnergy').value);dialog.close();save();render()};
+// Refresh the history immediately when a reflection is written.
+['win','note'].forEach(id=>$(id).addEventListener('input',()=>{renderJourney();save()}));
+const originalImport=$('importFile').onchange;$('importFile').onchange=async()=>{await originalImport();ensureExtras();creditPastAchievements();renderJourney();save()};
+extensionReady=true;render();save();
+
+
+document.querySelectorAll('[data-practice]').forEach(b=>b.onclick=()=>{$('practiceFeedback').textContent=b.dataset.practice===$('practiceCase').value?'Oui, ce petit pas correspond au repère du plan. Tu peux l’essayer avec bienveillance.':'Cette réponse peut être utile selon le contexte. Pour cette situation, essaie '+({flou:'un plan simple',perfection:'un brouillon imparfait',fatigue:'une pause courte'}[$('practiceCase').value])+'.'});
+$('practiceCase').onchange=()=>{$('practiceFeedback').textContent=''};
+$('clearLocal').onclick=()=>{if(!confirm('Effacer toutes les données de ce labo sur cet appareil ? Exporte une sauvegarde avant si tu souhaites les garder.'))return;try{localStorage.removeItem(KEY);location.reload()}catch(e){notify('Le navigateur ne permet pas l’effacement. Utilise ses réglages de stockage.')}};
+$('connexion').hidden=!CONFIG.connexionActive;
+
+
+// Harness local, lecture seule. Les titres restent dans le navigateur.
+const HARNESS_PETITS_PAS = Object.freeze({ nom: "petits-pas", version: "0.1.0" });
+
+function proposerPlan({ tasks = [], energie = 2 } = {}) {
+  if (!Array.isArray(tasks) || tasks.length > 100 || ![1, 2, 3].includes(energie)) {
+    throw new TypeError("Contexte invalide");
+  }
+  const ids = new Set();
+  const disponibles = [];
+  for (const t of tasks) {
+    if (!t || typeof t.id !== "string" || !t.id || t.id.length > 128 ||
+        ids.has(t.id) || ![1, 2, 3].includes(t.energy)) {
+      throw new TypeError("Tâche invalide");
+    }
+    ids.add(t.id);
+    if (!t.done && t.energy <= energie) disponibles.push(t);
+  }
+  disponibles.sort((a, b) => energie === 1 ? a.energy - b.energy : b.energy - a.energy);
+  return {
+    harness: HARNESS_PETITS_PAS.version,
+    propositions: disponibles.slice(0, energie === 1 ? 1 : 3).map(t => ({
+      action: "proposer_priorite",
+      taskId: t.id,
+      raison: "Compatible avec ton énergie déclarée.",
+      premierPas: "Choisir une petite étape et essayer cinq minutes."
+    }))
+  };
+}
+
+function afficherPlanLocal(message = '') {
+  const panneau = $('localPlanResults');
+  const statut = $('localPlanStatus');
+  panneau.replaceChildren();
+  const energie = Number($('dailyEnergy').value);
+  if (!energie) {
+    statut.textContent = 'Choisis ton énergie pour adapter les propositions.';
+    return;
+  }
+  const date = day();
+  const places = Math.max(0, 3 - state.tasks.filter(tache => tache.priorities.includes(date)).length);
+  const taches = state.tasks.filter(tache => !tache.done && tache.energy <= energie).slice(0, 100);
+  const prioritaires = taches.filter(tache => tache.priorities.includes(date));
+  const candidates = taches.filter(tache => !tache.priorities.includes(date));
+  const propositions = [
+    ...proposerPlan({ tasks: places ? candidates : prioritaires, energie }).propositions,
+    ...proposerPlan({ tasks: places ? prioritaires : candidates, energie }).propositions
+  ].slice(0, energie === 1 ? 1 : 3);
+  statut.textContent = message || (propositions.length
+    ? (places ? '' : 'Tes trois priorités sont choisies. Tu peux encore travailler sur une tâche.')
+    : 'Aucune tâche compatible. Ajoute une tâche ou ajuste son énergie dans ta pochette.');
+  for (const proposition of propositions) {
+    const tache = taches.find(item => item.id === proposition.taskId);
+    const { title, energy } = tache;
+    const ligne = document.createElement('div');
+    ligne.className = 'task';
+    const titre = document.createElement('strong');
+    titre.textContent = title;
+    const conseil = document.createElement('p');
+    const etape = tache.steps.find(item => !item.done);
+    conseil.textContent = etape ? 'Prochaine mini-étape : ' + etape.text : proposition.premierPas;
+    const actions = document.createElement('div');
+    actions.className = 'tools';
+    function ajouterAction(libelle, agir) {
+      const bouton = document.createElement('button');
+      bouton.type = 'button';
+      bouton.textContent = libelle;
+      bouton.onclick = () => {
+        if (day() !== date || !state.tasks.includes(tache) || tache.done ||
+          tache.title !== title || tache.energy !== energy || Number($('dailyEnergy').value) !== energie) {
+          afficherPlanLocal('Les suggestions ont été actualisées.');
+          $('localPlan').focus();
+          return;
+        }
+        agir(bouton);
+      };
+      actions.append(bouton);
+    }
+    if (places && !tache.priorities.includes(date)) {
+      ajouterAction('Choisir cette priorité', () => {
+        if (tache.priorities.includes(date) || state.tasks.filter(item => item.priorities.includes(date)).length >= 3) {
+          afficherPlanLocal('Les priorités ont changé.');
+        } else {
+          tache.priorities.push(date);
+          save();
+          render();
+          afficherPlanLocal('Priorité ajoutée.');
+        }
+        $('localPlan').focus();
+      });
+    }
+    ajouterAction('Modifier la tâche', bouton => ouvrirEdition(tache, bouton));
+    ajouterAction('Travailler sur la tâche', () => {
+      selected = tache.id;
+      render();
+      go('action');
+      (tache.steps.some(item => !item.done) ? $('taskSelect') : $('stepText')).focus();
+    });
+    ajouterAction('Essayer cinq minutes', () => {
+      if (running) {
+        notify('Un minuteur est déjà en cours. Termine-le ou mets-le en pause.');
+        return;
+      }
+      selected = tache.id;
+      render();
+      go('action');
+      $('timerMode').value = '5';
+      $('timerMode').onchange();
+      $('startTimer').click();
+      $('startTimer').focus();
+    });
+    ligne.append(titre, conseil, actions);
+    panneau.append(ligne);
+  }
+}
+$('localPlan').onclick = () => afficherPlanLocal();
+$('localPlanDismiss').onclick = () => {
+  $('localPlanStatus').textContent = '';
+  $('localPlanResults').replaceChildren();
+  $('localPlan').focus();
+};
+document.querySelectorAll('[data-plan]').forEach(bouton => bouton.onclick = () => {
+  go('home');
+  afficherPlanLocal();
+  (Number($('dailyEnergy').value) ? $('localPlan') : $('dailyEnergy')).focus();
+});
+
+// Moteur contextuel embarqué.
+function choisirPetitPas(taches, { energie, minutes, date, exclure } = {}) {
+  if (![1, 2, 3].includes(energie) || ![2, 5, 15, 30].includes(minutes)) return null;
+  const aUneEtape = tache => tache.steps.some(etape => !etape.done);
+  const premierPas = taches
+    .filter(tache => !tache.done && tache.energy <= energie && tache.id !== exclure)
+    .sort((a, b) => Number(b.priorities.includes(date)) - Number(a.priorities.includes(date)) ||
+      (minutes <= 5 ? Number(aUneEtape(a)) - Number(aUneEtape(b)) : Number(aUneEtape(b)) - Number(aUneEtape(a))) ||
+      (energie === 1 ? a.energy - b.energy : b.energy - a.energy))[0];
+  if (!premierPas) return null;
+
+  const etape = premierPas.steps.find(etape => !etape.done);
+  return {
+    tache: premierPas.id,
+    etape: etape?.id ?? null,
+    texte: etape?.text ?? (minutes === 2 ? 'Écrire une première mini-étape.' : 'Choisir la première mini-étape et commencer.'),
+    minutes: Math.min(minutes, etape ? 15 : 5),
+    raison: premierPas.priorities.includes(date)
+      ? 'Cette priorité du jour correspond à ton énergie.'
+      : 'Cette tâche correspond à ton énergie.'
+  };
+}
+
+function classerDecharge(texte, existants = []) {
+  const connus = new Set(existants.map(normaliserTitre));
+  return texte.split(/\r?\n/).map(ligne => ligne.trim()).filter(Boolean).slice(0, 20).map(ligne => {
+    const prefixe = /^(idée|préoccupation|échéance|tâche)\s*:\s*(.+)$/i.exec(ligne);
+    const titre = (prefixe?.[2] ?? ligne).slice(0, 500);
+    const categorie = prefixe?.[1].toLocaleLowerCase('fr') ??
+      (/^\d{4}-\d{2}-\d{2}\b/.test(titre) ? 'échéance' : titre.endsWith('?') ? 'préoccupation' : 'tâche');
+    const cle = normaliserTitre(titre);
+    const doublon = connus.has(cle);
+    connus.add(cle);
+    return { titre, categorie, doublon };
+  });
+}
+
+function normaliserTitre(titre) {
+  return titre.trim().replace(/\s+/g, ' ').toLocaleLowerCase('fr');
+}
+
+const categoriesPochette = ['tâche', 'idée', 'préoccupation', 'échéance'];
+let petitPas;
+let contexteAffiche;
+
+function notesPochette() {
+  return Array.isArray(state.pochetteNotes) ? state.pochetteNotes : [];
+}
+
+function afficherContexte() {
+  const reprise = state.reprise;
+  const tache = reprise && state.tasks.find(tache => tache.id === reprise.tache && !tache.done);
+  $('repriseLocale').hidden = !reprise;
+  $('repriseOuvrir').disabled = !tache;
+  const etape = tache?.steps.find(etape => etape.id === reprise.etape && !etape.done) ??
+    tache?.steps.find(etape => !etape.done);
+  $('repriseTexte').textContent = tache
+    ? tache.title + ' — ' + (etape?.text ?? 'Choisir une prochaine mini-étape.')
+    : 'Cette tâche a été terminée ou retirée.';
+  $('pochetteNotes').replaceChildren(...notesPochette().map((note, index) => {
+    const ligne = document.createElement('li');
+    ligne.textContent = note.categorie + ' — ' + note.titre + ' ';
+    const retirer = document.createElement('button');
+    retirer.type = 'button';
+    retirer.textContent = 'Retirer';
+    retirer.setAttribute('aria-label', 'Retirer « ' + note.titre + ' »');
+    retirer.onclick = () => {
+      if (!confirm('Retirer cette entrée de la pochette ?')) return;
+      state.pochetteNotes.splice(index, 1);
+      save();
+      afficherContexte();
+      $('dechargeTexte').focus();
+    };
+    ligne.append(retirer);
+    return ligne;
+  }));
+}
+
+function contextePetitPas() {
+  return {
+    energie: Number($('dailyEnergy').value),
+    minutes: Number($('tempsDisponible').value),
+    date: day()
+  };
+}
+
+function afficherMode() {
+  const { energie, minutes } = contextePetitPas();
+  const mode = energie === 1 ? (minutes === 2 ? 'Récupération' : 'Douceur')
+    : energie ? (minutes >= 15 ? 'Focus' : 'Organisation') : '';
+  $('modeSuggere').textContent = mode ? 'Mode suggéré : ' + mode + '.' : '';
+}
+
+$('modeContexte').onchange = () => {
+  const conseils = {
+    Douceur: 'Une seule petite étape suffit.',
+    Focus: 'Garde une seule tâche ouverte pendant le temps choisi.',
+    Organisation: 'Choisis une priorité et écris son premier geste.',
+    Récupération: 'Tu peux d’abord faire une pause et reprendre ensuite.'
+  };
+  $('modeConseil').textContent = conseils[$('modeContexte').value] ?? '';
+};
+
+function proposerPetitPas(exclure) {
+  const contexte = contextePetitPas();
+  petitPas = choisirPetitPas(state.tasks, { ...contexte, exclure });
+  contexteAffiche = contexte;
+  $('pasContextuel').hidden = false;
+  $('ouvrirPetitPas').disabled = !petitPas;
+  $('autrePetitPas').disabled = !petitPas && !exclure;
+  const tache = petitPas && state.tasks.find(tache => tache.id === petitPas.tache);
+  $('pasSuggestion').textContent = tache
+    ? tache.title + ' — ' + petitPas.texte + ' Essaie jusqu’à ' + petitPas.minutes + ' min. ' + petitPas.raison
+    : exclure ? 'Aucune autre tâche compatible. Tu peux faire une pause ou retourner dans ta pochette.'
+      : contexte.energie ? 'Aucune tâche compatible pour ce niveau d’énergie.'
+        : 'Choisis ton énergie pour obtenir une suggestion.';
+}
+
+function allerATache(tache) {
+  selected = tache.id;
+  render();
+  go('action');
+  $('taskSelect').focus();
+}
+
+$('suggestTask').onclick = () => proposerPetitPas();
+$('autrePetitPas').onclick = () => proposerPetitPas(petitPas?.tache);
+$('ignorerPetitPas').onclick = () => {
+  $('pasContextuel').hidden = true;
+  petitPas = null;
+  $('suggestTask').focus();
+};
+$('ouvrirPetitPas').onclick = () => {
+  const contexte = contextePetitPas();
+  const tache = petitPas && state.tasks.find(tache => tache.id === petitPas.tache && !tache.done);
+  if (!tache || contexte.date !== contexteAffiche.date || contexte.energie !== contexteAffiche.energie ||
+    contexte.minutes !== contexteAffiche.minutes || tache.energy > contexte.energie ||
+    (tache.steps.find(etape => !etape.done)?.id ?? null) !== petitPas.etape) {
+    proposerPetitPas();
+    return;
+  }
+  allerATache(tache);
+  if (!running) {
+    $('timerMode').value = String(petitPas.minutes);
+    $('timerMode').onchange();
+  }
+};
+$('tempsDisponible').onchange = () => {
+  afficherMode();
+  if (!$('pasContextuel').hidden) proposerPetitPas();
+};
+$('dailyEnergy').addEventListener('change', () => {
+  afficherMode();
+  if (!$('pasContextuel').hidden) proposerPetitPas();
+});
+
+$('blocageRapide').onclick = () => {
+  go('action');
+  $('feeling').focus();
+};
+$('pauseReprise').onclick = () => {
+  const tache = state.tasks.find(tache => tache.id === selected && !tache.done);
+  if (!tache) return;
+  if (running) $('startTimer').click();
+  state.reprise = { tache: tache.id, etape: tache.steps.find(etape => !etape.done)?.id ?? null };
+  save();
+  go('home');
+  $('repriseOuvrir').focus();
+};
+$('repriseOuvrir').onclick = () => {
+  const tache = state.tasks.find(tache => tache.id === state.reprise?.tache && !tache.done);
+  if (tache) allerATache(tache);
+  else afficherContexte();
+};
+$('repriseOublier').onclick = () => {
+  delete state.reprise;
+  save();
+  afficherContexte();
+  $('suggestTask').focus();
+};
+
+$('dechargeForm').onsubmit = evenement => {
+  evenement.preventDefault();
+  const lignesDecharge = classerDecharge($('dechargeTexte').value,
+    [...state.tasks.map(tache => tache.title), ...notesPochette().map(note => note.titre)]);
+  $('dechargeStatut').textContent = lignesDecharge.length
+    ? 'Vérifie les propositions avant de les enregistrer.'
+    : 'Écris au moins une pensée.';
+  const champs = lignesDecharge.map(({ titre, categorie, doublon }, index) => {
+    const groupe = document.createElement('fieldset');
+    const legende = document.createElement('legend');
+    legende.textContent = 'Pensée ' + (index + 1) + (doublon ? ' · doublon possible' : '');
+    const inclusion = document.createElement('label');
+    inclusion.className = 'check';
+    const garder = document.createElement('input');
+    garder.type = 'checkbox';
+    garder.checked = !doublon;
+    garder.dataset.garder = '';
+    inclusion.append(garder, ' Inclure dans la sélection');
+    const libelle = document.createElement('label');
+    libelle.textContent = 'Texte';
+    const texte = document.createElement('input');
+    texte.maxLength = 500;
+    texte.value = titre;
+    texte.dataset.texte = '';
+    libelle.append(texte);
+    const type = document.createElement('label');
+    type.textContent = 'Catégorie';
+    const choix = document.createElement('select');
+    choix.append(...categoriesPochette.map(nom => new Option(nom, nom, false, nom === categorie)));
+    type.append(choix);
+    groupe.append(legende, inclusion, libelle, type);
+    return groupe;
+  });
+  $('dechargeLignes').replaceChildren(...champs);
+  $('dechargePropositions').hidden = !champs.length;
+  champs[0]?.querySelector('[data-texte]')?.focus();
+};
+
+function fermerDecharge() {
+  $('dechargePropositions').hidden = true;
+  $('dechargeLignes').replaceChildren();
+  $('dechargeTexte').focus();
+}
+
+$('dechargeAnnuler').onclick = () => {
+  fermerDecharge();
+  $('dechargeStatut').textContent = 'Tri annulé.';
+};
+$('dechargePropositions').onsubmit = evenement => {
+  evenement.preventDefault();
+  const selection = [...$('dechargeLignes').children]
+    .filter(groupe => groupe.querySelector('[data-garder]').checked)
+    .map(groupe => ({
+      titre: groupe.querySelector('[data-texte]').value.trim(),
+      categorie: groupe.querySelector('select').value
+    }));
+  if (!selection.length || selection.some(note => !note.titre)) {
+    $('dechargeStatut').textContent = 'Sélectionne au moins une pensée et complète les textes sélectionnés.';
+    return;
+  }
+  const taches = selection.filter(note => note.categorie === 'tâche');
+  const notes = selection.filter(note => note.categorie !== 'tâche');
+  if (state.tasks.length + taches.length > 2000 || notesPochette().length + notes.length > 2000) {
+    $('dechargeStatut').textContent = 'La pochette est pleine. Retire une entrée avant de réessayer.';
+    return;
+  }
+  state.tasks.push(...taches.map(note => creerTache(note.titre)));
+  if (notes.length) state.pochetteNotes = [...notesPochette(), ...notes];
+  save();
+  render();
+  afficherContexte();
+  fermerDecharge();
+  $('dechargeTexte').value = '';
+  $('dechargeStatut').textContent = 'Sélection enregistrée dans ta pochette.';
+};
+afficherContexte();
+afficherMode();
+</script></body></html>

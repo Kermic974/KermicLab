@@ -1,0 +1,1879 @@
+{
+  "version": 1,
+  "vague": 7,
+  "domaines": [
+    "armée, sécurité",
+    "logistique, transport"
+  ],
+  "source": "Ideo-Fiches metiers.xml + 5fa5949243f97.csv (2026-11-24), licence ODbL 1.0",
+  "metiers": [
+    {
+      "onisep": "MET.1",
+      "id": "controleur-aerien",
+      "nom": "Contrôleur aérien, contrôleuse aérienne",
+      "categorie": "btp",
+      "disciplines": [
+        "physique",
+        "langues-vivantes",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Suivre les avions sur le radar",
+        "Donner les autorisations par radio",
+        "Garder les distances de sécurité"
+      ],
+      "contexte": "Guide les avions pour qu’ils volent et atterrissent en sécurité."
+    },
+    {
+      "onisep": "MET.54",
+      "id": "matelot-de-la-marine-marchande",
+      "nom": "Matelot, matelote de la marine marchande",
+      "categorie": "btp",
+      "disciplines": [
+        "education-physique",
+        "mecanique",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Manœuvrer à bord",
+        "Entretenir le navire",
+        "Charger la cargaison"
+      ],
+      "contexte": "Travaille à bord d’un navire de commerce."
+    },
+    {
+      "onisep": "MET.59",
+      "id": "inspecteur-des-douanes",
+      "nom": "Inspecteur, inspectrice des douanes",
+      "categorie": "btp",
+      "disciplines": [
+        "droit-et-institutions",
+        "economie-et-societe",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Contrôler les marchandises",
+        "Mener des enquêtes",
+        "Appliquer la réglementation"
+      ],
+      "contexte": "Contrôle les échanges de marchandises et lutte contre la fraude."
+    },
+    {
+      "onisep": "MET.132",
+      "id": "mediateur-social",
+      "nom": "Médiateur social, médiatrice sociale",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "communication",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Aller à la rencontre des habitants",
+        "Apaiser les conflits",
+        "Orienter vers les services"
+      ],
+      "contexte": "Crée du lien et apaise les tensions dans un quartier ou les transports."
+    },
+    {
+      "onisep": "MET.143",
+      "id": "technicien-logistique",
+      "nom": "Technicien, technicienne logistique",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "calcul-professionnel",
+        "informatique"
+      ],
+      "gestes": [
+        "Organiser les flux de marchandises",
+        "Optimiser les stocks",
+        "Suivre les indicateurs"
+      ],
+      "contexte": "Organise le stockage et l’acheminement des marchandises."
+    },
+    {
+      "onisep": "MET.154",
+      "id": "conducteur-de-train",
+      "nom": "Conducteur, conductrice de train",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "physique",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Préparer le train",
+        "Conduire en respectant la signalisation",
+        "Informer les voyageurs"
+      ],
+      "contexte": "Conduit des trains de voyageurs ou de marchandises."
+    },
+    {
+      "onisep": "MET.173",
+      "id": "agent-de-constatation-des-douanes",
+      "nom": "Agent, agente de constatation des douanes",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "langues-vivantes",
+        "communication"
+      ],
+      "gestes": [
+        "Contrôler les bagages et les véhicules",
+        "Vérifier les documents",
+        "Saisir les marchandises interdites"
+      ],
+      "contexte": "Contrôle les marchandises aux frontières."
+    },
+    {
+      "onisep": "MET.181",
+      "id": "magasinier-cariste",
+      "nom": "Magasinier, magasinière cariste",
+      "categorie": "btp",
+      "disciplines": [
+        "calcul-professionnel",
+        "mecanique",
+        "gestion"
+      ],
+      "gestes": [
+        "Réceptionner les marchandises",
+        "Conduire le chariot élévateur",
+        "Préparer les expéditions"
+      ],
+      "contexte": "Range et déplace les marchandises dans un entrepôt."
+    },
+    {
+      "onisep": "MET.185",
+      "id": "agent-de-surete-ferroviaire",
+      "nom": "Agent, agente de sûreté ferroviaire",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Patrouiller dans les trains et les gares",
+        "Prévenir les incidents",
+        "Porter assistance"
+      ],
+      "contexte": "Assure la sécurité des voyageurs dans les trains et les gares."
+    },
+    {
+      "onisep": "MET.186",
+      "id": "commercial-a-bord-des-trains",
+      "nom": "Commercial, commerciale à bord des trains",
+      "categorie": "services",
+      "disciplines": [
+        "communication",
+        "langues-vivantes",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Accueillir les voyageurs",
+        "Contrôler les billets",
+        "Informer et rassurer"
+      ],
+      "contexte": "Accompagne les voyageurs pendant le trajet."
+    },
+    {
+      "onisep": "MET.191",
+      "id": "officier-de-police",
+      "nom": "Officier, officière de police",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-sociale",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Diriger une équipe d’enquêteurs",
+        "Mener des investigations",
+        "Rédiger les procédures"
+      ],
+      "contexte": "Encadre des policiers et dirige des enquêtes."
+    },
+    {
+      "onisep": "MET.210",
+      "id": "chauffeur-livreur",
+      "nom": "Chauffeur-livreur, chauffeuse-livreuse",
+      "categorie": "btp",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Charger le véhicule",
+        "Organiser sa tournée",
+        "Livrer les clients"
+      ],
+      "contexte": "Transporte et livre des marchandises."
+    },
+    {
+      "onisep": "MET.272",
+      "id": "inspecteur-du-permis-de-conduire-et-de-la-securite-routiere",
+      "nom": "Inspecteur, inspectrice du permis de conduire et de la sécurité routière",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-sociale",
+        "communication"
+      ],
+      "gestes": [
+        "Faire passer l’examen",
+        "Évaluer la conduite",
+        "Sensibiliser à la sécurité routière"
+      ],
+      "contexte": "Fait passer le permis de conduire."
+    },
+    {
+      "onisep": "MET.313",
+      "id": "gendarme",
+      "nom": "Gendarme",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Patrouiller",
+        "Accueillir et aider la population",
+        "Mener des enquêtes"
+      ],
+      "contexte": "Protège les personnes et fait respecter la loi, souvent en zone rurale."
+    },
+    {
+      "onisep": "MET.347",
+      "id": "agent-de-securite",
+      "nom": "Agent, agente de sécurité",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "communication"
+      ],
+      "gestes": [
+        "Surveiller un site",
+        "Contrôler les accès",
+        "Intervenir en cas d’incident"
+      ],
+      "contexte": "Protège des bâtiments, des magasins ou des événements."
+    },
+    {
+      "onisep": "MET.358",
+      "id": "pilote-d-helicoptere",
+      "nom": "Pilote d'hélicoptère",
+      "categorie": "btp",
+      "disciplines": [
+        "physique",
+        "mecanique",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Préparer le vol",
+        "Piloter l’hélicoptère",
+        "Réaliser la mission"
+      ],
+      "contexte": "Pilote des hélicoptères pour le secours, le transport ou la surveillance."
+    },
+    {
+      "onisep": "MET.384",
+      "id": "technicien-packaging",
+      "nom": "Technicien, technicienne packaging",
+      "categorie": "btp",
+      "disciplines": [
+        "design-produit",
+        "science-des-materiaux",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Concevoir l’emballage",
+        "Tester sa résistance",
+        "Suivre la fabrication"
+      ],
+      "contexte": "Conçoit des emballages solides et économes."
+    },
+    {
+      "onisep": "MET.398",
+      "id": "agent-de-transit",
+      "nom": "Agent, agente de transit",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "langues-vivantes",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Organiser le transport international",
+        "Préparer les documents douaniers",
+        "Suivre les envois"
+      ],
+      "contexte": "Organise le transport des marchandises entre les pays."
+    },
+    {
+      "onisep": "MET.399",
+      "id": "consignataire-de-navire",
+      "nom": "Consignataire de navire",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "langues-vivantes",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Préparer l’escale",
+        "Coordonner les services du port",
+        "Gérer les documents"
+      ],
+      "contexte": "Organise l’arrivée et le départ des navires dans un port."
+    },
+    {
+      "onisep": "MET.427",
+      "id": "officier-marinier",
+      "nom": "Officier marinier, officière marinière",
+      "categorie": "services",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "gestion"
+      ],
+      "gestes": [
+        "Encadrer une équipe de marins",
+        "Assurer une spécialité technique",
+        "Participer aux missions"
+      ],
+      "contexte": "Sous-officier de la Marine nationale, spécialiste d’un domaine technique."
+    },
+    {
+      "onisep": "MET.444",
+      "id": "conducteur-de-metro",
+      "nom": "Conducteur, conductrice de métro",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "physique",
+        "communication"
+      ],
+      "gestes": [
+        "Conduire la rame",
+        "Surveiller les quais",
+        "Informer les voyageurs"
+      ],
+      "contexte": "Conduit les rames de métro."
+    },
+    {
+      "onisep": "MET.484",
+      "id": "convoyeur-de-fonds",
+      "nom": "Convoyeur, convoyeuse de fonds",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Préparer la tournée",
+        "Transporter l’argent en sécurité",
+        "Respecter les procédures"
+      ],
+      "contexte": "Transporte l’argent des banques et des commerces en toute sécurité."
+    },
+    {
+      "onisep": "MET.493",
+      "id": "motard-de-la-police-ou-de-la-gendarmerie",
+      "nom": "Motard, motarde de la police ou de la gendarmerie",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "mecanique",
+        "education-physique"
+      ],
+      "gestes": [
+        "Patrouiller à moto",
+        "Contrôler la circulation",
+        "Escorter les cortèges"
+      ],
+      "contexte": "Assure la sécurité routière à moto."
+    },
+    {
+      "onisep": "MET.511",
+      "id": "logisticien-de-l-humanitaire",
+      "nom": "Logisticien, logisticienne de l'humanitaire",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "amenagement-du-territoire",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Acheminer l’aide",
+        "Gérer les stocks",
+        "Organiser les transports sur le terrain"
+      ],
+      "contexte": "Organise l’arrivée du matériel et de la nourriture dans les missions humanitaires."
+    },
+    {
+      "onisep": "MET.545",
+      "id": "declarant-en-douane",
+      "nom": "Déclarant, déclarante en douane",
+      "categorie": "trade",
+      "disciplines": [
+        "droit-et-institutions",
+        "calcul-professionnel",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Préparer les déclarations",
+        "Calculer les droits",
+        "Suivre les dossiers"
+      ],
+      "contexte": "Remplit les formalités de douane pour les entreprises."
+    },
+    {
+      "onisep": "MET.546",
+      "id": "demenageur",
+      "nom": "Déménageur, déménageuse",
+      "categorie": "btp",
+      "disciplines": [
+        "education-physique",
+        "calcul-professionnel",
+        "geometrie"
+      ],
+      "gestes": [
+        "Emballer les objets",
+        "Porter et charger",
+        "Installer chez le client"
+      ],
+      "contexte": "Transporte les meubles et objets lors des déménagements."
+    },
+    {
+      "onisep": "MET.565",
+      "id": "officier-de-la-marine-nationale",
+      "nom": "Officier, officière de la Marine nationale",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "sciences-de-la-terre",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Commander une équipe ou un navire",
+        "Préparer les missions",
+        "Assurer la sécurité en mer"
+      ],
+      "contexte": "Encadre des marins dans la Marine nationale."
+    },
+    {
+      "onisep": "MET.567",
+      "id": "officier-de-l-armee-de-terre",
+      "nom": "Officier, officière de l'armée de terre",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "histoire-contemporaine",
+        "education-physique"
+      ],
+      "gestes": [
+        "Commander une unité",
+        "Préparer les missions",
+        "Former les soldats"
+      ],
+      "contexte": "Encadre des militaires dans l’armée de Terre."
+    },
+    {
+      "onisep": "MET.577",
+      "id": "batelier",
+      "nom": "Batelier, batelière",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "amenagement-du-territoire",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Piloter la péniche",
+        "Charger la cargaison",
+        "Entretenir le bateau"
+      ],
+      "contexte": "Transporte des marchandises ou des passagers sur les fleuves et canaux."
+    },
+    {
+      "onisep": "MET.579",
+      "id": "gardien-de-police-municipale",
+      "nom": "Gardien, gardienne de police municipale",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-sociale",
+        "communication"
+      ],
+      "gestes": [
+        "Patrouiller dans la commune",
+        "Faire respecter les règles",
+        "Aider les habitants"
+      ],
+      "contexte": "Veille à la tranquillité et à la sécurité dans une commune."
+    },
+    {
+      "onisep": "MET.587",
+      "id": "sous-officier-de-l-armee-de-terre",
+      "nom": "Sous-officier, sous-officière de l'armée de terre",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "education-physique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Encadrer un groupe",
+        "Assurer une spécialité",
+        "Former les soldats"
+      ],
+      "contexte": "Encadre une équipe et exerce une spécialité dans l’armée de Terre."
+    },
+    {
+      "onisep": "MET.626",
+      "id": "ingenieur-d-etudes-en-surete-nucleaire",
+      "nom": "Ingénieur, ingénieure d'études en sûreté nucléaire",
+      "categorie": "btp",
+      "disciplines": [
+        "physique",
+        "energetique",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Analyser les risques",
+        "Contrôler les installations",
+        "Proposer des améliorations"
+      ],
+      "contexte": "Vérifie que les installations nucléaires restent sûres."
+    },
+    {
+      "onisep": "MET.653",
+      "id": "officier-de-la-marine-marchande",
+      "nom": "Officier, officière de la marine marchande",
+      "categorie": "btp",
+      "disciplines": [
+        "sciences-de-la-terre",
+        "mecanique",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Conduire le navire",
+        "Gérer la cargaison",
+        "Encadrer l’équipage"
+      ],
+      "contexte": "Dirige la navigation ou les machines d’un navire de commerce."
+    },
+    {
+      "onisep": "MET.662",
+      "id": "chauffeur-de-taxi",
+      "nom": "Chauffeur, chauffeuse de taxi",
+      "categorie": "btp",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "communication",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Prendre en charge les clients",
+        "Choisir le meilleur trajet",
+        "Entretenir le véhicule"
+      ],
+      "contexte": "Transporte des clients en voiture."
+    },
+    {
+      "onisep": "MET.679",
+      "id": "conducteur-routier",
+      "nom": "Conducteur routier, conductrice routière",
+      "categorie": "btp",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "mecanique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Préparer le trajet",
+        "Conduire le poids lourd",
+        "Livrer la marchandise"
+      ],
+      "contexte": "Transporte des marchandises en camion."
+    },
+    {
+      "onisep": "MET.689",
+      "id": "militaire-du-rang-de-l-armee-de-terre",
+      "nom": "Militaire du rang de l'armée de terre",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "gestion",
+        "mecanique"
+      ],
+      "gestes": [
+        "Suivre l’entraînement",
+        "Exercer une spécialité",
+        "Participer aux missions"
+      ],
+      "contexte": "Premier grade de l’armée de Terre, avec un métier de spécialité."
+    },
+    {
+      "onisep": "MET.691",
+      "id": "officier-de-gendarmerie",
+      "nom": "Officier, officière de gendarmerie",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Commander une unité",
+        "Diriger les enquêtes",
+        "Organiser la sécurité d’un territoire"
+      ],
+      "contexte": "Dirige des gendarmes et des opérations de sécurité."
+    },
+    {
+      "onisep": "MET.695",
+      "id": "sous-officier-de-l-armee-de-l-air",
+      "nom": "Sous-officier, sous-officière de l'armée de l'air",
+      "categorie": "services",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "gestion"
+      ],
+      "gestes": [
+        "Encadrer une équipe",
+        "Assurer une spécialité technique",
+        "Participer aux missions"
+      ],
+      "contexte": "Exerce une spécialité technique dans l’armée de l’Air et de l’Espace."
+    },
+    {
+      "onisep": "MET.712",
+      "id": "conseiller-penitentiaire-d-insertion-et-de-probation",
+      "nom": "Conseiller, conseillère pénitentiaire d'insertion et de probation",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-sociale",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Suivre les personnes condamnées",
+        "Préparer leur réinsertion",
+        "Rendre compte au juge"
+      ],
+      "contexte": "Aide les personnes condamnées à préparer leur retour dans la société."
+    },
+    {
+      "onisep": "MET.730",
+      "id": "responsable-approvisionnement",
+      "nom": "Responsable approvisionnement",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "calcul-professionnel",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Prévoir les besoins",
+        "Passer les commandes",
+        "Suivre les fournisseurs"
+      ],
+      "contexte": "Veille à ce que l’entreprise ait toujours les produits dont elle a besoin."
+    },
+    {
+      "onisep": "MET.763",
+      "id": "facteur",
+      "nom": "Facteur, factrice",
+      "categorie": "btp",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "communication",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Trier le courrier",
+        "Faire sa tournée",
+        "Remettre colis et lettres"
+      ],
+      "contexte": "Distribue le courrier et les colis."
+    },
+    {
+      "onisep": "MET.786",
+      "id": "commissaire-de-police",
+      "nom": "Commissaire de police",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Diriger un commissariat",
+        "Organiser les enquêtes",
+        "Coordonner avec la justice"
+      ],
+      "contexte": "Dirige un service de police."
+    },
+    {
+      "onisep": "MET.791",
+      "id": "chef-de-projet-demantelement-nucleaire",
+      "nom": "Chef, cheffe de projet démantèlement nucléaire",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "physique",
+        "gestion"
+      ],
+      "gestes": [
+        "Planifier le démantèlement",
+        "Gérer les déchets",
+        "Garantir la sûreté"
+      ],
+      "contexte": "Organise le démontage des installations nucléaires arrêtées."
+    },
+    {
+      "onisep": "MET.807",
+      "id": "directeur-des-services-penitentiaires",
+      "nom": "Directeur, directrice des services pénitentiaires",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Diriger un établissement",
+        "Encadrer le personnel",
+        "Organiser la réinsertion"
+      ],
+      "contexte": "Dirige une prison."
+    },
+    {
+      "onisep": "MET.810",
+      "id": "demineur",
+      "nom": "Démineur, démineuse",
+      "categorie": "services",
+      "disciplines": [
+        "physique",
+        "chimie-analytique",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Repérer les engins dangereux",
+        "Les neutraliser en sécurité",
+        "Protéger la population"
+      ],
+      "contexte": "Neutralise les munitions anciennes ou dangereuses pour protéger la population."
+    },
+    {
+      "onisep": "MET.817",
+      "id": "enqueteur-prive",
+      "nom": "Enquêteur privé, enquêtrice privée",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Recueillir des informations",
+        "Vérifier des faits",
+        "Rédiger un rapport"
+      ],
+      "contexte": "Mène des recherches pour des particuliers ou des entreprises, dans le cadre de la loi."
+    },
+    {
+      "onisep": "MET.834",
+      "id": "skipper",
+      "nom": "Skipper",
+      "categorie": "btp",
+      "disciplines": [
+        "sciences-de-la-terre",
+        "education-physique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Préparer la navigation",
+        "Conduire le voilier",
+        "Assurer la sécurité de l’équipage"
+      ],
+      "contexte": "Conduit un voilier pour des courses, des croisières ou des livraisons."
+    },
+    {
+      "onisep": "MET.858",
+      "id": "chef-de-projet-packaging",
+      "nom": "Chef, cheffe de projet packaging (conditionnement)",
+      "categorie": "btp",
+      "disciplines": [
+        "design-produit",
+        "gestion",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Définir l’emballage",
+        "Coordonner fournisseurs et équipes",
+        "Suivre les délais"
+      ],
+      "contexte": "Pilote la création des emballages d’un produit."
+    },
+    {
+      "onisep": "MET.889",
+      "id": "matelot-de-la-marine-nationale",
+      "nom": "Matelot, matelote de la Marine nationale",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "mecanique",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Participer à la vie du bord",
+        "Exercer une spécialité",
+        "Assurer la sécurité du navire"
+      ],
+      "contexte": "Marin de la Marine nationale, avec une spécialité."
+    },
+    {
+      "onisep": "MET.896",
+      "id": "technicien-de-la-circulation-ferroviaire-sncf",
+      "nom": "Technicien, technicienne de la circulation ferroviaire SNCF",
+      "categorie": "btp",
+      "disciplines": [
+        "informatique",
+        "amenagement-du-territoire",
+        "physique"
+      ],
+      "gestes": [
+        "Commander les aiguillages",
+        "Autoriser le départ des trains",
+        "Gérer les incidents"
+      ],
+      "contexte": "Organise la circulation des trains en toute sécurité."
+    },
+    {
+      "onisep": "MET.907",
+      "id": "conducteur-de-bus-ou-d-autocar",
+      "nom": "Conducteur, conductrice de bus ou d'autocar",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "amenagement-du-territoire",
+        "communication"
+      ],
+      "gestes": [
+        "Conduire en sécurité",
+        "Accueillir les voyageurs",
+        "Respecter les horaires"
+      ],
+      "contexte": "Transporte des voyageurs en bus ou en car."
+    },
+    {
+      "onisep": "MET.926",
+      "id": "surveillant-de-centre-penitentiaire",
+      "nom": "Surveillant, surveillante de centre pénitentiaire",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-sociale",
+        "education-physique"
+      ],
+      "gestes": [
+        "Surveiller les détenus",
+        "Assurer la sécurité",
+        "Accompagner la vie quotidienne"
+      ],
+      "contexte": "Garantit la sécurité dans une prison."
+    },
+    {
+      "onisep": "MET.958",
+      "id": "gestionnaire-de-flux-reverse-logistic",
+      "nom": "Gestionnaire de flux reverse logistic (logistique inversée)",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "environnement",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Organiser les retours",
+        "Trier et réparer ou recycler",
+        "Réduire les coûts"
+      ],
+      "contexte": "Gère le retour des produits vers l’entreprise pour les réparer ou les recycler."
+    },
+    {
+      "onisep": "MET.1266",
+      "id": "officier-de-sapeur-pompier",
+      "nom": "Officier, officière de sapeur-pompier",
+      "categorie": "services",
+      "disciplines": [
+        "physiologie-humaine",
+        "gestion",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Commander les secours",
+        "Organiser les interventions",
+        "Former les pompiers"
+      ],
+      "contexte": "Dirige les sapeurs-pompiers lors des interventions."
+    },
+    {
+      "onisep": "MET.7812",
+      "id": "maitre-chien",
+      "nom": "Maître-chien, maîtresse-chien",
+      "categorie": "services",
+      "disciplines": [
+        "biologie",
+        "droit-et-institutions",
+        "education-physique"
+      ],
+      "gestes": [
+        "Éduquer le chien",
+        "Patrouiller avec lui",
+        "Prendre soin de l’animal"
+      ],
+      "contexte": "Travaille en équipe avec un chien pour la sécurité ou la recherche."
+    },
+    {
+      "onisep": "MET.7821",
+      "id": "agent-d-operations-aeriennes",
+      "nom": "Agent, agente d'opérations aériennes",
+      "categorie": "btp",
+      "disciplines": [
+        "calcul-professionnel",
+        "langues-vivantes",
+        "physique"
+      ],
+      "gestes": [
+        "Préparer le vol",
+        "Calculer le chargement",
+        "Coordonner l’escale"
+      ],
+      "contexte": "Prépare les vols et organise l’escale des avions."
+    },
+    {
+      "onisep": "MET.7860",
+      "id": "pharmacien-distributeur-en-gros",
+      "nom": "Pharmacien distributeur en gros, pharmacienne distributrice en gros",
+      "categorie": "health",
+      "disciplines": [
+        "chimie-analytique",
+        "gestion",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Garantir la qualité des stocks",
+        "Organiser la distribution",
+        "Respecter la réglementation"
+      ],
+      "contexte": "Pharmacien qui organise la distribution des médicaments aux pharmacies."
+    },
+    {
+      "onisep": "MET.7907",
+      "id": "surveillant-du-jardin-du-luxembourg",
+      "nom": "Surveillant, surveillante du Jardin du Luxembourg",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "communication",
+        "environnement"
+      ],
+      "gestes": [
+        "Surveiller le jardin",
+        "Renseigner les visiteurs",
+        "Faire respecter le règlement"
+      ],
+      "contexte": "Veille à la sécurité et au calme du jardin du Luxembourg à Paris."
+    },
+    {
+      "onisep": "MET.7908",
+      "id": "surveillant-du-palais-du-luxembourg",
+      "nom": "Surveillant, surveillante du Palais du Luxembourg",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "communication",
+        "histoire-contemporaine"
+      ],
+      "gestes": [
+        "Contrôler les accès",
+        "Surveiller le Palais",
+        "Accueillir les visiteurs"
+      ],
+      "contexte": "Assure la sécurité du Sénat au Palais du Luxembourg."
+    },
+    {
+      "onisep": "MET.7997",
+      "id": "ouvrier-autoroutier",
+      "nom": "Ouvrier autoroutier, ouvrière autoroutière",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "geometrie",
+        "education-physique"
+      ],
+      "gestes": [
+        "Entretenir la chaussée",
+        "Baliser les chantiers",
+        "Intervenir en cas d’accident"
+      ],
+      "contexte": "Entretient et sécurise les autoroutes."
+    },
+    {
+      "onisep": "MET.7998",
+      "id": "conducteur-de-materiel-roulant-de-collecte-de-dechets",
+      "nom": "Conducteur, conductrice de matériel roulant de collecte de déchets",
+      "categorie": "nature",
+      "disciplines": [
+        "mecanique",
+        "environnement",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Conduire la benne",
+        "Suivre la tournée",
+        "Respecter la sécurité"
+      ],
+      "contexte": "Conduit le camion qui ramasse les déchets."
+    },
+    {
+      "onisep": "MET.8001",
+      "id": "agent-de-surete-aeroportuaire",
+      "nom": "Agent, agente de sûreté aéroportuaire",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "communication",
+        "physique"
+      ],
+      "gestes": [
+        "Contrôler les passagers",
+        "Inspecter les bagages",
+        "Repérer les objets interdits"
+      ],
+      "contexte": "Contrôle passagers et bagages dans les aéroports."
+    },
+    {
+      "onisep": "MET.8002",
+      "id": "operateur-en-station-de-telesurveillance",
+      "nom": "Opérateur, opératrice en station de télésurveillance",
+      "categorie": "services",
+      "disciplines": [
+        "informatique",
+        "communication",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Surveiller les écrans d’alarme",
+        "Analyser les alertes",
+        "Prévenir les secours"
+      ],
+      "contexte": "Surveille à distance des maisons et des bâtiments."
+    },
+    {
+      "onisep": "MET.8003",
+      "id": "preparateur-de-commandes",
+      "nom": "Préparateur, préparatrice de commandes",
+      "categorie": "btp",
+      "disciplines": [
+        "calcul-professionnel",
+        "gestion",
+        "education-physique"
+      ],
+      "gestes": [
+        "Lire le bon de commande",
+        "Prélever les produits",
+        "Emballer et étiqueter"
+      ],
+      "contexte": "Prépare les colis dans un entrepôt."
+    },
+    {
+      "onisep": "MET.8067",
+      "id": "affreteur",
+      "nom": "Affréteur, affréteuse",
+      "categorie": "trade",
+      "disciplines": [
+        "economie-et-societe",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Trouver un transporteur",
+        "Négocier les prix",
+        "Suivre la livraison"
+      ],
+      "contexte": "Organise le transport des marchandises avec des transporteurs."
+    },
+    {
+      "onisep": "MET.8069",
+      "id": "agent-de-planning",
+      "nom": "Agent, agente de planning (planification)",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "calcul-professionnel",
+        "informatique"
+      ],
+      "gestes": [
+        "Préparer les plannings",
+        "Affecter véhicules et équipes",
+        "Ajuster en cas d’imprévu"
+      ],
+      "contexte": "Organise les plannings des équipes et des véhicules."
+    },
+    {
+      "onisep": "MET.8078",
+      "id": "chef-de-quai",
+      "nom": "Chef, cheffe de quai",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Organiser les chargements",
+        "Encadrer les équipes",
+        "Contrôler les expéditions"
+      ],
+      "contexte": "Dirige le chargement et le déchargement des camions."
+    },
+    {
+      "onisep": "MET.8083",
+      "id": "commercial-transport",
+      "nom": "Commercial transport, commerciale transport",
+      "categorie": "trade",
+      "disciplines": [
+        "communication",
+        "economie-et-societe",
+        "gestion"
+      ],
+      "gestes": [
+        "Prospecter des clients",
+        "Proposer des solutions de transport",
+        "Négocier les contrats"
+      ],
+      "contexte": "Vend des services de transport aux entreprises."
+    },
+    {
+      "onisep": "MET.8093",
+      "id": "dispatcheur",
+      "nom": "Dispatcheur, dispatcheuse",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "amenagement-du-territoire",
+        "communication"
+      ],
+      "gestes": [
+        "Répartir les missions",
+        "Suivre les véhicules",
+        "Gérer les urgences"
+      ],
+      "contexte": "Organise en temps réel le travail des chauffeurs ou des techniciens."
+    },
+    {
+      "onisep": "MET.8107",
+      "id": "pilote-de-port",
+      "nom": "Pilote de port",
+      "categorie": "btp",
+      "disciplines": [
+        "sciences-de-la-terre",
+        "physique",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Monter à bord du navire",
+        "Guider son entrée au port",
+        "Coordonner avec les remorqueurs"
+      ],
+      "contexte": "Guide les grands navires pour entrer et sortir du port."
+    },
+    {
+      "onisep": "MET.8110",
+      "id": "responsable-d-entrepot",
+      "nom": "Responsable d'entrepôt",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "calcul-professionnel",
+        "informatique"
+      ],
+      "gestes": [
+        "Organiser le stockage",
+        "Encadrer l’équipe",
+        "Suivre les indicateurs"
+      ],
+      "contexte": "Dirige un entrepôt."
+    },
+    {
+      "onisep": "MET.8190",
+      "id": "chauffeur-accompagnateur-de-personnes-a-mobilite-reduite",
+      "nom": "Chauffeur accompagnateur de personnes à mobilité réduite, chauffeuse accompagnatrice de personnes à mobilité réduite",
+      "categorie": "btp",
+      "disciplines": [
+        "psychologie-sociale",
+        "physiologie-humaine",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Aider à monter dans le véhicule",
+        "Conduire en sécurité",
+        "Accompagner à destination"
+      ],
+      "contexte": "Transporte et accompagne des personnes à mobilité réduite."
+    },
+    {
+      "onisep": "MET.8217",
+      "id": "capitaine-penitentiaire",
+      "nom": "Capitaine pénitentiaire",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Encadrer les surveillants",
+        "Organiser la sécurité",
+        "Gérer les incidents"
+      ],
+      "contexte": "Encadre les équipes de surveillance d’une prison."
+    },
+    {
+      "onisep": "MET.8236",
+      "id": "ingenieur-d-exploitation-dans-l-aerien",
+      "nom": "Ingénieur, ingénieure d'exploitation dans l'aérien",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "physique",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Organiser les vols",
+        "Optimiser les rotations",
+        "Gérer les imprévus"
+      ],
+      "contexte": "Organise le fonctionnement quotidien d’une compagnie aérienne."
+    },
+    {
+      "onisep": "MET.8251",
+      "id": "directeur-penitentiaire-d-insertion-et-de-probation",
+      "nom": "Directeur, directrice pénitentiaire d'insertion et de probation",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Diriger le service",
+        "Piloter les projets de réinsertion",
+        "Travailler avec la justice"
+      ],
+      "contexte": "Dirige un service qui accompagne la réinsertion des personnes condamnées."
+    },
+    {
+      "onisep": "MET.8255",
+      "id": "offcier-geographe",
+      "nom": "Officier, officière géographe",
+      "categorie": "services",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "informatique",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Produire des cartes",
+        "Analyser le terrain",
+        "Préparer les données géographiques"
+      ],
+      "contexte": "Spécialiste des cartes et du terrain au service de la défense."
+    },
+    {
+      "onisep": "MET.8257",
+      "id": "officier-expert-imagerie",
+      "nom": "Officier expert imagerie, officière experte imagerie",
+      "categorie": "services",
+      "disciplines": [
+        "optique",
+        "informatique",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Analyser des images satellites",
+        "Repérer les changements",
+        "Rédiger des synthèses"
+      ],
+      "contexte": "Analyse des images aériennes et satellites pour la défense."
+    },
+    {
+      "onisep": "MET.8258",
+      "id": "technicien-analyste-d-ecoute",
+      "nom": "Technicien, technicienne analyste d'écoute",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "physiologie-humaine"
+      ],
+      "gestes": [],
+      "contexte": "",
+      "exclu": "Métier de combat armé : écarté pour un public dès 7 ans, à arbitrer lors de la relecture."
+    },
+    {
+      "onisep": "MET.8259",
+      "id": "equipier-parachutiste-de-l-air",
+      "nom": "Équipier, équipière parachutiste de l'air",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "physiologie-humaine"
+      ],
+      "gestes": [],
+      "contexte": "",
+      "exclu": "Métier de combat armé : écarté pour un public dès 7 ans, à arbitrer lors de la relecture."
+    },
+    {
+      "onisep": "MET.8260",
+      "id": "analyste-du-renseignement",
+      "nom": "Analyste du renseignement",
+      "categorie": "services",
+      "disciplines": [
+        "expression-ecrite",
+        "langues-vivantes",
+        "histoire-contemporaine"
+      ],
+      "gestes": [
+        "Rassembler des informations",
+        "Les recouper",
+        "Rédiger des analyses"
+      ],
+      "contexte": "Analyse des informations pour aider les décideurs de la défense."
+    },
+    {
+      "onisep": "MET.8266",
+      "id": "chef-d-equipe-des-risques-nrbc",
+      "nom": "Chef, cheffe d'équipe des risques NRBC (nucléaires, biologiques ou chimiques)",
+      "categorie": "services",
+      "disciplines": [
+        "chimie-analytique",
+        "physique",
+        "biologie"
+      ],
+      "gestes": [
+        "Détecter les produits dangereux",
+        "Décontaminer",
+        "Protéger la population"
+      ],
+      "contexte": "Intervient face aux risques nucléaires, biologiques ou chimiques."
+    },
+    {
+      "onisep": "MET.8267",
+      "id": "chef-de-char",
+      "nom": "Chef, cheffe de char (ou d'engin blindé)",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "physiologie-humaine"
+      ],
+      "gestes": [],
+      "contexte": "",
+      "exclu": "Métier de combat armé : écarté pour un public dès 7 ans, à arbitrer lors de la relecture."
+    },
+    {
+      "onisep": "MET.8268",
+      "id": "combattant-de-l-artillerie",
+      "nom": "Combattant, combattante de l'artillerie",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "physiologie-humaine"
+      ],
+      "gestes": [],
+      "contexte": "",
+      "exclu": "Métier de combat armé : écarté pour un public dès 7 ans, à arbitrer lors de la relecture."
+    },
+    {
+      "onisep": "MET.8269",
+      "id": "combattant-de-l-infanterie",
+      "nom": "Combattant, combattante de l'infanterie",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "physiologie-humaine"
+      ],
+      "gestes": [],
+      "contexte": "",
+      "exclu": "Métier de combat armé : écarté pour un public dès 7 ans, à arbitrer lors de la relecture."
+    },
+    {
+      "onisep": "MET.8270",
+      "id": "combattant-du-genie",
+      "nom": "Combattant, combattante du génie",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "physiologie-humaine"
+      ],
+      "gestes": [],
+      "contexte": "",
+      "exclu": "Métier de combat armé : écarté pour un public dès 7 ans, à arbitrer lors de la relecture."
+    },
+    {
+      "onisep": "MET.8271",
+      "id": "detecteur",
+      "nom": "Détecteur, détectrice",
+      "categorie": "services",
+      "disciplines": [
+        "acoustique",
+        "physique",
+        "informatique"
+      ],
+      "gestes": [
+        "Écouter les sons sous-marins",
+        "Identifier les bruits",
+        "Informer le commandement"
+      ],
+      "contexte": "Analyse les sons captés par les sonars d’un navire ou d’un sous-marin."
+    },
+    {
+      "onisep": "MET.8274",
+      "id": "fusilier-commando",
+      "nom": "Fusilier, fusilière commando",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "physiologie-humaine"
+      ],
+      "gestes": [],
+      "contexte": "",
+      "exclu": "Métier de combat armé : écarté pour un public dès 7 ans, à arbitrer lors de la relecture."
+    },
+    {
+      "onisep": "MET.8275",
+      "id": "fusilier-marin",
+      "nom": "Fusilier, fusilière marin",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "physiologie-humaine"
+      ],
+      "gestes": [],
+      "contexte": "",
+      "exclu": "Métier de combat armé : écarté pour un public dès 7 ans, à arbitrer lors de la relecture."
+    },
+    {
+      "onisep": "MET.8277",
+      "id": "gendarme-du-gign",
+      "nom": "Gendarme du GIGN",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "physiologie-humaine"
+      ],
+      "gestes": [],
+      "contexte": "",
+      "exclu": "Métier de combat armé : écarté pour un public dès 7 ans, à arbitrer lors de la relecture."
+    },
+    {
+      "onisep": "MET.8278",
+      "id": "gendarme-technologies-numeriques",
+      "nom": "Gendarme technologies numériques",
+      "categorie": "services",
+      "disciplines": [
+        "informatique",
+        "droit-et-institutions",
+        "reseaux"
+      ],
+      "gestes": [
+        "Analyser les traces numériques",
+        "Lutter contre la cybercriminalité",
+        "Former les collègues"
+      ],
+      "contexte": "Gendarme spécialiste des enquêtes sur Internet et les outils numériques."
+    },
+    {
+      "onisep": "MET.8281",
+      "id": "officier-specialiste-de-la-conduite-des-operations-maritimes",
+      "nom": "Officier, officière spécialiste de la conduite des opérations maritimes",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "sciences-de-la-terre",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Préparer les opérations",
+        "Coordonner les moyens",
+        "Suivre la situation en mer"
+      ],
+      "contexte": "Organise et coordonne les opérations de la Marine."
+    },
+    {
+      "onisep": "MET.8282",
+      "id": "pilote-de-chasse",
+      "nom": "Pilote de chasse",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "physiologie-humaine"
+      ],
+      "gestes": [],
+      "contexte": "",
+      "exclu": "Métier de combat armé : écarté pour un public dès 7 ans, à arbitrer lors de la relecture."
+    },
+    {
+      "onisep": "MET.8283",
+      "id": "pilote-de-drone-8283",
+      "nom": "Pilote de drone (armée)",
+      "categorie": "services",
+      "disciplines": [
+        "informatique",
+        "physique",
+        "optique"
+      ],
+      "gestes": [
+        "Préparer la mission",
+        "Piloter le drone à distance",
+        "Analyser les images"
+      ],
+      "contexte": "Pilote des drones d’observation pour l’armée."
+    },
+    {
+      "onisep": "MET.8284",
+      "id": "pilote-de-l-aeronautique-navale",
+      "nom": "Pilote de l'aéronautique navale",
+      "categorie": "services",
+      "disciplines": [
+        "physique",
+        "mecanique",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Préparer le vol",
+        "Décoller et apponter",
+        "Réaliser la mission de surveillance"
+      ],
+      "contexte": "Pilote des avions ou hélicoptères de la Marine."
+    },
+    {
+      "onisep": "MET.8285",
+      "id": "plongeur-demineur",
+      "nom": "Plongeur démineur, plongeuse démineuse",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "physique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Plonger en sécurité",
+        "Repérer les engins sous l’eau",
+        "Les neutraliser"
+      ],
+      "contexte": "Plonge pour neutraliser des munitions anciennes et sécuriser les eaux."
+    },
+    {
+      "onisep": "MET.8287",
+      "id": "technicien-de-maintenance-armement",
+      "nom": "Technicien, technicienne de maintenance armement",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "physiologie-humaine"
+      ],
+      "gestes": [],
+      "contexte": "",
+      "exclu": "Métier de combat armé : écarté pour un public dès 7 ans, à arbitrer lors de la relecture."
+    },
+    {
+      "onisep": "MET.8289",
+      "id": "garde-a-la-garde-republicaine",
+      "nom": "Garde à la Garde républicaine",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "histoire-contemporaine"
+      ],
+      "gestes": [
+        "Assurer la sécurité des institutions",
+        "Participer aux cérémonies",
+        "Prendre soin des chevaux"
+      ],
+      "contexte": "Gendarme qui protège les institutions et participe aux cérémonies officielles."
+    },
+    {
+      "onisep": "MET.8290",
+      "id": "sous-officier-en-escadron-de-gendarmerie-mobile",
+      "nom": "Sous-officier, sous-officière en escadron de gendarmerie mobile",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Maintenir l’ordre",
+        "Renforcer les brigades",
+        "Encadrer une équipe"
+      ],
+      "contexte": "Gendarme qui intervient en renfort lors de grands événements."
+    },
+    {
+      "onisep": "MET.8291",
+      "id": "commandant-d-unite-de-securite-routiere",
+      "nom": "Commandant, commandante d'unité de sécurité routière",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Organiser les contrôles",
+        "Prévenir les accidents",
+        "Encadrer l’unité"
+      ],
+      "contexte": "Dirige une unité qui veille à la sécurité sur les routes."
+    },
+    {
+      "onisep": "MET.8292",
+      "id": "commandant-d-une-brigade-de-recherches",
+      "nom": "Commandant, commandante d'une brigade de recherches",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Diriger les enquêtes",
+        "Coordonner les enquêteurs",
+        "Travailler avec la justice"
+      ],
+      "contexte": "Dirige une équipe de gendarmes enquêteurs."
+    },
+    {
+      "onisep": "MET.8294",
+      "id": "guetteur-de-la-flotte",
+      "nom": "Guetteur, guetteuse de la flotte",
+      "categorie": "services",
+      "disciplines": [
+        "sciences-de-la-terre",
+        "communication",
+        "optique"
+      ],
+      "gestes": [
+        "Observer la mer et le ciel",
+        "Transmettre les messages",
+        "Surveiller la navigation"
+      ],
+      "contexte": "Surveille les côtes et la navigation depuis un sémaphore."
+    },
+    {
+      "onisep": "MET.8295",
+      "id": "operateur-de-central-operations-sur-sous-marins",
+      "nom": "Opérateur, opératrice de central opérations sur sous-marins (OPSOUM)",
+      "categorie": "services",
+      "disciplines": [
+        "informatique",
+        "physique",
+        "acoustique"
+      ],
+      "gestes": [
+        "Surveiller les capteurs",
+        "Établir la situation",
+        "Informer le commandant"
+      ],
+      "contexte": "Rassemble les informations des capteurs d’un sous-marin."
+    },
+    {
+      "onisep": "MET.8296",
+      "id": "controleur-des-operations-aeriennes",
+      "nom": "Contrôleur, contrôleuse des opérations aériennes",
+      "categorie": "services",
+      "disciplines": [
+        "physique",
+        "langues-vivantes",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Suivre les avions militaires",
+        "Guider les équipages",
+        "Coordonner l’espace aérien"
+      ],
+      "contexte": "Guide les avions militaires et coordonne l’espace aérien."
+    },
+    {
+      "onisep": "MET.8298",
+      "id": "operateur-planification-et-conduite-des-operations-aeriennes",
+      "nom": "Opérateur, opératrice planification et conduite des opérations aériennes",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "amenagement-du-territoire",
+        "informatique"
+      ],
+      "gestes": [
+        "Préparer les plans de vol",
+        "Coordonner les moyens",
+        "Suivre l’exécution"
+      ],
+      "contexte": "Prépare et suit les missions aériennes."
+    },
+    {
+      "onisep": "MET.8300",
+      "id": "technicien-defense-sol-air",
+      "nom": "Technicien, technicienne défense sol air",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "physiologie-humaine"
+      ],
+      "gestes": [],
+      "contexte": "",
+      "exclu": "Métier de combat armé : écarté pour un public dès 7 ans, à arbitrer lors de la relecture."
+    },
+    {
+      "onisep": "MET.8301",
+      "id": "officier-airspace-management",
+      "nom": "Officier, officière airspace management",
+      "categorie": "services",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "physique",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Organiser l’espace aérien",
+        "Attribuer les zones",
+        "Coordonner civils et militaires"
+      ],
+      "contexte": "Organise le partage de l’espace aérien."
+    },
+    {
+      "onisep": "MET.8302",
+      "id": "policier-enqueteur",
+      "nom": "Policier enquêteur, policière enquêtrice",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Recueillir les témoignages",
+        "Rechercher les preuves",
+        "Rédiger les procès-verbaux"
+      ],
+      "contexte": "Mène des enquêtes pour élucider des affaires."
+    },
+    {
+      "onisep": "MET.8303",
+      "id": "marin-des-douanes",
+      "nom": "Marin des douanes",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "sciences-de-la-terre",
+        "education-physique"
+      ],
+      "gestes": [
+        "Patrouiller en mer",
+        "Contrôler les navires",
+        "Lutter contre la pollution et les trafics"
+      ],
+      "contexte": "Surveille les côtes et contrôle les navires pour les douanes."
+    },
+    {
+      "onisep": "MET.8307",
+      "id": "enqueteur",
+      "nom": "Enquêteur, enquêtrice (douanes)",
+      "categorie": "btp",
+      "disciplines": [
+        "droit-et-institutions",
+        "economie-et-societe",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Analyser les flux de marchandises",
+        "Enquêter sur les fraudes",
+        "Rédiger les procédures"
+      ],
+      "contexte": "Enquête sur les fraudes et trafics pour les douanes."
+    },
+    {
+      "onisep": "MET.8310",
+      "id": "technicien-du-ministere-de-la-justice",
+      "nom": "Technicien, technicienne du ministère de la justice",
+      "categorie": "services",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "gestion"
+      ],
+      "gestes": [
+        "Entretenir les bâtiments judiciaires",
+        "Gérer le matériel",
+        "Assurer la sécurité technique"
+      ],
+      "contexte": "Assure le bon fonctionnement technique des tribunaux et établissements."
+    },
+    {
+      "onisep": "MET.8311",
+      "id": "pilote-d-avion-bombardier-d-eau",
+      "nom": "Pilote d'avion bombardier d'eau",
+      "categorie": "services",
+      "disciplines": [
+        "physique",
+        "sciences-de-la-terre",
+        "environnement"
+      ],
+      "gestes": [
+        "Écoper l’eau",
+        "Larguer sur le feu",
+        "Coordonner avec les pompiers"
+      ],
+      "contexte": "Pilote un avion qui lutte contre les feux de forêt."
+    },
+    {
+      "onisep": "MET.8313",
+      "id": "analyste-numerique",
+      "nom": "Analyste numérique",
+      "categorie": "services",
+      "disciplines": [
+        "informatique",
+        "reseaux",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Analyser les données numériques",
+        "Repérer les menaces",
+        "Proposer des protections"
+      ],
+      "contexte": "Analyse les données et menaces numériques pour la défense."
+    }
+  ]
+}

@@ -1425,6 +1425,8 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 @media (min-width: 1024px) {
   /* Hauteur réservée à la barre collante : les éléments collants et les ancres se placent dessous. */
   :root { --haut-barre: 72px; }
+  /* Le chat non modal laisse la navigation collante accessible, même sur un écran peu haut. */
+  .chat:not(.plein-ecran) { height: min(680px, calc(100dvh - var(--haut-barre) - 112px - env(safe-area-inset-bottom, 0px))); }
   html { scroll-padding-top: calc(var(--haut-barre) + 16px); }
   .education-colonnes .outils-education { top: calc(var(--haut-barre) + 16px); }
   .app { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; background: none; }

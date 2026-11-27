@@ -484,7 +484,7 @@ test("parcours : listes ordonnées de contenus publiés, publiées à chaud et s
 
 test("harness : modèles, budgets et quotas modifiés à chaud, dans les bornes, tout ou rien", async () => {
   const harness = (await admin("GET", "/harness")).donnees;
-  assert.deepEqual(harness.configuration.modules.map((m) => m.id), ["general", "tuteur", "defi", "cahiers", "acces", "securite", "assistant"]);
+  assert.deepEqual(harness.configuration.modules.map((m) => m.id), ["general", "tuteur", "defi", "cahiers", "acces", "securite", "assistant", "petits-pas"]);
   assert.deepEqual(harness.surcharges, []);
   assert.deepEqual(harness.skills.map((s) => s.id), ["tuteur", "cadrage-idee", "defi-express", "constructeur-cahier"]);
 
@@ -652,4 +652,13 @@ test("sans migration 0002 : le site fonctionne comme avant, le back-office répo
   assert.deepEqual(await publique("/api/parcours"), { parcours: [] });
   assert.deepEqual((await admin("GET", "/etat")).donnees.migration, false);
   assert.equal((await admin("GET", "/roles")).statut, 503);
+});
+
+test("À petits pas : réglages privés modifiables à chaud et refus hors bornes", async () => {
+  const valeurs = { MAX_TOKENS_PETITS_PAS_HAIKU: 2000, MAX_TOKENS_PETITS_PAS_OPUS: 9000 };
+  assert.equal((await admin("PUT", "/harness/parametres", { valeurs })).statut, 200);
+  const module = (await admin("GET", "/harness")).donnees.configuration.modules.find(m => m.id === "petits-pas");
+  for (const [cle, valeur] of Object.entries(valeurs)) assert.equal(module.parametres.find(p => p.cle === cle).valeur, valeur);
+  assert.equal((await admin("PUT", "/harness/parametres", { valeurs: { MAX_TOKENS_PETITS_PAS_OPUS: 16001 } })).statut, 400);
+  assert.doesNotMatch(JSON.stringify(await publique("/api/llm/status")), /PETITS_PAS/);
 });

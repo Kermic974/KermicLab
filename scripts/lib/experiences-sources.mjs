@@ -12,6 +12,14 @@ const texte = v => typeof v === "string" && /\S/.test(v);
 const vide = v => v === null || v === undefined || (typeof v === "string" && !texte(v)) ||
   (Array.isArray(v) && !v.length) || (typeof v === "object" && !Array.isArray(v) && !Object.keys(v).some(c => c !== "experienceId"));
 const slug = v => v.toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9. -]/g, "").trim().replace(/\s+/g, "-");
+export function extraireSectionDocumentaire(contenu, ancre) {
+  const titres = [...contenu.matchAll(/^(#{1,6})\s+(.+)$/gm)].map(m => ({ titre: m[2], niveau: m[1].length, debut: m.index }));
+  const correspondances = titres.filter(t => slug(t.titre) === slug(ancre) || t.titre.split(/\s/)[0] === ancre);
+  if (correspondances.length !== 1) throw new Error("Section documentaire absente ou ambiguë.");
+  const t = correspondances[0], rang = titres.indexOf(t);
+  const fin = titres.slice(rang + 1).find(suivant => suivant.niveau <= t.niveau)?.debut ?? contenu.length;
+  return contenu.slice(t.debut, fin).replace(/\r\n/g, "\n").trimEnd();
+}
 const champsIndividuels = new Set(["learnerState", "studentAnswer", "learnerId", "userId", "sessionId", "attempts", "obtainedScore", "progression"]);
 function declaratif(v, actifs = new Set()) {
   if (["function", "undefined", "symbol", "bigint"].includes(typeof v)) return false;
@@ -71,9 +79,7 @@ export function creerLecteurSources(cwd, revision = null, adaptateurs = {}) {
   }
   async function document(ref) {
     const contenu = await lire(ref.path);
-    const titres = [...contenu.matchAll(/^#{1,6}\s+(.+)$/gm)].map(m => m[1]);
-    const correspondances = titres.filter(t => slug(t) === slug(ref.anchor) || t.split(/\s/)[0] === ref.anchor);
-    if (correspondances.length !== 1) throw new Error("Section documentaire absente ou ambiguë.");
+    extraireSectionDocumentaire(contenu, ref.anchor);
     return contenu;
   }
   return { source, document, lire };

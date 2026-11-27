@@ -6,7 +6,7 @@
 /** Modules fonctionnels, dans l'ordre d'affichage de l'écran Configuration. */
 export const MODULES = Object.freeze(["general", "tuteur", "defi", "cahiers"]);
 /** Modules réservés au back-office (ADR 0026) : jamais exposés par `/api/llm/status`. */
-export const MODULES_ADMIN = Object.freeze(["acces", "securite", "assistant"]);
+export const MODULES_ADMIN = Object.freeze(["acces", "securite", "assistant", "petits-pas"]);
 /** Taille maximale des instructions complémentaires d'un harness (caractères). */
 export const TAILLE_MAX_INSTRUCTIONS = 2000;
 
@@ -65,7 +65,18 @@ export const PARAMETRES = Object.freeze([
   // Assistant IA de l'écran Utilisateurs (ADR 0035) : propose des actions sur un compte, l'administrateur les applique.
   { cle: "ASSISTANT_UTILISATEURS_ACTIF", module: "assistant", type: "booleen", defaut: true, prive: true },
   { cle: "MODELE_ASSISTANT", module: "assistant", type: "alias", defaut: "custom/haiku", prive: true },
-  { cle: "MAX_TOKENS_ASSISTANT", module: "assistant", type: "entier", defaut: 2000, min: 500, max: 4000, prive: true }
+  { cle: "MAX_TOKENS_ASSISTANT", module: "assistant", type: "entier", defaut: 2000, min: 500, max: 4000, prive: true },
+  { cle: "PETITS_PAS_IA_ACTIF", module: "petits-pas", type: "booleen", defaut: false, prive: true },
+  { cle: "PETITS_PAS_OPUS_ACTIF", module: "petits-pas", type: "booleen", defaut: false, prive: true },
+  { cle: "MODELE_PETITS_PAS_HAIKU", module: "petits-pas", type: "alias", defaut: "custom/haiku", prive: true },
+  { cle: "MODELE_PETITS_PAS_OPUS", module: "petits-pas", type: "alias", defaut: "custom/opus-5-5", prive: true },
+  { cle: "MAX_TOKENS_PETITS_PAS_HAIKU", module: "petits-pas", type: "entier", defaut: 1500, min: 500, max: 4000, prive: true },
+  { cle: "MAX_TOKENS_PETITS_PAS_OPUS", module: "petits-pas", type: "entier", defaut: 8000, min: 2000, max: 16000, prive: true },
+  { cle: "MAX_ENTREE_PETITS_PAS_HAIKU", module: "petits-pas", type: "entier", defaut: 6000, min: 1000, max: 12000, prive: true },
+  { cle: "MAX_ENTREE_PETITS_PAS_OPUS", module: "petits-pas", type: "entier", defaut: 24000, min: 4000, max: 48000, prive: true },
+  { cle: "PETITS_PAS_PLANS_HAIKU_JOUR", module: "petits-pas", type: "entier", defaut: 5, min: 0, max: 20, prive: true },
+  { cle: "PETITS_PAS_PLANS_OPUS_JOUR", module: "petits-pas", type: "entier", defaut: 2, min: 0, max: 10, prive: true },
+  { cle: "INSTRUCTIONS_PETITS_PAS", module: "petits-pas", type: "texte", defaut: "", max: 2000, prive: true }
 ].map((p) => Object.freeze(p)));
 
 const PAR_CLE = new Map(PARAMETRES.map((p) => [p.cle, p]));

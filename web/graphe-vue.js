@@ -14,13 +14,20 @@ export function couleurs(disciplines) {
 
 /**
  * Crée la vue dans `canvas`. `etat()` renvoie { visibles, liens, chemin:Set, selection, couleurs, entoures?:Set,
- * nommerNotions?:bool } à chaque image (`entoures` : nœuds cerclés sans estomper les autres, ADR 0041) ;
+ * nommerNotions?:bool, nommerMicroskills?:bool } à chaque image (`entoures` : nœuds cerclés sans estomper les autres ;
+ * `nommer*` : étiquettes toujours affichées, pour un petit graphe, ADR 0041) ;
  * `onSelection(i | null)` est appelé au clic. Renvoie { dessiner, centrer, tourner, zoomer, rotationAuto, detruire }.
  */
 export function creerVue(canvas, graphe, { etat, onSelection }) {
   const ctx = canvas.getContext("2d");
   const camera = { lacet: 0.6, tangage: -0.25, distance: 1400, cible: [0, 0, 0] };
   let largeur = 0, hauteur = 0, ratio = 1, image = 0, auto = false, projetes = [];
+  // Cadrage automatique en cours (posé par centrer, levé par un zoom ou un « viser ») : refait quand le cadre change de
+  // taille, sinon un graphe cadré en portrait déborderait une fois le téléphone tourné.
+  let cadreAuto = false;
+  // Côté de l'étiquette de chaque nœud à l'image précédente : gardé tant qu'il reste libre, pour que les étiquettes ne
+  // sautent pas d'un côté à l'autre pendant une rotation.
+  const cotes = new Map();
   const reduit = globalThis.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
   const style = () => getComputedStyle(canvas);
@@ -44,7 +51,7 @@ export function creerVue(canvas, graphe, { etat, onSelection }) {
 
   function dessiner() {
     if (!largeur) dimensionner();
-    const { visibles, liens, chemin, selection, couleurs: teintes, entoures = new Set(), nommerNotions = false } = etat();
+    const { visibles, liens, chemin, selection, couleurs: teintes, entoures = new Set(), nommerNotions = false, nommerMicroskills = false } = etat();
     const s = style();
     const texte = s.getPropertyValue("--texte").trim() || "#141833";
     const doux = s.getPropertyValue("--doux").trim() || "#5f6585";
@@ -89,37 +96,90 @@ export function creerVue(canvas, graphe, { etat, onSelection }) {
         ctx.beginPath(); ctx.arc(p.sx, p.sy, r + 3, 0, Math.PI * 2); ctx.stroke();
       }
     }
-    // Étiquettes : la sélection, le chemin, et les notions proches de la caméra.
-    ctx.globalAlpha = 1; ctx.font = "600 12px ui-sans-serif, system-ui, sans-serif"; ctx.textBaseline = "middle";
-    const etiquetees = ordre.filter((i) => i === selection || chemin.has(i) || (graphe.noeuds[i].type !== "microskill" && (nommerNotions || (projetes[i].f > 0.95 && ordre.length < 900))));
-    for (const i of etiquetees.slice(-60)) {
-      const p = projetes[i], t = graphe.noeuds[i].libelle;
-      ctx.lineWidth = 3; ctx.strokeStyle = s.getPropertyValue("--surface").trim() || "#fff"; ctx.fillStyle = texte;
-      ctx.strokeText(t, p.sx + p.r + 4, p.sy); ctx.fillText(t, p.sx + p.r + 4, p.sy);
+    // Étiquettes : la sélection, le chemin, les notions et métiers proches de la caméra et, sur demande, toutes les
+    // notions et MicroSkills (petit graphe). Les MicroSkills, plus discrètes, passent derrière les notions et métiers.
+    ctx.globalAlpha = 1; ctx.textBaseline = "middle";
+    const etiquetee = (i) => {
+      const n = graphe.noeuds[i];
+      if (i === selection || chemin.has(i)) return true;
+      if (n.type !== "microskill") return nommerNotions || (projetes[i].f > 0.95 && ordre.length < 900);
+      return nommerMicroskills;
+    };
+    // Placement sans chevauchement : la sélection, puis les notions et métiers (toujours écrits), puis les MicroSkills,
+    // chacune seulement si elle a la place et tient dans le cadre (les autres se lisent en touchant leur point).
+    const priorite = (i) => (i === selection ? 0 : chemin.has(i) ? 1 : graphe.noeuds[i].type !== "microskill" ? 2 : 3);
+    const etiquetees = ordre.filter(etiquetee).sort((i, j) => priorite(i) - priorite(j) || projetes[i].profondeur - projetes[j].profondeur);
+    const fond = s.getPropertyValue("--surface").trim() || "#fff";
+    const places = [];
+    const libre = (r) => places.every((q) => r.x1 <= q.x0 || r.x0 >= q.x1 || r.y1 <= q.y0 || r.y0 >= q.y1);
+    let ecrites = 0;
+    for (const i of etiquetees) {
+      if (ecrites >= 90) break;
+      const p = projetes[i], n = graphe.noeuds[i], fort = priorite(i) < 3;
+      ctx.font = fort ? "600 12px ui-sans-serif, system-ui, sans-serif" : "500 10.5px ui-sans-serif, system-ui, sans-serif";
+      const largeurTexte = ctx.measureText(n.libelle).width, h = fort ? 15 : 13;
+      // Côté de l'image précédente d'abord, puis l'autre (droite par défaut) ; une notion s'écrit même sans place libre.
+      const rectA = (cote) => {
+        const x = cote === "d" ? p.sx + p.r + 4 : p.sx - p.r - 4 - largeurTexte;
+        return { cote, x, x0: x - 1, x1: x + largeurTexte + 1, y0: p.sy - h / 2, y1: p.sy + h / 2 };
+      };
+      const ordreCotes = cotes.get(i) === "g" ? ["g", "d"] : ["d", "g"];
+      const candidats = ordreCotes.map(rectA).filter((r) => r.x0 >= 2 && r.x1 <= largeur - 2);
+      const rect = candidats.find(libre) ?? (fort ? rectA(ordreCotes[0]) : null);
+      if (!rect) { cotes.delete(i); continue; }
+      cotes.set(i, rect.cote);
+      const x = rect.x;
+      places.push(rect);
+      ecrites++;
+      ctx.lineWidth = 3; ctx.strokeStyle = fond; ctx.fillStyle = fort ? texte : doux;
+      ctx.strokeText(n.libelle, x, p.sy); ctx.fillText(n.libelle, x, p.sy);
     }
   }
 
   const planifier = () => { if (!image) image = requestAnimationFrame(() => { image = 0; if (auto) { camera.lacet += 0.0035; planifier(); } dessiner(); }); };
 
-  /** Cadre la caméra sur les nœuds visibles. */
+  /**
+   * Cadre la caméra sur les nœuds visibles, tels qu'ils apparaissent sous l'angle de vue courant : centre de leur
+   * emprise à l'écran (et non moyenne 3D) et distance qui fait tenir cette emprise dans la largeur et la hauteur du
+   * cadre. Quand les étiquettes sont toujours affichées, une marge à droite leur est réservée.
+   */
   function centrer() {
-    const { visibles } = etat();
+    if (!largeur) dimensionner();
+    const { visibles, nommerNotions = false, nommerMicroskills = false } = etat();
     const pts = [...visibles].map((i) => graphe.noeuds[i]);
     if (!pts.length) { planifier(); return; }
-    const c = [0, 1, 2].map((k) => pts.reduce((s, n) => s + [n.x, n.y, n.z][k], 0) / pts.length);
-    // 95e centile des distances au centre : quelques nœuds excentrés ne rapetissent pas tout le graphe.
-    const distances = pts.map((n) => Math.hypot(n.x - c[0], n.y - c[1], n.z - c[2])).sort((a, b) => a - b);
-    const rayon = Math.max(40, distances[Math.floor((distances.length - 1) * 0.95)]);
-    camera.cible = c; camera.distance = rayon * 1.9 + 60;
+    const cl = Math.cos(camera.lacet), sl = Math.sin(camera.lacet), ct = Math.cos(camera.tangage), st = Math.sin(camera.tangage);
+    // Coordonnées dans le repère de la caméra (rotation seule), puis 95 % central de chaque axe : un nœud isolé ne
+    // rapetisse pas tout le graphe.
+    const vues = pts.map((n) => {
+      const x1 = n.x * cl - n.z * sl, z1 = n.x * sl + n.z * cl;
+      return [x1, n.y * ct - z1 * st, n.y * st + z1 * ct];
+    });
+    const borne = (k) => {
+      const v = vues.map((p) => p[k]).sort((a, b) => a - b), q = Math.floor((v.length - 1) * 0.025);
+      return [v[q], v[v.length - 1 - q]];
+    };
+    const [[x0, x1], [y0, y1], [z0, z1]] = [0, 1, 2].map(borne);
+    const K = Math.min(largeur, hauteur) * 0.9;
+    const reserve = nommerNotions || nommerMicroskills ? Math.min(140, largeur * 0.14) : 0;
+    const demiX = Math.max(30, (x1 - x0) / 2), demiY = Math.max(30, (y1 - y0) / 2);
+    const distance = Math.max((demiX * K) / ((largeur - reserve) * 0.45), (demiY * K) / (hauteur * 0.43)) + (z1 - z0) / 4;
+    // Centre de l'emprise, décalé vers la droite de la moitié de la marge des étiquettes (le graphe glisse à gauche).
+    const u = (x0 + x1) / 2 + ((reserve / 2) * distance) / K, v = (y0 + y1) / 2, w = (z0 + z1) / 2;
+    const y = v * ct + w * st, zr = -v * st + w * ct;
+    camera.cible = [u * cl + zr * sl, y, -u * sl + zr * cl];
+    camera.distance = Math.max(80, Math.min(6000, distance));
+    cadreAuto = true;
     planifier();
   }
   function viser(i) {
     const n = graphe.noeuds[i];
     camera.cible = [n.x, n.y, n.z]; camera.distance = Math.min(camera.distance, 420);
+    cadreAuto = false;
     planifier();
   }
   const tourner = (dl, dt) => { camera.lacet += dl; camera.tangage = Math.max(-1.45, Math.min(1.45, camera.tangage + dt)); planifier(); };
-  const zoomer = (facteur) => { camera.distance = Math.max(80, Math.min(6000, camera.distance * facteur)); planifier(); };
+  const zoomer = (facteur) => { camera.distance = Math.max(80, Math.min(6000, camera.distance * facteur)); cadreAuto = false; planifier(); };
 
   function noeudSous(x, y) {
     let meilleur = null, dist = Infinity;
@@ -175,7 +235,7 @@ export function creerVue(canvas, graphe, { etat, onSelection }) {
   canvas.addEventListener("pointercancel", surHaut);
   canvas.addEventListener("wheel", surMolette, { passive: false });
   canvas.addEventListener("keydown", surClavier);
-  const observateur = typeof ResizeObserver === "function" ? new ResizeObserver(() => { dimensionner(); planifier(); }) : null;
+  const observateur = typeof ResizeObserver === "function" ? new ResizeObserver(() => { dimensionner(); if (cadreAuto) centrer(); else planifier(); }) : null;
   observateur?.observe(canvas);
 
   return {
