@@ -6643,6 +6643,44 @@ function rendreListeMetiers(visibles) {
 }
 
 /** Détail de la sélection : la chaîne lue dans les deux sens, les notions KermicLab et leur graphe 3D. */
+const SCENARIOS_BUSINESS_PLAN = Object.freeze({
+  "designer-ux-ui": "kljob1",
+  "data-analyst": "kljob2",
+  "developpeur-web": "kljob3",
+  "architecte-cloud": "kljob4",
+  "ebeniste": "kljob5",
+  "ceramiste": "kljob6",
+  "maroquinier": "kljob7",
+  "menuisier-agenceur": "carpenter",
+  "acheteur-industriel": "kljob9",
+  "charge-daffaires": "kljob10",
+  "resp-logistique": "kljob11",
+  "controleur-gestion": "kljob12",
+  "content-strategist": "kljob13",
+  "traffic-manager": "kljob14",
+  "brand-manager": "kljob15",
+  "community-builder": "kljob16",
+  "ing-biomedical": "kljob17",
+  "eco-concepteur": "kljob18",
+  "geometre-topographe": "kljob19",
+  "ingenieur-genie-civil": "kljob20",
+  "technicien-de-laboratoire": "kljob21",
+  "biologiste-de-lenvironnement": "kljob22",
+  "agronome": "kljob23",
+  "urbaniste": "kljob24",
+  "professeur-de-sciences": "kljob25",
+  "journaliste-scientifique": "kljob26",
+  "analyste-des-risques": "kljob27",
+  "mediateur-scientifique": "kljob28",
+  "boulanger": "baker",
+  "cuisinier": "restaurant",
+  "coiffeur": "hairdresser",
+  "electricien-du-batiment": "electrician",
+  "plombier-chauffagiste": "plumber",
+  "macon": "mason",
+  "mecanicien-automobile": "mechanic"
+});
+
 function rendreDetailMetiers(actifs) {
   const { carte, selection } = espaceMetiers;
   const zone = $("#metiers-detail");
@@ -6671,6 +6709,14 @@ function rendreDetailMetiers(actifs) {
   tete.append(element("h3", { texte: titre, attributs: { id: "metiers-detail-titre" } }), fermer);
   const enfants = [genre, tete];
   if (metier) enfants.push(element("p", { classe: "doux", texte: metier.contexte }));
+  const scenarioBusinessPlan = metier && SCENARIOS_BUSINESS_PLAN[metier.id];
+  if (scenarioBusinessPlan) {
+    enfants.push(element("a", {
+      classe: "bouton lab",
+      cle: "labBusinessPlanAction",
+      attributs: { href: `labs/business-plan/?activite=${encodeURIComponent(scenarioBusinessPlan)}` },
+    }));
+  }
   if (metier?.niveauAcces) enfants.push(element("p", { classe: "petit metiers-niveau-acces", texte: t("metiersNiveauMetier", { niveau: t(`metiersNiveau_${metier.niveauAcces}`) }) }));
   for (const transition of metier?.transitions ?? []) enfants.push(element("p", { classe: `petit metiers-transition ${transition}`, cle: `metiersTransition_${transition}` }));
   if (metier?.correspondance === "proposition") enfants.push(element("p", { classe: "doux petit metiers-proposition", cle: "metiersMetierProposition" }));
@@ -6680,7 +6726,7 @@ function rendreDetailMetiers(actifs) {
   if (selection.type !== "metier" && selection.type !== "geste") blocs.append(bloc("metiersBlocMetiers", pastilles([...actifs.metiers], "metier", (id) => carte.metiers.get(id).nom)));
   blocs.append(bloc("metiersBlocDisciplines", pastilles(disciplines, "discipline", (id) => carte.disciplines.get(id).nom)));
   if (metier) blocs.append(bloc("metiersBlocGestes", pastilles(metier.gestes.map((g) => `${metier.id}::${g}`), "geste", (id) => id.split("::")[1])));
-  // Enquête BMO de France Travail (ADR 0043, lot 9) : perspectives de recrutement du groupe de métiers, France entière.
+  // Enquête BMO de France Travail (ADR 0044, lot 9) : perspectives de recrutement du groupe de métiers, France entière.
   const perspectives = metier?.perspectives;
   // API Marché du travail (lot 8) : tension de recrutement du code ROME, de 1 (très faible) à 5 (très élevée).
   const tension = metier?.marche ? element("p", { classe: "petit metiers-tension", texte: t("metiersTension", { niveau: t(`metiersTension_${metier.marche.tension}`), periode: metier.marche.periode }) }) : null;
@@ -6693,7 +6739,7 @@ function rendreDetailMetiers(actifs) {
       ...(tension ? [tension] : []),
       element("p", { classe: "doux petit", cle: "metiersPerspectivesPrudence" })));
   }
-  // ROME 4.0 de France Travail (ADR 0043) : conditions de travail et métiers proches (mobilités).
+  // ROME 4.0 de France Travail (ADR 0044) : conditions de travail et métiers proches (mobilités).
   const conditions = metier ? metiers.contextesParType(carte, metier) : [];
   if (conditions.length) {
     const liste = element("ul", { classe: "metiers-conditions" });
@@ -6735,9 +6781,11 @@ function rendreDetailMetiers(actifs) {
   enfants.push(blocNotions);
   if (notions.length && espaceMetiers.graphe) {
     const { graphe: local, centres } = grapheRef.sousGraphe(espaceMetiers.graphe, notions);
-    // Titres du catalogue à la place des identifiants (« NSI : structures de données… » plutôt que « Nsi algorithmes… »).
+    // Titres du catalogue et libellés des MicroSkills à la place des identifiants (« NSI : structures de données… »
+    // plutôt que « Nsi algorithmes… »).
+    const libellesMs = new Map(notions.flatMap((id) => carte.notions.get(id).microskills.map((m) => [m.id, m.libelle])));
     for (const n of local.noeuds) {
-      if (n.type !== "notion") continue;
+      if (n.type !== "notion") { n.libelle = libellesMs.get(n.id) ?? n.libelle; continue; }
       const slug = n.id.split(".").slice(2).join(".");
       n.libelle = etat.registre?.trouver(slug)?.titre ?? carte.notions.get(n.id)?.titre ?? n.libelle;
     }
@@ -6749,11 +6797,11 @@ function rendreDetailMetiers(actifs) {
     enfants.push(bloc("metiersBlocGraphe", legende, scene));
     let pointe = null;
     const vue = creerVueGraphe(canvas, local, {
-      etat: () => ({ visibles: ensemble.noeuds, liens: ensemble.liens, chemin: new Set(), selection: pointe, couleurs: espaceMetiers.couleurs3d, entoures: centres, nommerNotions: true }),
+      etat: () => ({ visibles: ensemble.noeuds, liens: ensemble.liens, chemin: new Set(), selection: pointe, couleurs: espaceMetiers.couleurs3d, entoures: centres, nommerNotions: true, nommerMicroskills: true }),
       onSelection: (i) => {
         pointe = i;
         const noeudChoisi = i === null ? null : local.noeuds[i];
-        legende.textContent = noeudChoisi ? `${noeudChoisi.libelle} · ${noeudChoisi.type === "notion" ? t("metiersType_notion") : "MicroSkill"}` : t("metiersGrapheAide", { notions: ensemble.centres.size, noeuds: ensemble.noeuds.size });
+        legende.textContent = noeudChoisi ? `${noeudChoisi.libelle} · ${t(noeudChoisi.type === "notion" ? "metiersType_notion" : "metiersType_microskill")}` : t("metiersGrapheAide", { notions: ensemble.centres.size, noeuds: ensemble.noeuds.size });
         vue.dessiner();
       }
     });

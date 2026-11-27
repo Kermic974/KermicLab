@@ -1,6 +1,6 @@
 # Extraits France Travail
 
-Extraits datés des données de France Travail utilisées par l'Espace Métiers (chantier Métiers, ADR 0043).
+Extraits datés des données de France Travail utilisées par l'Espace Métiers (chantier Métiers, ADR 0044).
 
 | Fichier | Source | Contenu |
 |---|---|---|
@@ -30,6 +30,11 @@ enregistrer les réponses JSON de l'indicateur de tension (France) dans un dossi
 `npm run import:marche -- <dossier> --extrait referentiel/sources/france-travail/marche-AAAA-TN.json --date AAAA-MM-JJ`
 et `npm run import:marche -- <extrait> --appliquer`. Si une réponse est refusée (« réponse non reconnue »), adapter
 `normaliserReponse` (`scripts/lib/marche.mjs`) et son test à la forme réelle.
+
+**Après chaque vague de métiers** (`npm run vague:metiers`) ou toute modification des codes `rome` ou `fap` : relancer
+`npm run import:rome -- referentiel/sources/france-travail/rome-4.0-v62.json --preciser --appliquer` puis
+`npm run import:bmo -- referentiel/sources/france-travail/bmo-2026.json --appliquer` ; les tests d'alignement
+(`tests/unit/rome.test.mjs`, `tests/unit/bmo.test.mjs`) échouent sinon.
 
 - Les fichiers du ROME sont en Latin-1 avec quelques chaînes doublement encodées : `decoderRome` les remet en UTF-8.
 - Les définitions et textes d'accès des fiches ne sont pas repris. Les fichiers téléchargés ne sont pas versionnés ;

@@ -5,6 +5,7 @@ import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { appliquerRattachements, completerFiches, extraitCompact, fichesDeLExtrait, fusionnerFiches, lireInstantane, niveauDepuisLibelle, normaliserFiche, proposerDisciplines, rapportImport, rapprocher, reconnaitreColonnes, slugMetier, verifierRegles } from "../../scripts/lib/onisep.mjs";
 import { verifierMetiers } from "../../web/metiers.js";
 
@@ -36,6 +37,8 @@ test("onisep : normalisation des fiches (slug, ROME, niveau, listes)", () => {
   assert.equal(slugMetier("Ingénieur(e) acousticien(ne)"), "ingenieur-acousticien");
   assert.equal(slugMetier("gardien/ne de police municipale"), "gardien-de-police-municipale", "écriture inclusive ONISEP");
   assert.equal(slugMetier("accompagnant / accompagnante d'élèves"), "accompagnant-d-eleves");
+  assert.equal(slugMetier("moniteur/trice-éducateur/trice"), "moniteur-educateur", "trait d'union conservé");
+  assert.equal(slugMetier("contrôleur / euse aérien/ne"), "controleur-aerien");
   assert.equal(slugMetier("Restaurateur d’œuvres d’art"), slugMetier("restaurateur/trice d'oeuvres d'art"));
   assert.equal(niveauDepuisLibelle("bac + 4"), "bac+4");
   assert.equal(niveauDepuisLibelle("bac + 9 et plus"), "bac+9");
@@ -72,14 +75,14 @@ test("onisep : un métier déjà rattaché ne reçoit pas une autre fiche de mê
 test("onisep : la commande produit le rapport et les candidats, codes de sortie", async () => {
   const exec = promisify(execFile);
   const dossier = await mkdtemp(join(tmpdir(), "onisep-"));
-  const script = new URL("../../scripts/importer-onisep.mjs", import.meta.url).pathname;
-  const { stdout } = await exec(process.execPath, [script, fixture.pathname, "--candidats", join(dossier, "c.json"), "--json"]);
+  const script = fileURLToPath(new URL("../../scripts/importer-onisep.mjs", import.meta.url));
+  const { stdout } = await exec(process.execPath, [script, fileURLToPath(fixture), "--candidats", join(dossier, "c.json"), "--json"]);
   const rapport = JSON.parse(stdout);
   assert.equal(rapport.fiches, 5);
   assert.equal(rapport.rattachements.length + rapport.candidats, 5, "chaque fiche est rattachée ou candidate");
   const candidats = JSON.parse(await readFile(join(dossier, "c.json"), "utf8")).candidats;
   assert.ok(candidats.every((c) => c.onisep && c.slug));
-  assert.deepEqual(candidats.find((c) => c.slug === "chef-de-rayon").disciplinesProposees, ["calcul-professionnel", "communication", "gestion"], "règles ROME appliquées aux candidats");
+  assert.deepEqual(candidats.find((c) => c.onisep === "MET.1004").disciplinesProposees, ["calcul-professionnel", "communication", "gestion"], "règles ROME appliquées aux candidats");
   await assert.rejects(exec(process.execPath, [script]), (e) => e.code === 2);
 });
 

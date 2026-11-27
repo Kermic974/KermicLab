@@ -4,6 +4,7 @@ import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, capturer } from "./outils.mjs";
+import { SEUIL_ANNEAUX } from "../../web/metiers.js";
 
 let serveur, nav, api, htmlMaquette, donnees;
 before(async () => {
@@ -40,13 +41,18 @@ test("métiers : anneaux, filtres, chaîne d'un métier, notions KermicLab et gr
   await page.locator("#metiers-liste .metiers-item").first().waitFor();
   const [nbMetiers, nbDisciplines, nbNotions] = [donnees.metiers.length, donnees.disciplines.length, Object.keys(donnees.notions).length];
   assert.ok(nbMetiers >= 38 && nbNotions >= 60, "au moins le référentiel de la maquette V5");
-  assert.equal(await page.locator("#metiers-etat").textContent(), `${nbMetiers} métier(s) affiché(s) · ${nbDisciplines} disciplines · ${nbNotions} notions KermicLab reliées`);
-  assert.equal(await page.locator("#metiers-anneaux .metiers-noeud.metier").count(), nbMetiers);
+  // Au-delà de SEUIL_ANNEAUX métiers, les anneaux n'en dessinent que SEUIL_ANNEAUX et l'état le signale.
+  const limites = nbMetiers > SEUIL_ANNEAUX;
+  const etat = await page.locator("#metiers-etat").textContent();
+  assert.ok(etat.startsWith(`${nbMetiers} métier(s) affiché(s) · ${nbDisciplines} disciplines · ${nbNotions} notions KermicLab reliées`), etat);
+  assert.equal(etat.includes(`Les anneaux montrent ${SEUIL_ANNEAUX} métiers`), limites);
+  assert.equal(await page.locator("#metiers-anneaux .metiers-noeud.metier").count(), Math.min(nbMetiers, SEUIL_ANNEAUX));
   assert.equal(await page.locator("#metiers-anneaux .metiers-noeud.notion").count(), nbNotions);
 
   // Filtres : famille de métiers puis recherche sans accents.
   await page.locator("#metiers-categories [data-categorie=health]").click();
-  assert.equal(await page.locator("#metiers-liste .metiers-item").count(), donnees.metiers.filter((m) => m.categorie === "health").length);
+  // La liste est paginée par 50 (lot 5).
+  assert.equal(await page.locator("#metiers-liste .metiers-item").count(), Math.min(50, donnees.metiers.filter((m) => m.categorie === "health").length));
   await page.locator("#metiers-categories [data-categorie=\"\"]").click();
   await page.fill("#metiers-recherche", "ebeniste");
   assert.deepEqual(await page.locator("#metiers-liste .metiers-item strong").allTextContents(), ["Ébéniste"]);
@@ -60,7 +66,7 @@ test("métiers : anneaux, filtres, chaîne d'un métier, notions KermicLab et gr
   const texte = await detail.textContent();
   for (const attendu of ["Statistiques", "Informatique", "Requêtage SQL", "Tests d’hypothèses", "Notions KermicLab à travailler", "Correspondance proposée"]) assert.ok(texte.includes(attendu), attendu);
   assert.ok(await detail.locator(".metiers-notion").count() >= 4, "notions des statistiques et de l'informatique");
-  // ROME 4.0 de France Travail (ADR 0043) : transitions et conditions de travail du métier.
+  // ROME 4.0 de France Travail (ADR 0044) : transitions et conditions de travail du métier.
   const dataAnalyst = donnees.metiers.find((m) => m.id === "data-analyst");
   if (dataAnalyst.transitions?.includes("numerique")) assert.ok(texte.includes("Métier transformé par le numérique"));
   if (dataAnalyst.contextes?.length) assert.equal(await detail.locator(".metiers-conditions li").count() > 0, true, "conditions de travail");
@@ -75,11 +81,11 @@ test("métiers : anneaux, filtres, chaîne d'un métier, notions KermicLab et gr
 
   // Lot 5 du chantier Métiers : filtre par niveau d'accès, niveau et statut de relecture dans le détail, liste par pages.
   await page.selectOption("#metiers-niveau", "cap");
-  assert.equal(await page.locator("#metiers-liste .metiers-item").count(), donnees.metiers.filter((m) => m.niveauAcces === "cap").length);
+  assert.equal(await page.locator("#metiers-liste .metiers-item").count(), Math.min(50, donnees.metiers.filter((m) => m.niveauAcces === "cap").length));
   await page.locator("#metiers-liste [data-metier=boulanger]").click();
   const texteBoulanger = await detail.textContent();
   for (const attendu of ["Niveau d'accès minimum : CAP", "Fiche proposée, en cours de relecture."]) assert.ok(texteBoulanger.includes(attendu), attendu);
-  // Enquête BMO (ADR 0043, lot 9) : perspectives de recrutement du groupe de métiers et source.
+  // Enquête BMO (ADR 0044, lot 9) : perspectives de recrutement du groupe de métiers et source.
   const perspectivesBoulanger = donnees.metiers.find((m) => m.id === "boulanger").perspectives;
   if (perspectivesBoulanger) {
     assert.ok(texteBoulanger.includes("Perspectives de recrutement"));
@@ -125,6 +131,20 @@ test("métiers : mobile (390 px), sans débordement horizontal, détail lisible"
   assert.ok(debord <= 0, `déborde de ${debord}px`);
   assert.equal(await page.locator(".nav-mobile [data-nav=metiers][aria-current=page]").count(), 1);
   await capturer(page, "metiers-mobile", { pleinePage: true });
+
+  // Téléphone tourné : le graphe des notions se recadre sur le nouveau format (il ne déborde pas, ne rapetisse pas).
+  const emprise = () => page.locator("#metiers-detail .metiers-canvas").evaluate((c) => {
+    const { width: l, height: h } = c, d = c.getContext("2d").getImageData(0, 0, l, h).data;
+    let x0 = l, x1 = 0, y0 = h, y1 = 0;
+    for (let y = 0; y < h; y++) for (let x = 0; x < l; x++) if (d[(y * l + x) * 4 + 3] > 0) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
+    return { l, h, x0, x1, y0, y1 };
+  });
+  await page.setViewportSize({ width: 844, height: 390 });
+  await page.locator("#metiers-detail .metiers-canvas").scrollIntoViewIfNeeded();
+  await page.waitForTimeout(500);
+  const e = await emprise();
+  assert.ok(e.y0 > 2 && e.y1 < e.h - 3, `le graphe tient en hauteur après rotation (${e.y0}–${e.y1} sur ${e.h})`);
+  assert.ok(e.y1 - e.y0 > e.h * 0.5, "le graphe occupe le cadre après rotation");
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });

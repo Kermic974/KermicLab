@@ -1,0 +1,1915 @@
+{
+  "version": 1,
+  "vague": 5,
+  "domaines": [
+    "matières premières, fabrication, industries",
+    "électricité, électronique, robotique"
+  ],
+  "source": "Ideo-Fiches metiers.xml + 5fa5949243f97.csv (2026-11-24), licence ODbL 1.0",
+  "metiers": [
+    {
+      "onisep": "MET.16",
+      "id": "commercant-en-alimentation",
+      "nom": "Commerçant, commerçante en alimentation",
+      "categorie": "trade",
+      "disciplines": [
+        "nutrition-alimentation",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Choisir les produits",
+        "Conseiller les clients",
+        "Tenir la caisse et les stocks"
+      ],
+      "contexte": "Tient une épicerie ou un commerce de produits alimentaires."
+    },
+    {
+      "onisep": "MET.20",
+      "id": "operateur-de-fabrication-de-produits-alimentaires",
+      "nom": "Opérateur, opératrice de fabrication de produits alimentaires",
+      "categorie": "btp",
+      "disciplines": [
+        "nutrition-alimentation",
+        "mecanique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Préparer les ingrédients",
+        "Surveiller la machine",
+        "Respecter l’hygiène"
+      ],
+      "contexte": "Fabrique des aliments en série dans une usine."
+    },
+    {
+      "onisep": "MET.21",
+      "id": "employe-de-chai",
+      "nom": "Employé, employée de chai",
+      "categorie": "nature",
+      "disciplines": [
+        "chimie-analytique",
+        "biologie",
+        "agronomie-vegetale"
+      ],
+      "gestes": [
+        "Surveiller la fermentation",
+        "Entretenir les cuves et barriques",
+        "Préparer la mise en bouteille"
+      ],
+      "contexte": "Participe à la fabrication et à l’élevage du vin."
+    },
+    {
+      "onisep": "MET.34",
+      "id": "mouleur-noyauteur",
+      "nom": "Mouleur-noyauteur, mouleuse-noyauteuse",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "mecanique"
+      ],
+      "gestes": [
+        "Préparer le moule en sable",
+        "Placer les noyaux",
+        "Contrôler la pièce coulée"
+      ],
+      "contexte": "Prépare les moules qui servent à couler le métal en fonderie."
+    },
+    {
+      "onisep": "MET.35",
+      "id": "technicien-des-industries-du-verre",
+      "nom": "Technicien, technicienne des industries du verre",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "physique"
+      ],
+      "gestes": [
+        "Régler les fours",
+        "Surveiller la fabrication",
+        "Contrôler la qualité du verre"
+      ],
+      "contexte": "Supervise la fabrication du verre dans une usine."
+    },
+    {
+      "onisep": "MET.50",
+      "id": "ouvrier-forestier",
+      "nom": "Ouvrier forestier, ouvrière forestière",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "environnement",
+        "education-physique"
+      ],
+      "gestes": [
+        "Planter et entretenir",
+        "Débroussailler",
+        "Abattre les arbres"
+      ],
+      "contexte": "Entretient la forêt et participe à la récolte du bois."
+    },
+    {
+      "onisep": "MET.58",
+      "id": "chef-d-equipe",
+      "nom": "Chef, cheffe d'équipe (fabrication)",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "mecanique",
+        "communication"
+      ],
+      "gestes": [
+        "Organiser le travail de l’équipe",
+        "Contrôler la production",
+        "Faire respecter la sécurité"
+      ],
+      "contexte": "Encadre une équipe d’ouvriers dans une usine."
+    },
+    {
+      "onisep": "MET.75",
+      "id": "ingenieur-electricien",
+      "nom": "Ingénieur électricien, ingénieure électricienne",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "physique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Concevoir des installations électriques",
+        "Calculer les puissances",
+        "Suivre les essais"
+      ],
+      "contexte": "Conçoit des réseaux et des équipements électriques."
+    },
+    {
+      "onisep": "MET.79",
+      "id": "ingenieur-aromaticien",
+      "nom": "Ingénieur aromaticien, ingénieure aromaticienne",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-analytique",
+        "nutrition-alimentation",
+        "biologie"
+      ],
+      "gestes": [
+        "Créer des arômes",
+        "Analyser les composés",
+        "Tester avec des panels"
+      ],
+      "contexte": "Invente des arômes pour les aliments et les boissons."
+    },
+    {
+      "onisep": "MET.88",
+      "id": "chocolatier-confiseur",
+      "nom": "Chocolatier-confiseur, chocolatière-confiseuse",
+      "categorie": "craft",
+      "disciplines": [
+        "nutrition-alimentation",
+        "chimie-analytique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Tempérer le chocolat",
+        "Façonner bonbons et confiseries",
+        "Décorer et présenter"
+      ],
+      "contexte": "Fabrique des chocolats et des confiseries."
+    },
+    {
+      "onisep": "MET.98",
+      "id": "sellier",
+      "nom": "Sellier, sellière",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "arts-plastiques",
+        "geometrie"
+      ],
+      "gestes": [
+        "Couper le cuir",
+        "Coudre à la main ou à la machine",
+        "Garnir et finir"
+      ],
+      "contexte": "Fabrique des selles, des sacs ou des garnitures en cuir."
+    },
+    {
+      "onisep": "MET.104",
+      "id": "ingenieur-technico-commercial-en-electronique",
+      "nom": "Ingénieur technico-commercial en électronique, ingénieure technico-commerciale en électronique",
+      "categorie": "trade",
+      "disciplines": [
+        "electricite-electronique",
+        "communication",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Comprendre le besoin du client",
+        "Proposer une solution technique",
+        "Négocier la vente"
+      ],
+      "contexte": "Vend des produits électroniques en conseillant techniquement les clients."
+    },
+    {
+      "onisep": "MET.113",
+      "id": "responsable-qualite-en-agroalimentaire",
+      "nom": "Responsable qualité en agroalimentaire",
+      "categorie": "btp",
+      "disciplines": [
+        "nutrition-alimentation",
+        "chimie-analytique",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Définir les contrôles",
+        "Analyser les non-conformités",
+        "Former les équipes"
+      ],
+      "contexte": "Garantit la qualité et la sécurité des aliments produits."
+    },
+    {
+      "onisep": "MET.153",
+      "id": "charcutier-traiteur",
+      "nom": "Charcutier-traiteur, charcutière-traiteuse",
+      "categorie": "craft",
+      "disciplines": [
+        "nutrition-alimentation",
+        "calcul-professionnel",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Préparer les viandes",
+        "Cuisiner pâtés et plats",
+        "Conseiller les clients"
+      ],
+      "contexte": "Fabrique et vend charcuterie et plats préparés."
+    },
+    {
+      "onisep": "MET.159",
+      "id": "oenologue",
+      "nom": "Oenologue",
+      "categorie": "nature",
+      "disciplines": [
+        "chimie-analytique",
+        "biologie",
+        "agronomie-vegetale"
+      ],
+      "gestes": [
+        "Analyser le raisin et le vin",
+        "Conseiller la vinification",
+        "Déguster et assembler"
+      ],
+      "contexte": "Accompagne la fabrication du vin, de la vigne à la bouteille."
+    },
+    {
+      "onisep": "MET.165",
+      "id": "technicien-en-optique-de-precision",
+      "nom": "Technicien, technicienne en optique de précision",
+      "categorie": "btp",
+      "disciplines": [
+        "optique",
+        "science-des-materiaux",
+        "physique"
+      ],
+      "gestes": [
+        "Usiner les pièces optiques",
+        "Polir les lentilles",
+        "Contrôler les instruments"
+      ],
+      "contexte": "Fabrique et contrôle des pièces d’optique très précises."
+    },
+    {
+      "onisep": "MET.174",
+      "id": "viticulteur",
+      "nom": "Viticulteur, viticultrice",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "biologie",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Tailler la vigne",
+        "Suivre la maturité du raisin",
+        "Vendanger"
+      ],
+      "contexte": "Cultive la vigne, et parfois produit le vin."
+    },
+    {
+      "onisep": "MET.175",
+      "id": "technicien-qualite",
+      "nom": "Technicien, technicienne qualité",
+      "categorie": "btp",
+      "disciplines": [
+        "analyse-statistique",
+        "mecanique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Contrôler les produits",
+        "Mesurer et noter les écarts",
+        "Proposer des améliorations"
+      ],
+      "contexte": "Vérifie que les produits fabriqués sont conformes."
+    },
+    {
+      "onisep": "MET.183",
+      "id": "monteur-cableur",
+      "nom": "Monteur-câbleur, monteuse-câbleuse",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "calcul-professionnel",
+        "mecanique"
+      ],
+      "gestes": [
+        "Lire le schéma",
+        "Préparer et poser les câbles",
+        "Raccorder et tester"
+      ],
+      "contexte": "Câble et assemble des équipements électriques."
+    },
+    {
+      "onisep": "MET.198",
+      "id": "technicien-integrateur-electronique",
+      "nom": "Technicien intégrateur électronique, technicienne intégratrice électronique",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "informatique",
+        "physique"
+      ],
+      "gestes": [
+        "Assembler les cartes",
+        "Intégrer les logiciels",
+        "Tester le système"
+      ],
+      "contexte": "Assemble et met au point des systèmes électroniques."
+    },
+    {
+      "onisep": "MET.202",
+      "id": "responsable-assurance-qualite",
+      "nom": "Responsable assurance qualité",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "analyse-statistique",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Écrire les procédures",
+        "Organiser les audits",
+        "Suivre les indicateurs"
+      ],
+      "contexte": "Organise la qualité dans toute l’entreprise."
+    },
+    {
+      "onisep": "MET.205",
+      "id": "technicien-radioprotection",
+      "nom": "Technicien, technicienne radioprotection",
+      "categorie": "btp",
+      "disciplines": [
+        "physique",
+        "energetique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Mesurer les rayonnements",
+        "Contrôler les zones",
+        "Conseiller les travailleurs"
+      ],
+      "contexte": "Protège les personnes des rayonnements dans les installations nucléaires ou médicales."
+    },
+    {
+      "onisep": "MET.206",
+      "id": "ingenieur-calcul",
+      "nom": "Ingénieur, ingénieure calcul",
+      "categorie": "btp",
+      "disciplines": [
+        "mathematiques-appliquees",
+        "mecanique",
+        "informatique"
+      ],
+      "gestes": [
+        "Modéliser les pièces",
+        "Simuler les efforts",
+        "Valider la résistance"
+      ],
+      "contexte": "Vérifie par le calcul que les structures et les pièces sont solides."
+    },
+    {
+      "onisep": "MET.207",
+      "id": "responsable-de-production-alimentaire",
+      "nom": "Responsable de production alimentaire",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "nutrition-alimentation",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Planifier la production",
+        "Encadrer les équipes",
+        "Garantir hygiène et qualité"
+      ],
+      "contexte": "Dirige la fabrication dans une usine alimentaire."
+    },
+    {
+      "onisep": "MET.218",
+      "id": "consultant-en-management-de-l-innovation",
+      "nom": "Consultant, consultante en management de l'innovation",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "economie-et-societe",
+        "communication"
+      ],
+      "gestes": [
+        "Repérer les idées nouvelles",
+        "Organiser les projets",
+        "Accompagner le changement"
+      ],
+      "contexte": "Aide les entreprises à innover."
+    },
+    {
+      "onisep": "MET.235",
+      "id": "ingenieur-recherche-et-developpement-en-sport",
+      "nom": "Ingénieur, ingénieure recherche et développement en sport",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "science-des-materiaux",
+        "education-physique"
+      ],
+      "gestes": [
+        "Étudier les besoins des sportifs",
+        "Concevoir des équipements",
+        "Tester en laboratoire"
+      ],
+      "contexte": "Conçoit du matériel de sport plus performant et plus sûr."
+    },
+    {
+      "onisep": "MET.242",
+      "id": "ingenieur-production-en-mecanique",
+      "nom": "Ingénieur, ingénieure production en mécanique",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "gestion",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Organiser la production",
+        "Améliorer les procédés",
+        "Encadrer les équipes"
+      ],
+      "contexte": "Fait fonctionner et améliore une usine de pièces mécaniques."
+    },
+    {
+      "onisep": "MET.268",
+      "id": "boucher",
+      "nom": "Boucher, bouchère",
+      "categorie": "craft",
+      "disciplines": [
+        "nutrition-alimentation",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Découper la viande",
+        "Préparer les commandes",
+        "Conseiller les clients"
+      ],
+      "contexte": "Prépare et vend la viande."
+    },
+    {
+      "onisep": "MET.286",
+      "id": "chef-de-chantier-en-installations-electriques",
+      "nom": "Chef, cheffe de chantier en installations électriques",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "gestion",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Organiser le chantier",
+        "Encadrer les électriciens",
+        "Contrôler la sécurité"
+      ],
+      "contexte": "Dirige un chantier d’installation électrique."
+    },
+    {
+      "onisep": "MET.291",
+      "id": "tailleur-couturier",
+      "nom": "Tailleur-couturier, tailleuse-couturière",
+      "categorie": "craft",
+      "disciplines": [
+        "geometrie",
+        "science-des-materiaux",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Prendre les mesures",
+        "Couper le tissu",
+        "Assembler et ajuster"
+      ],
+      "contexte": "Fabrique des vêtements sur mesure."
+    },
+    {
+      "onisep": "MET.298",
+      "id": "installateur-en-telecoms",
+      "nom": "Installateur, installatrice en télécoms",
+      "categorie": "app",
+      "disciplines": [
+        "reseaux",
+        "electricite-electronique",
+        "communication"
+      ],
+      "gestes": [
+        "Poser les câbles et équipements",
+        "Raccorder les lignes",
+        "Tester la connexion"
+      ],
+      "contexte": "Installe téléphone, Internet et réseaux chez les clients."
+    },
+    {
+      "onisep": "MET.306",
+      "id": "dessinateur-en-construction-mecanique",
+      "nom": "Dessinateur, dessinatrice en construction mécanique",
+      "categorie": "btp",
+      "disciplines": [
+        "geometrie",
+        "mecanique",
+        "informatique"
+      ],
+      "gestes": [
+        "Dessiner les pièces sur ordinateur",
+        "Coter les plans",
+        "Préparer les nomenclatures"
+      ],
+      "contexte": "Réalise les plans des machines et des pièces mécaniques."
+    },
+    {
+      "onisep": "MET.325",
+      "id": "ingenieur-nucleaire",
+      "nom": "Ingénieur, ingénieure nucléaire",
+      "categorie": "btp",
+      "disciplines": [
+        "physique",
+        "energetique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Concevoir les installations",
+        "Analyser la sûreté",
+        "Suivre l’exploitation"
+      ],
+      "contexte": "Travaille sur les centrales et installations nucléaires."
+    },
+    {
+      "onisep": "MET.351",
+      "id": "ingenieur-metallurgiste",
+      "nom": "Ingénieur, ingénieure métallurgiste",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "physique"
+      ],
+      "gestes": [
+        "Choisir les alliages",
+        "Contrôler les traitements",
+        "Analyser les défauts"
+      ],
+      "contexte": "Spécialiste des métaux et de leur transformation."
+    },
+    {
+      "onisep": "MET.356",
+      "id": "ingenieur-materiaux",
+      "nom": "Ingénieur, ingénieure matériaux",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "physique"
+      ],
+      "gestes": [
+        "Choisir le bon matériau",
+        "Tester sa résistance",
+        "Développer de nouveaux matériaux"
+      ],
+      "contexte": "Conçoit et choisit les matériaux des objets de demain."
+    },
+    {
+      "onisep": "MET.357",
+      "id": "electromecanicien-en-remontees-mecaniques",
+      "nom": "Électromécanicien, électromécanicienne en remontées mécaniques",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "physique"
+      ],
+      "gestes": [
+        "Surveiller les installations",
+        "Réaliser la maintenance",
+        "Dépanner en sécurité"
+      ],
+      "contexte": "Entretient télésièges et téléphériques."
+    },
+    {
+      "onisep": "MET.377",
+      "id": "glacier-sorbetier",
+      "nom": "Glacier-sorbetier, glacière-sorbetière",
+      "categorie": "craft",
+      "disciplines": [
+        "nutrition-alimentation",
+        "chimie-analytique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Préparer les mélanges",
+        "Turbiner les glaces",
+        "Décorer les desserts glacés"
+      ],
+      "contexte": "Fabrique des glaces et des sorbets."
+    },
+    {
+      "onisep": "MET.402",
+      "id": "microtechnicien",
+      "nom": "Microtechnicien, microtechnicienne",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "optique"
+      ],
+      "gestes": [
+        "Assembler des pièces minuscules",
+        "Régler les mécanismes",
+        "Contrôler au microscope"
+      ],
+      "contexte": "Fabrique et règle des mécanismes de très petite taille."
+    },
+    {
+      "onisep": "MET.403",
+      "id": "technicien-electrotechnicien",
+      "nom": "Technicien électrotechnicien, technicienne électrotechnicienne",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "informatique"
+      ],
+      "gestes": [
+        "Installer les équipements électriques",
+        "Programmer les automatismes",
+        "Assurer la maintenance"
+      ],
+      "contexte": "Installe et entretient des équipements électriques industriels."
+    },
+    {
+      "onisep": "MET.425",
+      "id": "cordonnier",
+      "nom": "Cordonnier, cordonnière",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Réparer semelles et talons",
+        "Recoudre le cuir",
+        "Refaire des clés"
+      ],
+      "contexte": "Répare et entretient chaussures et articles en cuir."
+    },
+    {
+      "onisep": "MET.426",
+      "id": "conducteur-operateur-de-scierie",
+      "nom": "Conducteur-opérateur, conductrice-opératrice de scierie",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "mecanique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Régler la scie",
+        "Découper les grumes",
+        "Trier les planches"
+      ],
+      "contexte": "Transforme les troncs en planches dans une scierie."
+    },
+    {
+      "onisep": "MET.429",
+      "id": "responsable-de-scierie",
+      "nom": "Responsable de scierie",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "science-des-materiaux",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Acheter le bois",
+        "Organiser la production",
+        "Vendre les sciages"
+      ],
+      "contexte": "Dirige une scierie."
+    },
+    {
+      "onisep": "MET.436",
+      "id": "electromecanicien",
+      "nom": "Électromécanicien, électromécanicienne",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "physique"
+      ],
+      "gestes": [
+        "Diagnostiquer une panne",
+        "Réparer moteurs et circuits",
+        "Régler les machines"
+      ],
+      "contexte": "Entretient des machines à la fois électriques et mécaniques."
+    },
+    {
+      "onisep": "MET.447",
+      "id": "bottier",
+      "nom": "Bottier, bottière",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "arts-plastiques",
+        "geometrie"
+      ],
+      "gestes": [
+        "Prendre l’empreinte du pied",
+        "Couper et monter le cuir",
+        "Finir la chaussure"
+      ],
+      "contexte": "Fabrique des chaussures sur mesure."
+    },
+    {
+      "onisep": "MET.466",
+      "id": "nivoculteur",
+      "nom": "Nivoculteur, nivocultrice",
+      "categorie": "nature",
+      "disciplines": [
+        "physique",
+        "sciences-de-la-terre",
+        "mecanique"
+      ],
+      "gestes": [
+        "Produire la neige",
+        "Surveiller la météo",
+        "Entretenir les installations"
+      ],
+      "contexte": "Fabrique la neige de culture des stations de ski."
+    },
+    {
+      "onisep": "MET.470",
+      "id": "technicien-telecoms-et-reseaux",
+      "nom": "Technicien, technicienne télécoms et réseaux",
+      "categorie": "app",
+      "disciplines": [
+        "reseaux",
+        "electricite-electronique",
+        "informatique"
+      ],
+      "gestes": [
+        "Installer les équipements",
+        "Configurer les réseaux",
+        "Surveiller et dépanner"
+      ],
+      "contexte": "Installe et entretient les réseaux de communication."
+    },
+    {
+      "onisep": "MET.474",
+      "id": "ingenieur-electronicien-des-systemes-de-la-securite-aerienne",
+      "nom": "Ingénieur électronicien des systèmes de la sécurité aérienne (IESSA), ingénieure électronicienne des systèmes de la sécurité aérienne (IESSA)",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "informatique",
+        "physique"
+      ],
+      "gestes": [
+        "Installer radars et radios",
+        "Assurer leur maintenance",
+        "Garantir la sécurité des vols"
+      ],
+      "contexte": "Fait fonctionner les équipements qui guident les avions."
+    },
+    {
+      "onisep": "MET.480",
+      "id": "ingenieur-textile",
+      "nom": "Ingénieur, ingénieure textile",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "mecanique"
+      ],
+      "gestes": [
+        "Développer de nouveaux tissus",
+        "Améliorer les procédés",
+        "Contrôler la qualité"
+      ],
+      "contexte": "Conçoit et améliore les textiles et leur fabrication."
+    },
+    {
+      "onisep": "MET.499",
+      "id": "ingenieur-methodes-mecaniques",
+      "nom": "Ingénieur, ingénieure méthodes mécaniques",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "calcul-professionnel",
+        "gestion"
+      ],
+      "gestes": [
+        "Définir les étapes de fabrication",
+        "Choisir les machines",
+        "Réduire les coûts"
+      ],
+      "contexte": "Organise la meilleure façon de fabriquer une pièce."
+    },
+    {
+      "onisep": "MET.510",
+      "id": "fromager",
+      "nom": "Fromager, fromagère",
+      "categorie": "craft",
+      "disciplines": [
+        "nutrition-alimentation",
+        "biologie",
+        "communication"
+      ],
+      "gestes": [
+        "Affiner les fromages",
+        "Conseiller les clients",
+        "Gérer la cave"
+      ],
+      "contexte": "Prépare, affine et vend les fromages."
+    },
+    {
+      "onisep": "MET.548",
+      "id": "technico-commercial-en-agroalimentaire",
+      "nom": "Technico-commercial, technico-commerciale en agroalimentaire",
+      "categorie": "trade",
+      "disciplines": [
+        "nutrition-alimentation",
+        "communication",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Présenter les produits",
+        "Négocier avec les clients",
+        "Suivre les commandes"
+      ],
+      "contexte": "Vend des produits ou des équipements alimentaires."
+    },
+    {
+      "onisep": "MET.549",
+      "id": "conducteur-de-ligne-de-production-alimentaire",
+      "nom": "Conducteur, conductrice de ligne de production alimentaire",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "nutrition-alimentation",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Démarrer et régler la ligne",
+        "Surveiller la production",
+        "Nettoyer les machines"
+      ],
+      "contexte": "Pilote une ligne de fabrication d’aliments."
+    },
+    {
+      "onisep": "MET.573",
+      "id": "monteur-en-reseaux-d-energie",
+      "nom": "Monteur, monteuse en réseaux d'énergie (électricité)",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "education-physique"
+      ],
+      "gestes": [
+        "Poser les lignes et câbles",
+        "Raccorder les postes",
+        "Travailler en sécurité"
+      ],
+      "contexte": "Construit et répare les réseaux qui transportent l’électricité."
+    },
+    {
+      "onisep": "MET.592",
+      "id": "cogniticien",
+      "nom": "Cogniticien, cogniticienne",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "psychologie-cognitive",
+        "logique-mathematique"
+      ],
+      "gestes": [
+        "Recueillir le savoir des experts",
+        "Le modéliser",
+        "Concevoir des outils d’aide"
+      ],
+      "contexte": "Organise les connaissances pour concevoir des outils et des systèmes intelligents."
+    },
+    {
+      "onisep": "MET.599",
+      "id": "consultant-en-solutions-integrees",
+      "nom": "Consultant, consultante en solutions intégrées",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Analyser les besoins de l’entreprise",
+        "Paramétrer le logiciel",
+        "Former les utilisateurs"
+      ],
+      "contexte": "Installe des logiciels de gestion dans les entreprises."
+    },
+    {
+      "onisep": "MET.600",
+      "id": "poissonnier",
+      "nom": "Poissonnier, poissonnière",
+      "categorie": "craft",
+      "disciplines": [
+        "nutrition-alimentation",
+        "biologie",
+        "communication"
+      ],
+      "gestes": [
+        "Choisir le poisson",
+        "Le préparer et le découper",
+        "Conseiller les clients"
+      ],
+      "contexte": "Prépare et vend poissons et fruits de mer."
+    },
+    {
+      "onisep": "MET.612",
+      "id": "ingenieur-traitement-de-l-image",
+      "nom": "Ingénieur, ingénieure traitement de l'image",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "mathematiques-appliquees",
+        "optique"
+      ],
+      "gestes": [
+        "Développer des algorithmes",
+        "Analyser les images",
+        "Tester les performances"
+      ],
+      "contexte": "Conçoit des programmes qui analysent et améliorent les images."
+    },
+    {
+      "onisep": "MET.631",
+      "id": "vendeur-conseil-caviste",
+      "nom": "Vendeur, vendeuse conseil caviste",
+      "categorie": "trade",
+      "disciplines": [
+        "communication",
+        "agronomie-vegetale",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Sélectionner les vins",
+        "Conseiller les clients",
+        "Organiser des dégustations"
+      ],
+      "contexte": "Choisit et vend les vins dans une cave."
+    },
+    {
+      "onisep": "MET.640",
+      "id": "retoucheur",
+      "nom": "Retoucheur, retoucheuse",
+      "categorie": "craft",
+      "disciplines": [
+        "geometrie",
+        "science-des-materiaux",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Prendre les mesures",
+        "Ajuster le vêtement",
+        "Coudre les finitions"
+      ],
+      "contexte": "Ajuste et répare les vêtements."
+    },
+    {
+      "onisep": "MET.641",
+      "id": "fondeur",
+      "nom": "Fondeur, fondeuse",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "physique"
+      ],
+      "gestes": [
+        "Préparer le métal",
+        "Couler dans le moule",
+        "Démouler et contrôler"
+      ],
+      "contexte": "Coule le métal en fusion pour fabriquer des pièces."
+    },
+    {
+      "onisep": "MET.649",
+      "id": "technicien-de-controle",
+      "nom": "Technicien, technicienne de contrôle",
+      "categorie": "btp",
+      "disciplines": [
+        "analyse-statistique",
+        "mecanique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Mesurer les pièces",
+        "Comparer aux normes",
+        "Rédiger les rapports"
+      ],
+      "contexte": "Contrôle que les produits respectent les exigences."
+    },
+    {
+      "onisep": "MET.663",
+      "id": "affuteur",
+      "nom": "Affûteur, affûteuse",
+      "categorie": "craft",
+      "disciplines": [
+        "mecanique",
+        "science-des-materiaux",
+        "geometrie"
+      ],
+      "gestes": [
+        "Contrôler l’usure",
+        "Affûter les lames",
+        "Régler les outils"
+      ],
+      "contexte": "Aiguise et remet en état les outils coupants."
+    },
+    {
+      "onisep": "MET.666",
+      "id": "technicien-plasturgiste",
+      "nom": "Technicien, technicienne plasturgiste",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-des-materiaux",
+        "mecanique",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Régler les presses",
+        "Mettre au point la fabrication",
+        "Contrôler les pièces"
+      ],
+      "contexte": "Fabrique des objets en plastique dans une usine."
+    },
+    {
+      "onisep": "MET.684",
+      "id": "regleur-plasturgie",
+      "nom": "Régleur, régleuse plasturgie",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "chimie-des-materiaux",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Installer le moule",
+        "Régler la machine",
+        "Lancer la production"
+      ],
+      "contexte": "Prépare et règle les machines qui fabriquent des pièces en plastique."
+    },
+    {
+      "onisep": "MET.706",
+      "id": "ingenieur-en-fonderie",
+      "nom": "Ingénieur, ingénieure en fonderie",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "mecanique"
+      ],
+      "gestes": [
+        "Concevoir les moules",
+        "Choisir les alliages",
+        "Améliorer la production"
+      ],
+      "contexte": "Dirige les procédés de fabrication de pièces coulées."
+    },
+    {
+      "onisep": "MET.714",
+      "id": "coupeur",
+      "nom": "Coupeur, coupeuse",
+      "categorie": "craft",
+      "disciplines": [
+        "geometrie",
+        "science-des-materiaux",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Placer les patrons",
+        "Couper le tissu ou le cuir",
+        "Préparer les pièces"
+      ],
+      "contexte": "Découpe les matières pour fabriquer vêtements ou objets."
+    },
+    {
+      "onisep": "MET.715",
+      "id": "charge-de-recherche-en-acoustique-musicale",
+      "nom": "Chargé, chargée de recherche en acoustique musicale",
+      "categorie": "disc",
+      "disciplines": [
+        "acoustique",
+        "musique",
+        "physique"
+      ],
+      "gestes": [
+        "Étudier le son des instruments",
+        "Faire des mesures",
+        "Publier des résultats"
+      ],
+      "contexte": "Étudie comment les instruments produisent le son."
+    },
+    {
+      "onisep": "MET.719",
+      "id": "prototypiste-en-materiaux-souples",
+      "nom": "Prototypiste en matériaux souples",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Lire le dessin",
+        "Réaliser le premier modèle",
+        "Ajuster avant la série"
+      ],
+      "contexte": "Fabrique les premiers exemplaires de sacs, chaussures ou vêtements."
+    },
+    {
+      "onisep": "MET.721",
+      "id": "ingenieur-en-caracterisation-des-materiaux",
+      "nom": "Ingénieur, ingénieure en caractérisation des matériaux",
+      "categorie": "disc",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "physique"
+      ],
+      "gestes": [
+        "Préparer les échantillons",
+        "Mesurer leurs propriétés",
+        "Interpréter les résultats"
+      ],
+      "contexte": "Analyse les matériaux pour connaître leur comportement."
+    },
+    {
+      "onisep": "MET.722",
+      "id": "technicien-ceramiste",
+      "nom": "Technicien, technicienne céramiste",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "physique"
+      ],
+      "gestes": [
+        "Préparer les pâtes",
+        "Régler la cuisson",
+        "Contrôler les pièces"
+      ],
+      "contexte": "Fabrique des céramiques techniques ou décoratives."
+    },
+    {
+      "onisep": "MET.729",
+      "id": "auditeur-qualite",
+      "nom": "Auditeur, auditrice qualité",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "droit-et-institutions",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Préparer l’audit",
+        "Vérifier les pratiques",
+        "Rédiger les recommandations"
+      ],
+      "contexte": "Contrôle que les entreprises respectent les règles de qualité."
+    },
+    {
+      "onisep": "MET.770",
+      "id": "ingenieur-plasturgiste",
+      "nom": "Ingénieur, ingénieure plasturgiste",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-des-materiaux",
+        "science-des-materiaux",
+        "mecanique"
+      ],
+      "gestes": [
+        "Concevoir les pièces plastiques",
+        "Choisir les matières",
+        "Optimiser la fabrication"
+      ],
+      "contexte": "Conçoit des objets en plastique et leur fabrication."
+    },
+    {
+      "onisep": "MET.775",
+      "id": "ascensoriste",
+      "nom": "Ascensoriste",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "physique"
+      ],
+      "gestes": [
+        "Installer les ascenseurs",
+        "Réaliser la maintenance",
+        "Dépanner les usagers bloqués"
+      ],
+      "contexte": "Installe et entretient les ascenseurs."
+    },
+    {
+      "onisep": "MET.795",
+      "id": "domoticien",
+      "nom": "Domoticien, domoticienne",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "informatique",
+        "reseaux"
+      ],
+      "gestes": [
+        "Installer les équipements connectés",
+        "Programmer les automatismes",
+        "Former les habitants"
+      ],
+      "contexte": "Rend les maisons intelligentes et automatisées."
+    },
+    {
+      "onisep": "MET.804",
+      "id": "tonnelier",
+      "nom": "Tonnelier, tonnelière",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Choisir le bois",
+        "Cintrer les douelles",
+        "Assembler le tonneau"
+      ],
+      "contexte": "Fabrique des tonneaux en bois."
+    },
+    {
+      "onisep": "MET.809",
+      "id": "ingenieur-en-photonique",
+      "nom": "Ingénieur, ingénieure en photonique",
+      "categorie": "disc",
+      "disciplines": [
+        "optique",
+        "physique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Concevoir des systèmes lumineux",
+        "Faire des expériences",
+        "Développer des capteurs"
+      ],
+      "contexte": "Travaille sur la lumière et les lasers."
+    },
+    {
+      "onisep": "MET.825",
+      "id": "consultant-en-validation",
+      "nom": "Consultant, consultante en validation",
+      "categorie": "btp",
+      "disciplines": [
+        "analyse-statistique",
+        "droit-et-institutions",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Écrire les protocoles",
+        "Tester les équipements",
+        "Documenter les résultats"
+      ],
+      "contexte": "Vérifie que les équipements et procédés fonctionnent comme prévu."
+    },
+    {
+      "onisep": "MET.841",
+      "id": "operateur-en-traitement-des-materiaux",
+      "nom": "Opérateur, opératrice en traitement des matériaux",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-des-materiaux",
+        "science-des-materiaux",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Préparer les pièces",
+        "Conduire le traitement",
+        "Contrôler le résultat"
+      ],
+      "contexte": "Traite les surfaces ou les métaux pour les rendre plus résistants."
+    },
+    {
+      "onisep": "MET.842",
+      "id": "responsable-du-soutien-logistique-integre",
+      "nom": "Responsable du soutien logistique intégré",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "mecanique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Prévoir la maintenance",
+        "Organiser les pièces de rechange",
+        "Rédiger la documentation"
+      ],
+      "contexte": "Organise tout ce qu’il faut pour qu’un équipement fonctionne longtemps."
+    },
+    {
+      "onisep": "MET.853",
+      "id": "responsable-de-maintenance-des-installations-ferroviaires",
+      "nom": "Responsable de maintenance des installations ferroviaires",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "gestion"
+      ],
+      "gestes": [
+        "Planifier l’entretien",
+        "Encadrer les équipes",
+        "Garantir la sécurité"
+      ],
+      "contexte": "Organise l’entretien des voies et installations ferroviaires."
+    },
+    {
+      "onisep": "MET.862",
+      "id": "technicien-en-lignes-haute-tension",
+      "nom": "Technicien, technicienne en lignes haute tension",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "education-physique",
+        "physique"
+      ],
+      "gestes": [
+        "Inspecter les lignes",
+        "Réparer en hauteur",
+        "Respecter les règles de sécurité"
+      ],
+      "contexte": "Entretient les grandes lignes électriques."
+    },
+    {
+      "onisep": "MET.863",
+      "id": "ingenieur-electronicien",
+      "nom": "Ingénieur électronicien, ingénieure électronicienne",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "physique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Concevoir des circuits",
+        "Simuler et tester",
+        "Améliorer les performances"
+      ],
+      "contexte": "Conçoit des circuits et des systèmes électroniques."
+    },
+    {
+      "onisep": "MET.881",
+      "id": "depanneur-en-electromenager",
+      "nom": "Dépanneur, dépanneuse en électroménager",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "communication"
+      ],
+      "gestes": [
+        "Diagnostiquer la panne",
+        "Remplacer les pièces",
+        "Conseiller le client"
+      ],
+      "contexte": "Répare machines à laver, réfrigérateurs et autres appareils."
+    },
+    {
+      "onisep": "MET.882",
+      "id": "ingenieur-recherche-et-developpement-en-agroalimentaire",
+      "nom": "Ingénieur, ingénieure recherche et développement en agroalimentaire",
+      "categorie": "btp",
+      "disciplines": [
+        "nutrition-alimentation",
+        "chimie-analytique",
+        "biologie"
+      ],
+      "gestes": [
+        "Imaginer de nouveaux produits",
+        "Tester les recettes",
+        "Préparer la fabrication"
+      ],
+      "contexte": "Invente de nouveaux aliments."
+    },
+    {
+      "onisep": "MET.887",
+      "id": "ingenieur-telecoms-et-reseaux",
+      "nom": "Ingénieur, ingénieure télécoms et réseaux",
+      "categorie": "app",
+      "disciplines": [
+        "reseaux",
+        "informatique",
+        "electricite-electronique"
+      ],
+      "gestes": [
+        "Concevoir les réseaux",
+        "Choisir les équipements",
+        "Garantir la qualité du service"
+      ],
+      "contexte": "Conçoit les réseaux qui transportent voix et données."
+    },
+    {
+      "onisep": "MET.915",
+      "id": "charpentier-de-marine",
+      "nom": "Charpentier, charpentière de marine",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "mecanique"
+      ],
+      "gestes": [
+        "Lire les plans du bateau",
+        "Façonner le bois",
+        "Assembler la coque"
+      ],
+      "contexte": "Construit et répare des bateaux en bois."
+    },
+    {
+      "onisep": "MET.934",
+      "id": "chef-d-exploitation-des-remontees-mecaniques",
+      "nom": "Chef, cheffe d'exploitation des remontées mécaniques",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "mecanique",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Organiser l’exploitation",
+        "Encadrer le personnel",
+        "Veiller à la sécurité"
+      ],
+      "contexte": "Dirige les remontées mécaniques d’une station."
+    },
+    {
+      "onisep": "MET.949",
+      "id": "ingenieur-concepteur-en-mecanique",
+      "nom": "Ingénieur concepteur en mécanique, ingénieure conceptrice en mécanique",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "mathematiques-appliquees",
+        "informatique"
+      ],
+      "gestes": [
+        "Concevoir le mécanisme",
+        "Modéliser en 3D",
+        "Valider par essais"
+      ],
+      "contexte": "Invente des machines et des mécanismes."
+    },
+    {
+      "onisep": "MET.965",
+      "id": "ouvrier-plasturgiste",
+      "nom": "Ouvrier, ouvrière plasturgiste",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-des-materiaux",
+        "mecanique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Surveiller la machine",
+        "Retirer et contrôler les pièces",
+        "Emballer la production"
+      ],
+      "contexte": "Fabrique des pièces en plastique sur machine."
+    },
+    {
+      "onisep": "MET.7768",
+      "id": "couturier-industriel",
+      "nom": "Couturier industriel, couturière industrielle",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "calcul-professionnel",
+        "geometrie"
+      ],
+      "gestes": [
+        "Assembler les pièces",
+        "Régler la machine à coudre",
+        "Respecter les cadences"
+      ],
+      "contexte": "Coud des vêtements en série dans un atelier."
+    },
+    {
+      "onisep": "MET.7777",
+      "id": "electromecanicien-de-chantier-tp",
+      "nom": "Électromécanicien de chantier TP (travaux publics)",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "physique"
+      ],
+      "gestes": [
+        "Entretenir les engins",
+        "Réparer sur le chantier",
+        "Contrôler la sécurité"
+      ],
+      "contexte": "Entretient les machines des chantiers de travaux publics."
+    },
+    {
+      "onisep": "MET.7816",
+      "id": "electrobobinier",
+      "nom": "Électrobobinier",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "physique"
+      ],
+      "gestes": [
+        "Démonter le moteur",
+        "Refaire le bobinage",
+        "Tester l’appareil"
+      ],
+      "contexte": "Répare et rebobine les moteurs électriques."
+    },
+    {
+      "onisep": "MET.7830",
+      "id": "adjoint-technique-des-etablissements-d-enseignement",
+      "nom": "Adjoint, adjointe technique des établissements d'enseignement",
+      "categorie": "services",
+      "disciplines": [
+        "communication",
+        "nutrition-alimentation",
+        "mecanique"
+      ],
+      "gestes": [
+        "Entretenir les locaux",
+        "Préparer les salles",
+        "Assurer l’accueil ou la restauration"
+      ],
+      "contexte": "Assure l’entretien, l’accueil ou la cantine dans un collège ou un lycée."
+    },
+    {
+      "onisep": "MET.7923",
+      "id": "stratifieur-mouliste",
+      "nom": "Stratifieur, stratifieuse mouliste",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-des-materiaux",
+        "science-des-materiaux",
+        "geometrie"
+      ],
+      "gestes": [
+        "Préparer le moule",
+        "Poser les couches de fibres",
+        "Démouler et finir"
+      ],
+      "contexte": "Fabrique des pièces en matériaux composites, comme des coques de bateau."
+    },
+    {
+      "onisep": "MET.7925",
+      "id": "modeleur-ceramiste-industriel",
+      "nom": "Modeleur céramiste industriel, modeleuse céramiste industrielle",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "arts-plastiques",
+        "geometrie"
+      ],
+      "gestes": [
+        "Créer le modèle",
+        "Fabriquer les moules",
+        "Contrôler les pièces"
+      ],
+      "contexte": "Conçoit les modèles et les moules des objets en céramique."
+    },
+    {
+      "onisep": "MET.7929",
+      "id": "architecte-iot",
+      "nom": "Architecte IOT",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "reseaux",
+        "electricite-electronique"
+      ],
+      "gestes": [
+        "Concevoir l’architecture des objets connectés",
+        "Choisir capteurs et réseaux",
+        "Sécuriser les données"
+      ],
+      "contexte": "Conçoit des systèmes d’objets connectés."
+    },
+    {
+      "onisep": "MET.7933",
+      "id": "robinetier-nucleaire",
+      "nom": "Robinétier, robinétière nucléaire",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "physique",
+        "energetique"
+      ],
+      "gestes": [
+        "Contrôler les vannes",
+        "Réaliser la maintenance",
+        "Respecter la sûreté"
+      ],
+      "contexte": "Entretient les vannes et robinets des centrales nucléaires."
+    },
+    {
+      "onisep": "MET.7938",
+      "id": "fourreur",
+      "nom": "Fourreur, fourreuse",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "arts-plastiques",
+        "geometrie"
+      ],
+      "gestes": [
+        "Choisir les peaux",
+        "Couper et assembler",
+        "Réparer et transformer"
+      ],
+      "contexte": "Fabrique et répare des vêtements en fourrure."
+    },
+    {
+      "onisep": "MET.7967",
+      "id": "technicien-laboratoire-route",
+      "nom": "Technicien, technicienne laboratoire route",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-analytique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Prélever des échantillons",
+        "Tester les matériaux",
+        "Rédiger les résultats"
+      ],
+      "contexte": "Analyse les matériaux utilisés pour construire les routes."
+    },
+    {
+      "onisep": "MET.7969",
+      "id": "monteur-en-reseaux-de-communication",
+      "nom": "Monteur, monteuse en réseaux de communication (fibre)",
+      "categorie": "app",
+      "disciplines": [
+        "reseaux",
+        "optique",
+        "electricite-electronique"
+      ],
+      "gestes": [
+        "Tirer la fibre",
+        "Raccorder les boîtiers",
+        "Tester la connexion"
+      ],
+      "contexte": "Installe les réseaux de fibre optique."
+    },
+    {
+      "onisep": "MET.7985",
+      "id": "technicien-textile",
+      "nom": "Technicien, technicienne textile",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "mecanique",
+        "chimie-des-materiaux"
+      ],
+      "gestes": [
+        "Régler les machines textiles",
+        "Contrôler la qualité",
+        "Améliorer la production"
+      ],
+      "contexte": "Suit la fabrication des fils et des tissus."
+    },
+    {
+      "onisep": "MET.7993",
+      "id": "patissier-de-restaurant",
+      "nom": "Pâtissier, pâtissière de restaurant",
+      "categorie": "craft",
+      "disciplines": [
+        "nutrition-alimentation",
+        "chimie-analytique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Préparer les desserts",
+        "Dresser les assiettes",
+        "Gérer les stocks"
+      ],
+      "contexte": "Prépare les desserts d’un restaurant."
+    },
+    {
+      "onisep": "MET.7994",
+      "id": "technicien-de-maintenance-en-infrastructure-aeroportuaire",
+      "nom": "Technicien, technicienne de maintenance en infrastructure aéroportuaire",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "informatique"
+      ],
+      "gestes": [
+        "Entretenir les équipements de l’aéroport",
+        "Dépanner rapidement",
+        "Respecter la sécurité"
+      ],
+      "contexte": "Entretient les installations d’un aéroport."
+    },
+    {
+      "onisep": "MET.8063",
+      "id": "technicien-de-production-en-biologie",
+      "nom": "Technicien, technicienne de production en biologie",
+      "categorie": "btp",
+      "disciplines": [
+        "biologie",
+        "biologie-cellulaire-genetique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Préparer les cultures",
+        "Surveiller la production",
+        "Contrôler la qualité"
+      ],
+      "contexte": "Fabrique des produits à partir d’organismes vivants, comme des vaccins."
+    },
+    {
+      "onisep": "MET.8106",
+      "id": "patronnier-gradeur",
+      "nom": "Patronnier-gradeur, patronnière-gradeuse",
+      "categorie": "craft",
+      "disciplines": [
+        "geometrie",
+        "calcul-professionnel",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Réaliser les patrons",
+        "Décliner les tailles",
+        "Optimiser le placement"
+      ],
+      "contexte": "Fabrique les patrons des vêtements dans toutes les tailles."
+    },
+    {
+      "onisep": "MET.8108",
+      "id": "piqueur-en-maroquinerie",
+      "nom": "Piqueur, piqueuse en maroquinerie",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "arts-plastiques",
+        "geometrie"
+      ],
+      "gestes": [
+        "Assembler les pièces",
+        "Piquer à la machine",
+        "Soigner les finitions"
+      ],
+      "contexte": "Coud les pièces de cuir des sacs et accessoires."
+    },
+    {
+      "onisep": "MET.8122",
+      "id": "technicien-produit",
+      "nom": "Technicien, technicienne produit (mode)",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "gestion"
+      ],
+      "gestes": [
+        "Suivre le développement du vêtement",
+        "Rédiger les fiches techniques",
+        "Contrôler les prototypes"
+      ],
+      "contexte": "Prépare la fabrication des vêtements d’une marque."
+    },
+    {
+      "onisep": "MET.8202",
+      "id": "ingenieur-recherche-et-developpement-textile",
+      "nom": "Ingénieur, ingénieure recherche et développement textile",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "physique"
+      ],
+      "gestes": [
+        "Concevoir des textiles innovants",
+        "Tester les fibres",
+        "Préparer l’industrialisation"
+      ],
+      "contexte": "Invente de nouveaux tissus aux propriétés originales."
+    },
+    {
+      "onisep": "MET.8204",
+      "id": "analyste-laboratoire-textile",
+      "nom": "Analyste laboratoire textile",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Préparer les échantillons",
+        "Réaliser les tests",
+        "Rédiger les rapports"
+      ],
+      "contexte": "Teste la résistance et la qualité des tissus."
+    },
+    {
+      "onisep": "MET.8205",
+      "id": "conducteur-d-equipement-d-ennoblissement-textile",
+      "nom": "Conducteur, conductrice d'équipement d'ennoblissement textile",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-des-materiaux",
+        "mecanique",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Préparer les bains",
+        "Régler la machine",
+        "Contrôler le résultat"
+      ],
+      "contexte": "Teint, imprime ou traite les tissus en usine."
+    },
+    {
+      "onisep": "MET.8227",
+      "id": "tuyauteur-industriel",
+      "nom": "Tuyauteur industriel, tuyauteuse industrielle",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "mecanique"
+      ],
+      "gestes": [
+        "Lire les plans",
+        "Découper et souder les tuyaux",
+        "Poser les canalisations"
+      ],
+      "contexte": "Fabrique et installe les tuyauteries des usines."
+    },
+    {
+      "onisep": "MET.8229",
+      "id": "agent-de-controle-non-destructif",
+      "nom": "Agent, agente de contrôle non destructif",
+      "categorie": "btp",
+      "disciplines": [
+        "physique",
+        "science-des-materiaux",
+        "mecanique"
+      ],
+      "gestes": [
+        "Préparer la pièce",
+        "Utiliser ultrasons ou rayons X",
+        "Interpréter les résultats"
+      ],
+      "contexte": "Contrôle les pièces sans les abîmer pour trouver des défauts cachés."
+    }
+  ]
+}

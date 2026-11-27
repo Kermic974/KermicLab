@@ -1,0 +1,2713 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Jcoh40Xd69Obl6Us/o3vSlOore6T4uuh8GmCfXLR1y4='; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KermicLab — Physique des Atomes, Molécules et Particules</title><script type="application/json" id="kermiclab-meta">{"id":"experiences-atomes","titre":"Atomes, molécules et particules","sujet":"Physique","version":"1.0.0","date":"2026-11-25","langue":"fr","onglets":["constructeur d’atomes"]}</script>
+  <style>
+    :root {
+      --bg-dark: #090d16;
+      --bg-panel: #111827;
+      --bg-card: #182234;
+      --border: #26334d;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.25);
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --success: #10b981;
+      --purple: #a78bfa;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: linear-gradient(180deg, #0f172a 0%, var(--bg-dark) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 0.65rem 1rem 0 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .header-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-badge {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 0.25rem 0.6rem;
+      border-radius: 7px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .status-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 0.4rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-tabs::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      border-bottom: 3px solid transparent;
+      border-radius: 8px 8px 0 0;
+      color: var(--text-muted);
+      padding: 0.55rem 0.95rem;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .tab-btn.active {
+      color: var(--accent);
+      background: rgba(56, 189, 248, 0.08);
+      border-bottom-color: var(--accent);
+    }
+
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 345px;
+      gap: 0.85rem;
+      padding: 0.75rem 1rem;
+      max-width: 100%;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1060px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stage-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .canvas-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .canvas-header {
+      padding: 0.55rem 0.95rem;
+      background: rgba(24, 34, 52, 0.85);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .view-toggle-group {
+      display: inline-flex;
+      background: #090d16;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2px;
+      gap: 2px;
+    }
+
+    .view-toggle-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .view-toggle-btn.active {
+      background: var(--accent);
+      color: #090d16;
+    }
+
+    .canvas-wrapper {
+      position: relative;
+      width: 100%;
+      height: calc(100vh - 225px);
+      min-height: 490px;
+      background-color: #060911;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.85rem;
+    }
+
+    @media (max-width: 640px) {
+      .metrics-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .metric-box {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.85rem 1.1rem;
+    }
+
+    .metric-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .controls-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .panel-section {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .section-title {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.55rem;
+    }
+
+    .module-controls {
+      display: none;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .module-controls.active {
+      display: flex;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.84rem;
+      color: var(--text-main);
+    }
+
+    .control-val {
+      font-family: var(--font-mono);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      background: #1e293b;
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: var(--accent);
+      cursor: pointer;
+    }
+
+    .btn-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.45rem;
+    }
+
+    .btn-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.45rem;
+    }
+
+    button.action-btn {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.52rem 0.6rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: #ffffff;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    button.action-btn:hover {
+      border-color: var(--accent);
+      background: #1e293b;
+    }
+
+    button.action-btn.primary {
+      background: rgba(56, 189, 248, 0.16);
+      border-color: rgba(56, 189, 248, 0.6);
+      color: var(--accent);
+    }
+
+    button.action-btn.success {
+      background: rgba(16, 185, 129, 0.18);
+      border-color: rgba(16, 185, 129, 0.6);
+      color: #34d399;
+    }
+
+    button.action-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.8rem;
+      font-size: 0.81rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .guided-card {
+      background: rgba(56, 189, 248, 0.06);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 10px;
+      padding: 0.85rem;
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .pedagogy-box {
+      font-size: 0.81rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .formula {
+      background: #0b1120;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.6rem 0.8rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-top">
+      <div class="brand">
+        <span class="brand-badge">KermicLab • Matière & Particules</span>
+        <div>
+          <h1 id="header-title">Constructeur d'Atomes & Isotopes</h1>
+          <p class="subtitle" id="header-subtitle">Protons, neutrons, électrons, couches électroniques (K..Q) et stabilité nucléaire</p>
+        </div>
+      </div>
+      <div class="status-pill">
+        <span class="status-dot" id="scale-dot"></span>
+        <span id="scale-text">Échelle : 10⁻¹⁰ m (Atome)</span>
+      </div>
+    </div>
+
+    <nav class="nav-tabs" role="tablist">
+      <button class="tab-btn active" data-module="atom">1. Atome & Tableau Périodique (Z=1..118)</button>
+      <button class="tab-btn" data-module="molecules">2. Constructeur de Molécules</button>
+      <button class="tab-btn" data-module="spectrum">3. Sauts Quantiques (Bohr)</button>
+      <button class="tab-btn" data-module="hadrons">4. Quarks & Nucléons</button>
+      <button class="tab-btn" data-module="standard">5. Modèle Standard</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="stage-container">
+      <div class="canvas-card">
+        <div class="canvas-header">
+          <span id="canvas-header-left">Noyau atomique & Cortège électronique</span>
+          <div style="display:flex; align-items:center; gap:0.85rem;">
+            <div class="view-toggle-group" id="view-mode-switcher" role="group" aria-label="Mode d'affichage">
+              <button type="button" class="view-toggle-btn active" data-view-mode="2d">Vue 2D</button>
+              <button type="button" class="view-toggle-btn" data-view-mode="3d">Vue 3D</button>
+            </div>
+            <span id="canvas-header-right">Notation symbolique ᴬ_Z X</span>
+          </div>
+        </div>
+        <div class="canvas-wrapper" id="canvas-wrapper">
+          <canvas id="sim-canvas"></canvas>
+        </div>
+      </div>
+
+      <div class="metrics-bar">
+        <div class="metric-box">
+          <div class="metric-label" id="m1-label">Élément chimique</div>
+          <div class="metric-value" id="m1-val">Carbone (C)</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label" id="m2-label">Nombre de masse (A)</div>
+          <div class="metric-value" id="m2-val">12</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label" id="m3-label">Charge nette (q)</div>
+          <div class="metric-value" id="m3-val">0 (Neutre)</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label" id="m4-label">Stabilité du noyau</div>
+          <div class="metric-value" id="m4-val">Stable</div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="controls-panel">
+      <div class="panel-section">
+        <div class="section-title">Paramètres & Exploration</div>
+
+        <!-- 1. CONSTRUCTEUR D'ATOME & TABLEAU PÉRIODIQUE UNIFIÉ -->
+        <div id="ctrl-atom" class="module-controls active">
+          <div class="info-card" id="ptable-detail-card">
+            <strong style="color:var(--accent); font-size:0.95rem;" id="pt-name">Carbone (C) — Z = 6</strong>
+            <span id="pt-family">Famille : Non-métal • Masse : 12.011 u</span>
+            <span id="atom-shell-info">Configuration électronique : <strong>K(2) L(4)</strong></span>
+          </div>
+
+          <div class="control-group">
+            <div class="control-label">
+              <label for="slider-Z">Protons (Z)</label>
+              <span class="control-val" id="val-Z" style="color:#ef4444;">6</span>
+            </div>
+            <input type="range" id="slider-Z" min="1" max="118" step="1" value="6">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label">
+              <label for="slider-N">Neutrons (N)</label>
+              <span class="control-val" id="val-N" style="color:#94a3b8;">6</span>
+            </div>
+            <input type="range" id="slider-N" min="0" max="177" step="1" value="6">
+          </div>
+
+          <div class="control-group">
+            <div class="control-label">
+              <label for="slider-E">Électrons (e⁻)</label>
+              <span class="control-val" id="val-E" style="color:#38bdf8;">6</span>
+            </div>
+            <input type="range" id="slider-E" min="0" max="118" step="1" value="6">
+          </div>
+
+          <div class="control-group">
+            <span style="font-size:0.78rem; color:var(--text-muted);">Pré-réglages d'isotopes & ions :</span>
+            <div class="btn-grid-3">
+              <button type="button" class="action-btn" data-atom-preset="1,1,1">²H Deutérium</button>
+              <button type="button" class="action-btn" data-atom-preset="1,2,1">³H Tritium</button>
+              <button type="button" class="action-btn" data-atom-preset="6,6,6">¹²C Carbone-12</button>
+              <button type="button" class="action-btn primary" data-atom-preset="6,8,6">¹⁴C Carbone-14</button>
+              <button type="button" class="action-btn" data-atom-preset="8,8,10">¹⁶O²⁻ Ion Oxyde</button>
+              <button type="button" class="action-btn" data-atom-preset="11,12,10">²³Na⁺ Ion Sodium</button>
+              <button type="button" class="action-btn" data-atom-preset="26,30,26">⁵⁶Fe Fer-56</button>
+              <button type="button" class="action-btn" data-atom-preset="79,118,79">¹⁹⁷Au Or-197</button>
+              <button type="button" class="action-btn" data-atom-preset="92,143,92">²³⁵U Uranium</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. CONSTRUCTEUR DE MOLÉCULES -->
+        <div id="ctrl-molecules" class="module-controls">
+          <div class="guided-card">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <strong style="color:var(--accent);" id="guided-title">Expérience 1/6 : Synthèse de l'eau</strong>
+              <button type="button" class="action-btn" id="btn-guided-next" style="padding:0.2rem 0.5rem; font-size:0.72rem;">Suivante &rarr;</button>
+            </div>
+            <div style="font-family:var(--font-mono); color:#fff;" id="guided-eq">2 H₂ + O₂ &rarr; 2 H₂O</div>
+            <div id="guided-checklist" style="color:var(--text-muted);">Réactifs : H₂ (0/2) • O₂ (0/1)</div>
+          </div>
+
+          <div class="control-group">
+            <span style="font-size:0.78rem; color:var(--text-muted);">Ajouter un atome individuel :</span>
+            <div class="btn-grid-3">
+              <button type="button" class="action-btn" data-add-atom="H">+ Atome H</button>
+              <button type="button" class="action-btn" data-add-atom="C">+ Atome C</button>
+              <button type="button" class="action-btn" data-add-atom="O">+ Atome O</button>
+              <button type="button" class="action-btn" data-add-atom="N">+ Atome N</button>
+              <button type="button" class="action-btn" data-add-atom="Cl">+ Atome Cl</button>
+              <button type="button" class="action-btn" id="btn-clear-mol">Vider</button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <span style="font-size:0.78rem; color:var(--text-muted);">Ajouter une molécule prédéfinie :</span>
+            <div class="btn-grid-3">
+              <button type="button" class="action-btn" data-preset-mol="H2">+ H₂</button>
+              <button type="button" class="action-btn" data-preset-mol="O2">+ O₂</button>
+              <button type="button" class="action-btn" data-preset-mol="N2">+ N₂</button>
+              <button type="button" class="action-btn" data-preset-mol="H2O">+ Eau (H₂O)</button>
+              <button type="button" class="action-btn" data-preset-mol="CO2">+ CO₂</button>
+              <button type="button" class="action-btn" data-preset-mol="CH4">+ Méthane</button>
+              <button type="button" class="action-btn" data-preset-mol="NH3">+ Ammoniac</button>
+              <button type="button" class="action-btn" data-preset-mol="C2H4">+ Éthylène</button>
+              <button type="button" class="action-btn" data-preset-mol="C2H5OH">+ Éthanol</button>
+            </div>
+          </div>
+
+          <div class="btn-grid-2">
+            <button type="button" class="action-btn primary" id="btn-auto-bond">Auto-lier & Stabiliser</button>
+            <button type="button" class="action-btn success" id="btn-trigger-reaction" disabled>Déclencher réaction</button>
+          </div>
+
+          <div class="info-card" id="mol-status-card">
+            Ajoutez des atomes ou des molécules pour modéliser des liaisons covalentes ou déclencher une réaction.
+          </div>
+        </div>
+
+        <!-- 4. SAUTS QUANTIQUES (BOHR) -->
+        <div id="ctrl-spectrum" class="module-controls">
+          <div class="control-group">
+            <div class="control-label">
+              <label for="slider-bohr-n">Niveau d'énergie actuel (n)</label>
+              <span class="control-val" id="val-bohr-n">n = 3</span>
+            </div>
+            <input type="range" id="slider-bohr-n" min="1" max="5" step="1" value="3">
+          </div>
+          <div class="btn-grid-2">
+            <button type="button" class="action-btn primary" id="btn-bohr-emit">Émettre photon (n &rarr; n-1)</button>
+            <button type="button" class="action-btn" id="btn-bohr-absorb">Absorber photon (n &rarr; n+1)</button>
+          </div>
+          <div class="info-card" id="bohr-transition-info">
+            Transition prête : cliquez pour observer l'émission ou l'absorption d'un photon quantifié.
+          </div>
+        </div>
+
+        <!-- 5. STRUCTURE DES NUCLÉONS (QUARKS) -->
+        <div id="ctrl-hadrons" class="module-controls">
+          <div class="btn-grid-2">
+            <button type="button" class="action-btn primary" id="btn-hadron-proton">Proton (uud • +1e)</button>
+            <button type="button" class="action-btn" id="btn-hadron-neutron">Neutron (udd • 0)</button>
+          </div>
+          <div class="info-card" id="hadron-detail">
+            <strong>Proton (p⁺) :</strong> Composé de 2 quarks Up (+⅔ e) et 1 quark Down (-⅓ e) liés par l'interaction forte (gluons). Charge totale = +1 e.
+          </div>
+        </div>
+
+        <!-- 6. MODÈLE STANDARD -->
+        <div id="ctrl-standard" class="module-controls">
+          <p style="font-size:0.8rem; color:var(--text-muted);">Cliquez sur une particule élémentaire sur la carte pour inspecter ses propriétés quantiques :</p>
+          <div class="info-card" id="sm-detail-card">
+            <strong style="color:var(--accent);">Quark Up (u)</strong>
+            <span>Catégorie : Fermion (Quark • 1ère génération)</span>
+            <span>Charge : +⅔ e • Spin : 1/2 • Masse : ~2.2 MeV/c²</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="section-title">De l'atome aux particules</div>
+        <div class="pedagogy-box">
+          <p id="pedagogy-text">
+            Un atome est constitué d'un noyau central dense (protons + neutrons) entouré d'un cortège d'électrons répartis sur des couches quantifiées.
+          </p>
+          <div class="formula" id="formula-display">
+            A = Z + N &nbsp;|&nbsp; q = (Z - e⁻) · e
+          </div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    (() => {
+      // =========================================================================
+      // RÉFÉRENCES DOM GLOBALES
+      // =========================================================================
+      const canvas = document.getElementById('sim-canvas');
+      const ctx = canvas.getContext('2d');
+      const wrapper = document.getElementById('canvas-wrapper');
+
+      const headerTitle = document.getElementById('header-title');
+      const headerSubtitle = document.getElementById('header-subtitle');
+      const scaleDot = document.getElementById('scale-dot');
+      const scaleText = document.getElementById('scale-text');
+      const canvasHeaderLeft = document.getElementById('canvas-header-left');
+      const canvasHeaderRight = document.getElementById('canvas-header-right');
+      const viewModeSwitcher = document.getElementById('view-mode-switcher');
+
+      const m1Label = document.getElementById('m1-label'), m1Val = document.getElementById('m1-val');
+      const m2Label = document.getElementById('m2-label'), m2Val = document.getElementById('m2-val');
+      const m3Label = document.getElementById('m3-label'), m3Val = document.getElementById('m3-val');
+      const m4Label = document.getElementById('m4-label'), m4Val = document.getElementById('m4-val');
+
+      const pedagogyText = document.getElementById('pedagogy-text');
+      const formulaDisplay = document.getElementById('formula-display');
+
+      // Dimensions logiques du canvas et gestion HiDPI
+      let width = 820, height = 510;
+      function resizeCanvas() {
+        const rect = wrapper.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        width = Math.max(300, rect.width || 820);
+        height = Math.max(400, rect.height || 510);
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      // =========================================================================
+      // ÉTAT GLOBAL DU LABORATOIRE & OUTILS 3D / COUCHES ÉLECTRONIQUES
+      // =========================================================================
+      const state = {
+        activeModule: 'atom', // 'atom' | 'molecules' | 'spectrum' | 'hadrons' | 'standard'
+        viewMode: '2d',       // '2d' | '3d'
+        time: 0,
+        lastTime: performance.now(),
+        camera3D: {
+          yaw: 0.5,
+          pitch: 0.35,
+          autoSpin: false,
+          isOrbiting: false,
+          lastX: 0,
+          lastY: 0
+        },
+        atom: {
+          Z: 6,
+          N: 6,
+          E: 6,
+          nucleonOffsets: []
+        },
+        ptable: {
+          selectedZ: 6,
+          cellRects: []
+        },
+        molecules: {
+          atoms: [],
+          bonds: [],
+          nextId: 1,
+          selectedAtomId: null,
+          draggingAtomId: null,
+          dragMoved: false,
+          springPhysics: true,
+          guidedIdx: 0,
+          reactionFlash: 0
+        },
+        spectrum: {
+          n: 3,
+          photons: []
+        },
+        hadrons: {
+          type: 'proton'
+        },
+        standard: {
+          selectedIdx: 0,
+          cards: []
+        }
+      };
+
+      const SHELL_CAPACITIES = [
+        { name: 'K', cap: 2 },
+        { name: 'L', cap: 8 },
+        { name: 'M', cap: 18 },
+        { name: 'N', cap: 32 },
+        { name: 'O', cap: 32 },
+        { name: 'P', cap: 18 },
+        { name: 'Q', cap: 8 }
+      ];
+
+      function getShellDistribution(electronCount) {
+        let rem = Math.max(0, electronCount);
+        const res = [];
+        for (const sh of SHELL_CAPACITIES) {
+          if (rem <= 0) break;
+          const count = Math.min(rem, sh.cap);
+          res.push({ name: sh.name, count });
+          rem -= count;
+        }
+        return res;
+      }
+
+      function rebuildNucleusLayout() {
+        const { Z, N } = state.atom;
+        const list = [];
+        for (let i = 0; i < Z; i++) list.push({ type: 'p' });
+        for (let i = 0; i < N; i++) list.push({ type: 'n' });
+
+        // Mélange déterministe pour répartir protons et neutrons dans le noyau
+        for (let i = list.length - 1; i > 0; i--) {
+          const j = (i * 7 + Z * 3 + N) % (i + 1);
+          const tmp = list[i];
+          list[i] = list[j];
+          list[j] = tmp;
+        }
+
+        const total = list.length;
+        const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+        state.atom.nucleonOffsets = list.map((item, idx) => {
+          const r2d = Math.sqrt(idx + 0.5) * 4.2;
+          const theta2d = idx * goldenAngle;
+
+          // Distribution sphérique de Fibonacci pour le mode 3D
+          const u = total > 1 ? 1 - (2 * (idx + 0.5)) / total : 0;
+          const r3d = Math.cbrt((idx + 0.5) / Math.max(1, total)) * Math.max(6, Math.cbrt(total) * 4.5);
+          const phi3d = idx * goldenAngle;
+          const sinTheta = Math.sqrt(Math.max(0, 1 - u * u));
+
+          return {
+            type: item.type,
+            dx: Math.cos(theta2d) * r2d,
+            dy: Math.sin(theta2d) * r2d,
+            dx3: r3d * sinTheta * Math.cos(phi3d),
+            dy3: r3d * u,
+            dz3: r3d * sinTheta * Math.sin(phi3d)
+          };
+        });
+      }
+
+      function project3DPoint(x, y, z, cx, cy, fov = 560) {
+        const { yaw, pitch } = state.camera3D;
+        const cosY = Math.cos(yaw), sinY = Math.sin(yaw);
+        const cosP = Math.cos(pitch), sinP = Math.sin(pitch);
+
+        // Rotation autour de Y (lacet)
+        const x1 = x * cosY - z * sinY;
+        const z1 = x * sinY + z * cosY;
+
+        // Rotation autour de X (tangage)
+        const y2 = y * cosP - z1 * sinP;
+        const z2 = y * sinP + z1 * cosP;
+
+        const scale = fov / Math.max(120, fov + z2);
+        return {
+          sx: cx + x1 * scale,
+          sy: cy + y2 * scale,
+          depth: z2,
+          scale
+        };
+      }
+
+      // =========================================================================
+      // DONNÉES DES 118 ÉLÉMENTS DU TABLEAU PÉRIODIQUE
+      // =========================================================================
+      const RAW_ELEMENTS = [
+        [1,'H','Hydrogène',1.008,'Non-métal',1,1],[2,'He','Hélium',4.0026,'Gaz noble',1,18],
+        [3,'Li','Lithium',6.94,'Métal alcalin',2,1],[4,'Be','Béryllium',9.0122,'Alcalino-terreux',2,2],
+        [5,'B','Bore',10.81,'Métalloïde',2,13],[6,'C','Carbone',12.011,'Non-métal',2,14],
+        [7,'N','Azote',14.007,'Non-métal',2,15],[8,'O','Oxygène',15.999,'Non-métal',2,16],
+        [9,'F','Fluor',18.998,'Halogène',2,17],[10,'Ne','Néon',20.180,'Gaz noble',2,18],
+        [11,'Na','Sodium',22.990,'Métal alcalin',3,1],[12,'Mg','Magnésium',24.305,'Alcalino-terreux',3,2],
+        [13,'Al','Aluminium',26.982,'Métal pauvre',3,13],[14,'Si','Silicium',28.085,'Métalloïde',3,14],
+        [15,'P','Phosphore',30.974,'Non-métal',3,15],[16,'S','Soufre',32.06,'Non-métal',3,16],
+        [17,'Cl','Chlore',35.45,'Halogène',3,17],[18,'Ar','Argon',39.948,'Gaz noble',3,18],
+        [19,'K','Potassium',39.098,'Métal alcalin',4,1],[20,'Ca','Calcium',40.078,'Alcalino-terreux',4,2],
+        [21,'Sc','Scandium',44.956,'Métal de transition',4,3],[22,'Ti','Titane',47.867,'Métal de transition',4,4],
+        [23,'V','Vanadium',50.942,'Métal de transition',4,5],[24,'Cr','Chrome',51.996,'Métal de transition',4,6],
+        [25,'Mn','Manganèse',54.938,'Métal de transition',4,7],[26,'Fe','Fer',55.845,'Métal de transition',4,8],
+        [27,'Co','Cobalt',58.933,'Métal de transition',4,9],[28,'Ni','Nickel',58.693,'Métal de transition',4,10],
+        [29,'Cu','Cuivre',63.546,'Métal de transition',4,11],[30,'Zn','Zinc',65.38,'Métal de transition',4,12],
+        [31,'Ga','Gallium',69.723,'Métal pauvre',4,13],[32,'Ge','Germanium',72.630,'Métalloïde',4,14],
+        [33,'As','Arsenic',74.922,'Métalloïde',4,15],[34,'Se','Sélénium',78.971,'Non-métal',4,16],
+        [35,'Br','Brome',79.904,'Halogène',4,17],[36,'Kr','Krypton',83.798,'Gaz noble',4,18],
+        [37,'Rb','Rubidium',85.468,'Métal alcalin',5,1],[38,'Sr','Strontium',87.62,'Alcalino-terreux',5,2],
+        [39,'Y','Yttrium',88.906,'Métal de transition',5,3],[40,'Zr','Zirconium',91.224,'Métal de transition',5,4],
+        [41,'Nb','Niobium',92.906,'Métal de transition',5,5],[42,'Mo','Molybdène',95.95,'Métal de transition',5,6],
+        [43,'Tc','Technétium',98,'Métal de transition',5,7],[44,'Ru','Ruthénium',101.07,'Métal de transition',5,8],
+        [45,'Rh','Rhodium',102.91,'Métal de transition',5,9],[46,'Pd','Palladium',106.42,'Métal de transition',5,10],
+        [47,'Ag','Argent',107.87,'Métal de transition',5,11],[48,'Cd','Cadmium',112.41,'Métal de transition',5,12],
+        [49,'In','Indium',114.82,'Métal pauvre',5,13],[50,'Sn','Étain',118.71,'Métal pauvre',5,14],
+        [51,'Sb','Antimoine',121.76,'Métalloïde',5,15],[52,'Te','Tellure',127.60,'Métalloïde',5,16],
+        [53,'I','Iode',126.90,'Halogène',5,17],[54,'Xe','Xénon',131.29,'Gaz noble',5,18],
+        [55,'Cs','Césium',132.91,'Métal alcalin',6,1],[56,'Ba','Baryum',137.33,'Alcalino-terreux',6,2],
+        [57,'La','Lanthane',138.91,'Lanthanide',8,4],[58,'Ce','Cérium',140.12,'Lanthanide',8,5],
+        [59,'Pr','Praséodyme',140.91,'Lanthanide',8,6],[60,'Nd','Néodyme',144.24,'Lanthanide',8,7],
+        [61,'Pm','Prométhium',145,'Lanthanide',8,8],[62,'Sm','Samarium',150.36,'Lanthanide',8,9],
+        [63,'Eu','Europium',151.96,'Lanthanide',8,10],[64,'Gd','Gadolinium',157.25,'Lanthanide',8,11],
+        [65,'Tb','Terbium',158.93,'Lanthanide',8,12],[66,'Dy','Dysprosium',162.50,'Lanthanide',8,13],
+        [67,'Ho','Holmium',164.93,'Lanthanide',8,14],[68,'Er','Erbium',167.26,'Lanthanide',8,15],
+        [69,'Tm','Thulium',168.93,'Lanthanide',8,16],[70,'Yb','Ytterbium',173.05,'Lanthanide',8,17],
+        [71,'Lu','Lutécium',174.97,'Lanthanide',8,18],
+        [72,'Hf','Hafnium',178.49,'Métal de transition',6,4],[73,'Ta','Tantale',180.95,'Métal de transition',6,5],
+        [74,'W','Tungstène',183.84,'Métal de transition',6,6],[75,'Re','Rhénium',186.21,'Métal de transition',6,7],
+        [76,'Os','Osmium',190.23,'Métal de transition',6,8],[77,'Ir','Iridium',192.22,'Métal de transition',6,9],
+        [78,'Pt','Platine',195.08,'Métal de transition',6,10],[79,'Au','Or',196.97,'Métal de transition',6,11],
+        [80,'Hg','Mercure',200.59,'Métal de transition',6,12],[81,'Tl','Thallium',204.38,'Métal pauvre',6,13],
+        [82,'Pb','Plomb',207.2,'Métal pauvre',6,14],[83,'Bi','Bismuth',208.98,'Métal pauvre',6,15],
+        [84,'Po','Polonium',209,'Métalloïde',6,16],[85,'At','Astate',210,'Halogène',6,17],
+        [86,'Rn','Radon',222,'Gaz noble',6,18],
+        [87,'Fr','Francium',223,'Métal alcalin',7,1],[88,'Ra','Radium',226,'Alcalino-terreux',7,2],
+        [89,'Ac','Actinium',227,'Actinide',9,4],[90,'Th','Thorium',232.04,'Actinide',9,5],
+        [91,'Pa','Protactinium',231.04,'Actinide',9,6],[92,'U','Uranium',238.03,'Actinide',9,7],
+        [93,'Np','Neptunium',237,'Actinide',9,8],[94,'Pu','Plutonium',244,'Actinide',9,9],
+        [95,'Am','Américium',243,'Actinide',9,10],[96,'Cm','Curium',247,'Actinide',9,11],
+        [97,'Bk','Berkélium',247,'Actinide',9,12],[98,'Cf','Californium',251,'Actinide',9,13],
+        [99,'Es','Einsteinium',252,'Actinide',9,14],[100,'Fm','Fermium',257,'Actinide',9,15],
+        [101,'Md','Mendélévium',258,'Actinide',9,16],[102,'No','Nobélium',259,'Actinide',9,17],
+        [103,'Lr','Lawrencium',266,'Actinide',9,18],
+        [104,'Rf','Rutherfordium',267,'Métal de transition',7,4],[105,'Db','Dubnium',268,'Métal de transition',7,5],
+        [106,'Sg','Seaborgium',269,'Métal de transition',7,6],[107,'Bh','Bohrium',270,'Métal de transition',7,7],
+        [108,'Hs','Hassium',277,'Métal de transition',7,8],[109,'Mt','Meitnérium',278,'Métal de transition',7,9],
+        [110,'Ds','Darmstadtium',281,'Métal de transition',7,10],[111,'Rg','Roentgenium',282,'Métal de transition',7,11],
+        [112,'Cn','Copernicium',285,'Métal de transition',7,12],[113,'Nh','Nihonium',286,'Métal pauvre',7,13],
+        [114,'Fl','Flérovium',289,'Métal pauvre',7,14],[115,'Mc','Moscovium',290,'Métal pauvre',7,15],
+        [116,'Lv','Livermorium',293,'Métal pauvre',7,16],[117,'Ts','Tennesse',294,'Halogène',7,17],
+        [118,'Og','Oganesson',294,'Gaz noble',7,18]
+      ];
+
+      const ELEMENTS = {};
+      RAW_ELEMENTS.forEach(([Z, sym, name, mass, family, row, col]) => {
+        ELEMENTS[Z] = { Z, sym, name, mass, family, row, col };
+      });
+
+      const FAMILY_COLORS = {
+        'Non-métal': '#38bdf8',
+        'Gaz noble': '#a78bfa',
+        'Métal alcalin': '#ef4444',
+        'Alcalino-terreux': '#f59e0b',
+        'Métalloïde': '#10b981',
+        'Halogène': '#2dd4bf',
+        'Métal de transition': '#60a5fa',
+        'Métal pauvre': '#94a3b8',
+        'Lanthanide': '#ec4899',
+        'Actinide': '#f43f5e'
+      };
+
+      const COMMON_EARTH_MOLECULES = {
+        1: {
+          common: { name: 'Eau', formula: 'H₂O', shape: 'Coudée (104,5°)', state: 'Océans / Hydrosphère', atoms: [{ s: 'O', x: 0, y: -14, z: 0 }, { s: 'H', x: -34, y: 18, z: 16 }, { s: 'H', x: 34, y: 18, z: -16 }], bonds: [[0, 1, 1], [0, 2, 1]] },
+          special: { name: 'Eau oxygénée', formula: 'H₂O₂', shape: 'Dièdre non plane (111°)', state: 'Antiseptique / Oxydant fort', atoms: [{ s: 'O', x: -18, y: -6, z: 10 }, { s: 'O', x: 18, y: 6, z: -10 }, { s: 'H', x: -38, y: 20, z: -18 }, { s: 'H', x: 38, y: -20, z: 18 }], bonds: [[0, 1, 1], [0, 2, 1], [1, 3, 1]] }
+        },
+        6: {
+          common: { name: 'Dioxyde de carbone', formula: 'CO₂', shape: 'Linéaire (180°)', state: 'Gaz atmosphérique / Cycle carbone', atoms: [{ s: 'C', x: 0, y: 0, z: 0 }, { s: 'O', x: -42, y: 0, z: 0 }, { s: 'O', x: 42, y: 0, z: 0 }], bonds: [[0, 1, 2], [0, 2, 2]] },
+          special: { name: 'Diamant (maille)', formula: 'Cₙ', shape: 'Tétraédrique 3D (109,5°)', state: 'Allotrope cristallin ultra-dur', atoms: [{ s: 'C', x: 0, y: 0, z: 0 }, { s: 'C', x: 0, y: -36, z: 0 }, { s: 'C', x: 34, y: 14, z: 0 }, { s: 'C', x: -18, y: 14, z: 30 }, { s: 'C', x: -18, y: 14, z: -30 }], bonds: [[0, 1, 1], [0, 2, 1], [0, 3, 1], [0, 4, 1]] }
+        },
+        7: {
+          common: { name: 'Diazote', formula: 'N₂', shape: 'Linéaire (triple liaison)', state: '78 % de l\'atmosphère terrestre', atoms: [{ s: 'N', x: -25, y: 0, z: 0 }, { s: 'N', x: 25, y: 0, z: 0 }], bonds: [[0, 1, 3]] },
+          special: { name: 'Ammoniac', formula: 'NH₃', shape: 'Pyramidale trigonale (107°)', state: 'Engrais / Synthèse Haber-Bosch', atoms: [{ s: 'N', x: 0, y: -10, z: -10 }, { s: 'H', x: -32, y: 18, z: 18 }, { s: 'H', x: 0, y: 26, z: -26 }, { s: 'H', x: 32, y: 18, z: 18 }], bonds: [[0, 1, 1], [0, 2, 1], [0, 3, 1]] }
+        },
+        8: {
+          common: { name: 'Dioxygène', formula: 'O₂', shape: 'Linéaire (double liaison)', state: '21 % de l\'air / Respiration', atoms: [{ s: 'O', x: -25, y: 0, z: 0 }, { s: 'O', x: 25, y: 0, z: 0 }], bonds: [[0, 1, 2]] },
+          special: { name: 'Ozone stratosphérique', formula: 'O₃', shape: 'Coudée résonante (116,8°)', state: 'Bouclier anti-UV en altitude', atoms: [{ s: 'O', x: 0, y: -16, z: 8 }, { s: 'O', x: -34, y: 16, z: -8 }, { s: 'O', x: 34, y: 16, z: -8 }], bonds: [[0, 1, 2], [0, 2, 1]] }
+        },
+        11: {
+          common: { name: 'Chlorure de sodium', formula: 'NaCl', shape: 'Maille ionique cubique', state: 'Sel marin / Halite', atoms: [{ s: 'Na', x: -24, y: -16, z: 18 }, { s: 'Cl', x: 24, y: -16, z: -18 }, { s: 'Cl', x: -24, y: 20, z: -18 }, { s: 'Na', x: 24, y: 20, z: 18 }], bonds: [[0, 1, 1], [0, 2, 1], [1, 3, 1], [2, 3, 1]] },
+          special: { name: 'Bicarbonate de soude', formula: 'NaHCO₃', shape: 'Ion carbonate plan + Na⁺', state: 'Minéral / Levure chimique', atoms: [{ s: 'C', x: 0, y: 0, z: 0 }, { s: 'O', x: 0, y: -32, z: 10 }, { s: 'O', x: -30, y: 18, z: -10 }, { s: 'O', x: 30, y: 18, z: -10 }], bonds: [[0, 1, 2], [0, 2, 1], [0, 3, 1]] }
+        },
+        14: {
+          common: { name: 'Silice / Quartz', formula: 'SiO₂', shape: 'Tétraédrique en réseau', state: 'Minéral majeur de la croûte', atoms: [{ s: 'Si', x: 0, y: 0, z: 0 }, { s: 'O', x: -38, y: -14, z: 22 }, { s: 'O', x: 38, y: 14, z: -22 }], bonds: [[0, 1, 2], [0, 2, 2]] },
+          special: { name: 'Silane', formula: 'SiH₄', shape: 'Tétraédrique régulière', state: 'Gaz précurseur des semi-conducteurs', atoms: [{ s: 'Si', x: 0, y: 0, z: 0 }, { s: 'H', x: 0, y: -36, z: 0 }, { s: 'H', x: 34, y: 14, z: 0 }, { s: 'H', x: -18, y: 14, z: 28 }, { s: 'H', x: -18, y: 14, z: -28 }], bonds: [[0, 1, 1], [0, 2, 1], [0, 3, 1], [0, 4, 1]] }
+        },
+        17: {
+          common: { name: 'Chlorure de sodium', formula: 'NaCl', shape: 'Maille ionique cubique', state: 'Halite / Sel marin', atoms: [{ s: 'Na', x: -24, y: -16, z: 18 }, { s: 'Cl', x: 24, y: -16, z: -18 }, { s: 'Cl', x: -24, y: 20, z: -18 }, { s: 'Na', x: 24, y: 20, z: 18 }], bonds: [[0, 1, 1], [0, 2, 1], [1, 3, 1], [2, 3, 1]] },
+          special: { name: 'Acide chlorhydrique', formula: 'HCl', shape: 'Diatomique polaire', state: 'Suc gastrique / Acide fort', atoms: [{ s: 'Cl', x: -18, y: 0, z: 0 }, { s: 'H', x: 26, y: 0, z: 0 }], bonds: [[0, 1, 1]] }
+        },
+        26: {
+          common: { name: 'Hématite', formula: 'Fe₂O₃', shape: 'Cristalline rhomboédrique', state: 'Minerai de fer terrestre', atoms: [{ s: 'Fe', x: -22, y: 0, z: 14 }, { s: 'Fe', x: 22, y: 0, z: -14 }, { s: 'O', x: 0, y: -30, z: 0 }, { s: 'O', x: -40, y: 22, z: -14 }, { s: 'O', x: 40, y: 22, z: 14 }], bonds: [[0, 2, 1], [1, 2, 1], [0, 3, 2], [1, 4, 2]] },
+          special: { name: 'Pyrite (Or des fous)', formula: 'FeS₂', shape: 'Cubique à paires S₂²⁻', state: 'Sulfure métallique doré', atoms: [{ s: 'Fe', x: 0, y: -22, z: 0 }, { s: 'S', x: -24, y: 18, z: 14 }, { s: 'S', x: 24, y: 18, z: -14 }], bonds: [[0, 1, 1], [0, 2, 1], [1, 2, 1]] }
+        },
+        79: {
+          common: { name: 'Or natif', formula: 'Au', shape: 'Cubique à faces centrées', state: 'Métal précieux pur', atoms: [{ s: 'Au', x: 0, y: -22, z: 14 }, { s: 'Au', x: -24, y: 18, z: -14 }, { s: 'Au', x: 24, y: 18, z: 14 }], bonds: [[0, 1, 1], [0, 2, 1], [1, 2, 1]] },
+          special: { name: 'Trichlorure d\'or', formula: 'Au₂Cl₆', shape: 'Dimère plan ponté', state: 'Complexe soluble (eau régale)', atoms: [{ s: 'Au', x: -22, y: 0, z: 0 }, { s: 'Au', x: 22, y: 0, z: 0 }, { s: 'Cl', x: 0, y: -24, z: 12 }, { s: 'Cl', x: 0, y: 24, z: -12 }], bonds: [[0, 2, 1], [1, 2, 1], [0, 3, 1], [1, 3, 1]] }
+        },
+        92: {
+          common: { name: 'Uraninite', formula: 'UO₂', shape: 'Cubique (type fluorine)', state: 'Minerai naturel d\'uranium', atoms: [{ s: 'U', x: 0, y: 0, z: 0 }, { s: 'O', x: -42, y: 0, z: 12 }, { s: 'O', x: 42, y: 0, z: -12 }], bonds: [[0, 1, 2], [0, 2, 2]] },
+          special: { name: 'Hexafluorure d\'uranium', formula: 'UF₆', shape: 'Octaédrique régulière', state: 'Gaz d\'enrichissement isotopique', atoms: [{ s: 'U', x: 0, y: 0, z: 0 }, { s: 'F', x: -36, y: 0, z: 0 }, { s: 'F', x: 36, y: 0, z: 0 }, { s: 'F', x: 0, y: -34, z: 0 }, { s: 'F', x: 0, y: 34, z: 0 }, { s: 'F', x: 0, y: 0, z: 34 }, { s: 'F', x: 0, y: 0, z: -34 }], bonds: [[0, 1, 1], [0, 2, 1], [0, 3, 1], [0, 4, 1], [0, 5, 1], [0, 6, 1]] }
+        }
+      };
+
+      function getEarthMoleculesForElement(Z) {
+        if (COMMON_EARTH_MOLECULES[Z]) return COMMON_EARTH_MOLECULES[Z];
+        const el = ELEMENTS[Z] || ELEMENTS[1];
+        if (el.family === 'Gaz noble') {
+          return {
+            common: {
+              name: `${el.name} monoatomique`,
+              formula: el.sym,
+              shape: 'Gaz monoatomique sphérique',
+              state: 'Gaz inerte (couche saturée)',
+              atoms: [{ s: el.sym, x: 0, y: 0, z: 0 }],
+              bonds: []
+            },
+            special: {
+              name: `Dimère excité (${el.sym}₂*)`,
+              formula: `${el.sym}₂*`,
+              shape: 'Excimère transitoire',
+              state: 'Laser à excimère (UV)',
+              atoms: [{ s: el.sym, x: -24, y: 0, z: 10 }, { s: el.sym, x: 24, y: 0, z: -10 }],
+              bonds: [[0, 1, 1]]
+            }
+          };
+        }
+        return {
+          common: {
+            name: `Oxyde de ${el.name.toLowerCase()}`,
+            formula: `${el.sym}O`,
+            shape: 'Diatomique / Réseau oxydé',
+            state: el.Z > 92 ? 'Élément synthétique (labo)' : 'Forme oxydée minérale',
+            atoms: [{ s: el.sym, x: -25, y: 0, z: 12 }, { s: 'O', x: 25, y: 0, z: -12 }],
+            bonds: [[0, 1, 2]]
+          },
+          special: {
+            name: `Chlorure de ${el.name.toLowerCase()}`,
+            formula: `${el.sym}Cl₂`,
+            shape: 'Coudée / Halogénure',
+            state: 'Sel halogéné cristallin',
+            atoms: [{ s: el.sym, x: 0, y: -12, z: 0 }, { s: 'Cl', x: -34, y: 16, z: 14 }, { s: 'Cl', x: 34, y: 16, z: -14 }],
+            bonds: [[0, 1, 1], [0, 2, 1]]
+          }
+        };
+      }
+
+      function drawShadedSphere(sx, sy, radius, baseHex, highlightHex = '#ffffff') {
+        const r = Math.max(1.5, radius);
+        const grad = ctx.createRadialGradient(sx - r * 0.32, sy - r * 0.32, r * 0.08, sx, sy, r);
+        grad.addColorStop(0, highlightHex);
+        grad.addColorStop(0.38, baseHex);
+        grad.addColorStop(1, '#04070f');
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(sx, sy, r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // =========================================================================
+      // LOGIQUE MODULE 1 : CONSTRUCTEUR D'ATOMES
+      // =========================================================================
+      function isNucleusStable(Z, N) {
+        if (Z === 1 && (N === 0 || N === 1)) return true;
+        if (Z === 2 && (N === 1 || N === 2)) return true;
+        if (Z > 82 || Z === 43 || Z === 61) return false;
+        const ratio = Z <= 20 ? 1.0 : 1.0 + (Z - 20) * 0.0085;
+        const idealN = Z * ratio;
+        return Math.abs(N - idealN) <= (Z <= 20 ? 1.5 : 4.5);
+      }
+
+      function updateAtomUI() {
+        const { Z, N, E } = state.atom;
+        const el = ELEMENTS[Z] || ELEMENTS[1];
+        const A = Z + N;
+        const charge = Z - E;
+        const stable = isNucleusStable(Z, N);
+
+        state.ptable.selectedZ = Z;
+        document.getElementById('slider-Z').value = Z;
+        document.getElementById('slider-N').value = N;
+        document.getElementById('slider-E').value = E;
+        document.getElementById('val-Z').textContent = Z;
+        document.getElementById('val-N').textContent = N;
+        document.getElementById('val-E').textContent = E;
+
+        const shells = getShellDistribution(E);
+        const shellStr = shells.length ? shells.map(s => `${s.name}(${s.count})`).join(' ') : 'Aucune (noyau nu)';
+        document.getElementById('pt-name').textContent = `${el.name} (${el.sym}) — Z = ${el.Z}`;
+        document.getElementById('pt-family').textContent = `Famille : ${el.family} • Masse : ${el.mass} u`;
+        document.getElementById('atom-shell-info').innerHTML = `Configuration électronique : <strong>${shellStr}</strong>`;
+
+        if (state.activeModule === 'atom') {
+          m1Val.textContent = `${el.name} (${el.sym})`;
+          m2Val.textContent = `${A}`;
+          m3Val.textContent = charge === 0 ? '0 (Neutre)' : (charge > 0 ? `+${charge} (Cation)` : `${charge} (Anion)`);
+          m3Val.style.color = charge === 0 ? '#ffffff' : (charge > 0 ? '#f59e0b' : '#38bdf8');
+          m4Val.textContent = stable ? 'Stable' : 'Radioactif (Instable)';
+          m4Val.style.color = stable ? '#10b981' : '#ef4444';
+        }
+      }
+
+      document.getElementById('slider-Z').addEventListener('input', e => {
+        state.atom.Z = Number(e.target.value);
+        rebuildNucleusLayout();
+        updateAtomUI();
+      });
+      document.getElementById('slider-N').addEventListener('input', e => {
+        state.atom.N = Number(e.target.value);
+        rebuildNucleusLayout();
+        updateAtomUI();
+      });
+      document.getElementById('slider-E').addEventListener('input', e => {
+        state.atom.E = Number(e.target.value);
+        updateAtomUI();
+      });
+
+      document.querySelectorAll('[data-atom-preset]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const [z, n, elCount] = btn.dataset.atomPreset.split(',').map(Number);
+          state.atom.Z = z;
+          state.atom.N = n;
+          state.atom.E = elCount;
+          rebuildNucleusLayout();
+          updateAtomUI();
+        });
+      });
+
+      // =========================================================================
+      // SÉLECTION DIRECTE DEPUIS LE TABLEAU PÉRIODIQUE UNIFIÉ
+      // =========================================================================
+      function selectPTableElement(Z) {
+        const el = ELEMENTS[Z];
+        if (!el) return;
+        state.ptable.selectedZ = Z;
+        state.atom.Z = Z;
+        state.atom.N = Math.max(0, Math.round(el.mass) - Z);
+        state.atom.E = Z;
+        rebuildNucleusLayout();
+        updateAtomUI();
+      }
+
+      // =========================================================================
+      // LOGIQUE MODULE 3 : CONSTRUCTEUR DE MOLÉCULES & RÉACTIONS
+      // =========================================================================
+      const ATOM_RULES = {
+        H:  { valence: 1, lonePairs: 0, mass: 1.008,  r: 18, color: '#7dd3fc', text: '#090d16' },
+        C:  { valence: 4, lonePairs: 0, mass: 12.011, r: 24, color: '#64748b', text: '#ffffff' },
+        N:  { valence: 3, lonePairs: 1, mass: 14.007, r: 23, color: '#6366f1', text: '#ffffff' },
+        O:  { valence: 2, lonePairs: 2, mass: 15.999, r: 22, color: '#ef4444', text: '#ffffff' },
+        Cl: { valence: 1, lonePairs: 3, mass: 35.45,  r: 25, color: '#10b981', text: '#090d16' }
+      };
+
+      const GUIDED_EXPERIMENTS = [
+        {
+          title: "Expérience 1/6 : Synthèse de l'eau",
+          eq: "2 H₂ + O₂ → 2 H₂O",
+          req: { H2: 2, O2: 1 }
+        },
+        {
+          title: "Expérience 2/6 : Combustion du méthane",
+          eq: "CH₄ + 2 O₂ → CO₂ + 2 H₂O",
+          req: { CH4: 1, O2: 2 }
+        },
+        {
+          title: "Expérience 3/6 : Synthèse de l'ammoniac",
+          eq: "N₂ + 3 H₂ → 2 NH₃",
+          req: { N2: 1, H2: 3 }
+        },
+        {
+          title: "Expérience 4/6 : Électrolyse de l'eau",
+          eq: "2 H₂O → 2 H₂ + O₂",
+          req: { H2O: 2 }
+        },
+        {
+          title: "Expérience 5/6 : Hydrogénation de l'éthylène",
+          eq: "C₂H₄ + H₂ → C₂H₆",
+          req: { C2H4: 1, H2: 1 }
+        },
+        {
+          title: "Expérience 6/6 : Combustion de l'éthanol",
+          eq: "C₂H₅OH + 3 O₂ → 2 CO₂ + 3 H₂O",
+          req: { C2H5OH: 1, O2: 3 }
+        }
+      ];
+
+      const REACTIONS_DB = [
+        { reactants: { H2: 2, O2: 1 }, products: ['H2O', 'H2O'], eq: '2 H₂ + O₂ → 2 H₂O' },
+        { reactants: { CH4: 1, O2: 2 }, products: ['CO2', 'H2O', 'H2O'], eq: 'CH₄ + 2 O₂ → CO₂ + 2 H₂O' },
+        { reactants: { N2: 1, H2: 3 }, products: ['NH3', 'NH3'], eq: 'N₂ + 3 H₂ → 2 NH₃' },
+        { reactants: { H2O: 2 }, products: ['H2', 'H2', 'O2'], eq: '2 H₂O → 2 H₂ + O₂' },
+        { reactants: { C2H4: 1, H2: 1 }, products: ['C2H6'], eq: 'C₂H₄ + H₂ → C₂H₆' },
+        { reactants: { C2H5OH: 1, O2: 3 }, products: ['CO2', 'CO2', 'H2O', 'H2O', 'H2O'], eq: 'C₂H₅OH + 3 O₂ → 2 CO₂ + 3 H₂O' }
+      ];
+
+      function getAtomBondOrderSum(atomId) {
+        return state.molecules.bonds.reduce((sum, b) => (b.a === atomId || b.b === atomId ? sum + b.order : sum), 0);
+      }
+
+      function addMoleculeAtom(sym, x = null, y = null, z = null) {
+        const m = state.molecules;
+        if (m.atoms.length >= 34) return null;
+        const angle = m.atoms.length * 2.1;
+        const dist = m.atoms.length === 0 ? 0 : 75 + (m.atoms.length % 3) * 25;
+        const atom = {
+          id: m.nextId++,
+          sym,
+          x: x !== null ? x : width * 0.5 + Math.cos(angle) * dist,
+          y: y !== null ? y : height * 0.5 + Math.sin(angle) * dist,
+          z: z !== null ? z : ((m.atoms.length % 3) - 1) * 28,
+          vx: 0,
+          vy: 0,
+          vz: 0
+        };
+        m.atoms.push(atom);
+        updateMoleculeMetrics();
+        return atom;
+      }
+
+      function removeMoleculeAtom(atomId) {
+        const m = state.molecules;
+        m.atoms = m.atoms.filter(a => a.id !== atomId);
+        m.bonds = m.bonds.filter(b => b.a !== atomId && b.b !== atomId);
+        if (m.selectedAtomId === atomId) m.selectedAtomId = null;
+        updateMoleculeMetrics();
+      }
+
+      function toggleOrCycleBond(idA, idB) {
+        if (idA === idB) return;
+        const m = state.molecules;
+        const idx = m.bonds.findIndex(b => (b.a === idA && b.b === idB) || (b.a === idB && b.b === idA));
+        if (idx === -1) {
+          m.bonds.push({ a: idA, b: idB, order: 1 });
+        } else if (m.bonds[idx].order < 3) {
+          m.bonds[idx].order += 1;
+        } else {
+          m.bonds.splice(idx, 1);
+        }
+        updateMoleculeMetrics();
+      }
+
+      function autoBondAtoms() {
+        const m = state.molecules;
+        m.bonds = [];
+        const sorted = [...m.atoms].sort((a, b) => ATOM_RULES[b.sym].valence - ATOM_RULES[a.sym].valence);
+        for (let i = 0; i < sorted.length; i++) {
+          for (let j = i + 1; j < sorted.length; j++) {
+            const a = sorted[i], b = sorted[j];
+            const remA = ATOM_RULES[a.sym].valence - getAtomBondOrderSum(a.id);
+            const remB = ATOM_RULES[b.sym].valence - getAtomBondOrderSum(b.id);
+            if (remA > 0 && remB > 0) {
+              const order = Math.min(remA, remB, 3);
+              m.bonds.push({ a: a.id, b: b.id, order });
+            }
+          }
+        }
+        updateMoleculeMetrics(true);
+      }
+
+      const MOLECULE_CATALOG = {
+        H2: { name: 'Dihydrogène', formula: 'H₂', geom: 'Linéaire (1 liaison simple)', desc: 'Gaz léger et inflammable formé de deux atomes d\'hydrogène partageant un doublet.' },
+        O2: { name: 'Dioxygène', formula: 'O₂', geom: 'Linéaire (1 liaison double)', desc: 'Molécule indispensable à la respiration cellulaire et aux combustions (21 % de l\'air).' },
+        N2: { name: 'Diazote', formula: 'N₂', geom: 'Linéaire (1 liaison triple)', desc: 'Molécule très stable constituant 78 % de l\'atmosphère terrestre.' },
+        Cl2: { name: 'Dichlore', formula: 'Cl₂', geom: 'Linéaire (1 liaison simple)', desc: 'Gaz jaune-vert oxydant utilisé pour la désinfection de l\'eau.' },
+        HCl: { name: 'Chlorure d\'hydrogène', formula: 'HCl', geom: 'Diatomique polaire', desc: 'Gaz acide très soluble dans l\'eau donnant l\'acide chlorhydrique.' },
+        CO: { name: 'Monoxyde de carbone', formula: 'CO', geom: 'Linéaire (triple liaison dative)', desc: 'Gaz toxique issu d\'une combustion incomplète du carbone.' },
+        CO2: { name: 'Dioxyde de carbone', formula: 'CO₂', geom: 'Linéaire (180°)', desc: 'Gaz à effet de serre produit par la respiration et la combustion complète.' },
+        H2O: { name: 'Eau', formula: 'H₂O', geom: 'Coudée (104,5°)', desc: 'Solvant universel polaire doté de 2 doublets non liants sur l\'oxygène.' },
+        H2O2: { name: 'Peroxyde d\'hydrogène', formula: 'H₂O₂', geom: 'Dièdre non plane (111°)', desc: 'Eau oxygénée : molécule oxydante contenant une liaison simple O–O.' },
+        CH4: { name: 'Méthane', formula: 'CH₄', geom: 'Tétraédrique (109,5°)', desc: 'Plus simple des alcanes et composant principal du gaz naturel.' },
+        CH3Cl: { name: 'Chlorométhane', formula: 'CH₃Cl', geom: 'Tétraédrique polaire', desc: 'Dérivé halogéné du méthane obtenu par substitution d\'un H par un Cl.' },
+        CH2O: { name: 'Méthanal (Formaldéhyde)', formula: 'CH₂O', geom: 'Trigonale plane (120°)', desc: 'Plus simple des aldéhydes, caractérisé par un groupe carbonyle C=O.' },
+        NH3: { name: 'Ammoniac', formula: 'NH₃', geom: 'Pyramidale trigonale (107°)', desc: 'Base faible possédant 1 doublet non liant sur l\'atome d\'azote.' },
+        C2H2: { name: 'Éthyne (Acétylène)', formula: 'C₂H₂', geom: 'Linéaire (180°)', desc: 'Alcyne doté d\'une triple liaison carbone-carbone très énergétique.' },
+        C2H4: { name: 'Éthène (Éthylène)', formula: 'C₂H₄', geom: 'Plane (120°)', desc: 'Alcène possédant une double liaison C=C, précurseur du polyéthylène.' },
+        C2H6: { name: 'Éthane', formula: 'C₂H₆', geom: 'Double tétraèdre', desc: 'Hydrocarbure saturé de la famille des alcanes.' },
+        C2H5OH: { name: 'Éthanol', formula: 'C₂H₅OH', geom: 'Chaîne tétraédrique + –OH', desc: 'Alcool primaire produit par fermentation des sucres.' }
+      };
+
+      function getConnectedComponents() {
+        const m = state.molecules;
+        const visited = new Set();
+        const comps = [];
+        for (const atom of m.atoms) {
+          if (visited.has(atom.id)) continue;
+          const group = [];
+          const queue = [atom.id];
+          visited.add(atom.id);
+          while (queue.length > 0) {
+            const curr = queue.shift();
+            const atObj = m.atoms.find(a => a.id === curr);
+            if (atObj) group.push(atObj);
+            for (const b of m.bonds) {
+              const next = b.a === curr ? b.b : (b.b === curr ? b.a : null);
+              if (next && !visited.has(next)) {
+                visited.add(next);
+                queue.push(next);
+              }
+            }
+          }
+          comps.push(group);
+        }
+        return comps;
+      }
+
+      function identifyComponentFormula(group) {
+        const counts = {};
+        group.forEach(a => { counts[a.sym] = (counts[a.sym] || 0) + 1; });
+        const keys = Object.keys(counts);
+
+        // Cas particulier du monoxyde de carbone CO (liaison triple C≡O)
+        if (counts.C === 1 && counts.O === 1 && keys.length === 2 && group.every(a => getAtomBondOrderSum(a.id) === 3)) {
+          return 'CO';
+        }
+
+        const allSatisfied = group.every(a => getAtomBondOrderSum(a.id) === ATOM_RULES[a.sym].valence);
+        if (!allSatisfied) return null;
+
+        if (counts.H === 2 && keys.length === 1) return 'H2';
+        if (counts.O === 2 && keys.length === 1) return 'O2';
+        if (counts.N === 2 && keys.length === 1) return 'N2';
+        if (counts.Cl === 2 && keys.length === 1) return 'Cl2';
+        if (counts.H === 1 && counts.Cl === 1 && keys.length === 2) return 'HCl';
+        if (counts.H === 2 && counts.O === 1 && keys.length === 2) return 'H2O';
+        if (counts.H === 2 && counts.O === 2 && keys.length === 2) return 'H2O2';
+        if (counts.C === 1 && counts.O === 2 && keys.length === 2) return 'CO2';
+        if (counts.C === 1 && counts.H === 4 && keys.length === 2) return 'CH4';
+        if (counts.C === 1 && counts.H === 3 && counts.Cl === 1 && keys.length === 3) return 'CH3Cl';
+        if (counts.C === 1 && counts.H === 2 && counts.O === 1 && keys.length === 3) return 'CH2O';
+        if (counts.N === 1 && counts.H === 3 && keys.length === 2) return 'NH3';
+        if (counts.C === 2 && counts.H === 2 && keys.length === 2) return 'C2H2';
+        if (counts.C === 2 && counts.H === 4 && keys.length === 2) return 'C2H4';
+        if (counts.C === 2 && counts.H === 6 && keys.length === 2) return 'C2H6';
+        if (counts.C === 2 && counts.H === 6 && counts.O === 1 && keys.length === 3) return 'C2H5OH';
+        return null;
+      }
+
+      function buildComponentBruteFormula(group) {
+        const counts = {};
+        group.forEach(a => { counts[a.sym] = (counts[a.sym] || 0) + 1; });
+        const order = ['C', 'H', 'N', 'O', 'Cl'];
+        const syms = Object.keys(counts).sort((a, b) => (order.indexOf(a) === -1 ? 99 : order.indexOf(a)) - (order.indexOf(b) === -1 ? 99 : order.indexOf(b)));
+        return syms.map(s => (counts[s] > 1 ? `${s}${counts[s]}` : s)).join('');
+      }
+
+      function getConnectedComponents() {
+        const m = state.molecules;
+        const visited = new Set();
+        const comps = [];
+        for (const atom of m.atoms) {
+          if (visited.has(atom.id)) continue;
+          const group = [];
+          const queue = [atom.id];
+          visited.add(atom.id);
+          while (queue.length > 0) {
+            const curr = queue.shift();
+            const atObj = m.atoms.find(a => a.id === curr);
+            if (atObj) group.push(atObj);
+            for (const b of m.bonds) {
+              const next = b.a === curr ? b.b : (b.b === curr ? b.a : null);
+              if (next && !visited.has(next)) {
+                visited.add(next);
+                queue.push(next);
+              }
+            }
+          }
+          comps.push(group);
+        }
+        return comps;
+      }
+
+      function identifyComponentFormula(group) {
+        const counts = {};
+        group.forEach(a => { counts[a.sym] = (counts[a.sym] || 0) + 1; });
+        const allSatisfied = group.every(a => getAtomBondOrderSum(a.id) === ATOM_RULES[a.sym].valence);
+        if (!allSatisfied) return null;
+
+        if (counts.H === 2 && Object.keys(counts).length === 1) return 'H2';
+        if (counts.O === 2 && Object.keys(counts).length === 1) return 'O2';
+        if (counts.N === 2 && Object.keys(counts).length === 1) return 'N2';
+        if (counts.H === 2 && counts.O === 1 && Object.keys(counts).length === 2) return 'H2O';
+        if (counts.C === 1 && counts.O === 2 && Object.keys(counts).length === 2) return 'CO2';
+        if (counts.C === 1 && counts.H === 4 && Object.keys(counts).length === 2) return 'CH4';
+        if (counts.N === 1 && counts.H === 3 && Object.keys(counts).length === 2) return 'NH3';
+        if (counts.C === 2 && counts.H === 4 && Object.keys(counts).length === 2) return 'C2H4';
+        if (counts.C === 2 && counts.H === 6 && Object.keys(counts).length === 2) return 'C2H6';
+        if (counts.C === 2 && counts.H === 6 && counts.O === 1 && Object.keys(counts).length === 3) return 'C2H5OH';
+        return null;
+      }
+
+      function findMatchingReaction() {
+        const comps = getConnectedComponents();
+        if (comps.length === 0) return null;
+        const speciesCount = {};
+        for (const g of comps) {
+          const code = identifyComponentFormula(g);
+          if (!code) return null;
+          speciesCount[code] = (speciesCount[code] || 0) + 1;
+        }
+        for (const rx of REACTIONS_DB) {
+          const reqKeys = Object.keys(rx.reactants);
+          const curKeys = Object.keys(speciesCount);
+          if (reqKeys.length === curKeys.length && reqKeys.every(k => rx.reactants[k] === speciesCount[k])) {
+            return rx;
+          }
+        }
+        return null;
+      }
+
+      function addPresetMolecule(key, offsetIndex = null) {
+        const m = state.molecules;
+        const idx = offsetIndex !== null ? offsetIndex : getConnectedComponents().length;
+        const offsets = [
+          { dx: 0, dy: 0 },
+          { dx: -155, dy: -65 },
+          { dx: 155, dy: -65 },
+          { dx: -155, dy: 75 },
+          { dx: 155, dy: 75 }
+        ];
+        const off = offsets[idx % offsets.length];
+        const cx = width * 0.5 + off.dx;
+        const cy = height * 0.5 + off.dy;
+
+        if (key === 'H2') {
+          const h1 = addMoleculeAtom('H', cx - 32, cy, 0);
+          const h2 = addMoleculeAtom('H', cx + 32, cy, 0);
+          if (h1 && h2) m.bonds.push({ a: h1.id, b: h2.id, order: 1 });
+        } else if (key === 'O2') {
+          const o1 = addMoleculeAtom('O', cx - 36, cy, 0);
+          const o2 = addMoleculeAtom('O', cx + 36, cy, 0);
+          if (o1 && o2) m.bonds.push({ a: o1.id, b: o2.id, order: 2 });
+        } else if (key === 'N2') {
+          const n1 = addMoleculeAtom('N', cx - 36, cy, 0);
+          const n2 = addMoleculeAtom('N', cx + 36, cy, 0);
+          if (n1 && n2) m.bonds.push({ a: n1.id, b: n2.id, order: 3 });
+        } else if (key === 'H2O') {
+          const o = addMoleculeAtom('O', cx, cy - 16, 0);
+          const h1 = addMoleculeAtom('H', cx - 56, cy + 32, 10);
+          const h2 = addMoleculeAtom('H', cx + 56, cy + 32, -10);
+          if (o && h1 && h2) m.bonds.push({ a: o.id, b: h1.id, order: 1 }, { a: o.id, b: h2.id, order: 1 });
+        } else if (key === 'CO2') {
+          const c = addMoleculeAtom('C', cx, cy, 0);
+          const o1 = addMoleculeAtom('O', cx - 72, cy, 0);
+          const o2 = addMoleculeAtom('O', cx + 72, cy, 0);
+          if (c && o1 && o2) m.bonds.push({ a: c.id, b: o1.id, order: 2 }, { a: c.id, b: o2.id, order: 2 });
+        } else if (key === 'CH4') {
+          const c = addMoleculeAtom('C', cx, cy, 0);
+          const h1 = addMoleculeAtom('H', cx, cy - 68, 0);
+          const h2 = addMoleculeAtom('H', cx + 64, cy + 24, 0);
+          const h3 = addMoleculeAtom('H', cx - 32, cy + 24, 56);
+          const h4 = addMoleculeAtom('H', cx - 32, cy + 24, -56);
+          if (c && h1 && h2 && h3 && h4) {
+            m.bonds.push({ a: c.id, b: h1.id, order: 1 }, { a: c.id, b: h2.id, order: 1 }, { a: c.id, b: h3.id, order: 1 }, { a: c.id, b: h4.id, order: 1 });
+          }
+        } else if (key === 'NH3') {
+          const n = addMoleculeAtom('N', cx, cy - 12, -14);
+          const h1 = addMoleculeAtom('H', cx - 62, cy + 34, 32);
+          const h2 = addMoleculeAtom('H', cx, cy + 50, -48);
+          const h3 = addMoleculeAtom('H', cx + 62, cy + 34, 32);
+          if (n && h1 && h2 && h3) m.bonds.push({ a: n.id, b: h1.id, order: 1 }, { a: n.id, b: h2.id, order: 1 }, { a: n.id, b: h3.id, order: 1 });
+        } else if (key === 'C2H4') {
+          const c1 = addMoleculeAtom('C', cx - 36, cy, 0);
+          const c2 = addMoleculeAtom('C', cx + 36, cy, 0);
+          const h1 = addMoleculeAtom('H', cx - 76, cy - 42, 0);
+          const h2 = addMoleculeAtom('H', cx - 76, cy + 42, 0);
+          const h3 = addMoleculeAtom('H', cx + 76, cy - 42, 0);
+          const h4 = addMoleculeAtom('H', cx + 76, cy + 42, 0);
+          if (c1 && c2 && h1 && h2 && h3 && h4) {
+            m.bonds.push({ a: c1.id, b: c2.id, order: 2 }, { a: c1.id, b: h1.id, order: 1 }, { a: c1.id, b: h2.id, order: 1 }, { a: c2.id, b: h3.id, order: 1 }, { a: c2.id, b: h4.id, order: 1 });
+          }
+        } else if (key === 'C2H6') {
+          const c1 = addMoleculeAtom('C', cx - 38, cy, 0);
+          const c2 = addMoleculeAtom('C', cx + 38, cy, 0);
+          const h1 = addMoleculeAtom('H', cx - 75, cy - 40, 25);
+          const h2 = addMoleculeAtom('H', cx - 75, cy + 40, -25);
+          const h3 = addMoleculeAtom('H', cx - 45, cy, 55);
+          const h4 = addMoleculeAtom('H', cx + 75, cy - 40, -25);
+          const h5 = addMoleculeAtom('H', cx + 75, cy + 40, 25);
+          const h6 = addMoleculeAtom('H', cx + 45, cy, -55);
+          if (c1 && c2) {
+            m.bonds.push({ a: c1.id, b: c2.id, order: 1 }, { a: c1.id, b: h1.id, order: 1 }, { a: c1.id, b: h2.id, order: 1 }, { a: c1.id, b: h3.id, order: 1 }, { a: c2.id, b: h4.id, order: 1 }, { a: c2.id, b: h5.id, order: 1 }, { a: c2.id, b: h6.id, order: 1 });
+          }
+        } else if (key === 'C2H5OH') {
+          const c1 = addMoleculeAtom('C', cx - 64, cy, 0);
+          const c2 = addMoleculeAtom('C', cx, cy, 0);
+          const o = addMoleculeAtom('O', cx + 62, cy, 0);
+          const h1 = addMoleculeAtom('H', cx - 102, cy, 0);
+          const h2 = addMoleculeAtom('H', cx - 64, cy - 52, 24);
+          const h3 = addMoleculeAtom('H', cx - 64, cy + 52, -24);
+          const h4 = addMoleculeAtom('H', cx, cy - 52, -24);
+          const h5 = addMoleculeAtom('H', cx, cy + 52, 24);
+          const h6 = addMoleculeAtom('H', cx + 98, cy, 0);
+          if (c1 && c2 && o && h1 && h2 && h3 && h4 && h5 && h6) {
+            m.bonds.push(
+              { a: c1.id, b: c2.id, order: 1 },
+              { a: c2.id, b: o.id, order: 1 },
+              { a: c1.id, b: h1.id, order: 1 },
+              { a: c1.id, b: h2.id, order: 1 },
+              { a: c1.id, b: h3.id, order: 1 },
+              { a: c2.id, b: h4.id, order: 1 },
+              { a: c2.id, b: h5.id, order: 1 },
+              { a: o.id, b: h6.id, order: 1 }
+            );
+          }
+        }
+
+        updateMoleculeMetrics();
+      }
+
+      function triggerChemicalReaction() {
+        const m = state.molecules;
+        const rx = findMatchingReaction();
+        if (!rx) return;
+
+        m.atoms = [];
+        m.bonds = [];
+        rx.products.forEach((prodKey, idx) => {
+          addPresetMolecule(prodKey, idx);
+        });
+        m.reactionFlash = 1.0;
+        updateMoleculeMetrics();
+      }
+
+      function updateMoleculeMetrics(fromAutoBond = false) {
+        const m = state.molecules;
+        const counts = {};
+        let totalMass = 0;
+        let totalValence = 0;
+        m.atoms.forEach(a => {
+          counts[a.sym] = (counts[a.sym] || 0) + 1;
+          totalMass += ATOM_RULES[a.sym].mass;
+          totalValence += ATOM_RULES[a.sym].valence;
+        });
+
+        const formulaParts = Object.entries(counts).map(([sym, c]) => (c > 1 ? `${sym}${c}` : sym));
+        const formulaStr = formulaParts.length ? formulaParts.join(' ') : 'Aucune';
+
+        const comps = getConnectedComponents();
+        const speciesCount = {};
+        const descriptions = [];
+
+        comps.forEach(g => {
+          const code = identifyComponentFormula(g);
+          const brute = buildComponentBruteFormula(g);
+          const keyLabel = code || brute;
+          speciesCount[keyLabel] = (speciesCount[keyLabel] || 0) + 1;
+
+          if (code && MOLECULE_CATALOG[code]) {
+            const info = MOLECULE_CATALOG[code];
+            descriptions.push(`<div><strong style="color:#10b981;">${info.name} (${info.formula})</strong> • <em>${info.geom}</em><br><span style="color:#cbd5e1;">${info.desc}</span></div>`);
+          } else {
+            const unsat = g.filter(a => getAtomBondOrderSum(a.id) !== ATOM_RULES[a.sym].valence);
+            if (unsat.length === 0) {
+              descriptions.push(`<div><strong style="color:#38bdf8;">Édifice covalent saturé (${brute})</strong><br><span style="color:#cbd5e1;">Tous les atomes respectent la règle du duet (2 e⁻) ou de l'octet (8 e⁻).</span></div>`);
+            } else {
+              descriptions.push(`<div><strong style="color:#f59e0b;">Radical / Fragment insaturé (${brute})</strong><br><span style="color:#94a3b8;">${unsat.length} atome(s) ont encore des électrons célibataires disponibles.</span></div>`);
+            }
+          }
+        });
+
+        const statusCard = document.getElementById('mol-status-card');
+        if (m.atoms.length === 0) {
+          statusCard.innerHTML = 'Ajoutez des atomes ou des molécules pour modéliser des liaisons covalentes ou déclencher une réaction.';
+        } else {
+          const headerNote = fromAutoBond ? '<div style="color:var(--accent); font-weight:700; margin-bottom:2px;">Assemblage automatique effectué :</div>' : '';
+          statusCard.innerHTML = headerNote + descriptions.join('<hr style="border:0; border-top:1px solid var(--border); margin:4px 0;">');
+        }
+
+        const compLabel = Object.entries(speciesCount).map(([k, v]) => (v > 1 ? `${v} ${k}` : k)).join(' + ') || 'Scène vide';
+
+        // Mise à jour expérience guidée
+        const exp = GUIDED_EXPERIMENTS[m.guidedIdx];
+        document.getElementById('guided-title').textContent = exp.title;
+        document.getElementById('guided-eq').textContent = exp.eq;
+        const checkItems = Object.entries(exp.req).map(([k, needed]) => {
+          const cur = speciesCount[k] || 0;
+          const ok = cur === needed;
+          return `<span style="color:${ok ? '#10b981' : '#94a3b8'}">${k} (${cur}/${needed})</span>`;
+        });
+        document.getElementById('guided-checklist').innerHTML = `Réactifs : ${checkItems.join(' • ')}`;
+
+        const rx = findMatchingReaction();
+        const rxBtn = document.getElementById('btn-trigger-reaction');
+        if (rx) {
+          rxBtn.disabled = false;
+          rxBtn.textContent = `Réagir (${rx.eq.split('→')[1].trim()})`;
+        } else {
+          rxBtn.disabled = true;
+          rxBtn.textContent = 'Déclencher réaction';
+        }
+
+        if (state.activeModule === 'molecules') {
+          m1Val.textContent = compLabel;
+          m2Val.textContent = formulaStr;
+          m3Val.textContent = `${m.bonds.reduce((s, b) => s + b.order, 0)} liaisons`;
+          m4Val.textContent = `${totalMass.toFixed(2)} g/mol`;
+          m4Val.style.color = '#ffffff';
+        }
+      }
+
+      document.querySelectorAll('[data-add-atom]').forEach(btn => {
+        btn.addEventListener('click', () => addMoleculeAtom(btn.dataset.addAtom));
+      });
+      document.querySelectorAll('[data-preset-mol]').forEach(btn => {
+        btn.addEventListener('click', () => addPresetMolecule(btn.dataset.presetMol));
+      });
+      document.getElementById('btn-clear-mol').addEventListener('click', () => {
+        state.molecules.atoms = [];
+        state.molecules.bonds = [];
+        state.molecules.selectedAtomId = null;
+        updateMoleculeMetrics();
+      });
+      document.getElementById('btn-auto-bond').addEventListener('click', autoBondAtoms);
+      document.getElementById('btn-trigger-reaction').addEventListener('click', triggerChemicalReaction);
+      document.getElementById('btn-guided-next').addEventListener('click', () => {
+        state.molecules.guidedIdx = (state.molecules.guidedIdx + 1) % GUIDED_EXPERIMENTS.length;
+        updateMoleculeMetrics();
+      });
+
+      // =========================================================================
+      // LOGIQUE MODULE 4 : SAUTS QUANTIQUES (BOHR)
+      // =========================================================================
+      function updateSpectrumMetrics() {
+        const n = state.spectrum.n;
+        const En = -13.6 / (n * n);
+        document.getElementById('val-bohr-n').textContent = `n = ${n}`;
+        if (state.activeModule === 'spectrum') {
+          m1Val.textContent = `n = ${n}`;
+          m2Val.textContent = `${En.toFixed(2)} eV`;
+          m3Val.textContent = n === 1 ? 'État fondamental' : 'État excité';
+          m4Val.textContent = `${(0.0529 * n * n).toFixed(2)} nm`;
+        }
+      }
+
+      function triggerBohrJump(deltaN) {
+        const oldN = state.spectrum.n;
+        const newN = Math.max(1, Math.min(5, oldN + deltaN));
+        if (newN === oldN) return;
+        const E1 = -13.6 / (oldN * oldN);
+        const E2 = -13.6 / (newN * newN);
+        const dE = Math.abs(E2 - E1);
+        const lambdaNm = 1239.84 / dE;
+        state.spectrum.n = newN;
+        state.spectrum.photons.push({
+          type: deltaN < 0 ? 'emit' : 'absorb',
+          progress: 0,
+          lambda: lambdaNm,
+          dE
+        });
+        document.getElementById('bohr-transition-info').innerHTML =
+          deltaN < 0
+            ? `Émission (n=${oldN} &rarr; n=${newN}) : photon de <strong>${dE.toFixed(2)} eV</strong> (&lambda; = ${Math.round(lambdaNm)} nm)`
+            : `Absorption (n=${oldN} &rarr; n=${newN}) : photon de <strong>${dE.toFixed(2)} eV</strong> (&lambda; = ${Math.round(lambdaNm)} nm)`;
+        updateSpectrumMetrics();
+      }
+
+      document.getElementById('slider-bohr-n').addEventListener('input', e => {
+        state.spectrum.n = Number(e.target.value);
+        updateSpectrumMetrics();
+      });
+      document.getElementById('btn-bohr-emit').addEventListener('click', () => triggerBohrJump(-1));
+      document.getElementById('btn-bohr-absorb').addEventListener('click', () => triggerBohrJump(1));
+
+      // =========================================================================
+      // LOGIQUE MODULE 5 & 6 : QUARKS & MODÈLE STANDARD
+      // =========================================================================
+      document.getElementById('btn-hadron-proton').addEventListener('click', () => {
+        state.hadrons.type = 'proton';
+        document.getElementById('hadron-detail').innerHTML = '<strong>Proton (p⁺) :</strong> 2 quarks Up (+⅔ e) + 1 quark Down (-⅓ e) liés par des gluons. Charge totale = +1 e.';
+        if (state.activeModule === 'hadrons') { m1Val.textContent = 'Proton (p⁺)'; m2Val.textContent = 'uud'; m3Val.textContent = '+1 e'; m4Val.textContent = '938.3 MeV/c²'; }
+      });
+      document.getElementById('btn-hadron-neutron').addEventListener('click', () => {
+        state.hadrons.type = 'neutron';
+        document.getElementById('hadron-detail').innerHTML = '<strong>Neutron (n⁰) :</strong> 1 quark Up (+⅔ e) + 2 quarks Down (-⅓ e) liés par des gluons. Charge totale = 0.';
+        if (state.activeModule === 'hadrons') { m1Val.textContent = 'Neutron (n⁰)'; m2Val.textContent = 'udd'; m3Val.textContent = '0 (Neutre)'; m4Val.textContent = '939.6 MeV/c²'; }
+      });
+
+      const SM_PARTICLES = [
+        { sym: 'u', name: 'Quark Up', cat: 'Quark', charge: '+⅔ e', spin: '1/2', mass: '2.2 MeV/c²', color: '#a78bfa' },
+        { sym: 'c', name: 'Quark Charm', cat: 'Quark', charge: '+⅔ e', spin: '1/2', mass: '1.28 GeV/c²', color: '#a78bfa' },
+        { sym: 't', name: 'Quark Top', cat: 'Quark', charge: '+⅔ e', spin: '1/2', mass: '173 GeV/c²', color: '#a78bfa' },
+        { sym: 'g', name: 'Gluon', cat: 'Boson de jauge', charge: '0', spin: '1', mass: '0', color: '#f59e0b' },
+        { sym: 'd', name: 'Quark Down', cat: 'Quark', charge: '-⅓ e', spin: '1/2', mass: '4.7 MeV/c²', color: '#a78bfa' },
+        { sym: 's', name: 'Quark Strange', cat: 'Quark', charge: '-⅓ e', spin: '1/2', mass: '96 MeV/c²', color: '#a78bfa' },
+        { sym: 'b', name: 'Quark Bottom', cat: 'Quark', charge: '-⅓ e', spin: '1/2', mass: '4.18 GeV/c²', color: '#a78bfa' },
+        { sym: 'γ', name: 'Photon', cat: 'Boson de jauge', charge: '0', spin: '1', mass: '0', color: '#f59e0b' },
+        { sym: 'e⁻', name: 'Électron', cat: 'Lepton', charge: '-1 e', spin: '1/2', mass: '0.511 MeV/c²', color: '#10b981' },
+        { sym: 'μ⁻', name: 'Muon', cat: 'Lepton', charge: '-1 e', spin: '1/2', mass: '105.7 MeV/c²', color: '#10b981' },
+        { sym: 'τ⁻', name: 'Tau', cat: 'Lepton', charge: '-1 e', spin: '1/2', mass: '1.78 GeV/c²', color: '#10b981' },
+        { sym: 'Z⁰', name: 'Boson Z', cat: 'Boson de jauge', charge: '0', spin: '1', mass: '91.2 GeV/c²', color: '#f59e0b' },
+        { sym: 'νₑ', name: 'Neutrino électron', cat: 'Lepton', charge: '0', spin: '1/2', mass: '< 1 eV/c²', color: '#10b981' },
+        { sym: 'νμ', name: 'Neutrino muon', cat: 'Lepton', charge: '0', spin: '1/2', mass: '< 0.17 MeV/c²', color: '#10b981' },
+        { sym: 'ντ', name: 'Neutrino tau', cat: 'Lepton', charge: '0', spin: '1/2', mass: '< 18.2 MeV/c²', color: '#10b981' },
+        { sym: 'H⁰', name: 'Boson de Higgs', cat: 'Boson scalaire', charge: '0', spin: '0', mass: '125.1 GeV/c²', color: '#38bdf8' }
+      ];
+
+      function selectSMParticle(idx) {
+        state.standard.selectedIdx = idx;
+        const p = SM_PARTICLES[idx];
+        document.getElementById('sm-detail-card').innerHTML = `
+          <strong style="color:${p.color};">${p.name} (${p.sym})</strong>
+          <span>Catégorie : ${p.cat}</span>
+          <span>Charge : ${p.charge} • Spin : ${p.spin} • Masse : ${p.mass}</span>
+        `;
+        if (state.activeModule === 'standard') {
+          m1Val.textContent = p.name;
+          m2Val.textContent = p.charge;
+          m3Val.textContent = `Spin ${p.spin}`;
+          m4Val.textContent = p.mass;
+        }
+      }
+
+      // =========================================================================
+      // COMMUTATEUR VUE 2D / 3D & NAVIGATION ONGLETS
+      // =========================================================================
+      document.querySelectorAll('[data-view-mode]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-view-mode]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          state.viewMode = btn.dataset.viewMode;
+          state.camera3D.autoSpin = (state.viewMode === '3d');
+          updateModuleUI();
+        });
+      });
+
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          state.activeModule = btn.dataset.module;
+
+          document.querySelectorAll('.module-controls').forEach(c => c.classList.remove('active'));
+          document.getElementById(`ctrl-${state.activeModule}`).classList.add('active');
+
+          updateModuleUI();
+        });
+      });
+
+      function updateModuleUI() {
+        const mod = state.activeModule;
+        const supports3D = (mod === 'atom' || mod === 'molecules');
+        viewModeSwitcher.style.display = supports3D ? 'inline-flex' : 'none';
+        m1Val.style.color = '#ffffff';
+        m3Val.style.color = '#ffffff';
+        m4Val.style.color = '#ffffff';
+
+        if (mod === 'atom') {
+          headerTitle.textContent = 'Constructeur d\'Atomes & Tableau Périodique (Z = 1 à 118)';
+          headerSubtitle.textContent = 'Cliquez sur un élément du tableau ou ajustez Z, N et e⁻ pour explorer sa structure 2D/3D';
+          scaleDot.style.background = '#38bdf8';
+          scaleText.textContent = 'Échelle : 10⁻¹⁰ m (Atome)';
+          canvasHeaderLeft.textContent = state.viewMode === '3d'
+            ? 'Tableau périodique (haut) & Modèle orbital 3D (bas — cliquer-glisser)'
+            : 'Tableau périodique interactif (haut) & Atome 2D (bas)';
+          canvasHeaderRight.textContent = 'Notation ᴬ_Z X • 118 éléments';
+          m1Label.textContent = 'Élément chimique';
+          m2Label.textContent = 'Nombre de masse (A)';
+          m3Label.textContent = 'Charge nette (q)';
+          m4Label.textContent = 'Stabilité du noyau';
+          pedagogyText.textContent = 'Cliquez sur n\'importe quel élément du tableau périodique pour charger son isotope majoritaire, puis modifiez N ou e⁻ pour créer des isotopes et des ions.';
+          formulaDisplay.textContent = 'A = Z + N  |  q = (Z - e⁻) · e';
+          updateAtomUI();
+        } else if (mod === 'molecules') {
+          headerTitle.textContent = 'Constructeur de Molécules & Réactions Chimiques';
+          headerSubtitle.textContent = 'Glisser-déposer des atomes, liaisons covalentes (simples/doubles/triples) et stœchiométrie';
+          scaleDot.style.background = '#10b981';
+          scaleText.textContent = 'Échelle : 10⁻¹⁰ m (Liaison chimique)';
+          canvasHeaderLeft.textContent = state.viewMode === '3d'
+            ? 'Géométrie moléculaire 3D VSEPR (Cliquer-glisser pour pivoter)'
+            : 'Glisser pour déplacer • Cliquer 2 atomes pour lier • Double-clic pour retirer';
+          canvasHeaderRight.textContent = 'Règle du duet (2 e⁻) et de l\'octet (8 e⁻)';
+          m1Label.textContent = 'Espèces présentes';
+          m2Label.textContent = 'Composition globale';
+          m3Label.textContent = 'Liaisons covalentes';
+          m4Label.textContent = 'Masse molaire totale';
+          pedagogyText.textContent = 'Lors d\'une réaction chimique, les atomes se réarrangent par rupture et formation de liaisons covalentes : la masse et le nombre d\'atomes de chaque élément se conservent.';
+          formulaDisplay.textContent = 'Conservation : ∑ atomes(réactifs) = ∑ atomes(produits)';
+          updateMoleculeMetrics();
+        } else if (mod === 'spectrum') {
+          headerTitle.textContent = 'Sauts Quantiques & Modèle de Bohr';
+          headerSubtitle.textContent = 'Quantification des niveaux d\'énergie de l\'atome d\'hydrogène et spectres de raies';
+          scaleDot.style.background = '#f59e0b';
+          scaleText.textContent = 'Échelle : 10⁻¹⁰ m (Transitions)';
+          canvasHeaderLeft.textContent = 'Orbitales quantifiées n = 1..5';
+          canvasHeaderRight.textContent = 'Émission / Absorption de photons';
+          m1Label.textContent = 'Niveau actuel';
+          m2Label.textContent = 'Énergie Eₙ';
+          m3Label.textContent = 'État atomique';
+          m4Label.textContent = 'Rayon orbital rₙ';
+          pedagogyText.textContent = 'L\'électron ne peut absorber ou émettre qu\'un photon dont l\'énergie ΔE = h·c/λ correspond exactement à l\'écart entre deux niveaux.';
+          formulaDisplay.textContent = 'Eₙ = -13,6 / n² (eV)  |  ΔE = |E₂ - E₁|';
+          updateSpectrumMetrics();
+        } else if (mod === 'hadrons') {
+          headerTitle.textContent = 'Structure des Nucléons (Quarks & Gluons)';
+          headerSubtitle.textContent = 'Confinement des quarks par l\'interaction nucléaire forte à l\'échelle du femtomètre';
+          scaleDot.style.background = '#ef4444';
+          scaleText.textContent = 'Échelle : 10⁻¹⁵ m (Nucléon)';
+          canvasHeaderLeft.textContent = 'Quarks de valence (u, d) & Gluons';
+          canvasHeaderRight.textContent = 'Charge de couleur (Rouge, Vert, Bleu)';
+          m1Label.textContent = 'Nucléon';
+          m2Label.textContent = 'Quarks de valence';
+          m3Label.textContent = 'Charge électrique';
+          m4Label.textContent = 'Masse au repos';
+          pedagogyText.textContent = 'Protons et neutrons ne sont pas élémentaires : ils sont formés de 3 quarks liés par l\'échange permanent de gluons.';
+          formulaDisplay.textContent = 'q(u) = +⅔ e  |  q(d) = -⅓ e';
+          const isP = state.hadrons.type === 'proton';
+          m1Val.textContent = isP ? 'Proton (p⁺)' : 'Neutron (n⁰)';
+          m2Val.textContent = isP ? 'uud' : 'udd';
+          m3Val.textContent = isP ? '+1 e' : '0 (Neutre)';
+          m4Val.textContent = isP ? '938.3 MeV/c²' : '939.6 MeV/c²';
+        } else if (mod === 'standard') {
+          headerTitle.textContent = 'Le Modèle Standard des Particules';
+          headerSubtitle.textContent = 'Fermions de matière (Quarks & Leptons) et Bosons médiateurs des interactions fondamentales';
+          scaleDot.style.background = '#38bdf8';
+          scaleText.textContent = 'Échelle : < 10⁻¹⁸ m (Élémentaire)';
+          canvasHeaderLeft.textContent = 'Carte interactive des particules élémentaires';
+          canvasHeaderRight.textContent = '3 générations de matière + Bosons';
+          m1Label.textContent = 'Particule';
+          m2Label.textContent = 'Charge';
+          m3Label.textContent = 'Spin quantique';
+          m4Label.textContent = 'Masse';
+          pedagogyText.textContent = 'Toute la matière ordinaire de l\'Univers est construite à partir de la première génération : quarks Up et Down, électron et neutrino électronique.';
+          formulaDisplay.textContent = 'Fermions (spin ½) + Bosons (spin 0, 1)';
+          selectSMParticle(state.standard.selectedIdx);
+        }
+      }
+
+      // =========================================================================
+      // FONCTIONS DE RENDU DES MODULES (2D & 3D)
+      // =========================================================================
+      function getAtomSplitLayout() {
+        const tableH = Math.max(195, Math.min(255, height * 0.45));
+        return {
+          tableTop: 6,
+          tableH,
+          atomTop: tableH + 10,
+          atomH: height - (tableH + 10)
+        };
+      }
+
+      // =========================================================================
+      // RENDU DU TABLEAU PÉRIODIQUE COMPLET (118 ÉLÉMENTS) & ATOME 2D / 3D
+      // =========================================================================
+      function renderPeriodicTableBlock(topY, blockH) {
+        const padX = 12;
+        const padY = 4;
+        const cols = 18;
+        const rows = 9; // 7 périodes + 2 séries (Lanthanides, Actinides)
+        const gap = 2.5;
+        const availW = width - padX * 2;
+        const availH = blockH - padY * 2;
+        const cellW = (availW - gap * (cols - 1)) / cols;
+        const cellH = (availH - gap * (rows - 1)) / rows;
+
+        state.ptable.cellRects = [];
+
+        for (let Z = 1; Z <= 118; Z++) {
+          const el = ELEMENTS[Z];
+          if (!el) continue;
+          const rIdx = el.row - 1;
+          const cIdx = el.col - 1;
+          const x = padX + cIdx * (cellW + gap);
+          const y = topY + padY + rIdx * (cellH + gap) + (rIdx >= 7 ? 3 : 0);
+
+          const isSelected = state.ptable.selectedZ === Z;
+          const famColor = FAMILY_COLORS[el.family] || '#38bdf8';
+
+          ctx.fillStyle = isSelected ? famColor : 'rgba(24, 34, 52, 0.9)';
+          ctx.strokeStyle = isSelected ? '#ffffff' : famColor;
+          ctx.lineWidth = isSelected ? 1.8 : 1;
+          ctx.beginPath();
+          ctx.roundRect(x, y, cellW, cellH, 3);
+          ctx.fill();
+          ctx.stroke();
+
+          if (cellH >= 15) {
+            ctx.fillStyle = isSelected ? '#090d16' : '#94a3b8';
+            ctx.font = `${Math.max(7, Math.min(9, Math.floor(cellH * 0.28)))}px monospace`;
+            ctx.textAlign = 'left';
+            ctx.fillText(String(Z), x + 2.5, y + Math.max(8, cellH * 0.34));
+          }
+
+          ctx.fillStyle = isSelected ? '#090d16' : '#f1f5f9';
+          ctx.font = `bold ${Math.max(9, Math.min(13, Math.floor(cellH * 0.46)))}px sans-serif`;
+          ctx.textAlign = 'center';
+          ctx.fillText(el.sym, x + cellW * 0.5, y + cellH * 0.78);
+
+          state.ptable.cellRects.push({ Z, x, y, w: cellW, h: cellH });
+        }
+      }
+
+      function renderAtom(dt) {
+        const layout = getAtomSplitLayout();
+        renderPeriodicTableBlock(layout.tableTop, layout.tableH);
+
+        // Séparateur discret entre le tableau et la zone atomique
+        ctx.strokeStyle = 'rgba(38, 51, 77, 0.7)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(12, layout.atomTop - 3);
+        ctx.lineTo(width - 12, layout.atomTop - 3);
+        ctx.stroke();
+
+        // Affichage de la molécule la plus courante sur Terre à droite
+        renderEarthMoleculeCard(layout.atomTop, layout.atomH);
+
+        const { Z, N, E, nucleonOffsets } = state.atom;
+        const el = ELEMENTS[Z] || ELEMENTS[1];
+        const A = Z + N;
+        const charge = Z - E;
+        const is3D = state.viewMode === '3d';
+
+        if (is3D && state.camera3D.autoSpin && !state.camera3D.isOrbiting) {
+          state.camera3D.yaw += dt * 0.45;
+        }
+
+        // Centre de l'atome décalé à gauche pour laisser un large espace aux 2 molécules
+        const cardReserve = Math.min(540, Math.max(380, width * 0.49)) + 20;
+        const cx = (width - cardReserve) * 0.50;
+        const cy = layout.atomTop + layout.atomH * 0.52;
+      function drawSingleMoleculePanel(mol, panelX, panelY, panelW, panelH, badgeTitle, accentColor, is3D) {
+        const bgGrad = ctx.createLinearGradient(panelX, panelY, panelX, panelY + panelH);
+        bgGrad.addColorStop(0, 'rgba(24, 34, 52, 0.94)');
+        bgGrad.addColorStop(1, 'rgba(11, 17, 32, 0.96)');
+        ctx.fillStyle = bgGrad;
+        ctx.strokeStyle = is3D ? accentColor : 'rgba(56, 189, 248, 0.28)';
+        ctx.lineWidth = 1.3;
+        ctx.beginPath();
+        ctx.roundRect(panelX, panelY, panelW, panelH, 12);
+        ctx.fill();
+        ctx.stroke();
+
+        // En-tête + badge 2D/3D
+        ctx.fillStyle = accentColor;
+        ctx.font = 'bold 9.5px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText(badgeTitle, panelX + 11, panelY + 18);
+
+        ctx.fillStyle = is3D ? 'rgba(56, 189, 248, 0.18)' : 'rgba(148, 163, 184, 0.14)';
+        ctx.beginPath();
+        ctx.roundRect(panelX + panelW - 38, panelY + 8, 28, 14, 4);
+        ctx.fill();
+        ctx.fillStyle = is3D ? '#38bdf8' : '#94a3b8';
+        ctx.font = 'bold 8.5px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText(is3D ? '3D' : '2D', panelX + panelW - 24, panelY + 18);
+
+        // Nom, formule, géométrie et état
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 12.5px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText(`${mol.name} (${mol.formula})`, panelX + 11, panelY + 35);
+
+        ctx.fillStyle = '#cbd5e1';
+        ctx.font = '10.5px sans-serif';
+        ctx.fillText(mol.shape, panelX + 11, panelY + 50);
+
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = '10px sans-serif';
+        ctx.fillText(mol.state, panelX + 11, panelY + 64);
+
+        // Rendu 2D ou 3D de la molécule
+        const molScale = Math.min(1.42, Math.max(0.95, Math.min(panelW / 185, (panelH - 68) / 105)));
+        const mcx = panelX + panelW * 0.5;
+        const mcy = panelY + 68 + (panelH - 68) * 0.5;
+
+        if (is3D) {
+          const projected = mol.atoms.map((a, idx) => {
+            const p = project3DPoint(a.x * molScale, a.y * molScale, (a.z || 0) * molScale, mcx, mcy, 360);
+            return { idx, atom: a, ...p };
+          });
+
+          const queue = [];
+          mol.bonds.forEach(([i, j, order]) => {
+            const pa = projected[i], pb = projected[j];
+            if (pa && pb) queue.push({ type: 'bond', depth: (pa.depth + pb.depth) / 2, pa, pb, order });
+          });
+          projected.forEach(pa => queue.push({ type: 'atom', depth: pa.depth, pa }));
+          queue.sort((u, v) => v.depth - u.depth);
+
+          queue.forEach(item => {
+            if (item.type === 'bond') {
+              drawCovalentBond(item.pa.sx, item.pa.sy, item.pb.sx, item.pb.sy, item.order);
+            } else {
+              const { atom, sx, sy, scale } = item.pa;
+              const rule = ATOM_RULES[atom.s] || { r: 18, color: accentColor, text: '#090d16' };
+              const r = Math.min(22, rule.r * 0.8 * molScale * scale);
+              drawShadedSphere(sx, sy, r, rule.color);
+
+              ctx.fillStyle = rule.text;
+              ctx.font = `bold ${Math.max(10, Math.round(12 * molScale * scale))}px sans-serif`;
+              ctx.textAlign = 'center';
+              ctx.textBaseline = 'middle';
+              ctx.fillText(atom.s, sx, sy);
+              ctx.textBaseline = 'alphabetic';
+            }
+          });
+        } else {
+          mol.bonds.forEach(([i, j, order]) => {
+            const a = mol.atoms[i], b = mol.atoms[j];
+            if (a && b) drawCovalentBond(mcx + a.x * molScale, mcy + a.y * molScale, mcx + b.x * molScale, mcy + b.y * molScale, order);
+          });
+
+          mol.atoms.forEach(a => {
+            const rule = ATOM_RULES[a.s] || { r: 18, color: accentColor, text: '#090d16' };
+            const r = Math.min(21, rule.r * 0.78 * molScale);
+            ctx.fillStyle = rule.color;
+            ctx.beginPath();
+            ctx.arc(mcx + a.x * molScale, mcy + a.y * molScale, r, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = '#090d16';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+
+            ctx.fillStyle = rule.text;
+            ctx.font = `bold ${Math.round(12 * molScale)}px sans-serif`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(a.s, mcx + a.x * molScale, mcy + a.y * molScale);
+            ctx.textBaseline = 'alphabetic';
+          });
+        }
+      }
+
+      function renderEarthMoleculeCard(areaTop, areaH) {
+        const pair = getEarthMoleculesForElement(state.atom.Z);
+        const is3D = state.viewMode === '3d';
+        const totalW = Math.min(540, Math.max(380, width * 0.49));
+        const gap = 10;
+        const singleW = (totalW - gap) / 2;
+        const cardH = Math.max(190, areaH - 12);
+        const startX = width - totalW - 12;
+        const cardY = areaTop + (areaH - cardH) * 0.5;
+
+        drawSingleMoleculePanel(pair.common, startX, cardY, singleW, cardH, 'MOLÉCULE COURANTE SUR TERRE', '#38bdf8', is3D);
+        drawSingleMoleculePanel(pair.special, startX + singleW + gap, cardY, singleW, cardH, 'FORME PARTICULIÈRE / ALLOTROPE', '#a78bfa', is3D);
+      }
+
+        const shells = getShellDistribution(E);
+        const maxOrbitR = Math.min((width - cardReserve) * 0.42, layout.atomH * 0.44);
+        const nucVisualR = Math.min(28, 8 + Math.sqrt(Z + N) * 1.45);
+        const baseOrbitR = nucVisualR + 18;
+        const orbitStep = shells.length > 0 ? Math.max(12, (maxOrbitR - baseOrbitR) / shells.length) : 18;
+
+        if (is3D) {
+          // --- MODE 3D : Noyau sphérique + orbitales inclinées + tri de profondeur ---
+          const items3D = [];
+
+          // Nucléons (échantillonnés si très lourd pour garder 60 FPS)
+          const stepNuc = nucleonOffsets.length > 140 ? 2 : 1;
+          for (let i = 0; i < nucleonOffsets.length; i += stepNuc) {
+            const nOff = nucleonOffsets[i];
+            const p = project3DPoint(nOff.dx3 * 0.72, nOff.dy3 * 0.72, nOff.dz3 * 0.72, cx, cy, 480);
+            items3D.push({
+              depth: p.depth,
+              sx: p.sx,
+              sy: p.sy,
+              r: 3.4 * p.scale,
+              color: nOff.type === 'p' ? '#ef4444' : '#94a3b8'
+            });
+          }
+
+          // Anneaux orbitaux inclinés et électrons en mouvement
+          shells.forEach((sh, sIdx) => {
+            const r = baseOrbitR + sIdx * orbitStep;
+            const tiltA = (sIdx % 3 - 1) * 0.55;
+            const tiltB = ((sIdx * 2) % 3 - 1) * 0.48;
+
+            ctx.strokeStyle = 'rgba(56, 189, 248, 0.22)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            for (let k = 0; k <= 48; k++) {
+              const ang = (k / 48) * Math.PI * 2;
+              const ox = Math.cos(ang) * r;
+              const oz = Math.sin(ang) * r;
+              const oy = ox * Math.sin(tiltA) + oz * Math.sin(tiltB);
+              const pt = project3DPoint(ox, oy, oz, cx, cy, 480);
+              if (k === 0) ctx.moveTo(pt.sx, pt.sy);
+              else ctx.lineTo(pt.sx, pt.sy);
+            }
+            ctx.stroke();
+
+            const speed = (1.3 - sIdx * 0.12) * (sIdx % 2 === 0 ? 1 : -1);
+            for (let eIdx = 0; eIdx < sh.count; eIdx++) {
+              const ang = (eIdx / sh.count) * Math.PI * 2 + state.time * speed;
+              const ox = Math.cos(ang) * r;
+              const oz = Math.sin(ang) * r;
+              const oy = ox * Math.sin(tiltA) + oz * Math.sin(tiltB);
+              const pt = project3DPoint(ox, oy, oz, cx, cy, 480);
+              items3D.push({
+                depth: pt.depth,
+                sx: pt.sx,
+                sy: pt.sy,
+                r: 3.6 * pt.scale,
+                color: '#38bdf8'
+              });
+            }
+          });
+
+          items3D.sort((a, b) => b.depth - a.depth);
+          items3D.forEach(it => drawShadedSphere(it.sx, it.sy, it.r, it.color));
+
+          ctx.fillStyle = 'rgba(148, 163, 184, 0.75)';
+          ctx.font = '10.5px monospace';
+          ctx.textAlign = 'left';
+          ctx.fillText('Vue 3D • Cliquer-glisser pour pivoter', 14, height - 10);
+        } else {
+          // --- MODE 2D : Couches concentriques K..Q et noyau compact ---
+          shells.forEach((sh, sIdx) => {
+            const r = baseOrbitR + sIdx * orbitStep;
+            ctx.strokeStyle = 'rgba(56, 189, 248, 0.24)';
+            ctx.lineWidth = 1.1;
+            ctx.beginPath();
+            ctx.arc(cx, cy, r, 0, Math.PI * 2);
+            ctx.stroke();
+
+            ctx.fillStyle = '#64748b';
+            ctx.font = '9.5px monospace';
+            ctx.textAlign = 'center';
+            ctx.fillText(sh.name, cx, cy - r - 3);
+
+            const speed = (1.1 - sIdx * 0.1) * (sIdx % 2 === 0 ? 1 : -1);
+            for (let eIdx = 0; eIdx < sh.count; eIdx++) {
+              const ang = (eIdx / sh.count) * Math.PI * 2 + state.time * speed;
+              const ex = cx + Math.cos(ang) * r;
+              const ey = cy + Math.sin(ang) * r;
+              ctx.fillStyle = '#38bdf8';
+              ctx.beginPath();
+              ctx.arc(ex, ey, 3.2, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          });
+
+          // Dessin des nucléons 2D
+          const scaleNuc = nucleonOffsets.length > 90 ? 0.55 : 0.78;
+          nucleonOffsets.forEach(nOff => {
+            ctx.fillStyle = nOff.type === 'p' ? '#ef4444' : '#94a3b8';
+            ctx.beginPath();
+            ctx.arc(cx + nOff.dx * scaleNuc, cy + nOff.dy * scaleNuc, 3.2 * scaleNuc + 0.8, 0, Math.PI * 2);
+            ctx.fill();
+          });
+        }
+      }
+
+      // =========================================================================
+      // OUTILS DE DESSIN DE LIAISONS & PHYSIQUE VSEPR POUR LES MOLÉCULES
+      // =========================================================================
+      function drawCovalentBond(x1, y1, x2, y2, order = 1) {
+        const dx = x2 - x1;
+        const dy = y2 - y1;
+        const len = Math.hypot(dx, dy);
+        if (len < 1) return;
+        const nx = -dy / len;
+        const ny = dx / len;
+
+        ctx.strokeStyle = '#cbd5e1';
+        ctx.lineWidth = order === 1 ? 2.6 : 2.0;
+
+        const offsets = order === 1 ? [0] : (order === 2 ? [-3.2, 3.2] : [-4.8, 0, 4.8]);
+        offsets.forEach(off => {
+          ctx.beginPath();
+          ctx.moveTo(x1 + nx * off, y1 + ny * off);
+          ctx.lineTo(x2 + nx * off, y2 + ny * off);
+          ctx.stroke();
+        });
+      }
+
+      function stepMoleculePhysics(dt) {
+        const m = state.molecules;
+        if (!m.springPhysics || m.atoms.length < 2) return;
+        const step = Math.min(0.03, dt);
+
+        // Répulsion douce entre atomes proches (VSEPR)
+        for (let i = 0; i < m.atoms.length; i++) {
+          for (let j = i + 1; j < m.atoms.length; j++) {
+            const a = m.atoms[i], b = m.atoms[j];
+            const dx = b.x - a.x;
+            const dy = b.y - a.y;
+            const dz = (b.z || 0) - (a.z || 0);
+            const dist = Math.max(12, Math.hypot(dx, dy, dz));
+            if (dist < 115) {
+              const force = (115 - dist) * 1.4;
+              const fx = (dx / dist) * force * step;
+              const fy = (dy / dist) * force * step;
+              const fz = (dz / dist) * force * step;
+              if (m.draggingAtomId !== a.id) { a.x -= fx; a.y -= fy; a.z = (a.z || 0) - fz; }
+              if (m.draggingAtomId !== b.id) { b.x += fx; b.y += fy; b.z = (b.z || 0) + fz; }
+            }
+          }
+        }
+
+        // Ressorts sur les liaisons covalentes
+        m.bonds.forEach(bond => {
+          const a = m.atoms.find(at => at.id === bond.a);
+          const b = m.atoms.find(at => at.id === bond.b);
+          if (!a || !b) return;
+          const targetLen = bond.order === 3 ? 62 : (bond.order === 2 ? 68 : 76);
+          const dx = b.x - a.x;
+          const dy = b.y - a.y;
+          const dz = (b.z || 0) - (a.z || 0);
+          const dist = Math.max(1, Math.hypot(dx, dy, dz));
+          const diff = (dist - targetLen) * 3.2 * step;
+          const fx = (dx / dist) * diff;
+          const fy = (dy / dist) * diff;
+          const fz = (dz / dist) * diff;
+          if (m.draggingAtomId !== a.id) { a.x += fx; a.y += fy; a.z = (a.z || 0) + fz; }
+          if (m.draggingAtomId !== b.id) { b.x -= fx; b.y -= fy; b.z = (b.z || 0) - fz; }
+        });
+      }
+
+      function renderEarthMoleculeCard(areaTop, areaH) {
+        const mol = getEarthMoleculeForElement(state.atom.Z);
+        const is3D = state.viewMode === '3d';
+        const cardW = Math.min(390, Math.max(290, width * 0.37));
+        const cardH = Math.max(190, areaH - 12);
+        const cardX = width - cardW - 12;
+        const cardY = areaTop + (areaH - cardH) * 0.5;
+        const molScale = Math.min(1.55, Math.max(1.15, Math.min(cardW / 245, (cardH - 72) / 115)));
+        // Fond dégradé élégant et bordure lumineuse
+        const bgGrad = ctx.createLinearGradient(cardX, cardY, cardX, cardY + cardH);
+        bgGrad.addColorStop(0, 'rgba(24, 34, 52, 0.94)');
+        bgGrad.addColorStop(1, 'rgba(11, 17, 32, 0.96)');
+        ctx.fillStyle = bgGrad;
+        ctx.strokeStyle = is3D ? 'rgba(56, 189, 248, 0.55)' : 'rgba(56, 189, 248, 0.32)';
+        ctx.lineWidth = 1.4;
+        ctx.beginPath();
+        ctx.roundRect(cardX, cardY, cardW, cardH, 12);
+        ctx.fill();
+        ctx.stroke();
+
+        // En-tête + badge 2D/3D
+        ctx.fillStyle = '#38bdf8';
+        ctx.font = 'bold 10px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('MOLÉCULE COURANTE SUR TERRE', cardX + 13, cardY + 20);
+
+        ctx.fillStyle = is3D ? 'rgba(56, 189, 248, 0.18)' : 'rgba(148, 163, 184, 0.14)';
+        ctx.beginPath();
+        ctx.roundRect(cardX + cardW - 42, cardY + 9, 30, 15, 4);
+        ctx.fill();
+        ctx.fillStyle = is3D ? '#38bdf8' : '#94a3b8';
+        ctx.font = 'bold 9px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText(is3D ? '3D' : '2D', cardX + cardW - 27, cardY + 19.5);
+
+        // Nom, formule, géométrie et état naturel
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 13.5px sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText(`${mol.name} (${mol.formula})`, cardX + 13, cardY + 38);
+
+        ctx.fillStyle = '#cbd5e1';
+        ctx.font = '11px sans-serif';
+        ctx.fillText(`Géométrie : ${mol.shape}`, cardX + 13, cardY + 54);
+
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = '10.5px sans-serif';
+        ctx.fillText(mol.state, cardX + 13, cardY + 69);
+
+        // Zone de rendu moléculaire (2D ou 3D avec rotation synchronisée)
+        const mcx = cardX + cardW * 0.5;
+        const mcy = cardY + 72 + (cardH - 72) * 0.5;
+
+        if (is3D) {
+          const projected = mol.atoms.map((a, idx) => {
+            const p = project3DPoint(a.x * molScale, a.y * molScale, (a.z || 0) * molScale, mcx, mcy, 380);
+            return { idx, atom: a, ...p };
+          });
+
+          const queue = [];
+          mol.bonds.forEach(([i, j, order]) => {
+            const pa = projected[i], pb = projected[j];
+            if (pa && pb) {
+              queue.push({ type: 'bond', depth: (pa.depth + pb.depth) / 2, pa, pb, order });
+            }
+          });
+          projected.forEach(pa => queue.push({ type: 'atom', depth: pa.depth, pa }));
+          queue.sort((u, v) => v.depth - u.depth);
+
+          queue.forEach(item => {
+            if (item.type === 'bond') {
+              drawCovalentBond(item.pa.sx, item.pa.sy, item.pb.sx, item.pb.sy, item.order);
+            } else {
+              const { atom, sx, sy, scale } = item.pa;
+              const rule = ATOM_RULES[atom.s] || { r: 19, color: '#38bdf8', text: '#090d16' };
+              const r = Math.min(24, rule.r * 0.85 * molScale * scale);
+              drawShadedSphere(sx, sy, r, rule.color);
+
+              ctx.fillStyle = rule.text;
+              ctx.font = `bold ${Math.max(11, Math.round(13 * molScale * scale))}px sans-serif`;
+              ctx.textAlign = 'center';
+              ctx.textBaseline = 'middle';
+              ctx.fillText(atom.s, sx, sy);
+              ctx.textBaseline = 'alphabetic';
+            }
+          });
+        } else {
+          mol.bonds.forEach(([i, j, order]) => {
+            const a = mol.atoms[i], b = mol.atoms[j];
+            if (a && b) drawCovalentBond(mcx + a.x * molScale, mcy + a.y * molScale, mcx + b.x * molScale, mcy + b.y * molScale, order);
+          });
+
+          mol.atoms.forEach(a => {
+            const rule = ATOM_RULES[a.s] || { r: 19, color: '#38bdf8', text: '#090d16' };
+            const r = Math.min(23, rule.r * 0.82 * molScale);
+            ctx.fillStyle = rule.color;
+            ctx.beginPath();
+            ctx.arc(mcx + a.x * molScale, mcy + a.y * molScale, r, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = '#090d16';
+            ctx.lineWidth = 1.6;
+            ctx.stroke();
+
+            ctx.fillStyle = rule.text;
+            ctx.font = `bold ${Math.round(13 * molScale)}px sans-serif`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(a.s, mcx + a.x * molScale, mcy + a.y * molScale);
+            ctx.textBaseline = 'alphabetic';
+          });
+        }
+      }
+
+      function renderMolecules3D(dt) {
+        stepMoleculePhysics(dt);
+        if (state.camera3D.autoSpin && !state.camera3D.isOrbiting) {
+          state.camera3D.yaw += dt * 0.45;
+        }
+        const m = state.molecules;
+        const cx = width * 0.50;
+        const cy = height * 0.50;
+
+        if (m.reactionFlash > 0) {
+          m.reactionFlash = Math.max(0, m.reactionFlash - dt * 1.4);
+          ctx.fillStyle = `rgba(16, 185, 129, ${m.reactionFlash * 0.22})`;
+          ctx.fillRect(0, 0, width, height);
+        }
+
+        if (m.atoms.length === 0) {
+          ctx.fillStyle = '#94a3b8';
+          ctx.font = '14px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('Ajoutez des atomes ou choisissez une molécule pour observer la géométrie 3D', cx, cy);
+          return;
+        }
+
+        let bx = 0, by = 0, bz = 0;
+        m.atoms.forEach(a => { bx += a.x; by += a.y; bz += (a.z || 0); });
+        bx /= m.atoms.length; by /= m.atoms.length; bz /= m.atoms.length;
+
+        const projectedAtoms = new Map();
+        m.atoms.forEach(a => {
+          const p = project3DPoint(a.x - bx, a.y - by, (a.z || 0) - bz, cx, cy, 650);
+          projectedAtoms.set(a.id, { atom: a, ...p });
+        });
+
+        const renderQueue = [];
+        m.bonds.forEach(bond => {
+          const pa = projectedAtoms.get(bond.a);
+          const pb = projectedAtoms.get(bond.b);
+          if (pa && pb) {
+            renderQueue.push({ type: 'bond', depth: (pa.depth + pb.depth) / 2, pa, pb, order: bond.order });
+          }
+        });
+        projectedAtoms.forEach(pa => renderQueue.push({ type: 'atom', depth: pa.depth, pa }));
+        renderQueue.sort((u, v) => v.depth - u.depth);
+
+        renderQueue.forEach(item => {
+          if (item.type === 'bond') {
+            drawCovalentBond(item.pa.sx, item.pa.sy, item.pb.sx, item.pb.sy, item.order);
+          } else {
+            const { atom, sx, sy, scale } = item.pa;
+            const rule = ATOM_RULES[atom.sym];
+            const rScaled = rule.r * scale;
+            const usedBonds = getAtomBondOrderSum(atom.id);
+            const freeValence = rule.valence - usedBonds;
+
+            drawShadedSphere(sx, sy, rScaled, rule.color);
+
+            ctx.strokeStyle = freeValence === 0 ? '#10b981' : (freeValence > 0 ? '#f59e0b' : '#ef4444');
+            ctx.lineWidth = 2 * scale;
+            ctx.beginPath();
+            ctx.arc(sx, sy, rScaled, 0, Math.PI * 2);
+            ctx.stroke();
+
+            ctx.fillStyle = rule.text;
+            ctx.font = `bold ${Math.max(11, Math.round(15 * scale))}px sans-serif`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(atom.sym, sx, sy);
+            ctx.textBaseline = 'alphabetic';
+          }
+        });
+
+        ctx.fillStyle = 'rgba(148, 163, 184, 0.75)';
+        ctx.font = '11px monospace';
+        ctx.textAlign = 'right';
+        ctx.fillText('3D VSEPR • Cliquer-glisser pour orienter', width - 16, height - 14);
+      }
+
+      function renderMolecules(dt) {
+        if (state.viewMode === '3d') {
+          renderMolecules3D(dt);
+          return;
+        }
+        stepMoleculePhysics(dt);
+        const m = state.molecules;
+
+        if (m.reactionFlash > 0) {
+          m.reactionFlash = Math.max(0, m.reactionFlash - dt * 1.4);
+          ctx.fillStyle = `rgba(16, 185, 129, ${m.reactionFlash * 0.22})`;
+          ctx.fillRect(0, 0, width, height);
+        }
+
+        if (m.atoms.length === 0) {
+          ctx.fillStyle = '#94a3b8';
+          ctx.font = '14px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('Ajoutez des atomes ou des molécules prédéfinies à droite pour démarrer', width / 2, height / 2);
+          return;
+        }
+
+        m.bonds.forEach(bond => {
+          const a = m.atoms.find(at => at.id === bond.a);
+          const b = m.atoms.find(at => at.id === bond.b);
+          if (a && b) drawCovalentBond(a.x, a.y, b.x, b.y, bond.order);
+        });
+
+        m.atoms.forEach(atom => {
+          const rule = ATOM_RULES[atom.sym];
+          const usedBonds = getAtomBondOrderSum(atom.id);
+          const freeValence = rule.valence - usedBonds;
+          const isSelected = m.selectedAtomId === atom.id;
+
+          if (isSelected) {
+            ctx.strokeStyle = '#38bdf8';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(atom.x, atom.y, rule.r + 6, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+
+          ctx.fillStyle = rule.color;
+          ctx.beginPath();
+          ctx.arc(atom.x, atom.y, rule.r, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.strokeStyle = freeValence === 0 ? '#10b981' : (freeValence > 0 ? '#f59e0b' : '#ef4444');
+          ctx.lineWidth = 2.5;
+          ctx.stroke();
+
+          // Doublets non liants
+          for (let lp = 0; lp < rule.lonePairs; lp++) {
+            const ang = -Math.PI / 2 + (lp - (rule.lonePairs - 1) / 2) * 0.9;
+            const lx = atom.x + Math.cos(ang) * (rule.r + 7);
+            const ly = atom.y + Math.sin(ang) * (rule.r + 7);
+            ctx.fillStyle = '#f59e0b';
+            ctx.beginPath();
+            ctx.arc(lx - 2.2, ly, 2, 0, Math.PI * 2);
+            ctx.arc(lx + 2.2, ly, 2, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          ctx.fillStyle = rule.text;
+          ctx.font = 'bold 15px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(atom.sym, atom.x, atom.y);
+          ctx.textBaseline = 'alphabetic';
+        });
+      }
+
+      function renderSpectrum(dt) {
+        const cx = width * 0.42;
+        const cy = height * 0.5;
+        const baseR = 38;
+        const stepR = Math.min(width, height) * 0.072;
+
+        // Noyau H+
+        ctx.fillStyle = '#ef4444';
+        ctx.beginPath();
+        ctx.arc(cx, cy, 10, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let level = 1; level <= 5; level++) {
+          const r = baseR + (level - 1) * stepR;
+          const isCurrent = level === state.spectrum.n;
+          ctx.strokeStyle = isCurrent ? '#38bdf8' : 'rgba(148, 163, 184, 0.25)';
+          ctx.lineWidth = isCurrent ? 2.2 : 1.2;
+          ctx.beginPath();
+          ctx.arc(cx, cy, r, 0, Math.PI * 2);
+          ctx.stroke();
+
+          ctx.fillStyle = isCurrent ? '#38bdf8' : '#64748b';
+          ctx.font = '11px monospace';
+          ctx.textAlign = 'left';
+          ctx.fillText(`n=${level}`, cx + r + 5, cy);
+        }
+
+        const curR = baseR + (state.spectrum.n - 1) * stepR;
+        const ang = state.time * (1.8 / state.spectrum.n);
+        const ex = cx + Math.cos(ang) * curR;
+        const ey = cy + Math.sin(ang) * curR;
+        ctx.fillStyle = '#38bdf8';
+        ctx.beginPath();
+        ctx.arc(ex, ey, 6, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Photons animés
+        for (let i = state.spectrum.photons.length - 1; i >= 0; i--) {
+          const ph = state.spectrum.photons[i];
+          ph.progress += dt * 0.9;
+          if (ph.progress >= 1) {
+            state.spectrum.photons.splice(i, 1);
+            continue;
+          }
+          const dist = ph.type === 'emit' ? curR + ph.progress * 260 : curR + (1 - ph.progress) * 260;
+          ctx.strokeStyle = ph.lambda < 500 ? '#38bdf8' : (ph.lambda < 600 ? '#10b981' : '#ef4444');
+          ctx.lineWidth = 2.5;
+          ctx.beginPath();
+          for (let s = 0; s <= 30; s++) {
+            const px = cx + dist - 30 + s;
+            const py = cy - 20 + Math.sin(s * 0.6 + state.time * 15) * 6;
+            if (s === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+          }
+          ctx.stroke();
+        }
+      }
+
+      function renderHadrons() {
+        const cx = width * 0.5;
+        const cy = height * 0.5;
+        const bagR = Math.min(width, height) * 0.34;
+
+        ctx.fillStyle = 'rgba(56, 189, 248, 0.06)';
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(cx, cy, bagR, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+
+        const quarks = state.hadrons.type === 'proton'
+          ? [{ label: 'u (+⅔)', color: '#ef4444' }, { label: 'u (+⅔)', color: '#10b981' }, { label: 'd (-⅓)', color: '#38bdf8' }]
+          : [{ label: 'u (+⅔)', color: '#ef4444' }, { label: 'd (-⅓)', color: '#10b981' }, { label: 'd (-⅓)', color: '#38bdf8' }];
+
+        const pts = quarks.map((q, i) => {
+          const a = (i / 3) * Math.PI * 2 + state.time * 0.7;
+          return {
+            ...q,
+            x: cx + Math.cos(a) * (bagR * 0.48),
+            y: cy + Math.sin(a) * (bagR * 0.48)
+          };
+        });
+
+        // Gluons oscillants entre quarks
+        ctx.strokeStyle = '#f59e0b';
+        ctx.lineWidth = 2;
+        for (let i = 0; i < 3; i++) {
+          const p1 = pts[i], p2 = pts[(i + 1) % 3];
+          ctx.beginPath();
+          for (let s = 0; s <= 24; s++) {
+            const t = s / 24;
+            const mx = p1.x + (p2.x - p1.x) * t;
+            const my = p1.y + (p2.y - p1.y) * t + Math.sin(t * Math.PI * 4 + state.time * 10) * 5;
+            if (s === 0) ctx.moveTo(mx, my); else ctx.lineTo(mx, my);
+          }
+          ctx.stroke();
+        }
+
+        pts.forEach(p => {
+          drawShadedSphere(p.x, p.y, 26, p.color);
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 12px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(p.label, p.x, p.y);
+          ctx.textBaseline = 'alphabetic';
+        });
+      }
+
+      function renderStandardModel() {
+        const padX = 28, padY = 26;
+        const cols = 4, rows = 4;
+        const cellW = (width - padX * 2) / cols;
+        const cellH = (height - padY * 2) / rows;
+        state.standard.cards = [];
+
+        SM_PARTICLES.forEach((p, idx) => {
+          const col = idx % cols;
+          const row = Math.floor(idx / cols);
+          const x = padX + col * cellW + 6;
+          const y = padY + row * cellH + 6;
+          const w = cellW - 12;
+          const h = cellH - 12;
+          const isSel = state.standard.selectedIdx === idx;
+
+          ctx.fillStyle = isSel ? 'rgba(56, 189, 248, 0.18)' : 'rgba(24, 34, 52, 0.92)';
+          ctx.strokeStyle = isSel ? '#ffffff' : p.color;
+          ctx.lineWidth = isSel ? 2.5 : 1.5;
+          ctx.beginPath();
+          ctx.roundRect(x, y, w, h, 10);
+          ctx.fill();
+          ctx.stroke();
+
+          ctx.fillStyle = p.color;
+          ctx.font = 'bold 22px sans-serif';
+          ctx.textAlign = 'center';
+          ctx.fillText(p.sym, x + w / 2, y + h * 0.48);
+
+          ctx.fillStyle = '#f1f5f9';
+          ctx.font = 'bold 12px sans-serif';
+          ctx.fillText(p.name, x + w / 2, y + h * 0.72);
+
+          ctx.fillStyle = '#94a3b8';
+          ctx.font = '10px monospace';
+          ctx.fillText(`${p.charge} • spin ${p.spin}`, x + w / 2, y + h * 0.88);
+
+          state.standard.cards.push({ idx, x, y, w, h });
+        });
+      }
+
+      // =========================================================================
+      // INTERACTIONS SOURIS / TACTILE SUR LE CANVAS
+      // =========================================================================
+      function findMoleculeAtomAt(mx, my) {
+        for (let i = state.molecules.atoms.length - 1; i >= 0; i--) {
+          const a = state.molecules.atoms[i];
+          const r = ATOM_RULES[a.sym].r + 5;
+          if (Math.hypot(mx - a.x, my - a.y) <= r) return a;
+        }
+        return null;
+      }
+
+      canvas.addEventListener('pointerdown', e => {
+        const rect = canvas.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+
+        if (state.activeModule === 'atom') {
+          const hitCell = state.ptable.cellRects.find(c => mx >= c.x && mx <= c.x + c.w && my >= c.y && my <= c.y + c.h);
+          if (hitCell) {
+            selectPTableElement(hitCell.Z);
+            return;
+          }
+        }
+
+        if (state.viewMode === '3d' && (state.activeModule === 'atom' || state.activeModule === 'molecules')) {
+          state.camera3D.isOrbiting = true;
+          state.camera3D.autoSpin = false;
+          state.camera3D.lastX = mx;
+          state.camera3D.lastY = my;
+          canvas.setPointerCapture(e.pointerId);
+          return;
+        }
+
+        if (state.activeModule === 'molecules') {
+          const hit = findMoleculeAtomAt(mx, my);
+          if (hit) {
+            state.molecules.draggingAtomId = hit.id;
+            state.molecules.dragMoved = false;
+            canvas.setPointerCapture(e.pointerId);
+          }
+        }
+      });
+
+      canvas.addEventListener('pointermove', e => {
+        const rect = canvas.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+
+        if (state.camera3D.isOrbiting) {
+          const dx = mx - state.camera3D.lastX;
+          const dy = my - state.camera3D.lastY;
+          state.camera3D.yaw += dx * 0.012;
+          state.camera3D.pitch = Math.max(-1.35, Math.min(1.35, state.camera3D.pitch + dy * 0.012));
+          state.camera3D.lastX = mx;
+          state.camera3D.lastY = my;
+          canvas.style.cursor = 'grabbing';
+          return;
+        }
+
+        if (state.activeModule === 'atom') {
+          const hitCell = state.ptable.cellRects.find(c => mx >= c.x && mx <= c.x + c.w && my >= c.y && my <= c.y + c.h);
+          if (hitCell) {
+            canvas.style.cursor = 'pointer';
+            return;
+          }
+        }
+
+        if (state.viewMode === '3d' && (state.activeModule === 'atom' || state.activeModule === 'molecules')) {
+          canvas.style.cursor = 'grab';
+          return;
+        }
+
+        if (state.activeModule === 'molecules') {
+          const m = state.molecules;
+          if (m.draggingAtomId !== null) {
+            const atom = m.atoms.find(a => a.id === m.draggingAtomId);
+            if (atom) {
+              atom.x = Math.max(30, Math.min(width - 30, mx));
+              atom.y = Math.max(40, Math.min(height - 30, my));
+              m.dragMoved = true;
+            }
+          } else {
+            const hit = findMoleculeAtomAt(mx, my);
+            canvas.style.cursor = hit ? 'pointer' : 'default';
+          }
+        }
+      });
+
+      canvas.addEventListener('pointerup', () => {
+        if (state.camera3D.isOrbiting) {
+          state.camera3D.isOrbiting = false;
+          canvas.style.cursor = 'grab';
+          return;
+        }
+        if (state.activeModule !== 'molecules') return;
+        const m = state.molecules;
+        if (m.draggingAtomId !== null) {
+          if (!m.dragMoved) {
+            if (m.selectedAtomId === null) {
+              m.selectedAtomId = m.draggingAtomId;
+            } else if (m.selectedAtomId === m.draggingAtomId) {
+              m.selectedAtomId = null;
+            } else {
+              toggleOrCycleBond(m.selectedAtomId, m.draggingAtomId);
+              m.selectedAtomId = null;
+            }
+          }
+          m.draggingAtomId = null;
+        }
+      });
+
+      canvas.addEventListener('dblclick', e => {
+        if (state.activeModule !== 'molecules' || state.viewMode === '3d') return;
+        const rect = canvas.getBoundingClientRect();
+        const hit = findMoleculeAtomAt(e.clientX - rect.left, e.clientY - rect.top);
+        if (hit) removeMoleculeAtom(hit.id);
+      });
+
+      canvas.addEventListener('click', e => {
+        const rect = canvas.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        const my = e.clientY - rect.top;
+
+        if (state.activeModule === 'standard') {
+          const hit = state.standard.cards.find(c => mx >= c.x && mx <= c.x + c.w && my >= c.y && my <= c.y + c.h);
+          if (hit) selectSMParticle(hit.idx);
+        }
+      });
+
+      // =========================================================================
+      // BOUCLE D'ANIMATION PRINCIPALE
+      // =========================================================================
+      function mainLoop(now) {
+        const dt = Math.min(0.05, (now - state.lastTime) / 1000);
+        state.lastTime = now;
+        state.time += dt;
+
+        ctx.fillStyle = '#060911';
+        ctx.fillRect(0, 0, width, height);
+
+        if (state.activeModule === 'atom') renderAtom(dt);
+        else if (state.activeModule === 'molecules') renderMolecules(dt);
+        else if (state.activeModule === 'spectrum') renderSpectrum(dt);
+        else if (state.activeModule === 'hadrons') renderHadrons();
+        else if (state.activeModule === 'standard') renderStandardModel();
+
+        requestAnimationFrame(mainLoop);
+      }
+
+      // Initialisation complète
+      rebuildNucleusLayout();
+      addPresetMolecule('H2O', 0);
+      updateModuleUI();
+      requestAnimationFrame(mainLoop);
+    })();
+  </script>
+</body>
+</html>

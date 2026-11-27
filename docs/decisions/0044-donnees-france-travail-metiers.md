@@ -1,4 +1,4 @@
-# ADR 0043 — Espace Métiers : données de France Travail (ROME 4.0, marché du travail)
+# ADR 0044 — Espace Métiers : données de France Travail (ROME 4.0, marché du travail)
 
 - Date : 2026-11-24 — Statut : **proposé** (à valider par le propriétaire)
 - Contexte : le propriétaire demande d'évaluer le catalogue francetravail.io pour enrichir l'Espace Métiers
@@ -48,11 +48,11 @@
 
 ## Conséquences
 
-- Lot 7 livré : 79 métiers sur 79 rattachés au ROME 4.0 (version 62, 19 octobre 2026), dont 7 codes choisis par
-  l'agent pour des métiers sans code ONISEP et 13 codes précisés par `--preciser` ; 79 avec contextes de travail,
-  39 avec une transition, 48 avec des métiers proches. Le détail d'un métier affiche transitions, conditions de travail
-  et métiers proches (cliquables).
-- Lot 9 livré : enquête BMO 2026 (217 métiers BMO) ; 66 métiers sur 79 rattachés par un code FAP choisi par l'agent
+- Lot 7 livré : 935 métiers sur 1 131 rattachés au ROME 4.0 (version 62, 19 octobre 2026) après la fusion des vagues
+  ONISEP ; 196 restent sans code ROME (fiches ONISEP sans code). 7 codes choisis par l'agent pour des métiers sans
+  code ONISEP et 57 codes précisés par `--preciser` ; 935 avec contextes de travail, 402 avec une transition, 920 avec
+  des métiers proches. Le détail d'un métier affiche transitions, conditions de travail et métiers proches (cliquables).
+- Lot 9 livré : enquête BMO 2026 (217 métiers BMO) ; 66 métiers (ceux de la maquette V5 et de la vague pilote) rattachés par un code FAP choisi par l'agent ; les métiers des vagues ONISEP n'en ont pas encore
   (30 `fort`, 19 `moyen`, 17 `faible`), 13 sans rattachement (concours publics ou équivalent incertain). Le détail
   d'un métier affiche ses perspectives de recrutement.
 - Lot 8 (API Marché du travail) **préparé sans données** (2026-11-27) : `npm run import:marche`

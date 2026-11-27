@@ -23,7 +23,7 @@ const projection = {
   competences: { "microskill.maths.calculer-une-moyenne": "calculer-une-moyenne" },
   fiches: { stats: { competences: ["calculer-une-moyenne"] }, volumes: { competences: [] } }
 };
-const donnees = enrichirMetiers(source, projection, new Map([["stats", "Statistiques descriptives"]]));
+const donnees = enrichirMetiers(source, projection, new Map([["stats", "Statistiques descriptives"]]), new Map([["microskill.maths.calculer-une-moyenne", "Calculer une moyenne pondérée"]]));
 const carte = preparerCarte(donnees);
 
 test("métiers : validation des identifiants, catégories, disciplines et notions", () => {
@@ -64,7 +64,8 @@ test("métiers : indicateurs de couverture, au total et par matière", () => {
 });
 
 test("métiers : enrichissement par les titres du catalogue et les MicroSkills réelles", () => {
-  assert.deepEqual(donnees.notions["notion.maths.stats"], { slug: "stats", titre: "Statistiques descriptives", microskills: ["microskill.maths.calculer-une-moyenne"] });
+  assert.deepEqual(donnees.notions["notion.maths.stats"], { slug: "stats", titre: "Statistiques descriptives", microskills: [{ id: "microskill.maths.calculer-une-moyenne", libelle: "Calculer une moyenne pondérée" }] });
+  assert.equal(enrichirMetiers(source, projection).notions["notion.maths.stats"].microskills[0].libelle, "Calculer une moyenne", "sans libellé canonique : le slug lisible");
   assert.equal(donnees.notions["notion.maths.volumes"].titre, "Volumes", "sans titre du catalogue : libellé du slug");
   assert.equal(Object.keys(donnees.notions).length, 2, "une notion citée deux fois n'est enrichie qu'une fois");
 });
@@ -134,7 +135,7 @@ test("métiers (lot 5) : anneaux limités au filtre au-delà du seuil, dispositi
   assert.equal(p.discipline.size, 2, "toutes les disciplines restent placées");
 });
 
-test("métiers (ROME 4.0, ADR 0043) : contextes de travail groupés par type, identifiants inconnus ignorés", () => {
+test("métiers (ROME 4.0, ADR 0044) : contextes de travail groupés par type, identifiants inconnus ignorés", () => {
   const avecContextes = preparerCarte({
     ...donnees,
     contextesTravail: [{ id: "1", libelle: "En atelier", type: "Conditions" }, { id: "2", libelle: "Travail de nuit", type: "Horaires" }, { id: "3", libelle: "Bruit", type: "Conditions" }]

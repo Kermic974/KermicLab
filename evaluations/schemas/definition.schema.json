@@ -1,0 +1,235 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kermiclab.online/s7/definition.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "version",
+    "status",
+    "label",
+    "experience",
+    "submissionPolicy",
+    "criteria",
+    "provenance"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "maxLength": 160,
+      "pattern": "^evaluation\\.[a-z][a-z0-9-]*\\.[a-z0-9]+(?:-[a-z0-9]+)*(?![\\s\\S])"
+    },
+    "type": {
+      "const": "evaluation"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1000000000
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "review",
+        "validated",
+        "deprecated"
+      ]
+    },
+    "replacedBy": {
+      "$ref": "primitives.schema.json#/$defs/evaluation"
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "\\S"
+    },
+    "experience": {
+      "$ref": "primitives.schema.json#/$defs/experience"
+    },
+    "submissionPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allowPartial",
+        "maxSubmissions"
+      ],
+      "properties": {
+        "allowPartial": {
+          "type": "boolean"
+        },
+        "maxSubmissions": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 99
+        }
+      }
+    },
+    "criteria": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 100,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "unit",
+          "method",
+          "observationKinds",
+          "bindings"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*(?![\\s\\S])"
+          },
+          "unit": {
+            "$ref": "primitives.schema.json#/$defs/experience"
+          },
+          "method": {
+            "$ref": "primitives.schema.json#/$defs/method"
+          },
+          "observationKinds": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 4,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "answer",
+                "help",
+                "completion",
+                "abandon"
+              ]
+            }
+          },
+          "bindings": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 30,
+            "uniqueItems": true,
+            "items": {
+              "$ref": "primitives.schema.json#/$defs/binding"
+            }
+          },
+          "contextTargets": {
+            "type": "array",
+            "minItems": 0,
+            "maxItems": 30,
+            "uniqueItems": true,
+            "items": {
+              "$ref": "primitives.schema.json#/$defs/target"
+            }
+          },
+          "scoring": {
+            "$ref": "primitives.schema.json#/$defs/scoring"
+          },
+          "rubric": {
+            "$ref": "https://schemas.kermiclab.online/s6/primitives.schema.json#/$defs/source"
+          },
+          "feedback": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "source",
+              "required"
+            ],
+            "properties": {
+              "source": {
+                "$ref": "https://schemas.kermiclab.online/s6/primitives.schema.json#/$defs/source"
+              },
+              "required": {
+                "type": "boolean"
+              }
+            }
+          },
+          "remediation": {
+            "$ref": "primitives.schema.json#/$defs/experience"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "method": {
+                  "type": "object",
+                  "properties": {
+                    "mode": {
+                      "enum": [
+                        "human",
+                        "assisted"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "mode"
+                  ]
+                }
+              },
+              "required": [
+                "method"
+              ]
+            },
+            "then": {
+              "required": [
+                "rubric"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "provenance": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 30,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "https://schemas.kermiclab.online/s6/primitives.schema.json#/$defs/documentRef"
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "day",
+        "version"
+      ],
+      "properties": {
+        "source": {
+          "$ref": "https://schemas.kermiclab.online/s6/primitives.schema.json#/$defs/documentRef"
+        },
+        "day": {
+          "$ref": "primitives.schema.json#/$defs/day"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000000
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "replacedBy"
+        ]
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "deprecated"
+          }
+        }
+      }
+    }
+  ]
+}

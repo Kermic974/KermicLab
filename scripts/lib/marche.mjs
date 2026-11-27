@@ -1,4 +1,4 @@
-// Import de l'API « Marché du travail » de France Travail (chantier Métiers, ADR 0043, lot 8) : fonctions pures,
+// Import de l'API « Marché du travail » de France Travail (chantier Métiers, ADR 0044, lot 8) : fonctions pures,
 // testées par tests/unit/marche.test.mjs. Le script scripts/importer-marche.mjs lit et écrit les fichiers.
 //
 // PRÉPARÉ SANS DONNÉES RÉELLES (2026-11-27) : la documentation de francetravail.io n'était pas accessible. L'import lit
@@ -68,7 +68,7 @@ export function extraitCompact(lignes, { date, source }) {
     version: VERSION_EXTRAIT,
     date,
     source,
-    licence: "Conditions d'utilisation de francetravail.io (à confirmer, ADR 0043)",
+    licence: "Conditions d'utilisation de francetravail.io (à confirmer, ADR 0044)",
     attribution: "France Travail, API « Marché du travail », francetravail.io",
     portee: "France entière",
     tensions: [...parRome.values()].sort((a, b) => a.rome.localeCompare(b.rome))

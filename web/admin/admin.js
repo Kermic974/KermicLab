@@ -726,6 +726,7 @@ async function ecranHarness() {
   }, "Paramètres enregistrés : ils s'appliquent dans les 15 secondes.");
 
   const modules = etat.configuration.modules.map((m) => bloc(libellesParametres[`configModule_${m.id}`] ?? m.id,
+    m.id === "petits-pas" ? h("p", { class: "admin-bandeau", text: "Haiku : profil par défaut. Opus : choix explicite. Configuration préparatoire uniquement : aucun appel distant ni quota appliqué à ce stade. Vérifier l’alias Opus avant activation." }) : null,
     m.skills.length ? h("div", { class: "admin-pastilles" }, m.skills.map((s) => pastille(`${s.id} · ${s.prompt} · v${s.version}`, s.actif ? "ok" : ""))) : null,
     m.parametres.map((p) => h("div", { class: "admin-parametre" },
       h("div", {}, h("strong", { text: libellesParametres[`configParam_${p.cle}`] ?? p.cle }), h("p", { class: "doux" }, h("code", { text: p.cle })),
@@ -738,7 +739,7 @@ async function ecranHarness() {
     h("p", { class: "admin-bandeau", text: "Les valeurs réglées ici remplacent celles du déploiement, dans les bornes du registre. Le socle de sécurité de chaque harness reste dans le code : il ne se modifie pas ici." }),
     ...modules,
     bloc("Souscriptions",
-      h("p", { class: "doux", text: "Les paramètres ci-dessus sont les limites de la souscription « Gratuit ». Les autres offres (rôle, fonctionnalités, limites, coût et prix) se composent dans l'écran « Souscriptions »." }),
+      h("p", { class: "doux", text: "Les limites de consommation du tuteur, des défis et des cahiers ci-dessus concernent la souscription « Gratuit » ; les profils À petits pas sont préparatoires. Les autres offres (rôle, fonctionnalités, limites, coût et prix) se composent dans l'écran « Souscriptions »." }),
       h("div", { class: "admin-ligne" }, h("button", { type: "button", class: "secondaire", onclick: () => afficher("souscriptions") }, "Ouvrir les souscriptions")))
   ];
 }

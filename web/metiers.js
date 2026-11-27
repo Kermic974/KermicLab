@@ -11,11 +11,11 @@ export const STATUTS_CORRESPONDANCE = Object.freeze(["v5", "proposition", "valid
 // Niveau d'accès minimum au métier, aligné sur les niveaux de l'ONISEP (Idéo-Fiches métiers) : « sans-diplome »
 // regroupe « sans diplôme », « 3e » et le brevet ; « bac+9 » vaut « bac + 9 et plus ».
 export const NIVEAUX_ACCES = Object.freeze(["sans-diplome", "cap", "bac", "bac+1", "bac+2", "bac+3", "bac+4", "bac+5", "bac+6", "bac+7", "bac+8", "bac+9"]);
-// Transitions repérées par le ROME 4.0 de France Travail (ADR 0043) : emploi vert ou stratégique pour la transition
+// Transitions repérées par le ROME 4.0 de France Travail (ADR 0044) : emploi vert ou stratégique pour la transition
 // écologique, métier transformé par le numérique.
 export const TRANSITIONS = Object.freeze(["ecologique", "numerique"]);
 export const MAX_PROCHES = 5;
-// Paliers de recrutement de l'enquête BMO (ADR 0043, lot 9) : tiers du nombre de projets parmi tous les métiers BMO.
+// Paliers de recrutement de l'enquête BMO (ADR 0044, lot 9) : tiers du nombre de projets parmi tous les métiers BMO.
 export const PALIERS_RECRUTEMENT = Object.freeze(["faible", "moyen", "fort"]);
 const MOTIF_FAP = /^[A-Z][0-9A-Z][A-Z]\d{2}$/;
 const MOTIF_ONISEP = /^MET\.\d+$/;
@@ -122,9 +122,10 @@ export function couvertureMetiers(donnees, notionsDuReferentiel) {
 
 /**
  * Données publiées : le fichier source enrichi, pour chaque notion citée, du titre du catalogue et des MicroSkills
- * réelles du référentiel (`projection.fiches[slug].competences`, identifiants canoniques de `projection.competences`).
+ * réelles du référentiel (`projection.fiches[slug].competences`, identifiants canoniques de `projection.competences`),
+ * chacune avec son libellé (`libelles` : identifiant → `label` des objets canoniques ; à défaut, le slug lisible).
  */
-export function enrichirMetiers(donnees, projection, titres = new Map()) {
+export function enrichirMetiers(donnees, projection, titres = new Map(), libelles = new Map()) {
   const slugDe = new Map(Object.entries(projection.notions ?? {}).map(([slug, id]) => [id, slug]));
   const idCompetence = new Map(Object.entries(projection.competences ?? {}).map(([id, slug]) => [slug, id]));
   const notions = {};
@@ -134,7 +135,10 @@ export function enrichirMetiers(donnees, projection, titres = new Map()) {
     notions[id] = {
       slug,
       titre: titres.get(slug) ?? libelleSlug(slug),
-      microskills: (projection.fiches?.[slug]?.competences ?? []).map((c) => idCompetence.get(c) ?? c)
+      microskills: (projection.fiches?.[slug]?.competences ?? []).map((c) => {
+        const id = idCompetence.get(c) ?? c;
+        return { id, libelle: libelles.get(id) ?? libelleSlug(id) };
+      })
     };
   }
   return { ...donnees, notions };
@@ -163,7 +167,7 @@ export function preparerCarte(donnees) {
 }
 
 /**
- * Contextes de travail d'un métier (ROME 4.0, ADR 0043) groupés par type, dans l'ordre de première apparition :
+ * Contextes de travail d'un métier (ROME 4.0, ADR 0044) groupés par type, dans l'ordre de première apparition :
  * `[{ type, libelles }]`. Les identifiants absents du dictionnaire sont ignorés.
  */
 export function contextesParType(carte, metier) {

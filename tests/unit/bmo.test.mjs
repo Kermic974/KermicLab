@@ -5,7 +5,7 @@ import { deflateRawSync } from "node:zlib";
 import { agregerBmo, appliquerBmo, extraitCompact, lireExtrait, lireFeuille, lireZip, paliers } from "../../scripts/lib/bmo.mjs";
 import { verifierMetiers } from "../../web/metiers.js";
 
-// Enquête BMO de France Travail (chantier Métiers, ADR 0043, lot 9) : lecture xlsx minimale, agrégation France,
+// Enquête BMO de France Travail (chantier Métiers, ADR 0044, lot 9) : lecture xlsx minimale, agrégation France,
 // paliers, enrichissement du référentiel. Le classeur de test a la structure du fichier « Base open data BMO ».
 
 /** Archive zip minimale : `fichiers` { nom: texte }, chaque entrée compressée (deflate) ou stockée. */

@@ -1,4 +1,4 @@
-// Import de l'enquête « Besoins en main-d'œuvre » (BMO) de France Travail (chantier Métiers, ADR 0043, lot 9) :
+// Import de l'enquête « Besoins en main-d'œuvre » (BMO) de France Travail (chantier Métiers, ADR 0044, lot 9) :
 // fonctions pures, testées par tests/unit/bmo.test.mjs. Le script scripts/importer-bmo.mjs lit et écrit les fichiers.
 //
 // Source : « Base open data BMO » (xlsx annuel, data.gouv.fr), Licence Ouverte. Une ligne par métier BMO (code FAP 2021)

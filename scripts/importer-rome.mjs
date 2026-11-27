@@ -1,4 +1,4 @@
-// Import du ROME 4.0 de France Travail (chantier Métiers, ADR 0043) à partir d'un instantané local, sans réseau.
+// Import du ROME 4.0 de France Travail (chantier Métiers, ADR 0044) à partir d'un instantané local, sans réseau.
 //
 //   Préparer l'extrait versionné à partir du dossier dézippé de « Toutes les données du ROME » (JSON, data.gouv.fr) :
 //   npm run import:rome -- <dossier> --extrait referentiel/sources/france-travail/rome-4.0-vNN.json --date AAAA-MM-JJ

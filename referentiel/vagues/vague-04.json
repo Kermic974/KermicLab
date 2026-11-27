@@ -1,0 +1,2102 @@
+{
+  "version": 1,
+  "vague": 4,
+  "domaines": [
+    "environnement, énergies, propreté",
+    "agriculture, animaux"
+  ],
+  "source": "Ideo-Fiches metiers.xml + 5fa5949243f97.csv (2026-11-24), licence ODbL 1.0",
+  "metiers": [
+    {
+      "onisep": "MET.19",
+      "id": "palefrenier",
+      "nom": "Palefrenier, palefrenière",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "nutrition-alimentation",
+        "education-physique"
+      ],
+      "gestes": [
+        "Nourrir et abreuver les chevaux",
+        "Nettoyer les box",
+        "Surveiller la santé des animaux"
+      ],
+      "contexte": "S’occupe chaque jour des chevaux dans une écurie."
+    },
+    {
+      "onisep": "MET.60",
+      "id": "econome-de-flux",
+      "nom": "Économe de flux",
+      "categorie": "nature",
+      "disciplines": [
+        "energetique",
+        "environnement",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Mesurer les consommations d’eau et d’énergie",
+        "Proposer des économies",
+        "Suivre les résultats"
+      ],
+      "contexte": "Aide un bâtiment ou une collectivité à consommer moins d’eau et d’énergie."
+    },
+    {
+      "onisep": "MET.61",
+      "id": "ingenieur-en-genie-climatique",
+      "nom": "Ingénieur, ingénieure en génie climatique",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "physique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Calculer les besoins en chaleur et en froid",
+        "Concevoir les installations",
+        "Suivre les chantiers"
+      ],
+      "contexte": "Conçoit le chauffage, la ventilation et la climatisation des bâtiments."
+    },
+    {
+      "onisep": "MET.70",
+      "id": "apiculteur",
+      "nom": "Apiculteur, apicultrice",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "agronomie-vegetale",
+        "environnement"
+      ],
+      "gestes": [
+        "Installer et visiter les ruches",
+        "Surveiller la santé des abeilles",
+        "Récolter le miel"
+      ],
+      "contexte": "Élève des abeilles et récolte leur miel."
+    },
+    {
+      "onisep": "MET.71",
+      "id": "garde",
+      "nom": "Garde (chasse, pêche, littoral, rivière, parcs nationaux)",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "biologie",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Surveiller un espace naturel",
+        "Informer le public",
+        "Constater les infractions"
+      ],
+      "contexte": "Protège la nature et la faune d’un parc, d’une rivière ou du littoral."
+    },
+    {
+      "onisep": "MET.76",
+      "id": "chef-de-cultures-legumieres",
+      "nom": "Chef, cheffe de cultures légumières",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "biologie",
+        "gestion"
+      ],
+      "gestes": [
+        "Planifier les semis",
+        "Suivre la croissance des légumes",
+        "Organiser la récolte"
+      ],
+      "contexte": "Dirige la production de légumes dans une exploitation."
+    },
+    {
+      "onisep": "MET.83",
+      "id": "technicien-de-maintenance-en-genie-climatique",
+      "nom": "Technicien, technicienne de maintenance en génie climatique",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "electricite-electronique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Diagnostiquer une panne",
+        "Entretenir chaudières et climatiseurs",
+        "Régler les installations"
+      ],
+      "contexte": "Entretient et répare les équipements de chauffage et de climatisation."
+    },
+    {
+      "onisep": "MET.90",
+      "id": "aquaculteur",
+      "nom": "Aquaculteur, aquacultrice",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "environnement",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Nourrir poissons ou coquillages",
+        "Surveiller la qualité de l’eau",
+        "Récolter et trier"
+      ],
+      "contexte": "Élève des poissons, des huîtres ou des moules."
+    },
+    {
+      "onisep": "MET.100",
+      "id": "developpeur-rural-humanitaire",
+      "nom": "Développeur rural humanitaire, développeuse rurale humanitaire",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "amenagement-du-territoire",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Étudier les besoins d’un village",
+        "Monter des projets agricoles",
+        "Former les habitants"
+      ],
+      "contexte": "Aide des communautés à développer leur agriculture et leurs ressources."
+    },
+    {
+      "onisep": "MET.103",
+      "id": "ingenieur-en-experimentation-et-production-vegetales",
+      "nom": "Ingénieur, ingénieure en expérimentation et production végétales",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "biologie-cellulaire-genetique",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Concevoir des essais en champ",
+        "Analyser les résultats",
+        "Proposer de nouvelles variétés ou pratiques"
+      ],
+      "contexte": "Teste de nouvelles façons de cultiver les plantes."
+    },
+    {
+      "onisep": "MET.107",
+      "id": "charge-d-affaires-en-genie-climatique",
+      "nom": "Chargé, chargée d'affaires en génie climatique",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Étudier la demande du client",
+        "Chiffrer le projet",
+        "Suivre le chantier"
+      ],
+      "contexte": "Vend et pilote des projets de chauffage et de climatisation."
+    },
+    {
+      "onisep": "MET.116",
+      "id": "conducteur-de-travaux-en-entreprise-de-travaux-agricoles",
+      "nom": "Conducteur, conductrice de travaux en entreprise de travaux agricoles",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "mecanique",
+        "gestion"
+      ],
+      "gestes": [
+        "Planifier les chantiers agricoles",
+        "Organiser les équipes et les machines",
+        "Contrôler le travail"
+      ],
+      "contexte": "Organise les travaux réalisés avec des machines chez les agriculteurs."
+    },
+    {
+      "onisep": "MET.155",
+      "id": "cavalier-d-entrainement",
+      "nom": "Cavalier, cavalière d'entraînement (lad-jockey, lad-driver)",
+      "categorie": "nature",
+      "disciplines": [
+        "education-physique",
+        "biologie",
+        "physique"
+      ],
+      "gestes": [
+        "Monter les chevaux à l’entraînement",
+        "Observer leur forme",
+        "Préparer les courses"
+      ],
+      "contexte": "Entraîne les chevaux de course chaque matin."
+    },
+    {
+      "onisep": "MET.156",
+      "id": "ingenieur-forestier",
+      "nom": "Ingénieur forestier, ingénieure forestière",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "environnement",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Inventorier la forêt",
+        "Planifier les coupes et plantations",
+        "Protéger la biodiversité"
+      ],
+      "contexte": "Gère les forêts pour produire du bois tout en les préservant."
+    },
+    {
+      "onisep": "MET.157",
+      "id": "horticulteur",
+      "nom": "Horticulteur, horticultrice",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "biologie",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Semer et bouturer",
+        "Soigner les plantes en serre",
+        "Préparer les commandes"
+      ],
+      "contexte": "Cultive des fleurs et des plantes d’ornement."
+    },
+    {
+      "onisep": "MET.158",
+      "id": "paysagiste",
+      "nom": "Paysagiste",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "geometrie",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Étudier le site",
+        "Dessiner le projet",
+        "Suivre l’aménagement"
+      ],
+      "contexte": "Conçoit des jardins, des parcs et des espaces verts."
+    },
+    {
+      "onisep": "MET.169",
+      "id": "technicien-d-exploitation-du-reseau-gaz",
+      "nom": "Technicien, technicienne d'exploitation du réseau gaz",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "mecanique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Surveiller le réseau",
+        "Intervenir sur les installations",
+        "Garantir la sécurité"
+      ],
+      "contexte": "Veille au bon fonctionnement du réseau qui transporte le gaz."
+    },
+    {
+      "onisep": "MET.184",
+      "id": "ingenieur-petrolier",
+      "nom": "Ingénieur pétrolier, ingénieure pétrolière",
+      "categorie": "btp",
+      "disciplines": [
+        "geologie",
+        "energetique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Étudier les gisements",
+        "Concevoir l’extraction",
+        "Suivre la production"
+      ],
+      "contexte": "Organise l’extraction du pétrole et du gaz du sous-sol."
+    },
+    {
+      "onisep": "MET.197",
+      "id": "technicien-paysagiste",
+      "nom": "Technicien, technicienne paysagiste",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "geometrie",
+        "gestion"
+      ],
+      "gestes": [
+        "Préparer les plans d’aménagement",
+        "Organiser les chantiers",
+        "Choisir les végétaux"
+      ],
+      "contexte": "Prépare et suit la création de jardins et d’espaces verts."
+    },
+    {
+      "onisep": "MET.200",
+      "id": "maraicher",
+      "nom": "Maraîcher, maraîchère",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "biologie",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Préparer la terre",
+        "Planter et entretenir",
+        "Vendre la récolte"
+      ],
+      "contexte": "Cultive des légumes pour les vendre."
+    },
+    {
+      "onisep": "MET.223",
+      "id": "climatologue",
+      "nom": "Climatologue",
+      "categorie": "disc",
+      "disciplines": [
+        "sciences-de-la-terre",
+        "analyse-statistique",
+        "physique"
+      ],
+      "gestes": [
+        "Analyser des données climatiques",
+        "Faire tourner des modèles",
+        "Publier les résultats"
+      ],
+      "contexte": "Étudie le climat et son évolution."
+    },
+    {
+      "onisep": "MET.224",
+      "id": "ingenieur-forage",
+      "nom": "Ingénieur, ingénieure forage",
+      "categorie": "btp",
+      "disciplines": [
+        "geologie",
+        "mecanique",
+        "energetique"
+      ],
+      "gestes": [
+        "Préparer le programme de forage",
+        "Superviser les opérations",
+        "Garantir la sécurité"
+      ],
+      "contexte": "Dirige le creusement de puits pour l’eau, l’énergie ou les mines."
+    },
+    {
+      "onisep": "MET.225",
+      "id": "ingenieur-analyste-de-l-air",
+      "nom": "Ingénieur, ingénieure analyste de l'air",
+      "categorie": "nature",
+      "disciplines": [
+        "chimie-analytique",
+        "environnement",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Mesurer la pollution de l’air",
+        "Analyser les échantillons",
+        "Proposer des solutions"
+      ],
+      "contexte": "Surveille la qualité de l’air et cherche à la protéger."
+    },
+    {
+      "onisep": "MET.227",
+      "id": "animateur-de-bassin-versant",
+      "nom": "Animateur, animatrice de bassin versant",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "amenagement-du-territoire",
+        "communication"
+      ],
+      "gestes": [
+        "Rencontrer les acteurs de l’eau",
+        "Monter des actions de protection",
+        "Suivre la qualité des rivières"
+      ],
+      "contexte": "Coordonne la protection de l’eau sur un territoire."
+    },
+    {
+      "onisep": "MET.233",
+      "id": "pepinieriste",
+      "nom": "Pépiniériste",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "biologie",
+        "biologie-cellulaire-genetique"
+      ],
+      "gestes": [
+        "Semer et greffer",
+        "Élever les jeunes arbres",
+        "Conseiller les clients"
+      ],
+      "contexte": "Produit et vend de jeunes arbres et arbustes."
+    },
+    {
+      "onisep": "MET.234",
+      "id": "conseiller-d-elevage",
+      "nom": "Conseiller, conseillère d'élevage",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "nutrition-alimentation",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Visiter les élevages",
+        "Analyser les résultats",
+        "Conseiller sur l’alimentation des animaux"
+      ],
+      "contexte": "Aide les éleveurs à améliorer leur élevage."
+    },
+    {
+      "onisep": "MET.250",
+      "id": "employe-d-elevage",
+      "nom": "Employé, employée d'élevage",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "nutrition-alimentation",
+        "agronomie-vegetale"
+      ],
+      "gestes": [
+        "Nourrir les animaux",
+        "Nettoyer les bâtiments",
+        "Surveiller la santé du troupeau"
+      ],
+      "contexte": "S’occupe des animaux dans une exploitation d’élevage."
+    },
+    {
+      "onisep": "MET.264",
+      "id": "monteur-en-installations-thermiques-et-climatiques",
+      "nom": "Monteur, monteuse en installations thermiques et climatiques",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "mecanique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Lire les plans",
+        "Poser tuyaux et appareils",
+        "Mettre en service"
+      ],
+      "contexte": "Installe le chauffage, la ventilation et la climatisation."
+    },
+    {
+      "onisep": "MET.265",
+      "id": "conseiller-agricole",
+      "nom": "Conseiller, conseillère agricole",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "economie-et-societe",
+        "communication"
+      ],
+      "gestes": [
+        "Analyser une exploitation",
+        "Proposer des améliorations",
+        "Animer des réunions d’agriculteurs"
+      ],
+      "contexte": "Conseille les agriculteurs sur leurs cultures et leur gestion."
+    },
+    {
+      "onisep": "MET.290",
+      "id": "technicien-forestier",
+      "nom": "Technicien forestier, technicienne forestière",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "environnement",
+        "geometrie"
+      ],
+      "gestes": [
+        "Repérer et marquer les arbres",
+        "Organiser les coupes",
+        "Surveiller la santé de la forêt"
+      ],
+      "contexte": "Gère au quotidien une partie de forêt."
+    },
+    {
+      "onisep": "MET.294",
+      "id": "technicien-en-traitement-des-dechets",
+      "nom": "Technicien, technicienne en traitement des déchets",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "chimie-analytique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Contrôler les déchets entrants",
+        "Piloter les installations de tri",
+        "Respecter les normes"
+      ],
+      "contexte": "Fait fonctionner un centre de traitement des déchets."
+    },
+    {
+      "onisep": "MET.302",
+      "id": "chef-de-projet-eolien",
+      "nom": "Chef, cheffe de projet éolien",
+      "categorie": "nature",
+      "disciplines": [
+        "energetique",
+        "amenagement-du-territoire",
+        "gestion"
+      ],
+      "gestes": [
+        "Trouver un site",
+        "Mener les études et les autorisations",
+        "Suivre la construction"
+      ],
+      "contexte": "Développe des parcs d’éoliennes."
+    },
+    {
+      "onisep": "MET.303",
+      "id": "ingenieur-recherche-et-developpement-en-energies-renouvelables",
+      "nom": "Ingénieur, ingénieure recherche et développement en énergies renouvelables",
+      "categorie": "disc",
+      "disciplines": [
+        "energetique",
+        "physique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Concevoir des prototypes",
+        "Mener des essais",
+        "Améliorer le rendement"
+      ],
+      "contexte": "Invente et améliore les technologies d’énergie renouvelable."
+    },
+    {
+      "onisep": "MET.304",
+      "id": "ingenieur-gaz",
+      "nom": "Ingénieur, ingénieure gaz",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "chimie-analytique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Concevoir les installations",
+        "Optimiser le réseau",
+        "Veiller à la sécurité"
+      ],
+      "contexte": "Conçoit et améliore les installations qui transportent et utilisent le gaz."
+    },
+    {
+      "onisep": "MET.321",
+      "id": "technicien-d-exploitation-de-l-eau",
+      "nom": "Technicien, technicienne d'exploitation de l'eau (industrie papiers cartons)",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-analytique",
+        "environnement",
+        "mecanique"
+      ],
+      "gestes": [
+        "Surveiller le traitement de l’eau",
+        "Faire des analyses",
+        "Entretenir les équipements"
+      ],
+      "contexte": "Gère l’eau utilisée dans une usine, par exemple de papier."
+    },
+    {
+      "onisep": "MET.349",
+      "id": "ingenieur-hydroecologue",
+      "nom": "Ingénieur, ingénieure hydroécologue",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "biologie",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Étudier les milieux aquatiques",
+        "Évaluer l’impact des aménagements",
+        "Proposer des restaurations"
+      ],
+      "contexte": "Protège et restaure les rivières, les lacs et les zones humides."
+    },
+    {
+      "onisep": "MET.350",
+      "id": "chef-de-station-de-traitement-des-eaux",
+      "nom": "Chef, cheffe de station de traitement des eaux",
+      "categorie": "nature",
+      "disciplines": [
+        "chimie-analytique",
+        "environnement",
+        "gestion"
+      ],
+      "gestes": [
+        "Piloter la station",
+        "Contrôler la qualité de l’eau",
+        "Encadrer l’équipe"
+      ],
+      "contexte": "Dirige une usine qui rend l’eau potable ou qui nettoie les eaux usées."
+    },
+    {
+      "onisep": "MET.362",
+      "id": "responsable-d-elevage-agricole",
+      "nom": "Responsable d'élevage agricole",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "gestion",
+        "nutrition-alimentation"
+      ],
+      "gestes": [
+        "Organiser le travail de l’élevage",
+        "Suivre la santé et la reproduction",
+        "Gérer les coûts"
+      ],
+      "contexte": "Dirige un élevage d’animaux."
+    },
+    {
+      "onisep": "MET.367",
+      "id": "chef-de-projet-sites-et-sols-pollues",
+      "nom": "Chef, cheffe de projet sites et sols pollués",
+      "categorie": "nature",
+      "disciplines": [
+        "chimie-analytique",
+        "geologie",
+        "environnement"
+      ],
+      "gestes": [
+        "Diagnostiquer la pollution",
+        "Choisir la méthode de dépollution",
+        "Suivre les travaux"
+      ],
+      "contexte": "Dépollue des terrains contaminés par d’anciennes activités."
+    },
+    {
+      "onisep": "MET.383",
+      "id": "technicien-de-maintenance-eolienne",
+      "nom": "Technicien, technicienne de maintenance éolienne",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "energetique"
+      ],
+      "gestes": [
+        "Grimper dans l’éolienne",
+        "Contrôler les pièces",
+        "Réparer les pannes"
+      ],
+      "contexte": "Entretient et répare les éoliennes."
+    },
+    {
+      "onisep": "MET.386",
+      "id": "conseiller-en-developpement-rural",
+      "nom": "Conseiller, conseillère en développement rural",
+      "categorie": "nature",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "economie-et-societe",
+        "agronomie-vegetale"
+      ],
+      "gestes": [
+        "Accompagner les porteurs de projets",
+        "Monter des dossiers de financement",
+        "Animer le territoire"
+      ],
+      "contexte": "Aide les campagnes à développer leurs activités."
+    },
+    {
+      "onisep": "MET.390",
+      "id": "technicien-frigoriste",
+      "nom": "Technicien, technicienne frigoriste",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "physique",
+        "electricite-electronique"
+      ],
+      "gestes": [
+        "Installer les équipements de froid",
+        "Contrôler les fluides",
+        "Dépanner"
+      ],
+      "contexte": "Installe et répare les installations frigorifiques."
+    },
+    {
+      "onisep": "MET.391",
+      "id": "technicien-en-energies-renouvelables",
+      "nom": "Technicien, technicienne en énergies renouvelables",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "electricite-electronique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Installer des panneaux ou des pompes à chaleur",
+        "Mettre en service",
+        "Assurer la maintenance"
+      ],
+      "contexte": "Installe et entretient des équipements d’énergie renouvelable."
+    },
+    {
+      "onisep": "MET.423",
+      "id": "professeur-dans-l-enseignement-agricole",
+      "nom": "Professeur, professeure dans l'enseignement agricole",
+      "categorie": "services",
+      "disciplines": [
+        "agronomie-vegetale",
+        "biologie",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Préparer des cours",
+        "Encadrer des travaux pratiques",
+        "Accompagner les stages"
+      ],
+      "contexte": "Enseigne dans un lycée agricole."
+    },
+    {
+      "onisep": "MET.433",
+      "id": "ingenieur-environnement",
+      "nom": "Ingénieur, ingénieure environnement",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "chimie-analytique",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Évaluer l’impact d’un projet",
+        "Proposer des solutions moins polluantes",
+        "Suivre la réglementation"
+      ],
+      "contexte": "Aide les entreprises à réduire leur impact sur l’environnement."
+    },
+    {
+      "onisep": "MET.442",
+      "id": "conseiller-energie",
+      "nom": "Conseiller, conseillère énergie",
+      "categorie": "nature",
+      "disciplines": [
+        "energetique",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Analyser les factures et les logements",
+        "Proposer des travaux",
+        "Informer sur les aides"
+      ],
+      "contexte": "Aide les particuliers à consommer moins d’énergie."
+    },
+    {
+      "onisep": "MET.443",
+      "id": "geothermicien",
+      "nom": "Géothermicien, géothermicienne",
+      "categorie": "disc",
+      "disciplines": [
+        "geologie",
+        "energetique",
+        "physique"
+      ],
+      "gestes": [
+        "Étudier le sous-sol",
+        "Concevoir l’installation",
+        "Suivre le forage"
+      ],
+      "contexte": "Utilise la chaleur du sous-sol pour produire de l’énergie."
+    },
+    {
+      "onisep": "MET.471",
+      "id": "entraineur-de-chevaux",
+      "nom": "Entraîneur, entraîneuse de chevaux",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "education-physique",
+        "nutrition-alimentation"
+      ],
+      "gestes": [
+        "Programmer l’entraînement",
+        "Observer chaque cheval",
+        "Choisir les courses"
+      ],
+      "contexte": "Prépare des chevaux pour la compétition."
+    },
+    {
+      "onisep": "MET.485",
+      "id": "charge-de-recherche-et-developpement-dechets",
+      "nom": "Chargé, chargée de recherche et développement déchets",
+      "categorie": "nature",
+      "disciplines": [
+        "chimie-analytique",
+        "environnement",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Tester de nouveaux procédés",
+        "Analyser les matières",
+        "Proposer des filières de recyclage"
+      ],
+      "contexte": "Cherche de nouvelles façons de recycler et valoriser les déchets."
+    },
+    {
+      "onisep": "MET.488",
+      "id": "ingenieur-combustion-et-bruleurs",
+      "nom": "Ingénieur, ingénieure combustion et brûleurs",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "chimie-analytique",
+        "physique"
+      ],
+      "gestes": [
+        "Concevoir des brûleurs",
+        "Mesurer les rejets",
+        "Améliorer le rendement"
+      ],
+      "contexte": "Conçoit des systèmes qui brûlent les combustibles en polluant moins."
+    },
+    {
+      "onisep": "MET.500",
+      "id": "ingenieur-efficacite-energetique-du-batiment",
+      "nom": "Ingénieur, ingénieure efficacité énergétique du bâtiment",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "physique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Faire le bilan énergétique",
+        "Proposer des travaux",
+        "Suivre les gains"
+      ],
+      "contexte": "Réduit la consommation d’énergie des bâtiments."
+    },
+    {
+      "onisep": "MET.509",
+      "id": "agent-d-exploitation-de-l-eau",
+      "nom": "Agent, agente d'exploitation de l'eau",
+      "categorie": "nature",
+      "disciplines": [
+        "chimie-analytique",
+        "environnement",
+        "mecanique"
+      ],
+      "gestes": [
+        "Surveiller les installations",
+        "Faire des prélèvements",
+        "Entretenir le réseau"
+      ],
+      "contexte": "Veille au bon fonctionnement des installations d’eau potable ou d’assainissement."
+    },
+    {
+      "onisep": "MET.518",
+      "id": "ingenieur-en-chef-territorial",
+      "nom": "Ingénieur en chef territorial, ingénieure en chef territoriale",
+      "categorie": "services",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "gestion",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Piloter les services techniques",
+        "Gérer de grands projets",
+        "Conseiller les élus"
+      ],
+      "contexte": "Dirige les services techniques d’une grande collectivité."
+    },
+    {
+      "onisep": "MET.559",
+      "id": "toiletteur-d-animaux",
+      "nom": "Toiletteur, toiletteuse d'animaux",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "communication",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Laver et sécher l’animal",
+        "Tondre et couper",
+        "Conseiller le propriétaire"
+      ],
+      "contexte": "Prend soin du pelage des chiens et des chats."
+    },
+    {
+      "onisep": "MET.562",
+      "id": "agent-de-proprete-et-d-hygiene",
+      "nom": "Agent, agente de propreté et d'hygiène",
+      "categorie": "services",
+      "disciplines": [
+        "chimie-analytique",
+        "environnement",
+        "physiologie-humaine"
+      ],
+      "gestes": [
+        "Nettoyer les locaux",
+        "Utiliser les bons produits",
+        "Respecter l’hygiène"
+      ],
+      "contexte": "Nettoie et désinfecte bureaux, hôpitaux ou écoles."
+    },
+    {
+      "onisep": "MET.588",
+      "id": "agent-de-proprete-urbaine",
+      "nom": "Agent, agente de propreté urbaine",
+      "categorie": "services",
+      "disciplines": [
+        "environnement",
+        "chimie-analytique",
+        "education-physique"
+      ],
+      "gestes": [
+        "Nettoyer les rues",
+        "Vider les poubelles publiques",
+        "Conduire les engins de nettoyage"
+      ],
+      "contexte": "Garde la ville propre."
+    },
+    {
+      "onisep": "MET.603",
+      "id": "ingenieur-frigoriste",
+      "nom": "Ingénieur, ingénieure frigoriste",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "physique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Concevoir des systèmes de froid",
+        "Choisir les fluides",
+        "Optimiser la consommation"
+      ],
+      "contexte": "Conçoit les installations frigorifiques des magasins et des usines."
+    },
+    {
+      "onisep": "MET.607",
+      "id": "hydrogeologue",
+      "nom": "Hydrogéologue",
+      "categorie": "disc",
+      "disciplines": [
+        "geologie",
+        "sciences-de-la-terre",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Étudier les nappes d’eau souterraines",
+        "Diriger des forages",
+        "Protéger les ressources"
+      ],
+      "contexte": "Recherche et protège l’eau du sous-sol."
+    },
+    {
+      "onisep": "MET.610",
+      "id": "charge-d-etudes-naturalistes",
+      "nom": "Chargé, chargée d'études naturalistes",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "environnement",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Inventorier faune et flore",
+        "Rédiger des rapports",
+        "Conseiller les aménageurs"
+      ],
+      "contexte": "Recense les espèces vivantes d’un site avant des travaux."
+    },
+    {
+      "onisep": "MET.616",
+      "id": "charge-d-etudes-en-valorisation-agricole-des-dechets",
+      "nom": "Chargé, chargée d'études en valorisation agricole des déchets",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "chimie-analytique",
+        "environnement"
+      ],
+      "gestes": [
+        "Analyser les boues et composts",
+        "Organiser l’épandage",
+        "Respecter la réglementation"
+      ],
+      "contexte": "Organise le retour au sol de certains déchets comme engrais."
+    },
+    {
+      "onisep": "MET.617",
+      "id": "ingenieur-process-aval",
+      "nom": "Ingénieur, ingénieure process aval",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-analytique",
+        "energetique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Concevoir les unités de traitement",
+        "Optimiser la production",
+        "Veiller à la sécurité"
+      ],
+      "contexte": "Améliore les procédés qui transforment le pétrole ou le gaz."
+    },
+    {
+      "onisep": "MET.620",
+      "id": "halieute",
+      "nom": "Halieute",
+      "categorie": "disc",
+      "disciplines": [
+        "biologie",
+        "analyse-statistique",
+        "environnement"
+      ],
+      "gestes": [
+        "Étudier les populations de poissons",
+        "Analyser les captures",
+        "Conseiller la gestion de la pêche"
+      ],
+      "contexte": "Étudie les ressources de la mer pour une pêche durable."
+    },
+    {
+      "onisep": "MET.632",
+      "id": "expert-bilan-carbone",
+      "nom": "Expert, experte bilan carbone",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "energetique",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Mesurer les émissions de gaz à effet de serre",
+        "Identifier les leviers",
+        "Proposer un plan d’action"
+      ],
+      "contexte": "Aide les organisations à réduire leur empreinte carbone."
+    },
+    {
+      "onisep": "MET.642",
+      "id": "technicien-en-experimentation-et-production-vegetales",
+      "nom": "Technicien, technicienne en expérimentation et production végétales",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "analyse-statistique",
+        "biologie"
+      ],
+      "gestes": [
+        "Mettre en place les essais",
+        "Relever les mesures",
+        "Analyser les résultats"
+      ],
+      "contexte": "Réalise des essais de culture en champ ou en serre."
+    },
+    {
+      "onisep": "MET.674",
+      "id": "matelot-a-la-peche",
+      "nom": "Matelot, matelote à la pêche",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "education-physique",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Préparer les filets",
+        "Trier le poisson",
+        "Entretenir le bateau"
+      ],
+      "contexte": "Travaille à bord d’un bateau de pêche."
+    },
+    {
+      "onisep": "MET.682",
+      "id": "marechal-ferrant",
+      "nom": "Maréchal-ferrant, maréchale-ferrante",
+      "categorie": "craft",
+      "disciplines": [
+        "biologie",
+        "science-des-materiaux",
+        "mecanique"
+      ],
+      "gestes": [
+        "Parer le sabot",
+        "Forger le fer",
+        "Ferrer le cheval"
+      ],
+      "contexte": "Soigne les pieds des chevaux et pose leurs fers."
+    },
+    {
+      "onisep": "MET.694",
+      "id": "teinturier-blanchisseur",
+      "nom": "Teinturier-blanchisseur, teinturière-blanchisseuse",
+      "categorie": "craft",
+      "disciplines": [
+        "chimie-analytique",
+        "science-des-materiaux",
+        "communication"
+      ],
+      "gestes": [
+        "Trier le linge",
+        "Choisir le traitement",
+        "Détacher et repasser"
+      ],
+      "contexte": "Nettoie et entretient vêtements et textiles."
+    },
+    {
+      "onisep": "MET.703",
+      "id": "volcanologue",
+      "nom": "Volcanologue",
+      "categorie": "disc",
+      "disciplines": [
+        "geologie",
+        "sciences-de-la-terre",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Observer les volcans sur le terrain",
+        "Mesurer gaz et séismes",
+        "Prévoir les éruptions"
+      ],
+      "contexte": "Étudie les volcans pour comprendre et prévoir les éruptions."
+    },
+    {
+      "onisep": "MET.705",
+      "id": "bucheron",
+      "nom": "Bûcheron, bûcheronne",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "education-physique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Abattre les arbres",
+        "Couper en billes",
+        "Entretenir la tronçonneuse"
+      ],
+      "contexte": "Coupe les arbres en forêt."
+    },
+    {
+      "onisep": "MET.724",
+      "id": "responsable-de-reseau-eau-potable",
+      "nom": "Responsable de réseau eau potable",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "gestion",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Gérer le réseau",
+        "Programmer les travaux",
+        "Garantir la qualité"
+      ],
+      "contexte": "Organise la distribution de l’eau potable."
+    },
+    {
+      "onisep": "MET.725",
+      "id": "ingenieur-fluides-energies-reseaux-environnement",
+      "nom": "Ingénieur, ingénieure fluides, énergies, réseaux, environnement",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "physique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Concevoir les réseaux d’un bâtiment",
+        "Calculer les consommations",
+        "Choisir des solutions durables"
+      ],
+      "contexte": "Conçoit les réseaux d’eau, d’air et d’énergie des bâtiments."
+    },
+    {
+      "onisep": "MET.726",
+      "id": "rudologue",
+      "nom": "Rudologue",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "chimie-analytique",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Étudier les déchets produits",
+        "Proposer des solutions de réduction",
+        "Organiser le tri"
+      ],
+      "contexte": "Spécialiste des déchets qui aide à en produire moins."
+    },
+    {
+      "onisep": "MET.737",
+      "id": "ingenieur-radioprotection",
+      "nom": "Ingénieur, ingénieure radioprotection",
+      "categorie": "disc",
+      "disciplines": [
+        "physique",
+        "energetique",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Mesurer les rayonnements",
+        "Former les travailleurs",
+        "Définir les règles de sécurité"
+      ],
+      "contexte": "Protège les personnes des rayonnements ionisants."
+    },
+    {
+      "onisep": "MET.741",
+      "id": "conducteur-d-engins-forestiers-de-recolte-en-entreprises-de-travaux-forestiers",
+      "nom": "Conducteur, conductrice d'engins forestiers de récolte en entreprises de travaux forestiers",
+      "categorie": "nature",
+      "disciplines": [
+        "mecanique",
+        "agronomie-vegetale",
+        "environnement"
+      ],
+      "gestes": [
+        "Conduire l’abatteuse",
+        "Abattre et façonner les arbres",
+        "Entretenir la machine"
+      ],
+      "contexte": "Récolte le bois en forêt avec de grosses machines."
+    },
+    {
+      "onisep": "MET.747",
+      "id": "technicien-de-mesure-de-la-pollution",
+      "nom": "Technicien, technicienne de mesure de la pollution",
+      "categorie": "nature",
+      "disciplines": [
+        "chimie-analytique",
+        "environnement",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Installer les capteurs",
+        "Prélever des échantillons",
+        "Analyser les mesures"
+      ],
+      "contexte": "Mesure la pollution de l’air, de l’eau ou des sols."
+    },
+    {
+      "onisep": "MET.774",
+      "id": "conseiller-en-environnement",
+      "nom": "Conseiller, conseillère en environnement",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "communication",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Faire un diagnostic",
+        "Proposer des actions",
+        "Sensibiliser le public"
+      ],
+      "contexte": "Aide entreprises et collectivités à mieux protéger l’environnement."
+    },
+    {
+      "onisep": "MET.777",
+      "id": "technicien-petrolier",
+      "nom": "Technicien pétrolier, technicienne pétrolière",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-analytique",
+        "mecanique",
+        "energetique"
+      ],
+      "gestes": [
+        "Surveiller les installations",
+        "Réaliser des mesures",
+        "Assurer la maintenance"
+      ],
+      "contexte": "Participe à l’extraction ou au raffinage du pétrole."
+    },
+    {
+      "onisep": "MET.793",
+      "id": "agent-arboricole",
+      "nom": "Agent, agente arboricole",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "biologie",
+        "environnement"
+      ],
+      "gestes": [
+        "Planter et tailler les arbres fruitiers",
+        "Protéger les vergers",
+        "Récolter les fruits"
+      ],
+      "contexte": "S’occupe des arbres fruitiers dans un verger."
+    },
+    {
+      "onisep": "MET.801",
+      "id": "patron-pecheur",
+      "nom": "Patron pêcheur, patronne pêcheuse",
+      "categorie": "nature",
+      "disciplines": [
+        "sciences-de-la-terre",
+        "gestion",
+        "biologie"
+      ],
+      "gestes": [
+        "Diriger le bateau",
+        "Choisir les zones de pêche",
+        "Vendre le poisson"
+      ],
+      "contexte": "Dirige un bateau de pêche et son équipage."
+    },
+    {
+      "onisep": "MET.821",
+      "id": "ingenieur-reservoir",
+      "nom": "Ingénieur, ingénieure réservoir",
+      "categorie": "btp",
+      "disciplines": [
+        "geologie",
+        "mathematiques-appliquees",
+        "physique"
+      ],
+      "gestes": [
+        "Modéliser le gisement",
+        "Estimer les réserves",
+        "Optimiser la production"
+      ],
+      "contexte": "Étudie les réservoirs souterrains de pétrole, de gaz ou de chaleur."
+    },
+    {
+      "onisep": "MET.822",
+      "id": "responsable-de-reseau-d-assainissement",
+      "nom": "Responsable de réseau d'assainissement",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "gestion",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Gérer le réseau d’égouts",
+        "Programmer l’entretien",
+        "Respecter les normes"
+      ],
+      "contexte": "Organise la collecte et le traitement des eaux usées."
+    },
+    {
+      "onisep": "MET.829",
+      "id": "glaciologue",
+      "nom": "Glaciologue",
+      "categorie": "disc",
+      "disciplines": [
+        "sciences-de-la-terre",
+        "geologie",
+        "physique"
+      ],
+      "gestes": [
+        "Mesurer les glaciers",
+        "Analyser les carottes de glace",
+        "Étudier l’évolution du climat"
+      ],
+      "contexte": "Étudie les glaciers et ce qu’ils disent du climat."
+    },
+    {
+      "onisep": "MET.831",
+      "id": "inseminateur",
+      "nom": "Inséminateur, inséminatrice",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie-cellulaire-genetique",
+        "biologie",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Choisir les reproducteurs",
+        "Réaliser l’insémination",
+        "Suivre les résultats"
+      ],
+      "contexte": "Organise la reproduction des animaux d’élevage."
+    },
+    {
+      "onisep": "MET.837",
+      "id": "gardien-d-immeubles",
+      "nom": "Gardien, gardienne d'immeubles",
+      "categorie": "services",
+      "disciplines": [
+        "communication",
+        "droit-et-institutions",
+        "environnement"
+      ],
+      "gestes": [
+        "Accueillir les habitants",
+        "Entretenir les parties communes",
+        "Signaler les problèmes"
+      ],
+      "contexte": "Veille au bon état d’un immeuble et accueille ses habitants."
+    },
+    {
+      "onisep": "MET.865",
+      "id": "controleur-de-performances",
+      "nom": "Contrôleur, contrôleuse de performances",
+      "categorie": "nature",
+      "disciplines": [
+        "analyse-statistique",
+        "biologie",
+        "agronomie-vegetale"
+      ],
+      "gestes": [
+        "Peser et mesurer les animaux",
+        "Prélever le lait",
+        "Enregistrer les données"
+      ],
+      "contexte": "Mesure les performances des animaux d’élevage."
+    },
+    {
+      "onisep": "MET.873",
+      "id": "technicien-thermicien",
+      "nom": "Technicien thermicien, technicienne thermicienne",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "physique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Calculer les besoins en chaleur",
+        "Dimensionner les installations",
+        "Réaliser des diagnostics"
+      ],
+      "contexte": "Étudie les besoins de chauffage et de froid des bâtiments."
+    },
+    {
+      "onisep": "MET.878",
+      "id": "charge-hse",
+      "nom": "Chargé, chargée HSE (hygiène sécurité environnement)",
+      "categorie": "nature",
+      "disciplines": [
+        "droit-et-institutions",
+        "environnement",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Repérer les risques",
+        "Former le personnel",
+        "Contrôler les règles"
+      ],
+      "contexte": "Veille à l’hygiène, à la sécurité et à l’environnement dans une entreprise."
+    },
+    {
+      "onisep": "MET.893",
+      "id": "agent-de-developpement-des-energies-renouvelables",
+      "nom": "Agent, agente de développement des énergies renouvelables",
+      "categorie": "nature",
+      "disciplines": [
+        "energetique",
+        "amenagement-du-territoire",
+        "communication"
+      ],
+      "gestes": [
+        "Informer les habitants",
+        "Monter des projets locaux",
+        "Suivre les installations"
+      ],
+      "contexte": "Développe les énergies renouvelables sur un territoire."
+    },
+    {
+      "onisep": "MET.894",
+      "id": "ingenieur-en-energie-solaire",
+      "nom": "Ingénieur, ingénieure en énergie solaire",
+      "categorie": "nature",
+      "disciplines": [
+        "energetique",
+        "physique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Concevoir des centrales solaires",
+        "Calculer la production",
+        "Suivre l’installation"
+      ],
+      "contexte": "Conçoit des installations qui produisent de l’énergie avec le soleil."
+    },
+    {
+      "onisep": "MET.895",
+      "id": "technicien-d-intervention-clientele-gaz",
+      "nom": "Technicien, technicienne d'intervention clientèle gaz",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "chimie-analytique",
+        "communication"
+      ],
+      "gestes": [
+        "Mettre en service les compteurs",
+        "Contrôler les installations",
+        "Intervenir en cas de fuite"
+      ],
+      "contexte": "Intervient chez les clients pour le gaz, en toute sécurité."
+    },
+    {
+      "onisep": "MET.900",
+      "id": "elagueur",
+      "nom": "Élagueur, élagueuse",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "education-physique",
+        "biologie"
+      ],
+      "gestes": [
+        "Grimper dans les arbres",
+        "Tailler et couper les branches",
+        "Sécuriser le chantier"
+      ],
+      "contexte": "Taille et soigne les arbres en hauteur."
+    },
+    {
+      "onisep": "MET.903",
+      "id": "ouvrier-agricole",
+      "nom": "Ouvrier, ouvrière agricole",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "mecanique",
+        "biologie"
+      ],
+      "gestes": [
+        "Préparer les sols",
+        "Conduire le tracteur",
+        "Récolter"
+      ],
+      "contexte": "Participe aux travaux des champs ou de l’élevage."
+    },
+    {
+      "onisep": "MET.905",
+      "id": "soigneur-d-animaux",
+      "nom": "Soigneur, soigneuse d'animaux",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "nutrition-alimentation",
+        "environnement"
+      ],
+      "gestes": [
+        "Nourrir les animaux",
+        "Nettoyer les enclos",
+        "Observer leur comportement"
+      ],
+      "contexte": "S’occupe des animaux dans un zoo ou un parc."
+    },
+    {
+      "onisep": "MET.906",
+      "id": "responsable-de-la-collecte-des-dechets-menagers",
+      "nom": "Responsable de la collecte des déchets ménagers",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "gestion",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Organiser les tournées",
+        "Encadrer les équipes",
+        "Améliorer le tri"
+      ],
+      "contexte": "Organise le ramassage des déchets d’une ville."
+    },
+    {
+      "onisep": "MET.922",
+      "id": "agent-de-developpement-local",
+      "nom": "Agent, agente de développement local",
+      "categorie": "services",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "economie-et-societe",
+        "communication"
+      ],
+      "gestes": [
+        "Rencontrer les acteurs locaux",
+        "Monter des projets",
+        "Chercher des financements"
+      ],
+      "contexte": "Fait vivre et développe un territoire."
+    },
+    {
+      "onisep": "MET.923",
+      "id": "developpeur-economique",
+      "nom": "Développeur, développeuse économique",
+      "categorie": "services",
+      "disciplines": [
+        "economie-et-societe",
+        "amenagement-du-territoire",
+        "communication"
+      ],
+      "gestes": [
+        "Accueillir les entreprises",
+        "Monter des projets d’implantation",
+        "Animer le réseau économique"
+      ],
+      "contexte": "Attire et accompagne les entreprises sur un territoire."
+    },
+    {
+      "onisep": "MET.927",
+      "id": "responsable-de-site-de-traitement-des-dechets",
+      "nom": "Responsable de site de traitement des déchets",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "gestion",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Piloter le site",
+        "Encadrer les équipes",
+        "Respecter les normes"
+      ],
+      "contexte": "Dirige un site qui trie, recycle ou élimine les déchets."
+    },
+    {
+      "onisep": "MET.944",
+      "id": "chef-de-projet-biodiversite",
+      "nom": "Chef, cheffe de projet biodiversité",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "environnement",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Diagnostiquer un site",
+        "Monter des actions de protection",
+        "Suivre les résultats"
+      ],
+      "contexte": "Protège et restaure la nature sur un territoire."
+    },
+    {
+      "onisep": "MET.945",
+      "id": "consultant-green-it",
+      "nom": "Consultant, consultante green IT (écotechniques de l'information et de la communication)",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "environnement",
+        "energetique"
+      ],
+      "gestes": [
+        "Mesurer l’impact du numérique",
+        "Proposer des pratiques sobres",
+        "Accompagner le changement"
+      ],
+      "contexte": "Aide les entreprises à réduire l’impact environnemental de leur informatique."
+    },
+    {
+      "onisep": "MET.964",
+      "id": "educateur-canin",
+      "nom": "Éducateur canin, éducatrice canine",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "psychologie-sociale",
+        "communication"
+      ],
+      "gestes": [
+        "Observer le chien",
+        "Apprendre les ordres de base",
+        "Conseiller le maître"
+      ],
+      "contexte": "Éduque les chiens et conseille leurs propriétaires."
+    },
+    {
+      "onisep": "MET.7817",
+      "id": "educateur-de-chiens-guides-d-aveugles",
+      "nom": "Éducateur de chiens guides d'aveugles",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "psychologie-sociale",
+        "communication"
+      ],
+      "gestes": [
+        "Éduquer le chien",
+        "Le tester en ville",
+        "Former le futur maître"
+      ],
+      "contexte": "Prépare des chiens à guider des personnes aveugles."
+    },
+    {
+      "onisep": "MET.7818",
+      "id": "agent-valoriste",
+      "nom": "Agent, agente valoriste",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "science-des-materiaux",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Trier les objets collectés",
+        "Réparer ou démonter",
+        "Préparer la revente"
+      ],
+      "contexte": "Donne une seconde vie aux objets dans une recyclerie."
+    },
+    {
+      "onisep": "MET.7837",
+      "id": "technicien-valoriste",
+      "nom": "Technicien valoriste",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "science-des-materiaux",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Analyser les flux de déchets",
+        "Organiser le tri",
+        "Trouver des débouchés"
+      ],
+      "contexte": "Organise la récupération et la revente des matières recyclables."
+    },
+    {
+      "onisep": "MET.7915",
+      "id": "berger",
+      "nom": "Berger, bergère",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "agronomie-vegetale",
+        "environnement"
+      ],
+      "gestes": [
+        "Garder le troupeau",
+        "Soigner les animaux",
+        "Conduire les bêtes en estive"
+      ],
+      "contexte": "Garde et soigne un troupeau de moutons ou de chèvres."
+    },
+    {
+      "onisep": "MET.7955",
+      "id": "technicien-eco-concepteur",
+      "nom": "Technicien éco-concepteur, technicienne éco-conceptrice",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "science-des-materiaux",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Analyser le cycle de vie d’un produit",
+        "Proposer des matériaux durables",
+        "Réduire les déchets"
+      ],
+      "contexte": "Conçoit des produits qui respectent davantage l’environnement."
+    },
+    {
+      "onisep": "MET.7956",
+      "id": "technicien-forage",
+      "nom": "Technicien, technicienne forage",
+      "categorie": "btp",
+      "disciplines": [
+        "geologie",
+        "mecanique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Installer la foreuse",
+        "Conduire le forage",
+        "Relever les données"
+      ],
+      "contexte": "Réalise des forages pour l’eau, l’énergie ou les études de sol."
+    },
+    {
+      "onisep": "MET.7962",
+      "id": "ingenieur-projet-hydrogene",
+      "nom": "Ingénieur, ingénieure projet hydrogène",
+      "categorie": "nature",
+      "disciplines": [
+        "energetique",
+        "chimie-analytique",
+        "gestion"
+      ],
+      "gestes": [
+        "Concevoir l’installation",
+        "Coordonner les partenaires",
+        "Suivre les essais"
+      ],
+      "contexte": "Développe des projets qui produisent ou utilisent l’hydrogène."
+    },
+    {
+      "onisep": "MET.8005",
+      "id": "agent-machiniste",
+      "nom": "Agent, agente machiniste",
+      "categorie": "services",
+      "disciplines": [
+        "mecanique",
+        "environnement",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Conduire la balayeuse",
+        "Nettoyer les voies",
+        "Entretenir l’engin"
+      ],
+      "contexte": "Nettoie les rues avec des machines."
+    },
+    {
+      "onisep": "MET.8008",
+      "id": "laveur-de-vitres",
+      "nom": "Laveur, laveuse de vitres",
+      "categorie": "services",
+      "disciplines": [
+        "chimie-analytique",
+        "education-physique",
+        "environnement"
+      ],
+      "gestes": [
+        "Préparer le matériel",
+        "Nettoyer les surfaces vitrées",
+        "Travailler en hauteur en sécurité"
+      ],
+      "contexte": "Nettoie les vitres des bâtiments."
+    },
+    {
+      "onisep": "MET.8009",
+      "id": "responsable-d-approvisionnement-en-exploitations-forestieres",
+      "nom": "Responsable d'approvisionnement en exploitations forestières",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "gestion",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Acheter les coupes de bois",
+        "Organiser l’exploitation",
+        "Livrer les scieries"
+      ],
+      "contexte": "Achète le bois en forêt et organise son transport vers les usines."
+    },
+    {
+      "onisep": "MET.8034",
+      "id": "technicien-en-prevention-des-risques-industriels",
+      "nom": "Technicien, technicienne en prévention des risques industriels",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-analytique",
+        "droit-et-institutions",
+        "environnement"
+      ],
+      "gestes": [
+        "Analyser les risques",
+        "Contrôler les installations",
+        "Former le personnel"
+      ],
+      "contexte": "Prévient les accidents dans les usines."
+    },
+    {
+      "onisep": "MET.8073",
+      "id": "cerealier",
+      "nom": "Céréalier, céréalière",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "chimie-analytique",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Préparer les sols",
+        "Semer et traiter",
+        "Récolter et stocker le grain"
+      ],
+      "contexte": "Cultive du blé, du maïs ou d’autres céréales."
+    },
+    {
+      "onisep": "MET.8074",
+      "id": "charge-d-etudes-en-risques-naturels",
+      "nom": "Chargé, chargée d'études en risques naturels",
+      "categorie": "nature",
+      "disciplines": [
+        "geologie",
+        "sciences-de-la-terre",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Cartographier les risques",
+        "Analyser les données",
+        "Conseiller les collectivités"
+      ],
+      "contexte": "Étudie les inondations, glissements de terrain ou séismes pour protéger la population."
+    },
+    {
+      "onisep": "MET.8075",
+      "id": "charge-d-etudes-plu",
+      "nom": "Chargé, chargée d'études PLU (ou PLUI)",
+      "categorie": "services",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "droit-et-institutions",
+        "environnement"
+      ],
+      "gestes": [
+        "Analyser le territoire",
+        "Rédiger les règles d’urbanisme",
+        "Concerter les habitants"
+      ],
+      "contexte": "Prépare les règles qui organisent les constructions d’une commune."
+    },
+    {
+      "onisep": "MET.8080",
+      "id": "chef-de-silo",
+      "nom": "Chef, cheffe de silo",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "chimie-analytique",
+        "gestion"
+      ],
+      "gestes": [
+        "Réceptionner les grains",
+        "Contrôler la qualité",
+        "Gérer le stockage"
+      ],
+      "contexte": "Gère le stockage des céréales dans un silo."
+    },
+    {
+      "onisep": "MET.8097",
+      "id": "ingenieur-social",
+      "nom": "Ingénieur social, ingénieure sociale",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "economie-et-societe",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Analyser les besoins sociaux",
+        "Concevoir des projets",
+        "Évaluer les politiques"
+      ],
+      "contexte": "Conçoit et évalue des actions sociales sur un territoire."
+    },
+    {
+      "onisep": "MET.8100",
+      "id": "inspecteur-des-installations-classees",
+      "nom": "Inspecteur, inspectrice des installations classées",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "chimie-analytique",
+        "environnement"
+      ],
+      "gestes": [
+        "Inspecter les usines",
+        "Vérifier les règles",
+        "Rédiger les rapports"
+      ],
+      "contexte": "Contrôle les sites industriels qui peuvent présenter des risques."
+    },
+    {
+      "onisep": "MET.8116",
+      "id": "responsable-de-service-urbanisme",
+      "nom": "Responsable de service urbanisme",
+      "categorie": "services",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "droit-et-institutions",
+        "gestion"
+      ],
+      "gestes": [
+        "Instruire les permis de construire",
+        "Préparer les projets d’aménagement",
+        "Conseiller les élus"
+      ],
+      "contexte": "Dirige le service qui organise l’urbanisme d’une commune."
+    },
+    {
+      "onisep": "MET.8117",
+      "id": "responsable-des-espaces-verts",
+      "nom": "Responsable des espaces verts",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "gestion",
+        "environnement"
+      ],
+      "gestes": [
+        "Planifier l’entretien",
+        "Encadrer les jardiniers",
+        "Choisir les plantations"
+      ],
+      "contexte": "Dirige l’entretien des parcs et jardins d’une ville."
+    },
+    {
+      "onisep": "MET.8119",
+      "id": "responsable-rse",
+      "nom": "Responsable RSE (responsabilité sociétale des entreprises)",
+      "categorie": "trade",
+      "disciplines": [
+        "environnement",
+        "economie-et-societe",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Faire un état des lieux",
+        "Fixer des objectifs",
+        "Suivre les engagements"
+      ],
+      "contexte": "Aide une entreprise à agir de façon plus responsable envers l’environnement et la société."
+    },
+    {
+      "onisep": "MET.8120",
+      "id": "technicien-d-exploitation-de-l-eau-8120",
+      "nom": "Technicien d'exploitation de l'eau",
+      "categorie": "nature",
+      "disciplines": [
+        "chimie-analytique",
+        "environnement",
+        "mecanique"
+      ],
+      "gestes": [
+        "Surveiller les installations",
+        "Analyser l’eau",
+        "Réaliser l’entretien"
+      ],
+      "contexte": "Fait fonctionner une usine d’eau potable ou d’épuration."
+    },
+    {
+      "onisep": "MET.8121",
+      "id": "technicien-de-riviere",
+      "nom": "Technicien, technicienne de rivière",
+      "categorie": "nature",
+      "disciplines": [
+        "environnement",
+        "biologie",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Surveiller les berges",
+        "Organiser les travaux d’entretien",
+        "Sensibiliser les riverains"
+      ],
+      "contexte": "Entretient et protège les rivières."
+    },
+    {
+      "onisep": "MET.8184",
+      "id": "educateur-de-chiens-d-assistance",
+      "nom": "Éducateur, éducatrice de chiens d'assistance",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "psychologie-sociale",
+        "communication"
+      ],
+      "gestes": [
+        "Apprendre au chien des gestes d’aide",
+        "Tester en situation",
+        "Former la personne aidée"
+      ],
+      "contexte": "Éduque des chiens qui aident des personnes en situation de handicap."
+    }
+  ]
+}

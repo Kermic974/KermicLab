@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kermiclab.online/s7/journal.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "formatVersion",
+    "attempt",
+    "events"
+  ],
+  "properties": {
+    "formatVersion": {
+      "const": 1
+    },
+    "attempt": {
+      "$ref": "attempt.schema.json"
+    },
+    "events": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "observation.schema.json"
+          },
+          {
+            "$ref": "submission.schema.json"
+          },
+          {
+            "$ref": "decision.schema.json"
+          },
+          {
+            "$ref": "closure.schema.json"
+          }
+        ]
+      }
+    }
+  }
+}

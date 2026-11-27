@@ -1,0 +1,1710 @@
+{
+  "version": 1,
+  "vague": 2,
+  "domaines": [
+    "santé, social, sport"
+  ],
+  "source": "Ideo-Fiches metiers.xml + 5fa5949243f97.csv (2026-11-24), licence ODbL 1.0",
+  "metiers": [
+    {
+      "onisep": "MET.65",
+      "id": "animateur-socioculturel",
+      "nom": "Animateur socioculturel, animatrice socioculturelle",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "communication",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Monter un projet d’animation",
+        "Animer un groupe",
+        "Travailler avec les associations du quartier"
+      ],
+      "contexte": "Organise des activités culturelles et de loisirs pour faire vivre un quartier ou une structure."
+    },
+    {
+      "onisep": "MET.111",
+      "id": "medecin-de-secours-en-montagne",
+      "nom": "Médecin de secours en montagne",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "education-physique",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Soigner sur le lieu de l’accident",
+        "Évacuer un blessé avec l’équipe de secours",
+        "Évaluer l’urgence d’une blessure"
+      ],
+      "contexte": "Soigne les personnes blessées ou malades en montagne, souvent avec un hélicoptère."
+    },
+    {
+      "onisep": "MET.115",
+      "id": "moniteur-d-escalade",
+      "nom": "Moniteur, monitrice d'escalade",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "physiologie-humaine",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Installer les cordes et vérifier les nœuds",
+        "Enseigner les gestes de grimpe",
+        "Assurer la sécurité du groupe"
+      ],
+      "contexte": "Apprend l’escalade en salle ou sur rocher en veillant à la sécurité de chacun."
+    },
+    {
+      "onisep": "MET.137",
+      "id": "agent-de-developpement-sportif",
+      "nom": "Agent, agente de développement sportif",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "gestion",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Monter des projets sportifs",
+        "Chercher des financements",
+        "Rencontrer les clubs et les élus"
+      ],
+      "contexte": "Développe la pratique du sport sur un territoire avec les clubs et les collectivités."
+    },
+    {
+      "onisep": "MET.140",
+      "id": "gestionnaire-du-sport",
+      "nom": "Gestionnaire du sport",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "education-physique",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Gérer le budget d’un équipement",
+        "Organiser le planning des activités",
+        "Encadrer une équipe"
+      ],
+      "contexte": "Fait fonctionner un équipement ou une structure sportive au quotidien."
+    },
+    {
+      "onisep": "MET.163",
+      "id": "puericulteur",
+      "nom": "Puériculteur, puéricultrice",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "psychologie-cognitive",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Surveiller la croissance des bébés",
+        "Conseiller les parents",
+        "Organiser les soins en crèche ou en maternité"
+      ],
+      "contexte": "Infirmier spécialisé qui prend soin des bébés et des jeunes enfants."
+    },
+    {
+      "onisep": "MET.167",
+      "id": "sportif-de-haut-niveau",
+      "nom": "Sportif, sportive de haut niveau",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "physiologie-humaine",
+        "nutrition-alimentation"
+      ],
+      "gestes": [
+        "S’entraîner chaque jour",
+        "Préparer les compétitions",
+        "Récupérer et prendre soin de son corps"
+      ],
+      "contexte": "Pratique un sport au plus haut niveau et représente son club ou son pays."
+    },
+    {
+      "onisep": "MET.189",
+      "id": "technicien-de-l-intervention-sociale-et-familiale",
+      "nom": "Technicien, technicienne de l'intervention sociale et familiale",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "droit-et-institutions",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Aider une famille dans la vie quotidienne",
+        "Accompagner les enfants",
+        "Rendre compte à l’équipe sociale"
+      ],
+      "contexte": "Soutient à domicile des familles qui traversent une période difficile."
+    },
+    {
+      "onisep": "MET.190",
+      "id": "moniteur-educateur",
+      "nom": "Moniteur-éducateur, monitrice-éducatrice",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "philosophie-ethique",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Organiser la vie quotidienne d’un groupe",
+        "Proposer des activités éducatives",
+        "Observer et noter les progrès"
+      ],
+      "contexte": "Accompagne au quotidien des enfants ou des adultes en difficulté ou en situation de handicap."
+    },
+    {
+      "onisep": "MET.208",
+      "id": "ingenieur-d-application",
+      "nom": "Ingénieur, ingénieure d'application",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "informatique",
+        "communication"
+      ],
+      "gestes": [
+        "Présenter un appareil aux équipes",
+        "Former les utilisateurs",
+        "Faire remonter les problèmes techniques"
+      ],
+      "contexte": "Fait le lien entre le fabricant d’un appareil médical ou technique et ceux qui l’utilisent."
+    },
+    {
+      "onisep": "MET.215",
+      "id": "charge-de-pharmacovigilance",
+      "nom": "Chargé, chargée de pharmacovigilance",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "chimie-analytique",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Recueillir les effets indésirables",
+        "Analyser les signalements",
+        "Rédiger des rapports de sécurité"
+      ],
+      "contexte": "Surveille les effets des médicaments une fois qu’ils sont utilisés par les patients."
+    },
+    {
+      "onisep": "MET.219",
+      "id": "chef-de-mission-humanitaire",
+      "nom": "Chef, cheffe de mission humanitaire",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "langues-vivantes",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Coordonner une équipe sur le terrain",
+        "Gérer le budget de la mission",
+        "Dialoguer avec les autorités locales"
+      ],
+      "contexte": "Dirige une mission d’aide dans un pays touché par une crise ou une catastrophe."
+    },
+    {
+      "onisep": "MET.221",
+      "id": "osteopathe",
+      "nom": "Ostéopathe",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "biologie",
+        "education-physique"
+      ],
+      "gestes": [
+        "Écouter le patient",
+        "Examiner la mobilité du corps",
+        "Pratiquer des gestes manuels"
+      ],
+      "contexte": "Soulage certaines douleurs par des techniques manuelles sur le corps."
+    },
+    {
+      "onisep": "MET.247",
+      "id": "thanatopracteur",
+      "nom": "Thanatopracteur, thanatopractrice",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "chimie-analytique",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Préparer le défunt avec respect",
+        "Appliquer des soins de conservation",
+        "Respecter les règles d’hygiène"
+      ],
+      "contexte": "Prend soin du corps des personnes décédées pour que les familles puissent leur dire au revoir."
+    },
+    {
+      "onisep": "MET.276",
+      "id": "orthoprothesiste",
+      "nom": "Orthoprothésiste",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "science-des-materiaux",
+        "mecanique"
+      ],
+      "gestes": [
+        "Prendre les mesures du patient",
+        "Fabriquer une prothèse sur mesure",
+        "Régler l’appareil pendant les essais"
+      ],
+      "contexte": "Conçoit et adapte des prothèses ou des appareils qui aident à marcher ou à se tenir."
+    },
+    {
+      "onisep": "MET.280",
+      "id": "ergotherapeute",
+      "nom": "Ergothérapeute",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "psychologie-sociale",
+        "mecanique"
+      ],
+      "gestes": [
+        "Évaluer l’autonomie au quotidien",
+        "Proposer des activités de rééducation",
+        "Adapter le logement ou le matériel"
+      ],
+      "contexte": "Aide les personnes à retrouver ou garder leur autonomie dans les gestes de tous les jours."
+    },
+    {
+      "onisep": "MET.282",
+      "id": "podo-orthesiste",
+      "nom": "Podo-orthésiste",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "science-des-materiaux",
+        "mecanique"
+      ],
+      "gestes": [
+        "Examiner la marche",
+        "Mouler le pied",
+        "Fabriquer des chaussures ou semelles adaptées"
+      ],
+      "contexte": "Fabrique des chaussures et des semelles sur mesure pour soigner ou soulager les pieds."
+    },
+    {
+      "onisep": "MET.300",
+      "id": "attache-de-recherche-clinique",
+      "nom": "Attaché, attachée de recherche clinique",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "analyse-statistique",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Vérifier le déroulement d’une étude",
+        "Contrôler les données recueillies",
+        "Faire respecter les règles éthiques"
+      ],
+      "contexte": "Suit les essais qui testent de nouveaux traitements à l’hôpital."
+    },
+    {
+      "onisep": "MET.330",
+      "id": "assistant-dentaire",
+      "nom": "Assistant, assistante dentaire",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "biologie",
+        "communication"
+      ],
+      "gestes": [
+        "Préparer les instruments",
+        "Assister le dentiste pendant les soins",
+        "Accueillir les patients"
+      ],
+      "contexte": "Aide le chirurgien-dentiste au fauteuil et dans l’organisation du cabinet."
+    },
+    {
+      "onisep": "MET.332",
+      "id": "chirurgien",
+      "nom": "Chirurgien, chirurgienne",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "biologie",
+        "biologie-cellulaire-genetique"
+      ],
+      "gestes": [
+        "Préparer l’opération",
+        "Opérer avec précision",
+        "Suivre le patient après l’intervention"
+      ],
+      "contexte": "Médecin qui soigne en opérant le corps."
+    },
+    {
+      "onisep": "MET.335",
+      "id": "pediatre",
+      "nom": "Pédiatre",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "biologie",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Examiner l’enfant",
+        "Suivre sa croissance et ses vaccins",
+        "Conseiller les parents"
+      ],
+      "contexte": "Médecin des enfants, de la naissance à l’adolescence."
+    },
+    {
+      "onisep": "MET.342",
+      "id": "conseiller-en-insertion-sociale-et-professionnelle",
+      "nom": "Conseiller, conseillère en insertion sociale et professionnelle",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "economie-et-societe",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Faire le point sur le parcours",
+        "Construire un projet professionnel",
+        "Mettre en relation avec des employeurs"
+      ],
+      "contexte": "Accompagne des jeunes ou des adultes vers une formation ou un emploi."
+    },
+    {
+      "onisep": "MET.343",
+      "id": "infirmier-humanitaire",
+      "nom": "Infirmier, infirmière humanitaire",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "langues-vivantes",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Soigner dans des conditions difficiles",
+        "Former les soignants locaux",
+        "Organiser une campagne de vaccination"
+      ],
+      "contexte": "Infirmier qui part en mission pour soigner des populations touchées par une crise."
+    },
+    {
+      "onisep": "MET.344",
+      "id": "medecin-humanitaire",
+      "nom": "Médecin humanitaire",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "biologie",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Soigner sur le terrain",
+        "Organiser les soins d’urgence",
+        "Travailler avec les équipes locales"
+      ],
+      "contexte": "Médecin qui soigne des populations en danger, en France ou à l’étranger."
+    },
+    {
+      "onisep": "MET.345",
+      "id": "moniteur-d-activites-equestres",
+      "nom": "Moniteur, monitrice d'activités équestres",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "biologie",
+        "physiologie-humaine"
+      ],
+      "gestes": [
+        "Préparer les chevaux",
+        "Enseigner l’équitation",
+        "Veiller à la sécurité des cavaliers"
+      ],
+      "contexte": "Apprend à monter à cheval et à s’occuper des chevaux."
+    },
+    {
+      "onisep": "MET.375",
+      "id": "masseur-kinesitherapeute-du-sport",
+      "nom": "Masseur-kinésithérapeute, masseuse-kinésithérapeute du sport",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "education-physique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Masser avant et après l’effort",
+        "Rééduquer après une blessure",
+        "Prévenir les traumatismes"
+      ],
+      "contexte": "Kinésithérapeute qui aide les sportifs à récupérer et à éviter les blessures."
+    },
+    {
+      "onisep": "MET.411",
+      "id": "prothesiste-dentaire",
+      "nom": "Prothésiste dentaire",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "physiologie-humaine",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Lire l’empreinte dentaire",
+        "Modeler une couronne ou un appareil",
+        "Ajuster et polir la pièce"
+      ],
+      "contexte": "Fabrique en laboratoire les prothèses et appareils dentaires."
+    },
+    {
+      "onisep": "MET.412",
+      "id": "pharmacien-industriel",
+      "nom": "Pharmacien industriel, pharmacienne industrielle",
+      "categorie": "health",
+      "disciplines": [
+        "chimie-analytique",
+        "physiologie-humaine",
+        "biologie"
+      ],
+      "gestes": [
+        "Contrôler la qualité des médicaments",
+        "Suivre la fabrication",
+        "Respecter la réglementation"
+      ],
+      "contexte": "Pharmacien qui travaille dans l’industrie qui fabrique les médicaments."
+    },
+    {
+      "onisep": "MET.418",
+      "id": "visiteur-medical",
+      "nom": "Visiteur médical, visiteuse médicale",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "communication",
+        "biologie"
+      ],
+      "gestes": [
+        "Présenter un médicament aux médecins",
+        "Organiser ses tournées",
+        "Recueillir les questions des professionnels"
+      ],
+      "contexte": "Fait connaître les médicaments d’un laboratoire auprès des médecins."
+    },
+    {
+      "onisep": "MET.419",
+      "id": "medecin-specialiste",
+      "nom": "Médecin spécialiste",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "biologie",
+        "biologie-cellulaire-genetique"
+      ],
+      "gestes": [
+        "Examiner un organe ou une maladie précise",
+        "Prescrire des examens",
+        "Proposer un traitement adapté"
+      ],
+      "contexte": "Médecin expert d’un organe ou d’un type de maladie, comme le cœur ou la peau."
+    },
+    {
+      "onisep": "MET.448",
+      "id": "estheticien-cosmeticien",
+      "nom": "Esthéticien-cosméticien, esthéticienne-cosméticienne",
+      "categorie": "craft",
+      "disciplines": [
+        "physiologie-humaine",
+        "chimie-analytique",
+        "communication"
+      ],
+      "gestes": [
+        "Réaliser des soins du visage et du corps",
+        "Conseiller des produits",
+        "Respecter l’hygiène des soins"
+      ],
+      "contexte": "Prend soin de la peau et de l’apparence en institut ou en parfumerie."
+    },
+    {
+      "onisep": "MET.464",
+      "id": "directeur-de-golf",
+      "nom": "Directeur, directrice de golf",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "education-physique",
+        "environnement"
+      ],
+      "gestes": [
+        "Gérer le budget",
+        "Organiser les compétitions",
+        "Encadrer le personnel"
+      ],
+      "contexte": "Dirige un terrain de golf et ses équipes."
+    },
+    {
+      "onisep": "MET.479",
+      "id": "assistant-maternel",
+      "nom": "Assistant maternel, assistante maternelle",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-cognitive",
+        "physiologie-humaine",
+        "nutrition-alimentation"
+      ],
+      "gestes": [
+        "Accueillir les enfants chez soi",
+        "Organiser repas, siestes et jeux",
+        "Échanger avec les parents"
+      ],
+      "contexte": "Garde de jeunes enfants à son domicile pendant que leurs parents travaillent."
+    },
+    {
+      "onisep": "MET.497",
+      "id": "reflexologue",
+      "nom": "Réflexologue",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "psychologie-sociale",
+        "biologie"
+      ],
+      "gestes": [
+        "Écouter les besoins de la personne",
+        "Pratiquer des pressions sur les pieds ou les mains",
+        "Proposer une séance de détente"
+      ],
+      "contexte": "Propose des séances de détente par pressions sur les pieds ou les mains."
+    },
+    {
+      "onisep": "MET.504",
+      "id": "mannequin",
+      "nom": "Mannequin",
+      "categorie": "mkt",
+      "disciplines": [
+        "arts-plastiques",
+        "communication",
+        "education-physique"
+      ],
+      "gestes": [
+        "Poser pour des photographes",
+        "Défiler",
+        "Prendre soin de son apparence"
+      ],
+      "contexte": "Présente des vêtements ou des produits lors de défilés et de séances photo."
+    },
+    {
+      "onisep": "MET.521",
+      "id": "pilote-automobile",
+      "nom": "Pilote automobile",
+      "categorie": "services",
+      "disciplines": [
+        "mecanique",
+        "education-physique",
+        "physique"
+      ],
+      "gestes": [
+        "S’entraîner sur circuit",
+        "Régler la voiture avec les ingénieurs",
+        "Préparer sa condition physique"
+      ],
+      "contexte": "Pilote des voitures de course en compétition."
+    },
+    {
+      "onisep": "MET.524",
+      "id": "chiropracteur",
+      "nom": "Chiropracteur, chiropractrice",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "mecanique",
+        "biologie"
+      ],
+      "gestes": [
+        "Examiner la colonne vertébrale",
+        "Réaliser des ajustements manuels",
+        "Conseiller des exercices"
+      ],
+      "contexte": "Soulage certaines douleurs du dos et des articulations par des gestes manuels."
+    },
+    {
+      "onisep": "MET.530",
+      "id": "educateur-sportif-public-en-situation-de-handicap",
+      "nom": "Éducateur sportif public en situation de handicap, éducatrice sportive public en situation de handicap",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "physiologie-humaine",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Adapter les règles du jeu",
+        "Encadrer une séance en sécurité",
+        "Encourager chaque progrès"
+      ],
+      "contexte": "Fait pratiquer un sport à des personnes en situation de handicap."
+    },
+    {
+      "onisep": "MET.531",
+      "id": "preparateur-physique",
+      "nom": "Préparateur, préparatrice physique",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "physiologie-humaine",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Tester la condition physique",
+        "Programmer les entraînements",
+        "Suivre la récupération"
+      ],
+      "contexte": "Prépare le corps des sportifs pour qu’ils soient en forme le jour de la compétition."
+    },
+    {
+      "onisep": "MET.556",
+      "id": "secretaire-medical",
+      "nom": "Secrétaire médical, secrétaire médicale",
+      "categorie": "health",
+      "disciplines": [
+        "communication",
+        "expression-ecrite",
+        "informatique"
+      ],
+      "gestes": [
+        "Accueillir les patients",
+        "Gérer les rendez-vous",
+        "Mettre à jour les dossiers"
+      ],
+      "contexte": "Organise l’accueil et les papiers d’un cabinet médical ou d’un service hospitalier."
+    },
+    {
+      "onisep": "MET.602",
+      "id": "ingenieur-en-imagerie-medicale",
+      "nom": "Ingénieur, ingénieure en imagerie médicale",
+      "categorie": "health",
+      "disciplines": [
+        "physique",
+        "informatique",
+        "optique"
+      ],
+      "gestes": [
+        "Régler les appareils d’imagerie",
+        "Améliorer les images",
+        "Former les équipes"
+      ],
+      "contexte": "Conçoit et entretient les appareils qui photographient l’intérieur du corps."
+    },
+    {
+      "onisep": "MET.635",
+      "id": "brancardier",
+      "nom": "Brancardier, brancardière",
+      "categorie": "services",
+      "disciplines": [
+        "physiologie-humaine",
+        "education-physique",
+        "communication"
+      ],
+      "gestes": [
+        "Transporter les patients",
+        "Installer le malade en sécurité",
+        "Respecter l’hygiène"
+      ],
+      "contexte": "Déplace les patients d’un service à l’autre de l’hôpital."
+    },
+    {
+      "onisep": "MET.637",
+      "id": "medecin-du-sport",
+      "nom": "Médecin du sport",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "education-physique",
+        "nutrition-alimentation"
+      ],
+      "gestes": [
+        "Faire passer des tests d’effort",
+        "Soigner les blessures du sport",
+        "Conseiller sur l’entraînement"
+      ],
+      "contexte": "Médecin qui suit la santé des sportifs, débutants ou champions."
+    },
+    {
+      "onisep": "MET.647",
+      "id": "moniteur-de-voile",
+      "nom": "Moniteur, monitrice de voile",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "sciences-de-la-terre",
+        "physique"
+      ],
+      "gestes": [
+        "Préparer les bateaux",
+        "Lire le vent et la météo",
+        "Enseigner les manœuvres"
+      ],
+      "contexte": "Apprend à naviguer sur un voilier en toute sécurité."
+    },
+    {
+      "onisep": "MET.651",
+      "id": "footballeur",
+      "nom": "Footballeur, footballeuse",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "physiologie-humaine",
+        "nutrition-alimentation"
+      ],
+      "gestes": [
+        "S’entraîner avec l’équipe",
+        "Travailler la tactique",
+        "Disputer les matchs"
+      ],
+      "contexte": "Joue au football dans un club professionnel."
+    },
+    {
+      "onisep": "MET.668",
+      "id": "educateur-de-jeunes-enfants",
+      "nom": "Éducateur, éducatrice de jeunes enfants",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-cognitive",
+        "psychologie-sociale",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Proposer des activités d’éveil",
+        "Observer le développement",
+        "Travailler avec les familles"
+      ],
+      "contexte": "Accompagne l’éveil des tout-petits en crèche ou en structure d’accueil."
+    },
+    {
+      "onisep": "MET.669",
+      "id": "conseiller-en-economie-sociale-et-familiale",
+      "nom": "Conseiller, conseillère en économie sociale et familiale",
+      "categorie": "services",
+      "disciplines": [
+        "economie-et-societe",
+        "calcul-professionnel",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Aider à gérer un budget",
+        "Conseiller sur le logement ou l’alimentation",
+        "Animer des ateliers"
+      ],
+      "contexte": "Aide les familles à mieux gérer leur budget et leur vie quotidienne."
+    },
+    {
+      "onisep": "MET.676",
+      "id": "audioprothesiste",
+      "nom": "Audioprothésiste",
+      "categorie": "health",
+      "disciplines": [
+        "acoustique",
+        "physiologie-humaine",
+        "electricite-electronique"
+      ],
+      "gestes": [
+        "Mesurer l’audition",
+        "Choisir et régler un appareil auditif",
+        "Suivre le patient"
+      ],
+      "contexte": "Choisit et règle les appareils qui aident les personnes à mieux entendre."
+    },
+    {
+      "onisep": "MET.704",
+      "id": "arbitre",
+      "nom": "Arbitre",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "droit-et-institutions",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Faire respecter les règles du jeu",
+        "Se placer pour bien voir l’action",
+        "Prendre des décisions rapidement"
+      ],
+      "contexte": "Dirige les matchs et fait respecter les règles du sport."
+    },
+    {
+      "onisep": "MET.710",
+      "id": "anesthesiste-reanimateur",
+      "nom": "Anesthésiste-réanimateur, anesthésiste-réanimatrice",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "chimie-analytique",
+        "biologie"
+      ],
+      "gestes": [
+        "Endormir le patient avant l’opération",
+        "Surveiller ses fonctions vitales",
+        "Soigner en réanimation"
+      ],
+      "contexte": "Médecin qui endort les patients pendant les opérations et soigne les cas graves."
+    },
+    {
+      "onisep": "MET.711",
+      "id": "educateur-technique-specialise",
+      "nom": "Éducateur technique spécialisé, éducatrice technique spécialisée",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "philosophie-ethique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Encadrer un atelier",
+        "Transmettre un savoir-faire",
+        "Accompagner vers l’autonomie"
+      ],
+      "contexte": "Apprend un métier manuel à des personnes en difficulté ou en situation de handicap."
+    },
+    {
+      "onisep": "MET.713",
+      "id": "directeur-d-accueil-collectif-de-mineurs",
+      "nom": "Directeur, directrice d'accueil collectif de mineurs (ACM)",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "gestion",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Préparer le projet du séjour",
+        "Encadrer l’équipe d’animation",
+        "Veiller à la sécurité des enfants"
+      ],
+      "contexte": "Dirige un centre de loisirs ou une colonie de vacances."
+    },
+    {
+      "onisep": "MET.723",
+      "id": "conseiller-sportif-en-salle-de-remise-en-forme",
+      "nom": "Conseiller sportif en salle de remise en forme, conseillère sportive en salle de remise en forme",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "physiologie-humaine",
+        "nutrition-alimentation"
+      ],
+      "gestes": [
+        "Faire un bilan de forme",
+        "Créer un programme d’exercices",
+        "Montrer les bons gestes"
+      ],
+      "contexte": "Conseille les clients d’une salle de sport pour qu’ils progressent sans se blesser."
+    },
+    {
+      "onisep": "MET.731",
+      "id": "psychiatre",
+      "nom": "Psychiatre",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "psychologie-sociale",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Écouter et évaluer le patient",
+        "Poser un diagnostic",
+        "Proposer un traitement et un suivi"
+      ],
+      "contexte": "Médecin qui soigne les troubles et maladies psychiques."
+    },
+    {
+      "onisep": "MET.744",
+      "id": "monteur-vendeur-en-optique-lunetterie",
+      "nom": "Monteur-vendeur, monteuse-vendeuse en optique-lunetterie",
+      "categorie": "craft",
+      "disciplines": [
+        "optique",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Prendre les mesures du visage",
+        "Monter les verres sur la monture",
+        "Ajuster les lunettes"
+      ],
+      "contexte": "Prépare et ajuste les lunettes en magasin d’optique."
+    },
+    {
+      "onisep": "MET.765",
+      "id": "orthophoniste",
+      "nom": "Orthophoniste",
+      "categorie": "health",
+      "disciplines": [
+        "linguistique",
+        "psychologie-cognitive",
+        "physiologie-humaine"
+      ],
+      "gestes": [
+        "Évaluer le langage",
+        "Proposer des exercices de rééducation",
+        "Conseiller la famille"
+      ],
+      "contexte": "Aide les enfants et les adultes à mieux parler, lire, écrire ou avaler."
+    },
+    {
+      "onisep": "MET.782",
+      "id": "accompagnant-educatif-et-social",
+      "nom": "Accompagnant éducatif et social, accompagnante éducative et sociale",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "physiologie-humaine",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Aider aux gestes du quotidien",
+        "Proposer des activités",
+        "Être attentif au bien-être"
+      ],
+      "contexte": "Accompagne au quotidien des personnes âgées ou en situation de handicap."
+    },
+    {
+      "onisep": "MET.784",
+      "id": "accompagnateur-de-moyenne-montagne",
+      "nom": "Accompagnateur de moyenne montagne, accompagnatrice en moyenne montagne",
+      "categorie": "nature",
+      "disciplines": [
+        "education-physique",
+        "sciences-de-la-terre",
+        "environnement"
+      ],
+      "gestes": [
+        "Préparer l’itinéraire",
+        "Faire découvrir la nature",
+        "Veiller à la sécurité du groupe"
+      ],
+      "contexte": "Guide des randonnées en montagne et fait découvrir le paysage."
+    },
+    {
+      "onisep": "MET.785",
+      "id": "accompagnateur-de-tourisme-equestre",
+      "nom": "Accompagnateur, accompagnatrice de tourisme équestre",
+      "categorie": "nature",
+      "disciplines": [
+        "education-physique",
+        "amenagement-du-territoire",
+        "biologie"
+      ],
+      "gestes": [
+        "Préparer les chevaux et l’itinéraire",
+        "Conduire une randonnée à cheval",
+        "Faire découvrir la région"
+      ],
+      "contexte": "Organise et guide des randonnées à cheval."
+    },
+    {
+      "onisep": "MET.790",
+      "id": "agent-hydrothermal",
+      "nom": "Agent hydrothermal, agente hydrothermale",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "chimie-analytique",
+        "communication"
+      ],
+      "gestes": [
+        "Préparer les bains et les soins",
+        "Accueillir les curistes",
+        "Respecter l’hygiène"
+      ],
+      "contexte": "Réalise les soins à base d’eau thermale dans une station thermale."
+    },
+    {
+      "onisep": "MET.808",
+      "id": "animateur-d-activites-physiques-et-sportives-pour-tous",
+      "nom": "Animateur, animatrice d'activités physiques et sportives pour tous",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "physiologie-humaine",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Proposer des activités variées",
+        "Adapter la séance au public",
+        "Faire bouger en toute sécurité"
+      ],
+      "contexte": "Fait découvrir le sport et le plaisir de bouger à tous les âges."
+    },
+    {
+      "onisep": "MET.832",
+      "id": "pisteur-secouriste",
+      "nom": "Pisteur, pisteuse secouriste",
+      "categorie": "health",
+      "disciplines": [
+        "education-physique",
+        "physiologie-humaine",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Ouvrir et baliser les pistes",
+        "Porter secours aux skieurs",
+        "Surveiller le risque d’avalanche"
+      ],
+      "contexte": "Assure la sécurité des pistes de ski et secourt les blessés."
+    },
+    {
+      "onisep": "MET.844",
+      "id": "ingenieur-de-recherche-clinique-et-epidemiologique",
+      "nom": "Ingénieur, ingénieure de recherche clinique et épidémiologique",
+      "categorie": "health",
+      "disciplines": [
+        "analyse-statistique",
+        "physiologie-humaine",
+        "informatique"
+      ],
+      "gestes": [
+        "Concevoir une étude",
+        "Analyser des données de santé",
+        "Publier les résultats"
+      ],
+      "contexte": "Étudie l’évolution des maladies et l’efficacité des traitements à partir de données."
+    },
+    {
+      "onisep": "MET.845",
+      "id": "gynecologue-obstetricien",
+      "nom": "Gynécologue-obstétricien, gynécologue-obstétricienne",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "biologie",
+        "biologie-cellulaire-genetique"
+      ],
+      "gestes": [
+        "Suivre la grossesse",
+        "Réaliser les accouchements",
+        "Soigner les maladies gynécologiques"
+      ],
+      "contexte": "Médecin qui suit la santé des femmes et la naissance des bébés."
+    },
+    {
+      "onisep": "MET.847",
+      "id": "operateur-en-teleassistance",
+      "nom": "Opérateur, opératrice en téléassistance",
+      "categorie": "services",
+      "disciplines": [
+        "communication",
+        "psychologie-sociale",
+        "physiologie-humaine"
+      ],
+      "gestes": [
+        "Répondre aux appels",
+        "Évaluer la situation",
+        "Prévenir les secours ou les proches"
+      ],
+      "contexte": "Répond aux appels des personnes âgées ou isolées équipées d’un système d’alerte."
+    },
+    {
+      "onisep": "MET.849",
+      "id": "agent-de-joueurs",
+      "nom": "Agent, agente de joueurs",
+      "categorie": "trade",
+      "disciplines": [
+        "droit-et-institutions",
+        "economie-et-societe",
+        "education-physique"
+      ],
+      "gestes": [
+        "Repérer des talents",
+        "Négocier les contrats",
+        "Conseiller le joueur dans sa carrière"
+      ],
+      "contexte": "Représente des sportifs et négocie leurs contrats avec les clubs."
+    },
+    {
+      "onisep": "MET.868",
+      "id": "preparateur-en-pharmacie",
+      "nom": "Préparateur, préparatrice en pharmacie",
+      "categorie": "health",
+      "disciplines": [
+        "chimie-analytique",
+        "physiologie-humaine",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Préparer les ordonnances",
+        "Gérer les stocks de médicaments",
+        "Conseiller les clients"
+      ],
+      "contexte": "Prépare et délivre les médicaments sous le contrôle du pharmacien."
+    },
+    {
+      "onisep": "MET.875",
+      "id": "pedicure-podologue",
+      "nom": "Pédicure-podologue",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "mecanique",
+        "biologie"
+      ],
+      "gestes": [
+        "Soigner les pieds",
+        "Analyser la marche",
+        "Fabriquer des semelles"
+      ],
+      "contexte": "Soigne les pieds et corrige les problèmes de posture et de marche."
+    },
+    {
+      "onisep": "MET.876",
+      "id": "psychomotricien",
+      "nom": "Psychomotricien, psychomotricienne",
+      "categorie": "health",
+      "disciplines": [
+        "psychologie-cognitive",
+        "physiologie-humaine",
+        "education-physique"
+      ],
+      "gestes": [
+        "Observer le développement moteur",
+        "Proposer des jeux et des exercices",
+        "Accompagner l’expression du corps"
+      ],
+      "contexte": "Aide les enfants et les adultes à mieux habiter leur corps et coordonner leurs mouvements."
+    },
+    {
+      "onisep": "MET.877",
+      "id": "orthoptiste",
+      "nom": "Orthoptiste",
+      "categorie": "health",
+      "disciplines": [
+        "optique",
+        "physiologie-humaine",
+        "biologie"
+      ],
+      "gestes": [
+        "Mesurer la vision",
+        "Proposer une rééducation des yeux",
+        "Assister l’ophtalmologiste"
+      ],
+      "contexte": "Rééduque la vision et aide à mieux utiliser ses deux yeux ensemble."
+    },
+    {
+      "onisep": "MET.924",
+      "id": "educateur-de-la-protection-judiciaire-de-la-jeunesse",
+      "nom": "Éducateur, éducatrice de la protection judiciaire de la jeunesse",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-sociale",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Suivre un jeune confié par la justice",
+        "Construire un projet avec lui",
+        "Rendre compte au juge"
+      ],
+      "contexte": "Accompagne des adolescents suivis par la justice pour les aider à se réinsérer."
+    },
+    {
+      "onisep": "MET.939",
+      "id": "art-therapeute",
+      "nom": "Art-thérapeute",
+      "categorie": "health",
+      "disciplines": [
+        "arts-plastiques",
+        "psychologie-sociale",
+        "musique"
+      ],
+      "gestes": [
+        "Proposer une activité artistique",
+        "Observer ce qui s’exprime",
+        "Accompagner la personne dans le temps"
+      ],
+      "contexte": "Utilise la peinture, la musique ou le théâtre pour aider des personnes en souffrance."
+    },
+    {
+      "onisep": "MET.962",
+      "id": "orthodontiste",
+      "nom": "Orthodontiste",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "mecanique",
+        "biologie"
+      ],
+      "gestes": [
+        "Examiner la position des dents",
+        "Poser un appareil",
+        "Suivre l’évolution du traitement"
+      ],
+      "contexte": "Dentiste spécialisé qui corrige la position des dents et des mâchoires."
+    },
+    {
+      "onisep": "MET.994",
+      "id": "medecin-scolaire",
+      "nom": "Médecin scolaire",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "psychologie-cognitive",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Réaliser les bilans de santé",
+        "Repérer les troubles de l’apprentissage",
+        "Conseiller l’équipe éducative"
+      ],
+      "contexte": "Médecin qui suit la santé des élèves à l’école."
+    },
+    {
+      "onisep": "MET.7765",
+      "id": "conseiller-funeraire",
+      "nom": "Conseiller, conseillère funéraire",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "droit-et-institutions",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Accueillir la famille",
+        "Organiser les obsèques",
+        "Proposer des devis"
+      ],
+      "contexte": "Aide les familles à organiser les obsèques d’un proche."
+    },
+    {
+      "onisep": "MET.7819",
+      "id": "assistant-medical",
+      "nom": "Assistant médical",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "communication",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Accueillir le patient",
+        "Prendre les mesures de base",
+        "Préparer la consultation"
+      ],
+      "contexte": "Aide le médecin en préparant les consultations et en accueillant les patients."
+    },
+    {
+      "onisep": "MET.7820",
+      "id": "medecin-urgentiste",
+      "nom": "Médecin urgentiste",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "biologie",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Évaluer l’urgence",
+        "Soigner rapidement",
+        "Coordonner l’équipe des urgences"
+      ],
+      "contexte": "Médecin qui soigne les malades et les blessés arrivant en urgence."
+    },
+    {
+      "onisep": "MET.7829",
+      "id": "accompagnant-d-eleves-en-situation-de-handicap",
+      "nom": "Accompagnant, accompagnante d'élèves en situation de handicap",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-cognitive",
+        "psychologie-sociale",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Aider l’élève en classe",
+        "Adapter les supports",
+        "Travailler avec l’enseignant"
+      ],
+      "contexte": "Accompagne des élèves en situation de handicap pour qu’ils suivent la classe."
+    },
+    {
+      "onisep": "MET.7831",
+      "id": "assistant-d-education",
+      "nom": "Assistant, assistante d'éducation",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "droit-et-institutions",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Surveiller la cour et l’étude",
+        "Aider aux devoirs",
+        "Faire le lien avec la vie scolaire"
+      ],
+      "contexte": "Encadre les élèves en dehors des cours au collège ou au lycée."
+    },
+    {
+      "onisep": "MET.7858",
+      "id": "pharmacien-chercheur",
+      "nom": "Pharmacien chercheur, pharmacienne chercheuse",
+      "categorie": "health",
+      "disciplines": [
+        "chimie-analytique",
+        "biologie-cellulaire-genetique",
+        "biologie"
+      ],
+      "gestes": [
+        "Concevoir des expériences",
+        "Tester de nouvelles molécules",
+        "Publier les résultats"
+      ],
+      "contexte": "Pharmacien qui cherche de nouveaux médicaments en laboratoire."
+    },
+    {
+      "onisep": "MET.7859",
+      "id": "pharmacien-hospitalier",
+      "nom": "Pharmacien hospitalier, pharmacienne hospitalière",
+      "categorie": "health",
+      "disciplines": [
+        "chimie-analytique",
+        "physiologie-humaine",
+        "gestion"
+      ],
+      "gestes": [
+        "Préparer des traitements",
+        "Vérifier les prescriptions",
+        "Gérer les médicaments de l’hôpital"
+      ],
+      "contexte": "Pharmacien qui fournit et contrôle les médicaments d’un hôpital."
+    },
+    {
+      "onisep": "MET.7900",
+      "id": "medecin-regulateur-du-samu",
+      "nom": "Médecin régulateur du Samu, médecin régulatrice du Samu",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "communication",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Écouter l’appel",
+        "Évaluer la gravité",
+        "Décider des secours à envoyer"
+      ],
+      "contexte": "Médecin qui répond aux appels d’urgence et décide de l’aide à envoyer."
+    },
+    {
+      "onisep": "MET.7948",
+      "id": "osteopathe-animalier",
+      "nom": "Ostéopathe animalier, ostéopathe animalière",
+      "categorie": "nature",
+      "disciplines": [
+        "biologie",
+        "mecanique",
+        "physiologie-humaine"
+      ],
+      "gestes": [
+        "Observer l’animal en mouvement",
+        "Pratiquer des gestes manuels",
+        "Conseiller le propriétaire"
+      ],
+      "contexte": "Soulage par des gestes manuels les douleurs des chevaux, chiens ou chats."
+    },
+    {
+      "onisep": "MET.7983",
+      "id": "technicien-biomedical",
+      "nom": "Technicien biomédical, technicienne biomédicale",
+      "categorie": "health",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "informatique"
+      ],
+      "gestes": [
+        "Installer les appareils médicaux",
+        "Réaliser la maintenance",
+        "Dépanner rapidement"
+      ],
+      "contexte": "Entretient et répare les appareils médicaux des hôpitaux."
+    },
+    {
+      "onisep": "MET.8072",
+      "id": "assistant-familial",
+      "nom": "Assistant familial, assistante familiale",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "psychologie-cognitive",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Accueillir un enfant chez soi",
+        "L’accompagner au quotidien",
+        "Travailler avec l’équipe éducative"
+      ],
+      "contexte": "Accueille chez lui des enfants qui ne peuvent pas vivre avec leurs parents."
+    },
+    {
+      "onisep": "MET.8079",
+      "id": "chef-de-service-socio-educatif",
+      "nom": "Chef, cheffe de service socio-éducatif",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "psychologie-sociale",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Encadrer une équipe d’éducateurs",
+        "Coordonner les projets",
+        "Rendre compte à la direction"
+      ],
+      "contexte": "Organise le travail d’une équipe éducative dans un établissement social."
+    },
+    {
+      "onisep": "MET.8091",
+      "id": "directeur-d-etablissement-ou-de-service-d-intervention-sociale",
+      "nom": "Directeur, directrice d'établissement ou de service d'intervention sociale",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "droit-et-institutions",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Piloter le projet de l’établissement",
+        "Gérer le budget et l’équipe",
+        "Travailler avec les partenaires"
+      ],
+      "contexte": "Dirige un établissement qui accompagne des personnes en difficulté."
+    },
+    {
+      "onisep": "MET.8098",
+      "id": "inspecteur-de-l-action-sanitaire-et-sociale",
+      "nom": "Inspecteur, inspectrice de l'action sanitaire et sociale",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "physiologie-humaine",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Contrôler des établissements",
+        "Analyser des besoins de santé",
+        "Conseiller les décideurs"
+      ],
+      "contexte": "Contrôle et organise l’action de l’État en santé et en aide sociale."
+    },
+    {
+      "onisep": "MET.8105",
+      "id": "moniteur-de-judo",
+      "nom": "Moniteur, monitrice de judo",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "physiologie-humaine",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Enseigner les techniques",
+        "Faire respecter le code moral",
+        "Préparer aux compétitions"
+      ],
+      "contexte": "Apprend le judo à des enfants et des adultes."
+    },
+    {
+      "onisep": "MET.8183",
+      "id": "assistant-de-regulation-medicale",
+      "nom": "Assistant, assistante de régulation médicale",
+      "categorie": "health",
+      "disciplines": [
+        "communication",
+        "physiologie-humaine",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Répondre aux appels d’urgence",
+        "Localiser l’appelant",
+        "Transmettre au médecin régulateur"
+      ],
+      "contexte": "Reçoit les appels du Samu et aide à déclencher les secours."
+    },
+    {
+      "onisep": "MET.8185",
+      "id": "equitherapeute",
+      "nom": "Équithérapeute",
+      "categorie": "health",
+      "disciplines": [
+        "psychologie-sociale",
+        "biologie",
+        "education-physique"
+      ],
+      "gestes": [
+        "Préparer la séance avec le cheval",
+        "Accompagner la personne",
+        "Observer ses progrès"
+      ],
+      "contexte": "Utilise la relation avec le cheval pour aider des personnes en difficulté."
+    },
+    {
+      "onisep": "MET.8187",
+      "id": "instructeur-pour-l-autonomie-des-personnes-deficientes-visuelles",
+      "nom": "Instructeur, instructrice pour l'autonomie des personnes déficientes visuelles",
+      "categorie": "services",
+      "disciplines": [
+        "physiologie-humaine",
+        "psychologie-sociale",
+        "optique"
+      ],
+      "gestes": [
+        "Apprendre à se déplacer avec une canne",
+        "Entraîner aux gestes du quotidien",
+        "Adapter le logement"
+      ],
+      "contexte": "Aide les personnes aveugles ou malvoyantes à vivre de façon autonome."
+    },
+    {
+      "onisep": "MET.8188",
+      "id": "coordinateur-en-mdph",
+      "nom": "Coordinateur, coordinatrice en MDPH",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-sociale",
+        "gestion"
+      ],
+      "gestes": [
+        "Étudier les demandes",
+        "Réunir l’équipe d’évaluation",
+        "Informer les familles"
+      ],
+      "contexte": "Coordonne l’étude des demandes d’aide des personnes en situation de handicap."
+    },
+    {
+      "onisep": "MET.8189",
+      "id": "moniteur-d-atelier",
+      "nom": "Moniteur, monitrice d'atelier",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "calcul-professionnel",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Organiser le travail de l’atelier",
+        "Transmettre les gestes techniques",
+        "Veiller à la sécurité"
+      ],
+      "contexte": "Encadre un atelier où travaillent des personnes en situation de handicap."
+    },
+    {
+      "onisep": "MET.8192",
+      "id": "charge-d-accompagnement-des-etudiants-en-situation-de-handicap",
+      "nom": "Chargé, chargée d'accompagnement des étudiants en situation de handicap",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "droit-et-institutions",
+        "communication"
+      ],
+      "gestes": [
+        "Accueillir l’étudiant",
+        "Organiser les aménagements d’études",
+        "Travailler avec les enseignants"
+      ],
+      "contexte": "Aide les étudiants en situation de handicap à suivre leurs études."
+    },
+    {
+      "onisep": "MET.8196",
+      "id": "transcripteur-adaptateur",
+      "nom": "Transcripteur-adaptateur, transcripteuse-adaptatrice",
+      "categorie": "services",
+      "disciplines": [
+        "expression-ecrite",
+        "linguistique",
+        "informatique"
+      ],
+      "gestes": [
+        "Transcrire un texte en braille",
+        "Adapter les images en relief",
+        "Vérifier la qualité du document"
+      ],
+      "contexte": "Adapte des livres et des documents pour les personnes aveugles ou malvoyantes."
+    },
+    {
+      "onisep": "MET.8197",
+      "id": "job-coach",
+      "nom": "Job coach (conseiller en emploi accompagné), job coach (conseillère en emploi accompagné)",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "economie-et-societe",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Accompagner la personne au travail",
+        "Conseiller l’employeur",
+        "Ajuster le poste"
+      ],
+      "contexte": "Aide des personnes en situation de handicap à trouver un emploi et à le garder."
+    },
+    {
+      "onisep": "MET.8198",
+      "id": "infirmier-scolaire",
+      "nom": "Infirmier, infirmière scolaire",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "psychologie-sociale",
+        "psychologie-cognitive"
+      ],
+      "gestes": [
+        "Accueillir les élèves à l’infirmerie",
+        "Mener des actions de prévention",
+        "Suivre les élèves malades"
+      ],
+      "contexte": "Infirmier qui veille à la santé des élèves au collège et au lycée."
+    },
+    {
+      "onisep": "MET.8199",
+      "id": "infirmier-coordinateur",
+      "nom": "Infirmier coordinateur, infirmière coordinatrice",
+      "categorie": "health",
+      "disciplines": [
+        "physiologie-humaine",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Organiser les soins",
+        "Encadrer l’équipe soignante",
+        "Faire le lien avec les médecins"
+      ],
+      "contexte": "Infirmier qui coordonne les soins d’une équipe, souvent en maison de retraite."
+    },
+    {
+      "onisep": "MET.8312",
+      "id": "agent-territorial-specialise-des-ecoles-maternelles",
+      "nom": "Agent territorial spécialisé des écoles maternelles, agente territoriale spécialisée des écoles maternelles",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-cognitive",
+        "physiologie-humaine",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Aider l’enseignant en classe",
+        "Préparer le matériel",
+        "Veiller à l’hygiène et au repos"
+      ],
+      "contexte": "Aide les enseignants de maternelle et prend soin des tout-petits."
+    }
+  ]
+}

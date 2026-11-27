@@ -1,3 +1,4 @@
+import { LABS_EXPERIENCES } from "./lib/labs-experiences.mjs";
 import { fileURLToPath } from "node:url";
 // Construit : 1) l'index du catalogue + pages pour le Worker, 2) le site statique dist/ publié sur Cloudflare Pages :
 //    le tableau de bord élève (avec le chat) à la racine et l'application autonome du cercle trigonométrique sous /cercle/.
@@ -7,11 +8,12 @@ import { appliquerCsp, chargerCatalogue, indicateurReferentiel, indicateurRelect
 import { collectionTrophees } from "./lib/trophees.mjs";
 import { ajouterBoiteIdees } from "./lib/idees.mjs";
 import { articlesPublies, chargerArticles, construireBlog, jourDePublication } from "./lib/blog.mjs";
-import { genererSeoStatique } from "./lib/seo.mjs";
+import { echapperXml, genererSeoStatique } from "./lib/seo.mjs";
 
 import { synchroniserProjectionV0 } from "./lib/referentiel-projection.mjs";
 import { compacter, construireGraphe, disposer } from "../web/graphe-referentiel.js";
 import { couvertureMetiers, enrichirMetiers, verifierMetiers } from "../web/metiers.js";
+import { libellesMicroskills } from "./lib/libelles-microskills.mjs";
 
 const racine = fileURLToPath(new URL("..", import.meta.url));
 const { version } = JSON.parse(await readFile(`${racine}package.json`, "utf8"));
@@ -56,7 +58,7 @@ await writeFile(`${racine}dist/trophees.json`, `${JSON.stringify(collectionTroph
   await writeFile(`${racine}dist/referentiel-graphe.json`, `${JSON.stringify(compacter(graphe, disposer(graphe)))}\n`);
   console.log(`Graphe du référentiel : ${graphe.noeuds.length} nœuds (dont ${graphe.noeuds.filter((n) => n.type === "metier").length} métiers), ${graphe.liens.length} relations${graphe.ignores ? `, ${graphe.ignores} référence(s) inconnue(s) ignorée(s)` : ""}.`);
   const titres = new Map(catalogue.index.maquettes.map((m) => [m.id, m.titre]));
-  const publie = enrichirMetiers(metiers, projection, titres);
+  const publie = enrichirMetiers(metiers, projection, titres, await libellesMicroskills(`${racine}referentiel/objets`));
   await writeFile(`${racine}dist/metiers.json`, `${JSON.stringify(publie)}\n`);
   console.log(`Espace Métiers : ${metiers.metiers.length} métiers, ${metiers.disciplines.length} disciplines, ${Object.keys(publie.notions).length} notions reliées.`);
   // Couverture (chantier Métiers, docs/chantiers/metiers.md) : information, jamais bloquante.
@@ -131,10 +133,22 @@ await writeFile(`${racine}dist/_redirects`, "/dashboard/* / 301\n/dashboard / 30
 
 // Labs publiés hors catalogue (page autonome, CSP propre en meta, contrôlée par check:pages) : /labs/<id>/.
 // Écrits avant la génération SEO pour recevoir l'adresse canonique et figurer dans le sitemap.
-const LABS_PUBLIES = [{ id: "systeme-solaire", source: "Sample/lab/systeme-solaire.html" }];
-for (const lab of LABS_PUBLIES) {
+const LABS_PUBLIES = [{ id: "systeme-solaire", source: "Sample/lab/systeme-solaire.html" }, { id: "business-plan", source: "Sample/lab/business-plan.html" }, { id: "remediation-tdah", source: "Sample/lab/remediation-tdah.html" }];
+// Repères éditoriaux publics, embarqués au build pour rester lisibles hors ligne.
+const reperesPetitsPas = await Promise.all(["problemes-a-etapes-cm", "algorithmes-programmation-cm"].map(async id => {
+  const notion = catalogue.index.maquettes.find(notion => notion.id === id);
+  const contenu = JSON.parse(await readFile(`${racine}catalogue/${id}/contenu.json`, "utf8"));
+  const repere = contenu.niveaux[0]?.aRetenir;
+  if (!notion || typeof repere !== "string" || !repere.trim()) throw new Error(`Repère À petits pas absent : ${id}`);
+  return `<li data-notion="${id}"><strong>${echapperXml(notion.titre)}</strong> — ${echapperXml(repere)}</li>`;
+}));
+for (const lab of [...LABS_PUBLIES, ...LABS_EXPERIENCES]) {
   await mkdir(`${racine}dist/labs/${lab.id}`, { recursive: true });
-  await writeFile(`${racine}dist/labs/${lab.id}/index.html`, appliquerCsp(await readFile(`${racine}${lab.source}`, "utf8")));
+  const source = await readFile(`${racine}${lab.source}`, "utf8");
+  const page = lab.id === "remediation-tdah"
+    ? source.replace("<!-- petits-pas:reperes-catalogue -->", `<div class="card"><h3>Repères du catalogue KermicLab</h3><ul>${reperesPetitsPas.join("")}</ul></div>`)
+    : source;
+  await writeFile(`${racine}dist/labs/${lab.id}/index.html`, appliquerCsp(page));
 }
 
 // Génère les métadonnées des pages publiées, le fichier robots.txt et le sitemap XML.

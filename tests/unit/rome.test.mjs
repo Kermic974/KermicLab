@@ -7,7 +7,7 @@ import {
 } from "../../scripts/lib/rome.mjs";
 import { verifierMetiers } from "../../web/metiers.js";
 
-// Import du ROME 4.0 de France Travail (chantier Métiers, ADR 0043). Fixtures de même structure que les fichiers
+// Import du ROME 4.0 de France Travail (chantier Métiers, ADR 0044). Fixtures de même structure que les fichiers
 // « Toutes les données du ROME » (JSON) : unix_fiche_emploi_metier, unix_referentiel_code_rome, unix_referentiel_contexte_travail.
 const groupe = (libelle, items) => ({ libelle, items });
 const fiche = (code, intitule, { contextes = [], mobilites = [], coeur = [], autres = [], savoirs = [] } = {}) => ({

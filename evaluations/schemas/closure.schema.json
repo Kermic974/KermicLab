@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kermiclab.online/s7/closure.schema.json",
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "primitives.schema.json#/$defs/recordBase"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "primitives.schema.json#/$defs/closureId"
+        },
+        "recordType": {
+          "const": "closure"
+        },
+        "reason": {
+          "enum": [
+            "completed",
+            "abandoned"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "recordType",
+        "reason"
+      ]
+    }
+  ],
+  "unevaluatedProperties": false
+}

@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { appliquerMarche, codesAInterroger, extraitCompact, lireExtrait, niveauTension, normaliserReponse } from "../../scripts/lib/marche.mjs";
 import { verifierMetiers } from "../../web/metiers.js";
 
-// API « Marché du travail » de France Travail (chantier Métiers, ADR 0043, lot 8). Réponses FACTICES, de la forme
+// API « Marché du travail » de France Travail (chantier Métiers, ADR 0044, lot 8). Réponses FACTICES, de la forme
 // supposée dans scripts/lib/marche.mjs : à remplacer par une réponse réelle dès le premier import.
 const valeur = (rome, nom, { territoire = ["NAT", "FR"], periode = "2026-T3", nomenclature = "PERSP_2" } = {}) => ({
   codeTypeTerritoire: territoire[0], codeTerritoire: territoire[1], codeTypeActivite: "ROME", codeActivite: rome,
