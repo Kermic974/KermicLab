@@ -20,3 +20,16 @@ Tests unitaires : sélection vide, énergie basse, tâches terminées, identifia
 
 ## Arbitrage
 Autoriser ou non la tranche distante et son exception au contrat autonome. Revue sécurité et confidentialité requise avant toute donnée réelle. Pas de déploiement ni de changement de CSP dans ce chantier de cadrage.
+
+## Intégration au back-office — proposition du 27 novembre
+Sources : ADR 0026, configuration.js, reglages.js, assistant-utilisateurs.js (ADR 0035).
+- Réutiliser configurationAdmin, envAvecReglages, lireConfiguration et les routes /api/admin/harness ; aucun second back-office. Le registre SKILLS inclut un futur skill petits-pas, mais Object.keys(SKILLS) active actuellement tous les skills par défaut : prévoir une exclusion explicite et un interrupteur indépendant PETITS_PAS_IA_ACTIF=false, combiné à LLM_ACTIF et skillActif. Pas de route distante avant arbitrage.
+- Paramètres proposés : MODELE_PETITS_PAS=custom/haiku (alias à vérifier), MAX_TOKENS_PETITS_PAS=800 (200–1500), PETITS_PAS_PLANS_JOUR=5 (0–10), INSTRUCTIONS_PETITS_PAS (privé, 2000 caractères). Valeurs provisoires à valider ; documenter wrangler.toml, .env.example, traductions fr/en, module et tests de registre. Ne pas réutiliser les quotas tuteur sans vérifier les contraintes CHECK de sessions_llm ; définir une réservation atomique dédiée si nécessaire.
+- Réutiliser systemeComplet et le contrôle des instructions complémentaires ; socle non modifiable en code, schéma strict, actions autorisées et validation des références comme assistant-utilisateurs.js. Données navigateur exclusivement dans le message, jamais dans le système.
+- Télémétrie agrégée par module, modèle et statut ; aucune tâche, titre, ressenti, bilan, identifiant de pochette ni plan dans D1, R2, journaux, cache ou analytics. Ajouter la future route au test de non-conservation. Ne pas exposer les pochettes dans l'écran Utilisateurs ni à l'assistant administrateur.
+- Accès adulte et consentement explicite par requête indépendants de CONTROLE_ACCES_ACTIF et GARDE_FOUS_ACTIFS (actuellement observation). Ne pas traiter une déclaration de détresse ou un niveau d'énergie comme un signal de sanction. Prévoir refus et repli local en cas d'incertitude sur l'accès.
+- Préparer une fonctionnalité de souscription sans activer la facturation ni modifier les offres existantes ; afficher coût agrégé dans Finance après vérification des tarifs et métriques.
+- Étudier l'inventaire des labs publiés : ADR 0026 indique que les labs ne sont pas un type distinct du catalogue. Proposer un inventaire en lecture seule puis un mécanisme de masquage compatible avec les pages autonomes ; ne pas promettre que le masquage actuel bloque les URL statiques.
+- Charte : conserver l'identité locale et vérifier contraste/focus ; éventuelle intégration des thèmes sans rendre le mode hors ligne dépendant du réseau.
+- Recette : réglages à chaud et retour défaut, refus d'instructions contraires au socle, paramètres privés absents de la vue publique, arrêt distant même en cas de configuration invalide, contrôle des quotas, validation des plans, absence de données privées dans toutes les tables, isolation entre utilisateurs, mode hors ligne inchangé.
+Cette extension est documentaire ; aucune configuration de production modifiée. Les réglages effectifs du back-office déployé n'ont pas été consultés.
