@@ -727,7 +727,8 @@ test("cahier de vacances : la zone choisie préremplit les dates des prochaines 
   if (attendue) {
     assert.equal(await page.inputValue("#vacances-debut"), attendue.debut);
     assert.equal(await page.inputValue("#vacances-fin"), attendue.fin);
-    assert.match(await texte(page, "#vacances-zone-periode"), new RegExp(`^${attendue.nom.replace(/[()]/g, "\\$&")} : du `));
+    const echapper = (t) => t.replace(/[.*+?^$()|[\]{}\\]/g, "\\$&");
+    assert.match(await texte(page, "#vacances-zone-periode"), new RegExp(`^${echapper(attendue.nom)} : du `));
   } else {
     assert.match(await texte(page, "#vacances-zone-periode"), /Aucune période de vacances à venir/);
   }

@@ -138,7 +138,9 @@ export function verifierCorrespondances(table, evaluations, idsCatalogue) {
     for (const n of c.notions) if (!idsCatalogue.has(n)) erreurs.push(`correspondances : notion inconnue ${n} (${cle})`);
     if (new Set(c.notions).size !== c.notions.length) erreurs.push(`correspondances : notion en double pour ${cle}`);
   }
-  for (const cle of connues) if (!vues.has(cle)) erreurs.push(`correspondances : compétence sans entrée ${cle.replace("|", " « ")} »`);
+  for (const e of evaluations) {
+    if (!vues.has(`${e.niveau}|${e.competence}`)) erreurs.push(`correspondances : compétence sans entrée ${e.niveau} « ${e.competence} »`);
+  }
   return erreurs;
 }
 
@@ -211,7 +213,8 @@ export function reperesNationaux(table, evaluations) {
   return { source: `${PORTAIL} (DEPP, évaluations Repères)`, licence: LICENCE, statut: table.statut, reperes };
 }
 
-const cellule = (v) => String(v).replace(/\|/g, "\\|");
+/** Cellule de tableau Markdown : barres obliques inverses puis barres verticales échappées. */
+const cellule = (v) => String(v).replace(/\\/g, "\\\\").replace(/\|/g, "\\|");
 const pourcent = (t) => `${String(t.toFixed(1)).replace(".", ",")} %`;
 
 /** Rapport Markdown déterministe (dépend seulement des instantanés, de la table et du catalogue). */
