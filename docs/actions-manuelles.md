@@ -8,7 +8,7 @@ Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : 
 |---|---|---|---|---|
 | Valider l'ADR 0044 | [ADR 0044](decisions/0044-sources-ouvertes-education.md) | Nouvelle source de données pour le pilotage du catalogue | Statut de l'ADR passé à « accepté » | à faire |
 | Relire la table compétences nationales → notions | `referentiel/sources-ouvertes/correspondances-evaluations.json`, [rapport](referentiel/sources-ouvertes.md) | Correspondances proposées par un agent (statut `proposition`) ; elles fixent les notions prioritaires | `statut` passé à `relue` dans le fichier, puis `npm run sources:rapport` | à faire |
-| Vérifier la licence des jeux Futur Pro | [data.education.gouv.fr](https://data.education.gouv.fr/explore/dataset/futurpro_familles_metiers/) | Licence non indiquée au catalogue : préalable à leur usage dans l'Espace Métiers | Licence notée dans le chantier `sources-ouvertes.md` | à faire |
+| Vérifier la licence des jeux Futur Pro | [data.education.gouv.fr](https://data.education.gouv.fr/explore/dataset/futurpro_familles_metiers/) | Licence non publiée (vérifiée le 2026-11-27) ; l'Espace Métiers est déjà alimenté par l'import ONISEP : Futur Pro n'est plus nécessaire | À rouvrir seulement si une licence ouverte est publiée | reporté |
 | Signaler au producteur que le jeu « programmes » s'arrête en 2020-2021 | Page du jeu `fr-en-programmes-enseignement-premier-degre` (formulaire de contact du portail) | Les programmes de cycles 1 à 3 de 2024 et l'EMC 2024 manquent | Réponse du producteur ou jeu mis à jour (`npm run sources:importer`) | à faire |
 
 ## Lab À petits pas — adultes

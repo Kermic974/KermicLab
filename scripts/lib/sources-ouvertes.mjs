@@ -163,6 +163,54 @@ export function prioriserNotions(table, evaluations) {
   })).sort((a, b) => a.taux - b.taux || compareFr(a.notion, b.notion));
 }
 
+export const JEU_CALENDRIER = "fr-en-calendrier-scolaire";
+
+/** Date locale d'un horodatage « minuit local » exprimé en UTC (valable de UTC−12 à UTC+12). */
+const jourLocal = (iso) => new Date(Date.parse(iso) + 12 * 3600 * 1000).toISOString().slice(0, 10);
+const veille = (jour) => new Date(Date.parse(`${jour}T12:00:00Z`) - 86400000).toISOString().slice(0, 10);
+
+/**
+ * Calendrier scolaire (DNE) : périodes de vacances des élèves par zone, à partir de l'année scolaire de `depuis`.
+ * `debut` est le premier jour sans classe, `fin` le dernier (veille de la reprise). Les ponts et les simples « débuts de
+ * vacances » (sans date de reprise) sont ignorés. Retourne [{ zone, annee, nom, debut, fin }] trié par zone puis date.
+ */
+export function normaliserCalendrier(lignes, depuis) {
+  const anneeMin = Number(depuis.slice(0, 4)) - (Number(depuis.slice(5, 7)) < 8 ? 1 : 0);
+  const vus = new Set();
+  const sortie = [];
+  for (const l of lignes) {
+    const population = texte(l.population);
+    if (population !== "-" && population !== "Élèves") continue;
+    const nom = texte(l.description);
+    if (/^(pont|début)/i.test(nom) || !l.start_date || !l.end_date) continue;
+    const annee = texte(l.annee_scolaire);
+    if (Number(annee.slice(0, 4)) < anneeMin) continue;
+    const debut = jourLocal(l.start_date);
+    const fin = veille(jourLocal(l.end_date));
+    if (fin < debut) continue;
+    const zone = texte(l.zones);
+    const cle = `${zone}|${nom}|${debut}`;
+    if (vus.has(cle)) continue;
+    vus.add(cle);
+    sortie.push({ zone, annee, nom, debut, fin });
+  }
+  return sortie.sort((a, b) => compareFr(a.zone, b.zone) || a.debut.localeCompare(b.debut));
+}
+
+/**
+ * Repères nationaux publiés pour le site (dist/reperes-nationaux.json) : pour chaque notion, la compétence nationale la
+ * moins maîtrisée qui la vise. Le tableau de bord Professeur et l'Espace famille l'affichent à côté des notions à revoir.
+ */
+export function reperesNationaux(table, evaluations) {
+  const annees = new Map(evaluations.map((e) => [`${e.niveau}|${e.competence}`, e.annee]));
+  const reperes = {};
+  for (const p of prioriserNotions(table, evaluations)) {
+    const c = p.competences[0];
+    reperes[p.notion] = { taux: c.taux, niveau: c.niveau, competence: c.competence, annee: annees.get(`${c.niveau}|${c.competence}`) };
+  }
+  return { source: `${PORTAIL} (DEPP, évaluations Repères)`, licence: LICENCE, statut: table.statut, reperes };
+}
+
 const cellule = (v) => String(v).replace(/\|/g, "\\|");
 const pourcent = (t) => `${String(t.toFixed(1)).replace(".", ",")} %`;
 

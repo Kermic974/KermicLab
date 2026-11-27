@@ -8,7 +8,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { lireFrontMatter, liste } from "./lib/fiche-catalogue.mjs";
 import {
-  JEUX_PROGRAMMES, LICENCE, NIVEAUX_EVALUATIONS, jeuEvaluations, normaliserEvaluations, normaliserProgrammes,
+  JEU_CALENDRIER, JEUX_PROGRAMMES, LICENCE, NIVEAUX_EVALUATIONS, jeuEvaluations, normaliserCalendrier, normaliserEvaluations, normaliserProgrammes,
   rapportMarkdown, rattacherProgrammes, urlExport, urlJeu, verifierCorrespondances
 } from "./lib/sources-ouvertes.mjs";
 
@@ -63,6 +63,9 @@ async function importer() {
     source: provenance(NIVEAUX_EVALUATIONS.map(jeuEvaluations)), evaluations: normaliserEvaluations(parNiveau)
   });
   await ecrire("programmes.json", { source: provenance(JEUX_PROGRAMMES), programmes: normaliserProgrammes(lignesProgrammes) });
+  await ecrire("calendrier-scolaire.json", {
+    source: provenance([JEU_CALENDRIER]), periodes: normaliserCalendrier(await telecharger(JEU_CALENDRIER), extraitLe)
+  });
   console.log(`Instantanés écrits dans ${path.relative(racine, DOSSIER)} (extraits le ${extraitLe}).`);
 }
 

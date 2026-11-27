@@ -1,6 +1,6 @@
 # Chantier : sources de données ouvertes de l'Éducation nationale
 
-**Niveau actuel : 1 (socle livré, correspondances à relire)**
+**Niveau actuel : 2 (lots 1 à 6 livrés ; correspondances à relire, Futur Pro écarté)**
 
 Décision : [ADR 0044](../decisions/0044-sources-ouvertes-education.md). Rapport généré :
 [docs/referentiel/sources-ouvertes.md](../referentiel/sources-ouvertes.md).
@@ -8,11 +8,12 @@ Décision : [ADR 0044](../decisions/0044-sources-ouvertes-education.md). Rapport
 ## Pourquoi
 
 Le portail [data.education.gouv.fr](https://data.education.gouv.fr) publie 314 jeux de données, presque tous sous
-Licence Ouverte 2.0 (Etalab). Deux familles servent directement KermicLab :
+Licence Ouverte 2.0 (Etalab). Trois jeux servent directement KermicLab :
 
 - les **évaluations nationales Repères** (CP, CE1, CE2, CM1, CM2 : taux de maîtrise nationaux par compétence, DEPP),
   pour savoir quelles notions du catalogue enrichir ou relire en premier ;
-- les **programmes d'enseignement** (DGESCO), pour rattacher chaque fiche à son texte officiel.
+- les **programmes d'enseignement** (DGESCO), pour rattacher chaque fiche à son texte officiel ;
+- le **calendrier scolaire** (DNE), pour caler le cahier de vacances sur les vraies vacances de chaque zone.
 
 Écartés : annuaire et géolocalisation des établissements, IPS, résultats par établissement, effectifs, données RH et
 d'usage des plateformes (rien sur les notions ; plusieurs vont contre le principe « aucune donnée personnelle »).
@@ -25,8 +26,8 @@ d'usage des plateformes (rien sur les notions ; plusieurs vont contre le princip
 | 2 | Évaluations → priorités : table `correspondances-evaluations.json` (compétence nationale → notions du catalogue, statut `proposition`), contrôle (compétence et notion connues), classement des notions par taux de maîtrise | Fait |
 | 3 | Programmes ↔ fiches : rattachement de chaque fiche (matière, classes, niveaux) aux textes en vigueur du jeu DGESCO ; signalement des fiches sans texte et de l'ancienneté du jeu | Fait |
 | 4 | Clôture : rapport `docs/referentiel/sources-ouvertes.md` vérifié par la CI, actions manuelles, CHANGELOG, `npm run ci` | Fait |
-| 5 | Relecture humaine des correspondances, puis affichage du repère national dans le tableau de bord Professeur | Backlog |
-| 6 | Futur Pro (familles de métiers) pour l'Espace Métiers, après vérification de la licence ; calendrier scolaire pour les objectifs | Backlog |
+| 5 | Repère national dans le tableau de bord Professeur (« Mes élèves », « Suivi ») et l'Espace famille : à côté de chaque notion à revoir, le taux national de la compétence la moins maîtrisée qui la vise (`dist/reperes-nationaux.json`, publié par le build). La relecture humaine de la table reste une action manuelle | Fait (relecture : à faire) |
+| 6 | Calendrier scolaire (DNE, Licence Ouverte) : instantané `calendrier-scolaire.json` (91 périodes, 13 zones, vacances des élèves) ; dans le cahier de vacances, le choix facultatif d'une zone préremplit les dates des prochaines vacances (zone ni conservée ni envoyée). Futur Pro : écarté, licence non publiée, et l'Espace Métiers est déjà alimenté par l'import ONISEP (ADR 0042, référentiel des métiers) | Fait |
 
 ## Fonctionnement
 

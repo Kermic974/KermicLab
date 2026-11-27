@@ -2,6 +2,7 @@ import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { servir, navigateur, ouvrir, racine, simulerApiKermiclab, defisIa } from "./outils.mjs";
+import { prochainesVacances } from "../../web/cahier-vacances.js";
 
 // Tableau de bord élève (accueil) : pseudo au premier lancement, mémorisation par cookie local, données de la session.
 let serveur, nav, htmlMaquette, api;
@@ -703,6 +704,35 @@ test("recommandation (issue #186) : prérequis maîtrisés puis révision due, r
     assert.deepEqual(erreurs, []);
     await contexte.close();
   }
+});
+
+test("cahier de vacances : la zone choisie préremplit les dates des prochaines vacances (calendrier scolaire, ADR 0044)", async () => {
+  const notions = [{ id: "fractions", titre: "Les fractions", niveau: "college", niveaux: ["cycle-3"], prerequis: [], matiere: "mathematiques", version: "1.0.0" }];
+  const { page, contexte, erreurs } = await demarrer({}, (p) => p.route(`${api}/api/catalogue`, (r) => r.fulfill({
+    contentType: "application/json", headers: { "access-control-allow-origin": "*" }, body: JSON.stringify({ notions })
+  })));
+  await choisirPseudo(page, "Inès");
+  await page.locator(".barre-laterale [data-nav=education]").click();
+  await page.locator("[aria-controls=ecran-cahiers]").click();
+  await page.locator('[data-cahier-type="vacances"]').click();
+  await page.locator("#constructeur-vacances[open]").waitFor();
+  await page.locator('#vacances-zone option[value="Zone A"]').waitFor({ state: "attached" });
+  const zones = await page.locator("#vacances-zone option").allTextContents();
+  assert.deepEqual(zones.slice(0, 5), ["Choisir une zone…", "Zone A", "Zone B", "Zone C", "Corse"]);
+  assert.ok(zones.includes("Réunion"));
+  const { periodes } = JSON.parse(await readFile(new URL("../../referentiel/sources-ouvertes/calendrier-scolaire.json", import.meta.url), "utf8"));
+  const jour = await page.evaluate(() => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; });
+  const attendue = prochainesVacances(periodes, "Réunion", jour);
+  await page.selectOption("#vacances-zone", "Réunion");
+  if (attendue) {
+    assert.equal(await page.inputValue("#vacances-debut"), attendue.debut);
+    assert.equal(await page.inputValue("#vacances-fin"), attendue.fin);
+    assert.match(await texte(page, "#vacances-zone-periode"), new RegExp(`^${attendue.nom.replace(/[()]/g, "\\$&")} : du `));
+  } else {
+    assert.match(await texte(page, "#vacances-zone-periode"), /Aucune période de vacances à venir/);
+  }
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
 });
 
 test("cahier de vacances (issue #188) : réglages, diagnostic court, planning jour par jour et journée type", async () => {

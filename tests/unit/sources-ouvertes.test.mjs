@@ -2,8 +2,10 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import {
-  normaliserEvaluations, normaliserProgrammes, prioriserNotions, rattacherProgrammes, verifierCorrespondances
+  normaliserEvaluations, normaliserProgrammes, prioriserNotions, rattacherProgrammes, normaliserCalendrier, reperesNationaux, verifierCorrespondances
 } from "../../scripts/lib/sources-ouvertes.mjs";
+import { avecReperes } from "../../web/professeur.js";
+import { prochainesVacances, zonesCalendrier } from "../../web/cahier-vacances.js";
 import { DOSSIER, RAPPORT, construireRapport, lireFiches } from "../../scripts/sources-ouvertes.mjs";
 
 // Sources ouvertes de l'Éducation nationale (ADR 0044) : fonctions pures, instantanés versionnés et rapport à jour.
@@ -100,4 +102,48 @@ test("instantanés versionnés : provenance, licence et table de correspondance 
 
 test("rapport des sources ouvertes à jour (npm run sources:rapport)", async () => {
   assert.equal(await readFile(RAPPORT, "utf8"), await construireRapport(), "relancer npm run sources:rapport");
+});
+
+test("repères nationaux publiés : compétence la moins maîtrisée par notion, attachée aux notions à revoir", () => {
+  const evaluations = [
+    { niveau: "CE1", annee: "2025", competence: "Additionner", taux: 62.3 },
+    { niveau: "CM2", annee: "2025", competence: "Poser et calculer", taux: 45.9 }
+  ];
+  const table = { statut: "proposition", seuil: 60, correspondances: [
+    { niveau: "CE1", competence: "Additionner", notions: ["addition-c2"] },
+    { niveau: "CM2", competence: "Poser et calculer", notions: ["addition-c2"] }
+  ] };
+  const publie = reperesNationaux(table, evaluations);
+  assert.equal(publie.licence, "Licence Ouverte v2.0 (Etalab)");
+  assert.equal(publie.statut, "proposition");
+  assert.deepEqual(publie.reperes, { "addition-c2": { taux: 45.9, niveau: "CM2", competence: "Poser et calculer", annee: "2025" } });
+  assert.deepEqual(avecReperes([{ id: "addition-c2", n: 3 }, { id: "thales", n: 1 }], publie.reperes), [
+    { id: "addition-c2", n: 3, repere: publie.reperes["addition-c2"] }, { id: "thales", n: 1 }
+  ]);
+  assert.deepEqual(avecReperes([{ id: "thales", n: 1 }], undefined), [{ id: "thales", n: 1 }]);
+});
+
+test("calendrier scolaire : périodes des élèves, jours locaux, ponts et débuts ignorés, prochaine période d'une zone", () => {
+  const l = (zones, description, start_date, end_date, population = "-", annee_scolaire = "2026-2027") => ({ zones, description, start_date, end_date, population, annee_scolaire });
+  const periodes = normaliserCalendrier([
+    l("Zone A", "Vacances de la Toussaint", "2026-10-16T22:00:00+00:00", "2026-11-01T23:00:00+00:00"),
+    l("Zone A", "Vacances de la Toussaint", "2026-10-16T22:00:00+00:00", "2026-11-01T23:00:00+00:00"),
+    l("Zone A", "Vacances d'Été", "2027-07-02T22:00:00+00:00", "2027-09-01T22:00:00+00:00", "Élèves"),
+    l("Zone A", "Vacances d'Été", "2027-07-02T22:00:00+00:00", "2027-08-31T22:00:00+00:00", "Enseignants"),
+    l("Zone A", "Pont de l'Ascension", "2027-05-06T22:00:00+00:00", "2027-05-09T22:00:00+00:00"),
+    l("Réunion", "Début des Vacances d'Hiver austral", "2027-07-02T22:00:00+00:00", "2027-07-02T22:00:00+00:00"),
+    l("Réunion", "Vacances d'Été austral", "2026-12-18T23:00:00+00:00", "2027-01-31T23:00:00+00:00"),
+    l("Polynésie", "Vacances", "2026-10-10T10:00:00+00:00", "2026-10-26T10:00:00+00:00"),
+    l("Zone A", "Vacances de Noël", "2025-12-19T23:00:00+00:00", "2026-01-04T23:00:00+00:00", "-", "2025-2026")
+  ], "2026-11-27");
+  assert.deepEqual(periodes, [
+    { zone: "Polynésie", annee: "2026-2027", nom: "Vacances", debut: "2026-10-10", fin: "2026-10-25" },
+    { zone: "Réunion", annee: "2026-2027", nom: "Vacances d'Été austral", debut: "2026-12-19", fin: "2027-01-31" },
+    { zone: "Zone A", annee: "2026-2027", nom: "Vacances de la Toussaint", debut: "2026-10-17", fin: "2026-11-01" },
+    { zone: "Zone A", annee: "2026-2027", nom: "Vacances d'Été", debut: "2027-07-03", fin: "2027-09-01" }
+  ]);
+  assert.deepEqual(zonesCalendrier([...periodes, { zone: "Corse" }, { zone: "Zone B" }]), ["Zone A", "Zone B", "Corse", "Polynésie", "Réunion"]);
+  assert.deepEqual(prochainesVacances(periodes, "Zone A", "2026-11-27"), { nom: "Vacances d'Été", debut: "2027-07-03", fin: "2027-09-01" });
+  assert.deepEqual(prochainesVacances(periodes, "Réunion", "2027-01-10"), { nom: "Vacances d'Été austral", debut: "2027-01-10", fin: "2027-01-31" });
+  assert.equal(prochainesVacances(periodes, "Polynésie", "2026-11-27"), null);
 });

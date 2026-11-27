@@ -115,3 +115,18 @@ export function validerPlan(p) {
   for (const [id, jour] of Object.entries(p.faites ?? {})) if (notions.includes(id) && jourValide(jour)) faites[id] = jour;
   return { v: VERSION_PLAN, matiere: p.matiere.slice(0, 40), niveau: p.niveau, debut: p.debut, fin: p.fin, rythme: p.rythme, notions, acquises: ids(p.acquises), faites };
 }
+
+/**
+ * Calendrier scolaire (ADR 0044) : zones présentes, dans l'ordre (métropole d'abord), et prochaine période de vacances
+ * d'une zone. Une période en cours commence aujourd'hui. Retourne { nom, debut, fin } ou null.
+ */
+export function zonesCalendrier(periodes) {
+  const zones = [...new Set((periodes ?? []).map((p) => p.zone))];
+  const metropole = (z) => (/^Zone [A-Z]$/.test(z) ? 0 : z === "Corse" ? 1 : 2);
+  return zones.sort((a, b) => metropole(a) - metropole(b) || a.localeCompare(b, "fr"));
+}
+
+export function prochainesVacances(periodes, zone, aujourdhui) {
+  const p = (periodes ?? []).filter((x) => x.zone === zone && x.fin >= aujourdhui).sort((a, b) => a.debut.localeCompare(b.debut))[0];
+  return p ? { nom: p.nom, debut: p.debut < aujourdhui ? aujourdhui : p.debut, fin: p.fin } : null;
+}

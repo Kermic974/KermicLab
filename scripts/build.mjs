@@ -14,6 +14,7 @@ import { synchroniserProjectionV0 } from "./lib/referentiel-projection.mjs";
 import { compacter, construireGraphe, disposer } from "../web/graphe-referentiel.js";
 import { couvertureMetiers, enrichirMetiers, verifierMetiers } from "../web/metiers.js";
 import { libellesMicroskills } from "./lib/libelles-microskills.mjs";
+import { reperesNationaux } from "./lib/sources-ouvertes.mjs";
 
 const racine = fileURLToPath(new URL("..", import.meta.url));
 const { version } = JSON.parse(await readFile(`${racine}package.json`, "utf8"));
@@ -65,6 +66,17 @@ await writeFile(`${racine}dist/trophees.json`, `${JSON.stringify(collectionTroph
   const c = couvertureMetiers(metiers, Object.values(projection.notions));
   const statuts = (s) => Object.entries(s).map(([k, n]) => `${k} ${n}`).join(", ");
   console.log(`Couverture métiers : ${c.notions.reliees}/${c.notions.total} notions reliées ; ONISEP ${c.avecOnisep}/${c.metiers}, ROME ${c.avecRome}/${c.metiers}, niveau d'accès ${c.avecNiveau}/${c.metiers} ; correspondances métiers (${statuts(c.correspondances.metiers)}), disciplines (${statuts(c.correspondances.disciplines)}).`);
+}
+// Sources ouvertes (ADR 0044) : repères nationaux (tableau de bord Professeur) et calendrier scolaire.
+{
+  const lire = async (nom) => JSON.parse(await readFile(`${racine}referentiel/sources-ouvertes/${nom}`, "utf8"));
+  const publie = reperesNationaux(await lire("correspondances-evaluations.json"), (await lire("evaluations-nationales.json")).evaluations);
+  await writeFile(`${racine}dist/reperes-nationaux.json`, `${JSON.stringify(publie)}\n`);
+  console.log(`Repères nationaux : ${Object.keys(publie.reperes).length} notions (statut ${publie.statut}).`);
+  // Calendrier scolaire (ADR 0044) : préremplit les dates du cahier de vacances selon la zone choisie (jamais envoyée).
+  const calendrier = await lire("calendrier-scolaire.json");
+  await writeFile(`${racine}dist/calendrier-scolaire.json`, `${JSON.stringify({ licence: calendrier.source.licence, periodes: calendrier.periodes })}\n`);
+  console.log(`Calendrier scolaire : ${calendrier.periodes.length} périodes de vacances.`);
 }
 await versionnerRessources(`${racine}dist`);
 // Blog (issue #277) : écrit après la boîte à idées et le versionnement, qui ne parcourent que les pages de la racine
@@ -182,8 +194,8 @@ async function versionnerRessources(dossier) {
     app = app.replaceAll(`from "./${module}"`, `from "./${module}?v=${versions[module]}"`);
     if (app === avant) throw new Error(`versionnerRessources : import de ${module} introuvable dans app.js`);
   }
-  // Données chargées par app.js (Espace Métiers, ADR 0041) : leur URL porte aussi l'empreinte de leur contenu.
-  for (const donnees of ["metiers.json", "referentiel-graphe.json"]) {
+  // Données chargées par app.js (Espace Métiers, ADR 0041 ; repères nationaux, ADR 0044) : leur URL porte aussi l'empreinte de leur contenu.
+  for (const donnees of ["metiers.json", "referentiel-graphe.json", "reperes-nationaux.json", "calendrier-scolaire.json"]) {
     const avant = app;
     app = app.replaceAll(`fetch("${donnees}")`, `fetch("${donnees}?v=${empreinte(await readFile(`${dossier}/${donnees}`))}")`);
     if (app === avant) throw new Error(`versionnerRessources : chargement de ${donnees} introuvable dans app.js`);
