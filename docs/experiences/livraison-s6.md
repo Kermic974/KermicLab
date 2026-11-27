@@ -9,7 +9,7 @@ Toutes les PR ciblent `main`. Chaque description contient le suivi, la dépendan
 | 01 | — | Adoption Notion/Git, ADR 0033, audit, matrice et suivi | Contrats lisibles, décisions explicites, aucune prétention d’implémentation |
 | 02 | 01 | Schémas JSON Schema 2020-12 et fixtures | Contrat commun, onze types, source/composition, variantes, refus des propriétés inconnues et états S7–9 |
 | 03 | 02 | `check:experiences`, historique, S5, rapports et CI | Références/cycles/versions, PASS/ERROR/WARNING, preuve de chaque règle, rapport conservé en échec |
-| 04 | 03 | Compléments S4 jeux/lab nécessaires | Cibles sourcées en review, pas de placement inventé, compatibilité des projections contrôlée |
+| 04 | 03 | Cibles S4 candidates et extension fermée du périmètre | 2 473 passages en review proposés, 13 Notions des jeux, sources figées ; adoption humaine de l’ADR 0042, aucun placement inventé |
 | 05 | 04 | Adaptateurs, ancres, mapping événements, manifeste, export build et pilote | Huit notions, 2048, échecs et lab ; rendu et consommateurs inchangés, build idempotent |
 | 06 | 05 | Mathématiques : 111 notions restantes | Journal de lot, unités couvertes, omissions justifiées, projection et événements compatibles |
 | 07 | 06 | Physique-chimie : 45 restantes | Idem, dont alternatives aux figures |

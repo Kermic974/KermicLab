@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Sources ouvertes de l'Éducation nationale (ADR 0042).
+// Sources ouvertes de l'Éducation nationale (ADR 0044).
 //   node scripts/sources-ouvertes.mjs importer  → télécharge les jeux, écrit les instantanés, régénère le rapport (réseau)
 //   node scripts/sources-ouvertes.mjs rapport   → régénère le rapport hors ligne
 // La CI ne lance jamais l'import : elle vérifie le rapport à partir des instantanés versionnés.

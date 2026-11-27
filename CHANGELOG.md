@@ -4,7 +4,21 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
-- **Sources ouvertes de l'Éducation nationale** (ADR 0042) : instantanés versionnés des évaluations nationales Repères (CP à CM2, taux de maîtrise nationaux 2025) et des programmes en vigueur, importés de data.education.gouv.fr (Licence Ouverte) par `npm run sources:importer`. Une table relie chaque compétence nationale aux notions du catalogue ; le rapport `docs/referentiel/sources-ouvertes.md` classe les notions à enrichir en priorité (calcul mental et faits numériques au CM, problèmes, techniques opératoires, accords), liste les compétences sans notion et rattache chaque fiche à son texte officiel. / Open education data: national assessment results and official curricula drive catalogue priorities.
+- **Sources ouvertes de l'Éducation nationale** (ADR 0044) : instantanés versionnés des évaluations nationales Repères (CP à CM2, taux de maîtrise nationaux 2025) et des programmes en vigueur, importés de data.education.gouv.fr (Licence Ouverte) par `npm run sources:importer`. Une table relie chaque compétence nationale aux notions du catalogue ; le rapport `docs/referentiel/sources-ouvertes.md` classe les notions à enrichir en priorité (calcul mental et faits numériques au CM, problèmes, techniques opératoires, accords), liste les compétences sans notion et rattache chaque fiche à son texte officiel. / Open education data: national assessment results and official curricula drive catalogue priorities.
+
+- **À petits pas (1.0.1)** : navigation mobile en grille, cibles tactiles agrandies, champs pleine largeur, focus contrasté et tests responsive.
+
+- Lab « À petits pas » pour adultes : organisation, mini-étapes, cycles de travail, progression et récompenses locales, publié sous `/labs/remediation-tdah/` depuis la section Labs.
+
+- **Chat sur ordinateur peu haut** : le panneau flottant réserve la hauteur de la navigation collante ; à 1 280 × 720, il ne recouvre plus « À propos ». Le mode plein écran conserve sa couverture prévue. / Keep navigation accessible above the floating chat on short desktop screens.
+
+- **Vagues complémentaires de métiers** (chantier Métiers) : outil `npm run vague:metiers` pour faire entrer les 1 032 fiches ONISEP restantes par vagues (squelette par domaine avec nom affiché, famille et disciplines proposées, vérification, garde anti-recopie, fusion en « proposition ») ; repli des disciplines par domaine ONISEP pour les fiches sans code ROME ; le test de l'écran Métiers suit la limite des anneaux au-delà de 120 métiers. / Tooling for further ONISEP career waves.
+
+- **Tests Windows** : conversion des URL de fichier des tests CLI ONISEP et libellés MicroSkills avec `fileURLToPath`, pour éviter le lecteur Windows doublé ; assertions inchangées. / Fix Windows file URL paths in ONISEP CLI and MicroSkill label tests.
+
+- **S7 → S10, préparation des livraisons** : audit des 36 pages Notion et du runtime réel, proposition S7 v1.0.0 / ADR 0043, matrice de vérification et chaîne de livraisons successives. Les propositions restent soumises à adoption humaine ; aucune série n'est déclarée implémentée ou déployée. / Prepare the S7–S10 delivery chain and proposed S7 contract; no implementation or deployment is claimed.
+
+- **Espace Métiers : graphe des notions lisible** (ADR 0041) : dans le détail d'un métier, les MicroSkills affichent leur libellé (référentiel canonique, 1 995 / 1 995 couvertes), placé sans chevauchement et sans sauter d'un côté à l'autre ; le graphe se cadre sur son emprise à l'écran et se recadre quand l'écran tourne, aussi dans le back-office. / Careers space: readable MicroSkill labels and better framing of the topic graph.
 
 - **Barre du haut sur ordinateur : tout tient sur une ligne** : avec six destinations (Métiers compris) et « Mes espaces », les onglets débordaient de 1 024 à 1 366 px (Jeux et Progression masqués, onglet courant coupé). La barre se compacte désormais par paliers, selon la place mesurée : icônes des onglets, pseudo de l'avatar, nom du site, libellé de « Mes espaces », marges ; chaque élément garde son nom accessible. / Top bar: entries no longer overflow on desktop; the bar compacts progressively.
 

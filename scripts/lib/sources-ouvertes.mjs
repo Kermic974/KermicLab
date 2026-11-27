@@ -1,4 +1,4 @@
-// Sources de données ouvertes de l'Éducation nationale (ADR 0042) : fonctions pures, sans réseau.
+// Sources de données ouvertes de l'Éducation nationale (ADR 0044) : fonctions pures, sans réseau.
 // L'import (réseau) est dans scripts/sources-ouvertes.mjs ; la CI ne lit que les instantanés versionnés.
 
 export const PORTAIL = "https://data.education.gouv.fr";
@@ -176,7 +176,7 @@ export function rapportMarkdown({ evaluations, programmes, table, rattachements,
   const annees = [...new Set(evaluations.map((e) => `${e.niveau} ${e.annee}`))].join(", ");
   const l = [];
   l.push("# Sources ouvertes : évaluations nationales et programmes", "");
-  l.push("> Fichier généré par `npm run sources:rapport` (ADR 0042). Ne pas modifier à la main.", "");
+  l.push("> Fichier généré par `npm run sources:rapport` (ADR 0044). Ne pas modifier à la main.", "");
   l.push(`Sources : [data.education.gouv.fr](${PORTAIL}), ${LICENCE}. Évaluations Repères (DEPP), taux de maîtrise`);
   l.push(`nationaux, population « Ensemble » : ${annees}. Programmes d'enseignement (DGESCO), textes en vigueur.`);
   l.push(`Instantanés : \`referentiel/sources-ouvertes/\`. Correspondances : statut **${table.statut}**, seuil ${table.seuil} %.`, "");

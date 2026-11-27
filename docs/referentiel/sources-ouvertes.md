@@ -1,6 +1,6 @@
 # Sources ouvertes : évaluations nationales et programmes
 
-> Fichier généré par `npm run sources:rapport` (ADR 0042). Ne pas modifier à la main.
+> Fichier généré par `npm run sources:rapport` (ADR 0044). Ne pas modifier à la main.
 
 Sources : [data.education.gouv.fr](https://data.education.gouv.fr), Licence Ouverte v2.0 (Etalab). Évaluations Repères (DEPP), taux de maîtrise
 nationaux, population « Ensemble » : CP 2025, CE1 2025, CE2 2025, CM1 2025, CM2 2025. Programmes d'enseignement (DGESCO), textes en vigueur.

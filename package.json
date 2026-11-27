@@ -14,13 +14,16 @@
     "check:pages": "node scripts/check-pages.mjs",
     "check:referentiel": "node scripts/check-referentiel.mjs",
     "check:experiences": "node scripts/check-experiences.mjs",
+    "check:evaluations": "node scripts/check-evaluations.mjs",
     "check:artefacts": "node scripts/check-artefacts.mjs",
     "sources:importer": "node scripts/sources-ouvertes.mjs importer",
     "sources:rapport": "node scripts/sources-ouvertes.mjs rapport",
+    "import:onisep": "node scripts/importer-onisep.mjs",
+    "vague:metiers": "node scripts/vague-metiers.mjs",
     "test": "node --test \"tests/unit/*.test.mjs\"",
     "test:e2e": "node --test --test-concurrency=1 \"tests/e2e/*.test.mjs\"",
     "test:captures": "KERMICLAB_CAPTURES=captures node --test --test-concurrency=1 \"tests/e2e/*.test.mjs\"",
-    "ci": "npm run lint && npm run build && npm run check:pages && npm run check:referentiel && npm run check:experiences && npm run check:artefacts && npm test && npm run test:e2e"
+    "ci": "npm run lint && npm run build && npm run check:pages && npm run check:referentiel && npm run check:experiences && npm run check:evaluations && npm run check:artefacts && npm test && npm run test:e2e"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "1.10.0",

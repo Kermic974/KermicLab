@@ -2,7 +2,7 @@
 
 **Niveau actuel : 1 (socle livré, correspondances à relire)**
 
-Décision : [ADR 0042](../decisions/0042-sources-ouvertes-education.md). Rapport généré :
+Décision : [ADR 0044](../decisions/0044-sources-ouvertes-education.md). Rapport généré :
 [docs/referentiel/sources-ouvertes.md](../referentiel/sources-ouvertes.md).
 
 ## Pourquoi
@@ -21,7 +21,7 @@ d'usage des plateformes (rien sur les notions ; plusieurs vont contre le princip
 
 | Lot | Contenu | Statut |
 |---|---|---|
-| 1 | Socle : ADR 0042, ce chantier, module `scripts/lib/sources-ouvertes.mjs` (fonctions pures testées hors ligne), script `npm run sources:importer` (réseau, à la main) et instantanés versionnés `referentiel/sources-ouvertes/` avec provenance et licence | Fait |
+| 1 | Socle : ADR 0044, ce chantier, module `scripts/lib/sources-ouvertes.mjs` (fonctions pures testées hors ligne), script `npm run sources:importer` (réseau, à la main) et instantanés versionnés `referentiel/sources-ouvertes/` avec provenance et licence | Fait |
 | 2 | Évaluations → priorités : table `correspondances-evaluations.json` (compétence nationale → notions du catalogue, statut `proposition`), contrôle (compétence et notion connues), classement des notions par taux de maîtrise | Fait |
 | 3 | Programmes ↔ fiches : rattachement de chaque fiche (matière, classes, niveaux) aux textes en vigueur du jeu DGESCO ; signalement des fiches sans texte et de l'ancienneté du jeu | Fait |
 | 4 | Clôture : rapport `docs/referentiel/sources-ouvertes.md` vérifié par la CI, actions manuelles, CHANGELOG, `npm run ci` | Fait |

@@ -1,0 +1,37 @@
+{
+  "formatVersion": 1,
+  "methods": [
+    {
+      "id": "catalogue-qcm",
+      "version": 1,
+      "mode": "deterministic",
+      "implementation": "web/evaluation-correction-v1.js",
+      "sha256": "d134b500426d8faf8b8814e44ad8a07a858f03da11f72243ed9a3e84b7558aef",
+      "status": "supported"
+    },
+    {
+      "id": "catalogue-number",
+      "version": 1,
+      "mode": "deterministic",
+      "implementation": "web/evaluation-correction-v1.js",
+      "sha256": "d134b500426d8faf8b8814e44ad8a07a858f03da11f72243ed9a3e84b7558aef",
+      "status": "supported"
+    },
+    {
+      "id": "human-review",
+      "version": 1,
+      "mode": "human",
+      "implementation": "web/evaluation-correction-v1.js",
+      "sha256": "d134b500426d8faf8b8814e44ad8a07a858f03da11f72243ed9a3e84b7558aef",
+      "status": "supported"
+    },
+    {
+      "id": "assisted-review",
+      "version": 1,
+      "mode": "assisted",
+      "implementation": "web/evaluation-correction-v1.js",
+      "sha256": "d134b500426d8faf8b8814e44ad8a07a858f03da11f72243ed9a3e84b7558aef",
+      "status": "supported"
+    }
+  ]
+}

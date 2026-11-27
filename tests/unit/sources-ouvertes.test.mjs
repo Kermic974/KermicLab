@@ -6,7 +6,7 @@ import {
 } from "../../scripts/lib/sources-ouvertes.mjs";
 import { DOSSIER, RAPPORT, construireRapport, lireFiches } from "../../scripts/sources-ouvertes.mjs";
 
-// Sources ouvertes de l'Éducation nationale (ADR 0042) : fonctions pures, instantanés versionnés et rapport à jour.
+// Sources ouvertes de l'Éducation nationale (ADR 0044) : fonctions pures, instantanés versionnés et rapport à jour.
 const ligne = (annee, region, caracteristique, competence, taux, discipline = "Mathématiques") => ({
   annee, libelle_region_academique: region, caracteristique, competence, discipline, taux_de_maitrise: taux
 });

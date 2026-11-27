@@ -6480,7 +6480,9 @@ function brancherNavigation() {
 /* ---------- Espace Métiers (ADR 0041) : des notions KermicLab aux gestes professionnels ---------- */
 
 const SVG_NS = "http://www.w3.org/2000/svg";
-const espaceMetiers = { carte: null, graphe: null, positions: null, couleurs3d: null, categorie: "", recherche: "", selection: null, vue: null, chargement: null };
+const espaceMetiers = { carte: null, graphe: null, positions: null, cleAnneaux: null, couleurs3d: null, categorie: "", niveau: "", recherche: "", page: 1, selection: null, vue: null, chargement: null };
+// Liste des métiers par pages (chantier Métiers, lot 5) : le référentiel grandit avec l'import ONISEP.
+const METIERS_PAR_PAGE = 50;
 
 function svgElement(balise, attributs = {}) {
   const n = document.createElementNS(SVG_NS, balise);
@@ -6498,7 +6500,6 @@ async function ouvrirMetiers() {
         return reponse.json();
       }));
       espaceMetiers.carte = metiers.preparerCarte(donnees);
-      espaceMetiers.positions = metiers.disposerAnneaux(espaceMetiers.carte);
       espaceMetiers.graphe = grapheRef.decompacter(graphe);
       espaceMetiers.couleurs3d = couleursGraphe(grapheRef.indicateurs(espaceMetiers.graphe).disciplines.map((d) => d.discipline));
     })();
@@ -6508,6 +6509,11 @@ async function ouvrirMetiers() {
       return;
     }
     rendreCategoriesMetiers();
+    rendreNiveauxMetiers();
+    // Attribution exigée par la licence des données sources (ODbL pour l'ONISEP, chantier Métiers).
+    const sources = espaceMetiers.carte.donnees.sources ?? [];
+    $("#metiers-sources").hidden = !sources.length;
+    $("#metiers-sources").textContent = t("metiersSources", { sources: sources.map((x) => `${x.producteur}, « ${x.nom} » (${x.date}), licence ${x.licence}`).join(" ; ") });
   }
   rendreMetiers();
 }
@@ -6521,10 +6527,20 @@ function rendreCategoriesMetiers() {
   const zone = $("#metiers-categories");
   const puce = (id, libelle) => {
     const b = element("button", { classe: "puce-niveau", texte: libelle, attributs: { type: "button", "aria-pressed": String(espaceMetiers.categorie === id), "data-categorie": id } });
-    b.addEventListener("click", () => { espaceMetiers.categorie = id; espaceMetiers.selection = null; rendreCategoriesMetiers(); rendreMetiers(); });
+    b.addEventListener("click", () => { espaceMetiers.categorie = id; espaceMetiers.selection = null; espaceMetiers.page = 1; rendreCategoriesMetiers(); rendreMetiers(); });
     return b;
   };
   zone.replaceChildren(puce("", t("metiersToutes")), ...espaceMetiers.carte.donnees.categories.map((c) => puce(c.id, c.libelle)));
+}
+
+/** Niveaux d'accès proposés au filtre : seulement ceux que portent des métiers du référentiel. */
+function rendreNiveauxMetiers() {
+  const presents = new Set(espaceMetiers.carte.donnees.metiers.map((m) => m.niveauAcces).filter(Boolean));
+  const choix = $("#metiers-niveau");
+  const option = (valeur, texte) => element("option", { texte, attributs: { value: valeur } });
+  choix.replaceChildren(option("", t("metiersTousNiveaux")), ...metiers.NIVEAUX_ACCES.filter((n) => presents.has(n)).map((n) => option(n, t(`metiersNiveau_${n}`))));
+  choix.value = espaceMetiers.niveau;
+  choix.closest(".metiers-filtres").hidden = !presents.size;
 }
 
 function choisirMetiers(selection, { defiler = true } = {}) {
@@ -6537,17 +6553,25 @@ function choisirMetiers(selection, { defiler = true } = {}) {
 function rendreMetiers() {
   const { carte } = espaceMetiers;
   if (!carte) return;
-  const visibles = metiers.filtrerMetiers(carte, { categorie: espaceMetiers.categorie, recherche: espaceMetiers.recherche });
+  const visibles = metiers.filtrerMetiers(carte, { categorie: espaceMetiers.categorie, niveau: espaceMetiers.niveau, recherche: espaceMetiers.recherche });
   const actifs = metiers.chaine(carte, espaceMetiers.selection, visibles);
-  const filtre = Boolean(espaceMetiers.selection || espaceMetiers.categorie || espaceMetiers.recherche.trim());
-  $("#metiers-etat").textContent = t("metiersEtat", { metiers: visibles.length, disciplines: carte.donnees.disciplines.length, notions: carte.notions.size });
-  rendreAnneauxMetiers(actifs, filtre);
+  const filtre = Boolean(espaceMetiers.selection || espaceMetiers.categorie || espaceMetiers.niveau || espaceMetiers.recherche.trim());
+  // Anneaux : tous les métiers sous le seuil ; au-delà, ceux du filtre (disposition recalculée quand ils changent).
+  const anneaux = metiers.metiersDesAnneaux(carte, visibles);
+  const cle = anneaux.metiers.map((m) => m.id).join("|");
+  if (cle !== espaceMetiers.cleAnneaux) {
+    espaceMetiers.positions = metiers.disposerAnneaux(carte, { metiers: anneaux.metiers });
+    espaceMetiers.cleAnneaux = cle;
+  }
+  $("#metiers-etat").textContent = t("metiersEtat", { metiers: visibles.length, disciplines: carte.donnees.disciplines.length, notions: carte.notions.size })
+    + (anneaux.limites ? ` ${t("metiersAnneauxLimites", { n: anneaux.metiers.length })}` : "");
+  rendreAnneauxMetiers(actifs, filtre, anneaux.metiers);
   rendreListeMetiers(visibles);
   rendreDetailMetiers(actifs);
 }
 
 /** Quatre anneaux reliés : notions → disciplines → métiers → gestes. Tout ce qui sort de la chaîne active s'estompe. */
-function rendreAnneauxMetiers(actifs, filtre) {
+function rendreAnneauxMetiers(actifs, filtre, places) {
   const { carte, positions, selection } = espaceMetiers;
   const svg = $("#metiers-anneaux");
   const liens = svgElement("g", { class: "metiers-liens" });
@@ -6557,7 +6581,7 @@ function rendreAnneauxMetiers(actifs, filtre) {
   for (const d of carte.donnees.disciplines) for (const n of d.notions) {
     ligne(positions.notion.get(n), positions.discipline.get(d.id), "notion", filtre && actifs.notions.has(n) && actifs.disciplines.has(d.id));
   }
-  for (const m of carte.donnees.metiers) {
+  for (const m of places) {
     for (const d of m.disciplines) ligne(positions.discipline.get(d), positions.metier.get(m.id), "discipline", filtre && actifs.metiers.has(m.id) && actifs.disciplines.has(d));
     for (const g of m.gestes) ligne(positions.metier.get(m.id), positions.geste.get(`${m.id}::${g}`), "geste", filtre && actifs.gestes.has(`${m.id}::${g}`));
   }
@@ -6582,8 +6606,8 @@ function rendreAnneauxMetiers(actifs, filtre) {
   const montrer = (ensemble, id) => Boolean(selection) && ensemble.has(id);
   for (const [id, p] of positions.notion) noeud("notion", id, p, 5, carte.notions.get(id)?.titre ?? id, { etiquette: montrer(actifs.notions, id) && actifs.notions.size <= 12 });
   for (const d of carte.donnees.disciplines) noeud("discipline", d.id, positions.discipline.get(d.id), 8, d.nom, { etiquette: !filtre || actifs.disciplines.has(d.id) });
-  for (const m of carte.donnees.metiers) noeud("metier", m.id, positions.metier.get(m.id), 9, m.nom, { etiquette: !selection || actifs.metiers.has(m.id) });
-  for (const m of carte.donnees.metiers) for (const g of m.gestes) {
+  for (const m of places) noeud("metier", m.id, positions.metier.get(m.id), 9, m.nom, { etiquette: !selection || actifs.metiers.has(m.id) });
+  for (const m of places) for (const g of m.gestes) {
     const id = `${m.id}::${g}`;
     noeud("geste", id, positions.geste.get(id), 4, g, { etiquette: montrer(actifs.gestes, id) && actifs.gestes.size <= 12, titre: `${g} · ${m.nom}` });
   }
@@ -6592,7 +6616,8 @@ function rendreAnneauxMetiers(actifs, filtre) {
 
 function rendreListeMetiers(visibles) {
   const { carte, selection } = espaceMetiers;
-  $("#metiers-liste").replaceChildren(...visibles.map((m) => {
+  const affiches = visibles.slice(0, espaceMetiers.page * METIERS_PAR_PAGE);
+  $("#metiers-liste").replaceChildren(...affiches.map((m) => {
     const b = element("button", { classe: "metiers-item", attributs: { type: "button", "aria-pressed": String(selection?.type === "metier" && selection.id === m.id), "data-metier": m.id } });
     const categorie = carte.categories.get(m.categorie);
     const pastille = element("span", { classe: "metiers-categorie", texte: categorie.libelle });
@@ -6604,9 +6629,58 @@ function rendreListeMetiers(visibles) {
     return li;
   }));
   if (!visibles.length) $("#metiers-liste").replaceChildren(element("li", { classe: "doux", cle: "metiersAucun" }));
+  else if (affiches.length < visibles.length) {
+    const plus = element("button", { classe: "secondaire petit-bouton", texte: t("metiersPlus", { n: Math.min(METIERS_PAR_PAGE, visibles.length - affiches.length) }), attributs: { type: "button", id: "metiers-plus" } });
+    plus.addEventListener("click", () => {
+      espaceMetiers.page += 1;
+      rendreListeMetiers(visibles);
+      $(`#metiers-liste [data-metier="${visibles[affiches.length].id}"]`)?.focus();
+    });
+    const li = element("li", { classe: "metiers-plus" });
+    li.append(plus);
+    $("#metiers-liste").append(li);
+  }
 }
 
 /** Détail de la sélection : la chaîne lue dans les deux sens, les notions KermicLab et leur graphe 3D. */
+const SCENARIOS_BUSINESS_PLAN = Object.freeze({
+  "designer-ux-ui": "kljob1",
+  "data-analyst": "kljob2",
+  "developpeur-web": "kljob3",
+  "architecte-cloud": "kljob4",
+  "ebeniste": "kljob5",
+  "ceramiste": "kljob6",
+  "maroquinier": "kljob7",
+  "menuisier-agenceur": "carpenter",
+  "acheteur-industriel": "kljob9",
+  "charge-daffaires": "kljob10",
+  "resp-logistique": "kljob11",
+  "controleur-gestion": "kljob12",
+  "content-strategist": "kljob13",
+  "traffic-manager": "kljob14",
+  "brand-manager": "kljob15",
+  "community-builder": "kljob16",
+  "ing-biomedical": "kljob17",
+  "eco-concepteur": "kljob18",
+  "geometre-topographe": "kljob19",
+  "ingenieur-genie-civil": "kljob20",
+  "technicien-de-laboratoire": "kljob21",
+  "biologiste-de-lenvironnement": "kljob22",
+  "agronome": "kljob23",
+  "urbaniste": "kljob24",
+  "professeur-de-sciences": "kljob25",
+  "journaliste-scientifique": "kljob26",
+  "analyste-des-risques": "kljob27",
+  "mediateur-scientifique": "kljob28",
+  "boulanger": "baker",
+  "cuisinier": "restaurant",
+  "coiffeur": "hairdresser",
+  "electricien-du-batiment": "electrician",
+  "plombier-chauffagiste": "plumber",
+  "macon": "mason",
+  "mecanicien-automobile": "mechanic"
+});
+
 function rendreDetailMetiers(actifs) {
   const { carte, selection } = espaceMetiers;
   const zone = $("#metiers-detail");
@@ -6635,6 +6709,16 @@ function rendreDetailMetiers(actifs) {
   tete.append(element("h3", { texte: titre, attributs: { id: "metiers-detail-titre" } }), fermer);
   const enfants = [genre, tete];
   if (metier) enfants.push(element("p", { classe: "doux", texte: metier.contexte }));
+  const scenarioBusinessPlan = metier && SCENARIOS_BUSINESS_PLAN[metier.id];
+  if (scenarioBusinessPlan) {
+    enfants.push(element("a", {
+      classe: "bouton lab",
+      cle: "labBusinessPlanAction",
+      attributs: { href: `labs/business-plan/?activite=${encodeURIComponent(scenarioBusinessPlan)}` },
+    }));
+  }
+  if (metier?.niveauAcces) enfants.push(element("p", { classe: "petit metiers-niveau-acces", texte: t("metiersNiveauMetier", { niveau: t(`metiersNiveau_${metier.niveauAcces}`) }) }));
+  if (metier?.correspondance === "proposition") enfants.push(element("p", { classe: "doux petit metiers-proposition", cle: "metiersMetierProposition" }));
   const disciplines = [...actifs.disciplines];
   enfants.push(element("div", { classe: "metiers-blocs" }));
   const blocs = enfants.at(-1);
@@ -6670,9 +6754,11 @@ function rendreDetailMetiers(actifs) {
   enfants.push(blocNotions);
   if (notions.length && espaceMetiers.graphe) {
     const { graphe: local, centres } = grapheRef.sousGraphe(espaceMetiers.graphe, notions);
-    // Titres du catalogue à la place des identifiants (« NSI : structures de données… » plutôt que « Nsi algorithmes… »).
+    // Titres du catalogue et libellés des MicroSkills à la place des identifiants (« NSI : structures de données… »
+    // plutôt que « Nsi algorithmes… »).
+    const libellesMs = new Map(notions.flatMap((id) => carte.notions.get(id).microskills.map((m) => [m.id, m.libelle])));
     for (const n of local.noeuds) {
-      if (n.type !== "notion") continue;
+      if (n.type !== "notion") { n.libelle = libellesMs.get(n.id) ?? n.libelle; continue; }
       const slug = n.id.split(".").slice(2).join(".");
       n.libelle = etat.registre?.trouver(slug)?.titre ?? carte.notions.get(n.id)?.titre ?? n.libelle;
     }
@@ -6684,11 +6770,11 @@ function rendreDetailMetiers(actifs) {
     enfants.push(bloc("metiersBlocGraphe", legende, scene));
     let pointe = null;
     const vue = creerVueGraphe(canvas, local, {
-      etat: () => ({ visibles: ensemble.noeuds, liens: ensemble.liens, chemin: new Set(), selection: pointe, couleurs: espaceMetiers.couleurs3d, entoures: centres, nommerNotions: true }),
+      etat: () => ({ visibles: ensemble.noeuds, liens: ensemble.liens, chemin: new Set(), selection: pointe, couleurs: espaceMetiers.couleurs3d, entoures: centres, nommerNotions: true, nommerMicroskills: true }),
       onSelection: (i) => {
         pointe = i;
         const noeudChoisi = i === null ? null : local.noeuds[i];
-        legende.textContent = noeudChoisi ? `${noeudChoisi.libelle} · ${noeudChoisi.type === "notion" ? t("metiersType_notion") : "MicroSkill"}` : t("metiersGrapheAide", { notions: ensemble.centres.size, noeuds: ensemble.noeuds.size });
+        legende.textContent = noeudChoisi ? `${noeudChoisi.libelle} · ${t(noeudChoisi.type === "notion" ? "metiersType_notion" : "metiersType_microskill")}` : t("metiersGrapheAide", { notions: ensemble.centres.size, noeuds: ensemble.noeuds.size });
         vue.dessiner();
       }
     });
@@ -6699,7 +6785,8 @@ function rendreDetailMetiers(actifs) {
 }
 
 function brancherMetiers() {
-  $("#metiers-recherche").addEventListener("input", (e) => { espaceMetiers.recherche = e.target.value; espaceMetiers.selection = null; rendreMetiers(); });
+  $("#metiers-recherche").addEventListener("input", (e) => { espaceMetiers.recherche = e.target.value; espaceMetiers.selection = null; espaceMetiers.page = 1; rendreMetiers(); });
+  $("#metiers-niveau").addEventListener("change", (e) => { espaceMetiers.niveau = e.target.value; espaceMetiers.selection = null; espaceMetiers.page = 1; rendreMetiers(); });
 }
 
 /* ---------- Mes cahiers : constructeur, enrichissement IA et lecture ---------- */

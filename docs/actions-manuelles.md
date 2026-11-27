@@ -2,14 +2,48 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
-## Sources ouvertes de l'Éducation nationale (ADR 0042)
+## Sources ouvertes de l'Éducation nationale (ADR 0044)
 
 | Action | Où | Pourquoi | Comment confirmer | Statut |
 |---|---|---|---|---|
-| Valider l'ADR 0042 | [ADR 0042](decisions/0042-sources-ouvertes-education.md) | Nouvelle source de données pour le pilotage du catalogue | Statut de l'ADR passé à « accepté » | à faire |
+| Valider l'ADR 0044 | [ADR 0044](decisions/0044-sources-ouvertes-education.md) | Nouvelle source de données pour le pilotage du catalogue | Statut de l'ADR passé à « accepté » | à faire |
 | Relire la table compétences nationales → notions | `referentiel/sources-ouvertes/correspondances-evaluations.json`, [rapport](referentiel/sources-ouvertes.md) | Correspondances proposées par un agent (statut `proposition`) ; elles fixent les notions prioritaires | `statut` passé à `relue` dans le fichier, puis `npm run sources:rapport` | à faire |
 | Vérifier la licence des jeux Futur Pro | [data.education.gouv.fr](https://data.education.gouv.fr/explore/dataset/futurpro_familles_metiers/) | Licence non indiquée au catalogue : préalable à leur usage dans l'Espace Métiers | Licence notée dans le chantier `sources-ouvertes.md` | à faire |
 | Signaler au producteur que le jeu « programmes » s'arrête en 2020-2021 | Page du jeu `fr-en-programmes-enseignement-premier-degre` (formulaire de contact du portail) | Les programmes de cycles 1 à 3 de 2024 et l'EMC 2024 manquent | Réponse du producteur ou jeu mis à jour (`npm run sources:importer`) | à faire |
+
+## Lab À petits pas — adultes
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Autoriser la publication du labo adulte après présentation de l’application | [PR #439](https://github.com/Kermic974/KermicLab/pull/439), [fiche](../Sample/lab/remediation-tdah.md) | AGENTS.md exige la validation humaine ; cette autorisation de publication ne constitue pas une validation clinique | Le propriétaire a demandé explicitement « publie en tant que labo dans mon repo KermicLab », puis « livre le labo ». La fusion reste soumise à la CI verte et le déploiement doit être vérifié. | fait |
+
+## Correctif de qualification — chat et navigation
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Relire et fusionner le correctif du chevauchement chat/navigation après CI verte | Branche `fix/chat-navigation-hauteur`, suivi [#427](https://github.com/Kermic974/KermicLab/issues/427) | Blocage reproduit à 1 280 × 720 pendant la qualification du pilote S6 ; revue du CODEOWNER requise par AGENTS.md | CI au SHA final, revue/fusion humaines constatées ; pilote resynchronisé et test du parcours rejoué | à faire |
+
+## Adoption S7 et livraisons S7 → S10
+
+Suivi : [#427](https://github.com/Kermic974/KermicLab/issues/427). [Chaîne de livraison](evaluation/livraison-s7-s10.md).
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Examiner les décisions D7-1 à D7-8 et adopter le contrat S7 par revue/fusion après CI verte | [ADR 0043](decisions/0043-adoption-evaluation-s7.md), [S7 v1.0.0](referentiel/normes/S7-v1.0.0.md), [PR #428](https://github.com/Kermic974/KermicLab/pull/428) | Validation humaine requise par AGENTS.md ; aucune reconstruction fictive de faits V0 | Fusion humaine constatée à `3e504246`, CI GitHub verte ; Windows : 1 034 tests unitaires et 1 207 tests navigateur réussis, un ignoré | fait |
+| Relire les critères, cibles, diagnostics et limites du pilote S7 avant qualification publique | [Matrice S7-01 à S7-20](referentiel/normes/S7-v1.0.0.md), dépendance [S6 #384](https://github.com/Kermic974/KermicLab/issues/384) | Un PASS structurel ne valide ni la justesse pédagogique ni les affirmations clientes | Revue humaine consignée avec version/périmètre ; aucun champ relue rempli par l'agent | à faire |
+| Revoir et fusionner le lot S7-B après CI verte | PR liée au [suivi #427](https://github.com/Kermic974/KermicLab/issues/427), [contrats et limites](evaluation/contrats-s7.md) | CODEOWNER requis par AGENTS.md ; les schémas, correcteur et rapports ne sont pas encore branchés sur les pages | Fusion humaine constatée sur main, puis lot d'intégration et qualification publics | à faire |
+
+## Espace Métiers (chantier Métiers)
+
+Plan : [chantier Métiers](chantiers/metiers.md), [ADR 0042](decisions/0042-referentiel-metiers-onisep.md).
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Récupérer les données métiers de l'ONISEP | data.gouv.fr, jeux « Idéo-Fiches métiers » et « Idéo-Métiers Onisep » | Analyse et import du chantier | Extrait `referentiel/sources/onisep/ideo-metiers-2026-11-24.json` versionné (accès réseau ouvert à `data.onisep.fr` et `static.data.gouv.fr` dans l'environnement cloud) | fait |
+| Accepter la licence ODbL des données ONISEP | [ADR 0042 §2](decisions/0042-referentiel-metiers-onisep.md), `referentiel/sources/onisep/README.md` | La licence est l'ODbL (et non Etalab) : attribution obligatoire (en place) et partage à l'identique des bases dérivées publiées (`metiers-v0.json`, `dist/metiers.json`) | Décision notée dans l'ADR 0042 ; sinon retirer les champs ONISEP avant publication | à faire |
+| Vérifier les 21 correspondances métier ↔ fiche ONISEP choisies par l'agent | `referentiel/metiers-v0.json` (champ `onisep`), liste dans le chantier Métiers | Rapprochements non exacts (ex. « Resp. logistique » → ingénieur logistique, « Content Strategist » → concepteur-rédacteur) | Correspondances confirmées ou corrigées par une PR | à faire |
+| Valider l'ADR 0042 (format v2, import ONISEP) | [ADR 0042](decisions/0042-referentiel-metiers-onisep.md) | Décision de structure des données et de source externe | ADR passée au statut accepté | à faire |
+| Relire les 111 associations métier → disciplines (38 de la V5, 41 de la vague pilote, 32 de la vague 1), les 37 disciplines « proposition » (notions rattachées) et les règles ROME | `referentiel/metiers-v0.json`, `referentiel/regles-metiers.json` | Associations reprises de la maquette V5 ou proposées par un agent (gestes, niveaux d'accès, notions) ; public mineur | Champs `correspondance: "validee"` et `relue` renseignés par un humain | à faire |
 
 ## Relecture humaine vérifiable (ADR 0039)
 
@@ -27,7 +61,8 @@ Suivi : [#384](https://github.com/Kermic974/KermicLab/issues/384).
 |---|---|---|---|---|
 | Relire et fusionner la PR d’adoption S6 après CI verte | [PR #385](https://github.com/Kermic974/KermicLab/pull/385), [norme](referentiel/normes/S6-v1.0.0.md), [ADR 0033](decisions/0033-adoption-contrats-s6.md) | AGENTS.md exige la validation humaine ; le plan place cette adoption avant l’implémentation technique | Fusion constatée le 18 novembre 2026 à `8eb022e9`, CI verte ; PR des schémas débloquée | fait |
 | Relire et fusionner les schémas S6 après CI verte | [PR #389](https://github.com/Kermic974/KermicLab/pull/389), [contrats et limites](../experiences/README.md) | Validation humaine requise par AGENTS.md ; dépendance de la PR 03 du validateur | Fusion constatée à `751b3fa4`, CI GitHub verte ; un incident réseau navigateur local a été rejoué avec succès | fait |
-| Relire et fusionner la PR du validateur S6 après CI verte | PR 03 liée au [suivi #384](https://github.com/Kermic974/KermicLab/issues/384), [guide du validateur](../experiences/README.md) | Validation humaine requise par AGENTS.md ; les compléments canoniques et le pilote en dépendent | PR 03 fusionnée sur main ; préparer les cibles manquantes puis les adaptateurs du pilote | à faire |
+| Relire et fusionner la PR du validateur S6 après CI verte | [PR #421](https://github.com/Kermic974/KermicLab/pull/421), [guide du validateur](../experiences/README.md) | Validation humaine requise par AGENTS.md ; les compléments canoniques et le pilote en dépendent | Fusion constatée à `6f121846`, CI GitHub et Windows finale vertes | fait |
+| Adopter les cibles candidates et l’extension explicite de migration S6 | PR 04 liée au [suivi #384](https://github.com/Kermic974/KermicLab/issues/384), [ADR 0042](decisions/0042-extension-migration-s6.md), [journal des cibles](experiences/cibles-et-extension-s6.md) | Les candidats review et les sources nouvelles ne peuvent bénéficier de la compatibilité historique sans revue et adoption humaines ; aucune validation pédagogique n’est présumée | PR 04 relue et fusionnée avec CI verte ; la PR du pilote peut appliquer l’annexe adoptée | à faire |
 
 ## Gamification unifiée (ADR 0032)
 

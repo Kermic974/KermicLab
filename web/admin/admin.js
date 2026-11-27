@@ -2,8 +2,8 @@
 // Tout le contenu est construit par le DOM (jamais innerHTML) ; aucune donnée n'est gardée hors de l'onglet.
 import { THEME_PERSONNALISE, deriverVariables } from "../theme.js";
 import { bilanPortefeuille, estimerSouscription, repartitionFixes } from "./financier.js";
-import { cheminLePlusCourt, decompacter, filtrer, indicateurs } from "../graphe-referentiel.js";
-import { COULEUR_TRANS, couleurs, creerVue } from "../graphe-vue.js";
+import { cheminLePlusCourt, decompacter, filtrer, indicateurs, notionsDemandees } from "../graphe-referentiel.js";
+import { COULEUR_METIER, COULEUR_TRANS, couleurs, creerVue } from "../graphe-vue.js";
 
 const CLE_SESSION = "kermiclab:admin:cle";
 const $ = (s) => document.querySelector(s);
@@ -726,6 +726,7 @@ async function ecranHarness() {
   }, "Paramètres enregistrés : ils s'appliquent dans les 15 secondes.");
 
   const modules = etat.configuration.modules.map((m) => bloc(libellesParametres[`configModule_${m.id}`] ?? m.id,
+    m.id === "petits-pas" ? h("p", { class: "admin-bandeau", text: "Haiku : profil par défaut. Opus : choix explicite. Configuration préparatoire uniquement : aucun appel distant ni quota appliqué à ce stade. Vérifier l’alias Opus avant activation." }) : null,
     m.skills.length ? h("div", { class: "admin-pastilles" }, m.skills.map((s) => pastille(`${s.id} · ${s.prompt} · v${s.version}`, s.actif ? "ok" : ""))) : null,
     m.parametres.map((p) => h("div", { class: "admin-parametre" },
       h("div", {}, h("strong", { text: libellesParametres[`configParam_${p.cle}`] ?? p.cle }), h("p", { class: "doux" }, h("code", { text: p.cle })),
@@ -738,7 +739,7 @@ async function ecranHarness() {
     h("p", { class: "admin-bandeau", text: "Les valeurs réglées ici remplacent celles du déploiement, dans les bornes du registre. Le socle de sécurité de chaque harness reste dans le code : il ne se modifie pas ici." }),
     ...modules,
     bloc("Souscriptions",
-      h("p", { class: "doux", text: "Les paramètres ci-dessus sont les limites de la souscription « Gratuit ». Les autres offres (rôle, fonctionnalités, limites, coût et prix) se composent dans l'écran « Souscriptions »." }),
+      h("p", { class: "doux", text: "Les limites de consommation du tuteur, des défis et des cahiers ci-dessus concernent la souscription « Gratuit » ; les profils À petits pas sont préparatoires. Les autres offres (rôle, fonctionnalités, limites, coût et prix) se composent dans l'écran « Souscriptions »." }),
       h("div", { class: "admin-ligne" }, h("button", { type: "button", class: "secondaire", onclick: () => afficher("souscriptions") }, "Ouvrir les souscriptions")))
   ];
 }
@@ -1362,7 +1363,7 @@ const NOMS_DISCIPLINES = { emc: "EMC", eps: "EPS", ses: "SES", svt: "SVT", franc
 const nomDiscipline = (d) => NOMS_DISCIPLINES[d] ?? (d.charAt(0).toUpperCase() + d.slice(1).replace(/-/g, " "));
 let grapheCharge = null;
 let vueGraphe = null;
-const filtreGraphe = { discipline: "", recherche: "", microskills: true, prerequis: true, transSeules: false, masquees: new Set(), isole: null, selection: null, depart: null, arrivee: null, rotation: false };
+const filtreGraphe = { discipline: "", recherche: "", microskills: true, prerequis: true, metiers: false, transSeules: false, masquees: new Set(), isole: null, selection: null, depart: null, arrivee: null, rotation: false };
 
 async function ecranGraphe() {
   const generation = affichage;
@@ -1380,6 +1381,8 @@ async function ecranGraphe() {
   const disciplines = ind.disciplines.map((d) => d.discipline);
   const teintes = couleurs(disciplines);
   const nomNoeud = (i) => g.noeuds[i].libelle;
+  const avecMetiers = ind.metiers > 0;
+  const nomType = { notion: "Notion", microskill: "MicroSkill", metier: "Métier" };
   let vue = { noeuds: new Set(), liens: [] };
   let chemin = [];
 
@@ -1406,7 +1409,8 @@ async function ecranGraphe() {
       });
       return b;
     }),
-    h("span", { class: "admin-pastille graphe-trans" }, h("span", { class: "graphe-pastille", "aria-hidden": "true", style: { background: COULEUR_TRANS } }), "MicroSkill transdisciplinaire"));
+    h("span", { class: "admin-pastille graphe-trans" }, h("span", { class: "graphe-pastille", "aria-hidden": "true", style: { background: COULEUR_TRANS } }), "MicroSkill transdisciplinaire"),
+    avecMetiers ? h("span", { class: "admin-pastille graphe-metier" }, h("span", { class: "graphe-pastille", "aria-hidden": "true", style: { background: COULEUR_METIER } }), "Métier") : null);
   const canvas = h("canvas", { class: "graphe-canvas", id: "graphe-canvas", tabindex: "0", role: "img",
     "aria-label": "Graphe 3D du référentiel. Flèches : tourner ; plus et moins : zoomer. Les détails d'un nœud s'ouvrent au clic ou depuis la recherche." });
   const details = h("aside", { class: "carte graphe-details", id: "graphe-details", "aria-live": "polite", hidden: true });
@@ -1418,10 +1422,11 @@ async function ecranGraphe() {
     if (viser && i !== null) vueGraphe?.viser(i); else vueGraphe?.dessiner();
   }
   function voisinsDe(i) {
-    const groupes = { "Prérequis": [], "Ouvre vers": [], "MicroSkills": [], "Mobilisée par": [] };
+    const groupes = { "Prérequis": [], "Ouvre vers": [], "MicroSkills": [], "Mobilisée par": [], "Métiers": [], "Notions travaillées": [] };
     for (const k of g.voisins[i]) {
       const l = g.liens[k];
       if (l.type === "prerequis") (l.b === i ? groupes["Prérequis"] : groupes["Ouvre vers"]).push(l.b === i ? l.a : l.b);
+      else if (l.type === "metier") (l.b === i ? groupes["Métiers"] : groupes["Notions travaillées"]).push(l.b === i ? l.a : l.b);
       else (l.a === i ? groupes.MicroSkills : groupes["Mobilisée par"]).push(l.a === i ? l.b : l.a);
     }
     return Object.entries(groupes).filter(([, liste]) => liste.length);
@@ -1435,8 +1440,8 @@ async function ecranGraphe() {
       h("div", { class: "admin-ligne graphe-details-entete" }, h("h3", { text: n.libelle }),
         h("button", { type: "button", class: "secondaire petit-bouton", "aria-label": "Fermer les détails", onclick: () => choisir(null) }, "×")),
       h("div", { class: "admin-pastilles" },
-        pastille(n.type === "notion" ? "Notion" : "MicroSkill", "accent"),
-        ...n.disciplines.map((d) => pastille(nomDiscipline(d))),
+        pastille(nomType[n.type], "accent"),
+        ...(n.type === "metier" ? [] : n.disciplines.map((d) => pastille(nomDiscipline(d)))),
         n.transdisciplinaire ? pastille("Transdisciplinaire", "attention") : null,
         pastille(`${g.voisins[i].length} relation(s)`)),
       h("p", { class: "petit" }, h("code", { text: n.id })),
@@ -1458,9 +1463,12 @@ async function ecranGraphe() {
   }
   function actualiser({ recadrer = false } = {}) {
     vue = filtrer(g, f);
-    let n = 0, m = 0, t = 0;
-    for (const i of vue.noeuds) { if (g.noeuds[i].type === "notion") n++; else { m++; if (g.noeuds[i].transdisciplinaire) t++; } }
-    etat.textContent = `Affichés : ${nombre(n)} notion(s), ${nombre(m)} MicroSkill(s) dont ${nombre(t)} transdisciplinaire(s), ${nombre(vue.liens.length)} relation(s).`;
+    let n = 0, m = 0, t = 0, mt = 0;
+    for (const i of vue.noeuds) {
+      const type = g.noeuds[i].type;
+      if (type === "notion") n++; else if (type === "metier") mt++; else { m++; if (g.noeuds[i].transdisciplinaire) t++; }
+    }
+    etat.textContent = `Affichés : ${nombre(n)} notion(s), ${nombre(m)} MicroSkill(s) dont ${nombre(t)} transdisciplinaire(s)${avecMetiers ? `, ${nombre(mt)} métier(s)` : ""}, ${nombre(vue.liens.length)} relation(s).`;
     const q = f.recherche.trim().toLowerCase();
     const trouves = q ? g.noeuds.filter((x) => vue.noeuds.has(x.i) && `${x.libelle} ${x.id}`.toLowerCase().includes(q)) : [];
     resultats.replaceChildren(...trouves.slice(0, 12).map((x) => h("button", { type: "button", class: "admin-pastille graphe-lien", onclick: () => choisir(x.i, { viser: true }) }, x.libelle)),
@@ -1471,7 +1479,7 @@ async function ecranGraphe() {
   choixDiscipline.addEventListener("change", () => { f.discipline = choixDiscipline.value; actualiser({ recadrer: true }); });
   recherche.addEventListener("input", () => { f.recherche = recherche.value; actualiser({ recadrer: true }); });
   const reinitialiser = () => {
-    Object.assign(f, { discipline: "", recherche: "", microskills: true, prerequis: true, transSeules: false, isole: null, selection: null, depart: null, arrivee: null });
+    Object.assign(f, { discipline: "", recherche: "", microskills: true, prerequis: true, metiers: false, transSeules: false, isole: null, selection: null, depart: null, arrivee: null });
     f.masquees.clear();
     void afficher("graphe", { garderMessage: true });
     annoncer("Vue du graphe réinitialisée.");
@@ -1491,7 +1499,9 @@ async function ecranGraphe() {
   return [
     h("div", { class: "admin-grille" },
       tuile(nombre(ind.notions), "notions"), tuile(nombre(ind.microskills), "MicroSkills"),
-      tuile(nombre(ind.prerequis), "relations de prérequis"), tuile(nombre(ind.transdisciplinaires), "MicroSkills transdisciplinaires")),
+      tuile(nombre(ind.prerequis), "relations de prérequis"), tuile(nombre(ind.transdisciplinaires), "MicroSkills transdisciplinaires"),
+      avecMetiers ? tuile(nombre(ind.metiers), "métiers") : null,
+      avecMetiers ? tuile(`${nombre(ind.notionsAvecMetier)} / ${nombre(ind.notions)}`, "notions reliées à un métier") : null),
     ind.transdisciplinaires ? null : h("p", { class: "admin-bandeau", text: "Aucune MicroSkill n'est partagée entre disciplines : chaque MicroSkill de la projection appartient à une seule discipline. Le filtre « transdisciplinaires seules » n'affiche donc que les notions." }),
     bloc("Explorer le graphe",
       h("p", { class: "doux", text: "Source : referentiel/projection-v0.json, disposition calculée au build. Glisser pour tourner, molette ou pincement pour zoomer, clic sur un nœud pour ses détails." }),
@@ -1500,7 +1510,8 @@ async function ecranGraphe() {
         h("label", { class: "admin-champ graphe-recherche" }, h("span", { text: "Rechercher" }), recherche)),
       h("div", { class: "admin-ligne graphe-options" },
         caseControle("graphe-microskills", "MicroSkills", "microskills"), caseControle("graphe-prerequis", "Prérequis", "prerequis"),
-        caseControle("graphe-trans", "Transdisciplinaires seules", "transSeules"), h("label", {}, rotation, "Rotation"),
+        caseControle("graphe-trans", "Transdisciplinaires seules", "transSeules"),
+        avecMetiers ? caseControle("graphe-metiers", "Métiers", "metiers") : null, h("label", {}, rotation, "Rotation"),
         h("button", { type: "button", class: "secondaire petit-bouton", onclick: () => vueGraphe?.centrer() }, "Centrer"),
         h("button", { type: "button", class: "secondaire petit-bouton", onclick: reinitialiser }, "Réinitialiser")),
       resultats, legende, etat,
@@ -1512,8 +1523,14 @@ async function ecranGraphe() {
       { titre: "MicroSkills", nombre: true, cellule: (d) => nombre(d.microskills) },
       { titre: "Prérequis", nombre: true, cellule: (d) => nombre(d.prerequis) },
       { titre: "Notions sans prérequis", nombre: true, cellule: (d) => nombre(d.sansPrerequis) },
-      { titre: "Notions sans MicroSkill", nombre: true, cellule: (d) => nombre(d.sansMicroskill) }
-    ], ind.disciplines))
+      { titre: "Notions sans MicroSkill", nombre: true, cellule: (d) => nombre(d.sansMicroskill) },
+      ...(avecMetiers ? [{ titre: "Notions sans métier", nombre: true, cellule: (d) => nombre(d.sansMetier ?? 0) }] : [])
+    ], ind.disciplines)),
+    avecMetiers ? bloc("Notions les plus demandées par les métiers",
+      h("p", { class: "doux", text: "Source : referentiel/metiers-v0.json (chantier Métiers). Un métier demande les notions de ses disciplines ; les correspondances « proposition » sont comptées. Cliquer une notion l'ouvre dans le graphe." }),
+      h("ol", { class: "graphe-demandees", id: "graphe-demandees" }, notionsDemandees(g).map((x) => h("li", {},
+        h("button", { type: "button", class: "admin-pastille graphe-lien", onclick: () => { f.metiers = true; const c = $("#graphe-metiers"); if (c) c.checked = true; actualiser(); choisir(x.i, { viser: true }); } }, x.libelle),
+        h("span", { class: "doux petit", text: ` ${nombre(x.metiers)} métier(s)` }))))) : null
   ];
 }
 

@@ -28,7 +28,7 @@ Le build lit les Relations sortantes et les placements du Curriculum désigné. 
 ## Sources ouvertes de l'Éducation nationale
 
 `sources-ouvertes/` contient les instantanés des évaluations nationales et des programmes (data.education.gouv.fr,
-Licence Ouverte) et la table compétences nationales → notions. Voir l'[ADR 0042](../docs/decisions/0042-sources-ouvertes-education.md),
+Licence Ouverte) et la table compétences nationales → notions. Voir l'[ADR 0044](../docs/decisions/0044-sources-ouvertes-education.md),
 le [chantier](../docs/chantiers/sources-ouvertes.md) et le [rapport généré](../docs/referentiel/sources-ouvertes.md).
 
 ## Création des lots v0.5

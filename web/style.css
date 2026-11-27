@@ -1425,6 +1425,8 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 @media (min-width: 1024px) {
   /* Hauteur réservée à la barre collante : les éléments collants et les ancres se placent dessous. */
   :root { --haut-barre: 72px; }
+  /* Le chat non modal laisse la navigation collante accessible, même sur un écran peu haut. */
+  .chat:not(.plein-ecran) { height: min(680px, calc(100dvh - var(--haut-barre) - 112px - env(safe-area-inset-bottom, 0px))); }
   html { scroll-padding-top: calc(var(--haut-barre) + 16px); }
   .education-colonnes .outils-education { top: calc(var(--haut-barre) + 16px); }
   .app { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 1fr; background: none; }
@@ -1509,6 +1511,12 @@ main.feuille-route { max-width: 1040px; line-height: 1.6; }
 .metiers-puce.notion { background: #0ea5e9; } .metiers-puce.discipline { background: #7c3aed; }
 .metiers-puce.metier { background: var(--espace); } .metiers-puce.geste { background: #f59e0b; }
 .metiers-liste { padding: 14px; display: flex; flex-direction: column; gap: 10px; max-height: 78vh; }
+/* Chantier Métiers, lot 5 : filtre par niveau d'accès et liste par pages. */
+.metiers-filtres { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 4px 0 8px; }
+.metiers-filtres[hidden] { display: none; }
+.metiers-filtres select { min-height: 44px; padding: 0 12px; border: 1px solid var(--bord); border-radius: 10px; background: var(--surface); color: var(--texte); font: inherit; }
+.metiers-plus { list-style: none; padding-top: 4px; }
+.metiers-niveau-acces { font-weight: 650; }
 .metiers-liste h3 { font-size: 1rem; }
 #metiers-liste { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; overflow-y: auto; }
 .metiers-item { width: 100%; display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; text-align: left; padding: 9px 11px; border-radius: var(--rayon-petit); border: 1px solid var(--bord); background: var(--surface); color: var(--texte); font-weight: 500; min-height: 44px; }

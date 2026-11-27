@@ -3,27 +3,31 @@
 // de façon déterministe, et l'écrit dans `dist/admin/referentiel-graphe.json`) et par l'écran du back-office.
 
 export const VERSION_GRAPHE = 1;
-/** Types de relation, dans l'ordre de leur code compact (0, 1) dans le fichier publié. */
-export const TYPES_LIEN = Object.freeze(["prerequis", "microskill"]);
+/** Types de relation, dans l'ordre de leur code compact (0, 1, 2) dans le fichier publié. */
+export const TYPES_LIEN = Object.freeze(["prerequis", "microskill", "metier"]);
+/** Discipline de regroupement des nœuds métier (couche facultative, chantier Métiers lot 4). */
+export const DISCIPLINE_METIERS = "metiers";
+const ORDRE_TYPES = { notion: 0, microskill: 1, metier: 2 };
 
 /** Discipline d'un identifiant canonique `notion.<discipline>.<slug>` ou `microskill.<discipline>.<slug>`. */
 export function disciplineDe(id) {
   const parties = String(id ?? "").split(".");
   return parties.length > 2 ? parties[1] : "non-classe";
 }
-export const typeDe = (id) => (String(id).startsWith("microskill.") ? "microskill" : "notion");
+export const typeDe = (id) => (String(id).startsWith("microskill.") ? "microskill" : String(id).startsWith("metier.") ? "metier" : "notion");
 /** Libellé lisible d'un identifiant ou d'un slug : « notion.mathematiques.cercle-trigo » → « Cercle trigo ». */
 export function libelleDe(id) {
-  const slug = String(id ?? "").replace(/^(notion|microskill)\.[^.]+\./, "").replace(/[-_]+/g, " ").trim();
+  const slug = String(id ?? "").replace(/^(notion|microskill)\.[^.]+\./, "").replace(/^metier\./, "").replace(/[-_]+/g, " ").trim();
   return slug ? slug[0].toUpperCase() + slug.slice(1) : "";
 }
 
 /**
  * Construit le graphe à partir de la configuration de projection. Une MicroSkill est « transdisciplinaire » quand des
  * notions d'au moins deux disciplines la mobilisent. Les références inconnues (prérequis absent) sont ignorées et
- * comptées dans `ignores`.
+ * comptées dans `ignores`. Couche facultative `metiers` (données de l'Espace Métiers, format v2) : un nœud
+ * `metier.<id>` par métier, relié (type « metier ») aux notions de ses disciplines présentes dans le graphe.
  */
-export function construireGraphe(projection) {
+export function construireGraphe(projection, { metiers = null } = {}) {
   const notions = Object.entries(projection?.notions ?? {});
   const idParSlug = new Map(notions);
   const idCompetence = new Map(Object.entries(projection?.competences ?? {}).map(([id, slug]) => [slug, id]));
@@ -56,9 +60,21 @@ export function construireGraphe(projection) {
       lier(notion, id, "microskill");
     }
   }
+  const libelles = new Map();
+  if (metiers) {
+    const notionsDe = new Map((metiers.disciplines ?? []).map((d) => [d.id, d.notions ?? []]));
+    for (const m of metiers.metiers ?? []) {
+      const id = `metier.${m.id}`;
+      noeuds.set(id, { id, type: "metier", disciplines: new Set([DISCIPLINE_METIERS]) });
+      libelles.set(id, m.nom);
+      for (const d of m.disciplines ?? []) for (const n of notionsDe.get(d) ?? []) {
+        if (noeuds.has(n) && noeuds.get(n).type === "notion") lier(id, n, "metier");
+      }
+    }
+  }
   const liste = [...noeuds.values()]
-    .map((n) => ({ id: n.id, type: n.type, disciplines: [...n.disciplines].sort() }))
-    .sort((a, b) => (a.type === b.type ? a.id.localeCompare(b.id) : a.type === "notion" ? -1 : 1));
+    .map((n) => ({ id: n.id, type: n.type, disciplines: [...n.disciplines].sort(), ...(libelles.has(n.id) ? { libelle: libelles.get(n.id) } : {}) }))
+    .sort((a, b) => (a.type === b.type ? a.id.localeCompare(b.id) : ORDRE_TYPES[a.type] - ORDRE_TYPES[b.type]));
   for (const n of liste) n.transdisciplinaire = n.type === "microskill" && n.disciplines.length > 1;
   return { noeuds: liste, liens, ignores };
 }
@@ -80,7 +96,7 @@ function aleatoire(graine) {
  * centre de sa discipline). Déterministe ; calculée au build, pas dans le navigateur. Renvoie des [x, y, z] entiers,
  * dans l'ordre de `graphe.noeuds`.
  */
-export function disposer(graphe, { iterations = 160, graine = 974 } = {}) {
+export function disposer(graphe, { iterations = 160, graine = 974, reposPrerequis = 70, reposMicroskill = 26, repulsion = 260 } = {}) {
   const n = graphe.noeuds.length;
   const hasard = aleatoire(graine);
   const index = new Map(graphe.noeuds.map((noeud, i) => [noeud.id, i]));
@@ -114,7 +130,7 @@ export function disposer(graphe, { iterations = 160, graine = 974 } = {}) {
     const d = boule(28);
     for (let k = 0; k < 3; k++) pos[i * 3 + k] = (parent === undefined ? centres.get(noeud.disciplines[0])[k] : pos[parent * 3 + k]) + d[k];
   });
-  const liens = graphe.liens.map((l) => [index.get(l.source), index.get(l.cible), l.type === "prerequis" ? 70 : 26, l.type === "prerequis" ? 0.03 : 0.12]);
+  const liens = graphe.liens.map((l) => [index.get(l.source), index.get(l.cible), l.type === "prerequis" ? reposPrerequis : reposMicroskill, l.type === "prerequis" ? 0.03 : 0.12]);
   const cellule = 48;
   for (let it = 0; it < iterations; it++) {
     const alpha = 1 - it / iterations;
@@ -134,7 +150,7 @@ export function disposer(graphe, { iterations = 160, graine = 974 } = {}) {
           let d2 = x * x + y * y + z * z;
           if (d2 < 0.01) { x = hasard() - 0.5; y = hasard() - 0.5; z = hasard() - 0.5; d2 = 0.5; }
           if (d2 > cellule * cellule * 4) continue;
-          const f = (alpha * 260) / d2;
+          const f = (alpha * repulsion) / d2;
           vit[i * 3] += x * f; vit[i * 3 + 1] += y * f; vit[i * 3 + 2] += z * f;
           vit[j * 3] -= x * f; vit[j * 3 + 1] -= y * f; vit[j * 3 + 2] -= z * f;
         }
@@ -160,11 +176,16 @@ export function disposer(graphe, { iterations = 160, graine = 974 } = {}) {
   return graphe.noeuds.map((_, i) => [Math.round(pos[i * 3]), Math.round(pos[i * 3 + 1]), Math.round(pos[i * 3 + 2])]);
 }
 
-/** Forme compacte publiée par le build : nœuds [id, x, y, z, disciplines?] et liens [source, cible, type]. */
+/**
+ * Forme compacte publiée par le build : nœuds [id, x, y, z, disciplines?], liens [source, cible, type] et, si la couche
+ * métiers est présente, `libelles` (id → nom affiché des nœuds qui en ont un).
+ */
 export function compacter(graphe, positions) {
   const index = new Map(graphe.noeuds.map((n, i) => [n.id, i]));
+  const libelles = Object.fromEntries(graphe.noeuds.filter((n) => n.libelle).map((n) => [n.id, n.libelle]));
   return {
     version: VERSION_GRAPHE,
+    ...(Object.keys(libelles).length ? { libelles } : {}),
     noeuds: graphe.noeuds.map((n, i) => {
       const ligne = [n.id, ...positions[i]];
       // Les disciplines ne sont écrites que si elles diffèrent de celle de l'identifiant (MicroSkill partagée).
@@ -181,7 +202,7 @@ export function decompacter(donnees) {
   const noeuds = donnees.noeuds.map(([id, x, y, z, disciplines], i) => {
     const ds = Array.isArray(disciplines) ? disciplines : [disciplineDe(id)];
     const type = typeDe(id);
-    return { i, id, type, libelle: libelleDe(id), disciplines: ds, transdisciplinaire: type === "microskill" && ds.length > 1, x, y, z };
+    return { i, id, type, libelle: donnees.libelles?.[id] ?? libelleDe(id), disciplines: ds, transdisciplinaire: type === "microskill" && ds.length > 1, x, y, z };
   });
   const liens = donnees.liens
     .filter(([a, b]) => noeuds[a] && noeuds[b])
@@ -198,9 +219,11 @@ export function indicateurs(graphe) {
     if (!parDiscipline.has(d)) parDiscipline.set(d, { discipline: d, notions: 0, microskills: 0, prerequis: 0, sansPrerequis: 0, sansMicroskill: 0 });
     return parDiscipline.get(d);
   };
-  const entrants = new Set(), avecMicroskill = new Set();
+  const entrants = new Set(), avecMicroskill = new Set(), avecMetier = new Set();
+  const couche = graphe.noeuds.some((n) => n.type === "metier");
   for (const l of graphe.liens) {
     if (l.type === "prerequis") { entrants.add(l.b); ligne(graphe.noeuds[l.b].disciplines[0]).prerequis++; }
+    else if (l.type === "metier") avecMetier.add(l.b);
     else avecMicroskill.add(l.a);
   }
   for (const n of graphe.noeuds) {
@@ -209,9 +232,12 @@ export function indicateurs(graphe) {
       d.notions++;
       if (!entrants.has(n.i)) d.sansPrerequis++;
       if (!avecMicroskill.has(n.i)) d.sansMicroskill++;
-    } else for (const d of n.disciplines) ligne(d).microskills++;
+      if (couche) d.sansMetier = (d.sansMetier ?? 0) + (avecMetier.has(n.i) ? 0 : 1);
+    } else if (n.type === "microskill") for (const d of n.disciplines) ligne(d).microskills++;
   }
   return {
+    metiers: graphe.noeuds.filter((n) => n.type === "metier").length,
+    notionsAvecMetier: avecMetier.size,
     notions: graphe.noeuds.filter((n) => n.type === "notion").length,
     microskills: graphe.noeuds.filter((n) => n.type === "microskill").length,
     transdisciplinaires: graphe.noeuds.filter((n) => n.transdisciplinaire).length,
@@ -224,14 +250,16 @@ export function indicateurs(graphe) {
  * Nœuds visibles selon les filtres. Une recherche garde les nœuds qui correspondent et leurs voisins directs ;
  * l'isolement garde un nœud et ses voisins.
  */
-export function filtrer(graphe, { discipline = "", masquees = new Set(), recherche = "", microskills = true, prerequis = true, transSeules = false, isole = null } = {}) {
+export function filtrer(graphe, { discipline = "", masquees = new Set(), recherche = "", microskills = true, prerequis = true, metiers = true, transSeules = false, isole = null } = {}) {
   const q = recherche.trim().toLowerCase();
-  const typeOk = (n) => (microskills || n.type !== "microskill") && (!transSeules || n.type !== "microskill" || n.transdisciplinaire);
-  const lienOk = (l) => (prerequis || l.type !== "prerequis") && (microskills || l.type !== "microskill");
+  const typeOk = (n) => (microskills || n.type !== "microskill") && (metiers || n.type !== "metier") && (!transSeules || n.type !== "microskill" || n.transdisciplinaire);
+  const lienOk = (l) => (prerequis || l.type !== "prerequis") && (microskills || l.type !== "microskill") && (metiers || l.type !== "metier");
   const autour = isole === null ? null : new Set([isole, ...graphe.voisins[isole].map((k) => (graphe.liens[k].a === isole ? graphe.liens[k].b : graphe.liens[k].a))]);
   const visibles = new Set();
+  // Un métier suit le filtre de discipline par les notions qu'il relie.
+  const metierDans = (n) => graphe.voisins[n.i].some((k) => graphe.liens[k].type === "metier" && graphe.noeuds[graphe.liens[k].b].disciplines.includes(discipline));
   for (const n of graphe.noeuds) {
-    const dOk = !discipline || n.disciplines.includes(discipline);
+    const dOk = !discipline || n.disciplines.includes(discipline) || (n.type === "metier" && metierDans(n));
     const affichee = n.disciplines.some((d) => !masquees.has(d));
     const texte = !q || `${n.libelle} ${n.id}`.toLowerCase().includes(q);
     if (dOk && affichee && typeOk(n) && texte && (!autour || autour.has(n.i))) visibles.add(n.i);
@@ -300,7 +328,21 @@ export function sousGraphe(graphe, ids, options = {}) {
     noeuds: [...noeuds].sort((a, b) => a - b).map((i) => ({ id: graphe.noeuds[i].id, type: graphe.noeuds[i].type, disciplines: graphe.noeuds[i].disciplines })),
     liens: liens.map((k) => ({ source: graphe.noeuds[graphe.liens[k].a].id, cible: graphe.noeuds[graphe.liens[k].b].id, type: graphe.liens[k].type }))
   };
-  const resultat = decompacter(compacter(local, disposer(local, { iterations: 120 })));
+  // Disposition plus aérée que le graphe complet : les étiquettes des MicroSkills doivent tenir autour de leur notion.
+  // La profondeur est aplatie (×0,35) : vu de face, l'écart reste dans le plan de l'écran, où les étiquettes se lisent.
+  const positions = disposer(local, { iterations: 160, reposPrerequis: 150, reposMicroskill: 70, repulsion: 1400 }).map(([x, y, z]) => [x, y, Math.round(z * 0.35)]);
+  const resultat = decompacter(compacter(local, positions));
   const index = new Map(resultat.noeuds.map((n) => [n.id, n.i]));
   return { graphe: resultat, centres: new Set([...centres].map((i) => index.get(graphe.noeuds[i].id))) };
+}
+
+/**
+ * Notions les plus demandées par les métiers (couche métiers, lot 4) : [{ i, libelle, id, metiers }] triées par nombre
+ * de métiers décroissant puis par identifiant ; `limite` entrées au plus.
+ */
+export function notionsDemandees(graphe, limite = 15) {
+  const compte = new Map();
+  for (const l of graphe.liens) if (l.type === "metier") compte.set(l.b, (compte.get(l.b) ?? 0) + 1);
+  return [...compte].map(([i, metiers]) => ({ i, id: graphe.noeuds[i].id, libelle: graphe.noeuds[i].libelle, metiers }))
+    .sort((a, b) => b.metiers - a.metiers || a.id.localeCompare(b.id)).slice(0, limite);
 }
