@@ -4,6 +4,12 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Espace Métiers : import de la tension de recrutement préparé** (ADR 0045, lot 8) : `npm run import:marche` lit les réponses de l'API « Marché du travail » de France Travail enregistrées depuis francetravail.io et affichera, dans les perspectives d'un métier, sa difficulté à recruter (de très faible à très élevée). Aucune donnée réelle tant que le compte francetravail.io n'est pas créé. / Careers space: labour market API import prepared (hiring difficulty), pending a francetravail.io account.
+
+- **Espace Métiers : perspectives de recrutement** (ADR 0045, lot 9) : l'enquête « Besoins en main-d'œuvre » 2026 de France Travail (`npm run import:bmo`, Licence Ouverte) indique pour 66 métiers si les employeurs prévoient beaucoup, moyennement ou peu de recrutements, avec le nombre de projets en France et la part jugée difficile, pour le groupe de métiers concerné. Rattachements métier → groupe BMO à relire. / Careers space: hiring outlook from France Travail's labour needs survey.
+
+- **Espace Métiers : données du ROME 4.0 de France Travail** (ADR 0045) : 935 des 1 131 métiers sont rattachés au ROME 4.0 (version 62) par un extrait daté et versionné (`npm run import:rome`, Licence Ouverte). Le détail d'un métier montre s'il relève de la transition écologique ou numérique, ses conditions de travail (horaires, lieux, statuts) et des métiers proches cliquables. 57 codes ROME sont précisés, 7 ajoutés (à relire). Plan des lots suivants : tension de recrutement (API Marché du travail) et enquête BMO. / Careers space: France Travail ROME 4.0 data (working conditions, green and digital transitions, related jobs).
+
 - **Espace Métiers, vagues 5 à 11** (chantier Métiers) : 698 métiers ONISEP de plus (industries et électronique, mécanique et BTP, sécurité et transport, sciences et informatique, communication et enseignement, droit et gestion, commerce, banque et hôtellerie), en « proposition » ; 12 métiers de combat armé écartés pour un public dès 7 ans. Le référentiel compte 1 131 métiers, soit la quasi-totalité des fiches ONISEP. / Careers waves 5–11: 1,131 careers in total.
 
 - **Espace Métiers, vague 4 « environnement, énergies ; agriculture, animaux »** (chantier Métiers) : 123 métiers ONISEP de plus (énergies renouvelables, eau, déchets, climat, forêt, élevage, soins aux animaux…), en « proposition ». 433 métiers. / Careers wave 4: 123 environment, energy, farming and animal careers.

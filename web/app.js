@@ -6731,6 +6731,7 @@ function rendreDetailMetiers(actifs) {
     }));
   }
   if (metier?.niveauAcces) enfants.push(element("p", { classe: "petit metiers-niveau-acces", texte: t("metiersNiveauMetier", { niveau: t(`metiersNiveau_${metier.niveauAcces}`) }) }));
+  for (const transition of metier?.transitions ?? []) enfants.push(element("p", { classe: `petit metiers-transition ${transition}`, cle: `metiersTransition_${transition}` }));
   if (metier?.correspondance === "proposition") enfants.push(element("p", { classe: "doux petit metiers-proposition", cle: "metiersMetierProposition" }));
   const disciplines = [...actifs.disciplines];
   enfants.push(element("div", { classe: "metiers-blocs" }));
@@ -6738,6 +6739,32 @@ function rendreDetailMetiers(actifs) {
   if (selection.type !== "metier" && selection.type !== "geste") blocs.append(bloc("metiersBlocMetiers", pastilles([...actifs.metiers], "metier", (id) => carte.metiers.get(id).nom)));
   blocs.append(bloc("metiersBlocDisciplines", pastilles(disciplines, "discipline", (id) => carte.disciplines.get(id).nom)));
   if (metier) blocs.append(bloc("metiersBlocGestes", pastilles(metier.gestes.map((g) => `${metier.id}::${g}`), "geste", (id) => id.split("::")[1])));
+  // Enquête BMO de France Travail (ADR 0045, lot 9) : perspectives de recrutement du groupe de métiers, France entière.
+  const perspectives = metier?.perspectives;
+  // API Marché du travail (lot 8) : tension de recrutement du code ROME, de 1 (très faible) à 5 (très élevée).
+  const tension = metier?.marche ? element("p", { classe: "petit metiers-tension", texte: t("metiersTension", { niveau: t(`metiersTension_${metier.marche.tension}`), periode: metier.marche.periode }) }) : null;
+  if (tension && !perspectives) blocs.append(bloc("metiersBlocPerspectives", tension, element("p", { classe: "doux petit", cle: "metiersTensionSource" })));
+  if (perspectives) {
+    const nombre = new Intl.NumberFormat(document.documentElement.lang || "fr").format(perspectives.projets);
+    blocs.append(bloc("metiersBlocPerspectives",
+      element("p", { classe: `metiers-palier ${perspectives.palier}`, cle: `metiersPalier_${perspectives.palier}` }),
+      element("p", { classe: "petit", texte: t("metiersPerspectivesChiffres", { annee: perspectives.annee, projets: nombre, difficile: perspectives.partDifficile, groupe: perspectives.groupe }) }),
+      ...(tension ? [tension] : []),
+      element("p", { classe: "doux petit", cle: "metiersPerspectivesPrudence" })));
+  }
+  // ROME 4.0 de France Travail (ADR 0045) : conditions de travail et métiers proches (mobilités).
+  const conditions = metier ? metiers.contextesParType(carte, metier) : [];
+  if (conditions.length) {
+    const liste = element("ul", { classe: "metiers-conditions" });
+    for (const { type, libelles } of conditions) {
+      const li = element("li");
+      li.append(element("strong", { texte: `${type} : ` }), document.createTextNode(libelles.join(" · ")));
+      liste.append(li);
+    }
+    blocs.append(bloc("metiersBlocConditions", liste));
+  }
+  const proches = (metier?.proches ?? []).filter((id) => carte.metiers.has(id));
+  if (proches.length) blocs.append(bloc("metiersBlocProches", pastilles(proches, "metier", (id) => carte.metiers.get(id).nom)));
   const savoirFaire = disciplines.flatMap((d) => carte.disciplines.get(d).savoirFaire);
   if (savoirFaire.length) {
     const liste = element("ul", { classe: "metiers-savoir-faire" });

@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import Ajv2020 from "ajv/dist/2020.js";
-import { chaine, couvertureMetiers, disposerAnneaux, enrichirMetiers, filtrerMetiers, metiersDesAnneaux, preparerCarte, verifierMetiers } from "../../web/metiers.js";
+import { chaine, contextesParType, couvertureMetiers, disposerAnneaux, enrichirMetiers, filtrerMetiers, metiersDesAnneaux, preparerCarte, verifierMetiers } from "../../web/metiers.js";
 
 // Espace Métiers (ADR 0041) : validation, enrichissement, filtres, chaîne d'une sélection, disposition en anneaux.
 const source = {
@@ -133,4 +133,16 @@ test("métiers (lot 5) : anneaux limités au filtre au-delà du seuil, dispositi
   assert.deepEqual([...p.metier.keys()], ["ebeniste"]);
   assert.deepEqual([...p.geste.keys()], ["ebeniste::Lecture de plan"]);
   assert.equal(p.discipline.size, 2, "toutes les disciplines restent placées");
+});
+
+test("métiers (ROME 4.0, ADR 0045) : contextes de travail groupés par type, identifiants inconnus ignorés", () => {
+  const avecContextes = preparerCarte({
+    ...donnees,
+    contextesTravail: [{ id: "1", libelle: "En atelier", type: "Conditions" }, { id: "2", libelle: "Travail de nuit", type: "Horaires" }, { id: "3", libelle: "Bruit", type: "Conditions" }]
+  });
+  assert.deepEqual(contextesParType(avecContextes, { contextes: ["1", "2", "3", "9"] }), [
+    { type: "Conditions", libelles: ["En atelier", "Bruit"] },
+    { type: "Horaires", libelles: ["Travail de nuit"] }
+  ]);
+  assert.deepEqual(contextesParType(carte, donnees.metiers[0]), [], "sans contextes : rien");
 });

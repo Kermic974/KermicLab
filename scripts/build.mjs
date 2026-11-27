@@ -65,7 +65,7 @@ await writeFile(`${racine}dist/trophees.json`, `${JSON.stringify(collectionTroph
   // Couverture (chantier Métiers, docs/chantiers/metiers.md) : information, jamais bloquante.
   const c = couvertureMetiers(metiers, Object.values(projection.notions));
   const statuts = (s) => Object.entries(s).map(([k, n]) => `${k} ${n}`).join(", ");
-  console.log(`Couverture métiers : ${c.notions.reliees}/${c.notions.total} notions reliées ; ONISEP ${c.avecOnisep}/${c.metiers}, ROME ${c.avecRome}/${c.metiers}, niveau d'accès ${c.avecNiveau}/${c.metiers} ; correspondances métiers (${statuts(c.correspondances.metiers)}), disciplines (${statuts(c.correspondances.disciplines)}).`);
+  console.log(`Couverture métiers : ${c.notions.reliees}/${c.notions.total} notions reliées ; ONISEP ${c.avecOnisep}/${c.metiers}, ROME ${c.avecRome}/${c.metiers}, niveau d'accès ${c.avecNiveau}/${c.metiers}, contextes de travail ROME 4.0 ${c.avecContextes}/${c.metiers}, métiers proches ${c.avecProches}/${c.metiers}, perspectives BMO ${c.avecPerspectives}/${c.metiers}, tension (API Marché du travail) ${c.avecTension}/${c.metiers} ; correspondances métiers (${statuts(c.correspondances.metiers)}), disciplines (${statuts(c.correspondances.disciplines)}).`);
 }
 // Sources ouvertes (ADR 0044) : repères nationaux (tableau de bord Professeur) et calendrier scolaire.
 {

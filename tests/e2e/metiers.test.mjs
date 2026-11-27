@@ -66,6 +66,10 @@ test("métiers : anneaux, filtres, chaîne d'un métier, notions KermicLab et gr
   const texte = await detail.textContent();
   for (const attendu of ["Statistiques", "Informatique", "Requêtage SQL", "Tests d’hypothèses", "Notions KermicLab à travailler", "Correspondance proposée"]) assert.ok(texte.includes(attendu), attendu);
   assert.ok(await detail.locator(".metiers-notion").count() >= 4, "notions des statistiques et de l'informatique");
+  // ROME 4.0 de France Travail (ADR 0045) : transitions et conditions de travail du métier.
+  const dataAnalyst = donnees.metiers.find((m) => m.id === "data-analyst");
+  if (dataAnalyst.transitions?.includes("numerique")) assert.ok(texte.includes("Métier transformé par le numérique"));
+  if (dataAnalyst.contextes?.length) assert.equal(await detail.locator(".metiers-conditions li").count() > 0, true, "conditions de travail");
   assert.equal(await page.locator("#metiers-anneaux .metiers-noeud.metier:not(.estompe)").count(), 1, "seul ce métier reste allumé");
   assert.equal(await pixelsDessines(page, "#metiers-detail .metiers-canvas") > 500, true, "le graphe 3D des notions est dessiné");
   await capturer(page, "metiers-data-analyst", { pleinePage: true });
@@ -81,7 +85,21 @@ test("métiers : anneaux, filtres, chaîne d'un métier, notions KermicLab et gr
   await page.locator("#metiers-liste [data-metier=boulanger]").click();
   const texteBoulanger = await detail.textContent();
   for (const attendu of ["Niveau d'accès minimum : CAP", "Fiche proposée, en cours de relecture."]) assert.ok(texteBoulanger.includes(attendu), attendu);
+  // Enquête BMO (ADR 0045, lot 9) : perspectives de recrutement du groupe de métiers et source.
+  const perspectivesBoulanger = donnees.metiers.find((m) => m.id === "boulanger").perspectives;
+  if (perspectivesBoulanger) {
+    assert.ok(texteBoulanger.includes("Perspectives de recrutement"));
+    assert.equal(await detail.locator(`.metiers-palier.${perspectivesBoulanger.palier}`).count(), 1);
+    assert.ok(texteBoulanger.includes(`«\u00a0${perspectivesBoulanger.groupe}\u00a0»`), "groupe de métiers BMO cité, espaces insécables");
+  }
   assert.match(await page.locator("#metiers-sources").textContent(), /Onisep, « Idéo-Fiches métiers » .*licence ODbL/, "attribution exigée par la licence");
+  assert.match(await page.locator("#metiers-sources").textContent(), /France Travail, « ROME 4\.0 \(version \d+\) » .*Licence Ouverte/, "attribution du ROME");
+  assert.match(await page.locator("#metiers-sources").textContent(), /France Travail, « Enquête Besoins en main-d'œuvre \d{4} »/, "attribution de la BMO");
+  const boulanger = donnees.metiers.find((m) => m.id === "boulanger");
+  if (boulanger.proches?.length) {
+    await detail.locator(".metiers-bloc", { hasText: "Métiers proches" }).locator(".metiers-pastille.metier").first().click();
+    assert.equal(await detail.locator("h3").textContent(), donnees.metiers.find((m) => m.id === boulanger.proches[0]).nom, "un métier proche s'ouvre");
+  }
   await page.selectOption("#metiers-niveau", "");
   assert.equal(await detail.isHidden(), true, "changer de filtre referme le détail");
   if (nbMetiers > 50) {
@@ -127,6 +145,27 @@ test("métiers : mobile (390 px), sans débordement horizontal, détail lisible"
   const e = await emprise();
   assert.ok(e.y0 > 2 && e.y1 < e.h - 3, `le graphe tient en hauteur après rotation (${e.y0}–${e.y1} sur ${e.h})`);
   assert.ok(e.y1 - e.y0 > e.h * 0.5, "le graphe occupe le cadre après rotation");
+  assert.deepEqual(erreurs, []);
+  await contexte.close();
+});
+
+test("métiers (lot 8, données factices) : tension de recrutement de l'API Marché du travail dans les perspectives", async () => {
+  const { page, contexte, erreurs } = await ouvrir(nav, serveur.url, { locale: "fr-FR", viewport: { width: 1280, height: 900 } });
+  await preparer(page);
+  // Aucune donnée réelle n'est encore importée (compte francetravail.io requis) : la tension est injectée dans la réponse.
+  await page.route(/\/metiers(\.[0-9a-f]+)?\.json(\?.*)?$/, async (route) => {
+    const reponse = await route.fetch();
+    const d = await reponse.json();
+    for (const m of d.metiers) if (m.id === "boulanger") m.marche = { tension: 5, periode: "2026-T3" };
+    await route.fulfill({ response: reponse, json: d });
+  });
+  await page.goto(`${serveur.url}#metiers`);
+  await page.locator("#metiers-liste .metiers-item").first().waitFor();
+  await page.fill("#metiers-recherche", "boulanger");
+  await page.locator("#metiers-liste [data-metier=boulanger]").click();
+  const detail = page.locator("#metiers-detail");
+  await detail.waitFor({ state: "visible" });
+  assert.equal(await detail.locator(".metiers-tension").textContent(), "Difficulté à recruter (2026-T3) : très élevée.");
   assert.deepEqual(erreurs, []);
   await contexte.close();
 });
