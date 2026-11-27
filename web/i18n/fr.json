@@ -1676,5 +1676,17 @@
   "labRemediationTitre": "À petits pas · Organisation et attention",
   "labRemediationNiveaux": "Adultes · Français",
   "labRemediationDescription": "Un outil personnel pour organiser ses tâches, avancer par mini-étapes et suivre ses efforts avec des récompenses locales. Adapté d’un plan TDAH adulte ; sans diagnostic ni envoi de données.",
-  "labRemediationAction": "Ouvrir mon espace"
+  "labRemediationAction": "Ouvrir mon espace",
+  "configModule_petits-pas": "À petits pas — profils IA",
+  "configParam_PETITS_PAS_IA_ACTIF": "Assistant distant activé",
+  "configParam_PETITS_PAS_OPUS_ACTIF": "Mode approfondi autorisé",
+  "configParam_MODELE_PETITS_PAS_HAIKU": "Alias Haiku (Essentiel)",
+  "configParam_MODELE_PETITS_PAS_OPUS": "Alias Opus (Approfondi, à vérifier)",
+  "configParam_MAX_TOKENS_PETITS_PAS_HAIKU": "Haiku : tokens de sortie",
+  "configParam_MAX_TOKENS_PETITS_PAS_OPUS": "Opus : tokens de sortie",
+  "configParam_MAX_ENTREE_PETITS_PAS_HAIKU": "Haiku : tokens de contexte",
+  "configParam_MAX_ENTREE_PETITS_PAS_OPUS": "Opus : tokens de contexte",
+  "configParam_PETITS_PAS_PLANS_HAIKU_JOUR": "Haiku : plans par jour",
+  "configParam_PETITS_PAS_PLANS_OPUS_JOUR": "Opus : plans par jour",
+  "configParam_INSTRUCTIONS_PETITS_PAS": "Instructions complémentaires communes"
 }
