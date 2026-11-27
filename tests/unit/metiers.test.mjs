@@ -135,7 +135,7 @@ test("métiers (lot 5) : anneaux limités au filtre au-delà du seuil, dispositi
   assert.equal(p.discipline.size, 2, "toutes les disciplines restent placées");
 });
 
-test("métiers (ROME 4.0, ADR 0044) : contextes de travail groupés par type, identifiants inconnus ignorés", () => {
+test("métiers (ROME 4.0, ADR 0045) : contextes de travail groupés par type, identifiants inconnus ignorés", () => {
   const avecContextes = preparerCarte({
     ...donnees,
     contextesTravail: [{ id: "1", libelle: "En atelier", type: "Conditions" }, { id: "2", libelle: "Travail de nuit", type: "Horaires" }, { id: "3", libelle: "Bruit", type: "Conditions" }]

@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://kermiclab.online/referentiel/metiers.schema.json",
   "title": "Espace Métiers — format v2",
-  "description": "Forme de referentiel/metiers-v0.json (ADR 0041, 0042 et 0044, chantier docs/chantiers/metiers.md). La cohérence entre éléments (identifiants connus, notions du référentiel, unicité ONISEP, contextes de travail et métiers proches connus) est vérifiée par verifierMetiers (web/metiers.js).",
+  "description": "Forme de referentiel/metiers-v0.json (ADR 0041, 0042 et 0045, chantier docs/chantiers/metiers.md). La cohérence entre éléments (identifiants connus, notions du référentiel, unicité ONISEP, contextes de travail et métiers proches connus) est vérifiée par verifierMetiers (web/metiers.js).",
   "type": "object",
   "required": [
     "version",

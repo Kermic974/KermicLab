@@ -16,6 +16,8 @@
     "check:experiences": "node scripts/check-experiences.mjs",
     "check:evaluations": "node scripts/check-evaluations.mjs",
     "check:artefacts": "node scripts/check-artefacts.mjs",
+    "sources:importer": "node scripts/sources-ouvertes.mjs importer",
+    "sources:rapport": "node scripts/sources-ouvertes.mjs rapport",
     "import:onisep": "node scripts/importer-onisep.mjs",
     "import:rome": "node scripts/importer-rome.mjs",
     "import:bmo": "node scripts/importer-bmo.mjs",

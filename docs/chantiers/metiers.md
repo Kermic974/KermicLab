@@ -4,7 +4,7 @@
 
 Décisions : [ADR 0041](../decisions/0041-espace-metiers.md) (Espace Métiers),
 [ADR 0042](../decisions/0042-referentiel-metiers-onisep.md) (format v2, import ONISEP, proposé) et
-[ADR 0044](../decisions/0044-donnees-france-travail-metiers.md) (données de France Travail, proposé). Données :
+[ADR 0045](../decisions/0045-donnees-france-travail-metiers.md) (données de France Travail, proposé). Données :
 `referentiel/metiers-v0.json`, forme décrite par `referentiel/metiers.schema.json`, cohérence vérifiée par
 `verifierMetiers` (`web/metiers.js`) au build.
 
@@ -67,7 +67,7 @@ Règles :
 - Public mineur : seuls des contenus publics sur les métiers sont traités, aucune donnée personnelle ; l'onglet
   « Mon positionnement » reste exclu (ADR 0041 §6).
 
-## Source : France Travail (analyse du 2026-11-24, ADR 0044)
+## Source : France Travail (analyse du 2026-11-24, ADR 0045)
 
 Le catalogue `francetravail.io` est inaccessible depuis l'environnement cloud ; les fiches des API sont lues sur
 data.gouv.fr (organisation France Travail). Toutes les données utiles sont indexées par **code ROME**, déjà présent dans

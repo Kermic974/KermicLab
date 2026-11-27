@@ -197,6 +197,9 @@ export function notionsARevoir(eleves, limite = 5) {
   return [...compte].map(([id, n]) => ({ id, n })).sort((a, b) => b.n - a.n || a.id.localeCompare(b.id)).slice(0, limite);
 }
 
+/** Ajoute à chaque notion à revoir son repère national (ADR 0044), s'il existe : { id, n, repere: { taux, niveau, … } }. */
+export const avecReperes = (liste, reperes) => liste.map((n) => (reperes?.[n.id] ? { ...n, repere: reperes[n.id] } : n));
+
 /** Filtre des élèves : « tous », « particulier » (sans classe) ou l'identifiant d'une classe. */
 export function filtrerEleves(eleves, filtre) {
   const liste = Array.isArray(eleves) ? eleves : [];

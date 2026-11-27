@@ -66,7 +66,7 @@ test("métiers : anneaux, filtres, chaîne d'un métier, notions KermicLab et gr
   const texte = await detail.textContent();
   for (const attendu of ["Statistiques", "Informatique", "Requêtage SQL", "Tests d’hypothèses", "Notions KermicLab à travailler", "Correspondance proposée"]) assert.ok(texte.includes(attendu), attendu);
   assert.ok(await detail.locator(".metiers-notion").count() >= 4, "notions des statistiques et de l'informatique");
-  // ROME 4.0 de France Travail (ADR 0044) : transitions et conditions de travail du métier.
+  // ROME 4.0 de France Travail (ADR 0045) : transitions et conditions de travail du métier.
   const dataAnalyst = donnees.metiers.find((m) => m.id === "data-analyst");
   if (dataAnalyst.transitions?.includes("numerique")) assert.ok(texte.includes("Métier transformé par le numérique"));
   if (dataAnalyst.contextes?.length) assert.equal(await detail.locator(".metiers-conditions li").count() > 0, true, "conditions de travail");
@@ -85,7 +85,7 @@ test("métiers : anneaux, filtres, chaîne d'un métier, notions KermicLab et gr
   await page.locator("#metiers-liste [data-metier=boulanger]").click();
   const texteBoulanger = await detail.textContent();
   for (const attendu of ["Niveau d'accès minimum : CAP", "Fiche proposée, en cours de relecture."]) assert.ok(texteBoulanger.includes(attendu), attendu);
-  // Enquête BMO (ADR 0044, lot 9) : perspectives de recrutement du groupe de métiers et source.
+  // Enquête BMO (ADR 0045, lot 9) : perspectives de recrutement du groupe de métiers et source.
   const perspectivesBoulanger = donnees.metiers.find((m) => m.id === "boulanger").perspectives;
   if (perspectivesBoulanger) {
     assert.ok(texteBoulanger.includes("Perspectives de recrutement"));

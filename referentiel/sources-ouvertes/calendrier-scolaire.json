@@ -1,0 +1,651 @@
+{
+  "source": {
+    "licence": "Licence Ouverte v2.0 (Etalab)",
+    "extrait_le": "2026-11-27",
+    "jeux": [
+      {
+        "id": "fr-en-calendrier-scolaire",
+        "url": "https://data.education.gouv.fr/explore/dataset/fr-en-calendrier-scolaire/"
+      }
+    ]
+  },
+  "periodes": [
+    {
+      "zone": "Corse",
+      "annee": "2026-2027",
+      "nom": "Vacances de la Toussaint",
+      "debut": "2026-10-17",
+      "fin": "2026-11-01"
+    },
+    {
+      "zone": "Corse",
+      "annee": "2026-2027",
+      "nom": "Vacances de Noël",
+      "debut": "2026-12-19",
+      "fin": "2027-01-03"
+    },
+    {
+      "zone": "Corse",
+      "annee": "2026-2027",
+      "nom": "Vacances d'Hiver",
+      "debut": "2027-02-13",
+      "fin": "2027-02-28"
+    },
+    {
+      "zone": "Corse",
+      "annee": "2026-2027",
+      "nom": "Vacances de Printemps",
+      "debut": "2027-04-10",
+      "fin": "2027-04-25"
+    },
+    {
+      "zone": "Guadeloupe",
+      "annee": "2026-2027",
+      "nom": "Vacances de la Toussaint",
+      "debut": "2026-10-17",
+      "fin": "2026-11-02"
+    },
+    {
+      "zone": "Guadeloupe",
+      "annee": "2026-2027",
+      "nom": "Vacances de Noël",
+      "debut": "2026-12-19",
+      "fin": "2027-01-03"
+    },
+    {
+      "zone": "Guadeloupe",
+      "annee": "2026-2027",
+      "nom": "Vacances de Carnaval",
+      "debut": "2027-02-06",
+      "fin": "2027-02-21"
+    },
+    {
+      "zone": "Guadeloupe",
+      "annee": "2026-2027",
+      "nom": "Vacances de Pâques",
+      "debut": "2027-03-25",
+      "fin": "2027-04-11"
+    },
+    {
+      "zone": "Guyane",
+      "annee": "2026-2027",
+      "nom": "Vacances de la Toussaint",
+      "debut": "2026-10-17",
+      "fin": "2026-11-02"
+    },
+    {
+      "zone": "Guyane",
+      "annee": "2026-2027",
+      "nom": "Vacances de Noël",
+      "debut": "2026-12-19",
+      "fin": "2027-01-03"
+    },
+    {
+      "zone": "Guyane",
+      "annee": "2026-2027",
+      "nom": "Vacances de Carnaval",
+      "debut": "2027-02-06",
+      "fin": "2027-02-17"
+    },
+    {
+      "zone": "Guyane",
+      "annee": "2026-2027",
+      "nom": "Vacances de Pâques",
+      "debut": "2027-03-25",
+      "fin": "2027-04-11"
+    },
+    {
+      "zone": "Martinique",
+      "annee": "2026-2027",
+      "nom": "Vacances de la Toussaint",
+      "debut": "2026-10-20",
+      "fin": "2026-11-02"
+    },
+    {
+      "zone": "Martinique",
+      "annee": "2026-2027",
+      "nom": "Vacances de Noël",
+      "debut": "2026-12-19",
+      "fin": "2027-01-03"
+    },
+    {
+      "zone": "Martinique",
+      "annee": "2026-2027",
+      "nom": "Vacances de Carnaval",
+      "debut": "2027-02-06",
+      "fin": "2027-02-21"
+    },
+    {
+      "zone": "Martinique",
+      "annee": "2026-2027",
+      "nom": "Vacances de Pâques",
+      "debut": "2027-03-24",
+      "fin": "2027-03-31"
+    },
+    {
+      "zone": "Mayotte",
+      "annee": "2026-2027",
+      "nom": "Vacances de la Toussaint",
+      "debut": "2026-10-10",
+      "fin": "2026-10-25"
+    },
+    {
+      "zone": "Mayotte",
+      "annee": "2026-2027",
+      "nom": "Vacances de Noël",
+      "debut": "2026-12-12",
+      "fin": "2027-01-10"
+    },
+    {
+      "zone": "Mayotte",
+      "annee": "2026-2027",
+      "nom": "Vacances de Carnaval",
+      "debut": "2027-02-20",
+      "fin": "2027-03-07"
+    },
+    {
+      "zone": "Mayotte",
+      "annee": "2026-2027",
+      "nom": "Vacances de Printemps",
+      "debut": "2027-04-30",
+      "fin": "2027-05-17"
+    },
+    {
+      "zone": "Mayotte",
+      "annee": "2026-2027",
+      "nom": "Vacances d'Été",
+      "debut": "2027-07-10",
+      "fin": "2027-08-22"
+    },
+    {
+      "zone": "Mayotte",
+      "annee": "2027-2028",
+      "nom": "Vacances de la Toussaint",
+      "debut": "2027-10-09",
+      "fin": "2027-10-24"
+    },
+    {
+      "zone": "Mayotte",
+      "annee": "2027-2028",
+      "nom": "Vacances de Noël",
+      "debut": "2027-12-11",
+      "fin": "2028-01-09"
+    },
+    {
+      "zone": "Mayotte",
+      "annee": "2027-2028",
+      "nom": "Vacances de Carnaval",
+      "debut": "2028-02-19",
+      "fin": "2028-03-05"
+    },
+    {
+      "zone": "Mayotte",
+      "annee": "2027-2028",
+      "nom": "Vacances de Printemps",
+      "debut": "2028-04-29",
+      "fin": "2028-05-14"
+    },
+    {
+      "zone": "Mayotte",
+      "annee": "2027-2028",
+      "nom": "Vacances d'Été",
+      "debut": "2028-07-08",
+      "fin": "2028-08-20"
+    },
+    {
+      "zone": "Mayotte",
+      "annee": "2028-2029",
+      "nom": "Vacances de la Toussaint",
+      "debut": "2028-10-07",
+      "fin": "2028-10-22"
+    },
+    {
+      "zone": "Mayotte",
+      "annee": "2028-2029",
+      "nom": "Vacances de Noël",
+      "debut": "2028-12-09",
+      "fin": "2029-01-07"
+    },
+    {
+      "zone": "Mayotte",
+      "annee": "2028-2029",
+      "nom": "Vacances de Carnaval",
+      "debut": "2029-02-17",
+      "fin": "2029-03-04"
+    },
+    {
+      "zone": "Mayotte",
+      "annee": "2028-2029",
+      "nom": "Vacances de Printemps",
+      "debut": "2029-04-28",
+      "fin": "2029-05-13"
+    },
+    {
+      "zone": "Nouvelle Calédonie",
+      "annee": "2026",
+      "nom": "Vacances 1ère période",
+      "debut": "2026-04-04",
+      "fin": "2026-04-18"
+    },
+    {
+      "zone": "Nouvelle Calédonie",
+      "annee": "2026",
+      "nom": "Vacances 2ème période",
+      "debut": "2026-06-06",
+      "fin": "2026-06-20"
+    },
+    {
+      "zone": "Nouvelle Calédonie",
+      "annee": "2026",
+      "nom": "Vacances 3ème période",
+      "debut": "2026-08-08",
+      "fin": "2026-08-22"
+    },
+    {
+      "zone": "Nouvelle Calédonie",
+      "annee": "2026",
+      "nom": "Vacances 4ème période",
+      "debut": "2026-10-10",
+      "fin": "2026-10-24"
+    },
+    {
+      "zone": "Polynésie",
+      "annee": "2026-2027",
+      "nom": "Vacances de Septembre",
+      "debut": "2026-09-12",
+      "fin": "2026-09-20"
+    },
+    {
+      "zone": "Polynésie",
+      "annee": "2026-2027",
+      "nom": "Vacances de Novembre",
+      "debut": "2026-10-24",
+      "fin": "2026-11-08"
+    },
+    {
+      "zone": "Polynésie",
+      "annee": "2026-2027",
+      "nom": "Vacances de Noël",
+      "debut": "2026-12-12",
+      "fin": "2027-01-10"
+    },
+    {
+      "zone": "Polynésie",
+      "annee": "2026-2027",
+      "nom": "Vacances de Février",
+      "debut": "2027-02-13",
+      "fin": "2027-02-21"
+    },
+    {
+      "zone": "Polynésie",
+      "annee": "2026-2027",
+      "nom": "Vacances de Pâques",
+      "debut": "2027-03-27",
+      "fin": "2027-04-11"
+    },
+    {
+      "zone": "Polynésie",
+      "annee": "2026-2027",
+      "nom": "Vacances de Mai",
+      "debut": "2027-05-15",
+      "fin": "2027-05-23"
+    },
+    {
+      "zone": "Polynésie",
+      "annee": "2027-2028",
+      "nom": "Vacances de Septembre",
+      "debut": "2027-09-25",
+      "fin": "2027-10-03"
+    },
+    {
+      "zone": "Polynésie",
+      "annee": "2027-2028",
+      "nom": "Vacances de Novembre",
+      "debut": "2027-11-06",
+      "fin": "2027-11-14"
+    },
+    {
+      "zone": "Polynésie",
+      "annee": "2027-2028",
+      "nom": "Vacances de Noël",
+      "debut": "2027-12-18",
+      "fin": "2028-01-16"
+    },
+    {
+      "zone": "Polynésie",
+      "annee": "2027-2028",
+      "nom": "Vacances de Février",
+      "debut": "2028-02-19",
+      "fin": "2028-03-05"
+    },
+    {
+      "zone": "Polynésie",
+      "annee": "2027-2028",
+      "nom": "Vacances de Pâques",
+      "debut": "2028-04-08",
+      "fin": "2028-04-17"
+    },
+    {
+      "zone": "Polynésie",
+      "annee": "2027-2028",
+      "nom": "Vacances de Mai",
+      "debut": "2028-05-20",
+      "fin": "2028-05-28"
+    },
+    {
+      "zone": "Polynésie",
+      "annee": "2028-2029",
+      "nom": "Vacances de Septembre",
+      "debut": "2028-09-23",
+      "fin": "2028-10-01"
+    },
+    {
+      "zone": "Polynésie",
+      "annee": "2028-2029",
+      "nom": "Vacances de Novembre",
+      "debut": "2028-11-04",
+      "fin": "2028-11-12"
+    },
+    {
+      "zone": "Polynésie",
+      "annee": "2028-2029",
+      "nom": "Vacances de Noël",
+      "debut": "2028-12-16",
+      "fin": "2029-01-14"
+    },
+    {
+      "zone": "Polynésie",
+      "annee": "2028-2029",
+      "nom": "Vacances de Février",
+      "debut": "2029-02-17",
+      "fin": "2029-03-05"
+    },
+    {
+      "zone": "Polynésie",
+      "annee": "2028-2029",
+      "nom": "Vacances de Pâques",
+      "debut": "2029-04-07",
+      "fin": "2029-04-15"
+    },
+    {
+      "zone": "Polynésie",
+      "annee": "2028-2029",
+      "nom": "Vacances de Mai",
+      "debut": "2029-05-19",
+      "fin": "2029-05-27"
+    },
+    {
+      "zone": "Réunion",
+      "annee": "2026-2027",
+      "nom": "Vacances après 1ère période",
+      "debut": "2026-10-10",
+      "fin": "2026-10-25"
+    },
+    {
+      "zone": "Réunion",
+      "annee": "2026-2027",
+      "nom": "Vacances d'Été austral",
+      "debut": "2026-12-19",
+      "fin": "2027-01-31"
+    },
+    {
+      "zone": "Réunion",
+      "annee": "2026-2027",
+      "nom": "Vacances après 3ème période",
+      "debut": "2027-03-16",
+      "fin": "2027-03-29"
+    },
+    {
+      "zone": "Réunion",
+      "annee": "2026-2027",
+      "nom": "Vacances après 4ème période",
+      "debut": "2027-05-05",
+      "fin": "2027-05-18"
+    },
+    {
+      "zone": "Saint Pierre et Miquelon",
+      "annee": "2026-2027",
+      "nom": "Vacances de la Toussaint",
+      "debut": "2026-10-20",
+      "fin": "2026-11-01"
+    },
+    {
+      "zone": "Saint Pierre et Miquelon",
+      "annee": "2026-2027",
+      "nom": "Vacances de Noël",
+      "debut": "2026-12-18",
+      "fin": "2027-01-03"
+    },
+    {
+      "zone": "Saint Pierre et Miquelon",
+      "annee": "2026-2027",
+      "nom": "Vacances d'Hiver",
+      "debut": "2027-02-19",
+      "fin": "2027-03-07"
+    },
+    {
+      "zone": "Saint Pierre et Miquelon",
+      "annee": "2026-2027",
+      "nom": "Vacances de Printemps",
+      "debut": "2027-04-16",
+      "fin": "2027-05-02"
+    },
+    {
+      "zone": "Wallis et Futuna",
+      "annee": "2026",
+      "nom": "Vacances 1ère période",
+      "debut": "2026-04-04",
+      "fin": "2026-04-18"
+    },
+    {
+      "zone": "Wallis et Futuna",
+      "annee": "2026",
+      "nom": "Vacances 2ème période",
+      "debut": "2026-06-06",
+      "fin": "2026-06-20"
+    },
+    {
+      "zone": "Wallis et Futuna",
+      "annee": "2026",
+      "nom": "Vacances 3ème période",
+      "debut": "2026-08-08",
+      "fin": "2026-08-22"
+    },
+    {
+      "zone": "Wallis et Futuna",
+      "annee": "2026",
+      "nom": "Vacances 4ème période",
+      "debut": "2026-10-10",
+      "fin": "2026-10-24"
+    },
+    {
+      "zone": "Zone A",
+      "annee": "2026-2027",
+      "nom": "Vacances de la Toussaint",
+      "debut": "2026-10-17",
+      "fin": "2026-11-01"
+    },
+    {
+      "zone": "Zone A",
+      "annee": "2026-2027",
+      "nom": "Vacances de Noël",
+      "debut": "2026-12-19",
+      "fin": "2027-01-03"
+    },
+    {
+      "zone": "Zone A",
+      "annee": "2026-2027",
+      "nom": "Vacances d'Hiver",
+      "debut": "2027-02-13",
+      "fin": "2027-02-28"
+    },
+    {
+      "zone": "Zone A",
+      "annee": "2026-2027",
+      "nom": "Vacances de Printemps",
+      "debut": "2027-04-10",
+      "fin": "2027-04-25"
+    },
+    {
+      "zone": "Zone A",
+      "annee": "2026-2027",
+      "nom": "Vacances d'Été",
+      "debut": "2027-07-03",
+      "fin": "2027-09-01"
+    },
+    {
+      "zone": "Zone A",
+      "annee": "2027-2028",
+      "nom": "Vacances de la Toussaint",
+      "debut": "2027-10-23",
+      "fin": "2027-11-07"
+    },
+    {
+      "zone": "Zone A",
+      "annee": "2027-2028",
+      "nom": "Vacances de Noël",
+      "debut": "2027-12-18",
+      "fin": "2028-01-02"
+    },
+    {
+      "zone": "Zone A",
+      "annee": "2027-2028",
+      "nom": "Vacances d'Hiver",
+      "debut": "2028-02-19",
+      "fin": "2028-03-05"
+    },
+    {
+      "zone": "Zone A",
+      "annee": "2027-2028",
+      "nom": "Vacances de Printemps",
+      "debut": "2028-04-22",
+      "fin": "2028-05-08"
+    },
+    {
+      "zone": "Zone B",
+      "annee": "2026-2027",
+      "nom": "Vacances de la Toussaint",
+      "debut": "2026-10-17",
+      "fin": "2026-11-01"
+    },
+    {
+      "zone": "Zone B",
+      "annee": "2026-2027",
+      "nom": "Vacances de Noël",
+      "debut": "2026-12-19",
+      "fin": "2027-01-03"
+    },
+    {
+      "zone": "Zone B",
+      "annee": "2026-2027",
+      "nom": "Vacances d'Hiver",
+      "debut": "2027-02-20",
+      "fin": "2027-03-07"
+    },
+    {
+      "zone": "Zone B",
+      "annee": "2026-2027",
+      "nom": "Vacances de Printemps",
+      "debut": "2027-04-17",
+      "fin": "2027-05-02"
+    },
+    {
+      "zone": "Zone B",
+      "annee": "2026-2027",
+      "nom": "Vacances d'Été",
+      "debut": "2027-07-03",
+      "fin": "2027-09-01"
+    },
+    {
+      "zone": "Zone B",
+      "annee": "2027-2028",
+      "nom": "Vacances de la Toussaint",
+      "debut": "2027-10-23",
+      "fin": "2027-11-07"
+    },
+    {
+      "zone": "Zone B",
+      "annee": "2027-2028",
+      "nom": "Vacances de Noël",
+      "debut": "2027-12-18",
+      "fin": "2028-01-02"
+    },
+    {
+      "zone": "Zone B",
+      "annee": "2027-2028",
+      "nom": "Vacances d'Hiver",
+      "debut": "2028-02-05",
+      "fin": "2028-02-20"
+    },
+    {
+      "zone": "Zone B",
+      "annee": "2027-2028",
+      "nom": "Vacances de Printemps",
+      "debut": "2028-04-08",
+      "fin": "2028-04-23"
+    },
+    {
+      "zone": "Zone C",
+      "annee": "2026-2027",
+      "nom": "Vacances de la Toussaint",
+      "debut": "2026-10-17",
+      "fin": "2026-11-01"
+    },
+    {
+      "zone": "Zone C",
+      "annee": "2026-2027",
+      "nom": "Vacances de Noël",
+      "debut": "2026-12-19",
+      "fin": "2027-01-03"
+    },
+    {
+      "zone": "Zone C",
+      "annee": "2026-2027",
+      "nom": "Vacances d'Hiver",
+      "debut": "2027-02-06",
+      "fin": "2027-02-21"
+    },
+    {
+      "zone": "Zone C",
+      "annee": "2026-2027",
+      "nom": "Vacances de Printemps",
+      "debut": "2027-04-03",
+      "fin": "2027-04-18"
+    },
+    {
+      "zone": "Zone C",
+      "annee": "2026-2027",
+      "nom": "Vacances d'Été",
+      "debut": "2027-07-03",
+      "fin": "2027-09-01"
+    },
+    {
+      "zone": "Zone C",
+      "annee": "2027-2028",
+      "nom": "Vacances de la Toussaint",
+      "debut": "2027-10-23",
+      "fin": "2027-11-07"
+    },
+    {
+      "zone": "Zone C",
+      "annee": "2027-2028",
+      "nom": "Vacances de Noël",
+      "debut": "2027-12-18",
+      "fin": "2028-01-02"
+    },
+    {
+      "zone": "Zone C",
+      "annee": "2027-2028",
+      "nom": "Vacances d'Hiver",
+      "debut": "2028-02-12",
+      "fin": "2028-02-27"
+    },
+    {
+      "zone": "Zone C",
+      "annee": "2027-2028",
+      "nom": "Vacances de Printemps",
+      "debut": "2028-04-15",
+      "fin": "2028-05-01"
+    }
+  ]
+}

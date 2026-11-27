@@ -1,4 +1,4 @@
-// Import du ROME 4.0 de France Travail (chantier Métiers, ADR 0044) : fonctions pures, sans réseau ni accès disque,
+// Import du ROME 4.0 de France Travail (chantier Métiers, ADR 0045) : fonctions pures, sans réseau ni accès disque,
 // testées par tests/unit/rome.test.mjs. Le script scripts/importer-rome.mjs lit les fichiers et écrit les résultats.
 //
 // Source : « Toutes les données du ROME » (JSON, zip) publié par France Travail sur data.gouv.fr, Licence Ouverte 2.0

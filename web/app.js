@@ -1680,7 +1680,7 @@ async function chargerTableauFamille() {
   if (!familleEtat.moi?.parent) { familleEtat.tableau = null; rendreEspaceFamille(); return; }
   $("#ef-etat").textContent = t("efChargement");
   try {
-    const r = await apiFamilleLocale("tableau");
+    const [r] = await Promise.all([apiFamilleLocale("tableau"), chargerReperesNationaux()]);
     familleEtat.tableau = r.statut === 200 ? r.donnees : null;
     $("#ef-etat").textContent = r.statut === 200 ? "" : messageFamille(r);
   } catch {
@@ -2401,13 +2401,26 @@ function brancherClasses() {
   });
 }
 
+/* Repères nationaux (ADR 0044) : taux de maîtrise nationaux par notion, fichier statique du build, chargé une fois. */
+const reperes = { promesse: null, parNotion: {} };
+function chargerReperesNationaux() {
+  reperes.promesse ??= fetch("reperes-nationaux.json")
+    .then((r) => (r.ok ? r.json() : null))
+    .then((d) => { reperes.parNotion = d?.reperes ?? {}; })
+    .catch(() => {});
+  return reperes.promesse;
+}
+/** « Titre (n) », suivi du repère national quand la notion en a un. */
+const libellesARevoir = (eleves) => professeur.avecReperes(professeur.notionsARevoir(eleves), reperes.parNotion).map((n) =>
+  `${notionParId(n.id)?.titre ?? n.id} (${n.n})${n.repere ? t("profRepereNational", { taux: new Intl.NumberFormat(etat.langue).format(n.repere.taux), niveau: n.repere.niveau }) : ""}`);
+
 /* Mes élèves */
 
 async function ouvrirEleves() {
   if (!profActif()) { profEtat.eleves = null; rendreEleves(); return; }
   $("#eleves-etat").textContent = t("efChargement");
   try {
-    const [r] = await Promise.all([apiProf("eleves"), chargerActivitesProf()]);
+    const [r] = await Promise.all([apiProf("eleves"), chargerActivitesProf(), chargerReperesNationaux()]);
     profEtat.eleves = r.statut === 200 ? r.donnees : null;
     $("#eleves-etat").textContent = r.statut === 200 ? "" : messageProf(r);
   } catch {
@@ -2439,7 +2452,7 @@ function rendreEleves() {
     chiffre(t("profChiffreEleves"), s.eleves), chiffre(t("profChiffreActifs"), s.actifs),
     chiffre(t("efChiffreTemps"), formatMinutes(s.minutes)), chiffre(t("profChiffreARevoir"), s.aRevoir)
   );
-  const aRevoir = professeur.notionsARevoir(liste).map((n) => `${notionParId(n.id)?.titre ?? n.id} (${n.n})`);
+  const aRevoir = libellesARevoir(liste);
   $("#eleves-a-revoir").textContent = aRevoir.length ? t("profARevoirGroupe", { liste: aRevoir.join(", ") }) : "";
   const pseudoDe = (id) => liste.find((e) => e.id === id)?.pseudo ?? "";
   $("#eleves-alertes").replaceChildren(...s.alertes.map((a) => element("li", { texte: t(`profAlerte_${a.type}`, { pseudo: pseudoDe(a.eleve), n: a.n ?? a.jours ?? "" }) })));
@@ -2654,7 +2667,7 @@ async function ouvrirTableauProf() {
   if (!profActif()) { profEtat.eleves = null; rendreTableauProf(); return; }
   $("#suivi-etat").textContent = t("efChargement");
   try {
-    const [r] = await Promise.all([apiProf("eleves"), chargerActivitesProf()]);
+    const [r] = await Promise.all([apiProf("eleves"), chargerActivitesProf(), chargerReperesNationaux()]);
     profEtat.eleves = r.statut === 200 ? r.donnees : null;
     $("#suivi-etat").textContent = r.statut === 200 ? "" : messageProf(r);
   } catch {
@@ -2690,7 +2703,7 @@ function rendreTableauProf() {
     chiffre(t("suiviScoreEvaluations"), pct(g.scoreEvaluations)), chiffre(t("suiviScoreDefis"), pct(g.scoreDefis)),
     chiffre(t("suiviMaitrise"), pct(g.maitrise)), chiffre(t("profChiffreARevoir"), g.aRevoir)
   );
-  const aRevoir = professeur.notionsARevoir(eleves).map((n) => `${notionParId(n.id)?.titre ?? n.id} (${n.n})`);
+  const aRevoir = libellesARevoir(eleves);
   $("#suivi-a-revoir").textContent = aRevoir.length ? t("profARevoirGroupe", { liste: aRevoir.join(", ") }) : "";
   // Par classe.
   const ligne = (cellules, entete = false) => {
@@ -3220,7 +3233,7 @@ function rendreTableauFamille(tableau) {
     chiffre(t("suiviScoreEvaluations"), pct(g.scoreEvaluations)), chiffre(t("suiviScoreDefis"), pct(g.scoreDefis)),
     chiffre(t("suiviMaitrise"), pct(g.maitrise)), chiffre(t("profChiffreARevoir"), g.aRevoir)
   );
-  const aRevoir = professeur.notionsARevoir(eleves).map((n) => `${notionParId(n.id)?.titre ?? n.id} (${n.n})`);
+  const aRevoir = libellesARevoir(eleves);
   $("#ef-a-revoir").textContent = aRevoir.length ? t("profARevoirGroupe", { liste: aRevoir.join(", ") }) : "";
   // Comparatif : une ligne par enfant, mêmes indicateurs, calculés sur ses seules activités.
   const ligne = (cellules, entete = false) => {
@@ -6726,7 +6739,7 @@ function rendreDetailMetiers(actifs) {
   if (selection.type !== "metier" && selection.type !== "geste") blocs.append(bloc("metiersBlocMetiers", pastilles([...actifs.metiers], "metier", (id) => carte.metiers.get(id).nom)));
   blocs.append(bloc("metiersBlocDisciplines", pastilles(disciplines, "discipline", (id) => carte.disciplines.get(id).nom)));
   if (metier) blocs.append(bloc("metiersBlocGestes", pastilles(metier.gestes.map((g) => `${metier.id}::${g}`), "geste", (id) => id.split("::")[1])));
-  // Enquête BMO de France Travail (ADR 0044, lot 9) : perspectives de recrutement du groupe de métiers, France entière.
+  // Enquête BMO de France Travail (ADR 0045, lot 9) : perspectives de recrutement du groupe de métiers, France entière.
   const perspectives = metier?.perspectives;
   // API Marché du travail (lot 8) : tension de recrutement du code ROME, de 1 (très faible) à 5 (très élevée).
   const tension = metier?.marche ? element("p", { classe: "petit metiers-tension", texte: t("metiersTension", { niveau: t(`metiersTension_${metier.marche.tension}`), periode: metier.marche.periode }) }) : null;
@@ -6739,7 +6752,7 @@ function rendreDetailMetiers(actifs) {
       ...(tension ? [tension] : []),
       element("p", { classe: "doux petit", cle: "metiersPerspectivesPrudence" })));
   }
-  // ROME 4.0 de France Travail (ADR 0044) : conditions de travail et métiers proches (mobilités).
+  // ROME 4.0 de France Travail (ADR 0045) : conditions de travail et métiers proches (mobilités).
   const conditions = metier ? metiers.contextesParType(carte, metier) : [];
   if (conditions.length) {
     const liste = element("ul", { classe: "metiers-conditions" });
@@ -7329,6 +7342,36 @@ function remplirNiveauxVacances() {
   if (niveaux.includes(avant)) $("#vacances-niveau").value = avant;
 }
 
+/* Calendrier scolaire (ADR 0044) : fichier statique du build, chargé à la première ouverture. La zone choisie ne sert
+   qu'à préremplir les dates, dans le navigateur ; elle n'est ni conservée ni envoyée. */
+const calendrierScolaire = { promesse: null, periodes: [] };
+function chargerCalendrierScolaire() {
+  calendrierScolaire.promesse ??= fetch("calendrier-scolaire.json")
+    .then((r) => (r.ok ? r.json() : null))
+    .then((d) => { calendrierScolaire.periodes = d?.periodes ?? []; })
+    .catch(() => {});
+  return calendrierScolaire.promesse;
+}
+
+function remplirZonesVacances() {
+  const zones = vacances.zonesCalendrier(calendrierScolaire.periodes);
+  $("#vacances-zone").replaceChildren(option("", t("vacancesZoneChoix")), ...zones.map((z) => option(z, z)));
+  $("#vacances-zone").disabled = !zones.length;
+  $("#vacances-zone-periode").textContent = "";
+}
+
+function appliquerZoneVacances() {
+  const zone = $("#vacances-zone").value;
+  const p = zone ? vacances.prochainesVacances(calendrierScolaire.periodes, zone, progression.jourLocal()) : null;
+  $("#vacances-zone-periode").textContent = !zone ? "" : p
+    ? t("vacancesZonePeriode", { nom: p.nom, debut: dateLisible(p.debut), fin: dateLisible(p.fin) })
+    : t("vacancesZoneAucune");
+  if (!p) return;
+  $("#vacances-debut").value = p.debut;
+  $("#vacances-fin").value = p.fin;
+  actualiserReglagesVacances();
+}
+
 function ouvrirConstructeurVacances() {
   constructeurVacances.etape = "reglages";
   const choix = vacances.choixPossibles(etat.notions);
@@ -7340,6 +7383,8 @@ function ouvrirConstructeurVacances() {
   $("#vacances-fin").value = vacances.ajouterJours(jour, 27);
   $("#vacances-rythme").replaceChildren(...[3, 5, 7].map((n) => option(String(n), t("vacancesRythmeChoix", { n }))));
   $("#vacances-rythme").value = "5";
+  remplirZonesVacances();
+  void chargerCalendrierScolaire().then(() => { if ($("#vacances-reglages").hidden === false) remplirZonesVacances(); });
   $("#vacances-nom").value = "";
   $("#vacances-nom").placeholder = t("cahier_vacances");
   $("#vacances-reglages").hidden = false;
@@ -7406,6 +7451,7 @@ function creerCahierVacances() {
 
 function brancherVacances() {
   $("#vacances-matiere").addEventListener("change", () => { remplirNiveauxVacances(); actualiserReglagesVacances(); });
+  $("#vacances-zone").addEventListener("change", appliquerZoneVacances);
   for (const id of ["#vacances-niveau", "#vacances-debut", "#vacances-fin", "#vacances-rythme"]) $(id).addEventListener("change", actualiserReglagesVacances);
   brancherDialogue($("#constructeur-vacances"), $("#fermer-vacances"));
   // Cahier libre, sans planning : l'ancien constructeur (sections par notion, enrichissement IA possible) reste disponible.

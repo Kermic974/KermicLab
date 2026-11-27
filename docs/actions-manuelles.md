@@ -2,6 +2,15 @@
 
 Actions qui nécessitent le propriétaire (protocole : AGENTS.md §8). Statut : `à faire` / `fait` / `reporté`.
 
+## Sources ouvertes de l'Éducation nationale (ADR 0044)
+
+| Action | Où | Pourquoi | Comment confirmer | Statut |
+|---|---|---|---|---|
+| Valider l'ADR 0044 | [ADR 0044](decisions/0044-sources-ouvertes-education.md) | Nouvelle source de données pour le pilotage du catalogue | Statut de l'ADR passé à « accepté » | à faire |
+| Relire la table compétences nationales → notions | `referentiel/sources-ouvertes/correspondances-evaluations.json`, [rapport](referentiel/sources-ouvertes.md) | Correspondances proposées par un agent (statut `proposition`) ; elles fixent les notions prioritaires | `statut` passé à `relue` dans le fichier, puis `npm run sources:rapport` | à faire |
+| Vérifier la licence des jeux Futur Pro | [data.education.gouv.fr](https://data.education.gouv.fr/explore/dataset/futurpro_familles_metiers/) | Licence non publiée (vérifiée le 2026-11-27) ; l'Espace Métiers est déjà alimenté par l'import ONISEP : Futur Pro n'est plus nécessaire | À rouvrir seulement si une licence ouverte est publiée | reporté |
+| Signaler au producteur que le jeu « programmes » s'arrête en 2020-2021 | Formulaire de contact de la page du jeu `fr-en-programmes-enseignement-premier-degre` ; message prêt dans [le chantier](chantiers/sources-ouvertes.md#signalement-au-producteur-du-jeu--programmes--prêt-à-envoyer) | Les programmes de cycles 1 à 3 de 2024 et l'EMC 2024 manquent ; l'envoi engage le propriétaire auprès d'un tiers | Message envoyé ; puis jeu mis à jour (`npm run sources:importer`) | à faire |
+
 ## Lab À petits pas — adultes
 
 | Action | Où | Pourquoi | Comment confirmer | Statut |
@@ -26,7 +35,7 @@ Suivi : [#427](https://github.com/Kermic974/KermicLab/issues/427). [Chaîne de l
 
 ## Espace Métiers (chantier Métiers)
 
-Plan : [chantier Métiers](chantiers/metiers.md), [ADR 0042](decisions/0042-referentiel-metiers-onisep.md), [ADR 0044](decisions/0044-donnees-france-travail-metiers.md).
+Plan : [chantier Métiers](chantiers/metiers.md), [ADR 0042](decisions/0042-referentiel-metiers-onisep.md), [ADR 0045](decisions/0045-donnees-france-travail-metiers.md).
 
 | Action | Où | Pourquoi | Comment confirmer | Statut |
 |---|---|---|---|---|
@@ -35,7 +44,7 @@ Plan : [chantier Métiers](chantiers/metiers.md), [ADR 0042](decisions/0042-refe
 | Vérifier les 21 correspondances métier ↔ fiche ONISEP choisies par l'agent | `referentiel/metiers-v0.json` (champ `onisep`), liste dans le chantier Métiers | Rapprochements non exacts (ex. « Resp. logistique » → ingénieur logistique, « Content Strategist » → concepteur-rédacteur) | Correspondances confirmées ou corrigées par une PR | à faire |
 | Valider l'ADR 0042 (format v2, import ONISEP) | [ADR 0042](decisions/0042-referentiel-metiers-onisep.md) | Décision de structure des données et de source externe | ADR passée au statut accepté | à faire |
 | Récupérer le ROME 4.0 et la BMO en données ouvertes | data.gouv.fr ; hôtes `api.francetravail.fr`, `www.francetravail.org`, `dares.travail-emploi.gouv.fr`, `data.dares.travail-emploi.gouv.fr` ajoutés au réseau de l'environnement cloud KermicLab | Lots 7 et 9 du chantier | Extraits `rome-4.0-v62.json` et `bmo-2026.json` versionnés dans `referentiel/sources/france-travail/` | fait |
-| Valider l'ADR 0044 (données de France Travail) | [ADR 0044](decisions/0044-donnees-france-travail-metiers.md) | Choix des sources, affichage des débouchés à un public mineur | ADR passée au statut accepté | à faire |
+| Valider l'ADR 0045 (données de France Travail) | [ADR 0045](decisions/0045-donnees-france-travail-metiers.md) | Choix des sources, affichage des débouchés à un public mineur | ADR passée au statut accepté | à faire |
 | Vérifier les 7 codes ROME choisis par l'agent et les 57 codes précisés | `referentiel/metiers-v0.json` (champ `rome`), liste dans le chantier Métiers (lot 7) | Métiers sans code ONISEP (ex. « Chargé d'affaires » → D1407 technico-commercial) ; les métiers proches et conditions de travail en découlent | Codes confirmés ou corrigés par une PR, puis `npm run import:rome -- <extrait> --appliquer` | à faire |
 | Créer une application sur francetravail.io, s'abonner à l'API Marché du travail et enregistrer ses réponses | [francetravail.io](https://francetravail.io/produits-partages/catalogue) | Lot 8 (import préparé) : tension de recrutement par code ROME | Pour chaque code de `npm run import:marche -- --codes`, enregistrer depuis la console de l'API la réponse JSON de l'indicateur de tension (`PERSP_2`, territoire France) dans un même dossier, puis `npm run import:marche -- <dossier> --extrait referentiel/sources/france-travail/marche-AAAA-TN.json --date AAAA-MM-JJ` et `--appliquer` (ou déposer le dossier dans le chat). Aucun identifiant dans le dépôt | à faire |
 | Lire les conditions d'utilisation de francetravail.io | [francetravail.io](https://francetravail.io) | Réutilisation publique d'indicateurs dérivés dans un service en partie payant ; attribution exigée | Décision notée dans l'ADR 0044 | à faire |
