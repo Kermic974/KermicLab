@@ -114,7 +114,7 @@ pas atteint ; la mesure est refaite à chaque vague.
 | Vague | Domaines ONISEP | Candidats | Statut |
 |---|---|---|---|
 | 0 | Outillage (`vague:metiers`, repli par domaine, tests, essai à pleine échelle) | — | Fait |
-| 2 | santé, social, sport | 100 | À faire |
+| 2 | santé, social, sport | 100 | Fait (100 retenus ; 211 métiers, graphe 308 Ko) |
 | 3 | arts, culture, artisanat | 99 | À faire |
 | 4 | environnement, énergies ; agriculture, animaux | 123 | À faire |
 | 5 | matières premières, industries ; électricité, électronique | 112 | À faire |
