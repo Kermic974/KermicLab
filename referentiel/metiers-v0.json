@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès. Lot 3 et vague pilote du lot 6 (2026-11-24) : 14 disciplines et 41 métiers ajoutés par un agent, en correspondance « proposition », sans code ROME (apporté par l’import ONISEP). Import ONISEP du 2026-11-24 (extrait referentiel/sources/onisep/ideo-metiers-2026-11-24.json, licence ODbL) : identifiants, codes ROME, niveaux d’accès, domaines et synonymes de 74 métiers. Vague 1 du lot 6 (2026-11-24) : 32 métiers issus des fiches ONISEP (identifiant, niveau et ROME de l’ONISEP), 11 disciplines et notions ajoutées aux disciplines « proposition », préparés par un agent. Vague 2 (santé, social, sport) : 100 métier(s) ONISEP en « proposition ». Vague 3 (arts, culture, artisanat) : 99 métier(s) ONISEP en « proposition ». Vague 4 (environnement, énergies, propreté ; agriculture, animaux) : 123 métier(s) ONISEP en « proposition ».",
+  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès. Lot 3 et vague pilote du lot 6 (2026-11-24) : 14 disciplines et 41 métiers ajoutés par un agent, en correspondance « proposition », sans code ROME (apporté par l’import ONISEP). Import ONISEP du 2026-11-24 (extrait referentiel/sources/onisep/ideo-metiers-2026-11-24.json, licence ODbL) : identifiants, codes ROME, niveaux d’accès, domaines et synonymes de 74 métiers. Vague 1 du lot 6 (2026-11-24) : 32 métiers issus des fiches ONISEP (identifiant, niveau et ROME de l’ONISEP), 11 disciplines et notions ajoutées aux disciplines « proposition », préparés par un agent. Vague 2 (santé, social, sport) : 100 métier(s) ONISEP en « proposition ». Vague 3 (arts, culture, artisanat) : 99 métier(s) ONISEP en « proposition ». Vague 4 (environnement, énergies, propreté ; agriculture, animaux) : 123 métier(s) ONISEP en « proposition ». Vague 5 (matières premières, fabrication, industries ; électricité, électronique, robotique) : 112 métier(s) ONISEP en « proposition ».",
   "sources": [
     {
       "nom": "Idéo-Fiches métiers",
@@ -14202,6 +14202,3514 @@
       "synonymes": [
         "éducateur de chiens d'assistance",
         "éducatrice de chiens d'assistance"
+      ]
+    },
+    {
+      "id": "commercant-en-alimentation",
+      "nom": "Commerçant, commerçante en alimentation",
+      "categorie": "trade",
+      "disciplines": [
+        "nutrition-alimentation",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Choisir les produits",
+        "Conseiller les clients",
+        "Tenir la caisse et les stocks"
+      ],
+      "contexte": "Tient une épicerie ou un commerce de produits alimentaires.",
+      "correspondance": "proposition",
+      "onisep": "MET.16",
+      "rome": [
+        "D1106"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "marchand/e de primeurs",
+        "vendeur/euse en alimentation",
+        "commerçant en alimentation",
+        "commerçante en alimentation"
+      ]
+    },
+    {
+      "id": "operateur-de-fabrication-de-produits-alimentaires",
+      "nom": "Opérateur, opératrice de fabrication de produits alimentaires",
+      "categorie": "btp",
+      "disciplines": [
+        "nutrition-alimentation",
+        "mecanique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Préparer les ingrédients",
+        "Surveiller la machine",
+        "Respecter l’hygiène"
+      ],
+      "contexte": "Fabrique des aliments en série dans une usine.",
+      "correspondance": "proposition",
+      "onisep": "MET.20",
+      "rome": [
+        "H2102"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "mécanique/automatismes"
+      ],
+      "synonymes": [
+        "agent/e de production alimentaire",
+        "opérateur/trice de conditionnement de produits alimentaires",
+        "opérateur/trice de production de produits alimentaires",
+        "préparateur/trice de produits alimentaires",
+        "opérateur de fabrication de produits alimentaires",
+        "opératrice de fabrication de produits alimentaires"
+      ]
+    },
+    {
+      "id": "employe-de-chai",
+      "nom": "Employé, employée de chai",
+      "categorie": "nature",
+      "disciplines": [
+        "chimie-analytique",
+        "biologie",
+        "agronomie-vegetale"
+      ],
+      "gestes": [
+        "Surveiller la fermentation",
+        "Entretenir les cuves et barriques",
+        "Préparer la mise en bouteille"
+      ],
+      "contexte": "Participe à la fabrication et à l’élevage du vin.",
+      "correspondance": "proposition",
+      "onisep": "MET.21",
+      "rome": [
+        "A1413"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire"
+      ],
+      "synonymes": [
+        "agent/e de chai",
+        "caviste",
+        "ouvrier/ère caviste",
+        "employé de chai",
+        "employée de chai"
+      ]
+    },
+    {
+      "id": "mouleur-noyauteur",
+      "nom": "Mouleur-noyauteur, mouleuse-noyauteuse",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "mecanique"
+      ],
+      "gestes": [
+        "Préparer le moule en sable",
+        "Placer les noyaux",
+        "Contrôler la pièce coulée"
+      ],
+      "contexte": "Prépare les moules qui servent à couler le métal en fonderie.",
+      "correspondance": "proposition",
+      "onisep": "MET.34",
+      "rome": [
+        "H2910"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/métallurgie, sidérurgie",
+        "mécanique/travail des métaux"
+      ],
+      "synonymes": [
+        "mouliste",
+        "ouvrier/ère de fonderie",
+        "technicien/ne de fonderie",
+        "mouleur-noyauteur",
+        "mouleuse-noyauteuse"
+      ]
+    },
+    {
+      "id": "technicien-des-industries-du-verre",
+      "nom": "Technicien, technicienne des industries du verre",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "physique"
+      ],
+      "gestes": [
+        "Régler les fours",
+        "Surveiller la fabrication",
+        "Contrôler la qualité du verre"
+      ],
+      "contexte": "Supervise la fabrication du verre dans une usine.",
+      "correspondance": "proposition",
+      "onisep": "MET.35",
+      "rome": [
+        "H2805"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "matières premières, fabrication, industries/verre"
+      ],
+      "synonymes": [
+        "technicien des industries du verre",
+        "technicienne des industries du verre"
+      ]
+    },
+    {
+      "id": "ouvrier-forestier",
+      "nom": "Ouvrier forestier, ouvrière forestière",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "environnement",
+        "education-physique"
+      ],
+      "gestes": [
+        "Planter et entretenir",
+        "Débroussailler",
+        "Abattre les arbres"
+      ],
+      "contexte": "Entretient la forêt et participe à la récolte du bois.",
+      "correspondance": "proposition",
+      "onisep": "MET.50",
+      "rome": [
+        "A1205"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/bois",
+        "environnement, énergies, propreté/environnement (généralités)",
+        "agriculture, animaux/forêt"
+      ],
+      "synonymes": [
+        "ouvrier forestier",
+        "ouvrière forestière"
+      ]
+    },
+    {
+      "id": "chef-d-equipe",
+      "nom": "Chef, cheffe d'équipe (fabrication)",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "mecanique",
+        "communication"
+      ],
+      "gestes": [
+        "Organiser le travail de l’équipe",
+        "Contrôler la production",
+        "Faire respecter la sécurité"
+      ],
+      "contexte": "Encadre une équipe d’ouvriers dans une usine.",
+      "correspondance": "proposition",
+      "onisep": "MET.58",
+      "rome": [
+        "H2503"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "matières premières, fabrication, industries/fabrication, productique",
+        "logistique, transport/logistique",
+        "mécanique/mécanique (généralités)",
+        "matières premières, fabrication, industries/méthodes industrialisation"
+      ],
+      "synonymes": [
+        "animateur/trice d'équipe (production)",
+        "contremaître/sse",
+        "responsable d'atelier",
+        "responsable d'ordonnancement",
+        "superviseur/se",
+        "chef d'équipe (fabrication)",
+        "cheffe d'équipe (fabrication)"
+      ]
+    },
+    {
+      "id": "ingenieur-electricien",
+      "nom": "Ingénieur électricien, ingénieure électricienne",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "physique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Concevoir des installations électriques",
+        "Calculer les puissances",
+        "Suivre les essais"
+      ],
+      "contexte": "Conçoit des réseaux et des équipements électriques.",
+      "correspondance": "proposition",
+      "onisep": "MET.75",
+      "rome": [
+        "H1206",
+        "H2502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "électricité, électronique, robotique/électrotechnique",
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "ingénieur/e électrotechnicien/ne",
+        "ingénieur électricien",
+        "ingénieure électricienne"
+      ]
+    },
+    {
+      "id": "ingenieur-aromaticien",
+      "nom": "Ingénieur aromaticien, ingénieure aromaticienne",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-analytique",
+        "nutrition-alimentation",
+        "biologie"
+      ],
+      "gestes": [
+        "Créer des arômes",
+        "Analyser les composés",
+        "Tester avec des panels"
+      ],
+      "contexte": "Invente des arômes pour les aliments et les boissons.",
+      "correspondance": "proposition",
+      "onisep": "MET.79",
+      "rome": [
+        "H1505"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "sciences/chimie"
+      ],
+      "synonymes": [
+        "aromaticien/ne",
+        "responsable développement produits aromatisés",
+        "ingénieur aromaticien",
+        "ingénieure aromaticienne"
+      ]
+    },
+    {
+      "id": "chocolatier-confiseur",
+      "nom": "Chocolatier-confiseur, chocolatière-confiseuse",
+      "categorie": "craft",
+      "disciplines": [
+        "nutrition-alimentation",
+        "chimie-analytique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Tempérer le chocolat",
+        "Façonner bonbons et confiseries",
+        "Décorer et présenter"
+      ],
+      "contexte": "Fabrique des chocolats et des confiseries.",
+      "correspondance": "proposition",
+      "onisep": "MET.88",
+      "rome": [
+        "D1104"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "chocolatier-confiseur",
+        "chocolatière-confiseuse"
+      ]
+    },
+    {
+      "id": "sellier",
+      "nom": "Sellier, sellière",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "arts-plastiques",
+        "geometrie"
+      ],
+      "gestes": [
+        "Couper le cuir",
+        "Coudre à la main ou à la machine",
+        "Garnir et finir"
+      ],
+      "contexte": "Fabrique des selles, des sacs ou des garnitures en cuir.",
+      "correspondance": "proposition",
+      "onisep": "MET.98",
+      "rome": [
+        "B1802"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "sellier",
+        "sellière"
+      ]
+    },
+    {
+      "id": "ingenieur-technico-commercial-en-electronique",
+      "nom": "Ingénieur technico-commercial en électronique, ingénieure technico-commerciale en électronique",
+      "categorie": "trade",
+      "disciplines": [
+        "electricite-electronique",
+        "communication",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Comprendre le besoin du client",
+        "Proposer une solution technique",
+        "Négocier la vente"
+      ],
+      "contexte": "Vend des produits électroniques en conseillant techniquement les clients.",
+      "correspondance": "proposition",
+      "onisep": "MET.104",
+      "rome": [
+        "D1407"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "électricité, électronique, robotique/électronique",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "chargé/e d'affaires en électronique",
+        "ingénieur/e d'affaires en électronique",
+        "technico-commercial/e en électronique",
+        "ingénieur technico-commercial en électronique",
+        "ingénieure technico-commerciale en électronique"
+      ]
+    },
+    {
+      "id": "responsable-qualite-en-agroalimentaire",
+      "nom": "Responsable qualité en agroalimentaire",
+      "categorie": "btp",
+      "disciplines": [
+        "nutrition-alimentation",
+        "chimie-analytique",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Définir les contrôles",
+        "Analyser les non-conformités",
+        "Former les équipes"
+      ],
+      "contexte": "Garantit la qualité et la sécurité des aliments produits.",
+      "correspondance": "proposition",
+      "onisep": "MET.113",
+      "rome": [
+        "H1502"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "matières premières, fabrication, industries/fabrication, productique"
+      ],
+      "synonymes": [
+        "ingénieur/e qualité",
+        "responsable hygiène, qualité, sécurité, environnement en agroalimentaire (HQSE)",
+        "responsable qualité sécurité environnement en agroalimentaire",
+        "responsable qualité en agroalimentaire"
+      ]
+    },
+    {
+      "id": "charcutier-traiteur",
+      "nom": "Charcutier-traiteur, charcutière-traiteuse",
+      "categorie": "craft",
+      "disciplines": [
+        "nutrition-alimentation",
+        "calcul-professionnel",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Préparer les viandes",
+        "Cuisiner pâtés et plats",
+        "Conseiller les clients"
+      ],
+      "contexte": "Fabrique et vend charcuterie et plats préparés.",
+      "correspondance": "proposition",
+      "onisep": "MET.153",
+      "rome": [
+        "D1103"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "commerce, marketing, vente/grande distribution et petits commerces",
+        "hôtellerie-restauration, tourisme/restauration"
+      ],
+      "synonymes": [
+        "charcutier-traiteur",
+        "charcutière-traiteuse"
+      ]
+    },
+    {
+      "id": "oenologue",
+      "nom": "Oenologue",
+      "categorie": "nature",
+      "disciplines": [
+        "chimie-analytique",
+        "biologie",
+        "agronomie-vegetale"
+      ],
+      "gestes": [
+        "Analyser le raisin et le vin",
+        "Conseiller la vinification",
+        "Déguster et assembler"
+      ],
+      "contexte": "Accompagne la fabrication du vin, de la vigne à la bouteille.",
+      "correspondance": "proposition",
+      "onisep": "MET.159",
+      "rome": [
+        "A1413"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire"
+      ],
+      "synonymes": [
+        "oenologue"
+      ]
+    },
+    {
+      "id": "technicien-en-optique-de-precision",
+      "nom": "Technicien, technicienne en optique de précision",
+      "categorie": "btp",
+      "disciplines": [
+        "optique",
+        "science-des-materiaux",
+        "physique"
+      ],
+      "gestes": [
+        "Usiner les pièces optiques",
+        "Polir les lentilles",
+        "Contrôler les instruments"
+      ],
+      "contexte": "Fabrique et contrôle des pièces d’optique très précises.",
+      "correspondance": "proposition",
+      "onisep": "MET.165",
+      "rome": [
+        "H1210"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "électricité, électronique, robotique/électronique",
+        "mécanique/mécanique (généralités)",
+        "sciences/physique"
+      ],
+      "synonymes": [
+        "technicien/ne en photonique",
+        "technicien en optique de précision",
+        "technicienne en optique de précision"
+      ]
+    },
+    {
+      "id": "viticulteur",
+      "nom": "Viticulteur, viticultrice",
+      "categorie": "nature",
+      "disciplines": [
+        "agronomie-vegetale",
+        "biologie",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Tailler la vigne",
+        "Suivre la maturité du raisin",
+        "Vendanger"
+      ],
+      "contexte": "Cultive la vigne, et parfois produit le vin.",
+      "correspondance": "proposition",
+      "onisep": "MET.174",
+      "rome": [
+        "A1405"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "agriculture, animaux/cultures"
+      ],
+      "synonymes": [
+        "vigneron/ne",
+        "viticulteur",
+        "viticultrice"
+      ]
+    },
+    {
+      "id": "technicien-qualite",
+      "nom": "Technicien, technicienne qualité",
+      "categorie": "btp",
+      "disciplines": [
+        "analyse-statistique",
+        "mecanique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Contrôler les produits",
+        "Mesurer et noter les écarts",
+        "Proposer des améliorations"
+      ],
+      "contexte": "Vérifie que les produits fabriqués sont conformes.",
+      "correspondance": "proposition",
+      "onisep": "MET.175",
+      "rome": [
+        "H1503",
+        "H1504",
+        "H1506"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "matières premières, fabrication, industries/fabrication, productique",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "qualiticien/ne",
+        "technicien/ne système qualité environnement",
+        "technicien qualité",
+        "technicienne qualité"
+      ]
+    },
+    {
+      "id": "monteur-cableur",
+      "nom": "Monteur-câbleur, monteuse-câbleuse",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "calcul-professionnel",
+        "mecanique"
+      ],
+      "gestes": [
+        "Lire le schéma",
+        "Préparer et poser les câbles",
+        "Raccorder et tester"
+      ],
+      "contexte": "Câble et assemble des équipements électriques.",
+      "correspondance": "proposition",
+      "onisep": "MET.183",
+      "rome": [
+        "H2605"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "électricité, électronique, robotique/électronique",
+        "électricité, électronique, robotique/électrotechnique",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "câbleur/euse",
+        "électricien/ne industriel/le",
+        "monteur/euse",
+        "monteur/euse-câbleur/euse en électronique",
+        "monteur/euse-électricien/ne",
+        "monteur-câbleur",
+        "monteuse-câbleuse"
+      ]
+    },
+    {
+      "id": "technicien-integrateur-electronique",
+      "nom": "Technicien intégrateur électronique, technicienne intégratrice électronique",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "informatique",
+        "physique"
+      ],
+      "gestes": [
+        "Assembler les cartes",
+        "Intégrer les logiciels",
+        "Tester le système"
+      ],
+      "contexte": "Assemble et met au point des systèmes électroniques.",
+      "correspondance": "proposition",
+      "onisep": "MET.198",
+      "rome": [
+        "I1305"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "électricité, électronique, robotique/électronique",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "technicien/ne électronicien/ne",
+        "technicien/ne en électronique",
+        "technicien/ne intégrateur/trice",
+        "technicien intégrateur électronique",
+        "technicienne intégratrice électronique"
+      ]
+    },
+    {
+      "id": "responsable-assurance-qualite",
+      "nom": "Responsable assurance qualité",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "analyse-statistique",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Écrire les procédures",
+        "Organiser les audits",
+        "Suivre les indicateurs"
+      ],
+      "contexte": "Organise la qualité dans toute l’entreprise.",
+      "correspondance": "proposition",
+      "onisep": "MET.202",
+      "rome": [
+        "H1502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "qualiticien/ne",
+        "responsable qualité",
+        "responsable assurance qualité"
+      ]
+    },
+    {
+      "id": "technicien-radioprotection",
+      "nom": "Technicien, technicienne radioprotection",
+      "categorie": "btp",
+      "disciplines": [
+        "physique",
+        "energetique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Mesurer les rayonnements",
+        "Contrôler les zones",
+        "Conseiller les travailleurs"
+      ],
+      "contexte": "Protège les personnes des rayonnements dans les installations nucléaires ou médicales.",
+      "correspondance": "proposition",
+      "onisep": "MET.205",
+      "rome": [
+        "H1303"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "matières premières, fabrication, industries/maintenance, qualité",
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "technicien/ne méthodes radioprotection",
+        "technicien/ne nucléaire",
+        "technicien/ne radioprotection intégrée",
+        "technicien radioprotection",
+        "technicienne radioprotection"
+      ]
+    },
+    {
+      "id": "ingenieur-calcul",
+      "nom": "Ingénieur, ingénieure calcul",
+      "categorie": "btp",
+      "disciplines": [
+        "mathematiques-appliquees",
+        "mecanique",
+        "informatique"
+      ],
+      "gestes": [
+        "Modéliser les pièces",
+        "Simuler les efforts",
+        "Valider la résistance"
+      ],
+      "contexte": "Vérifie par le calcul que les structures et les pièces sont solides.",
+      "correspondance": "proposition",
+      "onisep": "MET.206",
+      "rome": [
+        "H1206"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/études et développement",
+        "informatique, Internet/informatique industrielle et technologique",
+        "informatique, Internet/informatique pour la recherche",
+        "sciences/mathématiques",
+        "sciences/physique"
+      ],
+      "synonymes": [
+        "calculateur/trice",
+        "ingénieur/e structures",
+        "spécialiste en techniques de calcul",
+        "ingénieur calcul",
+        "ingénieure calcul"
+      ]
+    },
+    {
+      "id": "responsable-de-production-alimentaire",
+      "nom": "Responsable de production alimentaire",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "nutrition-alimentation",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Planifier la production",
+        "Encadrer les équipes",
+        "Garantir hygiène et qualité"
+      ],
+      "contexte": "Dirige la fabrication dans une usine alimentaire.",
+      "correspondance": "proposition",
+      "onisep": "MET.207",
+      "rome": [
+        "H2504"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire"
+      ],
+      "synonymes": [
+        "contremaître/sse agroalimentaire",
+        "responsable d'atelier de production alimentaire",
+        "responsable de fabrication alimentaire",
+        "responsable de production en agroalimentaire",
+        "responsable de production alimentaire"
+      ]
+    },
+    {
+      "id": "consultant-en-management-de-l-innovation",
+      "nom": "Consultant, consultante en management de l'innovation",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "economie-et-societe",
+        "communication"
+      ],
+      "gestes": [
+        "Repérer les idées nouvelles",
+        "Organiser les projets",
+        "Accompagner le changement"
+      ],
+      "contexte": "Aide les entreprises à innover.",
+      "correspondance": "proposition",
+      "onisep": "MET.218",
+      "rome": [
+        "M1402"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/fonction production (généralités)"
+      ],
+      "synonymes": [
+        "consultant en management de l'innovation",
+        "consultante en management de l'innovation"
+      ]
+    },
+    {
+      "id": "ingenieur-recherche-et-developpement-en-sport",
+      "nom": "Ingénieur, ingénieure recherche et développement en sport",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "science-des-materiaux",
+        "education-physique"
+      ],
+      "gestes": [
+        "Étudier les besoins des sportifs",
+        "Concevoir des équipements",
+        "Tester en laboratoire"
+      ],
+      "contexte": "Conçoit du matériel de sport plus performant et plus sûr.",
+      "correspondance": "proposition",
+      "onisep": "MET.235",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/études et développement",
+        "santé, social, sport/sport"
+      ],
+      "synonymes": [
+        "ingénieur recherche et développement en sport",
+        "ingénieure recherche et développement en sport"
+      ]
+    },
+    {
+      "id": "ingenieur-production-en-mecanique",
+      "nom": "Ingénieur, ingénieure production en mécanique",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "gestion",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Organiser la production",
+        "Améliorer les procédés",
+        "Encadrer les équipes"
+      ],
+      "contexte": "Fait fonctionner et améliore une usine de pièces mécaniques.",
+      "correspondance": "proposition",
+      "onisep": "MET.242",
+      "rome": [
+        "H2502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/études et développement",
+        "mécanique/mécanique (généralités)",
+        "matières premières, fabrication, industries/méthodes industrialisation"
+      ],
+      "synonymes": [
+        "ingénieur/e de fabrication mécanique",
+        "ingénieur production en mécanique",
+        "ingénieure production en mécanique"
+      ]
+    },
+    {
+      "id": "boucher",
+      "nom": "Boucher, bouchère",
+      "categorie": "craft",
+      "disciplines": [
+        "nutrition-alimentation",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Découper la viande",
+        "Préparer les commandes",
+        "Conseiller les clients"
+      ],
+      "contexte": "Prépare et vend la viande.",
+      "correspondance": "proposition",
+      "onisep": "MET.268",
+      "rome": [
+        "D1101"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "boucher",
+        "bouchère"
+      ]
+    },
+    {
+      "id": "chef-de-chantier-en-installations-electriques",
+      "nom": "Chef, cheffe de chantier en installations électriques",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "gestion",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Organiser le chantier",
+        "Encadrer les électriciens",
+        "Contrôler la sécurité"
+      ],
+      "contexte": "Dirige un chantier d’installation électrique.",
+      "correspondance": "proposition",
+      "onisep": "MET.286",
+      "rome": [
+        "F1202"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "électricité, électronique, robotique/électrotechnique",
+        "construction, architecture, travaux publics/équipement technique",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "chef/fe de chantier de lignes et réseaux électriques",
+        "responsable de chantier en installations électriques",
+        "chef de chantier en installations électriques",
+        "cheffe de chantier en installations électriques"
+      ]
+    },
+    {
+      "id": "tailleur-couturier",
+      "nom": "Tailleur-couturier, tailleuse-couturière",
+      "categorie": "craft",
+      "disciplines": [
+        "geometrie",
+        "science-des-materiaux",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Prendre les mesures",
+        "Couper le tissu",
+        "Assembler et ajuster"
+      ],
+      "contexte": "Fabrique des vêtements sur mesure.",
+      "correspondance": "proposition",
+      "onisep": "MET.291",
+      "rome": [
+        "B1803"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "maître tailleur/euse",
+        "tailleur-couturier",
+        "tailleuse-couturière"
+      ]
+    },
+    {
+      "id": "installateur-en-telecoms",
+      "nom": "Installateur, installatrice en télécoms",
+      "categorie": "app",
+      "disciplines": [
+        "reseaux",
+        "electricite-electronique",
+        "communication"
+      ],
+      "gestes": [
+        "Poser les câbles et équipements",
+        "Raccorder les lignes",
+        "Tester la connexion"
+      ],
+      "contexte": "Installe téléphone, Internet et réseaux chez les clients.",
+      "correspondance": "proposition",
+      "onisep": "MET.298",
+      "rome": [
+        "F1605"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "matières premières, fabrication, industries/maintenance, qualité",
+        "électricité, électronique, robotique/télécommunications"
+      ],
+      "synonymes": [
+        "installateur/trice en télécommunications",
+        "monteur/euse en télécommunications",
+        "monteur/euse en télécoms",
+        "technicien/ne télécoms réseaux",
+        "installateur en télécoms",
+        "installatrice en télécoms"
+      ]
+    },
+    {
+      "id": "dessinateur-en-construction-mecanique",
+      "nom": "Dessinateur, dessinatrice en construction mécanique",
+      "categorie": "btp",
+      "disciplines": [
+        "geometrie",
+        "mecanique",
+        "informatique"
+      ],
+      "gestes": [
+        "Dessiner les pièces sur ordinateur",
+        "Coter les plans",
+        "Préparer les nomenclatures"
+      ],
+      "contexte": "Réalise les plans des machines et des pièces mécaniques.",
+      "correspondance": "proposition",
+      "onisep": "MET.306",
+      "rome": [
+        "H1203"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "matières premières, fabrication, industries/études et développement",
+        "mécanique/mécanique (généralités)"
+      ],
+      "synonymes": [
+        "dessinateur/trice industriel/le",
+        "technicien/ne de bureau d'études en industries mécaniques",
+        "technicien/ne de bureau des méthodes en industries mécaniques",
+        "technicien/ne en dessin industriel",
+        "dessinateur en construction mécanique",
+        "dessinatrice en construction mécanique"
+      ]
+    },
+    {
+      "id": "ingenieur-nucleaire",
+      "nom": "Ingénieur, ingénieure nucléaire",
+      "categorie": "btp",
+      "disciplines": [
+        "physique",
+        "energetique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Concevoir les installations",
+        "Analyser la sûreté",
+        "Suivre l’exploitation"
+      ],
+      "contexte": "Travaille sur les centrales et installations nucléaires.",
+      "correspondance": "proposition",
+      "onisep": "MET.325",
+      "rome": [
+        "H1302"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/maintenance, qualité",
+        "sciences/physique",
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "ingénieur nucléaire",
+        "ingénieure nucléaire"
+      ]
+    },
+    {
+      "id": "ingenieur-metallurgiste",
+      "nom": "Ingénieur, ingénieure métallurgiste",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "physique"
+      ],
+      "gestes": [
+        "Choisir les alliages",
+        "Contrôler les traitements",
+        "Analyser les défauts"
+      ],
+      "contexte": "Spécialiste des métaux et de leur transformation.",
+      "correspondance": "proposition",
+      "onisep": "MET.351",
+      "rome": [
+        "H1206"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/métallurgie, sidérurgie",
+        "sciences/physique"
+      ],
+      "synonymes": [
+        "ingénieur métallurgiste",
+        "ingénieure métallurgiste"
+      ]
+    },
+    {
+      "id": "ingenieur-materiaux",
+      "nom": "Ingénieur, ingénieure matériaux",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "physique"
+      ],
+      "gestes": [
+        "Choisir le bon matériau",
+        "Tester sa résistance",
+        "Développer de nouveaux matériaux"
+      ],
+      "contexte": "Conçoit et choisit les matériaux des objets de demain.",
+      "correspondance": "proposition",
+      "onisep": "MET.356",
+      "rome": [
+        "H1206",
+        "H2502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/matériaux"
+      ],
+      "synonymes": [
+        "ingénieur/e en génie des matériaux",
+        "ingénieur/e en science des matériaux",
+        "ingénieur matériaux",
+        "ingénieure matériaux"
+      ]
+    },
+    {
+      "id": "electromecanicien-en-remontees-mecaniques",
+      "nom": "Électromécanicien, électromécanicienne en remontées mécaniques",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "physique"
+      ],
+      "gestes": [
+        "Surveiller les installations",
+        "Réaliser la maintenance",
+        "Dépanner en sécurité"
+      ],
+      "contexte": "Entretient télésièges et téléphériques.",
+      "correspondance": "proposition",
+      "onisep": "MET.357",
+      "niveauAcces": "bac",
+      "domaines": [
+        "électricité, électronique, robotique/électrotechnique",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "technicien/ne de maintenance en remontées mécaniques",
+        "électromécanicien en remontées mécaniques",
+        "électromécanicienne en remontées mécaniques"
+      ]
+    },
+    {
+      "id": "glacier-sorbetier",
+      "nom": "Glacier-sorbetier, glacière-sorbetière",
+      "categorie": "craft",
+      "disciplines": [
+        "nutrition-alimentation",
+        "chimie-analytique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Préparer les mélanges",
+        "Turbiner les glaces",
+        "Décorer les desserts glacés"
+      ],
+      "contexte": "Fabrique des glaces et des sorbets.",
+      "correspondance": "proposition",
+      "onisep": "MET.377",
+      "rome": [
+        "D1104"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "glacier-sorbetier",
+        "glacière-sorbetière"
+      ]
+    },
+    {
+      "id": "microtechnicien",
+      "nom": "Microtechnicien, microtechnicienne",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "optique"
+      ],
+      "gestes": [
+        "Assembler des pièces minuscules",
+        "Régler les mécanismes",
+        "Contrôler au microscope"
+      ],
+      "contexte": "Fabrique et règle des mécanismes de très petite taille.",
+      "correspondance": "proposition",
+      "onisep": "MET.402",
+      "niveauAcces": "bac",
+      "domaines": [
+        "électricité, électronique, robotique/électronique",
+        "mécanique/mécanique (généralités)"
+      ],
+      "synonymes": [
+        "technicien/ne en microtechniques",
+        "microtechnicien",
+        "microtechnicienne"
+      ]
+    },
+    {
+      "id": "technicien-electrotechnicien",
+      "nom": "Technicien électrotechnicien, technicienne électrotechnicienne",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "informatique"
+      ],
+      "gestes": [
+        "Installer les équipements électriques",
+        "Programmer les automatismes",
+        "Assurer la maintenance"
+      ],
+      "contexte": "Installe et entretient des équipements électriques industriels.",
+      "correspondance": "proposition",
+      "onisep": "MET.403",
+      "rome": [
+        "F1602",
+        "I1309"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "électricité, électronique, robotique/électrotechnique",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "technicien/ne électricien/ne",
+        "technicien/ne en électrotechnique",
+        "technicien électrotechnicien",
+        "technicienne électrotechnicienne"
+      ]
+    },
+    {
+      "id": "cordonnier",
+      "nom": "Cordonnier, cordonnière",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Réparer semelles et talons",
+        "Recoudre le cuir",
+        "Refaire des clés"
+      ],
+      "contexte": "Répare et entretient chaussures et articles en cuir.",
+      "correspondance": "proposition",
+      "onisep": "MET.425",
+      "rome": [
+        "D1206"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "cordonnier/ère-bottier/ère",
+        "cordonnier/ère réparateur/trice",
+        "cordonnier",
+        "cordonnière"
+      ]
+    },
+    {
+      "id": "conducteur-operateur-de-scierie",
+      "nom": "Conducteur-opérateur, conductrice-opératrice de scierie",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "mecanique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Régler la scie",
+        "Découper les grumes",
+        "Trier les planches"
+      ],
+      "contexte": "Transforme les troncs en planches dans une scierie.",
+      "correspondance": "proposition",
+      "onisep": "MET.426",
+      "rome": [
+        "H2205"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/bois"
+      ],
+      "synonymes": [
+        "opérateur/trice de scierie",
+        "pilote de scie",
+        "scieur/euse",
+        "scieur/euse de reprise",
+        "conducteur-opérateur de scierie",
+        "conductrice-opératrice de scierie"
+      ]
+    },
+    {
+      "id": "responsable-de-scierie",
+      "nom": "Responsable de scierie",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "science-des-materiaux",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Acheter le bois",
+        "Organiser la production",
+        "Vendre les sciages"
+      ],
+      "contexte": "Dirige une scierie.",
+      "correspondance": "proposition",
+      "onisep": "MET.429",
+      "rome": [
+        "H2204"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "matières premières, fabrication, industries/bois"
+      ],
+      "synonymes": [
+        "contremaître/esse de scierie",
+        "responsable de production bois",
+        "responsable de production en scierie",
+        "responsable de scierie"
+      ]
+    },
+    {
+      "id": "electromecanicien",
+      "nom": "Électromécanicien, électromécanicienne",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "physique"
+      ],
+      "gestes": [
+        "Diagnostiquer une panne",
+        "Réparer moteurs et circuits",
+        "Régler les machines"
+      ],
+      "contexte": "Entretient des machines à la fois électriques et mécaniques.",
+      "correspondance": "proposition",
+      "onisep": "MET.436",
+      "rome": [
+        "I1304"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "électricité, électronique, robotique/électrotechnique",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "technicien/ne en électromécanique",
+        "électromécanicien",
+        "électromécanicienne"
+      ]
+    },
+    {
+      "id": "bottier",
+      "nom": "Bottier, bottière",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "arts-plastiques",
+        "geometrie"
+      ],
+      "gestes": [
+        "Prendre l’empreinte du pied",
+        "Couper et monter le cuir",
+        "Finir la chaussure"
+      ],
+      "contexte": "Fabrique des chaussures sur mesure.",
+      "correspondance": "proposition",
+      "onisep": "MET.447",
+      "rome": [
+        "B1802"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "artisan/e bottier/ère",
+        "bottier",
+        "bottière"
+      ]
+    },
+    {
+      "id": "nivoculteur",
+      "nom": "Nivoculteur, nivocultrice",
+      "categorie": "nature",
+      "disciplines": [
+        "physique",
+        "sciences-de-la-terre",
+        "mecanique"
+      ],
+      "gestes": [
+        "Produire la neige",
+        "Surveiller la météo",
+        "Entretenir les installations"
+      ],
+      "contexte": "Fabrique la neige de culture des stations de ski.",
+      "correspondance": "proposition",
+      "onisep": "MET.466",
+      "rome": [
+        "I1304"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "électricité, électronique, robotique/électrotechnique",
+        "matières premières, fabrication, industries/maintenance, qualité",
+        "mécanique/mécanique (généralités)"
+      ],
+      "synonymes": [
+        "technicien/ne de la neige",
+        "nivoculteur",
+        "nivocultrice"
+      ]
+    },
+    {
+      "id": "technicien-telecoms-et-reseaux",
+      "nom": "Technicien, technicienne télécoms et réseaux",
+      "categorie": "app",
+      "disciplines": [
+        "reseaux",
+        "electricite-electronique",
+        "informatique"
+      ],
+      "gestes": [
+        "Installer les équipements",
+        "Configurer les réseaux",
+        "Surveiller et dépanner"
+      ],
+      "contexte": "Installe et entretient les réseaux de communication.",
+      "correspondance": "proposition",
+      "onisep": "MET.470",
+      "rome": [
+        "I1307"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "électricité, électronique, robotique/électronique",
+        "matières premières, fabrication, industries/maintenance, qualité",
+        "informatique, Internet/systèmes et réseaux",
+        "électricité, électronique, robotique/télécommunications"
+      ],
+      "synonymes": [
+        "technicien/ne d'exploitation réseau",
+        "technicien/ne radio",
+        "technicien/ne réseau",
+        "technicien/ne réseaux et télécoms",
+        "technicien/ne réseaux mobiles",
+        "technicien/ne télécoms",
+        "technicien télécoms et réseaux",
+        "technicienne télécoms et réseaux"
+      ]
+    },
+    {
+      "id": "ingenieur-electronicien-des-systemes-de-la-securite-aerienne",
+      "nom": "Ingénieur électronicien des systèmes de la sécurité aérienne (IESSA), ingénieure électronicienne des systèmes de la sécurité aérienne (IESSA)",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "informatique",
+        "physique"
+      ],
+      "gestes": [
+        "Installer radars et radios",
+        "Assurer leur maintenance",
+        "Garantir la sécurité des vols"
+      ],
+      "contexte": "Fait fonctionner les équipements qui guident les avions.",
+      "correspondance": "proposition",
+      "onisep": "MET.474",
+      "rome": [
+        "I1102"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "électricité, électronique, robotique/électronique",
+        "informatique, Internet/informatique (généralités)",
+        "électricité, électronique, robotique/télécommunications"
+      ],
+      "synonymes": [
+        "ingénieur/e administrateur/trice des systèmes d'information du contrôle aérien",
+        "ingénieur/e Atsep (Air Traffic Safety Electronics Personnel)",
+        "ingénieur électronicien des systèmes de la sécurité aérienne (IESSA)",
+        "ingénieure électronicienne des systèmes de la sécurité aérienne (IESSA)"
+      ]
+    },
+    {
+      "id": "ingenieur-textile",
+      "nom": "Ingénieur, ingénieure textile",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "mecanique"
+      ],
+      "gestes": [
+        "Développer de nouveaux tissus",
+        "Améliorer les procédés",
+        "Contrôler la qualité"
+      ],
+      "contexte": "Conçoit et améliore les textiles et leur fabrication.",
+      "correspondance": "proposition",
+      "onisep": "MET.480",
+      "rome": [
+        "H1206"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "ingénieur/e méthodes",
+        "ingénieur/e qualité",
+        "ingénieur/e R&D (recherche et développement)",
+        "ingénieur textile",
+        "ingénieure textile"
+      ]
+    },
+    {
+      "id": "ingenieur-methodes-mecaniques",
+      "nom": "Ingénieur, ingénieure méthodes mécaniques",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "calcul-professionnel",
+        "gestion"
+      ],
+      "gestes": [
+        "Définir les étapes de fabrication",
+        "Choisir les machines",
+        "Réduire les coûts"
+      ],
+      "contexte": "Organise la meilleure façon de fabriquer une pièce.",
+      "correspondance": "proposition",
+      "onisep": "MET.499",
+      "rome": [
+        "H1402"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/études et développement",
+        "mécanique/mécanique (généralités)",
+        "matières premières, fabrication, industries/méthodes industrialisation"
+      ],
+      "synonymes": [
+        "ingénieur/e processus",
+        "responsable industrialisation",
+        "responsable méthodes et process",
+        "ingénieur méthodes mécaniques",
+        "ingénieure méthodes mécaniques"
+      ]
+    },
+    {
+      "id": "fromager",
+      "nom": "Fromager, fromagère",
+      "categorie": "craft",
+      "disciplines": [
+        "nutrition-alimentation",
+        "biologie",
+        "communication"
+      ],
+      "gestes": [
+        "Affiner les fromages",
+        "Conseiller les clients",
+        "Gérer la cave"
+      ],
+      "contexte": "Prépare, affine et vend les fromages.",
+      "correspondance": "proposition",
+      "onisep": "MET.510",
+      "rome": [
+        "A1412",
+        "D1106"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "crémier/ère-fromager/ère",
+        "vendeur/euse conseil en crèmerie-fromagerie",
+        "fromager",
+        "fromagère"
+      ]
+    },
+    {
+      "id": "technico-commercial-en-agroalimentaire",
+      "nom": "Technico-commercial, technico-commerciale en agroalimentaire",
+      "categorie": "trade",
+      "disciplines": [
+        "nutrition-alimentation",
+        "communication",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Présenter les produits",
+        "Négocier avec les clients",
+        "Suivre les commandes"
+      ],
+      "contexte": "Vend des produits ou des équipements alimentaires.",
+      "correspondance": "proposition",
+      "onisep": "MET.548",
+      "rome": [
+        "D1407"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "attaché/e commercial/e en agroalimentaire",
+        "technico-commercial en agroalimentaire",
+        "technico-commerciale en agroalimentaire"
+      ]
+    },
+    {
+      "id": "conducteur-de-ligne-de-production-alimentaire",
+      "nom": "Conducteur, conductrice de ligne de production alimentaire",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "nutrition-alimentation",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Démarrer et régler la ligne",
+        "Surveiller la production",
+        "Nettoyer les machines"
+      ],
+      "contexte": "Pilote une ligne de fabrication d’aliments.",
+      "correspondance": "proposition",
+      "onisep": "MET.549",
+      "rome": [
+        "H2102"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "mécanique/automatismes"
+      ],
+      "synonymes": [
+        "animateur/trice de ligne",
+        "conducteur/trice de ligne automatisée agroalimentaire",
+        "conducteur/trice de ligne de production agroalimentaire",
+        "conducteur/trice de ligne de production et de conditionnement",
+        "conducteur/trice de process (procédés) de production alimentaire",
+        "pilote de ligne de production agroalimentaire",
+        "conducteur de ligne de production alimentaire",
+        "conductrice de ligne de production alimentaire"
+      ]
+    },
+    {
+      "id": "monteur-en-reseaux-d-energie",
+      "nom": "Monteur, monteuse en réseaux d'énergie (électricité)",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "education-physique"
+      ],
+      "gestes": [
+        "Poser les lignes et câbles",
+        "Raccorder les postes",
+        "Travailler en sécurité"
+      ],
+      "contexte": "Construit et répare les réseaux qui transportent l’électricité.",
+      "correspondance": "proposition",
+      "onisep": "MET.573",
+      "rome": [
+        "F1605"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "électricité, électronique, robotique/électrotechnique",
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "monteur/euse de réseaux électriques",
+        "technicien/ne en réseaux électriques",
+        "monteur en réseaux d'énergie (électricité)",
+        "monteuse en réseaux d'énergie (électricité)"
+      ]
+    },
+    {
+      "id": "cogniticien",
+      "nom": "Cogniticien, cogniticienne",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "psychologie-cognitive",
+        "logique-mathematique"
+      ],
+      "gestes": [
+        "Recueillir le savoir des experts",
+        "Le modéliser",
+        "Concevoir des outils d’aide"
+      ],
+      "contexte": "Organise les connaissances pour concevoir des outils et des systèmes intelligents.",
+      "correspondance": "proposition",
+      "onisep": "MET.592",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/études et développement",
+        "matières premières, fabrication, industries/génie industriel",
+        "informatique, Internet/informatique (généralités)",
+        "histoire-géographie, psychologie, sociologie/psychologie"
+      ],
+      "synonymes": [
+        "analyste cogniticien/ne",
+        "cogniticien/ne informatique",
+        "ingénieur/e cogniticien/ne",
+        "ingénieur/e en cognitique",
+        "cogniticien",
+        "cogniticienne"
+      ]
+    },
+    {
+      "id": "consultant-en-solutions-integrees",
+      "nom": "Consultant, consultante en solutions intégrées",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Analyser les besoins de l’entreprise",
+        "Paramétrer le logiciel",
+        "Former les utilisateurs"
+      ],
+      "contexte": "Installe des logiciels de gestion dans les entreprises.",
+      "correspondance": "proposition",
+      "onisep": "MET.599",
+      "rome": [
+        "M1806"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "électricité, électronique, robotique/électronique",
+        "informatique, Internet/informatique (généralités)",
+        "électricité, électronique, robotique/télécommunications"
+      ],
+      "synonymes": [
+        "consultant/e informatique",
+        "consultant/e progiciel de gestion intégrée",
+        "consultant en solutions intégrées",
+        "consultante en solutions intégrées"
+      ]
+    },
+    {
+      "id": "poissonnier",
+      "nom": "Poissonnier, poissonnière",
+      "categorie": "craft",
+      "disciplines": [
+        "nutrition-alimentation",
+        "biologie",
+        "communication"
+      ],
+      "gestes": [
+        "Choisir le poisson",
+        "Le préparer et le découper",
+        "Conseiller les clients"
+      ],
+      "contexte": "Prépare et vend poissons et fruits de mer.",
+      "correspondance": "proposition",
+      "onisep": "MET.600",
+      "rome": [
+        "D1105"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "écailler/ère",
+        "vendeur/euse en produit de la mer",
+        "poissonnier",
+        "poissonnière"
+      ]
+    },
+    {
+      "id": "ingenieur-traitement-de-l-image",
+      "nom": "Ingénieur, ingénieure traitement de l'image",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "mathematiques-appliquees",
+        "optique"
+      ],
+      "gestes": [
+        "Développer des algorithmes",
+        "Analyser les images",
+        "Tester les performances"
+      ],
+      "contexte": "Conçoit des programmes qui analysent et améliorent les images.",
+      "correspondance": "proposition",
+      "onisep": "MET.612",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "électricité, électronique, robotique/électronique"
+      ],
+      "synonymes": [
+        "ingénieur/e recherche et développement",
+        "ingénieure/e informaticien/ne",
+        "ingénieur traitement de l'image",
+        "ingénieure traitement de l'image"
+      ]
+    },
+    {
+      "id": "vendeur-conseil-caviste",
+      "nom": "Vendeur, vendeuse conseil caviste",
+      "categorie": "trade",
+      "disciplines": [
+        "communication",
+        "agronomie-vegetale",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Sélectionner les vins",
+        "Conseiller les clients",
+        "Organiser des dégustations"
+      ],
+      "contexte": "Choisit et vend les vins dans une cave.",
+      "correspondance": "proposition",
+      "onisep": "MET.631",
+      "rome": [
+        "D1106"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "caviste",
+        "employé/e caviste",
+        "vendeur conseil caviste",
+        "vendeuse conseil caviste"
+      ]
+    },
+    {
+      "id": "retoucheur",
+      "nom": "Retoucheur, retoucheuse",
+      "categorie": "craft",
+      "disciplines": [
+        "geometrie",
+        "science-des-materiaux",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Prendre les mesures",
+        "Ajuster le vêtement",
+        "Coudre les finitions"
+      ],
+      "contexte": "Ajuste et répare les vêtements.",
+      "correspondance": "proposition",
+      "onisep": "MET.640",
+      "rome": [
+        "D1207"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "retoucheur",
+        "retoucheuse"
+      ]
+    },
+    {
+      "id": "fondeur",
+      "nom": "Fondeur, fondeuse",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "physique"
+      ],
+      "gestes": [
+        "Préparer le métal",
+        "Couler dans le moule",
+        "Démouler et contrôler"
+      ],
+      "contexte": "Coule le métal en fusion pour fabriquer des pièces.",
+      "correspondance": "proposition",
+      "onisep": "MET.641",
+      "rome": [
+        "H2907"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/métallurgie, sidérurgie",
+        "mécanique/travail des métaux"
+      ],
+      "synonymes": [
+        "fondeur",
+        "fondeuse"
+      ]
+    },
+    {
+      "id": "technicien-de-controle",
+      "nom": "Technicien, technicienne de contrôle",
+      "categorie": "btp",
+      "disciplines": [
+        "analyse-statistique",
+        "mecanique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Mesurer les pièces",
+        "Comparer aux normes",
+        "Rédiger les rapports"
+      ],
+      "contexte": "Contrôle que les produits respectent les exigences.",
+      "correspondance": "proposition",
+      "onisep": "MET.649",
+      "rome": [
+        "H1503"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "mécanique/automatismes",
+        "sciences/chimie",
+        "santé, social, sport/médical",
+        "matières premières, fabrication, industries/papier, carton"
+      ],
+      "synonymes": [
+        "technicien/ne de laboratoire",
+        "technicien de contrôle",
+        "technicienne de contrôle"
+      ]
+    },
+    {
+      "id": "affuteur",
+      "nom": "Affûteur, affûteuse",
+      "categorie": "craft",
+      "disciplines": [
+        "mecanique",
+        "science-des-materiaux",
+        "geometrie"
+      ],
+      "gestes": [
+        "Contrôler l’usure",
+        "Affûter les lames",
+        "Régler les outils"
+      ],
+      "contexte": "Aiguise et remet en état les outils coupants.",
+      "correspondance": "proposition",
+      "onisep": "MET.663",
+      "rome": [
+        "H2903"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/bois",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "technicien/ne affûteur/euse en scierie",
+        "technicien/ne de maintenance en scierie",
+        "affûteur",
+        "affûteuse"
+      ]
+    },
+    {
+      "id": "technicien-plasturgiste",
+      "nom": "Technicien, technicienne plasturgiste",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-des-materiaux",
+        "mecanique",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Régler les presses",
+        "Mettre au point la fabrication",
+        "Contrôler les pièces"
+      ],
+      "contexte": "Fabrique des objets en plastique dans une usine.",
+      "correspondance": "proposition",
+      "onisep": "MET.666",
+      "rome": [
+        "H3202"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "matières premières, fabrication, industries/céramique, composites",
+        "sciences/chimie",
+        "matières premières, fabrication, industries/plasturgie"
+      ],
+      "synonymes": [
+        "technicien/ne en plastiques et composites",
+        "technicien plasturgiste",
+        "technicienne plasturgiste"
+      ]
+    },
+    {
+      "id": "regleur-plasturgie",
+      "nom": "Régleur, régleuse plasturgie",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "chimie-des-materiaux",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Installer le moule",
+        "Régler la machine",
+        "Lancer la production"
+      ],
+      "contexte": "Prépare et règle les machines qui fabriquent des pièces en plastique.",
+      "correspondance": "proposition",
+      "onisep": "MET.684",
+      "rome": [
+        "H3202"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "matières premières, fabrication, industries/plasturgie"
+      ],
+      "synonymes": [
+        "monteur/euse",
+        "monteur/euse-régleur/euse",
+        "opérateur/trice-régleur/euse",
+        "régleur plasturgie",
+        "régleuse plasturgie"
+      ]
+    },
+    {
+      "id": "ingenieur-en-fonderie",
+      "nom": "Ingénieur, ingénieure en fonderie",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "mecanique"
+      ],
+      "gestes": [
+        "Concevoir les moules",
+        "Choisir les alliages",
+        "Améliorer la production"
+      ],
+      "contexte": "Dirige les procédés de fabrication de pièces coulées.",
+      "correspondance": "proposition",
+      "onisep": "MET.706",
+      "rome": [
+        "H2502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/matériaux"
+      ],
+      "synonymes": [
+        "ingénieur en fonderie",
+        "ingénieure en fonderie"
+      ]
+    },
+    {
+      "id": "coupeur",
+      "nom": "Coupeur, coupeuse",
+      "categorie": "craft",
+      "disciplines": [
+        "geometrie",
+        "science-des-materiaux",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Placer les patrons",
+        "Couper le tissu ou le cuir",
+        "Préparer les pièces"
+      ],
+      "contexte": "Découpe les matières pour fabriquer vêtements ou objets.",
+      "correspondance": "proposition",
+      "onisep": "MET.714",
+      "rome": [
+        "H2409"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "coupeur",
+        "coupeuse"
+      ]
+    },
+    {
+      "id": "charge-de-recherche-en-acoustique-musicale",
+      "nom": "Chargé, chargée de recherche en acoustique musicale",
+      "categorie": "disc",
+      "disciplines": [
+        "acoustique",
+        "musique",
+        "physique"
+      ],
+      "gestes": [
+        "Étudier le son des instruments",
+        "Faire des mesures",
+        "Publier des résultats"
+      ],
+      "contexte": "Étudie comment les instruments produisent le son.",
+      "correspondance": "proposition",
+      "onisep": "MET.715",
+      "niveauAcces": "bac+8",
+      "domaines": [
+        "électricité, électronique, robotique/électronique",
+        "sciences/mathématiques",
+        "sciences/physique"
+      ],
+      "synonymes": [
+        "chercher/euse en acoustique musicale",
+        "spécialiste en acoustique musicale",
+        "chargé de recherche en acoustique musicale",
+        "chargée de recherche en acoustique musicale"
+      ]
+    },
+    {
+      "id": "prototypiste-en-materiaux-souples",
+      "nom": "Prototypiste en matériaux souples",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Lire le dessin",
+        "Réaliser le premier modèle",
+        "Ajuster avant la série"
+      ],
+      "contexte": "Fabrique les premiers exemplaires de sacs, chaussures ou vêtements.",
+      "correspondance": "proposition",
+      "onisep": "MET.719",
+      "rome": [
+        "H2411"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "matières premières, fabrication, industries/matériaux souples",
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "maroquinier/ère metteur au point",
+        "mécanicien/ne metteur au point en confection",
+        "mécanicien/ne modèle",
+        "monteur/euse prototypiste",
+        "prototypiste industriel/le",
+        "prototypiste en matériaux souples"
+      ]
+    },
+    {
+      "id": "ingenieur-en-caracterisation-des-materiaux",
+      "nom": "Ingénieur, ingénieure en caractérisation des matériaux",
+      "categorie": "disc",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "physique"
+      ],
+      "gestes": [
+        "Préparer les échantillons",
+        "Mesurer leurs propriétés",
+        "Interpréter les résultats"
+      ],
+      "contexte": "Analyse les matériaux pour connaître leur comportement.",
+      "correspondance": "proposition",
+      "onisep": "MET.721",
+      "rome": [
+        "H1206"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/matériaux"
+      ],
+      "synonymes": [
+        "ingénieur en caractérisation des matériaux",
+        "ingénieure en caractérisation des matériaux"
+      ]
+    },
+    {
+      "id": "technicien-ceramiste",
+      "nom": "Technicien, technicienne céramiste",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "physique"
+      ],
+      "gestes": [
+        "Préparer les pâtes",
+        "Régler la cuisson",
+        "Contrôler les pièces"
+      ],
+      "contexte": "Fabrique des céramiques techniques ou décoratives.",
+      "correspondance": "proposition",
+      "onisep": "MET.722",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "matières premières, fabrication, industries/céramique, composites"
+      ],
+      "synonymes": [
+        "technicien céramiste",
+        "technicienne céramiste"
+      ]
+    },
+    {
+      "id": "auditeur-qualite",
+      "nom": "Auditeur, auditrice qualité",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "droit-et-institutions",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Préparer l’audit",
+        "Vérifier les pratiques",
+        "Rédiger les recommandations"
+      ],
+      "contexte": "Contrôle que les entreprises respectent les règles de qualité.",
+      "correspondance": "proposition",
+      "onisep": "MET.729",
+      "rome": [
+        "H1502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "auditeur/trice assurance qualité",
+        "auditeur/trice interne",
+        "auditeur qualité",
+        "auditrice qualité"
+      ]
+    },
+    {
+      "id": "ingenieur-plasturgiste",
+      "nom": "Ingénieur, ingénieure plasturgiste",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-des-materiaux",
+        "science-des-materiaux",
+        "mecanique"
+      ],
+      "gestes": [
+        "Concevoir les pièces plastiques",
+        "Choisir les matières",
+        "Optimiser la fabrication"
+      ],
+      "contexte": "Conçoit des objets en plastique et leur fabrication.",
+      "correspondance": "proposition",
+      "onisep": "MET.770",
+      "rome": [
+        "H1206",
+        "H2502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/céramique, composites",
+        "sciences/chimie",
+        "matières premières, fabrication, industries/plasturgie"
+      ],
+      "synonymes": [
+        "ingénieur/e en matériaux composites",
+        "ingénieur plasturgiste",
+        "ingénieure plasturgiste"
+      ]
+    },
+    {
+      "id": "ascensoriste",
+      "nom": "Ascensoriste",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "physique"
+      ],
+      "gestes": [
+        "Installer les ascenseurs",
+        "Réaliser la maintenance",
+        "Dépanner les usagers bloqués"
+      ],
+      "contexte": "Installe et entretient les ascenseurs.",
+      "correspondance": "proposition",
+      "onisep": "MET.775",
+      "rome": [
+        "I1301"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "électricité, électronique, robotique/électrotechnique",
+        "construction, architecture, travaux publics/équipement technique"
+      ],
+      "synonymes": [
+        "monteur/euse-dépanneur/euse d'ascenseurs",
+        "monteur/euse-réparateur/euse d'ascenseurs",
+        "technicien/ne ascensoriste",
+        "ascensoriste"
+      ]
+    },
+    {
+      "id": "domoticien",
+      "nom": "Domoticien, domoticienne",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "informatique",
+        "reseaux"
+      ],
+      "gestes": [
+        "Installer les équipements connectés",
+        "Programmer les automatismes",
+        "Former les habitants"
+      ],
+      "contexte": "Rend les maisons intelligentes et automatisées.",
+      "correspondance": "proposition",
+      "onisep": "MET.795",
+      "rome": [
+        "F1106"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "électricité, électronique, robotique/électronique",
+        "électricité, électronique, robotique/électrotechnique",
+        "environnement, énergies, propreté/énergies",
+        "construction, architecture, travaux publics/équipement technique"
+      ],
+      "synonymes": [
+        "technicien/ne d'installation en domotique",
+        "domoticien",
+        "domoticienne"
+      ]
+    },
+    {
+      "id": "tonnelier",
+      "nom": "Tonnelier, tonnelière",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Choisir le bois",
+        "Cintrer les douelles",
+        "Assembler le tonneau"
+      ],
+      "contexte": "Fabrique des tonneaux en bois.",
+      "correspondance": "proposition",
+      "onisep": "MET.804",
+      "rome": [
+        "H2206"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/bois"
+      ],
+      "synonymes": [
+        "agent/e de production en tonnellerie",
+        "tonnelier",
+        "tonnelière"
+      ]
+    },
+    {
+      "id": "ingenieur-en-photonique",
+      "nom": "Ingénieur, ingénieure en photonique",
+      "categorie": "disc",
+      "disciplines": [
+        "optique",
+        "physique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Concevoir des systèmes lumineux",
+        "Faire des expériences",
+        "Développer des capteurs"
+      ],
+      "contexte": "Travaille sur la lumière et les lasers.",
+      "correspondance": "proposition",
+      "onisep": "MET.809",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "électricité, électronique, robotique/électronique"
+      ],
+      "synonymes": [
+        "ingénieur/e en optoélectronique",
+        "ingénieur/e en optronique",
+        "ingénieur en photonique",
+        "ingénieure en photonique"
+      ]
+    },
+    {
+      "id": "consultant-en-validation",
+      "nom": "Consultant, consultante en validation",
+      "categorie": "btp",
+      "disciplines": [
+        "analyse-statistique",
+        "droit-et-institutions",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Écrire les protocoles",
+        "Tester les équipements",
+        "Documenter les résultats"
+      ],
+      "contexte": "Vérifie que les équipements et procédés fonctionnent comme prévu.",
+      "correspondance": "proposition",
+      "onisep": "MET.825",
+      "rome": [
+        "H1502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "sciences/biologie",
+        "sciences/chimie",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "consultant/e en validation qualification",
+        "ingénieur/e en validation qualification",
+        "consultant en validation",
+        "consultante en validation"
+      ]
+    },
+    {
+      "id": "operateur-en-traitement-des-materiaux",
+      "nom": "Opérateur, opératrice en traitement des matériaux",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-des-materiaux",
+        "science-des-materiaux",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Préparer les pièces",
+        "Conduire le traitement",
+        "Contrôler le résultat"
+      ],
+      "contexte": "Traite les surfaces ou les métaux pour les rendre plus résistants.",
+      "correspondance": "proposition",
+      "onisep": "MET.841",
+      "rome": [
+        "H3402"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "matières premières, fabrication, industries/métallurgie, sidérurgie",
+        "sciences/physique",
+        "mécanique/travail des métaux"
+      ],
+      "synonymes": [
+        "conducteur/trice d'installation de traitement des matériaux",
+        "ouvrier/ère en traitement de matériaux",
+        "opérateur en traitement des matériaux",
+        "opératrice en traitement des matériaux"
+      ]
+    },
+    {
+      "id": "responsable-du-soutien-logistique-integre",
+      "nom": "Responsable du soutien logistique intégré",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "mecanique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Prévoir la maintenance",
+        "Organiser les pièces de rechange",
+        "Rédiger la documentation"
+      ],
+      "contexte": "Organise tout ce qu’il faut pour qu’un équipement fonctionne longtemps.",
+      "correspondance": "proposition",
+      "onisep": "MET.842",
+      "rome": [
+        "H1401"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "électricité, électronique, robotique/électronique",
+        "logistique, transport/logistique"
+      ],
+      "synonymes": [
+        "ingénieur/e analyste soutien logistique (ASL)",
+        "ingénieur/e soutien logistique",
+        "Integrated Logistic Support (ILS) manager",
+        "responsable SLI",
+        "responsable du soutien logistique intégré"
+      ]
+    },
+    {
+      "id": "responsable-de-maintenance-des-installations-ferroviaires",
+      "nom": "Responsable de maintenance des installations ferroviaires",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "gestion"
+      ],
+      "gestes": [
+        "Planifier l’entretien",
+        "Encadrer les équipes",
+        "Garantir la sécurité"
+      ],
+      "contexte": "Organise l’entretien des voies et installations ferroviaires.",
+      "correspondance": "proposition",
+      "onisep": "MET.853",
+      "rome": [
+        "I1304"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "matières premières, fabrication, industries/maintenance, qualité",
+        "mécanique/mécanique (généralités)"
+      ],
+      "synonymes": [
+        "responsable de maintenance des installations ferroviaires"
+      ]
+    },
+    {
+      "id": "technicien-en-lignes-haute-tension",
+      "nom": "Technicien, technicienne en lignes haute tension",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "education-physique",
+        "physique"
+      ],
+      "gestes": [
+        "Inspecter les lignes",
+        "Réparer en hauteur",
+        "Respecter les règles de sécurité"
+      ],
+      "contexte": "Entretient les grandes lignes électriques.",
+      "correspondance": "proposition",
+      "onisep": "MET.862",
+      "rome": [
+        "F1605"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "électricité, électronique, robotique/électrotechnique",
+        "environnement, énergies, propreté/énergies"
+      ],
+      "synonymes": [
+        "lignard/e",
+        "technicien/ne de maintenance de lignes à haute tension",
+        "technicien en lignes haute tension",
+        "technicienne en lignes haute tension"
+      ]
+    },
+    {
+      "id": "ingenieur-electronicien",
+      "nom": "Ingénieur électronicien, ingénieure électronicienne",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "physique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Concevoir des circuits",
+        "Simuler et tester",
+        "Améliorer les performances"
+      ],
+      "contexte": "Conçoit des circuits et des systèmes électroniques.",
+      "correspondance": "proposition",
+      "onisep": "MET.863",
+      "rome": [
+        "H1206",
+        "H2502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "électricité, électronique, robotique/électronique",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "ingénieur/e en électronique",
+        "ingénieur électronicien",
+        "ingénieure électronicienne"
+      ]
+    },
+    {
+      "id": "depanneur-en-electromenager",
+      "nom": "Dépanneur, dépanneuse en électroménager",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "communication"
+      ],
+      "gestes": [
+        "Diagnostiquer la panne",
+        "Remplacer les pièces",
+        "Conseiller le client"
+      ],
+      "contexte": "Répare machines à laver, réfrigérateurs et autres appareils.",
+      "correspondance": "proposition",
+      "onisep": "MET.881",
+      "rome": [
+        "I1402"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "électricité, électronique, robotique/électrotechnique",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "dépanneur/euse de produits TV et électroménager",
+        "technicien/ne de maintenance de la distribution automatique",
+        "technicien/ne de maintenance électrodomestique",
+        "technicien/ne électroménager itinérant/e",
+        "technicien/ne SAV électroménager",
+        "dépanneur en électroménager",
+        "dépanneuse en électroménager"
+      ]
+    },
+    {
+      "id": "ingenieur-recherche-et-developpement-en-agroalimentaire",
+      "nom": "Ingénieur, ingénieure recherche et développement en agroalimentaire",
+      "categorie": "btp",
+      "disciplines": [
+        "nutrition-alimentation",
+        "chimie-analytique",
+        "biologie"
+      ],
+      "gestes": [
+        "Imaginer de nouveaux produits",
+        "Tester les recettes",
+        "Préparer la fabrication"
+      ],
+      "contexte": "Invente de nouveaux aliments.",
+      "correspondance": "proposition",
+      "onisep": "MET.882",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "matières premières, fabrication, industries/études et développement"
+      ],
+      "synonymes": [
+        "ingénieur/e R&D en agroalimentaire",
+        "ingénieur recherche et développement en agroalimentaire",
+        "ingénieure recherche et développement en agroalimentaire"
+      ]
+    },
+    {
+      "id": "ingenieur-telecoms-et-reseaux",
+      "nom": "Ingénieur, ingénieure télécoms et réseaux",
+      "categorie": "app",
+      "disciplines": [
+        "reseaux",
+        "informatique",
+        "electricite-electronique"
+      ],
+      "gestes": [
+        "Concevoir les réseaux",
+        "Choisir les équipements",
+        "Garantir la qualité du service"
+      ],
+      "contexte": "Conçoit les réseaux qui transportent voix et données.",
+      "correspondance": "proposition",
+      "onisep": "MET.887",
+      "rome": [
+        "M1804"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "électricité, électronique, robotique/électronique",
+        "informatique, Internet/systèmes et réseaux",
+        "électricité, électronique, robotique/télécommunications"
+      ],
+      "synonymes": [
+        "ingénieur/e en télécommunications",
+        "ingénieur/e réseaux télécoms",
+        "ingénieur/e télécoms",
+        "responsable réseaux télécoms",
+        "spécialiste réseau d'entreprise",
+        "ingénieur télécoms et réseaux",
+        "ingénieure télécoms et réseaux"
+      ]
+    },
+    {
+      "id": "charpentier-de-marine",
+      "nom": "Charpentier, charpentière de marine",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "mecanique"
+      ],
+      "gestes": [
+        "Lire les plans du bateau",
+        "Façonner le bois",
+        "Assembler la coque"
+      ],
+      "contexte": "Construit et répare des bateaux en bois.",
+      "correspondance": "proposition",
+      "onisep": "MET.915",
+      "rome": [
+        "F1503"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/bois",
+        "mécanique/construction navale"
+      ],
+      "synonymes": [
+        "charpentier de marine",
+        "charpentière de marine"
+      ]
+    },
+    {
+      "id": "chef-d-exploitation-des-remontees-mecaniques",
+      "nom": "Chef, cheffe d'exploitation des remontées mécaniques",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "mecanique",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Organiser l’exploitation",
+        "Encadrer le personnel",
+        "Veiller à la sécurité"
+      ],
+      "contexte": "Dirige les remontées mécaniques d’une station.",
+      "correspondance": "proposition",
+      "onisep": "MET.934",
+      "rome": [
+        "I1101"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "électricité, électronique, robotique/électronique",
+        "électricité, électronique, robotique/électrotechnique",
+        "mécanique/mécanique (généralités)"
+      ],
+      "synonymes": [
+        "directeur/trice d'exploitation des remontées mécaniques",
+        "chef d'exploitation des remontées mécaniques",
+        "cheffe d'exploitation des remontées mécaniques"
+      ]
+    },
+    {
+      "id": "ingenieur-concepteur-en-mecanique",
+      "nom": "Ingénieur concepteur en mécanique, ingénieure conceptrice en mécanique",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "mathematiques-appliquees",
+        "informatique"
+      ],
+      "gestes": [
+        "Concevoir le mécanisme",
+        "Modéliser en 3D",
+        "Valider par essais"
+      ],
+      "contexte": "Invente des machines et des mécanismes.",
+      "correspondance": "proposition",
+      "onisep": "MET.949",
+      "rome": [
+        "H2502"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/études et développement",
+        "informatique, Internet/informatique industrielle et technologique",
+        "mécanique/mécanique (généralités)"
+      ],
+      "synonymes": [
+        "ingénieur/e mécanicien/ne",
+        "ingénieur/e mécatronicien/ne",
+        "ingénieur/e RD",
+        "ingénieur/e structure",
+        "ingénieur concepteur en mécanique",
+        "ingénieure conceptrice en mécanique"
+      ]
+    },
+    {
+      "id": "ouvrier-plasturgiste",
+      "nom": "Ouvrier, ouvrière plasturgiste",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-des-materiaux",
+        "mecanique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Surveiller la machine",
+        "Retirer et contrôler les pièces",
+        "Emballer la production"
+      ],
+      "contexte": "Fabrique des pièces en plastique sur machine.",
+      "correspondance": "proposition",
+      "onisep": "MET.965",
+      "rome": [
+        "H3201"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/céramique, composites",
+        "sciences/chimie",
+        "matières premières, fabrication, industries/plasturgie"
+      ],
+      "synonymes": [
+        "opérateur/trice de production en plasturgie",
+        "opérateur/trice en plastiques et composites",
+        "ouvrier plasturgiste",
+        "ouvrière plasturgiste"
+      ]
+    },
+    {
+      "id": "couturier-industriel",
+      "nom": "Couturier industriel, couturière industrielle",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "calcul-professionnel",
+        "geometrie"
+      ],
+      "gestes": [
+        "Assembler les pièces",
+        "Régler la machine à coudre",
+        "Respecter les cadences"
+      ],
+      "contexte": "Coud des vêtements en série dans un atelier.",
+      "correspondance": "proposition",
+      "onisep": "MET.7768",
+      "rome": [
+        "H2402"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "mécanicien/ne en confection couturier",
+        "opérateur/trice en confection",
+        "couturier industriel",
+        "couturière industrielle"
+      ]
+    },
+    {
+      "id": "electromecanicien-de-chantier-tp",
+      "nom": "Électromécanicien de chantier TP (travaux publics)",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "physique"
+      ],
+      "gestes": [
+        "Entretenir les engins",
+        "Réparer sur le chantier",
+        "Contrôler la sécurité"
+      ],
+      "contexte": "Entretient les machines des chantiers de travaux publics.",
+      "correspondance": "proposition",
+      "onisep": "MET.7777",
+      "rome": [
+        "I1304"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "électricité, électronique, robotique/électrotechnique",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "électromécanicien/ne de maintenance industrielle",
+        "électromécanicien de chantier TP (travaux publics)"
+      ]
+    },
+    {
+      "id": "electrobobinier",
+      "nom": "Électrobobinier",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "physique"
+      ],
+      "gestes": [
+        "Démonter le moteur",
+        "Refaire le bobinage",
+        "Tester l’appareil"
+      ],
+      "contexte": "Répare et rebobine les moteurs électriques.",
+      "correspondance": "proposition",
+      "onisep": "MET.7816",
+      "rome": [
+        "H2601"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "électricité, électronique, robotique/électrotechnique",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "assistant/e-bobinier/ère en électricité",
+        "bobinier/ère",
+        "bobinier/ère électromécanique",
+        "monteur/euse-bobinier/ère",
+        "rebobineur/euse en électricité",
+        "électrobobinier"
+      ]
+    },
+    {
+      "id": "adjoint-technique-des-etablissements-d-enseignement",
+      "nom": "Adjoint, adjointe technique des établissements d'enseignement",
+      "categorie": "services",
+      "disciplines": [
+        "communication",
+        "nutrition-alimentation",
+        "mecanique"
+      ],
+      "gestes": [
+        "Entretenir les locaux",
+        "Préparer les salles",
+        "Assurer l’accueil ou la restauration"
+      ],
+      "contexte": "Assure l’entretien, l’accueil ou la cantine dans un collège ou un lycée.",
+      "correspondance": "proposition",
+      "onisep": "MET.7830",
+      "rome": [
+        "I1203"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "électricité, électronique, robotique/électrotechnique",
+        "matières premières, fabrication, industries/maintenance, qualité",
+        "environnement, énergies, propreté/propreté",
+        "hôtellerie-restauration, tourisme/restauration"
+      ],
+      "synonymes": [
+        "adjoint technique des établissements d'enseignement",
+        "adjointe technique des établissements d'enseignement"
+      ]
+    },
+    {
+      "id": "stratifieur-mouliste",
+      "nom": "Stratifieur, stratifieuse mouliste",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-des-materiaux",
+        "science-des-materiaux",
+        "geometrie"
+      ],
+      "gestes": [
+        "Préparer le moule",
+        "Poser les couches de fibres",
+        "Démouler et finir"
+      ],
+      "contexte": "Fabrique des pièces en matériaux composites, comme des coques de bateau.",
+      "correspondance": "proposition",
+      "onisep": "MET.7923",
+      "rome": [
+        "H3203"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/céramique, composites",
+        "matières premières, fabrication, industries/plasturgie"
+      ],
+      "synonymes": [
+        "stratifieur mouliste",
+        "stratifieuse mouliste"
+      ]
+    },
+    {
+      "id": "modeleur-ceramiste-industriel",
+      "nom": "Modeleur céramiste industriel, modeleuse céramiste industrielle",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "arts-plastiques",
+        "geometrie"
+      ],
+      "gestes": [
+        "Créer le modèle",
+        "Fabriquer les moules",
+        "Contrôler les pièces"
+      ],
+      "contexte": "Conçoit les modèles et les moules des objets en céramique.",
+      "correspondance": "proposition",
+      "onisep": "MET.7925",
+      "rome": [
+        "H2908"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/céramique, composites"
+      ],
+      "synonymes": [
+        "couleur/euse de moules",
+        "couleur/euse  en céramique",
+        "mouleur/euse  en céramique",
+        "modeleur céramiste industriel",
+        "modeleuse céramiste industrielle"
+      ]
+    },
+    {
+      "id": "architecte-iot",
+      "nom": "Architecte IOT",
+      "categorie": "app",
+      "disciplines": [
+        "informatique",
+        "reseaux",
+        "electricite-electronique"
+      ],
+      "gestes": [
+        "Concevoir l’architecture des objets connectés",
+        "Choisir capteurs et réseaux",
+        "Sécuriser les données"
+      ],
+      "contexte": "Conçoit des systèmes d’objets connectés.",
+      "correspondance": "proposition",
+      "onisep": "MET.7929",
+      "rome": [
+        "M1806"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "électricité, électronique, robotique/électronique",
+        "électricité, électronique, robotique/électrotechnique",
+        "informatique, Internet/systèmes et réseaux"
+      ],
+      "synonymes": [
+        "architecte IOT"
+      ]
+    },
+    {
+      "id": "robinetier-nucleaire",
+      "nom": "Robinétier, robinétière nucléaire",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "physique",
+        "energetique"
+      ],
+      "gestes": [
+        "Contrôler les vannes",
+        "Réaliser la maintenance",
+        "Respecter la sûreté"
+      ],
+      "contexte": "Entretient les vannes et robinets des centrales nucléaires.",
+      "correspondance": "proposition",
+      "onisep": "MET.7933",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "matières premières, fabrication, industries/maintenance, qualité",
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "robinétier nucléaire",
+        "robinétière nucléaire"
+      ]
+    },
+    {
+      "id": "fourreur",
+      "nom": "Fourreur, fourreuse",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "arts-plastiques",
+        "geometrie"
+      ],
+      "gestes": [
+        "Choisir les peaux",
+        "Couper et assembler",
+        "Réparer et transformer"
+      ],
+      "contexte": "Fabrique et répare des vêtements en fourrure.",
+      "correspondance": "proposition",
+      "onisep": "MET.7938",
+      "rome": [
+        "B1803"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "fourreur",
+        "fourreuse"
+      ]
+    },
+    {
+      "id": "technicien-laboratoire-route",
+      "nom": "Technicien, technicienne laboratoire route",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-analytique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Prélever des échantillons",
+        "Tester les matériaux",
+        "Rédiger les résultats"
+      ],
+      "contexte": "Analyse les matériaux utilisés pour construire les routes.",
+      "correspondance": "proposition",
+      "onisep": "MET.7967",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "matières premières, fabrication, industries/matériaux",
+        "sciences/physique",
+        "construction, architecture, travaux publics/travaux publics"
+      ],
+      "synonymes": [
+        "agent/e technique de laboratoire route",
+        "technicien/ne de laboratoire routier",
+        "technicien laboratoire route",
+        "technicienne laboratoire route"
+      ]
+    },
+    {
+      "id": "monteur-en-reseaux-de-communication",
+      "nom": "Monteur, monteuse en réseaux de communication (fibre)",
+      "categorie": "app",
+      "disciplines": [
+        "reseaux",
+        "optique",
+        "electricite-electronique"
+      ],
+      "gestes": [
+        "Tirer la fibre",
+        "Raccorder les boîtiers",
+        "Tester la connexion"
+      ],
+      "contexte": "Installe les réseaux de fibre optique.",
+      "correspondance": "proposition",
+      "onisep": "MET.7969",
+      "rome": [
+        "I1307"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/maintenance, qualité",
+        "électricité, électronique, robotique/télécommunications"
+      ],
+      "synonymes": [
+        "installateur/trice de réseaux de télécommunication",
+        "monteur/euse en réseaux câblés de communication",
+        "monteur en réseaux de communication (fibre)",
+        "monteuse en réseaux de communication (fibre)"
+      ]
+    },
+    {
+      "id": "technicien-textile",
+      "nom": "Technicien, technicienne textile",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "mecanique",
+        "chimie-des-materiaux"
+      ],
+      "gestes": [
+        "Régler les machines textiles",
+        "Contrôler la qualité",
+        "Améliorer la production"
+      ],
+      "contexte": "Suit la fabrication des fils et des tissus.",
+      "correspondance": "proposition",
+      "onisep": "MET.7985",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "technicien textile",
+        "technicienne textile"
+      ]
+    },
+    {
+      "id": "patissier-de-restaurant",
+      "nom": "Pâtissier, pâtissière de restaurant",
+      "categorie": "craft",
+      "disciplines": [
+        "nutrition-alimentation",
+        "chimie-analytique",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Préparer les desserts",
+        "Dresser les assiettes",
+        "Gérer les stocks"
+      ],
+      "contexte": "Prépare les desserts d’un restaurant.",
+      "correspondance": "proposition",
+      "onisep": "MET.7993",
+      "rome": [
+        "G1602"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire"
+      ],
+      "synonymes": [
+        "pâtissier de restaurant",
+        "pâtissière de restaurant"
+      ]
+    },
+    {
+      "id": "technicien-de-maintenance-en-infrastructure-aeroportuaire",
+      "nom": "Technicien, technicienne de maintenance en infrastructure aéroportuaire",
+      "categorie": "btp",
+      "disciplines": [
+        "electricite-electronique",
+        "mecanique",
+        "informatique"
+      ],
+      "gestes": [
+        "Entretenir les équipements de l’aéroport",
+        "Dépanner rapidement",
+        "Respecter la sécurité"
+      ],
+      "contexte": "Entretient les installations d’un aéroport.",
+      "correspondance": "proposition",
+      "onisep": "MET.7994",
+      "rome": [
+        "I1304"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "électricité, électronique, robotique/électronique",
+        "électricité, électronique, robotique/électrotechnique",
+        "matières premières, fabrication, industries/maintenance, qualité",
+        "mécanique/mécanique (généralités)"
+      ],
+      "synonymes": [
+        "maintenicien/ne en installations aéroportuaires",
+        "technicien de maintenance en infrastructure aéroportuaire",
+        "technicienne de maintenance en infrastructure aéroportuaire"
+      ]
+    },
+    {
+      "id": "technicien-de-production-en-biologie",
+      "nom": "Technicien, technicienne de production en biologie",
+      "categorie": "btp",
+      "disciplines": [
+        "biologie",
+        "biologie-cellulaire-genetique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Préparer les cultures",
+        "Surveiller la production",
+        "Contrôler la qualité"
+      ],
+      "contexte": "Fabrique des produits à partir d’organismes vivants, comme des vaccins.",
+      "correspondance": "proposition",
+      "onisep": "MET.8063",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "matières premières, fabrication, industries/agroalimentaire",
+        "sciences/biologie",
+        "sciences/chimie",
+        "matières premières, fabrication, industries/fonction production (généralités)",
+        "santé, social, sport/médical"
+      ],
+      "synonymes": [
+        "technicien de production en biologie",
+        "technicienne de production en biologie"
+      ]
+    },
+    {
+      "id": "patronnier-gradeur",
+      "nom": "Patronnier-gradeur, patronnière-gradeuse",
+      "categorie": "craft",
+      "disciplines": [
+        "geometrie",
+        "calcul-professionnel",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Réaliser les patrons",
+        "Décliner les tailles",
+        "Optimiser le placement"
+      ],
+      "contexte": "Fabrique les patrons des vêtements dans toutes les tailles.",
+      "correspondance": "proposition",
+      "onisep": "MET.8106",
+      "rome": [
+        "H2412"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/matériaux souples",
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "patronnier-gradeur",
+        "patronnière-gradeuse"
+      ]
+    },
+    {
+      "id": "piqueur-en-maroquinerie",
+      "nom": "Piqueur, piqueuse en maroquinerie",
+      "categorie": "craft",
+      "disciplines": [
+        "science-des-materiaux",
+        "arts-plastiques",
+        "geometrie"
+      ],
+      "gestes": [
+        "Assembler les pièces",
+        "Piquer à la machine",
+        "Soigner les finitions"
+      ],
+      "contexte": "Coud les pièces de cuir des sacs et accessoires.",
+      "correspondance": "proposition",
+      "onisep": "MET.8108",
+      "rome": [
+        "H2401"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "piqueur en maroquinerie",
+        "piqueuse en maroquinerie"
+      ]
+    },
+    {
+      "id": "technicien-produit",
+      "nom": "Technicien, technicienne produit (mode)",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "gestion"
+      ],
+      "gestes": [
+        "Suivre le développement du vêtement",
+        "Rédiger les fiches techniques",
+        "Contrôler les prototypes"
+      ],
+      "contexte": "Prépare la fabrication des vêtements d’une marque.",
+      "correspondance": "proposition",
+      "onisep": "MET.8122",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "matières premières, fabrication, industries/matériaux souples",
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "technicien produit (mode)",
+        "technicienne produit (mode)"
+      ]
+    },
+    {
+      "id": "ingenieur-recherche-et-developpement-textile",
+      "nom": "Ingénieur, ingénieure recherche et développement textile",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "physique"
+      ],
+      "gestes": [
+        "Concevoir des textiles innovants",
+        "Tester les fibres",
+        "Préparer l’industrialisation"
+      ],
+      "contexte": "Invente de nouveaux tissus aux propriétés originales.",
+      "correspondance": "proposition",
+      "onisep": "MET.8202",
+      "rome": [
+        "H1206"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "ingénieur recherche et développement textile",
+        "ingénieure recherche et développement textile"
+      ]
+    },
+    {
+      "id": "analyste-laboratoire-textile",
+      "nom": "Analyste laboratoire textile",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "chimie-des-materiaux",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Préparer les échantillons",
+        "Réaliser les tests",
+        "Rédiger les rapports"
+      ],
+      "contexte": "Teste la résistance et la qualité des tissus.",
+      "correspondance": "proposition",
+      "onisep": "MET.8204",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "analyste laboratoire textile"
+      ]
+    },
+    {
+      "id": "conducteur-d-equipement-d-ennoblissement-textile",
+      "nom": "Conducteur, conductrice d'équipement d'ennoblissement textile",
+      "categorie": "btp",
+      "disciplines": [
+        "chimie-des-materiaux",
+        "mecanique",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Préparer les bains",
+        "Régler la machine",
+        "Contrôler le résultat"
+      ],
+      "contexte": "Teint, imprime ou traite les tissus en usine.",
+      "correspondance": "proposition",
+      "onisep": "MET.8205",
+      "rome": [
+        "H2408"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "matières premières, fabrication, industries/textile, habillement"
+      ],
+      "synonymes": [
+        "conducteur d'équipement d'ennoblissement textile",
+        "conductrice d'équipement d'ennoblissement textile"
+      ]
+    },
+    {
+      "id": "tuyauteur-industriel",
+      "nom": "Tuyauteur industriel, tuyauteuse industrielle",
+      "categorie": "btp",
+      "disciplines": [
+        "science-des-materiaux",
+        "geometrie",
+        "mecanique"
+      ],
+      "gestes": [
+        "Lire les plans",
+        "Découper et souder les tuyaux",
+        "Poser les canalisations"
+      ],
+      "contexte": "Fabrique et installe les tuyauteries des usines.",
+      "correspondance": "proposition",
+      "onisep": "MET.8227",
+      "niveauAcces": "cap",
+      "domaines": [
+        "matières premières, fabrication, industries/maintenance, qualité",
+        "matières premières, fabrication, industries/métallurgie, sidérurgie",
+        "mécanique/travail des métaux"
+      ],
+      "synonymes": [
+        "chaudronnier/ère-tuyauteur/euse",
+        "tuyauteur/euse-soudeur/euse",
+        "tuyauteur industriel",
+        "tuyauteuse industrielle"
+      ]
+    },
+    {
+      "id": "agent-de-controle-non-destructif",
+      "nom": "Agent, agente de contrôle non destructif",
+      "categorie": "btp",
+      "disciplines": [
+        "physique",
+        "science-des-materiaux",
+        "mecanique"
+      ],
+      "gestes": [
+        "Préparer la pièce",
+        "Utiliser ultrasons ou rayons X",
+        "Interpréter les résultats"
+      ],
+      "contexte": "Contrôle les pièces sans les abîmer pour trouver des défauts cachés.",
+      "correspondance": "proposition",
+      "onisep": "MET.8229",
+      "niveauAcces": "bac+1",
+      "domaines": [
+        "matières premières, fabrication, industries/maintenance, qualité",
+        "matières premières, fabrication, industries/matériaux",
+        "matières premières, fabrication, industries/métallurgie, sidérurgie"
+      ],
+      "synonymes": [
+        "agent de contrôle non destructif",
+        "agente de contrôle non destructif"
       ]
     }
   ]
