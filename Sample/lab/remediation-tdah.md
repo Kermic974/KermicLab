@@ -1,6 +1,6 @@
 # À petits pas — Organisation et attention
 
-Version 1.0.1, 27 novembre 2026. Labo destiné aux adultes, préparé pour /labs/remediation-tdah/.
+Version 1.1.0, 27 novembre 2026. Labo destiné aux adultes, préparé pour /labs/remediation-tdah/.
 
 Application HTML autonome adaptée du plan de remédiation cognitive TDAH adulte fourni par le propriétaire. La source PDF personnelle n’est pas publiée. Aucun diagnostic, score clinique ni promesse de traitement. Les points et badges reconnaissent l’utilisation de l’outil.
 
@@ -9,6 +9,8 @@ Application HTML autonome adaptée du plan de remédiation cognitive TDAH adulte
 Le plan, dépôt des tâches, classement par énergie, trois priorités maximum, mini-étapes, initiation de cinq minutes, cycles 25/5 avec pause longue après trois cycles, aide au blocage, bilan du soir, choix de demain, mises en situation fictives et progression sur quatorze jours. Profil facultatif et objectif adaptable à l’énergie déclarée. La pause longue de quinze minutes est un réglage proposé, sa durée n’est pas fixée dans le plan.
 
 ## Données et progression
+
+Depuis Aujourd’hui, Vider la tête ou Classer, l’assistant local propose des tâches selon l’énergie déclarée. Chaque suggestion affiche la prochaine mini-étape enregistrée, quand il y en a une. On peut choisir ou retirer une priorité, modifier le titre et l’énergie, ouvrir les mini-étapes ou démarrer cinq minutes. Les suggestions se calculent dans le navigateur. Seules les actions validées modifient les tâches.
 
 Stockage local uniquement (clé petits-pas-v1), sans compte ni réseau. Les tâches, ressentis et bilans peuvent contenir des informations privées : ne pas en saisir sur un appareil partagé. Export JSON et import de sauvegardes de la version autonome ; effacement local disponible. Le passage du fichier local au site nécessite un export/import volontaire. Aucun profil réel ni sauvegarde utilisateur n’est versionné.
 
