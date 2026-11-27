@@ -86,3 +86,20 @@ test("paramètres du back-office : défauts sûrs pendant la bêta, seuils cohé
   assert.equal(lireConfiguration({ INSTRUCTIONS_DEFI: `  Sois bref.\u0000\u0007 ${"x".repeat(5000)}` }).INSTRUCTIONS_DEFI.length, 2000);
   assert.equal(lireConfiguration({ INSTRUCTIONS_DEFI: "Ligne 1\nLigne 2\u0000" }).INSTRUCTIONS_DEFI, "Ligne 1\nLigne 2");
 });
+
+test("À petits pas : profils privés, budgets distincts et désactivation par défaut", () => {
+  const c = lireConfiguration({});
+  assert.equal(c.PETITS_PAS_IA_ACTIF, false);
+  assert.equal(c.PETITS_PAS_OPUS_ACTIF, false);
+  assert.equal(c.MODELE_PETITS_PAS_HAIKU, "custom/haiku");
+  assert.equal(c.MAX_TOKENS_PETITS_PAS_HAIKU, 1500);
+  assert.equal(c.MAX_TOKENS_PETITS_PAS_OPUS, 8000);
+  assert.equal(c.MAX_ENTREE_PETITS_PAS_HAIKU, 6000);
+  assert.equal(c.MAX_ENTREE_PETITS_PAS_OPUS, 24000);
+  assert.equal(c.PETITS_PAS_PLANS_HAIKU_JOUR, 5);
+  assert.equal(c.PETITS_PAS_PLANS_OPUS_JOUR, 2);
+  assert.equal(configurationPublique({}).modules.some(m => m.id === "petits-pas"), false);
+  assert.equal(configurationAdmin({}).modules.find(m => m.id === "petits-pas").parametres.length, 11);
+  assert.equal(lireConfiguration({ MAX_TOKENS_PETITS_PAS_OPUS: "999999" }).MAX_TOKENS_PETITS_PAS_OPUS, 16000);
+  assert.equal(lireConfiguration({ PETITS_PAS_PLANS_HAIKU_JOUR: "-1" }).PETITS_PAS_PLANS_HAIKU_JOUR, 0);
+});
