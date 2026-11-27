@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès. Lot 3 et vague pilote du lot 6 (2026-11-24) : 14 disciplines et 41 métiers ajoutés par un agent, en correspondance « proposition », sans code ROME (apporté par l’import ONISEP). Import ONISEP du 2026-11-24 (extrait referentiel/sources/onisep/ideo-metiers-2026-11-24.json, licence ODbL) : identifiants, codes ROME, niveaux d’accès, domaines et synonymes de 74 métiers. Vague 1 du lot 6 (2026-11-24) : 32 métiers issus des fiches ONISEP (identifiant, niveau et ROME de l’ONISEP), 11 disciplines et notions ajoutées aux disciplines « proposition », préparés par un agent. Vague 2 (santé, social, sport) : 100 métier(s) ONISEP en « proposition ». Vague 3 (arts, culture, artisanat) : 99 métier(s) ONISEP en « proposition ». Vague 4 (environnement, énergies, propreté ; agriculture, animaux) : 123 métier(s) ONISEP en « proposition ». Vague 5 (matières premières, fabrication, industries ; électricité, électronique, robotique) : 112 métier(s) ONISEP en « proposition ». Vague 6 (mécanique ; construction, architecture, travaux publics) : 102 métier(s) ONISEP en « proposition ». Vague 7 (armée, sécurité ; logistique, transport) : 100 métier(s) ONISEP en « proposition ». Vague 8 (sciences ; informatique, Internet) : 115 métier(s) ONISEP en « proposition ». Vague 9 (information-communication, audiovisuel ; lettres, langues, enseignement ; histoire-géographie, psychologie, sociologie) : 95 métier(s) ONISEP en « proposition ». Vague 10 (économie, droit, politique ; gestion des entreprises, comptabilité) : 90 métier(s) ONISEP en « proposition ».",
+  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès. Lot 3 et vague pilote du lot 6 (2026-11-24) : 14 disciplines et 41 métiers ajoutés par un agent, en correspondance « proposition », sans code ROME (apporté par l’import ONISEP). Import ONISEP du 2026-11-24 (extrait referentiel/sources/onisep/ideo-metiers-2026-11-24.json, licence ODbL) : identifiants, codes ROME, niveaux d’accès, domaines et synonymes de 74 métiers. Vague 1 du lot 6 (2026-11-24) : 32 métiers issus des fiches ONISEP (identifiant, niveau et ROME de l’ONISEP), 11 disciplines et notions ajoutées aux disciplines « proposition », préparés par un agent. Vague 2 (santé, social, sport) : 100 métier(s) ONISEP en « proposition ». Vague 3 (arts, culture, artisanat) : 99 métier(s) ONISEP en « proposition ». Vague 4 (environnement, énergies, propreté ; agriculture, animaux) : 123 métier(s) ONISEP en « proposition ». Vague 5 (matières premières, fabrication, industries ; électricité, électronique, robotique) : 112 métier(s) ONISEP en « proposition ». Vague 6 (mécanique ; construction, architecture, travaux publics) : 102 métier(s) ONISEP en « proposition ». Vague 7 (armée, sécurité ; logistique, transport) : 100 métier(s) ONISEP en « proposition ». Vague 8 (sciences ; informatique, Internet) : 115 métier(s) ONISEP en « proposition ». Vague 9 (information-communication, audiovisuel ; lettres, langues, enseignement ; histoire-géographie, psychologie, sociologie) : 95 métier(s) ONISEP en « proposition ». Vague 10 (économie, droit, politique ; gestion des entreprises, comptabilité) : 90 métier(s) ONISEP en « proposition ». Vague 11 (commerce, marketing, vente ; banque, assurances, immobilier ; hôtellerie-restauration, tourisme) : 84 métier(s) ONISEP en « proposition ».",
   "sources": [
     {
       "nom": "Idéo-Fiches métiers",
@@ -33015,6 +33015,2593 @@
       "synonymes": [
         "agent chargé des poursuites judiciaires et du contentieux",
         "agente chargée des poursuites judiciaires et du contentieux"
+      ]
+    },
+    {
+      "id": "receptionniste",
+      "nom": "Réceptionniste",
+      "categorie": "services",
+      "disciplines": [
+        "langues-vivantes",
+        "communication",
+        "informatique"
+      ],
+      "gestes": [
+        "Accueillir les clients",
+        "Gérer les réservations",
+        "Renseigner sur les services"
+      ],
+      "contexte": "Accueille les clients à la réception d’un hôtel.",
+      "correspondance": "proposition",
+      "onisep": "MET.3",
+      "rome": [
+        "G1703"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/hôtellerie",
+        "hôtellerie-restauration, tourisme/tourisme"
+      ],
+      "synonymes": [
+        "night auditor",
+        "réceptionnaire",
+        "réceptionniste en hôtellerie",
+        "réceptionniste"
+      ]
+    },
+    {
+      "id": "sommelier",
+      "nom": "Sommelier, sommelière",
+      "categorie": "services",
+      "disciplines": [
+        "nutrition-alimentation",
+        "agronomie-vegetale",
+        "communication"
+      ],
+      "gestes": [
+        "Choisir les vins",
+        "Conseiller les clients",
+        "Gérer la cave"
+      ],
+      "contexte": "Conseille les vins dans un restaurant et gère la cave.",
+      "correspondance": "proposition",
+      "onisep": "MET.4",
+      "rome": [
+        "G1804"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/restauration"
+      ],
+      "synonymes": [
+        "sommelier",
+        "sommelière"
+      ]
+    },
+    {
+      "id": "gouvernant",
+      "nom": "Gouvernant, gouvernante",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "chimie-analytique",
+        "communication"
+      ],
+      "gestes": [
+        "Organiser le ménage des chambres",
+        "Encadrer l’équipe",
+        "Contrôler la propreté"
+      ],
+      "contexte": "Dirige l’entretien des chambres dans un hôtel.",
+      "correspondance": "proposition",
+      "onisep": "MET.40",
+      "rome": [
+        "G1503"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/hôtellerie",
+        "environnement, énergies, propreté/propreté"
+      ],
+      "synonymes": [
+        "gouvernant/e  d'étage",
+        "gouvernant/e d'hôtel",
+        "gouvernant/e général/e",
+        "gouvernant",
+        "gouvernante"
+      ]
+    },
+    {
+      "id": "accompagnateur-de-voyages",
+      "nom": "Accompagnateur, accompagnatrice de voyages",
+      "categorie": "services",
+      "disciplines": [
+        "langues-vivantes",
+        "amenagement-du-territoire",
+        "histoire-de-l-art"
+      ],
+      "gestes": [
+        "Accueillir le groupe",
+        "Veiller au bon déroulement",
+        "Faire découvrir les lieux"
+      ],
+      "contexte": "Accompagne des groupes de voyageurs.",
+      "correspondance": "proposition",
+      "onisep": "MET.41",
+      "rome": [
+        "G1201"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/tourisme"
+      ],
+      "synonymes": [
+        "guide-accompagnateur/trice touristique",
+        "accompagnateur de voyages",
+        "accompagnatrice de voyages"
+      ]
+    },
+    {
+      "id": "ingenieur-technico-commercial",
+      "nom": "Ingénieur technico-commercial, ingénieure technico-commerciale",
+      "categorie": "trade",
+      "disciplines": [
+        "communication",
+        "mecanique",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Analyser les besoins techniques",
+        "Proposer une solution",
+        "Négocier la vente"
+      ],
+      "contexte": "Vend des produits techniques en conseillant les clients.",
+      "correspondance": "proposition",
+      "onisep": "MET.74",
+      "rome": [
+        "D1407"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "commerce, marketing, vente/grande distribution et petits commerces",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "cadre technico-commercial/e",
+        "ingénieur/e d'affaires",
+        "ingénieur/e des ventes",
+        "ingénieur commercial/e",
+        "responsable technico-commercial/e",
+        "ingénieur technico-commercial",
+        "ingénieure technico-commerciale"
+      ]
+    },
+    {
+      "id": "conseiller-microcredit",
+      "nom": "Conseiller, conseillère microcrédit",
+      "categorie": "trade",
+      "disciplines": [
+        "economie-et-societe",
+        "calcul-professionnel",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Étudier le projet",
+        "Évaluer la capacité de remboursement",
+        "Accompagner l’emprunteur"
+      ],
+      "contexte": "Aide des personnes à financer un petit projet grâce à un prêt.",
+      "correspondance": "proposition",
+      "onisep": "MET.96",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "banque, assurances, immobilier/banque",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "conseiller microcrédit",
+        "conseillère microcrédit"
+      ]
+    },
+    {
+      "id": "conseiller-en-fusion-acquisition",
+      "nom": "Conseiller, conseillère en fusion-acquisition",
+      "categorie": "trade",
+      "disciplines": [
+        "economie-et-societe",
+        "comptabilite",
+        "droit-des-contrats"
+      ],
+      "gestes": [
+        "Analyser les entreprises",
+        "Évaluer leur valeur",
+        "Accompagner la négociation"
+      ],
+      "contexte": "Conseille les entreprises qui en achètent ou en vendent d’autres.",
+      "correspondance": "proposition",
+      "onisep": "MET.101",
+      "rome": [
+        "M1201"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "banque, assurances, immobilier/finances"
+      ],
+      "synonymes": [
+        "analyste en fusions-acquisitions",
+        "banquier/ère conseil M&A (mergers and acquisitions)",
+        "chargé/e d'affaires en fusions-acquisitions",
+        "manager mergers and acquisitions (fusions et acquisitions)",
+        "responsable des fusions-acquisitions",
+        "conseiller en fusion-acquisition",
+        "conseillère en fusion-acquisition"
+      ]
+    },
+    {
+      "id": "traiteur-organisateur-de-reception",
+      "nom": "Traiteur organisateur de réception, traiteuse organisatrice de réception",
+      "categorie": "craft",
+      "disciplines": [
+        "nutrition-alimentation",
+        "gestion",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Élaborer le menu",
+        "Préparer les plats",
+        "Organiser le service"
+      ],
+      "contexte": "Prépare repas et réceptions pour des événements.",
+      "correspondance": "proposition",
+      "onisep": "MET.121",
+      "rome": [
+        "G1602"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/restauration"
+      ],
+      "synonymes": [
+        "traiteur organisateur de réception",
+        "traiteuse organisatrice de réception"
+      ]
+    },
+    {
+      "id": "vendeur-d-articles-de-sport",
+      "nom": "Vendeur, vendeuse d'articles de sport",
+      "categorie": "trade",
+      "disciplines": [
+        "education-physique",
+        "communication",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Conseiller selon la pratique",
+        "Présenter les produits",
+        "Encaisser"
+      ],
+      "contexte": "Conseille et vend du matériel de sport.",
+      "correspondance": "proposition",
+      "onisep": "MET.135",
+      "rome": [
+        "D1211"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "vendeur d'articles de sport",
+        "vendeuse d'articles de sport"
+      ]
+    },
+    {
+      "id": "barman",
+      "nom": "Barman, barmaid",
+      "categorie": "services",
+      "disciplines": [
+        "nutrition-alimentation",
+        "communication",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Préparer les boissons",
+        "Accueillir les clients",
+        "Gérer le bar"
+      ],
+      "contexte": "Prépare et sert des boissons, avec ou sans alcool.",
+      "correspondance": "proposition",
+      "onisep": "MET.145",
+      "rome": [
+        "G1801"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/restauration"
+      ],
+      "synonymes": [
+        "employé/e barman/aid",
+        "mixologue",
+        "barman",
+        "barmaid"
+      ]
+    },
+    {
+      "id": "marchandiseur",
+      "nom": "Marchandiseur, marchandiseuse",
+      "categorie": "trade",
+      "disciplines": [
+        "marketing-digital",
+        "calcul-professionnel",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Mettre en place les produits",
+        "Vérifier les prix",
+        "Suivre les stocks"
+      ],
+      "contexte": "Met en valeur les produits dans les rayons des magasins.",
+      "correspondance": "proposition",
+      "onisep": "MET.150",
+      "rome": [
+        "D1506"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "commerce, marketing, vente/grande distribution et petits commerces",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "marchandiseur/euse visuel/le",
+        "responsable marchandisage",
+        "marchandiseur",
+        "marchandiseuse"
+      ]
+    },
+    {
+      "id": "caissier",
+      "nom": "Caissier, caissière",
+      "categorie": "trade",
+      "disciplines": [
+        "calcul-professionnel",
+        "communication",
+        "informatique"
+      ],
+      "gestes": [
+        "Enregistrer les achats",
+        "Encaisser",
+        "Renseigner les clients"
+      ],
+      "contexte": "Encaisse les achats des clients.",
+      "correspondance": "proposition",
+      "onisep": "MET.151",
+      "rome": [
+        "D1505"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "hôte/esse de caisse",
+        "caissier",
+        "caissière"
+      ]
+    },
+    {
+      "id": "gestionnaire-de-patrimoine",
+      "nom": "Gestionnaire de patrimoine",
+      "categorie": "trade",
+      "disciplines": [
+        "economie-et-societe",
+        "droit-et-institutions",
+        "comptabilite"
+      ],
+      "gestes": [
+        "Faire le bilan du client",
+        "Proposer des placements",
+        "Suivre les investissements"
+      ],
+      "contexte": "Conseille des particuliers pour gérer et faire fructifier leurs biens.",
+      "correspondance": "proposition",
+      "onisep": "MET.213",
+      "rome": [
+        "C1205"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "banque, assurances, immobilier/banque",
+        "économie, droit, politique/sciences économiques"
+      ],
+      "synonymes": [
+        "conseiller/ère en gestion de capitaux",
+        "conseiller/ère en gestion de patrimoine",
+        "conseiller/ère en placements et investissements financiers",
+        "conseiller/ère financier/ère",
+        "gestionnaire de patrimoine financier",
+        "gestionnaire de patrimoine"
+      ]
+    },
+    {
+      "id": "inspecteur-de-banque",
+      "nom": "Inspecteur, inspectrice de banque",
+      "categorie": "trade",
+      "disciplines": [
+        "comptabilite",
+        "droit-et-institutions",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Contrôler les agences",
+        "Vérifier les procédures",
+        "Rédiger les rapports"
+      ],
+      "contexte": "Contrôle que les services d’une banque respectent les règles.",
+      "correspondance": "proposition",
+      "onisep": "MET.222",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "banque, assurances, immobilier/banque"
+      ],
+      "synonymes": [
+        "auditeur/trice interne en banque",
+        "chargé/e de conformité bancaire",
+        "chargé/e du contrôle périodique",
+        "inspecteur/trice bancaire",
+        "responsable du contrôle périodique",
+        "inspecteur de banque",
+        "inspectrice de banque"
+      ]
+    },
+    {
+      "id": "agent-immobilier",
+      "nom": "Agent immobilier, agente immobilière",
+      "categorie": "trade",
+      "disciplines": [
+        "droit-des-contrats",
+        "economie-et-societe",
+        "communication"
+      ],
+      "gestes": [
+        "Estimer les biens",
+        "Faire visiter",
+        "Négocier la vente ou la location"
+      ],
+      "contexte": "Aide à vendre, acheter ou louer des logements.",
+      "correspondance": "proposition",
+      "onisep": "MET.270",
+      "rome": [
+        "C1504"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "banque, assurances, immobilier/immobilier"
+      ],
+      "synonymes": [
+        "agent/e commercial/e",
+        "négociateur/trice immobilière",
+        "responsable d'agence immobilière",
+        "agent immobilier",
+        "agente immobilière"
+      ]
+    },
+    {
+      "id": "guichetier",
+      "nom": "Guichetier, guichetière",
+      "categorie": "trade",
+      "disciplines": [
+        "communication",
+        "calcul-professionnel",
+        "informatique"
+      ],
+      "gestes": [
+        "Accueillir les clients",
+        "Réaliser les opérations",
+        "Renseigner sur les services"
+      ],
+      "contexte": "Accueille et sert les clients au guichet.",
+      "correspondance": "proposition",
+      "onisep": "MET.271",
+      "rome": [
+        "C1201"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "banque, assurances, immobilier/banque"
+      ],
+      "synonymes": [
+        "chargé/e d'accueil bancaire",
+        "guichetier",
+        "guichetière"
+      ]
+    },
+    {
+      "id": "gerant-de-restauration-collective",
+      "nom": "Gérant, gérante de restauration collective",
+      "categorie": "services",
+      "disciplines": [
+        "nutrition-alimentation",
+        "gestion",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Planifier les menus",
+        "Encadrer l’équipe",
+        "Respecter hygiène et budget"
+      ],
+      "contexte": "Dirige une cantine ou un restaurant d’entreprise.",
+      "correspondance": "proposition",
+      "onisep": "MET.283",
+      "rome": [
+        "G1404"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/hôtellerie",
+        "hôtellerie-restauration, tourisme/restauration"
+      ],
+      "synonymes": [
+        "économe en restauration collective",
+        "intendant/e de restauration collective",
+        "gérant de restauration collective",
+        "gérante de restauration collective"
+      ]
+    },
+    {
+      "id": "hote-d-accueil",
+      "nom": "Hôte, hôtesse d'accueil",
+      "categorie": "services",
+      "disciplines": [
+        "communication",
+        "langues-vivantes",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Accueillir les visiteurs",
+        "Orienter et renseigner",
+        "Gérer les appels"
+      ],
+      "contexte": "Accueille et oriente le public dans une entreprise ou un lieu.",
+      "correspondance": "proposition",
+      "onisep": "MET.285",
+      "rome": [
+        "M1601"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/hôtellerie",
+        "gestion des entreprises, comptabilité/secrétariat"
+      ],
+      "synonymes": [
+        "agent/e d'accueil",
+        "agent/e d'information",
+        "chargé/e d'accueil",
+        "hôte/esse",
+        "standardiste",
+        "hôte d'accueil",
+        "hôtesse d'accueil"
+      ]
+    },
+    {
+      "id": "chef-de-rayon",
+      "nom": "Chef, cheffe de rayon",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "calcul-professionnel",
+        "marketing-digital"
+      ],
+      "gestes": [
+        "Gérer l’assortiment",
+        "Encadrer l’équipe",
+        "Suivre les ventes"
+      ],
+      "contexte": "Dirige un rayon dans un magasin.",
+      "correspondance": "proposition",
+      "onisep": "MET.299",
+      "rome": [
+        "D1502",
+        "D1503"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "manager/euse de rayon",
+        "responsable corner",
+        "responsable de rayon",
+        "chef de rayon",
+        "cheffe de rayon"
+      ]
+    },
+    {
+      "id": "etalagiste",
+      "nom": "Étalagiste",
+      "categorie": "trade",
+      "disciplines": [
+        "arts-plastiques",
+        "design-graphique",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Imaginer la vitrine",
+        "Choisir couleurs et objets",
+        "Installer la mise en scène"
+      ],
+      "contexte": "Crée des vitrines qui donnent envie d’entrer.",
+      "correspondance": "proposition",
+      "onisep": "MET.308",
+      "rome": [
+        "B1301"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "décorateur/trice-étalagiste",
+        "étalagiste"
+      ]
+    },
+    {
+      "id": "vendeur-magasinier-en-fournitures-automobiles",
+      "nom": "Vendeur-magasinier, vendeuse-magasinière en fournitures automobiles",
+      "categorie": "trade",
+      "disciplines": [
+        "mecanique",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Identifier la pièce",
+        "Conseiller le client",
+        "Gérer le stock"
+      ],
+      "contexte": "Vend des pièces et accessoires automobiles.",
+      "correspondance": "proposition",
+      "onisep": "MET.317",
+      "rome": [
+        "D1212"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "commerce, marketing, vente/achat, approvisionnement",
+        "mécanique/automobile",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "vendeur/euse-magasinier/ère en équipements automobiles",
+        "vendeur/euse-magasinier/ère en pièces de rechange et accessoires (automobiles)",
+        "vendeur/euse-magasinier/ère en pièces détachées (automobiles)",
+        "vendeur-magasinier en fournitures automobiles",
+        "vendeuse-magasinière en fournitures automobiles"
+      ]
+    },
+    {
+      "id": "expert-en-assurances",
+      "nom": "Expert, experte en assurances",
+      "categorie": "trade",
+      "disciplines": [
+        "droit-des-contrats",
+        "calcul-professionnel",
+        "mecanique"
+      ],
+      "gestes": [
+        "Examiner les dégâts",
+        "Évaluer le montant",
+        "Rédiger le rapport"
+      ],
+      "contexte": "Évalue les dommages après un sinistre pour l’assureur.",
+      "correspondance": "proposition",
+      "onisep": "MET.329",
+      "rome": [
+        "C1106"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "banque, assurances, immobilier/assurances"
+      ],
+      "synonymes": [
+        "expert/e conseil",
+        "expert en assurances",
+        "experte en assurances"
+      ]
+    },
+    {
+      "id": "salesman",
+      "nom": "Salesman (vendeur salle de marché), salesman (vendeuse salle de marché)",
+      "categorie": "trade",
+      "disciplines": [
+        "economie-et-societe",
+        "mathematiques-appliquees",
+        "communication"
+      ],
+      "gestes": [
+        "Suivre les marchés",
+        "Proposer des produits financiers",
+        "Conseiller les investisseurs"
+      ],
+      "contexte": "Vend des produits financiers à de grands clients.",
+      "correspondance": "proposition",
+      "onisep": "MET.346",
+      "rome": [
+        "C1301"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "banque, assurances, immobilier/finances"
+      ],
+      "synonymes": [
+        "salesman (vendeur salle de marché)",
+        "salesman (vendeuse salle de marché)"
+      ]
+    },
+    {
+      "id": "yield-manager",
+      "nom": "Yield manager (gestionnaire de rendement)",
+      "categorie": "trade",
+      "disciplines": [
+        "analyse-statistique",
+        "economie-et-societe",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Analyser la demande",
+        "Ajuster les prix",
+        "Optimiser le remplissage"
+      ],
+      "contexte": "Fixe les prix des chambres ou des billets selon la demande.",
+      "correspondance": "proposition",
+      "onisep": "MET.352",
+      "rome": [
+        "G1302"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "analyste gestionnaire de vols",
+        "consultant/e en stratégie yield management (gestion de rendement)",
+        "gestionnaire de rendement",
+        "responsable optimisation",
+        "revenue manager",
+        "yield manager (gestionnaire de rendement)"
+      ]
+    },
+    {
+      "id": "responsable-e-crm",
+      "nom": "Responsable e-CRM (gestion de la relation client digitale)",
+      "categorie": "trade",
+      "disciplines": [
+        "marketing-digital",
+        "informatique",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Analyser les données clients",
+        "Concevoir des campagnes",
+        "Mesurer les résultats"
+      ],
+      "contexte": "Gère la relation avec les clients sur Internet.",
+      "correspondance": "proposition",
+      "onisep": "MET.353",
+      "rome": [
+        "M1704"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "manager e-CRM (gestion de la relation client digitale)",
+        "responsable marketing e-CRM (gestion de la relation client digitale)",
+        "responsable marketing relationnel",
+        "responsable e-CRM (gestion de la relation client digitale)"
+      ]
+    },
+    {
+      "id": "administrateur-de-biens",
+      "nom": "Administrateur, administratrice de biens",
+      "categorie": "trade",
+      "disciplines": [
+        "droit-des-contrats",
+        "comptabilite",
+        "gestion"
+      ],
+      "gestes": [
+        "Gérer les locations",
+        "Encaisser les loyers",
+        "Organiser l’entretien"
+      ],
+      "contexte": "Gère des logements pour leurs propriétaires.",
+      "correspondance": "proposition",
+      "onisep": "MET.396",
+      "rome": [
+        "C1501"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "banque, assurances, immobilier/immobilier"
+      ],
+      "synonymes": [
+        "gérant/e d'immeubles",
+        "gestionnaire d'immeubles locatifs",
+        "gestionnaire de biens",
+        "gestionnaire de copropriétés",
+        "gestionnaire immobilier/ère",
+        "responsable locatif/ve",
+        "administrateur de biens",
+        "administratrice de biens"
+      ]
+    },
+    {
+      "id": "agent-general-d-assurances",
+      "nom": "Agent général d'assurances, agente générale d'assurances",
+      "categorie": "trade",
+      "disciplines": [
+        "droit-des-contrats",
+        "economie-et-societe",
+        "communication"
+      ],
+      "gestes": [
+        "Conseiller les clients",
+        "Proposer des contrats",
+        "Gérer les sinistres"
+      ],
+      "contexte": "Représente une compagnie d’assurances et conseille ses clients.",
+      "correspondance": "proposition",
+      "onisep": "MET.409",
+      "rome": [
+        "C1103"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "banque, assurances, immobilier/assurances"
+      ],
+      "synonymes": [
+        "agent général d'assurances",
+        "agente générale d'assurances"
+      ]
+    },
+    {
+      "id": "directeur-d-office-de-tourisme",
+      "nom": "Directeur, directrice d'office de tourisme",
+      "categorie": "services",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Définir la stratégie touristique",
+        "Encadrer l’équipe",
+        "Promouvoir le territoire"
+      ],
+      "contexte": "Dirige un office de tourisme.",
+      "correspondance": "proposition",
+      "onisep": "MET.434",
+      "rome": [
+        "G1102"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/tourisme"
+      ],
+      "synonymes": [
+        "directeur d'office de tourisme",
+        "directrice d'office de tourisme"
+      ]
+    },
+    {
+      "id": "conseiller-en-sejour",
+      "nom": "Conseiller, conseillère en séjour",
+      "categorie": "services",
+      "disciplines": [
+        "langues-vivantes",
+        "amenagement-du-territoire",
+        "communication"
+      ],
+      "gestes": [
+        "Accueillir les visiteurs",
+        "Conseiller sorties et visites",
+        "Vendre des prestations"
+      ],
+      "contexte": "Renseigne les touristes dans un office de tourisme.",
+      "correspondance": "proposition",
+      "onisep": "MET.451",
+      "rome": [
+        "G1101"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/tourisme"
+      ],
+      "synonymes": [
+        "agent/e d'accueil touristique",
+        "chargé/e d'accueil en office de tourisme",
+        "conseiller en séjour",
+        "conseillère en séjour"
+      ]
+    },
+    {
+      "id": "commercial-export",
+      "nom": "Commercial, commerciale export",
+      "categorie": "trade",
+      "disciplines": [
+        "langues-vivantes",
+        "economie-et-societe",
+        "communication"
+      ],
+      "gestes": [
+        "Prospecter à l’étranger",
+        "Négocier les contrats",
+        "Suivre les livraisons"
+      ],
+      "contexte": "Vend les produits de l’entreprise dans d’autres pays.",
+      "correspondance": "proposition",
+      "onisep": "MET.453",
+      "rome": [
+        "D1402"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "commerce, marketing, vente/commerce international",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "vendeur/euse export",
+        "vendeur/euse international/e",
+        "commercial export",
+        "commerciale export"
+      ]
+    },
+    {
+      "id": "consultant",
+      "nom": "Consultant, consultante",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "economie-et-societe",
+        "communication"
+      ],
+      "gestes": [
+        "Analyser la situation",
+        "Proposer des solutions",
+        "Accompagner leur mise en œuvre"
+      ],
+      "contexte": "Conseille les organisations pour améliorer leur fonctionnement.",
+      "correspondance": "proposition",
+      "onisep": "MET.457",
+      "rome": [
+        "K2101",
+        "M1402",
+        "M1806"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "banque, assurances, immobilier/finances",
+        "commerce, marketing, vente/marketing, vente",
+        "gestion des entreprises, comptabilité/ressources humaines"
+      ],
+      "synonymes": [
+        "consultant",
+        "consultante"
+      ]
+    },
+    {
+      "id": "expert-immobilier",
+      "nom": "Expert immobilier, experte immobilière",
+      "categorie": "trade",
+      "disciplines": [
+        "economie-et-societe",
+        "droit-des-contrats",
+        "geometrie"
+      ],
+      "gestes": [
+        "Visiter le bien",
+        "Analyser le marché",
+        "Estimer la valeur"
+      ],
+      "contexte": "Estime la valeur des biens immobiliers.",
+      "correspondance": "proposition",
+      "onisep": "MET.482",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "banque, assurances, immobilier/immobilier"
+      ],
+      "synonymes": [
+        "expert immobilier",
+        "experte immobilière"
+      ]
+    },
+    {
+      "id": "souscripteur",
+      "nom": "Souscripteur, souscriptrice",
+      "categorie": "trade",
+      "disciplines": [
+        "analyse-statistique",
+        "droit-des-contrats",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Analyser le risque",
+        "Fixer les conditions du contrat",
+        "Décider de l’assurer"
+      ],
+      "contexte": "Évalue les risques avant de les assurer.",
+      "correspondance": "proposition",
+      "onisep": "MET.483",
+      "rome": [
+        "C1110"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "banque, assurances, immobilier/assurances"
+      ],
+      "synonymes": [
+        "conseiller/ère technique souscription",
+        "souscripteur/trice d'assurance ou de réassurance",
+        "souscripteur/trice grands risques",
+        "tarificateur/trice de risques aggravés",
+        "technicien/ne souscripteur/trice conseil",
+        "souscripteur",
+        "souscriptrice"
+      ]
+    },
+    {
+      "id": "charge-de-referencement-web",
+      "nom": "Chargé, chargée de référencement Web",
+      "categorie": "app",
+      "disciplines": [
+        "marketing-digital",
+        "informatique",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Analyser les mots-clés",
+        "Optimiser le site",
+        "Suivre le classement"
+      ],
+      "contexte": "Améliore la place d’un site dans les moteurs de recherche.",
+      "correspondance": "proposition",
+      "onisep": "MET.501",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "commerce, marketing, vente/marketing, vente",
+        "information-communication, audiovisuel/multimédia"
+      ],
+      "synonymes": [
+        "référenceur/euse Web",
+        "responsable référencement (SEO)",
+        "chargé de référencement Web",
+        "chargée de référencement Web"
+      ]
+    },
+    {
+      "id": "personnel-de-hall-d-hotel-de-luxe",
+      "nom": "Personnel de hall d'hôtel de luxe",
+      "categorie": "services",
+      "disciplines": [
+        "langues-vivantes",
+        "communication",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Accueillir les clients",
+        "Gérer bagages et voitures",
+        "Rendre service avec discrétion"
+      ],
+      "contexte": "Accueille et accompagne les clients dans un grand hôtel.",
+      "correspondance": "proposition",
+      "onisep": "MET.513",
+      "rome": [
+        "G1502",
+        "G1703"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/hôtellerie"
+      ],
+      "synonymes": [
+        "employé/e d'hôtel",
+        "personnel de hall d'hôtel de luxe"
+      ]
+    },
+    {
+      "id": "femme-de-chambre",
+      "nom": "Femme, valet de chambre",
+      "categorie": "services",
+      "disciplines": [
+        "chimie-analytique",
+        "communication",
+        "gestion"
+      ],
+      "gestes": [
+        "Nettoyer et préparer les chambres",
+        "Changer le linge",
+        "Signaler les problèmes"
+      ],
+      "contexte": "Prépare et entretient les chambres d’un hôtel.",
+      "correspondance": "proposition",
+      "onisep": "MET.534",
+      "rome": [
+        "G1501"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/hôtellerie",
+        "environnement, énergies, propreté/propreté"
+      ],
+      "synonymes": [
+        "employé/e d'étage",
+        "équipier/ère d'étage",
+        "valet de chambre",
+        "femme de chambre"
+      ]
+    },
+    {
+      "id": "serveur-en-restauration",
+      "nom": "Serveur, serveuse en restauration (restaurant, café-bar-brasserie)",
+      "categorie": "services",
+      "disciplines": [
+        "communication",
+        "calcul-professionnel",
+        "nutrition-alimentation"
+      ],
+      "gestes": [
+        "Accueillir les clients",
+        "Prendre les commandes",
+        "Servir à table"
+      ],
+      "contexte": "Accueille et sert les clients au restaurant ou au café.",
+      "correspondance": "proposition",
+      "onisep": "MET.535",
+      "rome": [
+        "G1801"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/restauration"
+      ],
+      "synonymes": [
+        "employé/e de café",
+        "garçon / serveuse de café",
+        "garçon / serveuse de comptoir",
+        "garçon / serveuse de salle",
+        "garçon / serveuse limonadier/ère",
+        "serveur en restauration (restaurant, café-bar-brasserie)",
+        "serveuse en restauration (restaurant, café-bar-brasserie)"
+      ]
+    },
+    {
+      "id": "chef-des-ventes",
+      "nom": "Chef, cheffe des ventes",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "communication",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Fixer les objectifs",
+        "Animer l’équipe commerciale",
+        "Suivre les résultats"
+      ],
+      "contexte": "Dirige une équipe de commerciaux.",
+      "correspondance": "proposition",
+      "onisep": "MET.541",
+      "rome": [
+        "D1406"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "responsable d'équipe commerciale",
+        "chef des ventes",
+        "cheffe des ventes"
+      ]
+    },
+    {
+      "id": "responsable-du-service-apres-vente",
+      "nom": "Responsable du service après-vente",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "communication",
+        "mecanique"
+      ],
+      "gestes": [
+        "Organiser les réparations",
+        "Traiter les réclamations",
+        "Encadrer les techniciens"
+      ],
+      "contexte": "Organise l’aide aux clients après l’achat.",
+      "correspondance": "proposition",
+      "onisep": "MET.543",
+      "rome": [
+        "I1402"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "commerce, marketing, vente/grande distribution et petits commerces",
+        "matières premières, fabrication, industries/maintenance, qualité",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "responsable SAV",
+        "responsable du service après-vente"
+      ]
+    },
+    {
+      "id": "vendeur-en-micro-informatique-et-multimedia",
+      "nom": "Vendeur, vendeuse en micro-informatique et multimédia",
+      "categorie": "trade",
+      "disciplines": [
+        "informatique",
+        "communication",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Conseiller selon l’usage",
+        "Présenter les appareils",
+        "Vendre les services associés"
+      ],
+      "contexte": "Conseille et vend ordinateurs et appareils numériques.",
+      "correspondance": "proposition",
+      "onisep": "MET.594",
+      "rome": [
+        "D1212"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "commerce, marketing, vente/grande distribution et petits commerces",
+        "informatique, Internet/informatique (généralités)",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "vendeur en micro-informatique et multimédia",
+        "vendeuse en micro-informatique et multimédia"
+      ]
+    },
+    {
+      "id": "agent-d-escale-et-relation-client",
+      "nom": "Agent, agente d'escale et relation client",
+      "categorie": "services",
+      "disciplines": [
+        "langues-vivantes",
+        "communication",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Enregistrer les passagers",
+        "Gérer l’embarquement",
+        "Aider en cas de retard"
+      ],
+      "contexte": "Accueille et accompagne les passagers à l’aéroport.",
+      "correspondance": "proposition",
+      "onisep": "MET.597",
+      "rome": [
+        "N2201"
+      ],
+      "niveauAcces": "bac+1",
+      "domaines": [
+        "commerce, marketing, vente/marketing, vente",
+        "hôtellerie-restauration, tourisme/tourisme",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "agent/e d'enregistrement",
+        "agent/e d'escale commercial/e",
+        "agent/e d'escale portuaire",
+        "agent/e de passage",
+        "agent/e de service au client",
+        "agent d'escale et relation client",
+        "agente d'escale et relation client"
+      ]
+    },
+    {
+      "id": "collecteur-de-fonds",
+      "nom": "Collecteur, collectrice de fonds",
+      "categorie": "trade",
+      "disciplines": [
+        "communication",
+        "marketing-digital",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Préparer les campagnes de dons",
+        "Contacter les donateurs",
+        "Suivre les résultats"
+      ],
+      "contexte": "Collecte des dons pour une association ou une fondation.",
+      "correspondance": "proposition",
+      "onisep": "MET.614",
+      "rome": [
+        "M1705"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "administrateur/trice de fonds",
+        "chargé/e de recherche donateurs",
+        "responsable de développement des ressources",
+        "responsable de la collecte de fonds",
+        "collecteur de fonds",
+        "collectrice de fonds"
+      ]
+    },
+    {
+      "id": "responsable-achats-en-chimie",
+      "nom": "Responsable achats en chimie",
+      "categorie": "trade",
+      "disciplines": [
+        "chimie-analytique",
+        "economie-et-societe",
+        "gestion"
+      ],
+      "gestes": [
+        "Choisir les fournisseurs",
+        "Négocier les prix",
+        "Garantir la qualité"
+      ],
+      "contexte": "Achète les produits chimiques d’une entreprise.",
+      "correspondance": "proposition",
+      "onisep": "MET.625",
+      "rome": [
+        "M1102"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "commerce, marketing, vente/achat, approvisionnement"
+      ],
+      "synonymes": [
+        "ingénieur/e achats en chimie",
+        "responsable achats en chimie"
+      ]
+    },
+    {
+      "id": "maitre-d-hotel",
+      "nom": "Maître, maîtresse d'hôtel",
+      "categorie": "services",
+      "disciplines": [
+        "communication",
+        "gestion",
+        "nutrition-alimentation"
+      ],
+      "gestes": [
+        "Accueillir et placer les clients",
+        "Diriger le service en salle",
+        "Conseiller les plats"
+      ],
+      "contexte": "Dirige le service en salle d’un restaurant.",
+      "correspondance": "proposition",
+      "onisep": "MET.654",
+      "rome": [
+        "G1802"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/restauration"
+      ],
+      "synonymes": [
+        "directeur/trice de salle",
+        "responsable de salle",
+        "maître d'hôtel",
+        "maîtresse d'hôtel"
+      ]
+    },
+    {
+      "id": "employe-de-restaurant",
+      "nom": "Employé, employée de restaurant (restauration collective)",
+      "categorie": "services",
+      "disciplines": [
+        "nutrition-alimentation",
+        "chimie-analytique",
+        "communication"
+      ],
+      "gestes": [
+        "Préparer les plats simples",
+        "Servir les repas",
+        "Nettoyer la salle et la cuisine"
+      ],
+      "contexte": "Prépare et sert les repas en restauration collective.",
+      "correspondance": "proposition",
+      "onisep": "MET.655",
+      "rome": [
+        "G1803"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/restauration"
+      ],
+      "synonymes": [
+        "agent/e de restauration",
+        "employé de restaurant (restauration collective)",
+        "employée de restaurant (restauration collective)"
+      ]
+    },
+    {
+      "id": "responsable-de-la-promotion-des-ventes",
+      "nom": "Responsable de la promotion des ventes",
+      "categorie": "trade",
+      "disciplines": [
+        "marketing-digital",
+        "communication",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Imaginer les opérations promotionnelles",
+        "Coordonner les magasins",
+        "Mesurer les résultats"
+      ],
+      "contexte": "Organise les promotions qui font vendre.",
+      "correspondance": "proposition",
+      "onisep": "MET.659",
+      "rome": [
+        "M1706"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "commerce, marketing, vente/grande distribution et petits commerces",
+        "information-communication, audiovisuel/journalisme, édition, publicité",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "responsable du marketing (mercatique) opérationnel",
+        "responsable trade marketing (mercatique associée)",
+        "responsable de la promotion des ventes"
+      ]
+    },
+    {
+      "id": "gerant-de-portefeuille",
+      "nom": "Gérant, gérante de portefeuille",
+      "categorie": "trade",
+      "disciplines": [
+        "economie-et-societe",
+        "mathematiques-appliquees",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Analyser les marchés",
+        "Choisir les placements",
+        "Rendre compte aux clients"
+      ],
+      "contexte": "Gère l’argent placé par des clients sur les marchés.",
+      "correspondance": "proposition",
+      "onisep": "MET.660",
+      "rome": [
+        "C1303"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "banque, assurances, immobilier/banque"
+      ],
+      "synonymes": [
+        "asset manager (gestionnaire d'actifs)",
+        "gérant/e d'obligations",
+        "gérant/e de titres et d'obligations",
+        "gestionnaire de fonds d'investissement",
+        "gestionnaire de portefeuille",
+        "gérant de portefeuille",
+        "gérante de portefeuille"
+      ]
+    },
+    {
+      "id": "analyste-de-credit",
+      "nom": "Analyste de crédit",
+      "categorie": "trade",
+      "disciplines": [
+        "comptabilite",
+        "economie-et-societe",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Étudier les demandes de prêt",
+        "Évaluer le risque",
+        "Rendre un avis"
+      ],
+      "contexte": "Évalue si une personne ou une entreprise pourra rembourser un prêt.",
+      "correspondance": "proposition",
+      "onisep": "MET.661",
+      "rome": [
+        "C1202"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "banque, assurances, immobilier/banque"
+      ],
+      "synonymes": [
+        "chargé/e d'études de crédit",
+        "gestionnaire crédit entreprise",
+        "responsable des crédits",
+        "analyste de crédit"
+      ]
+    },
+    {
+      "id": "charge-de-clientele-banque",
+      "nom": "Chargé, chargée de clientèle banque",
+      "categorie": "trade",
+      "disciplines": [
+        "economie-et-societe",
+        "communication",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Conseiller les clients",
+        "Proposer des produits",
+        "Suivre les comptes"
+      ],
+      "contexte": "Accompagne les clients d’une banque.",
+      "correspondance": "proposition",
+      "onisep": "MET.671",
+      "rome": [
+        "C1206"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "banque, assurances, immobilier/banque",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "gestionnaire de clientèle",
+        "chargé de clientèle banque",
+        "chargée de clientèle banque"
+      ]
+    },
+    {
+      "id": "chef-de-produit-touristique",
+      "nom": "Chef, cheffe de produit touristique",
+      "categorie": "services",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "economie-et-societe",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Concevoir des séjours",
+        "Choisir les prestataires",
+        "Fixer les prix"
+      ],
+      "contexte": "Imagine et organise des voyages.",
+      "correspondance": "proposition",
+      "onisep": "MET.753",
+      "rome": [
+        "G1301"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/tourisme"
+      ],
+      "synonymes": [
+        "forfaitiste",
+        "chef de produit touristique",
+        "cheffe de produit touristique"
+      ]
+    },
+    {
+      "id": "trader",
+      "nom": "Trader (opérateur de marché), trader (opératrice de marché)",
+      "categorie": "trade",
+      "disciplines": [
+        "mathematiques-appliquees",
+        "economie-et-societe",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Suivre les marchés",
+        "Acheter et vendre",
+        "Gérer les risques"
+      ],
+      "contexte": "Achète et vend des produits financiers sur les marchés.",
+      "correspondance": "proposition",
+      "onisep": "MET.757",
+      "rome": [
+        "C1301"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "banque, assurances, immobilier/finances"
+      ],
+      "synonymes": [
+        "trader (opérateur de marché)",
+        "trader (opératrice de marché)"
+      ]
+    },
+    {
+      "id": "responsable-du-back-office",
+      "nom": "Responsable du back-office (service d'appui)",
+      "categorie": "trade",
+      "disciplines": [
+        "comptabilite",
+        "gestion",
+        "informatique"
+      ],
+      "gestes": [
+        "Contrôler les opérations",
+        "Encadrer l’équipe",
+        "Améliorer les procédures"
+      ],
+      "contexte": "Dirige le service qui traite et vérifie les opérations financières.",
+      "correspondance": "proposition",
+      "onisep": "MET.758",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "banque, assurances, immobilier/finances"
+      ],
+      "synonymes": [
+        "responsable des opérations financières",
+        "responsable du back-office (service d'appui)",
+        "responsable du back office (service d'appui)"
+      ]
+    },
+    {
+      "id": "conseiller-relation-client-a-distance",
+      "nom": "Conseiller, conseillère relation client à distance",
+      "categorie": "trade",
+      "disciplines": [
+        "communication",
+        "psychologie-sociale",
+        "informatique"
+      ],
+      "gestes": [
+        "Répondre aux appels et messages",
+        "Trouver une solution",
+        "Suivre la demande"
+      ],
+      "contexte": "Aide les clients par téléphone ou par message.",
+      "correspondance": "proposition",
+      "onisep": "MET.762",
+      "rome": [
+        "D1408"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "commerce, marketing, vente/grande distribution et petits commerces",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "conseiller/ère client",
+        "conseiller/ère relation client à distance en LSF",
+        "téléacteur/trice",
+        "téléconseiller/ère",
+        "téléprospecteur/trice",
+        "télévendeur/euse",
+        "visioconseiller/ère relation client en LSF",
+        "conseiller relation client à distance",
+        "conseillère relation client à distance"
+      ]
+    },
+    {
+      "id": "syndic-de-copropriete",
+      "nom": "Syndic de copropriété",
+      "categorie": "trade",
+      "disciplines": [
+        "droit-des-contrats",
+        "comptabilite",
+        "gestion"
+      ],
+      "gestes": [
+        "Gérer l’immeuble",
+        "Organiser l’assemblée générale",
+        "Suivre les travaux"
+      ],
+      "contexte": "Gère les parties communes d’un immeuble pour les copropriétaires.",
+      "correspondance": "proposition",
+      "onisep": "MET.764",
+      "rome": [
+        "C1501"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "banque, assurances, immobilier/immobilier",
+        "matières premières, fabrication, industries/maintenance, qualité"
+      ],
+      "synonymes": [
+        "gestionnaire de copropriété",
+        "principal/e de copropriété",
+        "responsable de copropriété",
+        "syndic de copropriété"
+      ]
+    },
+    {
+      "id": "vendeur-en-animalerie",
+      "nom": "Vendeur, vendeuse en animalerie",
+      "categorie": "trade",
+      "disciplines": [
+        "biologie",
+        "communication",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Soigner les animaux du magasin",
+        "Conseiller les clients",
+        "Vendre produits et accessoires"
+      ],
+      "contexte": "Conseille et vend animaux et accessoires.",
+      "correspondance": "proposition",
+      "onisep": "MET.794",
+      "rome": [
+        "D1210"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "commerce, marketing, vente/grande distribution et petits commerces",
+        "commerce, marketing, vente/marketing, vente",
+        "agriculture, animaux/soins aux animaux"
+      ],
+      "synonymes": [
+        "vendeur en animalerie",
+        "vendeuse en animalerie"
+      ]
+    },
+    {
+      "id": "animateur-de-tourisme",
+      "nom": "Animateur, animatrice de tourisme",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "communication",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Préparer les animations",
+        "Animer jeux et soirées",
+        "Faire découvrir la région"
+      ],
+      "contexte": "Anime les séjours des vacanciers.",
+      "correspondance": "proposition",
+      "onisep": "MET.803",
+      "rome": [
+        "G1202"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/tourisme"
+      ],
+      "synonymes": [
+        "animateur/trice loisir tourisme",
+        "animateur/trice touristique",
+        "animateur de tourisme",
+        "animatrice de tourisme"
+      ]
+    },
+    {
+      "id": "directeur-d-agences-de-voyages",
+      "nom": "Directeur, directrice d'agences de voyages",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "amenagement-du-territoire",
+        "communication"
+      ],
+      "gestes": [
+        "Encadrer les agences",
+        "Développer les ventes",
+        "Gérer le budget"
+      ],
+      "contexte": "Dirige un réseau d’agences de voyages.",
+      "correspondance": "proposition",
+      "onisep": "MET.811",
+      "rome": [
+        "M1302"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/tourisme"
+      ],
+      "synonymes": [
+        "directeur d'agences de voyages",
+        "directrice d'agences de voyages"
+      ]
+    },
+    {
+      "id": "gestionnaire-actif",
+      "nom": "Gestionnaire actif",
+      "categorie": "trade",
+      "disciplines": [
+        "economie-et-societe",
+        "analyse-statistique",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Analyser les entreprises",
+        "Construire le portefeuille",
+        "Suivre les performances"
+      ],
+      "contexte": "Gère des placements financiers en choisissant les entreprises où investir.",
+      "correspondance": "proposition",
+      "onisep": "MET.815",
+      "rome": [
+        "C1105"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "banque, assurances, immobilier/assurances"
+      ],
+      "synonymes": [
+        "gestionnaire ALM (GAP)",
+        "gestionnaire asset liability management (gestion actif passif))",
+        "gestionnaire actif/passif"
+      ]
+    },
+    {
+      "id": "responsable-des-produits-structures-actions",
+      "nom": "Responsable des produits structurés actions",
+      "categorie": "trade",
+      "disciplines": [
+        "mathematiques-appliquees",
+        "economie-et-societe",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Concevoir les produits",
+        "Calculer les risques",
+        "Présenter aux clients"
+      ],
+      "contexte": "Conçoit des placements financiers complexes.",
+      "correspondance": "proposition",
+      "onisep": "MET.830",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "banque, assurances, immobilier/finances",
+        "sciences/mathématiques"
+      ],
+      "synonymes": [
+        "structurer (structureur/euse)",
+        "responsable des produits structurés actions"
+      ]
+    },
+    {
+      "id": "responsable-e-commerce",
+      "nom": "Responsable e-commerce",
+      "categorie": "trade",
+      "disciplines": [
+        "marketing-digital",
+        "informatique",
+        "gestion"
+      ],
+      "gestes": [
+        "Piloter le site de vente",
+        "Animer les promotions",
+        "Analyser les ventes"
+      ],
+      "contexte": "Fait vivre la boutique en ligne d’une entreprise.",
+      "correspondance": "proposition",
+      "onisep": "MET.854",
+      "rome": [
+        "M1707"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "commerce, marketing, vente/grande distribution et petits commerces",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "responsable e-commerce"
+      ]
+    },
+    {
+      "id": "vendeur-specialise-en-bricolage",
+      "nom": "Vendeur spécialisé en bricolage, vendeuse spécialisée en bricolage",
+      "categorie": "trade",
+      "disciplines": [
+        "science-des-materiaux",
+        "communication",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Conseiller sur les travaux",
+        "Présenter les outils et matériaux",
+        "Encaisser"
+      ],
+      "contexte": "Conseille et vend outils et matériaux de bricolage.",
+      "correspondance": "proposition",
+      "onisep": "MET.857",
+      "rome": [
+        "D1212"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "vendeur spécialisé en bricolage",
+        "vendeuse spécialisée en bricolage"
+      ]
+    },
+    {
+      "id": "gestionnaire-de-contrats-d-assurance",
+      "nom": "Gestionnaire de contrats d'assurance",
+      "categorie": "trade",
+      "disciplines": [
+        "droit-des-contrats",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Créer et modifier les contrats",
+        "Répondre aux clients",
+        "Traiter les sinistres"
+      ],
+      "contexte": "Gère les contrats des assurés.",
+      "correspondance": "proposition",
+      "onisep": "MET.867",
+      "rome": [
+        "C1109"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "banque, assurances, immobilier/assurances"
+      ],
+      "synonymes": [
+        "conseiller/ère relation client assurances",
+        "gestionnaire conseil à distance",
+        "gestionnaire de sinistre",
+        "rédacteur/trice d'assurances",
+        "télé-gestionnaire",
+        "gestionnaire de contrats d'assurance"
+      ]
+    },
+    {
+      "id": "conseiller-en-assurances",
+      "nom": "Conseiller, conseillère en assurances",
+      "categorie": "trade",
+      "disciplines": [
+        "droit-des-contrats",
+        "economie-et-societe",
+        "communication"
+      ],
+      "gestes": [
+        "Analyser les besoins",
+        "Proposer des garanties",
+        "Suivre les clients"
+      ],
+      "contexte": "Conseille les clients sur leurs assurances.",
+      "correspondance": "proposition",
+      "onisep": "MET.909",
+      "rome": [
+        "C1102"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "banque, assurances, immobilier/assurances"
+      ],
+      "synonymes": [
+        "chargé/e de clientèle en assurances",
+        "chargé/e de relation clientèle",
+        "conseiller/ère commercial en assurances",
+        "conseiller en assurances",
+        "conseillère en assurances"
+      ]
+    },
+    {
+      "id": "courtier",
+      "nom": "Courtier, courtière",
+      "categorie": "trade",
+      "disciplines": [
+        "economie-et-societe",
+        "droit-des-contrats",
+        "communication"
+      ],
+      "gestes": [
+        "Comparer les offres",
+        "Négocier pour le client",
+        "Suivre le contrat"
+      ],
+      "contexte": "Cherche pour ses clients les meilleurs contrats d’assurance ou de prêt.",
+      "correspondance": "proposition",
+      "onisep": "MET.925",
+      "rome": [
+        "C1103"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "banque, assurances, immobilier/assurances"
+      ],
+      "synonymes": [
+        "courtier",
+        "courtière"
+      ]
+    },
+    {
+      "id": "e-merchandiser-marchandiseur-en-mode",
+      "nom": "E-merchandiser (marchandiseur en mode), e-merchandiseuse",
+      "categorie": "trade",
+      "disciplines": [
+        "marketing-digital",
+        "design-graphique",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Mettre en valeur les produits en ligne",
+        "Organiser les pages",
+        "Analyser les ventes"
+      ],
+      "contexte": "Présente les produits de mode sur un site marchand pour donner envie d’acheter.",
+      "correspondance": "proposition",
+      "onisep": "MET.967",
+      "rome": [
+        "D1506"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "e-merchandiser (marchandiseur) en mode",
+        "e-merchandiser (marchandiseuse) en mode"
+      ]
+    },
+    {
+      "id": "kiosquier",
+      "nom": "Kiosquier, kiosquière",
+      "categorie": "trade",
+      "disciplines": [
+        "communication",
+        "calcul-professionnel",
+        "gestion"
+      ],
+      "gestes": [
+        "Réceptionner journaux et magazines",
+        "Mettre en place l’étalage",
+        "Conseiller les lecteurs"
+      ],
+      "contexte": "Vend journaux et magazines dans un kiosque.",
+      "correspondance": "proposition",
+      "onisep": "MET.7833",
+      "rome": [
+        "D1211"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "kiosquier",
+        "kiosquière"
+      ]
+    },
+    {
+      "id": "gardien-de-refuge-de-montagne",
+      "nom": "Gardien, gardienne de refuge de montagne",
+      "categorie": "nature",
+      "disciplines": [
+        "sciences-de-la-terre",
+        "nutrition-alimentation",
+        "gestion"
+      ],
+      "gestes": [
+        "Accueillir les randonneurs",
+        "Préparer les repas",
+        "Entretenir le refuge"
+      ],
+      "contexte": "Accueille les randonneurs dans un refuge de montagne.",
+      "correspondance": "proposition",
+      "onisep": "MET.7916",
+      "rome": [
+        "G1403"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/hôtellerie",
+        "hôtellerie-restauration, tourisme/tourisme"
+      ],
+      "synonymes": [
+        "gardien de refuge de montagne",
+        "gardienne de refuge de montagne"
+      ]
+    },
+    {
+      "id": "chef-de-rang",
+      "nom": "Chef, cheffe de rang",
+      "categorie": "services",
+      "disciplines": [
+        "communication",
+        "nutrition-alimentation",
+        "gestion"
+      ],
+      "gestes": [
+        "Accueillir les clients",
+        "Prendre les commandes",
+        "Coordonner le service d’un rang de tables"
+      ],
+      "contexte": "Organise le service d’un groupe de tables au restaurant.",
+      "correspondance": "proposition",
+      "onisep": "MET.7990",
+      "rome": [
+        "G1803"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/restauration"
+      ],
+      "synonymes": [
+        "chef de rang",
+        "cheffe de rang"
+      ]
+    },
+    {
+      "id": "chef-de-partie",
+      "nom": "Chef, cheffe de partie",
+      "categorie": "services",
+      "disciplines": [
+        "nutrition-alimentation",
+        "chimie-analytique",
+        "gestion"
+      ],
+      "gestes": [
+        "Préparer son poste",
+        "Cuisiner une partie du menu",
+        "Encadrer les commis"
+      ],
+      "contexte": "Responsable d’un poste en cuisine (sauces, poissons, desserts…).",
+      "correspondance": "proposition",
+      "onisep": "MET.7991",
+      "rome": [
+        "G1602"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/restauration"
+      ],
+      "synonymes": [
+        "chef de partie",
+        "cheffe de partie"
+      ]
+    },
+    {
+      "id": "commis-de-cuisine",
+      "nom": "Commis, commise de cuisine",
+      "categorie": "services",
+      "disciplines": [
+        "nutrition-alimentation",
+        "calcul-professionnel",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Éplucher et découper",
+        "Préparer les ingrédients",
+        "Nettoyer le poste"
+      ],
+      "contexte": "Aide les cuisiniers dans la préparation des plats.",
+      "correspondance": "proposition",
+      "onisep": "MET.7992",
+      "rome": [
+        "G1602"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/restauration"
+      ],
+      "synonymes": [
+        "commis de cuisine",
+        "commise de cuisine"
+      ]
+    },
+    {
+      "id": "employe-polyvalent-en-restauration-rapide",
+      "nom": "Employé polyvalent en restauration rapide, employée polyvalente en restauration rapide",
+      "categorie": "services",
+      "disciplines": [
+        "nutrition-alimentation",
+        "communication",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Préparer les commandes",
+        "Servir les clients",
+        "Nettoyer"
+      ],
+      "contexte": "Prépare et sert les repas dans un restaurant rapide.",
+      "correspondance": "proposition",
+      "onisep": "MET.7999",
+      "rome": [
+        "G1603"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/restauration"
+      ],
+      "synonymes": [
+        "agent/e en restauration rapide",
+        "barista",
+        "employé/e de fast-food",
+        "équipier/ère polyvalent/e en restauration rapide",
+        "préparateur/trice-vendeur/euse en restauration rapide",
+        "employé polyvalent en restauration rapide",
+        "employée polyvalente en restauration rapide"
+      ]
+    },
+    {
+      "id": "responsable-des-achats",
+      "nom": "Responsable des achats",
+      "categorie": "trade",
+      "disciplines": [
+        "economie-et-societe",
+        "droit-des-contrats",
+        "gestion"
+      ],
+      "gestes": [
+        "Choisir les fournisseurs",
+        "Négocier les contrats",
+        "Suivre la qualité"
+      ],
+      "contexte": "Organise les achats d’une entreprise.",
+      "correspondance": "proposition",
+      "onisep": "MET.8004",
+      "rome": [
+        "M1102"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "commerce, marketing, vente/achat, approvisionnement"
+      ],
+      "synonymes": [
+        "chef/fe de marché achats",
+        "manager e-sourcing",
+        "responsable achats et approvisionnements",
+        "responsable de marché-collection",
+        "responsable sourcing « zone géographique »",
+        "responsable sourcing achats-produit",
+        "responsable des achats"
+      ]
+    },
+    {
+      "id": "specialiste-pricing",
+      "nom": "Spécialiste pricing (tarification)",
+      "categorie": "trade",
+      "disciplines": [
+        "analyse-statistique",
+        "economie-et-societe",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Analyser les prix du marché",
+        "Calculer les marges",
+        "Proposer les tarifs"
+      ],
+      "contexte": "Définit les prix des produits.",
+      "correspondance": "proposition",
+      "onisep": "MET.8010",
+      "rome": [
+        "M1403"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "analyste prix",
+        "chef/fe de projet pricing (tarification)",
+        "pricing manager (responsable des prix)",
+        "spécialiste pricing (tarification)"
+      ]
+    },
+    {
+      "id": "commercial-itinerant",
+      "nom": "Commercial itinérant, commerciale itinérante",
+      "categorie": "trade",
+      "disciplines": [
+        "communication",
+        "economie-et-societe",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Organiser ses tournées",
+        "Rencontrer les clients",
+        "Négocier les ventes"
+      ],
+      "contexte": "Se déplace chez les clients pour vendre.",
+      "correspondance": "proposition",
+      "onisep": "MET.8011",
+      "rome": [
+        "D1402"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "attaché/e commercial/e itinérant/e",
+        "vendeur/euse itinérant/e",
+        "commercial itinérant",
+        "commerciale itinérante"
+      ]
+    },
+    {
+      "id": "commercial-sedentaire",
+      "nom": "Commercial, commerciale sédentaire",
+      "categorie": "trade",
+      "disciplines": [
+        "communication",
+        "calcul-professionnel",
+        "informatique"
+      ],
+      "gestes": [
+        "Répondre aux demandes",
+        "Établir les devis",
+        "Suivre les clients"
+      ],
+      "contexte": "Vend depuis l’entreprise, par téléphone ou par Internet.",
+      "correspondance": "proposition",
+      "onisep": "MET.8012",
+      "rome": [
+        "D1402"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "attaché/e commerciale sédentaire",
+        "conseiller/ère de vente sédentaire",
+        "vendeur/euse conseil en espace de vente",
+        "vendeur/euse sédentaire",
+        "commercial sédentaire",
+        "commerciale sédentaire"
+      ]
+    },
+    {
+      "id": "manager-operationnel-en-restauration-rapide",
+      "nom": "Manager opérationnel en restauration rapide, manageuse opérationnelle en restauration rapide",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "nutrition-alimentation",
+        "communication"
+      ],
+      "gestes": [
+        "Organiser les équipes",
+        "Garantir qualité et rapidité",
+        "Suivre les résultats"
+      ],
+      "contexte": "Dirige l’activité d’un restaurant rapide.",
+      "correspondance": "proposition",
+      "onisep": "MET.8039",
+      "rome": [
+        "G1402"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "hôtellerie-restauration, tourisme/hôtellerie",
+        "hôtellerie-restauration, tourisme/restauration"
+      ],
+      "synonymes": [
+        "directeur/trice adjoint/e",
+        "manager opérationnel en restauration rapide",
+        "manageuse opérationnelle en restauration rapide"
+      ]
+    },
+    {
+      "id": "acheteur",
+      "nom": "Acheteur, acheteuse (mode)",
+      "categorie": "trade",
+      "disciplines": [
+        "economie-et-societe",
+        "marketing-digital",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Repérer les tendances",
+        "Choisir les produits",
+        "Négocier avec les fournisseurs"
+      ],
+      "contexte": "Choisit les vêtements et accessoires qu’une enseigne va vendre.",
+      "correspondance": "proposition",
+      "onisep": "MET.8066",
+      "rome": [
+        "M1101"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "commerce, marketing, vente/achat, approvisionnement",
+        "commerce, marketing, vente/grande distribution et petits commerces"
+      ],
+      "synonymes": [
+        "acheteur (mode)",
+        "acheteuse (mode)"
+      ]
+    },
+    {
+      "id": "demand-planner",
+      "nom": "Demand planner (prévisionniste des ventes)",
+      "categorie": "trade",
+      "disciplines": [
+        "analyse-statistique",
+        "gestion",
+        "mathematiques-appliquees"
+      ],
+      "gestes": [
+        "Analyser les ventes passées",
+        "Prévoir la demande",
+        "Ajuster les stocks"
+      ],
+      "contexte": "Prévoit les ventes pour éviter ruptures et surstocks.",
+      "correspondance": "proposition",
+      "onisep": "MET.8086",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "commerce, marketing, vente/achat, approvisionnement",
+        "logistique, transport/logistique"
+      ],
+      "synonymes": [
+        "demand planner (prévisionniste des ventes)"
+      ]
+    },
+    {
+      "id": "developpeur-foncier",
+      "nom": "Développeur foncier, développeuse foncière",
+      "categorie": "trade",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "droit-des-contrats",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Rechercher des terrains",
+        "Négocier avec les propriétaires",
+        "Monter le projet"
+      ],
+      "contexte": "Trouve des terrains pour de futurs projets immobiliers.",
+      "correspondance": "proposition",
+      "onisep": "MET.8089",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "banque, assurances, immobilier/immobilier"
+      ],
+      "synonymes": [
+        "développeur foncier",
+        "développeuse foncière"
+      ]
+    },
+    {
+      "id": "responsable-marketing-sportif",
+      "nom": "Responsable marketing sportif",
+      "categorie": "trade",
+      "disciplines": [
+        "marketing-digital",
+        "education-physique",
+        "communication"
+      ],
+      "gestes": [
+        "Développer l’image du club ou de la marque",
+        "Trouver des partenaires",
+        "Organiser des événements"
+      ],
+      "contexte": "Fait connaître un club, un événement ou une marque de sport.",
+      "correspondance": "proposition",
+      "onisep": "MET.8112",
+      "rome": [
+        "M1705"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "commerce, marketing, vente/marketing, vente",
+        "santé, social, sport/sport"
+      ],
+      "synonymes": [
+        "chargé/e de partenariat sportif",
+        "responsable des partenariats sportifs",
+        "responsable sponsoring sportif",
+        "responsable marketing sportif"
+      ]
+    },
+    {
+      "id": "responsable-marketing",
+      "nom": "Responsable marketing (mercatique) (mode)",
+      "categorie": "trade",
+      "disciplines": [
+        "marketing-digital",
+        "economie-et-societe",
+        "arts-plastiques"
+      ],
+      "gestes": [
+        "Analyser le marché",
+        "Définir l’offre",
+        "Lancer les campagnes"
+      ],
+      "contexte": "Définit la stratégie pour faire connaître et vendre les produits de mode.",
+      "correspondance": "proposition",
+      "onisep": "MET.8118",
+      "rome": [
+        "M1705"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "responsable marketing (mercatique) (mode)"
+      ]
+    },
+    {
+      "id": "vendeur-de-materiel-medical-paramedical",
+      "nom": "Vendeur, vendeuse de matériel médical, paramédical",
+      "categorie": "trade",
+      "disciplines": [
+        "physiologie-humaine",
+        "communication",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Conseiller les patients et soignants",
+        "Présenter le matériel",
+        "Expliquer l’utilisation"
+      ],
+      "contexte": "Vend et conseille du matériel médical.",
+      "correspondance": "proposition",
+      "onisep": "MET.8203",
+      "niveauAcces": "cap",
+      "domaines": [
+        "commerce, marketing, vente/achat, approvisionnement",
+        "commerce, marketing, vente/grande distribution et petits commerces",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "vendeur de matériel médical, paramédical",
+        "vendeuse de matériel médical, paramédical"
+      ]
+    },
+    {
+      "id": "commercial",
+      "nom": "Commercial, commerciale (relation clientèle et réseaux)",
+      "categorie": "trade",
+      "disciplines": [
+        "communication",
+        "economie-et-societe",
+        "marketing-digital"
+      ],
+      "gestes": [
+        "Prospecter de nouveaux clients",
+        "Présenter l’offre",
+        "Entretenir la relation"
+      ],
+      "contexte": "Développe les ventes et suit les clients d’une entreprise.",
+      "correspondance": "proposition",
+      "onisep": "MET.8214",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "banque, assurances, immobilier/finances",
+        "commerce, marketing, vente/marketing, vente"
+      ],
+      "synonymes": [
+        "commercial (relation clientèle et réseaux)",
+        "commerciale (relation clientèle et réseaux)"
+      ]
+    },
+    {
+      "id": "ingenieur-financier",
+      "nom": "Ingénieur financier, ingénieure financière",
+      "categorie": "trade",
+      "disciplines": [
+        "mathematiques-appliquees",
+        "analyse-statistique",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Modéliser des produits financiers",
+        "Mesurer les risques",
+        "Développer des outils"
+      ],
+      "contexte": "Utilise les mathématiques pour concevoir et gérer des produits financiers.",
+      "correspondance": "proposition",
+      "onisep": "MET.8220",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "banque, assurances, immobilier/finances",
+        "sciences/mathématiques"
+      ],
+      "synonymes": [
+        "analyste quantitatif/ive",
+        "spécialiste en modélisation financière",
+        "ingénieur financier",
+        "ingénieure financière"
       ]
     }
   ]
