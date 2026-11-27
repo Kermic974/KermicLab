@@ -4,6 +4,14 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 
 ## [Non publié]
 
+- **Espace Métiers, vagues 5 à 11** (chantier Métiers) : 698 métiers ONISEP de plus (industries et électronique, mécanique et BTP, sécurité et transport, sciences et informatique, communication et enseignement, droit et gestion, commerce, banque et hôtellerie), en « proposition » ; 12 métiers de combat armé écartés pour un public dès 7 ans. Le référentiel compte 1 131 métiers, soit la quasi-totalité des fiches ONISEP. / Careers waves 5–11: 1,131 careers in total.
+
+- **Espace Métiers, vague 4 « environnement, énergies ; agriculture, animaux »** (chantier Métiers) : 123 métiers ONISEP de plus (énergies renouvelables, eau, déchets, climat, forêt, élevage, soins aux animaux…), en « proposition ». 433 métiers. / Careers wave 4: 123 environment, energy, farming and animal careers.
+
+- **Espace Métiers, vague 3 « arts, culture, artisanat »** (chantier Métiers) : 99 métiers ONISEP de plus (métiers d'art, spectacle, design, mode, joaillerie, jeu vidéo…), gestes et contexte rédigés par KermicLab, en « proposition ». 310 métiers. / Careers wave 3: 99 arts, culture and crafts careers.
+
+- **Espace Métiers, vague 2 « santé, social, sport »** (chantier Métiers) : 100 métiers ONISEP de plus (soins, rééducation, médecine, sport, travail social, petite enfance…), avec gestes et contexte rédigés par KermicLab, en « proposition ». 211 métiers au total. / Careers wave 2: 100 health, social and sport careers.
+
 - **À petits pas (1.0.1)** : navigation mobile en grille, cibles tactiles agrandies, champs pleine largeur, focus contrasté et tests responsive.
 
 - Lab « À petits pas » pour adultes : organisation, mini-étapes, cycles de travail, progression et récompenses locales, publié sous `/labs/remediation-tdah/` depuis la section Labs.
