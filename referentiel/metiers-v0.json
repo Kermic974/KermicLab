@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès. Lot 3 et vague pilote du lot 6 (2026-11-24) : 14 disciplines et 41 métiers ajoutés par un agent, en correspondance « proposition », sans code ROME (apporté par l’import ONISEP). Import ONISEP du 2026-11-24 (extrait referentiel/sources/onisep/ideo-metiers-2026-11-24.json, licence ODbL) : identifiants, codes ROME, niveaux d’accès, domaines et synonymes de 74 métiers. Vague 1 du lot 6 (2026-11-24) : 32 métiers issus des fiches ONISEP (identifiant, niveau et ROME de l’ONISEP), 11 disciplines et notions ajoutées aux disciplines « proposition », préparés par un agent. Vague 2 (santé, social, sport) : 100 métier(s) ONISEP en « proposition ». Vague 3 (arts, culture, artisanat) : 99 métier(s) ONISEP en « proposition ». Vague 4 (environnement, énergies, propreté ; agriculture, animaux) : 123 métier(s) ONISEP en « proposition ». Vague 5 (matières premières, fabrication, industries ; électricité, électronique, robotique) : 112 métier(s) ONISEP en « proposition ». Vague 6 (mécanique ; construction, architecture, travaux publics) : 102 métier(s) ONISEP en « proposition ».",
+  "source": "Maquette « Des disciplines aux gestes professionnels » (KermicLab V5), 2026-11-23. Correspondances « proposition » ajoutées à la relecture : à valider. Format v2 (lot 1 du chantier Métiers) : statut des associations métier → disciplines, identifiants ONISEP et ROME, niveau d'accès. Lot 3 et vague pilote du lot 6 (2026-11-24) : 14 disciplines et 41 métiers ajoutés par un agent, en correspondance « proposition », sans code ROME (apporté par l’import ONISEP). Import ONISEP du 2026-11-24 (extrait referentiel/sources/onisep/ideo-metiers-2026-11-24.json, licence ODbL) : identifiants, codes ROME, niveaux d’accès, domaines et synonymes de 74 métiers. Vague 1 du lot 6 (2026-11-24) : 32 métiers issus des fiches ONISEP (identifiant, niveau et ROME de l’ONISEP), 11 disciplines et notions ajoutées aux disciplines « proposition », préparés par un agent. Vague 2 (santé, social, sport) : 100 métier(s) ONISEP en « proposition ». Vague 3 (arts, culture, artisanat) : 99 métier(s) ONISEP en « proposition ». Vague 4 (environnement, énergies, propreté ; agriculture, animaux) : 123 métier(s) ONISEP en « proposition ». Vague 5 (matières premières, fabrication, industries ; électricité, électronique, robotique) : 112 métier(s) ONISEP en « proposition ». Vague 6 (mécanique ; construction, architecture, travaux publics) : 102 métier(s) ONISEP en « proposition ». Vague 7 (armée, sécurité ; logistique, transport) : 100 métier(s) ONISEP en « proposition ».",
   "sources": [
     {
       "nom": "Idéo-Fiches métiers",
@@ -20968,6 +20968,2930 @@
       "synonymes": [
         "technicien d’étude de prix en cabinet d’économiste de la construction",
         "technicienne d’étude de prix en cabinet d’économiste de la construction"
+      ]
+    },
+    {
+      "id": "controleur-aerien",
+      "nom": "Contrôleur aérien, contrôleuse aérienne",
+      "categorie": "btp",
+      "disciplines": [
+        "physique",
+        "langues-vivantes",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Suivre les avions sur le radar",
+        "Donner les autorisations par radio",
+        "Garder les distances de sécurité"
+      ],
+      "contexte": "Guide les avions pour qu’ils volent et atterrissent en sécurité.",
+      "correspondance": "proposition",
+      "onisep": "MET.1",
+      "rome": [
+        "N2202"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "aiguilleur / euse du ciel",
+        "ingénieur / e du contrôle de la navigation aérienne",
+        "contrôleur aérien",
+        "contrôleuse aérienne"
+      ]
+    },
+    {
+      "id": "matelot-de-la-marine-marchande",
+      "nom": "Matelot, matelote de la marine marchande",
+      "categorie": "btp",
+      "disciplines": [
+        "education-physique",
+        "mecanique",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Manœuvrer à bord",
+        "Entretenir le navire",
+        "Charger la cargaison"
+      ],
+      "contexte": "Travaille à bord d’un navire de commerce.",
+      "correspondance": "proposition",
+      "onisep": "MET.54",
+      "rome": [
+        "N3102"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "marin de commerce",
+        "matelot/e au commerce",
+        "matelot de la marine marchande",
+        "matelote de la marine marchande"
+      ]
+    },
+    {
+      "id": "inspecteur-des-douanes",
+      "nom": "Inspecteur, inspectrice des douanes",
+      "categorie": "btp",
+      "disciplines": [
+        "droit-et-institutions",
+        "economie-et-societe",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Contrôler les marchandises",
+        "Mener des enquêtes",
+        "Appliquer la réglementation"
+      ],
+      "contexte": "Contrôle les échanges de marchandises et lutte contre la fraude.",
+      "correspondance": "proposition",
+      "onisep": "MET.59",
+      "rome": [
+        "K1505"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "chef/fe de service douanier",
+        "douanier/ère",
+        "inspecteur/trice des douanes et droits indirects",
+        "inspecteur/trice des douanes spécialité pilote d'avion ou d'hélicoptère",
+        "officier/ière de douane judiciaire",
+        "inspecteur des douanes",
+        "inspectrice des douanes"
+      ]
+    },
+    {
+      "id": "mediateur-social",
+      "nom": "Médiateur social, médiatrice sociale",
+      "categorie": "services",
+      "disciplines": [
+        "psychologie-sociale",
+        "communication",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Aller à la rencontre des habitants",
+        "Apaiser les conflits",
+        "Orienter vers les services"
+      ],
+      "contexte": "Crée du lien et apaise les tensions dans un quartier ou les transports.",
+      "correspondance": "proposition",
+      "onisep": "MET.132",
+      "rome": [
+        "K1204"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention",
+        "santé, social, sport/travail social"
+      ],
+      "synonymes": [
+        "médiateur social",
+        "médiatrice sociale"
+      ]
+    },
+    {
+      "id": "technicien-logistique",
+      "nom": "Technicien, technicienne logistique",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "calcul-professionnel",
+        "informatique"
+      ],
+      "gestes": [
+        "Organiser les flux de marchandises",
+        "Optimiser les stocks",
+        "Suivre les indicateurs"
+      ],
+      "contexte": "Organise le stockage et l’acheminement des marchandises.",
+      "correspondance": "proposition",
+      "onisep": "MET.143",
+      "rome": [
+        "N1303"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "logistique, transport/logistique"
+      ],
+      "synonymes": [
+        "gestionnaire d'approvisionnement",
+        "gestionnaire de flux",
+        "gestionnaire de flux logistique",
+        "gestionnaire de stock",
+        "responsable des stocks",
+        "technicien/ne de planification industrielle et logistique",
+        "technicien/ne supply chain (technicien/ne de la chaîne logistique)",
+        "technicien logistique",
+        "techncienne logistique"
+      ]
+    },
+    {
+      "id": "conducteur-de-train",
+      "nom": "Conducteur, conductrice de train",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "physique",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Préparer le train",
+        "Conduire en respectant la signalisation",
+        "Informer les voyageurs"
+      ],
+      "contexte": "Conduit des trains de voyageurs ou de marchandises.",
+      "correspondance": "proposition",
+      "onisep": "MET.154",
+      "rome": [
+        "N4301"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "agent/e de conduite",
+        "conducteur de train",
+        "conductrice de train"
+      ]
+    },
+    {
+      "id": "agent-de-constatation-des-douanes",
+      "nom": "Agent, agente de constatation des douanes",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "langues-vivantes",
+        "communication"
+      ],
+      "gestes": [
+        "Contrôler les bagages et les véhicules",
+        "Vérifier les documents",
+        "Saisir les marchandises interdites"
+      ],
+      "contexte": "Contrôle les marchandises aux frontières.",
+      "correspondance": "proposition",
+      "onisep": "MET.173",
+      "rome": [
+        "K1501"
+      ],
+      "niveauAcces": "sans-diplome",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "agent/e de constatation des douanes et droits indirects",
+        "agent/e de surveillance",
+        "douanier/ère",
+        "garde-côtes",
+        "agent de constatation des douanes",
+        "agente de constatation des douanes"
+      ]
+    },
+    {
+      "id": "magasinier-cariste",
+      "nom": "Magasinier, magasinière cariste",
+      "categorie": "btp",
+      "disciplines": [
+        "calcul-professionnel",
+        "mecanique",
+        "gestion"
+      ],
+      "gestes": [
+        "Réceptionner les marchandises",
+        "Conduire le chariot élévateur",
+        "Préparer les expéditions"
+      ],
+      "contexte": "Range et déplace les marchandises dans un entrepôt.",
+      "correspondance": "proposition",
+      "onisep": "MET.181",
+      "rome": [
+        "N1103"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "logistique, transport/logistique",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "agent/e de distribution et de magasinage",
+        "agent/e de magasinage et de messagerie",
+        "employé/e logistique",
+        "magasinier/ère",
+        "stockiste",
+        "magasinier cariste",
+        "magasinière cariste"
+      ]
+    },
+    {
+      "id": "agent-de-surete-ferroviaire",
+      "nom": "Agent, agente de sûreté ferroviaire",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Patrouiller dans les trains et les gares",
+        "Prévenir les incidents",
+        "Porter assistance"
+      ],
+      "contexte": "Assure la sécurité des voyageurs dans les trains et les gares.",
+      "correspondance": "proposition",
+      "onisep": "MET.185",
+      "rome": [
+        "K2503"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "agent de sûreté ferroviaire",
+        "agente de sûreté ferroviaire"
+      ]
+    },
+    {
+      "id": "commercial-a-bord-des-trains",
+      "nom": "Commercial, commerciale à bord des trains",
+      "categorie": "services",
+      "disciplines": [
+        "communication",
+        "langues-vivantes",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Accueillir les voyageurs",
+        "Contrôler les billets",
+        "Informer et rassurer"
+      ],
+      "contexte": "Accompagne les voyageurs pendant le trajet.",
+      "correspondance": "proposition",
+      "onisep": "MET.186",
+      "rome": [
+        "N4302"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "contrôleur/euse en tranport en commun",
+        "commercial à bord des trains",
+        "commerciale à bord des trains"
+      ]
+    },
+    {
+      "id": "officier-de-police",
+      "nom": "Officier, officière de police",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-sociale",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Diriger une équipe d’enquêteurs",
+        "Mener des investigations",
+        "Rédiger les procédures"
+      ],
+      "contexte": "Encadre des policiers et dirige des enquêtes.",
+      "correspondance": "proposition",
+      "onisep": "MET.191",
+      "rome": [
+        "K1704"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "capitaine de police",
+        "commandant/e de police",
+        "lieutenant/e de police",
+        "officier de police",
+        "officière de police"
+      ]
+    },
+    {
+      "id": "chauffeur-livreur",
+      "nom": "Chauffeur-livreur, chauffeuse-livreuse",
+      "categorie": "btp",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Charger le véhicule",
+        "Organiser sa tournée",
+        "Livrer les clients"
+      ],
+      "contexte": "Transporte et livre des marchandises.",
+      "correspondance": "proposition",
+      "onisep": "MET.210",
+      "rome": [
+        "N4105"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "conducteur/trice-livreur/euse",
+        "distributeur/trice de colis",
+        "livreur/euse",
+        "opérateur/trice livraison colis",
+        "chauffeur-livreur",
+        "chauffeuse-livreuse"
+      ]
+    },
+    {
+      "id": "inspecteur-du-permis-de-conduire-et-de-la-securite-routiere",
+      "nom": "Inspecteur, inspectrice du permis de conduire et de la sécurité routière",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-sociale",
+        "communication"
+      ],
+      "gestes": [
+        "Faire passer l’examen",
+        "Évaluer la conduite",
+        "Sensibiliser à la sécurité routière"
+      ],
+      "contexte": "Fait passer le permis de conduire.",
+      "correspondance": "proposition",
+      "onisep": "MET.272",
+      "rome": [
+        "K2110"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "inspecteur/trice du permis de conduire",
+        "inspecteur du permis de conduire et de la sécurité routière",
+        "inspectrice du permis de conduire et de la sécurité routière"
+      ]
+    },
+    {
+      "id": "gendarme",
+      "nom": "Gendarme",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Patrouiller",
+        "Accueillir et aider la population",
+        "Mener des enquêtes"
+      ],
+      "contexte": "Protège les personnes et fait respecter la loi, souvent en zone rurale.",
+      "correspondance": "proposition",
+      "onisep": "MET.313",
+      "rome": [
+        "K1706"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "agent/e de la force publique",
+        "garde républicain",
+        "sous-officier/ère de gendarmerie",
+        "gendarme"
+      ]
+    },
+    {
+      "id": "agent-de-securite",
+      "nom": "Agent, agente de sécurité",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "communication"
+      ],
+      "gestes": [
+        "Surveiller un site",
+        "Contrôler les accès",
+        "Intervenir en cas d’incident"
+      ],
+      "contexte": "Protège des bâtiments, des magasins ou des événements.",
+      "correspondance": "proposition",
+      "onisep": "MET.347",
+      "rome": [
+        "K2503"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "veilleur/euse de nuit",
+        "videur/euse",
+        "agent de sécurité",
+        "agente de sécurité"
+      ]
+    },
+    {
+      "id": "pilote-d-helicoptere",
+      "nom": "Pilote d'hélicoptère",
+      "categorie": "btp",
+      "disciplines": [
+        "physique",
+        "mecanique",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Préparer le vol",
+        "Piloter l’hélicoptère",
+        "Réaliser la mission"
+      ],
+      "contexte": "Pilote des hélicoptères pour le secours, le transport ou la surveillance.",
+      "correspondance": "proposition",
+      "onisep": "MET.358",
+      "rome": [
+        "N2102"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/défense publique",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "pilote d'hélicoptère"
+      ]
+    },
+    {
+      "id": "technicien-packaging",
+      "nom": "Technicien, technicienne packaging",
+      "categorie": "btp",
+      "disciplines": [
+        "design-produit",
+        "science-des-materiaux",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Concevoir l’emballage",
+        "Tester sa résistance",
+        "Suivre la fabrication"
+      ],
+      "contexte": "Conçoit des emballages solides et économes.",
+      "correspondance": "proposition",
+      "onisep": "MET.384",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "logistique, transport/logistique"
+      ],
+      "synonymes": [
+        "technicien/ne méthodes en packaging",
+        "technicien/ne qualité en packaging",
+        "technicien packaging",
+        "technicienne packaging"
+      ]
+    },
+    {
+      "id": "agent-de-transit",
+      "nom": "Agent, agente de transit",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "langues-vivantes",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Organiser le transport international",
+        "Préparer les documents douaniers",
+        "Suivre les envois"
+      ],
+      "contexte": "Organise le transport des marchandises entre les pays.",
+      "correspondance": "proposition",
+      "onisep": "MET.398",
+      "rome": [
+        "N1202"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "affréteur/euse",
+        "commissionnaire de transport",
+        "employé/e de transport",
+        "organisateur/trice de transport international",
+        "transitaire",
+        "agent de transit",
+        "agente de transit"
+      ]
+    },
+    {
+      "id": "consignataire-de-navire",
+      "nom": "Consignataire de navire",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "langues-vivantes",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Préparer l’escale",
+        "Coordonner les services du port",
+        "Gérer les documents"
+      ],
+      "contexte": "Organise l’arrivée et le départ des navires dans un port.",
+      "correspondance": "proposition",
+      "onisep": "MET.399",
+      "rome": [
+        "N1202"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "logistique, transport/logistique",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "agent / e de consignation",
+        "agent / e maritime",
+        "consignataire de navire"
+      ]
+    },
+    {
+      "id": "officier-marinier",
+      "nom": "Officier marinier, officière marinière",
+      "categorie": "services",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "gestion"
+      ],
+      "gestes": [
+        "Encadrer une équipe de marins",
+        "Assurer une spécialité technique",
+        "Participer aux missions"
+      ],
+      "contexte": "Sous-officier de la Marine nationale, spécialiste d’un domaine technique.",
+      "correspondance": "proposition",
+      "onisep": "MET.427",
+      "rome": [
+        "K1701"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/défense publique",
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "sous-officier/ère de marine",
+        "officier marinier",
+        "officière marinière"
+      ]
+    },
+    {
+      "id": "conducteur-de-metro",
+      "nom": "Conducteur, conductrice de métro",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "physique",
+        "communication"
+      ],
+      "gestes": [
+        "Conduire la rame",
+        "Surveiller les quais",
+        "Informer les voyageurs"
+      ],
+      "contexte": "Conduit les rames de métro.",
+      "correspondance": "proposition",
+      "onisep": "MET.444",
+      "rome": [
+        "N4301"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "conducteur de métro",
+        "conductrice de métro"
+      ]
+    },
+    {
+      "id": "convoyeur-de-fonds",
+      "nom": "Convoyeur, convoyeuse de fonds",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Préparer la tournée",
+        "Transporter l’argent en sécurité",
+        "Respecter les procédures"
+      ],
+      "contexte": "Transporte l’argent des banques et des commerces en toute sécurité.",
+      "correspondance": "proposition",
+      "onisep": "MET.484",
+      "rome": [
+        "K2503"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "agent/e de transport de fonds",
+        "convoyeur/euse de véhicule blindé",
+        "convoyeur de fonds",
+        "convoyeuse de fonds"
+      ]
+    },
+    {
+      "id": "motard-de-la-police-ou-de-la-gendarmerie",
+      "nom": "Motard, motarde de la police ou de la gendarmerie",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "mecanique",
+        "education-physique"
+      ],
+      "gestes": [
+        "Patrouiller à moto",
+        "Contrôler la circulation",
+        "Escorter les cortèges"
+      ],
+      "contexte": "Assure la sécurité routière à moto.",
+      "correspondance": "proposition",
+      "onisep": "MET.493",
+      "rome": [
+        "K1706"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "policier/ère motocycliste",
+        "motard de la police ou de la gendarmerie",
+        "motarde de la police ou de la gendarmerie"
+      ]
+    },
+    {
+      "id": "logisticien-de-l-humanitaire",
+      "nom": "Logisticien, logisticienne de l'humanitaire",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "amenagement-du-territoire",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Acheminer l’aide",
+        "Gérer les stocks",
+        "Organiser les transports sur le terrain"
+      ],
+      "contexte": "Organise l’arrivée du matériel et de la nourriture dans les missions humanitaires.",
+      "correspondance": "proposition",
+      "onisep": "MET.511",
+      "rome": [
+        "N1303"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "logistique, transport/logistique",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "logisticien de l'humanitaire",
+        "logisticienne de l'humanitaire"
+      ]
+    },
+    {
+      "id": "declarant-en-douane",
+      "nom": "Déclarant, déclarante en douane",
+      "categorie": "trade",
+      "disciplines": [
+        "droit-et-institutions",
+        "calcul-professionnel",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Préparer les déclarations",
+        "Calculer les droits",
+        "Suivre les dossiers"
+      ],
+      "contexte": "Remplit les formalités de douane pour les entreprises.",
+      "correspondance": "proposition",
+      "onisep": "MET.545",
+      "rome": [
+        "N1202"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "déclarant en douane",
+        "déclarante en douane"
+      ]
+    },
+    {
+      "id": "demenageur",
+      "nom": "Déménageur, déménageuse",
+      "categorie": "btp",
+      "disciplines": [
+        "education-physique",
+        "calcul-professionnel",
+        "geometrie"
+      ],
+      "gestes": [
+        "Emballer les objets",
+        "Porter et charger",
+        "Installer chez le client"
+      ],
+      "contexte": "Transporte les meubles et objets lors des déménagements.",
+      "correspondance": "proposition",
+      "onisep": "MET.546",
+      "rome": [
+        "N1102"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "logistique, transport/logistique",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "déménageur/euse professionnel/le",
+        "déménageur",
+        "déménageuse"
+      ]
+    },
+    {
+      "id": "officier-de-la-marine-nationale",
+      "nom": "Officier, officière de la Marine nationale",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "sciences-de-la-terre",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Commander une équipe ou un navire",
+        "Préparer les missions",
+        "Assurer la sécurité en mer"
+      ],
+      "contexte": "Encadre des marins dans la Marine nationale.",
+      "correspondance": "proposition",
+      "onisep": "MET.565",
+      "rome": [
+        "K1703"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "armée, sécurité/défense publique"
+      ],
+      "synonymes": [
+        "officier de la Marine nationale",
+        "officière de la Marine nationale"
+      ]
+    },
+    {
+      "id": "officier-de-l-armee-de-terre",
+      "nom": "Officier, officière de l'armée de terre",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "histoire-contemporaine",
+        "education-physique"
+      ],
+      "gestes": [
+        "Commander une unité",
+        "Préparer les missions",
+        "Former les soldats"
+      ],
+      "contexte": "Encadre des militaires dans l’armée de Terre.",
+      "correspondance": "proposition",
+      "onisep": "MET.567",
+      "rome": [
+        "K1703"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "armée, sécurité/défense publique"
+      ],
+      "synonymes": [
+        "officier/ère sous contrat d'encadrement",
+        "officier/ère sous contrat spécialiste",
+        "officier de l'armée de terre",
+        "officière de l'armée de terre"
+      ]
+    },
+    {
+      "id": "batelier",
+      "nom": "Batelier, batelière",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "amenagement-du-territoire",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Piloter la péniche",
+        "Charger la cargaison",
+        "Entretenir le bateau"
+      ],
+      "contexte": "Transporte des marchandises ou des passagers sur les fleuves et canaux.",
+      "correspondance": "proposition",
+      "onisep": "MET.577",
+      "rome": [
+        "N3103"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "marinier / ère",
+        "timonier / ère",
+        "transporteur / euse fluvial/e",
+        "batelier",
+        "batelière"
+      ]
+    },
+    {
+      "id": "gardien-de-police-municipale",
+      "nom": "Gardien, gardienne de police municipale",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-sociale",
+        "communication"
+      ],
+      "gestes": [
+        "Patrouiller dans la commune",
+        "Faire respecter les règles",
+        "Aider les habitants"
+      ],
+      "contexte": "Veille à la tranquillité et à la sécurité dans une commune.",
+      "correspondance": "proposition",
+      "onisep": "MET.579",
+      "rome": [
+        "K1707"
+      ],
+      "niveauAcces": "sans-diplome",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "agent/e de police municipale",
+        "gardien/ne-brigadier/ère",
+        "policier/ère municipal/e",
+        "gardien de police municipale",
+        "gardienne de police municipale"
+      ]
+    },
+    {
+      "id": "sous-officier-de-l-armee-de-terre",
+      "nom": "Sous-officier, sous-officière de l'armée de terre",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "education-physique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Encadrer un groupe",
+        "Assurer une spécialité",
+        "Former les soldats"
+      ],
+      "contexte": "Encadre une équipe et exerce une spécialité dans l’armée de Terre.",
+      "correspondance": "proposition",
+      "onisep": "MET.587",
+      "rome": [
+        "K1701"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/défense publique"
+      ],
+      "synonymes": [
+        "sous-officier de l'armée de terre",
+        "sous-officière de l'armée de terre"
+      ]
+    },
+    {
+      "id": "ingenieur-d-etudes-en-surete-nucleaire",
+      "nom": "Ingénieur, ingénieure d'études en sûreté nucléaire",
+      "categorie": "btp",
+      "disciplines": [
+        "physique",
+        "energetique",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Analyser les risques",
+        "Contrôler les installations",
+        "Proposer des améliorations"
+      ],
+      "contexte": "Vérifie que les installations nucléaires restent sûres.",
+      "correspondance": "proposition",
+      "onisep": "MET.626",
+      "rome": [
+        "H1302"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "consultant/e en sûreté nucléaire",
+        "ingénieur/e sûreté en exploitation nucléaire",
+        "ingénieur/e sûreté études et conception",
+        "ingénieur d'études en sûreté nucléaire",
+        "ingénieure d'études en sûreté nucléaire"
+      ]
+    },
+    {
+      "id": "officier-de-la-marine-marchande",
+      "nom": "Officier, officière de la marine marchande",
+      "categorie": "btp",
+      "disciplines": [
+        "sciences-de-la-terre",
+        "mecanique",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Conduire le navire",
+        "Gérer la cargaison",
+        "Encadrer l’équipage"
+      ],
+      "contexte": "Dirige la navigation ou les machines d’un navire de commerce.",
+      "correspondance": "proposition",
+      "onisep": "MET.653",
+      "rome": [
+        "N3101"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "officier de la marine marchande",
+        "officière de la marine marchande"
+      ]
+    },
+    {
+      "id": "chauffeur-de-taxi",
+      "nom": "Chauffeur, chauffeuse de taxi",
+      "categorie": "btp",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "communication",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Prendre en charge les clients",
+        "Choisir le meilleur trajet",
+        "Entretenir le véhicule"
+      ],
+      "contexte": "Transporte des clients en voiture.",
+      "correspondance": "proposition",
+      "onisep": "MET.662",
+      "rome": [
+        "N4102"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "artisan/e taxi",
+        "conducteur/trice de taxi",
+        "chauffeur de taxi",
+        "chauffeuse de taxi"
+      ]
+    },
+    {
+      "id": "conducteur-routier",
+      "nom": "Conducteur routier, conductrice routière",
+      "categorie": "btp",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "mecanique",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Préparer le trajet",
+        "Conduire le poids lourd",
+        "Livrer la marchandise"
+      ],
+      "contexte": "Transporte des marchandises en camion.",
+      "correspondance": "proposition",
+      "onisep": "MET.679",
+      "rome": [
+        "N4101"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "conducteur / trice routier / ère de marchandises",
+        "routier / ère",
+        "conducteur routier",
+        "conductrice routière"
+      ]
+    },
+    {
+      "id": "militaire-du-rang-de-l-armee-de-terre",
+      "nom": "Militaire du rang de l'armée de terre",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "gestion",
+        "mecanique"
+      ],
+      "gestes": [
+        "Suivre l’entraînement",
+        "Exercer une spécialité",
+        "Participer aux missions"
+      ],
+      "contexte": "Premier grade de l’armée de Terre, avec un métier de spécialité.",
+      "correspondance": "proposition",
+      "onisep": "MET.689",
+      "rome": [
+        "K1701"
+      ],
+      "niveauAcces": "sans-diplome",
+      "domaines": [
+        "armée, sécurité/défense publique"
+      ],
+      "synonymes": [
+        "combattant/e",
+        "soldat/e",
+        "militaire du rang de l'armée de terre"
+      ]
+    },
+    {
+      "id": "officier-de-gendarmerie",
+      "nom": "Officier, officière de gendarmerie",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Commander une unité",
+        "Diriger les enquêtes",
+        "Organiser la sécurité d’un territoire"
+      ],
+      "contexte": "Dirige des gendarmes et des opérations de sécurité.",
+      "correspondance": "proposition",
+      "onisep": "MET.691",
+      "rome": [
+        "K1704"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "gendarme",
+        "officier de gendarmerie",
+        "officière de gendarmerie"
+      ]
+    },
+    {
+      "id": "sous-officier-de-l-armee-de-l-air",
+      "nom": "Sous-officier, sous-officière de l'armée de l'air",
+      "categorie": "services",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "gestion"
+      ],
+      "gestes": [
+        "Encadrer une équipe",
+        "Assurer une spécialité technique",
+        "Participer aux missions"
+      ],
+      "contexte": "Exerce une spécialité technique dans l’armée de l’Air et de l’Espace.",
+      "correspondance": "proposition",
+      "onisep": "MET.695",
+      "rome": [
+        "K1701"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/défense publique"
+      ],
+      "synonymes": [
+        "sous-officier de l'armée de l'air",
+        "sous-officière de l'armée de l'air"
+      ]
+    },
+    {
+      "id": "conseiller-penitentiaire-d-insertion-et-de-probation",
+      "nom": "Conseiller, conseillère pénitentiaire d'insertion et de probation",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-sociale",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Suivre les personnes condamnées",
+        "Préparer leur réinsertion",
+        "Rendre compte au juge"
+      ],
+      "contexte": "Aide les personnes condamnées à préparer leur retour dans la société.",
+      "correspondance": "proposition",
+      "onisep": "MET.712",
+      "rome": [
+        "K1207"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "conseiller pénitentiaire d'insertion et de probation",
+        "conseillère pénitentiaire d'insertion et de probation"
+      ]
+    },
+    {
+      "id": "responsable-approvisionnement",
+      "nom": "Responsable approvisionnement",
+      "categorie": "trade",
+      "disciplines": [
+        "gestion",
+        "calcul-professionnel",
+        "economie-et-societe"
+      ],
+      "gestes": [
+        "Prévoir les besoins",
+        "Passer les commandes",
+        "Suivre les fournisseurs"
+      ],
+      "contexte": "Veille à ce que l’entreprise ait toujours les produits dont elle a besoin.",
+      "correspondance": "proposition",
+      "onisep": "MET.730",
+      "rome": [
+        "N1301"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "logistique, transport/logistique"
+      ],
+      "synonymes": [
+        "responsable approvisionnement"
+      ]
+    },
+    {
+      "id": "facteur",
+      "nom": "Facteur, factrice",
+      "categorie": "btp",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "communication",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Trier le courrier",
+        "Faire sa tournée",
+        "Remettre colis et lettres"
+      ],
+      "contexte": "Distribue le courrier et les colis.",
+      "correspondance": "proposition",
+      "onisep": "MET.763",
+      "rome": [
+        "M1603"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "logistique, transport/logistique",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "agent/e de tri",
+        "opérateur/trice de colis à La Poste",
+        "facteur",
+        "factrice"
+      ]
+    },
+    {
+      "id": "commissaire-de-police",
+      "nom": "Commissaire de police",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Diriger un commissariat",
+        "Organiser les enquêtes",
+        "Coordonner avec la justice"
+      ],
+      "contexte": "Dirige un service de police.",
+      "correspondance": "proposition",
+      "onisep": "MET.786",
+      "rome": [
+        "K1704"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "commissaire de police"
+      ]
+    },
+    {
+      "id": "chef-de-projet-demantelement-nucleaire",
+      "nom": "Chef, cheffe de projet démantèlement nucléaire",
+      "categorie": "btp",
+      "disciplines": [
+        "energetique",
+        "physique",
+        "gestion"
+      ],
+      "gestes": [
+        "Planifier le démantèlement",
+        "Gérer les déchets",
+        "Garantir la sûreté"
+      ],
+      "contexte": "Organise le démontage des installations nucléaires arrêtées.",
+      "correspondance": "proposition",
+      "onisep": "MET.791",
+      "rome": [
+        "I1503"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "chef de projet démantèlement nucléaire",
+        "cheffe de projet démantèlement nucléaire"
+      ]
+    },
+    {
+      "id": "directeur-des-services-penitentiaires",
+      "nom": "Directeur, directrice des services pénitentiaires",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "philosophie-ethique"
+      ],
+      "gestes": [
+        "Diriger un établissement",
+        "Encadrer le personnel",
+        "Organiser la réinsertion"
+      ],
+      "contexte": "Dirige une prison.",
+      "correspondance": "proposition",
+      "onisep": "MET.807",
+      "rome": [
+        "K1403"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "chef/fe d'établissement pénitentiaire",
+        "directeur des services pénitentiaires",
+        "directrice des services pénitentiaires"
+      ]
+    },
+    {
+      "id": "demineur",
+      "nom": "Démineur, démineuse",
+      "categorie": "services",
+      "disciplines": [
+        "physique",
+        "chimie-analytique",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Repérer les engins dangereux",
+        "Les neutraliser en sécurité",
+        "Protéger la population"
+      ],
+      "contexte": "Neutralise les munitions anciennes ou dangereuses pour protéger la population.",
+      "correspondance": "proposition",
+      "onisep": "MET.810",
+      "rome": [
+        "K1705"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "démineur",
+        "démineuse"
+      ]
+    },
+    {
+      "id": "enqueteur-prive",
+      "nom": "Enquêteur privé, enquêtrice privée",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Recueillir des informations",
+        "Vérifier des faits",
+        "Rédiger un rapport"
+      ],
+      "contexte": "Mène des recherches pour des particuliers ou des entreprises, dans le cadre de la loi.",
+      "correspondance": "proposition",
+      "onisep": "MET.817",
+      "rome": [
+        "K2502"
+      ],
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "agent/e de recherches privées",
+        "agent/e de recherches privées (ARP)",
+        "détective",
+        "enquêteur/trice de droit privé",
+        "enquêteur privé",
+        "enquêtrice privé"
+      ]
+    },
+    {
+      "id": "skipper",
+      "nom": "Skipper",
+      "categorie": "btp",
+      "disciplines": [
+        "sciences-de-la-terre",
+        "education-physique",
+        "mecanique"
+      ],
+      "gestes": [
+        "Préparer la navigation",
+        "Conduire le voilier",
+        "Assurer la sécurité de l’équipage"
+      ],
+      "contexte": "Conduit un voilier pour des courses, des croisières ou des livraisons.",
+      "correspondance": "proposition",
+      "onisep": "MET.834",
+      "rome": [
+        "N3102"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "capitaine de bateau",
+        "chef/fe de bord",
+        "pilote de navire de plaisance",
+        "skipper"
+      ]
+    },
+    {
+      "id": "chef-de-projet-packaging",
+      "nom": "Chef, cheffe de projet packaging (conditionnement)",
+      "categorie": "btp",
+      "disciplines": [
+        "design-produit",
+        "gestion",
+        "science-des-materiaux"
+      ],
+      "gestes": [
+        "Définir l’emballage",
+        "Coordonner fournisseurs et équipes",
+        "Suivre les délais"
+      ],
+      "contexte": "Pilote la création des emballages d’un produit.",
+      "correspondance": "proposition",
+      "onisep": "MET.858",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "logistique, transport/logistique"
+      ],
+      "synonymes": [
+        "chargé/é de mission packaging",
+        "chargé/e de projet packaging",
+        "chef/fe de projet développement packaging",
+        "ingénieur/e innovation packaging",
+        "ingénieur/e packaging",
+        "chef de projet packaging (conditionnement)",
+        "cheffe de projet packaging (conditionnement)"
+      ]
+    },
+    {
+      "id": "matelot-de-la-marine-nationale",
+      "nom": "Matelot, matelote de la Marine nationale",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "mecanique",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Participer à la vie du bord",
+        "Exercer une spécialité",
+        "Assurer la sécurité du navire"
+      ],
+      "contexte": "Marin de la Marine nationale, avec une spécialité.",
+      "correspondance": "proposition",
+      "onisep": "MET.889",
+      "rome": [
+        "N3102"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "armée, sécurité/défense publique",
+        "électricité, électronique, robotique/électrotechnique",
+        "mécanique/mécanique (généralités)"
+      ],
+      "synonymes": [
+        "marin soldat/e marine",
+        "matelot/e de la Flotte",
+        "matelot de la Marine nationale",
+        "matelote de la Marine nationale"
+      ]
+    },
+    {
+      "id": "technicien-de-la-circulation-ferroviaire-sncf",
+      "nom": "Technicien, technicienne de la circulation ferroviaire SNCF",
+      "categorie": "btp",
+      "disciplines": [
+        "informatique",
+        "amenagement-du-territoire",
+        "physique"
+      ],
+      "gestes": [
+        "Commander les aiguillages",
+        "Autoriser le départ des trains",
+        "Gérer les incidents"
+      ],
+      "contexte": "Organise la circulation des trains en toute sécurité.",
+      "correspondance": "proposition",
+      "onisep": "MET.896",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "aiguilleur/euse du rail",
+        "opérateur/trice de la circulation ferroviaire",
+        "régulateur/trice de trafic",
+        "technicien de la circulation ferroviaire SNCF",
+        "technicienne de la circulation ferroviaire SNCF"
+      ]
+    },
+    {
+      "id": "conducteur-de-bus-ou-d-autocar",
+      "nom": "Conducteur, conductrice de bus ou d'autocar",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "amenagement-du-territoire",
+        "communication"
+      ],
+      "gestes": [
+        "Conduire en sécurité",
+        "Accueillir les voyageurs",
+        "Respecter les horaires"
+      ],
+      "contexte": "Transporte des voyageurs en bus ou en car.",
+      "correspondance": "proposition",
+      "onisep": "MET.907",
+      "rome": [
+        "N4103"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "conducteur/trice de transport en commun",
+        "conducteur de bus ou d'autocar",
+        "conductrice de bus ou d'autocar"
+      ]
+    },
+    {
+      "id": "surveillant-de-centre-penitentiaire",
+      "nom": "Surveillant, surveillante de centre pénitentiaire",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "psychologie-sociale",
+        "education-physique"
+      ],
+      "gestes": [
+        "Surveiller les détenus",
+        "Assurer la sécurité",
+        "Accompagner la vie quotidienne"
+      ],
+      "contexte": "Garantit la sécurité dans une prison.",
+      "correspondance": "proposition",
+      "onisep": "MET.926",
+      "rome": [
+        "K1706"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "gardien/ne de prison",
+        "surveillant/e de prison",
+        "surveillant/e pénitencier/ère",
+        "surveillant de centre pénitentiaire",
+        "surveillante de centre pénitentiaire"
+      ]
+    },
+    {
+      "id": "gestionnaire-de-flux-reverse-logistic",
+      "nom": "Gestionnaire de flux reverse logistic (logistique inversée)",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "environnement",
+        "calcul-professionnel"
+      ],
+      "gestes": [
+        "Organiser les retours",
+        "Trier et réparer ou recycler",
+        "Réduire les coûts"
+      ],
+      "contexte": "Gère le retour des produits vers l’entreprise pour les réparer ou les recycler.",
+      "correspondance": "proposition",
+      "onisep": "MET.958",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "logistique, transport/logistique",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "gestionnaire de flux logistique des retours",
+        "gestionnaire de flux logistique inversée",
+        "gestionnaire retours clients",
+        "responsable de la reverse logistique",
+        "technicien/ne de logistique inversée",
+        "gestionnaire de flux reverse logistic (logistique inversée)"
+      ]
+    },
+    {
+      "id": "officier-de-sapeur-pompier",
+      "nom": "Officier, officière de sapeur-pompier",
+      "categorie": "services",
+      "disciplines": [
+        "physiologie-humaine",
+        "gestion",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Commander les secours",
+        "Organiser les interventions",
+        "Former les pompiers"
+      ],
+      "contexte": "Dirige les sapeurs-pompiers lors des interventions.",
+      "correspondance": "proposition",
+      "onisep": "MET.1266",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "officier de sapeur-pompier",
+        "officière de sapeur-pompier"
+      ]
+    },
+    {
+      "id": "maitre-chien",
+      "nom": "Maître-chien, maîtresse-chien",
+      "categorie": "services",
+      "disciplines": [
+        "biologie",
+        "droit-et-institutions",
+        "education-physique"
+      ],
+      "gestes": [
+        "Éduquer le chien",
+        "Patrouiller avec lui",
+        "Prendre soin de l’animal"
+      ],
+      "contexte": "Travaille en équipe avec un chien pour la sécurité ou la recherche.",
+      "correspondance": "proposition",
+      "onisep": "MET.7812",
+      "rome": [
+        "K1705"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "agent/e cynophile de protection et d'intervention",
+        "agent/e cynophile de sécurité",
+        "agent/e de sécurité conducteur/trice de chien",
+        "conducteur/trice de chien",
+        "maître-chien",
+        "maîtresse-chien"
+      ]
+    },
+    {
+      "id": "agent-d-operations-aeriennes",
+      "nom": "Agent, agente d'opérations aériennes",
+      "categorie": "btp",
+      "disciplines": [
+        "calcul-professionnel",
+        "langues-vivantes",
+        "physique"
+      ],
+      "gestes": [
+        "Préparer le vol",
+        "Calculer le chargement",
+        "Coordonner l’escale"
+      ],
+      "contexte": "Prépare les vols et organise l’escale des avions.",
+      "correspondance": "proposition",
+      "onisep": "MET.7821",
+      "rome": [
+        "N2204"
+      ],
+      "niveauAcces": "bac+1",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "agent/e d'exploitation des compagnies aériennes",
+        "agent/e technique en exploitation aérienne",
+        "employé/e de transit aérien",
+        "flight dispatcher",
+        "préparateur/trice de vol",
+        "agent d'opérations aériennes",
+        "agente d'opérations aériennes"
+      ]
+    },
+    {
+      "id": "pharmacien-distributeur-en-gros",
+      "nom": "Pharmacien distributeur en gros, pharmacienne distributrice en gros",
+      "categorie": "health",
+      "disciplines": [
+        "chimie-analytique",
+        "gestion",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Garantir la qualité des stocks",
+        "Organiser la distribution",
+        "Respecter la réglementation"
+      ],
+      "contexte": "Pharmacien qui organise la distribution des médicaments aux pharmacies.",
+      "correspondance": "proposition",
+      "onisep": "MET.7860",
+      "rome": [
+        "J1202"
+      ],
+      "niveauAcces": "bac+6",
+      "domaines": [
+        "logistique, transport/logistique",
+        "santé, social, sport/médical"
+      ],
+      "synonymes": [
+        "pharmacien/ne grossiste-répartiteur/trice",
+        "pharmacien distributeur en gros",
+        "pharmacienne distributrice en gros"
+      ]
+    },
+    {
+      "id": "surveillant-du-jardin-du-luxembourg",
+      "nom": "Surveillant, surveillante du Jardin du Luxembourg",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "communication",
+        "environnement"
+      ],
+      "gestes": [
+        "Surveiller le jardin",
+        "Renseigner les visiteurs",
+        "Faire respecter le règlement"
+      ],
+      "contexte": "Veille à la sécurité et au calme du jardin du Luxembourg à Paris.",
+      "correspondance": "proposition",
+      "onisep": "MET.7907",
+      "niveauAcces": "sans-diplome",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "surveillant du Jardin du Luxembourg",
+        "surveillante du Jardin du Luxembourg"
+      ]
+    },
+    {
+      "id": "surveillant-du-palais-du-luxembourg",
+      "nom": "Surveillant, surveillante du Palais du Luxembourg",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "communication",
+        "histoire-contemporaine"
+      ],
+      "gestes": [
+        "Contrôler les accès",
+        "Surveiller le Palais",
+        "Accueillir les visiteurs"
+      ],
+      "contexte": "Assure la sécurité du Sénat au Palais du Luxembourg.",
+      "correspondance": "proposition",
+      "onisep": "MET.7908",
+      "niveauAcces": "sans-diplome",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "surveillant du Palais du Luxembourg",
+        "surveillante du Palais du Luxembourg"
+      ]
+    },
+    {
+      "id": "ouvrier-autoroutier",
+      "nom": "Ouvrier autoroutier, ouvrière autoroutière",
+      "categorie": "btp",
+      "disciplines": [
+        "mecanique",
+        "geometrie",
+        "education-physique"
+      ],
+      "gestes": [
+        "Entretenir la chaussée",
+        "Baliser les chantiers",
+        "Intervenir en cas d’accident"
+      ],
+      "contexte": "Entretient et sécurise les autoroutes.",
+      "correspondance": "proposition",
+      "onisep": "MET.7997",
+      "rome": [
+        "I1202"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "logistique, transport/transport",
+        "construction, architecture, travaux publics/travaux publics"
+      ],
+      "synonymes": [
+        "agent/e autoroutier/ère",
+        "ouvrier/ère autoroutière qualifiée (OAQ)",
+        "ouvrier/ère d'entretien autoroutier",
+        "ouvrier autoroutier",
+        "ouvrière autoroutière"
+      ]
+    },
+    {
+      "id": "conducteur-de-materiel-roulant-de-collecte-de-dechets",
+      "nom": "Conducteur, conductrice de matériel roulant de collecte de déchets",
+      "categorie": "nature",
+      "disciplines": [
+        "mecanique",
+        "environnement",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Conduire la benne",
+        "Suivre la tournée",
+        "Respecter la sécurité"
+      ],
+      "contexte": "Conduit le camion qui ramasse les déchets.",
+      "correspondance": "proposition",
+      "onisep": "MET.7998",
+      "rome": [
+        "N4105"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "chauffeur/euse BOM (benne à ordure ménagère)",
+        "conducteur de matériel roulant de collecte de déchets",
+        "conductrice de matériel roulant de collecte de déchets"
+      ]
+    },
+    {
+      "id": "agent-de-surete-aeroportuaire",
+      "nom": "Agent, agente de sûreté aéroportuaire",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "communication",
+        "physique"
+      ],
+      "gestes": [
+        "Contrôler les passagers",
+        "Inspecter les bagages",
+        "Repérer les objets interdits"
+      ],
+      "contexte": "Contrôle passagers et bagages dans les aéroports.",
+      "correspondance": "proposition",
+      "onisep": "MET.8001",
+      "rome": [
+        "K2503"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "agent/e d'exploitation de sûreté aéroportuaire",
+        "opérateur/trice qualifié/e de sûreté",
+        "agent de sûreté aéroportuaire",
+        "agente de sûreté aéroportuaire"
+      ]
+    },
+    {
+      "id": "operateur-en-station-de-telesurveillance",
+      "nom": "Opérateur, opératrice en station de télésurveillance",
+      "categorie": "services",
+      "disciplines": [
+        "informatique",
+        "communication",
+        "droit-et-institutions"
+      ],
+      "gestes": [
+        "Surveiller les écrans d’alarme",
+        "Analyser les alertes",
+        "Prévenir les secours"
+      ],
+      "contexte": "Surveille à distance des maisons et des bâtiments.",
+      "correspondance": "proposition",
+      "onisep": "MET.8002",
+      "rome": [
+        "K2503"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "agent/e de sécurité opérateur/trice",
+        "agent/e de télésurveillance",
+        "opérateur en station de télésurveillance",
+        "opératrice en station de télésurveillance"
+      ]
+    },
+    {
+      "id": "preparateur-de-commandes",
+      "nom": "Préparateur, préparatrice de commandes",
+      "categorie": "btp",
+      "disciplines": [
+        "calcul-professionnel",
+        "gestion",
+        "education-physique"
+      ],
+      "gestes": [
+        "Lire le bon de commande",
+        "Prélever les produits",
+        "Emballer et étiqueter"
+      ],
+      "contexte": "Prépare les colis dans un entrepôt.",
+      "correspondance": "proposition",
+      "onisep": "MET.8003",
+      "rome": [
+        "N1103"
+      ],
+      "niveauAcces": "cap",
+      "domaines": [
+        "logistique, transport/logistique"
+      ],
+      "synonymes": [
+        "agent/e logistique",
+        "agent/e magasinier/ère",
+        "préparateur de commandes",
+        "préparatrice de commandes"
+      ]
+    },
+    {
+      "id": "affreteur",
+      "nom": "Affréteur, affréteuse",
+      "categorie": "trade",
+      "disciplines": [
+        "economie-et-societe",
+        "gestion",
+        "communication"
+      ],
+      "gestes": [
+        "Trouver un transporteur",
+        "Négocier les prix",
+        "Suivre la livraison"
+      ],
+      "contexte": "Organise le transport des marchandises avec des transporteurs.",
+      "correspondance": "proposition",
+      "onisep": "MET.8067",
+      "rome": [
+        "N1201"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "logistique, transport/logistique",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "affréteur",
+        "affréteuse"
+      ]
+    },
+    {
+      "id": "agent-de-planning",
+      "nom": "Agent, agente de planning (planification)",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "calcul-professionnel",
+        "informatique"
+      ],
+      "gestes": [
+        "Préparer les plannings",
+        "Affecter véhicules et équipes",
+        "Ajuster en cas d’imprévu"
+      ],
+      "contexte": "Organise les plannings des équipes et des véhicules.",
+      "correspondance": "proposition",
+      "onisep": "MET.8069",
+      "rome": [
+        "N4204"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "logistique, transport/logistique",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "agent de planning (planification)",
+        "agente de planning (planification)"
+      ]
+    },
+    {
+      "id": "chef-de-quai",
+      "nom": "Chef, cheffe de quai",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "calcul-professionnel",
+        "communication"
+      ],
+      "gestes": [
+        "Organiser les chargements",
+        "Encadrer les équipes",
+        "Contrôler les expéditions"
+      ],
+      "contexte": "Dirige le chargement et le déchargement des camions.",
+      "correspondance": "proposition",
+      "onisep": "MET.8078",
+      "rome": [
+        "N1303"
+      ],
+      "niveauAcces": "bac",
+      "domaines": [
+        "logistique, transport/logistique"
+      ],
+      "synonymes": [
+        "chef de quai",
+        "cheffe de quai"
+      ]
+    },
+    {
+      "id": "commercial-transport",
+      "nom": "Commercial transport, commerciale transport",
+      "categorie": "trade",
+      "disciplines": [
+        "communication",
+        "economie-et-societe",
+        "gestion"
+      ],
+      "gestes": [
+        "Prospecter des clients",
+        "Proposer des solutions de transport",
+        "Négocier les contrats"
+      ],
+      "contexte": "Vend des services de transport aux entreprises.",
+      "correspondance": "proposition",
+      "onisep": "MET.8083",
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "logistique, transport/logistique",
+        "commerce, marketing, vente/marketing, vente",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "commercial transport",
+        "commerciale transport"
+      ]
+    },
+    {
+      "id": "dispatcheur",
+      "nom": "Dispatcheur, dispatcheuse",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "amenagement-du-territoire",
+        "communication"
+      ],
+      "gestes": [
+        "Répartir les missions",
+        "Suivre les véhicules",
+        "Gérer les urgences"
+      ],
+      "contexte": "Organise en temps réel le travail des chauffeurs ou des techniciens.",
+      "correspondance": "proposition",
+      "onisep": "MET.8093",
+      "rome": [
+        "N4203"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "logistique, transport/logistique",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "dispatcheur",
+        "dispatcheuse"
+      ]
+    },
+    {
+      "id": "pilote-de-port",
+      "nom": "Pilote de port",
+      "categorie": "btp",
+      "disciplines": [
+        "sciences-de-la-terre",
+        "physique",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Monter à bord du navire",
+        "Guider son entrée au port",
+        "Coordonner avec les remorqueurs"
+      ],
+      "contexte": "Guide les grands navires pour entrer et sortir du port.",
+      "correspondance": "proposition",
+      "onisep": "MET.8107",
+      "rome": [
+        "N3101"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "pilote de port"
+      ]
+    },
+    {
+      "id": "responsable-d-entrepot",
+      "nom": "Responsable d'entrepôt",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "calcul-professionnel",
+        "informatique"
+      ],
+      "gestes": [
+        "Organiser le stockage",
+        "Encadrer l’équipe",
+        "Suivre les indicateurs"
+      ],
+      "contexte": "Dirige un entrepôt.",
+      "correspondance": "proposition",
+      "onisep": "MET.8110",
+      "rome": [
+        "N1303"
+      ],
+      "niveauAcces": "bac+2",
+      "domaines": [
+        "logistique, transport/logistique"
+      ],
+      "synonymes": [
+        "responsable d'entrepôt"
+      ]
+    },
+    {
+      "id": "chauffeur-accompagnateur-de-personnes-a-mobilite-reduite",
+      "nom": "Chauffeur accompagnateur de personnes à mobilité réduite, chauffeuse accompagnatrice de personnes à mobilité réduite",
+      "categorie": "btp",
+      "disciplines": [
+        "psychologie-sociale",
+        "physiologie-humaine",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Aider à monter dans le véhicule",
+        "Conduire en sécurité",
+        "Accompagner à destination"
+      ],
+      "contexte": "Transporte et accompagne des personnes à mobilité réduite.",
+      "correspondance": "proposition",
+      "onisep": "MET.8190",
+      "niveauAcces": "cap",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "chauffeur accompagnateur de personnes à mobilité réduite",
+        "chauffeuse accompagnatrice de personnes à mobilité réduite"
+      ]
+    },
+    {
+      "id": "capitaine-penitentiaire",
+      "nom": "Capitaine pénitentiaire",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Encadrer les surveillants",
+        "Organiser la sécurité",
+        "Gérer les incidents"
+      ],
+      "contexte": "Encadre les équipes de surveillance d’une prison.",
+      "correspondance": "proposition",
+      "onisep": "MET.8217",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "capitaine pénitentiaire"
+      ]
+    },
+    {
+      "id": "ingenieur-d-exploitation-dans-l-aerien",
+      "nom": "Ingénieur, ingénieure d'exploitation dans l'aérien",
+      "categorie": "btp",
+      "disciplines": [
+        "gestion",
+        "physique",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Organiser les vols",
+        "Optimiser les rotations",
+        "Gérer les imprévus"
+      ],
+      "contexte": "Organise le fonctionnement quotidien d’une compagnie aérienne.",
+      "correspondance": "proposition",
+      "onisep": "MET.8236",
+      "rome": [
+        "H1206",
+        "N2102",
+        "N2203"
+      ],
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "ingénieur d'exploitation dans l'aérien",
+        "ingénieure d'exploitation dans l'aérien"
+      ]
+    },
+    {
+      "id": "directeur-penitentiaire-d-insertion-et-de-probation",
+      "nom": "Directeur, directrice pénitentiaire d'insertion et de probation",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Diriger le service",
+        "Piloter les projets de réinsertion",
+        "Travailler avec la justice"
+      ],
+      "contexte": "Dirige un service qui accompagne la réinsertion des personnes condamnées.",
+      "correspondance": "proposition",
+      "onisep": "MET.8251",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "directeur pénitentiaire d'insertion et de probation",
+        "directrice pénitentiaire d'insertion et de probation"
+      ]
+    },
+    {
+      "id": "offcier-geographe",
+      "nom": "Officier, officière géographe",
+      "categorie": "services",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "informatique",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Produire des cartes",
+        "Analyser le terrain",
+        "Préparer les données géographiques"
+      ],
+      "contexte": "Spécialiste des cartes et du terrain au service de la défense.",
+      "correspondance": "proposition",
+      "onisep": "MET.8255",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "armée, sécurité/défense publique",
+        "histoire-géographie, psychologie, sociologie/géographie"
+      ],
+      "synonymes": [
+        "officier géographe",
+        "officière géographe"
+      ]
+    },
+    {
+      "id": "officier-expert-imagerie",
+      "nom": "Officier expert imagerie, officière experte imagerie",
+      "categorie": "services",
+      "disciplines": [
+        "optique",
+        "informatique",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Analyser des images satellites",
+        "Repérer les changements",
+        "Rédiger des synthèses"
+      ],
+      "contexte": "Analyse des images aériennes et satellites pour la défense.",
+      "correspondance": "proposition",
+      "onisep": "MET.8257",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "armée, sécurité/défense publique"
+      ],
+      "synonymes": [
+        "officier/ière sous contrat spécialiste (OCS/S)",
+        "officier expert imagerie",
+        "officière experte imagerie"
+      ]
+    },
+    {
+      "id": "analyste-du-renseignement",
+      "nom": "Analyste du renseignement",
+      "categorie": "services",
+      "disciplines": [
+        "expression-ecrite",
+        "langues-vivantes",
+        "histoire-contemporaine"
+      ],
+      "gestes": [
+        "Rassembler des informations",
+        "Les recouper",
+        "Rédiger des analyses"
+      ],
+      "contexte": "Analyse des informations pour aider les décideurs de la défense.",
+      "correspondance": "proposition",
+      "onisep": "MET.8260",
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/défense publique"
+      ],
+      "synonymes": [
+        "analyste du renseignement"
+      ]
+    },
+    {
+      "id": "chef-d-equipe-des-risques-nrbc",
+      "nom": "Chef, cheffe d'équipe des risques NRBC (nucléaires, biologiques ou chimiques)",
+      "categorie": "services",
+      "disciplines": [
+        "chimie-analytique",
+        "physique",
+        "biologie"
+      ],
+      "gestes": [
+        "Détecter les produits dangereux",
+        "Décontaminer",
+        "Protéger la population"
+      ],
+      "contexte": "Intervient face aux risques nucléaires, biologiques ou chimiques.",
+      "correspondance": "proposition",
+      "onisep": "MET.8266",
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/défense publique",
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "chef d'équipe des risques NRBC (nucléaires, biologiques ou chimiques)",
+        "cheffe d'équipe des risques NRBC (nucléaires, biologiques ou chimiques)"
+      ]
+    },
+    {
+      "id": "detecteur",
+      "nom": "Détecteur, détectrice",
+      "categorie": "services",
+      "disciplines": [
+        "acoustique",
+        "physique",
+        "informatique"
+      ],
+      "gestes": [
+        "Écouter les sons sous-marins",
+        "Identifier les bruits",
+        "Informer le commandement"
+      ],
+      "contexte": "Analyse les sons captés par les sonars d’un navire ou d’un sous-marin.",
+      "correspondance": "proposition",
+      "onisep": "MET.8271",
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/défense publique"
+      ],
+      "synonymes": [
+        "détecteur",
+        "détectrice"
+      ]
+    },
+    {
+      "id": "gendarme-technologies-numeriques",
+      "nom": "Gendarme technologies numériques",
+      "categorie": "services",
+      "disciplines": [
+        "informatique",
+        "droit-et-institutions",
+        "reseaux"
+      ],
+      "gestes": [
+        "Analyser les traces numériques",
+        "Lutter contre la cybercriminalité",
+        "Former les collègues"
+      ],
+      "contexte": "Gendarme spécialiste des enquêtes sur Internet et les outils numériques.",
+      "correspondance": "proposition",
+      "onisep": "MET.8278",
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "gendarme technologies numériques"
+      ]
+    },
+    {
+      "id": "officier-specialiste-de-la-conduite-des-operations-maritimes",
+      "nom": "Officier, officière spécialiste de la conduite des opérations maritimes",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "sciences-de-la-terre",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Préparer les opérations",
+        "Coordonner les moyens",
+        "Suivre la situation en mer"
+      ],
+      "contexte": "Organise et coordonne les opérations de la Marine.",
+      "correspondance": "proposition",
+      "onisep": "MET.8281",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "armée, sécurité/défense publique"
+      ],
+      "synonymes": [
+        "officier spécialiste de la conduite des opérations maritimes",
+        "officière spécialiste de la conduite des opérations maritimes"
+      ]
+    },
+    {
+      "id": "pilote-de-drone-8283",
+      "nom": "Pilote de drone (armée)",
+      "categorie": "services",
+      "disciplines": [
+        "informatique",
+        "physique",
+        "optique"
+      ],
+      "gestes": [
+        "Préparer la mission",
+        "Piloter le drone à distance",
+        "Analyser les images"
+      ],
+      "contexte": "Pilote des drones d’observation pour l’armée.",
+      "correspondance": "proposition",
+      "onisep": "MET.8283",
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/défense publique"
+      ],
+      "synonymes": [
+        "pilote de drone (armée)"
+      ]
+    },
+    {
+      "id": "pilote-de-l-aeronautique-navale",
+      "nom": "Pilote de l'aéronautique navale",
+      "categorie": "services",
+      "disciplines": [
+        "physique",
+        "mecanique",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Préparer le vol",
+        "Décoller et apponter",
+        "Réaliser la mission de surveillance"
+      ],
+      "contexte": "Pilote des avions ou hélicoptères de la Marine.",
+      "correspondance": "proposition",
+      "onisep": "MET.8284",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "armée, sécurité/défense publique"
+      ],
+      "synonymes": [
+        "pilote de l'aéronautique navale"
+      ]
+    },
+    {
+      "id": "plongeur-demineur",
+      "nom": "Plongeur démineur, plongeuse démineuse",
+      "categorie": "services",
+      "disciplines": [
+        "education-physique",
+        "physique",
+        "chimie-analytique"
+      ],
+      "gestes": [
+        "Plonger en sécurité",
+        "Repérer les engins sous l’eau",
+        "Les neutraliser"
+      ],
+      "contexte": "Plonge pour neutraliser des munitions anciennes et sécuriser les eaux.",
+      "correspondance": "proposition",
+      "onisep": "MET.8285",
+      "niveauAcces": "sans-diplome",
+      "domaines": [
+        "armée, sécurité/défense publique"
+      ],
+      "synonymes": [
+        "plongeur démineur",
+        "plongeuse démineuse"
+      ]
+    },
+    {
+      "id": "garde-a-la-garde-republicaine",
+      "nom": "Garde à la Garde républicaine",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "histoire-contemporaine"
+      ],
+      "gestes": [
+        "Assurer la sécurité des institutions",
+        "Participer aux cérémonies",
+        "Prendre soin des chevaux"
+      ],
+      "contexte": "Gendarme qui protège les institutions et participe aux cérémonies officielles.",
+      "correspondance": "proposition",
+      "onisep": "MET.8289",
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "garde à la Garde républicaine"
+      ]
+    },
+    {
+      "id": "sous-officier-en-escadron-de-gendarmerie-mobile",
+      "nom": "Sous-officier, sous-officière en escadron de gendarmerie mobile",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "education-physique",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Maintenir l’ordre",
+        "Renforcer les brigades",
+        "Encadrer une équipe"
+      ],
+      "contexte": "Gendarme qui intervient en renfort lors de grands événements.",
+      "correspondance": "proposition",
+      "onisep": "MET.8290",
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "sous-officier en escadron de gendarmerie mobile",
+        "sous-officière en escadron de gendarmerie mobile"
+      ]
+    },
+    {
+      "id": "commandant-d-unite-de-securite-routiere",
+      "nom": "Commandant, commandante d'unité de sécurité routière",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "amenagement-du-territoire"
+      ],
+      "gestes": [
+        "Organiser les contrôles",
+        "Prévenir les accidents",
+        "Encadrer l’unité"
+      ],
+      "contexte": "Dirige une unité qui veille à la sécurité sur les routes.",
+      "correspondance": "proposition",
+      "onisep": "MET.8291",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "commandant d'unité de sécurité routière",
+        "commandante d'unité de sécurité routière"
+      ]
+    },
+    {
+      "id": "commandant-d-une-brigade-de-recherches",
+      "nom": "Commandant, commandante d'une brigade de recherches",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "gestion",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Diriger les enquêtes",
+        "Coordonner les enquêteurs",
+        "Travailler avec la justice"
+      ],
+      "contexte": "Dirige une équipe de gendarmes enquêteurs.",
+      "correspondance": "proposition",
+      "onisep": "MET.8292",
+      "niveauAcces": "bac+5",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "commandant d'une brigade de recherches",
+        "commandante d'une brigade de recherches"
+      ]
+    },
+    {
+      "id": "guetteur-de-la-flotte",
+      "nom": "Guetteur, guetteuse de la flotte",
+      "categorie": "services",
+      "disciplines": [
+        "sciences-de-la-terre",
+        "communication",
+        "optique"
+      ],
+      "gestes": [
+        "Observer la mer et le ciel",
+        "Transmettre les messages",
+        "Surveiller la navigation"
+      ],
+      "contexte": "Surveille les côtes et la navigation depuis un sémaphore.",
+      "correspondance": "proposition",
+      "onisep": "MET.8294",
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/défense publique"
+      ],
+      "synonymes": [
+        "guetteur de la flotte",
+        "guetteuse de la flotte"
+      ]
+    },
+    {
+      "id": "operateur-de-central-operations-sur-sous-marins",
+      "nom": "Opérateur, opératrice de central opérations sur sous-marins (OPSOUM)",
+      "categorie": "services",
+      "disciplines": [
+        "informatique",
+        "physique",
+        "acoustique"
+      ],
+      "gestes": [
+        "Surveiller les capteurs",
+        "Établir la situation",
+        "Informer le commandant"
+      ],
+      "contexte": "Rassemble les informations des capteurs d’un sous-marin.",
+      "correspondance": "proposition",
+      "onisep": "MET.8295",
+      "niveauAcces": "sans-diplome",
+      "domaines": [
+        "armée, sécurité/défense publique"
+      ],
+      "synonymes": [
+        "opérateur de central opérations sur sous-marins (OPSOUM)",
+        "opératrice de central opérations sur sous-marins (OPSOUM)"
+      ]
+    },
+    {
+      "id": "controleur-des-operations-aeriennes",
+      "nom": "Contrôleur, contrôleuse des opérations aériennes",
+      "categorie": "services",
+      "disciplines": [
+        "physique",
+        "langues-vivantes",
+        "sciences-de-la-terre"
+      ],
+      "gestes": [
+        "Suivre les avions militaires",
+        "Guider les équipages",
+        "Coordonner l’espace aérien"
+      ],
+      "contexte": "Guide les avions militaires et coordonne l’espace aérien.",
+      "correspondance": "proposition",
+      "onisep": "MET.8296",
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/défense publique"
+      ],
+      "synonymes": [
+        "contrôleur des opérations aériennes",
+        "contrôleuse des opérations aériennes"
+      ]
+    },
+    {
+      "id": "operateur-planification-et-conduite-des-operations-aeriennes",
+      "nom": "Opérateur, opératrice planification et conduite des opérations aériennes",
+      "categorie": "services",
+      "disciplines": [
+        "gestion",
+        "amenagement-du-territoire",
+        "informatique"
+      ],
+      "gestes": [
+        "Préparer les plans de vol",
+        "Coordonner les moyens",
+        "Suivre l’exécution"
+      ],
+      "contexte": "Prépare et suit les missions aériennes.",
+      "correspondance": "proposition",
+      "onisep": "MET.8298",
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/défense publique"
+      ],
+      "synonymes": [
+        "opérateur planification et conduite des opérations aériennes",
+        "opératrice planification et conduite des opérations aériennes"
+      ]
+    },
+    {
+      "id": "officier-airspace-management",
+      "nom": "Officier, officière airspace management",
+      "categorie": "services",
+      "disciplines": [
+        "amenagement-du-territoire",
+        "physique",
+        "langues-vivantes"
+      ],
+      "gestes": [
+        "Organiser l’espace aérien",
+        "Attribuer les zones",
+        "Coordonner civils et militaires"
+      ],
+      "contexte": "Organise le partage de l’espace aérien.",
+      "correspondance": "proposition",
+      "onisep": "MET.8301",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "armée, sécurité/défense publique"
+      ],
+      "synonymes": [
+        "officier airspace management",
+        "officière airspace management"
+      ]
+    },
+    {
+      "id": "policier-enqueteur",
+      "nom": "Policier enquêteur, policière enquêtrice",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "expression-ecrite",
+        "psychologie-sociale"
+      ],
+      "gestes": [
+        "Recueillir les témoignages",
+        "Rechercher les preuves",
+        "Rédiger les procès-verbaux"
+      ],
+      "contexte": "Mène des enquêtes pour élucider des affaires.",
+      "correspondance": "proposition",
+      "onisep": "MET.8302",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "policier enquêteur",
+        "policière enquêtrice"
+      ]
+    },
+    {
+      "id": "marin-des-douanes",
+      "nom": "Marin des douanes",
+      "categorie": "services",
+      "disciplines": [
+        "droit-et-institutions",
+        "sciences-de-la-terre",
+        "education-physique"
+      ],
+      "gestes": [
+        "Patrouiller en mer",
+        "Contrôler les navires",
+        "Lutter contre la pollution et les trafics"
+      ],
+      "contexte": "Surveille les côtes et contrôle les navires pour les douanes.",
+      "correspondance": "proposition",
+      "onisep": "MET.8303",
+      "niveauAcces": "sans-diplome",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "marin des douanes"
+      ]
+    },
+    {
+      "id": "enqueteur",
+      "nom": "Enquêteur, enquêtrice (douanes)",
+      "categorie": "btp",
+      "disciplines": [
+        "droit-et-institutions",
+        "economie-et-societe",
+        "expression-ecrite"
+      ],
+      "gestes": [
+        "Analyser les flux de marchandises",
+        "Enquêter sur les fraudes",
+        "Rédiger les procédures"
+      ],
+      "contexte": "Enquête sur les fraudes et trafics pour les douanes.",
+      "correspondance": "proposition",
+      "onisep": "MET.8307",
+      "niveauAcces": "bac",
+      "domaines": [
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "enquêteur (douanes)",
+        "enquêtrice (douanes)"
+      ]
+    },
+    {
+      "id": "technicien-du-ministere-de-la-justice",
+      "nom": "Technicien, technicienne du ministère de la justice",
+      "categorie": "services",
+      "disciplines": [
+        "mecanique",
+        "electricite-electronique",
+        "gestion"
+      ],
+      "gestes": [
+        "Entretenir les bâtiments judiciaires",
+        "Gérer le matériel",
+        "Assurer la sécurité technique"
+      ],
+      "contexte": "Assure le bon fonctionnement technique des tribunaux et établissements.",
+      "correspondance": "proposition",
+      "onisep": "MET.8310",
+      "niveauAcces": "bac",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention"
+      ],
+      "synonymes": [
+        "technicien/ne de l'administration pénitentiaire",
+        "technicien du ministère de la justice",
+        "technicienne du ministère de la justice"
+      ]
+    },
+    {
+      "id": "pilote-d-avion-bombardier-d-eau",
+      "nom": "Pilote d'avion bombardier d'eau",
+      "categorie": "services",
+      "disciplines": [
+        "physique",
+        "sciences-de-la-terre",
+        "environnement"
+      ],
+      "gestes": [
+        "Écoper l’eau",
+        "Larguer sur le feu",
+        "Coordonner avec les pompiers"
+      ],
+      "contexte": "Pilote un avion qui lutte contre les feux de forêt.",
+      "correspondance": "proposition",
+      "onisep": "MET.8311",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "armée, sécurité/sécurité, prévention",
+        "logistique, transport/transport"
+      ],
+      "synonymes": [
+        "pilote d'avion bombardier d'eau"
+      ]
+    },
+    {
+      "id": "analyste-numerique",
+      "nom": "Analyste numérique",
+      "categorie": "services",
+      "disciplines": [
+        "informatique",
+        "reseaux",
+        "analyse-statistique"
+      ],
+      "gestes": [
+        "Analyser les données numériques",
+        "Repérer les menaces",
+        "Proposer des protections"
+      ],
+      "contexte": "Analyse les données et menaces numériques pour la défense.",
+      "correspondance": "proposition",
+      "onisep": "MET.8313",
+      "niveauAcces": "bac+3",
+      "domaines": [
+        "armée, sécurité/défense publique",
+        "économie, droit, politique/sciences politiques",
+        "informatique, Internet/systèmes et réseaux"
+      ],
+      "synonymes": [
+        "analyste numérique"
       ]
     }
   ]
