@@ -1676,5 +1676,17 @@
   "labRemediationTitre": "Small steps · Organisation and attention",
   "labRemediationNiveaux": "Adults · French",
   "labRemediationDescription": "A personal tool to organise tasks, take small steps and track effort with local rewards. Based on an adult ADHD plan; no diagnosis or data transmission. The lab is in French.",
-  "labRemediationAction": "Open my workspace"
+  "labRemediationAction": "Open my workspace",
+  "configModule_petits-pas": "Small steps — AI profiles",
+  "configParam_PETITS_PAS_IA_ACTIF": "Remote assistant enabled",
+  "configParam_PETITS_PAS_OPUS_ACTIF": "Advanced mode allowed",
+  "configParam_MODELE_PETITS_PAS_HAIKU": "Haiku alias (Essential)",
+  "configParam_MODELE_PETITS_PAS_OPUS": "Opus alias (Advanced, verify first)",
+  "configParam_MAX_TOKENS_PETITS_PAS_HAIKU": "Haiku: output tokens",
+  "configParam_MAX_TOKENS_PETITS_PAS_OPUS": "Opus: output tokens",
+  "configParam_MAX_ENTREE_PETITS_PAS_HAIKU": "Haiku: context tokens",
+  "configParam_MAX_ENTREE_PETITS_PAS_OPUS": "Opus: context tokens",
+  "configParam_PETITS_PAS_PLANS_HAIKU_JOUR": "Haiku: plans per day",
+  "configParam_PETITS_PAS_PLANS_OPUS_JOUR": "Opus: plans per day",
+  "configParam_INSTRUCTIONS_PETITS_PAS": "Shared additional instructions"
 }
