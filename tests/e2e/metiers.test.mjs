@@ -84,7 +84,7 @@ test("métiers : anneaux, filtres, chaîne d'un métier, notions KermicLab et gr
   if (perspectivesBoulanger) {
     assert.ok(texteBoulanger.includes("Perspectives de recrutement"));
     assert.equal(await detail.locator(`.metiers-palier.${perspectivesBoulanger.palier}`).count(), 1);
-    assert.ok(texteBoulanger.includes(`« ${perspectivesBoulanger.groupe} »`), "groupe de métiers BMO cité");
+    assert.ok(texteBoulanger.includes(`«\u00a0${perspectivesBoulanger.groupe}\u00a0»`), "groupe de métiers BMO cité, espaces insécables");
   }
   assert.match(await page.locator("#metiers-sources").textContent(), /Onisep, « Idéo-Fiches métiers » .*licence ODbL/, "attribution exigée par la licence");
   assert.match(await page.locator("#metiers-sources").textContent(), /France Travail, « ROME 4\.0 \(version \d+\) » .*Licence Ouverte/, "attribution du ROME");
