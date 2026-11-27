@@ -16,6 +16,8 @@
     "check:experiences": "node scripts/check-experiences.mjs",
     "check:evaluations": "node scripts/check-evaluations.mjs",
     "check:artefacts": "node scripts/check-artefacts.mjs",
+    "sources:importer": "node scripts/sources-ouvertes.mjs importer",
+    "sources:rapport": "node scripts/sources-ouvertes.mjs rapport",
     "import:onisep": "node scripts/importer-onisep.mjs",
     "vague:metiers": "node scripts/vague-metiers.mjs",
     "test": "node --test \"tests/unit/*.test.mjs\"",
