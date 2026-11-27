@@ -10,7 +10,7 @@
 //             --json (rapport machine)
 //
 // Codes de sortie : 0 rapport produit, 1 fichiers du ROME introuvables, 2 invocation invalide.
-import { readdir, readFile, stat, writeFile } from "node:fs/promises";
+import { readdir, readFile, writeFile } from "node:fs/promises";
 import { basename, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { appliquerCodesPrecis, appliquerRome, codesPrecis, completerCandidats, decoderRome, extraitCompact, FORMAT_EXTRAIT } from "./lib/rome.mjs";
@@ -41,14 +41,27 @@ if (!source || reste.length || (sortieExtrait && !/^\d{4}-\d{2}-\d{2}$/.test(dat
   process.exit(2);
 }
 
+/**
+ * Entrées d'un dossier, ou `null` si le chemin est un fichier. On tente directement la lecture du dossier plutôt que
+ * de tester le chemin avant de le lire (pas de course entre le test et l'usage, CWE-367).
+ */
+async function entreesDuDossier(chemin) {
+  try {
+    return await readdir(chemin);
+  } catch (e) {
+    if (e?.code === "ENOTDIR") return null;
+    throw e;
+  }
+}
+
 /** Extrait compact : relu tel quel, ou construit à partir du dossier dézippé du ROME. */
 async function lireExtraitOuDossier(chemin) {
-  if (!(await stat(chemin)).isDirectory()) {
+  const fichiers = await entreesDuDossier(chemin);
+  if (fichiers === null) {
     const extrait = JSON.parse(await readFile(chemin, "utf8"));
     if (extrait?.format !== FORMAT_EXTRAIT) { console.error(`${chemin} : ce n'est pas un extrait ROME (format ${extrait?.format}).`); process.exit(1); }
     return extrait;
   }
-  const fichiers = await readdir(chemin);
   const trouver = (prefixe) => fichiers.find((f) => f.startsWith(prefixe) && f.endsWith(".json"));
   const noms = { fiches: trouver("unix_fiche_emploi_metier_"), codes: trouver("unix_referentiel_code_rome_"), contextes: trouver("unix_referentiel_contexte_travail_") };
   if (!noms.fiches || !noms.codes) {

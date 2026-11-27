@@ -12,7 +12,7 @@
 //   options : --indicateur <code> (défaut PERSP_2, difficultés de recrutement), --json
 //
 // Codes de sortie : 0 rapport produit, 1 réponse ou extrait non reconnu, 2 invocation invalide.
-import { readdir, readFile, stat, writeFile } from "node:fs/promises";
+import { readdir, readFile, writeFile } from "node:fs/promises";
 import { basename, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { appliquerMarche, codesAInterroger, extraitCompact, FORMAT_EXTRAIT, normaliserReponse } from "./lib/marche.mjs";
@@ -50,15 +50,29 @@ if (!source || reste.length || (sortieExtrait && !/^\d{4}-\d{2}-\d{2}$/.test(dat
   process.exit(2);
 }
 
+/**
+ * Entrées d'un dossier, ou `null` si le chemin est un fichier. On tente directement la lecture du dossier plutôt que
+ * de tester le chemin avant de le lire (pas de course entre le test et l'usage, CWE-367).
+ */
+async function entreesDuDossier(chemin) {
+  try {
+    return await readdir(chemin);
+  } catch (e) {
+    if (e?.code === "ENOTDIR") return null;
+    throw e;
+  }
+}
+
 async function lireExtrait(chemin) {
   try {
-    if (!(await stat(chemin)).isDirectory()) {
+    const entrees = await entreesDuDossier(chemin);
+    if (entrees === null) {
       const extrait = JSON.parse(await readFile(chemin, "utf8"));
       if (extrait?.format !== FORMAT_EXTRAIT) throw new Error(`ce n'est pas un extrait Marché du travail (format ${extrait?.format})`);
       return extrait;
     }
     const lignes = [];
-    for (const nom of (await readdir(chemin)).filter((f) => f.endsWith(".json")).sort()) {
+    for (const nom of entrees.filter((f) => f.endsWith(".json")).sort()) {
       try {
         lignes.push(...normaliserReponse(JSON.parse(await readFile(join(chemin, nom), "utf8")), { indicateur }));
       } catch (e) {
