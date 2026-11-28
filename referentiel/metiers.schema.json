@@ -222,7 +222,7 @@
           },
           "perspectives": {
             "type": "object",
-            "description": "Perspectives de recrutement dérivées de l’enquête BMO (npm run import:bmo), France entière.",
+            "description": "Perspectives de recrutement dérivées de l’enquête BMO (npm run import:bmo), France entière ; rattachement par le champ fap du métier ou par sa famille ROME (referentiel/regles-bmo.json).",
             "required": [
               "annee",
               "groupe",
@@ -261,6 +261,13 @@
                   "moyen",
                   "fort"
                 ]
+              },
+              "origine": {
+                "enum": [
+                  "metier",
+                  "famille"
+                ],
+                "description": "metier : champ fap du métier ; famille : table referentiel/regles-bmo.json (famille ROME)."
               }
             }
           },

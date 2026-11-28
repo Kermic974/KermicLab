@@ -93,30 +93,43 @@ test("bmo : perspectives des métiers rattachés, source citée, validation", ()
     metiers: [
       { id: "boulanger", nom: "Boulanger", categorie: "craft", disciplines: ["chimie"], gestes: ["Pétrissage"], contexte: "Pain.", correspondance: "v5", fap: "S0X42" },
       { id: "veto", nom: "Vétérinaire", categorie: "craft", disciplines: ["chimie"], gestes: ["Soin"], contexte: "Animaux.", correspondance: "v5", fap: "Z9Z99" },
-      { id: "prof", nom: "Professeur", categorie: "craft", disciplines: ["chimie"], gestes: ["Cours"], contexte: "École.", correspondance: "v5" }
+      { id: "prof", nom: "Professeur", categorie: "craft", disciplines: ["chimie"], gestes: ["Cours"], contexte: "École.", correspondance: "v5" },
+      { id: "dev", nom: "Développeur", categorie: "craft", disciplines: ["chimie"], gestes: ["Code"], contexte: "Logiciel.", correspondance: "v5", rome: ["M1855"] },
+      { id: "gendarme", nom: "Gendarme", categorie: "craft", disciplines: ["chimie"], gestes: ["Patrouille"], contexte: "Sécurité.", correspondance: "v5", rome: ["K1706"] }
     ]
   };
-  const { referentiel: r, rapport } = appliquerBmo(referentiel, extrait);
-  assert.deepEqual(r.metiers[0].perspectives, { annee: 2026, groupe: "Boulangers, pâtissiers", projets: 150, partDifficile: 40, partSaisonnier: 10, palier: "fort" });
+  // Familles ROME → métiers BMO : M1855 a pour parent M1805 ; K1706 est hors champ (concours publics).
+  const options = { familles: { M1805: "M2X90", K1706: null }, parentDe: (code) => ({ M1855: "M1805" })[code] ?? code };
+  const { referentiel: r, rapport } = appliquerBmo(referentiel, extrait, options);
+  assert.deepEqual(r.metiers[0].perspectives, { annee: 2026, groupe: "Boulangers, pâtissiers", projets: 150, partDifficile: 40, partSaisonnier: 10, palier: "fort", origine: "metier" });
   assert.equal(r.metiers[1].perspectives, undefined);
-  assert.deepEqual(rapport, { rattaches: 1, sansFap: ["prof"], inconnus: ["veto:Z9Z99"] });
+  assert.equal(r.metiers[3].perspectives.origine, "famille");
+  assert.equal(r.metiers[3].perspectives.groupe, "Ingénieurs & cadres <informatique>");
+  assert.equal(r.metiers[4].perspectives, undefined, "famille hors champ de l'enquête");
+  assert.deepEqual(rapport, { rattaches: 2, parMetier: 1, parFamille: 1, horsChamp: ["gendarme"], sansFap: ["prof"], inconnus: ["veto:Z9Z99"] });
   assert.equal(r.sources.at(-1).nom, "Enquête Besoins en main-d'œuvre 2026");
-  assert.equal(appliquerBmo(r, extrait).referentiel.sources.length, 1, "source non dupliquée");
+  assert.equal(appliquerBmo(r, extrait, options).referentiel.sources.length, 1, "source non dupliquée");
   assert.deepEqual(verifierMetiers(r, new Set()), []);
   const fautif = structuredClone(r);
   fautif.metiers[0].fap = "boulanger";
   fautif.metiers[0].perspectives.palier = "enorme";
   fautif.metiers[2].perspectives = { ...r.metiers[0].perspectives };
+  fautif.metiers[1].perspectives = { ...r.metiers[3].perspectives };
   const erreurs = verifierMetiers(fautif, new Set()).join(" | ");
-  for (const motif of [/code BMO \(FAP\) invalide boulanger/, /palier de recrutement inconnu enorme/, /prof : perspectives sans code BMO/]) assert.match(erreurs, motif);
+  for (const motif of [/code BMO \(FAP\) invalide boulanger/, /palier de recrutement inconnu enorme/, /prof : perspectives sans code BMO/, /veto : perspectives par famille sans code ROME/]) assert.match(erreurs, motif);
 });
 
 test("bmo : l'extrait versionné et le référentiel sont alignés", async () => {
   const lire = async (f) => JSON.parse(await readFile(new URL(`../../${f}`, import.meta.url), "utf8"));
-  const [vrai, metiers] = await Promise.all([lire("referentiel/sources/france-travail/bmo-2026.json"), lire("referentiel/metiers-v0.json")]);
+  const [vrai, metiers, regles, rome] = await Promise.all([lire("referentiel/sources/france-travail/bmo-2026.json"), lire("referentiel/metiers-v0.json"),
+    lire("referentiel/regles-bmo.json"), lire("referentiel/sources/france-travail/rome-4.0-v62.json")]);
   const { parCode } = lireExtrait(vrai);
   for (const m of metiers.metiers) if (m.fap) assert.ok(parCode.has(m.fap), `${m.id} : ${m.fap} absent de la BMO`);
-  assert.deepEqual(appliquerBmo(metiers, vrai).referentiel.metiers, metiers.metiers, "perspectives à jour (npm run import:bmo -- <extrait> --appliquer)");
+  for (const [famille, fap] of Object.entries(regles.familles)) assert.ok(fap === null || parCode.has(fap), `${famille} : ${fap} absent de la BMO`);
+  const parents = new Map(rome.fiches.map((f) => [f.code, f.parent ?? f.code]));
+  const options = { familles: regles.familles, parentDe: (code) => parents.get(code) ?? code };
+  for (const m of metiers.metiers) if (!m.fap && m.rome?.length) assert.ok(parents.get(m.rome[0]) in regles.familles, `${m.id} : famille ${parents.get(m.rome[0])} absente de regles-bmo.json`);
+  assert.deepEqual(appliquerBmo(metiers, vrai, options).referentiel.metiers, metiers.metiers, "perspectives à jour (npm run import:bmo -- <extrait> --appliquer)");
 });
 
 test("bmo : lecture xlsx en temps linéaire, même sur un fichier piégé (pas de retour arrière polynomial)", () => {

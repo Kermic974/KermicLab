@@ -32,8 +32,8 @@
 3. **BMO** (`npm run import:bmo`, `scripts/lib/bmo.mjs`, lecture xlsx minimale sans dépendance) : extrait
    `referentiel/sources/france-travail/bmo-<année>.json` (totaux France par métier BMO, valeurs couvertes par le secret
    statistique exclues, donc minimales). La table de passage FAP ↔ ROME de la DARES n'étant pas téléchargeable
-   automatiquement, chaque métier porte un champ `fap` choisi à la main (relecture humaine), et seulement quand le
-   rattachement est sûr ; les métiers recrutés surtout par concours de la fonction publique, hors du champ de
+   automatiquement, le rattachement vient d'un champ `fap` posé sur le métier ou, à défaut, de la table
+   `referentiel/regles-bmo.json` (famille ROME → métier BMO), toutes deux choisies par un agent et à relire ; les métiers recrutés surtout par concours de la fonction publique, hors du champ de
    l'enquête, n'en ont pas. Champ dérivé `perspectives` : année, groupe BMO, projets, part difficile et saisonnière
    (%), palier (`fort`, `moyen`, `faible` : tiers du nombre de projets parmi les métiers BMO). L'écran cite le groupe
    BMO, la portée de l'enquête et rappelle que les chiffres changent chaque année.
@@ -52,7 +52,7 @@
   ONISEP ; 196 restent sans code ROME (fiches ONISEP sans code). 7 codes choisis par l'agent pour des métiers sans
   code ONISEP et 57 codes précisés par `--preciser` ; 935 avec contextes de travail, 402 avec une transition, 920 avec
   des métiers proches. Le détail d'un métier affiche transitions, conditions de travail et métiers proches (cliquables).
-- Lot 9 livré : enquête BMO 2026 (217 métiers BMO) ; 66 métiers (ceux de la maquette V5 et de la vague pilote) rattachés par un code FAP choisi par l'agent ; les métiers des vagues ONISEP n'en ont pas encore
+- Lot 9 livré : enquête BMO 2026 (217 métiers BMO) ; 888 métiers sur 1 131 ont des perspectives : 66 par un code FAP choisi par l'agent pour le métier, 822 par la table `referentiel/regles-bmo.json` (384 familles ROME → métier BMO, choisie par l'agent, 21 familles hors champ de l'enquête car recrutées par concours publics) ; 47 métiers hors champ, 196 sans code ROME
   (30 `fort`, 19 `moyen`, 17 `faible`), 13 sans rattachement (concours publics ou équivalent incertain). Le détail
   d'un métier affiche ses perspectives de recrutement.
 - Lot 8 (API Marché du travail) **préparé sans données** (2026-11-27) : `npm run import:marche`
